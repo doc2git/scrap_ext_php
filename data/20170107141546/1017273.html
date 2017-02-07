@@ -1,0 +1,150 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8" /><meta http-equiv="content-language" content="zh-CN" /><meta http-equiv="x-dns-prefetch-control" content="on" /><link rel="dns-prefetch" href="http://eclick.baidu.com" /><link rel="dns-prefetch" href="http://cpro.baidu.com" /><link rel="dns-prefetch" href="http://cpro.baidustatic.com" /><link rel="dns-prefetch" href="http://inte.sogou.com" /><link rel="dns-prefetch" href="http://js.bkjia.com" /><meta http-equiv="Cache-Control" content="no-siteapp"  /><meta http-equiv="Cache-Control" content="no-transform"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"  /><meta name="format-detection" content="telephone=no" /><meta name="applicable-device" content="pc,mobile"><meta name="mobile-agent" content="format=html5; url=http://www.bkjia.com/LINUXxt/1017273.html">
+<title>在Linux下使用rsync对比和同步文件的方法，linuxrsync_LINUX系统 | 帮客之家</title>
+<meta name="keywords" content="Linux,Rsync,rsync"/>
+<meta name="description" content="在Linux下使用rsync对比和同步文件的方法，linuxrsync。在Linux下使用rsync对比和同步文件的方法，linuxrsync 这篇文章主要介绍了在Linux下使用rsync对比和同步文件的方法,着重讲述排除文件目录列表"/>
+<link href="http://css.bkjia.com/bkjia/css/article.css" type="text/css" rel="stylesheet" media="all">
+<base target="_blank"/>
+<!--[if lt IE 9]><script src="http://js.bkjia.com/bkjia/js/html5.js"></script><![endif]-->
+<link rel="shortcut icon" type="image/x-icon" href="http://css.bkjia.com/bkjia/images/favicon.ico" />
+<link href="https://plus.google.com/115281975932467747980" rel="publisher" />
+</head>
+<body>
+<div class="div_body" id="body">
+<script language="javascript" src="http://js.bkjia.com/bkjia/js/head_top.js" type="text/javascript"></script>
+<div class="headnav"><div class="headnav_hmenu"><div class="hmenu"><ul class="clearfix"><li><a href="http://www.bkjia.com/" title="帮客之家首页">首页</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-76-1.html" title="软件编程">编程</a></li><li><a href="http://www.bkjia.com/fenlei/list-74-1.html" title="web前端">前端</a></li><li><a href="http://www.bkjia.com/fenlei/list-75-1.html" title="WEB编程">WEB</a></li><li><a href="http://www.bkjia.com/fenlei/list-82-1.html" title="移动开发">移动</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-79-1.html" title="安全攻防">安全</a></li><li><a href="http://www.bkjia.com/fenlei/list-80-1.html" title="网络技术">网络</a></li><li><a href="http://www.bkjia.com/fenlei/list-78-1.html" title="操作系统">系统</a></li><li><a href="http://www.bkjia.com/fenlei/list-83-1.html" title="脚本下载">脚本</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-84-1.html" title="建站cms">建站</a></li><li><a href="http://www.bkjia.com/fenlei/list-85-1.html" title="网页制作">网页</a></li><li><a href="http://www.bkjia.com/fenlei/list-77-1.html" title="数据库">数据库</a></li><li><a href="http://www.bkjia.com/fenlei/list-81-1.html" title="服务器">服务器</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-73-1.html" title="手机教程">手机</a></li> <li><a href="http://www.bkjia.com/fenlei/list-71-1.html" title="电脑教程">电脑</a></li><li><a href="http://tech.bkjia.com" title="技术库搜索">技术搜索</a></li><li><a href="http://kansha.bkjia.com" title="今天看啥">今天看啥</a></li>   </ul> </div>
+    <div class="subhmenu">  <ul class="clearfix"><li><a href="http://www.bkjia.com/fenlei/list-186-1.html">PHP</a></li> <li><a href="http://www.bkjia.com/fenlei/list-188-1.html">JSP</a></li><li><a href="http://www.bkjia.com/fenlei/list-98-1.html">JAVA</a></li><li><a href="http://www.bkjia.com/fenlei/list-190-1.html">.NET</a></li><li><a href="http://www.bkjia.com/fenlei/list-196-1.html">IOS</a></li>      	<li><a href="http://www.bkjia.com/fenlei/list-197-1.html">Android</a></li><li><a href="http://www.bkjia.com/fenlei/list-179-1.html">Html5</a></li><li><a href="http://www.bkjia.com/fenlei/list-178-1.html">CSS</a></li><li><a href="http://www.bkjia.com/fenlei/list-182-1.html">Ajax</a></li><li><a href="http://www.bkjia.com/fenlei/list-181-1.html">jQuery</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-117-1.html">Myslq</a></li><li><a href="http://www.bkjia.com/fenlei/list-118-1.html">Msslq</a></li><li><a href="http://www.bkjia.com/fenlei/list-107-1.html">Sybase</a></li><li><a href="http://www.bkjia.com/fenlei/list-116-1.html">DB2</a></li><li><a href="http://www.bkjia.com/fenlei/list-106-1.html">Oracle</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-131-1.html">CMS教程</a></li><li><a href="http://www.bkjia.com/fenlei/list-167-1.html">Linux</a></li><li><a href="http://www.bkjia.com/fenlei/list-166-1.html">IIS</a></li><li><a href="http://www.bkjia.com/fenlei/list-169-1.html">Apache</a></li><li><a href="http://www.bkjia.com/fenlei/list-174-1.html">Nginx</a></li> </ul></div>
+  </div></div>
+<div class="div_body head_box mt10"> <div class="clearfix">
+<div class="ad_1"><script src='http://js.bkjia.com/bkjia/js/banner.js' type="text/javascript"></script></div><div class="jrd"><span class="tit">今天看啥</span><ul class="dh_ul"><script src='http://kansha.bkjia.com/data/js/0.js' type="text/javascript"></script></ul></div></div><div class="hot_tj clearfix"> <span class="hot">热点：</span><ul class="tj_r"><script type="text/javascript" src='http://js.bkjia.com/bkjia/js/bannerhot.js' ></script></ul></div>	<div class="hot_tj brand_tj clearfix"><script type="text/javascript" src='http://js.bkjia.com/bkjia/js/bannerhot2.js'></script></div></div><div class="ad"><script src='http://js.bkjia.com/bkjia/js/subnavtop.js' type="text/javascript"></script></div>
+<header id="header" class="header clearfix"><nav class="step step_new" id="nav"><span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">页面导航：<a href='http://www.bkjia.com/' target='_self' itemprop='url'>IT教程</a> > <a href='http://www.bkjia.com/fenlei/list-71-1.html' target='_self' itemprop='url'>电脑教程</a> > <a href='http://www.bkjia.com/fenlei/list-89-1.html' target='_self' itemprop='url'>系统故障</a> > <a href='http://www.bkjia.com/fenlei/list-261-1.html' target='_self' itemprop='url'>LINUX系统</a> > </span>正文
+<span>linux&nbsp;&nbsp;rsync&nbsp;&nbsp;</span></nav>
+<div class="search"><a name="search"></a>
+			<form id="search" method="get" action="http://tech.bkjia.com/search.php">
+			<input class="skey" name="keyword" type="text">
+			<input type="hidden" name="sub" value="articlebanner" />
+			<input class="sbtn" value="搜索" type="submit"></input>
+			</form>
+</div></header>
+<div class="wrap clearfix" itemscope itemtype="http://schema.org/TechArticle">
+<div class="left" id="main_left">
+<article class="container">
+<div class="wrap_left wrap_left2">
+<header id="page-header" class="tit_t1 clearfix">
+<h1>在Linux下使用rsync对比和同步文件的方法，linuxrsync</h1><br />
+<div class="view" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"> 热度<span itemprop="ratingValue">3</span>    <a href="#comment" target="_self">评论 <span itemprop="reviewCount">61</span></a> </div>
+<em>www.BkJia.Com</em>  &nbsp;网友分享于：&nbsp;
+<span itemprop="datePublished" content="2015-06-17GMT12:06:21">2015-06-17 12:06:21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览数39432次
+</header>
+<div class="artitle"><script src='http://js.bkjia.com/bkjia/js/artitle.js' type="text/javascript"></script></div>
+<div class="content" id="cotent_idd" itemprop="articleBody">
+<p><h2>在Linux下使用rsync对比和同步文件的方法，linuxrsync</h2></br>这篇文章主要介绍了在Linux下使用rsync对比和同步文件的方法,着重讲述排除文件目录列表这样的操作,需要的朋友可以参考下
+
+
+
+
+<p><strong>排除文件和目录列表</strong></p>
+<p>有时候，当我们做大量同步的时候，我们可能想要从同步的文件和目录中排除一个文件和目录的列表。一般来说，像设备文件和某些系统文件，或者像临时文件或者缓存文件这类占据不必要磁盘空间的文件是不合适同步的，这类文件是我们需要排除的。</p>
+<p>首先，让我们创建一个名为&ldquo;excluded&rdquo;的文件（当然，你想取什么名都可以），然后将我们想要排除的文件夹或文件写入该文件，一行一个。在我们的例子中，如果你想要对根分区进行完整的备份，你应该排除一些在启动时创建的设备目录和放置临时文件的目录，列表看起来像下面这样：<br /><img alt="2015615154241146.jpg (300×167)" src="http://www.bkjia.com/uploads/allimg/150617/0014193O1-0.jpg?2015515154254" /></p>
+<p>然后，你可以运行以下命令来备份系统：</p>
+<p>&nbsp;&nbsp;&nbsp;<br>代码如下:$ sudo rsync -aAXhv --exclude-from=excluded / /mnt/backup<br />&nbsp;&nbsp;&nbsp;<img alt="2015615154338073.jpg (650×93)" src="http://www.bkjia.com/uploads/allimg/150617/0014193926-1.jpg?201551515440" /></p>
+<p><strong>&nbsp;&nbsp;&nbsp; 从命令行排除文件</strong></p>
+<p>你也可以从命令行直接排除文件，该方法在你要排除的文件数量较少，并且在你想要将它写成脚本或加到crontab中又不想脚本或cron依赖于另外一个文件运行时十分有用。</p>
+<p>例如，如果你想要同步/var到一个备份目录，但是你不想要包含cache和tmp这些通常不会有重要内容的文件夹，你可以使用以下命令：</p>
+<p>&nbsp;&nbsp;&nbsp;<br>代码如下:$ sudo rsync -aAXhv --exclude={"/var/cache","/var/tmp"} /var /home/adrian/var<br />&nbsp;&nbsp;&nbsp;<img alt="2015615154410484.jpg (800×117)" src="http://www.bkjia.com/uploads/allimg/150617/001419E42-2.jpg?2015515154431" /></p>
+<p>&nbsp;&nbsp;&nbsp; 该命令易于在脚本或cron中使用，也不会依赖其它文件。<br /></p></p>
+<p align="left"><div style="display:none;"><span id="url" itemprop="url">http://www.bkjia.com/LINUXxt/1017273.html</span><span id="indexUrl" itemprop="indexUrl">www.bkjia.com</span><span id="isOriginal" itemprop="isOriginal">true</span><span id="isBasedOnUrl" itemprop="isBasedOnUrl">http://www.bkjia.com/LINUXxt/1017273.html</span><span id="genre" itemprop="genre">TechArticle</span><span id="description" itemprop="description">在Linux下使用rsync对比和同步文件的方法，linuxrsync 这篇文章主要介绍了在Linux下使用rsync对比和同步文件的方法,着重讲述排除文件目录列表...</span></div></p></div>
+<div class="art_confoot"><script src='http://js.bkjia.com/bkjia/js/art_confoot.js' type="text/javascript"></script></div>
+<div class="page"></div>
+<div class="post-related"> <h3 class="tit_3">相关文章</h3><div class="clearfix m_5">
+<ul> <li><a href='http://www.bkjia.com/LINUXxt/1017272.html' title='Linux常用网络工具之批量主机服务扫描工具netcat使用介绍，主机服务netcat' target='_blank'>Linux常用网络工具之批量主机服务扫描工</a></li><li><a href='http://www.bkjia.com/LINUXxt/1017271.html' title='详解linux中systemd命令的运行级别与其常见应用，linuxsystemd' target='_blank'>详解linux中systemd命令的运行级别与其常见</a></li><li><a href='http://www.bkjia.com/LINUXxt/1017270.html' title='Linux iptables基础知识和规则原理讲解，linuxiptables' target='_blank'>Linux iptables基础知识和规则原理讲解，l</a></li><li><a href='http://www.bkjia.com/LINUXxt/1017269.html' title='Linux iptables的规则组成介绍，linuxiptables' target='_blank'>Linux iptables的规则组成介绍，linuxiptables</a></li><li><a href='http://www.bkjia.com/LINUXxt/1017268.html' title='Linux iptables应用实战（一），linuxiptables' target='_blank'>Linux iptables应用实战（一），linuxiptables</a></li><li><a href='http://www.bkjia.com/LINUXxt/1017267.html' title='在Linux上安装和使用Rsync进行同步的教程，linuxrsync' target='_blank'>在Linux上安装和使用Rsync进行同步的教程，</a></li></ul></div>
+<div class="hot_c"><span><b style="color:#000; ">相关搜索：</b>
+ <a href='http://tech.bkjia.com/search.php?keyword=Linux&sub=articlefoot' target=_blank >Linux</a> <a href='http://tech.bkjia.com/search.php?keyword=Rsync&sub=articlefoot' target=_blank >Rsync</a>
+ </span></div>
+</div>
+<div class="option-btns">
+<a href="http://kansha.bkjia.com/" title="简单休息，找找灵感"><div class="sharebox"><span class="btn">今天看啥</span></div></a>
+<a href="http://tech.bkjia.com/" title="在300万技术库中找思路"><div class="likebox"><span class="btn">搜索技术库</span></div></a>
+<a href="http://www.bkjia.com/" title="更多it教程"><div class="comment-btn"><span class="btn"><em id="article_comment_num_2013">返回首页</em></span></div></a>
+</div>
+		
+		<div  id="related_reading" class="haman-box">
+		<ul class="xgyd clearfix">
+ <div class="xgyd_new"><span class="fast-nav-bar"><a href="http://www.bkjia.com/fenlei/list-272-1.html">今日最新</a></span><strong>相关阅读：</strong></div>
+ <li><a href="http://www.bkjia.com/LINUXxt/1017272.html">Linux常用网络工具之批量主机服务扫描工具</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017271.html">详解linux中systemd命令的运行级别与其常见应用</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017270.html">Linux iptables基础知识和规则原理讲解，linuxi</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017269.html">Linux iptables的规则组成介绍，linuxiptables</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017268.html">Linux iptables应用实战（一），linuxiptables</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017267.html">在Linux上安装和使用Rsync进行同步的教程，l</a></li>
+
+ </ul></div>
+<footer><div class="hot_c"><span><b>相关频道：</b>
+<a href="http://www.bkjia.com/fenlei/list-255-1.html" >bios</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-256-1.html" >系统安装</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-257-1.html" >系统进程</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-258-1.html" >注册表</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-259-1.html" >苹果MAC</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-260-1.html" >Windows系统</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-261-1.html" >LINUX系统</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-262-1.html" >其他系统故障</a>&nbsp;&nbsp;</span></div> </footer> 
+</div>
+<div class="info_more" id="info_more"></div>
+<div class="fixed-share-bar">
+	<div id="bdshare" class="bdsharebuttonbox bdshare_t bds_tools get-codes-bdshare share-bar-btn">
+		<a class="bds_tsina" data-cmd="tsina"></a><a class="bds_qzone" data-cmd="qzone"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_weixin" data-cmd="weixin"></a><a class="bds_more share-more" data-cmd="more"></a></div>
+</div>
+<div class="clearfix mt10 art_commentstop" id="commentTopAd"><script src='http://js.bkjia.com/bkjia/js/art_commentstop.js' type="text/javascript"></script></div>
+<div id="hm_t_46468"></div>
+<a name="comment"></a><div class="comment"  id="commentTopAd" itemprop="comment"><h3>帮客评论</h3></div>
+ <div class="wb_comment_box"  id="commentsiframe"><script type="text/javascript" src='http://js.bkjia.com/bkjia/js/comments.js'></script></div>
+</article>
+<div class="syzp mt10" style="overflow:hidden;"><div class="tit_7">视觉看点</div><script type="text/javascript" src="http://js.bkjia.com/bkjia/js/left_foot_ad.js"></script></div>  
+</div>
+<aside class="right" id="main_right">
+<div class="art_rightad1"><script src='http://js.bkjia.com/bkjia/js/art_rightad1.js' type="text/javascript"></script></div>
+<div class="r_bd mt10 pb10">
+       <div class="tit_5 tit_6">LINUX系统最近更新</div>
+         <ul id="bbsRank_1" class="rank_ul2 rank_dot" style="border-top:1px solid #AAC5F2;margin-top: -1px;">
+	<li><a href="http://www.bkjia.com/LINUXxt/345135.html">linux wc命令应用举例</a> </li>
+<li><a href="http://www.bkjia.com/LINUXxt/1014972.html">在Linux系统中安装使用WPS的方法，linuxwp</a> </li>
+<li><a href="http://www.bkjia.com/LINUXxt/345389.html">vmware 网络配置</a> </li>
+<li><a href="http://www.bkjia.com/LINUXxt/346878.html">BSD是什么系统 BSD简介</a> </li>
+<li><a href="http://www.bkjia.com/LINUXxt/958700.html">Linux如何建立静态链接库.lib文件，linux建</a> </li>
+
+</ul></div>
+<div class="art_rightad2 mt10"><script src='http://js.bkjia.com/bkjia/js/art_rightad2.js' type="text/javascript"></script></div>
+<div class="r_bd mt10 pb10">
+       <div class="tit_5 tit_6">热点关注</div>
+	   <ul id="bbsRank_1" class="rank_ul2 rank_dot" style="border-top:1px solid #AAC5F2;margin-top: -1px;">
+	<li><a href="http://www.bkjia.com/jingyan/ios2.html">IOS消息推送机制中pem文件如何生成？</a></li>
+<li><a href="http://www.bkjia.com/headlines/433097.html">SQLSERVER的中文排序规则介绍</a></li>
+<li><a href="http://www.bkjia.com/headlines/437047.html">帮客头条：盘点十大界面精美优雅如艺术</a></li>
+<li><a href="http://www.bkjia.com/jingyan/jsbiaodan.html">js防止表单的重复提交简单有效的策略</a></li>
+<li><a href="http://www.bkjia.com/jingyan/512295.html">codeigniter教程:Codeigniter防止XSS攻击和防止</a></li>
+	
+	</ul>
+        </div>
+<div class="r_bd mt10 pb10"><div style="margin-top: 0pt;" class="tit_5 tit_6">热点推荐</div>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/right_ad5.js"></script></div>
+<div class="art_rightad3"><script src='http://js.bkjia.com/bkjia/js/art_rightad3.js' type="text/javascript"></script></div>
+<div id="focus_look" class="instant-focus mt10"><div class="instant-focus-header clearfix"><h3>即时看点</h3><span>大家正在看什么</span></div>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/right_ad6.js"></script></div>
+<div class="art_rightad4 mt10"><script src='http://js.bkjia.com/bkjia/js/art_rightad4.js' type="text/javascript"></script></div>
+</aside></div></div>
+<footer id="footer" class="div_body">
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/arc_foot_ad.js"></script>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/arc_foot.js"></script>
+<div style="display:none;"><script src='http://js.bkjia.com/bkjia/js/bkjiatongji.js' type="text/javascript"></script></div>
+<div id="roll"></i><a title="回顶部" id="roll_top" href="#top" style="opacity: 0.7;" target="_self" rel="nofllow"></a></div>
+</footer>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/main.js"></script>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/maintop.js?131231"></script>
+<script>
+	window._bd_share_config = {
+		common : {
+            bdText : '在Linux下使用rsync对比和同步文件的方法，linuxrsync 这篇文章主要介绍了在Linux下使用rsync对比和同步文件的方法,着重讲述排除文件目录列表',	
+			bdDesc : '在Linux下使用rsync对比和同步文件的方法，linuxrsync 这篇文章主要介绍了在Linux下使用rsync对比和同步文件的方法,着重讲述排除文件目录列表',	
+			bdUrl : 'http://www.bkjia.com/LINUXxt/1017273.html', 	
+			bdPic : 'http://www.bkjia.com/uploads/allimg/150617/3_061F01422bU.jpg'		},
+		share : [{
+			"bdSize" : 16,
+		}]
+	}
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</body>
+</html>

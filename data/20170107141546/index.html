@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html>
+<head><script src="about:blank" charset="utf-8"></script><script src="about:blank" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank"></script><script src="about:blank" charset="utf-8" type="text/javascript"></script><meta charset="UTF-8"><meta http-equiv="content-language" content="zh-CN"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="http://eclick.baidu.com/"><link rel="dns-prefetch" href="http://cpro.baidu.com/"><link rel="dns-prefetch" href="http://cpro.baidustatic.com/"><link rel="dns-prefetch" href="http://inte.sogou.com/"><link rel="dns-prefetch" href="http://js.bkjia.com/"><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="Cache-Control" content="no-transform">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"><meta name="format-detection" content="telephone=no"><meta name="applicable-device" content="pc,mobile"><meta name="mobile-agent" content="format=html5; url=http://www.bkjia.com/LINUXxt/1017273.html">
+<title>在Linux下使用rsync对比和同步文件的方法，linuxrsync_LINUX系统 | 帮客之家</title>
+<meta name="keywords" content="Linux,Rsync,rsync">
+<meta name="description" content="在Linux下使用rsync对比和同步文件的方法，linuxrsync。在Linux下使用rsync对比和同步文件的方法，linuxrsync 这篇文章主要介绍了在Linux下使用rsync对比和同步文件的方法,着重讲述排除文件目录列表">
+<link href="article.css" type="text/css" rel="stylesheet" media="all">
+<base target="_blank">
+<!--[if lt IE 9]><script src="http://js.bkjia.com/bkjia/js/html5.js"></script><![endif]-->
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link href="https://plus.google.com/115281975932467747980" rel="publisher">
+<script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+#SOHUCS { clear: both; }
+#SOHUCS #SOHU_MAIN * { box-sizing: content-box; }
+#SOHUCS, #SOHUCS #SOHU_MAIN { margin: 0px auto; padding: 0px; border: 0px none; font-weight: 400; text-align: left; width: 100%; height: auto; overflow: visible; font-size: 12px; color: rgb(51, 51, 51); background-color: transparent; line-height: 1; }
+#SOHUCS #SOHU_MAIN a, #SOHUCS #SOHU_MAIN abbr, #SOHUCS #SOHU_MAIN acronym, #SOHUCS #SOHU_MAIN address, #SOHUCS #SOHU_MAIN applet, #SOHUCS #SOHU_MAIN article, #SOHUCS #SOHU_MAIN aside, #SOHUCS #SOHU_MAIN audio, #SOHUCS #SOHU_MAIN b, #SOHUCS #SOHU_MAIN big, #SOHUCS #SOHU_MAIN blockquote, #SOHUCS #SOHU_MAIN canvas, #SOHUCS #SOHU_MAIN caption, #SOHUCS #SOHU_MAIN center, #SOHUCS #SOHU_MAIN cite, #SOHUCS #SOHU_MAIN code, #SOHUCS #SOHU_MAIN dd, #SOHUCS #SOHU_MAIN del, #SOHUCS #SOHU_MAIN details, #SOHUCS #SOHU_MAIN dfn, #SOHUCS #SOHU_MAIN dialog, #SOHUCS #SOHU_MAIN div, #SOHUCS #SOHU_MAIN dl, #SOHUCS #SOHU_MAIN dt, #SOHUCS #SOHU_MAIN em, #SOHUCS #SOHU_MAIN embed, #SOHUCS #SOHU_MAIN fieldset, #SOHUCS #SOHU_MAIN figcaption, #SOHUCS #SOHU_MAIN figure, #SOHUCS #SOHU_MAIN font, #SOHUCS #SOHU_MAIN footer, #SOHUCS #SOHU_MAIN form, #SOHUCS #SOHU_MAIN h1, #SOHUCS #SOHU_MAIN h2, #SOHUCS #SOHU_MAIN h3, #SOHUCS #SOHU_MAIN h4, #SOHUCS #SOHU_MAIN h5, #SOHUCS #SOHU_MAIN h6, #SOHUCS #SOHU_MAIN header, #SOHUCS #SOHU_MAIN hgroup, #SOHUCS #SOHU_MAIN hr, #SOHUCS #SOHU_MAIN i, #SOHUCS #SOHU_MAIN iframe, #SOHUCS #SOHU_MAIN img, #SOHUCS #SOHU_MAIN ins, #SOHUCS #SOHU_MAIN kbd, #SOHUCS #SOHU_MAIN label, #SOHUCS #SOHU_MAIN legend, #SOHUCS #SOHU_MAIN li, #SOHUCS #SOHU_MAIN mark, #SOHUCS #SOHU_MAIN menu, #SOHUCS #SOHU_MAIN meter, #SOHUCS #SOHU_MAIN nav, #SOHUCS #SOHU_MAIN object, #SOHUCS #SOHU_MAIN ol, #SOHUCS #SOHU_MAIN output, #SOHUCS #SOHU_MAIN p, #SOHUCS #SOHU_MAIN pre, #SOHUCS #SOHU_MAIN progress, #SOHUCS #SOHU_MAIN q, #SOHUCS #SOHU_MAIN rp, #SOHUCS #SOHU_MAIN rt, #SOHUCS #SOHU_MAIN ruby, #SOHUCS #SOHU_MAIN s, #SOHUCS #SOHU_MAIN samp, #SOHUCS #SOHU_MAIN section, #SOHUCS #SOHU_MAIN small, #SOHUCS #SOHU_MAIN span, #SOHUCS #SOHU_MAIN strike, #SOHUCS #SOHU_MAIN strong, #SOHUCS #SOHU_MAIN sub, #SOHUCS #SOHU_MAIN summary, #SOHUCS #SOHU_MAIN sup, #SOHUCS #SOHU_MAIN table, #SOHUCS #SOHU_MAIN tbody, #SOHUCS #SOHU_MAIN td, #SOHUCS #SOHU_MAIN tfoot, #SOHUCS #SOHU_MAIN th, #SOHUCS #SOHU_MAIN thead, #SOHUCS #SOHU_MAIN time, #SOHUCS #SOHU_MAIN tr, #SOHUCS #SOHU_MAIN tt, #SOHUCS #SOHU_MAIN u, #SOHUCS #SOHU_MAIN ul, #SOHUCS #SOHU_MAIN var, #SOHUCS #SOHU_MAIN video, #SOHUCS #SOHU_MAIN xmp { border: 0px none; margin: 0px; padding: 0px; font-size: 100%; text-align: left; vertical-align: baseline; background-image: none; background-position: 0px 0px; width: auto; float: none; overflow: visible; text-indent: 0px; }
+#SOHUCS #SOHU_MAIN img { color: transparent; font-size: 0px; vertical-align: middle; }
+#SOHUCS #SOHU_MAIN li, #SOHUCS #SOHU_MAIN ol, #SOHUCS #SOHU_MAIN ul { list-style: outside none none; }
+#SOHUCS #SOHU_MAIN li { display: list-item; }
+#SOHUCS #SOHU_MAIN em, #SOHUCS #SOHU_MAIN i { font-style: normal; }
+#SOHUCS #SOHU_MAIN a, #SOHUCS #SOHU_MAIN b, #SOHUCS #SOHU_MAIN em, #SOHUCS #SOHU_MAIN i, #SOHUCS #SOHU_MAIN img, #SOHUCS #SOHU_MAIN input, #SOHUCS #SOHU_MAIN label, #SOHUCS #SOHU_MAIN s, #SOHUCS #SOHU_MAIN span, #SOHUCS #SOHU_MAIN strong, #SOHUCS #SOHU_MAIN sub, #SOHUCS #SOHU_MAIN sup, #SOHUCS #SOHU_MAIN textarea, #SOHUCS #SOHU_MAIN u { display: inline; }
+#SOHUCS #SOHU_MAIN input, #SOHUCS #SOHU_MAIN select, #SOHUCS #SOHU_MAIN select option, #SOHUCS #SOHU_MAIN textarea { margin: 0px; padding: 0px; border: 0px none; outline: 0px none; }
+#SOHUCS #SOHU_MAIN a:focus, #SOHUCS #SOHU_MAIN input:focus, #SOHUCS #SOHU_MAIN textarea:focus { outline: 0px none; }
+#SOHUCS #SOHU_MAIN button, #SOHUCS #SOHU_MAIN input, #SOHUCS #SOHU_MAIN select, #SOHUCS #SOHU_MAIN textarea { background-attachment: scroll; }
+#SOHUCS #SOHU_MAIN li { clear: none; }
+#SOHUCS #SOHU_MAIN a { color: rgb(68, 112, 142); text-decoration: none; }
+#SOHUCS #SOHU_MAIN a:hover { color: rgb(238, 84, 42); text-decoration: underline; }
+#SOHUCS #SOHU_MAIN .clear-g {  }
+#SOHUCS #SOHU_MAIN .clear-g::after { content: "."; display: block; visibility: hidden; height: 0px; clear: both; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><style type="text/css" id="seaJs-css">
+/* Code tidied up by ScrapBook */
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .cbox-prompt-w span.prompt-empty-w, #SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-form-w .form-text-w span.text-null, #SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-minwidth-w div.cont-comment-w a.comment-link-w, #SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-minwidth-w div.cont-comment-w span.comment-text-w, #SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w div.service-wrap-w a:hover, #SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w div.header-login, #SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w span.wrap-name-w, #SOHUCS #SOHU_MAIN .module-cmt-list .action-click-gw span.click-disable-eg a em.icon-name-bg, #SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li div.title-name-gw, #SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .cmt-list-number .comment-number span.number, #SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .cmt-list-number span.comment-number, #SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li.active, #SOHUCS #SOHU_MAIN .module-cmt-list .msg-wrap-gw .wrap-action-gw .action-click-gw span a:hover, #SOHUCS #SOHU_MAIN .module-cmt-list .picture-box-gw div.box-action-gw a:hover, #SOHUCS #SOHU_MAIN .module-cmt-list .wrap-action-gw .action-click-gw span a:hover em.icon-name-bg, #SOHUCS #SOHU_MAIN .module-cmt-list .wrap-user-gw span.user-name-gw a { color: rgb(231, 72, 81); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw div.wrapper-image-dw, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-main, #SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-form-w div.form-text-w, #SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w div.header-login, #SOHUCS #SOHU_MAIN .module-cmt-list .module-cmt-box .post-wrap-w div.post-wrap-main { border-color: rgb(231, 72, 81); }
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li .title-name-gw div.title-name-gw-tag { background-image: url("title-tag.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a button.btn-fw { background-image: url("post-btn.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a button.btn-fw:hover { background-image: url("post-btn-hover.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-border-r { background-image: url("border-r.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-border-l { background-image: url("border-l_001.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-border-t .post-wrap-border-t-l { background-image: url("border-t_001.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t div.post-wrap-border-t-r { border-top: 1px solid rgb(231, 72, 81); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w div.face-wrapper-dw { background-image: url("face-bg.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw div.uploading-wrapper-dw-t { background-image: url("pic-bg-t.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw div.uploading-wrapper-dw-b { background-image: url("pic-bg-b.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w div.head-img-ie-mask { background-image: url("photo-mask.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item { border: 1px solid rgb(231, 72, 81) ! important; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-logo { background-image: url("notice-logo.png") ! important; background-repeat: no-repeat; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item a.nt-text, #SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item a.nt-text i { color: rgb(231, 72, 81) ! important; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-face-w { background-image: url("face_001.png"); background-position: center center; background-repeat: no-repeat; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-face-w:hover { background-image: url("face-active.png"); background-position: center center; background-repeat: no-repeat; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-uploading-w .effect-w .uploading-b { background-image: url("image_001.png") ! important; background-position: center center; background-repeat: no-repeat; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-e .effect-w .uploading-b, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-uploading-w:hover .effect-w .uploading-b { background-image: url("image-active.png") ! important; background-position: center center; background-repeat: no-repeat; }
+@media not all, (min--moz-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx), (min-resolution: 144dpi) {
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-face-w { background-image: url("face-1.5x_001.png"); background-repeat: no-repeat; background-position: center center; background-size: 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-face-w:hover { background-image: url("face-active-1.5x_001.png"); background-repeat: no-repeat; background-position: center center; background-size: 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-uploading-w .effect-w .uploading-b { background-image: url("image-1.5x.png") ! important; background-repeat: no-repeat; background-position: center center; background-size: 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-e .effect-w .uploading-b, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-uploading-w:hover .effect-w .uploading-b { background-image: url("image-active-1.5x.png") ! important; background-repeat: no-repeat; background-position: center center; background-size: 100% 100%; }
+}
+@media not all, (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-face-w { background-image: url("face-2x.png"); background-size: 100% 100%; background-position: center center; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-face-w:hover { background-image: url("face-active-2x.png"); background-size: 100% 100%; background-position: center center; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-uploading-w .effect-w .uploading-b { background-image: url("image-2x.png") ! important; background-size: 100% 100%; background-position: center center; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-e .effect-w .uploading-b, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w div.action-function-w ul li.function-uploading-w:hover .effect-w .uploading-b { background-image: url("image-active-2x_001.png") ! important; background-size: 100% 100%; background-position: center center; }
+}
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ:hover { background-color: rgb(241, 138, 145) ! important; box-shadow: 0px 0px 8px rgb(241, 138, 145) ! important; color: rgb(255, 255, 255) ! important; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ { background-color: rgb(254, 248, 248) ! important; border: 1px solid rgb(241, 138, 145) ! important; color: rgb(231, 72, 81) ! important; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ i { background-image: url("right-arrow.png") ! important; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ:hover i { background-image: url("right-arrow-hover.png") ! important; }
+#SOHUCS #SOHU_MAIN .cy-to-shequ-float { background-image: url("shequ-icon.png") ! important; }
+#SOHUCS #SOHU_MAIN .cy-board-enter, #SOHUCS #SOHU_MAIN .cy-to-shequ-head, #SOHUCS #SOHU_MAIN .module-cmt-list .cy-see-more { color: rgb(231, 72, 81) ! important; }
+#SOHUCS #SOHU_MAIN .cy-hidden { display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w { position: relative; width: 100%; height: 60px; z-index: 10; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w .head-img-w { width: 42px; height: 42px; position: absolute; left: 9px; top: 22px; display: none; z-index: 11; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w .head-img-ie-mask { width: 42px; height: 46px; background: transparent url("photo-mask_001.png") repeat scroll 0% 0%; position: absolute; z-index: 2; top: 0px; left: 0px; display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w .head-img-w img { border-radius: 42px; display: block; width: 42px; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w .header-login { width: 40px; height: 40px; border-radius: 42px; border: 1px solid rgb(67, 152, 237); position: absolute; top: 22px; left: 9px; font-size: 14px; color: rgb(67, 152, 237); text-align: center; line-height: 42px ! important; font-family: "Microsoft YaHei"; cursor: pointer; background: transparent none repeat scroll 0px 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w { position: absolute; top: 52px; left: 55px; text-indent: 11px; z-index: 10; padding-right: 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w .wrap-name-w { font-size: 16px; color: rgb(67, 152, 237); font-family: "Microsoft YaHei"; position: relative; z-index: 2; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w { position: relative; z-index: 12; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .list-close-comment-w .close-comment-prompt-w { margin-top: 20px; height: 30px; text-align: center; background: rgb(253, 236, 237) none repeat scroll 0% 0%; opacity: 0.5; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .list-close-comment-w .close-comment-prompt-w .close-comment-prompt { line-height: 30px; text-align: center; font-size: 12px; color: rgb(231, 72, 81); }
+#SOHUCS #SOHU_MAIN .cy-to-shequ-head { color: rgb(67, 152, 237); cursor: pointer; display: none; font-size: 14px; height: 36px; line-height: 36px; margin: 24px 10px 0px 20px; float: right; }
+#SOHUCS #SOHU_MAIN .cy-board-enter { color: rgb(67, 152, 237); cursor: pointer; display: block; font-size: 14px; height: 36px; line-height: 36px; margin-top: 24px; float: right; }
+#SOHUCS #SOHU_MAIN .cy-avatar-notice-node { background: rgb(231, 72, 81) none repeat scroll 0% 0%; border-radius: 4px; box-shadow: 0px 0px 3px 3px rgb(255, 255, 255); cursor: pointer; display: block; height: 8px; position: absolute; right: 0px; top: 0px; width: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w { display: block; position: relative; z-index: 2; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-l { width: 8px; height: 97px; position: absolute; background: transparent url("border-l.png") repeat scroll 0% 0%; top: 0px; left: 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-r { width: 8px; height: 97px; position: absolute; background: transparent url("border-r_001.png") repeat scroll 0% 0%; top: 0px; right: 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t { height: 8px; position: relative; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t .post-wrap-border-t-l { width: 46px; height: 8px; background: transparent url("border-t.png") repeat scroll 0% 0%; overflow: hidden; position: absolute; left: 0px; top: 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t .post-wrap-border-t-r { height: 7px; border-top: 1px solid rgb(67, 152, 237); margin-left: 46px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main { margin: 0px 8px; height: 96px; border-bottom: 1px solid rgb(67, 152, 237); background-image: url("cy-logo.png"); background-repeat: no-repeat; background-position: center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main .wrap-area-w { padding: 13px 10px 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main .wrap-area-w .textarea-fw { width: 100%; height: 70px; background: transparent none repeat scroll 0px 0px; overflow-x: hidden; overflow-y: auto; border: 0px none; font-size: 14px; color: rgb(191, 191, 191); resize: none; line-height: normal; text-align: left; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w { position: relative; z-index: 12; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w { margin: 15px 0px 0px 10px; position: relative; float: left; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li { width: 20px; height: 20px; float: left; margin-right: 21px; cursor: pointer; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w { background: transparent url("face.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w:hover { background: transparent url("face-active_001.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w .uploading-b { display: block; width: 20px; height: 20px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w .uploading-b { background: transparent url("image.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-e .effect-w .uploading-b, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w:hover .effect-w .uploading-b { background: transparent url("image-active_001.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw { top: 24px; left: -10px; display: none; width: 300px; height: 145px; position: absolute; z-index: 2; background: transparent url("face-bg_001.png") repeat scroll 0% 0%; overflow: hidden; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw { width: 288px; height: 107px; margin-top: 6px; margin-left: 1px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul { border-top: 1px dashed rgb(229, 229, 229); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:first-child { border-top: 0px none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul li { border-left: 1px dashed rgb(229, 229, 229); width: 35px; height: 35px; float: left; margin: 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul li:hover { background: rgb(242, 242, 242) none repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul li:first-child { border-left: 0px none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:first-child li:first-child { border-top-left-radius: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:first-child li:last-child { border-top-right-radius: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:last-child li:first-child { border-bottom-left-radius: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:last-child li:last-child { border-bottom-right-radius: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw { width: 296px; height: 105px; margin-top: 8px; display: none; overflow-y: auto; margin-left: 3px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul { margin-left: 1px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul li { background-position: center center; background-repeat: no-repeat; background-size: 100% 100%; border-radius: 5px; height: 47px; margin-right: 0px; width: 47px; box-sizing: border-box; border-bottom: 1px dotted rgb(229, 229, 229); position: relative; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul .upload-face-btn { background-image: url("add.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw li.cancel-face-btn:hover, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw li.manage-face-btn:hover, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw li.upload-face-btn:hover { background-color: rgb(242, 242, 242); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul .manage-face-btn { background-image: url("manage-btn.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul .cancel-face-btn { background-image: url("cancel-manage-btn.png"); display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw { width: 298px; height: 30px; background: rgb(242, 242, 242) none repeat scroll 0% 0%; margin-left: 1px; border-bottom-left-radius: 9px; border-bottom-right-radius: 9px; border-top: 1px solid rgb(229, 229, 229); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li { height: 31px; width: 41px; float: left; margin-top: -1px; margin-right: 0px; background-position: center center; background-repeat: no-repeat; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li.active, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li:hover { background-color: rgb(255, 255, 255); border-left: 1px solid rgb(229, 229, 229); border-right: 1px solid rgb(229, 229, 229); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li.official-face-btn { background-image: url("face-ico-grey.png"); margin-left: 10px; box-sizing: border-box; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li.user-face-btn { background-image: url("heart.png"); box-sizing: border-box; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-box { width: 298px; height: 137px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; position: absolute; top: 6px; left: 1px; border-radius: 9px; display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-text { width: 100%; height: 40px; margin-top: 20px; text-align: center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-text span { line-height: 40px; font-size: 16px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-btn-row { width: 100%; height: 28px; position: relative; margin-top: 15px; text-align: center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-btn-cancel { border: 1px solid rgb(67, 152, 237); border-radius: 6px; color: rgb(67, 152, 237); cursor: pointer; display: inline-block; height: 28px; line-height: 28px; text-align: center; width: 96px; margin-right: 16px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-btn-confirm { background-color: rgb(67, 152, 237); border: 1px solid rgb(67, 152, 237); border-radius: 6px; color: rgb(255, 255, 255); cursor: pointer; display: inline-block; height: 28px; line-height: 28px; text-align: center; width: 96px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw { top: 24px; position: absolute; left: -10px; display: none; width: 200px; padding-bottom: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .uploading-wrapper-dw-t { width: 200px; height: 14px; position: absolute; top: 0px; left: 0px; background: transparent url("pic-bg-t_001.png") repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .uploading-wrapper-dw-b { width: 200px; height: 8px; position: absolute; bottom: 0px; left: 0px; background: transparent url("pic-bg-b_001.png") repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-loading-dw { width: 198px; height: 198px; margin-top: 5px; padding: 1px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw { margin-top: 13px; border-left: 1px solid rgb(67, 152, 237); border-right: 1px solid rgb(67, 152, 237); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-close-dw { height: 18px; width: 100%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-close-dw a { float: right; width: 18px; height: 18px; overflow: hidden; background: transparent url("b17.png") no-repeat scroll 0% 0%; margin-right: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-close-dw a:hover { background: transparent url("b18.png") no-repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-pic-dw { padding: 7px 0px 16px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-pic-dw img { display: block; margin: 0px auto; min-height: 60px; max-height: 150px; min-width: 60px; max-width: 150px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw { padding: 53px 0px 50px; background-color: rgb(255, 255, 255); border-width: 0px 2px 2px; border-style: none solid solid; border-color: -moz-use-text-color rgb(204, 212, 217) rgb(204, 212, 217); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; width: 190px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-word-dw { height: 22px; text-align: center; color: rgb(153, 153, 153); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-word-dw .word-icon-dw { display: inline-block; width: 22px; height: 22px; margin: 0px 5px 0px 0px; vertical-align: -6px; background-image: url("loading.gif"); background-repeat: no-repeat; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-btn-dw { padding: 20px 0px 0px; height: 25px; text-align: center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-btn-dw a { display: inline-block; width: 65px; line-height: 16px; padding: 5px 0px 4px; text-align: center; font-size: 12px; background-color: rgb(105, 158, 195); color: rgb(255, 255, 255); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-btn-dw a:hover { text-decoration: none; background-color: rgb(87, 136, 170); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w { float: right; height: 30px; margin-top: 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a { text-decoration: none ! important; display: block; float: right; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw { width: 102px; height: 30px; overflow: hidden; border: 0px none; padding: 0px; margin: 0px; cursor: pointer; background-image: url("post-btn_001.png"); background-repeat: no-repeat; background-color: transparent; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw:hover { background-image: url("post-btn-hover_001.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .cbox-prompt-w { float: right; height: 30px; line-height: 30px; margin-right: 20px; margin-top: 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .cbox-prompt-w .prompt-empty-w { color: rgb(67, 152, 237); font-size: 12px; display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main .wrap-area-w .textarea-fw { box-shadow: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul li span { display: inline-block; width: 22px; height: 22px; margin: 8px 9px; overflow: hidden; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item { background: transparent url("face-map.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_01 { background-position: -2px -2px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_02 { background-position: -2px -24px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_03 { background-position: -1px -49px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_04 { background-position: -2px -73px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_05 { background-position: -2px -97px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_06 { background-position: -2px -121px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_07 { background-position: -2px -145px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_08 { background-position: -2px -168px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_09 { background-position: -2px -192px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_10 { background-position: -2px -215px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_11 { background-position: -2px -238px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_12 { background-position: -2px -260px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_13 { background-position: -2px -284px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_14 { background-position: -2px -307px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_15 { background-position: -2px -331px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_16 { background-position: -2px -355px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_17 { background-position: -2px -378px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_18 { background-position: -2px -401px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_19 { background-position: -2px -425px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_20 { background-position: -2px -445px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_21 { background-position: -2px -465px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_22 { background-position: -2px -488px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_23 { background-position: -2px -511px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_24 { background-position: -2px -535px; }
+@media not all, (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item { background: transparent url("face-map-2x.png") no-repeat scroll center center / 44px auto; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_01 { background-position: 0px -176px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_02 { background-position: -22px -66px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_03 { background-position: 0px -44px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_04 { background-position: -22px -154px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_05 { background-position: 0px -88px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_06 { background-position: -22px 0px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_07 { background-position: 0px -110px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_08 { background-position: 0px -66px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_09 { background-position: 0px 0px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_10 { background-position: 0px -22px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_11 { background-position: -22px -44px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_12 { background-position: 0px -132px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_13 { background-position: -22px -88px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_14 { background-position: -22px -22px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_15 { background-position: 0px -154px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_16 { background-position: -22px -132px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_17 { background-position: -22px -110px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_18 { background-position: 0px -220px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_19 { background-position: 0px -198px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_20 { background-position: -22px -198px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_21 { background-position: -22px -220px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_22 { background-position: -22px -244px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_23 { background-position: 0px -132px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_24 { background-position: -22px -176px; }
+}
+@media not all, (min--moz-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx), (min-resolution: 144dpi) {
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w { background: transparent url("face-1.5x.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w:hover { background: transparent url("face-active-1.5x.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w .uploading-b { background: transparent url("image-1.5x_001.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-e .effect-w .uploading-b, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w:hover .effect-w .uploading-b { background: transparent url("image-active-1.5x_001.png") no-repeat scroll 0% 0% / 100% 100%; }
+}
+@media not all, (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w { background: transparent url("face-2x_001.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w:hover { background: transparent url("face-active-2x_001.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w .uploading-b { background: transparent url("image-2x_001.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-e .effect-w .uploading-b, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w:hover .effect-w .uploading-b { background: transparent url("image-active-2x.png") no-repeat scroll 0% 0% / 100% 100%; }
+}
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw.nano { position: relative; overflow: hidden; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw.nano > .nano-content { position: absolute; overflow-y: scroll; overflow-x: hidden; top: 0px; right: 0px; bottom: 0px; left: 0px; height: 100%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw.nano > .nano-content:focus { outline: thin dotted; }
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw { padding: 18px 0px 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li { float: left; line-height: 18px; padding: 0px 0px 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li .title-name-gw { font-size: 16px; font-family: "Microsoft YaHei"; color: rgb(67, 152, 237); }
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li .title-name-gw .title-name-gw-tag { float: left; width: 5px; height: 18px; margin-right: 13px; background: transparent url("title-tag_001.png") no-repeat scroll 0% 0%; }
+@media not all, (min--moz-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx), (min-resolution: 144dpi) {
+}
+@media not all, (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+}
+#SOHUCS #SOHU_MAIN .module-cmt-footer { padding: 17px 0px; position: relative; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .list-comment-close-w { display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .list-comment-close-w .close-wrap-w { display: block; text-align: center; line-height: 18px; font-size: 14px; padding: 12px 0px 9px; margin: -1px 0px 0px; border-top: 1px solid rgb(222, 228, 233); background-color: rgb(245, 245, 245); color: rgb(51, 51, 51); }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-page-w { text-align: center; font-size: 0px; padding-bottom: 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w { line-height: 16px; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w, #SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w, #SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w a { display: block ! important; text-align: right ! important; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w a { display: inline-block ! important; color: rgb(153, 153, 153); }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w a:hover { color: rgb(67, 152, 237); }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ { background-color: rgb(236, 244, 253); border: 1px solid rgb(160, 203, 246); border-radius: 5px; box-sizing: border-box; color: rgb(67, 152, 237); cursor: pointer; display: none; font-size: 14px; height: 44px; line-height: 44px; margin-top: 20px; text-align: center; width: 100%; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ:hover { background-color: rgb(151, 202, 252); box-shadow: 0px 0px 8px rgb(160, 203, 246); color: rgb(255, 255, 255); }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ i { background-image: url("right-arrow_001.png"); display: inline-block; height: 16px; margin-top: -1px; vertical-align: middle; width: 16px; margin-left: 5px; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ:hover i { background-image: url("right-arrow-hover_001.png"); }
+#SOHUCS #SOHU_MAIN .cy-to-shequ-float { background-image: url("shequ-icon_001.png"); bottom: 45px; cursor: pointer; display: none; height: 84px; position: fixed; right: 5px; width: 84px; z-index: 2147483647; }
+@media not all, (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+}
+@font-face {
+  font-family: "hanyixiaomai";
+  src: url(".dat");
+}
+@keyframes jump {
+0% { margin-top: 0px; }
+10% { margin-top: -10px; }
+30% { margin-top: -10px; transform: rotate(20deg); }
+40% { margin-top: -10px; transform: rotate(-20deg); }
+50% { margin-top: -10px; transform: rotate(20deg); }
+60% { margin-top: -10px; transform: rotate(-20deg); }
+70% { margin-top: -10px; transform: rotate(20deg); }
+90% { margin-top: -10px; transform: rotate(0deg); }
+100% { margin-top: 0px; }
+}
+@keyframes SHAKE {
+0% { transform: scale(0.99, 0.99); }
+25% { transform: scale(1, 1); }
+50% { transform: scale(0.995, 0.995); }
+75% { transform: scale(1, 1); }
+100% { transform: scale(0.998, 0.998); }
+}
+#SOHUCS #SOHU_MAIN .module-cmt-notice { position: fixed; right: 0px; bottom: 0px; padding: 38px 0px; font-family: "Microsoft YaHei"; z-index: 999999; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list { max-width: 300px; text-align: right; overflow: visible; position: relative; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item { position: relative; display: inline-block; max-width: 260px; min-width: 200px; height: 38px; line-height: 38px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0) ! important; margin: 5px 0px 5px 10px; padding-left: 36px; padding-right: 30px; border-width: 1px 0px 1px 1px; border-style: solid none solid solid; border-color: rgb(67, 152, 237) -moz-use-text-color rgb(67, 152, 237) rgb(67, 152, 237); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; text-decoration: none; cursor: pointer; font-size: 15px; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-logo { position: absolute; top: -1px; left: -20px; width: 40px; height: 40px; background: transparent url("notice-logo_001.png") no-repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-text { color: rgb(67, 152, 237) ! important; text-decoration: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-text i { color: rgb(67, 152, 237) ! important; padding: 0px 4px; font-weight: bolder; font-size: 17px; font-family: "Microsoft YaHei"; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice .nt-close { display: inline-block; position: absolute; right: 11px; top: 11px; width: 16px; height: 16px; background: transparent url("notice-close.png") no-repeat scroll 0% 0%; }
+</style><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><link href="share_style0_16.css" rel="stylesheet"><script src="about:blank" charset="UTF-8" type="text/javascript"></script><style>
+/* Code tidied up by ScrapBook */
+</style><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script></head>
+<body><div style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;" id="BAIDU_DUP_fp_wrapper"><iframe style="width: 0px; height: 0px; visibility: hidden; display: none;" src="index_15.html" id="BAIDU_DUP_fp_iframe"></iframe></div>
+<div class="div_body" id="body">
+<script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script language="javascript" src="about:blank" type="text/javascript"></script><div id="zhead" class="clearfix"><div class="zlogin"><a href="http://www.bkjia.com/fenlei/list-271-1.html" target="_self">头条</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://kansha.bkjia.com/kansha/11.html">业界</a></div>
+<div class="znav"><a target="_self" href="http://www.bkjia.com/">帮客之家</a>|&nbsp;&nbsp;<a target="_self" href="http://kansha.bkjia.com/">今天看啥</a>|&nbsp;&nbsp;<a target="_self" href="http://wiki.bkjia.com/">IT百科</a>|&nbsp;&nbsp;<a href="http://file.bkjia.com/">dll文件大全</a>|&nbsp;&nbsp;<a class="zask" href="http://tech.bkjia.com/">技术库搜索</a>&nbsp;&nbsp;</div>
+</div>
+
+<div class="headnav"><div class="headnav_hmenu"><div class="hmenu"><ul class="clearfix"><li><a href="http://www.bkjia.com/" title="帮客之家首页">首页</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-76-1.html" title="软件编程">编程</a></li><li><a href="http://www.bkjia.com/fenlei/list-74-1.html" title="web前端">前端</a></li><li><a href="http://www.bkjia.com/fenlei/list-75-1.html" title="WEB编程">WEB</a></li><li><a href="http://www.bkjia.com/fenlei/list-82-1.html" title="移动开发">移动</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-79-1.html" title="安全攻防">安全</a></li><li><a href="http://www.bkjia.com/fenlei/list-80-1.html" title="网络技术">网络</a></li><li><a href="http://www.bkjia.com/fenlei/list-78-1.html" title="操作系统">系统</a></li><li><a href="http://www.bkjia.com/fenlei/list-83-1.html" title="脚本下载">脚本</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-84-1.html" title="建站cms">建站</a></li><li><a href="http://www.bkjia.com/fenlei/list-85-1.html" title="网页制作">网页</a></li><li><a href="http://www.bkjia.com/fenlei/list-77-1.html" title="数据库">数据库</a></li><li><a href="http://www.bkjia.com/fenlei/list-81-1.html" title="服务器">服务器</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-73-1.html" title="手机教程">手机</a></li> <li><a href="http://www.bkjia.com/fenlei/list-71-1.html" title="电脑教程">电脑</a></li><li><a href="http://tech.bkjia.com/" title="技术库搜索">技术搜索</a></li><li><a href="http://kansha.bkjia.com/" title="今天看啥">今天看啥</a></li>   </ul> </div>
+    <div class="subhmenu">  <ul class="clearfix"><li><a href="http://www.bkjia.com/fenlei/list-186-1.html">PHP</a></li> <li><a href="http://www.bkjia.com/fenlei/list-188-1.html">JSP</a></li><li><a href="http://www.bkjia.com/fenlei/list-98-1.html">JAVA</a></li><li><a href="http://www.bkjia.com/fenlei/list-190-1.html">.NET</a></li><li><a href="http://www.bkjia.com/fenlei/list-196-1.html">IOS</a></li>      	<li><a href="http://www.bkjia.com/fenlei/list-197-1.html">Android</a></li><li><a href="http://www.bkjia.com/fenlei/list-179-1.html">Html5</a></li><li><a href="http://www.bkjia.com/fenlei/list-178-1.html">CSS</a></li><li><a href="http://www.bkjia.com/fenlei/list-182-1.html">Ajax</a></li><li><a href="http://www.bkjia.com/fenlei/list-181-1.html">jQuery</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-117-1.html">Myslq</a></li><li><a href="http://www.bkjia.com/fenlei/list-118-1.html">Msslq</a></li><li><a href="http://www.bkjia.com/fenlei/list-107-1.html">Sybase</a></li><li><a href="http://www.bkjia.com/fenlei/list-116-1.html">DB2</a></li><li><a href="http://www.bkjia.com/fenlei/list-106-1.html">Oracle</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-131-1.html">CMS教程</a></li><li><a href="http://www.bkjia.com/fenlei/list-167-1.html">Linux</a></li><li><a href="http://www.bkjia.com/fenlei/list-166-1.html">IIS</a></li><li><a href="http://www.bkjia.com/fenlei/list-169-1.html">Apache</a></li><li><a href="http://www.bkjia.com/fenlei/list-174-1.html">Nginx</a></li> </ul></div>
+  </div></div>
+<div class="div_body head_box mt10"> <div class="clearfix">
+<div class="ad_1"><script src="about:blank" type="text/javascript"></script><script async="" src="about:blank"></script>
+<!-- bkjia-banner -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-2290945697182720" data-ad-slot="5698960890" data-ad-format="auto"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 90px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 760px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 90px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 760px; background-color: transparent;"><iframe src="index_16.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="90" width="760"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script>
+</div><div class="jrd"><span class="tit">今天看啥</span><ul class="dh_ul"><script src="about:blank" type="text/javascript"></script><a href="http://kansha.bkjia.com/kansha/m11.html?daodu">神秘的程序员们-对话</a><br><a href="http://kansha.bkjia.com/kansha/48.html?daodu">苹果iWatch S/C概念图曝光 类似iPh</a><br><a href="http://kansha.bkjia.com/kansha/47.html?daodu">Iphone6震撼谍照（多图）</a><br></ul></div></div><div class="hot_tj clearfix"> <span class="hot">热点：</span><ul class="tj_r"><script type="text/javascript" src="about:blank"></script><li class="one_li"><span class="gmine_ad"><a href="http://s.click.taobao.com/t?e=m%3D2%26s%3D69bfpJlnwB8cQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClApyyFKLOmlJ%2FRqCvFBlum9wDMwNVvsy3imd2faAxq78wVgsFcPgK3ZoXWlR5v7s49%2Bdn1BbglxZYxUhy8exlzcq9AmARIwX9K%2BnbtOD3UdznPV1H2z0iQv9NkKVMHClW0QbMqOpFMIvnvjQXzzpXdTHGJe8N%2FwNpGw%3D%3D" target="_blank"><font style="font-size: 12px; font-weight: normal;" color="#CC0000">阿里云服务器低至￥55/月</font></a></span></li>
+ <li><span class="gmine_ad"><a href="http://redirect.simba.taobao.com/rd?w=unionnojs&amp;f=http%3A%2F%2Fre.taobao.com%2Feauction%3Fe%3D%252FrvB1h0kD04jmraEDZVrLo36ZGg8zc%252BAVBTWeYSeIzSLltG5xFicOSZqewpHPyZzUJTTfySVBzjmsetFty3McCoaUSZag7fFNXda2sa%252BZY%252BB3ujUJI0OeA%253D%253D%26ptype%3D100010&amp;k=e2e107a2b72ca1b1&amp;c=un&amp;b=alimm_0&amp;p=mm_11696830_2981612_16450008" target="_blank"><font style="font-size: 12px; font-weight: normal;" color="#CC0000">不一样的“性福”高潮</font></a></span></li>
+  <li><span class="gmine_ad"><a href="http://www.km18.net/?bkjia" target="_blank"><font style="font-size: 12px; font-weight: normal;" color="#CC0000">帅哥~美女充气娃娃求欢爱!</font></a></span></li>
+      <li><span class="gmine_ad"><a href="http://shuiguo.downqq.com/?bkjia" target="_blank"><font style="font-size: 12px;" color="#FF0000">吃货们最爱滴美食</font></a></span></li>
+      <li><span class="gmine_ad"><a href="http://s.click.taobao.com/t?e=m%3D2%26s%3DW7oASN2i1lYcQipKwQzePDAVflQIoZepK7Vc7tFgwiFRAdhuF14FMRqKf1ftMuGolovu%2FCElQOuHlNzSbbDPib3MyvV91wxbTo2Cn9UTgBNr5%2FZ0pvjOFzQxJo4XTtZ7" target="_blank"><font style="font-size: 12px; font-weight: normal;" color="#CC0000">购HP商务本送彩票</font></a></span></li>
+</ul></div>	<div class="hot_tj brand_tj clearfix"><script type="text/javascript" src="about:blank"></script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u1461671_0"><iframe id="iframeu1461671_0" src="index_17.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" align="center,center" frameborder="0" height="28" width="958"></iframe></div>
+</div></div><div class="ad"><script src="about:blank" type="text/javascript"></script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u1265681_0"><iframe id="iframeu1265681_0" src="index_18.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" align="center,center" frameborder="0" height="90" width="960"></iframe></div>
+
+</div>
+<header id="header" class="header clearfix"><nav class="step step_new" id="nav"><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">页面导航：<a href="http://www.bkjia.com/" target="_self" itemprop="url">IT教程</a> &gt; <a href="http://www.bkjia.com/fenlei/list-71-1.html" target="_self" itemprop="url">电脑教程</a> &gt; <a href="http://www.bkjia.com/fenlei/list-89-1.html" target="_self" itemprop="url">系统故障</a> &gt; <a href="http://www.bkjia.com/fenlei/list-261-1.html" target="_self" itemprop="url">LINUX系统</a> &gt; </span>正文
+<span>linux&nbsp;&nbsp;rsync&nbsp;&nbsp;</span></nav>
+<div class="search"><a name="search"></a>
+			<form id="search" method="get" action="http://tech.bkjia.com/search.php">
+			<input class="skey" name="keyword" type="text">
+			<input name="sub" value="articlebanner" type="hidden">
+			<input class="sbtn" value="搜索" type="submit">
+			</form>
+</div></header>
+<div class="wrap clearfix" itemscope="" itemtype="http://schema.org/TechArticle">
+<div class="left" id="main_left">
+<article class="container">
+<div class="wrap_left wrap_left2">
+<header id="page-header" class="tit_t1 clearfix">
+<h1>在Linux下使用rsync对比和同步文件的方法，linuxrsync</h1><br>
+<div class="view" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating"> 热度<span itemprop="ratingValue">3</span>    <a href="#comment" target="_self">评论 <span itemprop="reviewCount">61</span></a> </div>
+<em>www.BkJia.Com</em>  &nbsp;网友分享于：&nbsp;
+<span itemprop="datePublished" content="2015-06-17GMT12:06:21">2015-06-17 12:06:21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览数39432次
+</header>
+<div class="artitle"><script src="about:blank" type="text/javascript"></script><div class="ad_artleft">
+<script async="" src="about:blank"></script>
+<!-- bkjia-title-zuobian -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2290945697182720" data-ad-slot="1765117294"><ins id="aswift_1_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_19.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_1" name="aswift_1" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script>
+</div>
+<div class="ad_artright">
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u1983349_0"><iframe id="iframeu1983349_0" src="index_20.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" align="center,center" frameborder="0" height="250" width="250"></iframe></div>
+
+</div>
+</div>
+<div class="content" id="cotent_idd" itemprop="articleBody">
+<p></p><h2>在Linux下使用rsync对比和同步文件的方法，linuxrsync</h2><br>这篇文章主要介绍了在Linux下使用rsync对比和同步文件的方法,着重讲述排除文件目录列表这样的操作,需要的朋友可以参考下
+
+
+
+
+<p><strong>排除文件和目录列表</strong></p>
+<p>有时候，当我们做大量同步的时候，我们可能想要从同步的文件和目录中排除一个文件和目录的列表。一般来说，像设备文件和某些系统文件，或者像临时文件或者缓存文件这类占据不必要磁盘空间的文件是不合适同步的，这类文件是我们需要排除的。</p>
+<p>首先，让我们创建一个名为“excluded”的文件（当然，你想取什么名都可以），然后将我们想要排除的文件夹或文件写入该文件，一行一个。在我们的例子中，如果你想要对根分区进行完整的备份，你应该排除一些在启动时创建的设备目录和放置临时文件的目录，列表看起来像下面这样：<br><img alt="2015615154241146.jpg (300×167)" src="0014193O1-0.jpg"></p>
+<p>然后，你可以运行以下命令来备份系统：</p>
+<p>&nbsp;&nbsp;&nbsp;<br>代码如下:$ sudo rsync -aAXhv --exclude-from=excluded / /mnt/backup<br>&nbsp;&nbsp;&nbsp;<img alt="2015615154338073.jpg (650×93)" src="0014193926-1.jpg"></p>
+<p><strong>&nbsp;&nbsp;&nbsp; 从命令行排除文件</strong></p>
+<p>你也可以从命令行直接排除文件，该方法在你要排除的文件数量较少，并且在你想要将它写成脚本或加到crontab中又不想脚本或cron依赖于另外一个文件运行时十分有用。</p>
+<p>例如，如果你想要同步/var到一个备份目录，但是你不想要包含cache和tmp这些通常不会有重要内容的文件夹，你可以使用以下命令：</p>
+<p>&nbsp;&nbsp;&nbsp;<br>代码如下:$ sudo rsync -aAXhv --exclude={"/var/cache","/var/tmp"} /var /home/adrian/var<br>&nbsp;&nbsp;&nbsp;<img alt="2015615154410484.jpg (800×117)" src="001419E42-2.jpg"></p>
+<p>&nbsp;&nbsp;&nbsp; 该命令易于在脚本或cron中使用，也不会依赖其它文件。<br></p><p></p>
+<p align="left"></p><div style="display: none;"><span id="url" itemprop="url">http://www.bkjia.com/LINUXxt/1017273.html</span><span id="indexUrl" itemprop="indexUrl">www.bkjia.com</span><span id="isOriginal" itemprop="isOriginal">true</span><span id="isBasedOnUrl" itemprop="isBasedOnUrl">http://www.bkjia.com/LINUXxt/1017273.html</span><span id="genre" itemprop="genre">TechArticle</span><span id="description" itemprop="description">在Linux下使用rsync对比和同步文件的方法，linuxrsync 这篇文章主要介绍了在Linux下使用rsync对比和同步文件的方法,着重讲述排除文件目录列表...</span></div><p></p><p class="hidden">原文地址:<a href="#">http://www.bkjia.com/LINUXxt/1017273.html</a></p>&nbsp;</div>
+<div class="art_confoot"><script src="about:blank" type="text/javascript"></script><div class="ad_art_confoot1">
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u1265707_0"><iframe id="iframeu1265707_0" src="index_21.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" align="center,center" frameborder="0" height="250" width="640"></iframe></div>
+</div>
+<div class="ad_art_confoot2">
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u2640811_0"><iframe id="iframeu2640811_0" src="index_22.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" align="center,center" frameborder="0" height="300" width="640"></iframe></div>
+</div>
+</div>
+<div class="page"></div>
+<div class="post-related"> <h3 class="tit_3">相关文章</h3><div class="clearfix m_5">
+<ul> <li><a href="http://www.bkjia.com/LINUXxt/1017272.html" title="Linux常用网络工具之批量主机服务扫描工具netcat使用介绍，主机服务netcat" target="_blank">Linux常用网络工具之批量主机服务扫描工</a></li><li><a href="http://www.bkjia.com/LINUXxt/1017271.html" title="详解linux中systemd命令的运行级别与其常见应用，linuxsystemd" target="_blank">详解linux中systemd命令的运行级别与其常见</a></li><li><a href="http://www.bkjia.com/LINUXxt/1017270.html" title="Linux iptables基础知识和规则原理讲解，linuxiptables" target="_blank">Linux iptables基础知识和规则原理讲解，l</a></li><li><a href="http://www.bkjia.com/LINUXxt/1017269.html" title="Linux iptables的规则组成介绍，linuxiptables" target="_blank">Linux iptables的规则组成介绍，linuxiptables</a></li><li><a href="http://www.bkjia.com/LINUXxt/1017268.html" title="Linux iptables应用实战（一），linuxiptables" target="_blank">Linux iptables应用实战（一），linuxiptables</a></li><li><a href="http://www.bkjia.com/LINUXxt/1017267.html" title="在Linux上安装和使用Rsync进行同步的教程，linuxrsync" target="_blank">在Linux上安装和使用Rsync进行同步的教程，</a></li></ul></div>
+<div class="hot_c"><span><b style="color: rgb(0, 0, 0);">相关搜索：</b>
+ <a href="http://tech.bkjia.com/search.php?keyword=Linux&amp;sub=articlefoot" target="_blank">Linux</a> <a href="http://tech.bkjia.com/search.php?keyword=Rsync&amp;sub=articlefoot" target="_blank">Rsync</a>
+ </span></div>
+</div>
+<div class="option-btns">
+<a href="http://kansha.bkjia.com/" title="简单休息，找找灵感"><div class="sharebox"><span class="btn">今天看啥</span></div></a>
+<a href="http://tech.bkjia.com/" title="在300万技术库中找思路"><div class="likebox"><span class="btn">搜索技术库</span></div></a>
+<a href="http://www.bkjia.com/" title="更多it教程"><div class="comment-btn"><span class="btn"><em id="article_comment_num_2013">返回首页</em></span></div></a>
+</div>
+		
+		<div id="related_reading" class="haman-box">
+		<ul class="xgyd clearfix">
+ <div class="xgyd_new"><span class="fast-nav-bar"><a href="http://www.bkjia.com/fenlei/list-272-1.html">今日最新</a></span><strong>相关阅读：</strong></div>
+ <li><a href="http://www.bkjia.com/LINUXxt/1017272.html">Linux常用网络工具之批量主机服务扫描工具</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017271.html">详解linux中systemd命令的运行级别与其常见应用</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017270.html">Linux iptables基础知识和规则原理讲解，linuxi</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017269.html">Linux iptables的规则组成介绍，linuxiptables</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017268.html">Linux iptables应用实战（一），linuxiptables</a></li>
+<li><a href="http://www.bkjia.com/LINUXxt/1017267.html">在Linux上安装和使用Rsync进行同步的教程，l</a></li>
+
+ </ul></div>
+<footer><div class="hot_c"><span><b>相关频道：</b>
+<a href="http://www.bkjia.com/fenlei/list-255-1.html">bios</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-256-1.html">系统安装</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-257-1.html">系统进程</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-258-1.html">注册表</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-259-1.html">苹果MAC</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-260-1.html">Windows系统</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-261-1.html">LINUX系统</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-262-1.html">其他系统故障</a>&nbsp;&nbsp;</span></div> </footer> 
+</div>
+<div class="info_more" id="info_more"></div>
+<div style="position: fixed; top: 200px; display: block; bottom: auto;" class="fixed-share-bar">
+	<div data-bd-bind="1483769275444" id="bdshare" class="bdsharebuttonbox bdshare_t bds_tools get-codes-bdshare share-bar-btn bdshare-button-style0-16">
+		<a title="分享到新浪微博" class="bds_tsina" data-cmd="tsina"></a><a title="分享到QQ空间" class="bds_qzone" data-cmd="qzone"></a><a title="分享到腾讯微博" class="bds_tqq" data-cmd="tqq"></a><a title="分享到微信" class="bds_weixin" data-cmd="weixin"></a><a class="bds_more share-more" data-cmd="more"></a></div>
+</div>
+<div class="clearfix mt10 art_commentstop" id="commentTopAd"><script src="about:blank" type="text/javascript"></script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u2433176_0"><iframe id="iframeu2433176_0" src="index_23.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" align="center,center" frameborder="0" height="250" width="640"></iframe></div>
+</div>
+<div id="hm_t_46468"><div style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px none; background: transparent none repeat scroll 0% 0%; max-width: none; max-height: none; border-radius: 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; box-sizing: content-box; width: 622px; height: 208px;"><iframe src="index_24.html" style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px none; background: transparent none repeat scroll 0% 0%; max-width: none; max-height: none; border-radius: 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; box-sizing: content-box; width: 100%; height: 100%;" scrolling="no" frameborder="0"></iframe></div></div>
+<a name="comment"></a><div class="comment" id="commentTopAd" itemprop="comment"><h3>帮客评论</h3></div>
+ <div class="wb_comment_box" id="commentsiframe"><script type="text/javascript" src="about:blank"></script><!--高速版，加载速度快，使用前需测试页面的兼容性--><div id="SOHUCS"><div id="SOHU_MAIN"><div class="module-cmt-header">
+    <div class="cy-hidden">
+        <button id="jump-to-kz"></button>
+    </div>
+    <div class="clear-g section-title-w">
+        <div class="title-user-w">
+            <div node-type="user" class="clear-g user-wrap-w">
+                <span node-type="user-name" class="wrap-name-w"></span>
+            </div>
+        </div>
+    </div>
+    <div class="section-cbox-w">
+        <div class="cbox-block-w clear-g">
+            <div node-type="block-head-w" class="block-head-w">
+                <div node-type="avatar" class="head-img-w">
+                    <a>
+                        <img node-type="user-head" src="pic42_null.gif" alt="" height="42" width="42">
+                        <div node-type="head-img-ie-mask" class="head-img-ie-mask"></div>
+                    </a>
+                    <div node-type="notice-node" style="display: none;" class="cy-avatar-notice-node"></div>
+                                    </div>
+                <div node-type="header-login" class="header-login">登录</div>
+                <div class="cy-to-shequ-head">
+                    <span>我的社区</span>
+                </div>
+                <div node-type="cy-board-enter" class="cy-board-enter">
+                    <span>我的2016年度评论盘点</span>
+                </div>
+            </div>
+            <div node-type="login-select" class="block-post-w">
+                <!-- 放置cbox初始状态 -->
+                <div class="module-cmt-box">
+    <!-- 展开状态 -->
+    <div class="post-wrap-w">
+        <div class="post-wrap-border-l"></div>
+        <div class="post-wrap-border-r"></div>
+        <div node-type="post-wrap-main" class="post-wrap-main">
+            <div class="post-wrap-border-t">
+                <div node-type="post-wrap-border-t-l" class="post-wrap-border-t-l"></div>
+                <div node-type="post-wrap-border-t-r" class="post-wrap-border-t-r"></div>
+            </div>
+            <div class="wrap-area-w">
+                <div class="area-textarea-w">
+                    <textarea node-type="textarea" name="" class="textarea-fw textarea-bf">有事没事说两句...</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="clear-g wrap-action-w">
+           <div class="action-function-w">
+                <ul class="clear-g">
+                    <li node-type="function-face" class="function-face-w">
+                        <a class="effect-w">
+                            <i class="face-b"></i>
+                        </a>
+                    </li>
+                    <li style="display: none;" node-type="function-uploading" class="function-uploading-w">
+                        <a class="effect-w" title="上传图片">
+                            <i class="uploading-b"></i>
+                        </a>
+                        <div class="uploading-file-w">
+                            <a name="" class="file-fw"></a>
+                        </div>
+                    <form style="display: none;"><input accept="image/jpg,image/jpeg,image/png" name="file" type="file"></form></li>
+                </ul>
+                <!-- 表情 -->
+                <div node-type="face-box" class="face-wrapper-dw">
+                    <div node-type="face-cont" class="wrapper-cont-dw">
+                        <ul class="clear-g">
+                            <li>
+                                <span title="流汗" data_path="base" data-ubb="/流汗" class="face-item face_01"></span>
+                            </li>
+                            <li>
+                                <span title="钱" data_path="base" data-ubb="/钱" class="face-item face_02"></span>
+                            </li>
+                            <li>
+                                <span title="发怒" data_path="base" data-ubb="/发怒" class="face-item face_03"></span>
+                            </li>
+                            <li>
+                                <span title="浮云" data_path="base" data-ubb="/浮云" class="face-item face_04"></span>
+                            </li>
+                            <li>
+                                <span title="给力" data_path="base" data-ubb="/给力" class="face-item face_05"></span>
+                            </li>
+                            <li>
+                                <span title="大哭" data_path="base" data-ubb="/大哭" class="face-item face_06"></span>
+                            </li>
+                            <li>
+                                <span title="憨笑" data_path="base" data-ubb="/憨笑" class="face-item face_07"></span>
+                            </li>
+                            <li>
+                                <span title="色" data_path="base" data-ubb="/色" class="face-item face_08"></span>
+                            </li>
+                        </ul>
+                        <ul class="clear-g">
+                            <li>
+                                <span title="奋斗" data_path="base" data-ubb="/奋斗" class="face-item face_09"></span>
+                            </li>
+                            <li>
+                                <span title="鼓掌" data_path="base" data-ubb="/鼓掌" class="face-item face_10"></span>
+                            </li>
+                            <li>
+                                <span title="鄙视" data_path="base" data-ubb="/鄙视" class="face-item face_11"></span>
+                            </li>
+                            <li>
+                                <span title="可爱" data_path="base" data-ubb="/可爱" class="face-item face_12"></span>
+                            </li>
+                            <li>
+                                <span title="闭嘴" data_path="base" data-ubb="/闭嘴" class="face-item face_13"></span>
+                            </li>
+                            <li>
+                                <span title="疑问" data_path="base" data-ubb="/疑问" class="face-item face_14"></span>
+                            </li>
+                            <li>
+                                <span title="抓狂" data_path="base" data-ubb="/抓狂" class="face-item face_15"></span>
+                            </li>
+                            <li>
+                                <span title="惊讶" data_path="base" data-ubb="/惊讶" class="face-item face_16"></span>
+                            </li>
+                        </ul>
+                        <ul class="clear-g">
+                            <li>
+                                <span title="可怜" data_path="base" data-ubb="/可怜" class="face-item face_17"></span>
+                            </li>
+                            <li>
+                                <span title="弱" data_path="base" data-ubb="/弱" class="face-item face_18"></span>
+                            </li>
+                            <li>
+                                <span title="强" data_path="base" data-ubb="/强" class="face-item face_19"></span>
+                            </li>
+                            <li>
+                                <span title="握手" data_path="base" data-ubb="/握手" class="face-item face_20"></span>
+                            </li>
+                            <li>
+                                <span title="拳头" data_path="base" data-ubb="/拳头" class="face-item face_21"></span>
+                            </li>
+                            <li>
+                                <span title="酒" data_path="base" data-ubb="/酒" class="face-item face_22"></span>
+                            </li>
+                            <li>
+                                <span title="玫瑰" data_path="base" data-ubb="/玫瑰" class="face-item face_23"></span>
+                            </li>
+                            <li>
+                                <span title="打酱油" data_path="base" data-ubb="/打酱油" class="face-item face_24"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div node-type="user-face-cont" class="wrapper-user-face-dw nano">
+                        <div class="nano-content">
+                            <ul class="clear-g">
+                                <li class="upload-face-btn"></li>
+                                <li class="manage-face-btn"></li>
+                                <li class="cancel-face-btn"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div node-type="face-tab" class="action-face-tab-dw">
+                        <ul class="clear-g">
+                            <li node-type="official-face" class="official-face-btn active"></li>
+                            <li style="display: none;" node-type="user-face" class="user-face-btn"></li>
+                        </ul>
+                    </div>
+                    <div node-type="confirm-box" class="cy-confirm-box">
+                        <div class="cy-confirm-text">
+                            <span>表情删除后不可恢复，是否删除</span>
+                        </div>
+                        <div class="cy-confirm-btn-row">
+                            <div class="cy-confirm-btn-cancel">取消</div>
+                            <div class="cy-confirm-btn-confirm">确定</div>
+                        </div>
+                    </div>
+                </div>
+                <!--  上传图片 --><!--  uploading-efw -->
+                <div node-type="uploading-wrapper" class="uploading-wrapper-dw uploading-efw ">
+                    <div class="uploading-wrapper-dw-t"></div>
+                    <div class="uploading-wrapper-dw-b"></div>
+                    <div node-type="image-uploading" class="wrapper-loading-dw">
+                        <div class="loading-word-dw"><span class="word-icon-dw"></span>图片正在上传，请稍后...</div>
+                        <div class="loading-btn-dw">
+                            <a>取消上传</a>
+                        </div>
+                    </div>
+                    <div node-type="image-uploaded" class="wrapper-image-dw">
+                        <div class="image-close-dw">
+                            <a></a>
+                        </div>
+                        <div class="image-pic-dw">
+                            <img node-type="image-pic" alt="" src="1017273.html">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear-g action-issue-w">
+                <div class="issue-btn-w">
+                    <a>
+                        <button node-type="issue" class="btn-fw"></button>
+                    </a>
+                </div>
+            <!--
+            <div class="issue-icon-w" node-type="share-icons">
+                </div>
+            -->
+            </div>
+            <div class="cbox-prompt-w" node-type="error-tips">
+                <span node-type="prompt-empty" class="prompt-empty-w">评论内容为空！</span>
+            </div>
+        </div>
+    </div>
+</div>
+                <!-- 放置cbox发布状态 -->
+                <!-- 提示条 -->
+                <!-- 零评论提示条 -->
+                <div class="list-comment-empty-w">
+                    
+                </div>
+                <!-- 提示连接到快站社区 -->
+                <!-- <div class="list-comment-kuaizhan-w">
+                    <div node-type="kuaizhan-prompt" class="kuaizhan-prompt-w">
+                        <span class="prompt-text-w">点击查看更多精彩内容</span>
+                    </div>
+                </div> -->
+                <!--关闭评论-->
+                <div class="list-close-comment-w">
+                    <div node-type="close-comment-prompt" class="close-comment-prompt-w">
+                        <span class="close-comment-prompt">该评论已关闭！</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- 评论列表  S -->
+<div class="module-cmt-list section-list-w">
+            <!-- 最新评论 -->
+    <div class="list-block-gw list-newest-w">
+        <div node-type="cmt-list-title" class="block-title-gw" style="display: none;">
+            <ul class="clear-g">
+                <li>
+                    <div class="title-name-gw title-name-bg">
+                    <div class="title-name-gw-tag"></div>最新评论</div>
+                </li>
+            </ul>
+        </div>
+        <div node-type="cmt-list" id="cy-cmt-list">
+        </div>
+    </div>
+</div>
+<!-- 评论列表  E --><div class="module-cmt-footer">
+    <!-- 评论关闭 -->
+    <div class="list-comment-close-w">
+        <div class="close-wrap-w close-wrap-b">该评论已关闭!</div>
+    </div>
+    <!-- 翻页 -->
+    <div class="section-page-w">
+    </div>
+    <!-- 某站正在使用畅言 -->
+    <div class="section-service-w">
+        <div class="service-wrap-w">
+            <a href="http://changyan.kuaizhan.com/" target="_blank">
+            
+            帮客之家正在使用畅言
+                        </a>
+        </div>
+    </div>
+    <div class="cy-to-shequ">
+        <span class="cy-to-shequ-text">去社区看看吧</span><i class="cy-right-arrow"></i>
+    </div>
+    <div class="cy-to-shequ-float"></div>
+</div><div class="module-cmt-notice">
+    <ul class="nt-list">
+        
+        <li node-type="notice-message" data-alias="message" data-type="message" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你收到<i>0</i>条新通知</a>
+            <a class="nt-close"></a>
+        </li>
+        
+        <li node-type="notice-support" data-alias="support" data-type="support" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你有<i>0</i>条评论收到赞同</a>
+            <a class="nt-close"></a>
+        </li>
+        
+        <li node-type="notice-reply" data-alias="reply" data-type="reply" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你有<i>0</i>条新回复</a>
+            <a class="nt-close"></a>
+        </li>
+        
+        <li node-type="notice-task" data-alias="task" data-type="task" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你有<i>0</i>个任务已完成</a>
+            <a class="nt-close"></a>
+        </li>
+        
+        <li node-type="notice-history" data-alias="history" data-type="history" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你收获<i>0</i>个畅言足迹</a>
+            <a class="nt-close"></a>
+        </li>
+            </ul>
+</div></div></div><script>/* Code removed by ScrapBook */</script>                
+</div>
+</article>
+<div class="syzp mt10" style="overflow: hidden;"><div class="tit_7">视觉看点</div><script type="text/javascript" src="about:blank"></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>title</title><base target="_blank">
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+.clearfix::after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+.clearfix { display: block; }
+body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p, blockquote, pre, form, fieldset, legend, input, button, textarea, hr { margin: 0px; padding: 0px; }
+li { list-style: outside none none; }
+body, button, input, select, textarea { font: 12px/1.125 Tahoma,Helvetica,"宋体",san-serif; color: rgb(0, 0, 0); }
+a { color: rgb(0, 0, 156); text-decoration: none; }
+a:hover { color: rgb(255, 102, 0); text-decoration: underline; }
+img { border: 0px none; }
+.JDimgList { float: left; padding: 10px 0px 5px; }
+.JDimgList li { display: inline; float: left; margin: 0px 0px 2px 28px; overflow: hidden; width: 124px; }
+.JDimgList li p { cursor: pointer; height: 18px; line-height: 18px; text-align: center; }
+.JDimgList li img { border: 1px solid rgb(204, 204, 204); display: block; }
+.JDimgList { width: 618px; }
+.JDimgList li { margin: 0px 0px 0px 28px; }
+</style>
+
+
+    <ul class="clearfix JDimgList">
+        		<li><a title="那些欲罢不能的女孩" href="http://www.km18.net/">
+				<img alt="那些欲罢不能的女孩" src="z20140209204555.jpg" height="90" width="120"><p>那些欲罢不能的女孩</p></a>
+		</li>
+				<li><a title="iOS8已定稿多图曝光" href="http://kansha.bkjia.com/kansha/45.html?1391939816">
+				<img alt="iOS8已定稿多图曝光" src="z1_1391754888_0207.jpg" height="90" width="120"><p>iOS8已定稿多图曝光</p></a>
+		</li>
+				<li><a title="最新iPhone 6震撼谍照" href="http://kansha.bkjia.com/kansha/47.html">
+				<img alt="最新iPhone 6震撼谍照" src="z6_1391759615_0207.jpg" height="90" width="120"><p>最新iPhone 6震撼谍照</p></a>
+		</li>
+				<li><a title="衣服快撑破了呼之欲出" href="http://kansha.bkjia.com/other/26.html?1391941012">
+				<img alt="衣服快撑破了呼之欲出" src="z16644.jpg" height="90" width="120">
+				<p>衣服快撑破了呼之欲出</p></a>
+		</li>
+		<li><a title="性感让人尖叫女程序员" href="http://kansha.bkjia.com/kansha/23.html">
+			<img alt="性感让人尖叫女程序员" src="z11111.jpg" height="90" width="120"><p>性感让人尖叫女程序员</p></a>
+		</li>
+				<li><a title="让你口水的娇嫩模特" href="http://kansha.bkjia.com/other/30.html?1391938694">
+				<img alt="让你口水的娇嫩模特" src="z201444.jpg" height="90" width="120"><p>让你口水的娇嫩模特</p></a>
+		</li>
+		<li><a title="90后童颜巨乳Barbie可儿" href="http://kansha.bkjia.com/other/69.html?1391941162">
+				<img alt="90后童颜巨乳Barbie" src="z20140209182006.jpg" height="90" width="120"><p>90后童颜巨乳Barbie</p></a>
+		</li>
+		<li><a title="性感美女比基尼诱惑写真" href="http://kansha.bkjia.com/other/68.html?1391941168">
+				<img alt="性感美女比基尼诱惑写真" src="z20140209182250.jpg" height="90" width="120"><p>性感美女比基尼诱惑写真</p></a>
+		</li></ul>
+
+</div>  
+</div>
+<aside class="right" id="main_right">
+<div style="margin-top: 0px;" class="art_rightad1"><script src="about:blank" type="text/javascript"></script><script async="" src="about:blank"></script>
+<!-- bkjia-right-ad1 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2290945697182720" data-ad-slot="6007316492"><ins id="aswift_2_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_2_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_26.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_2" name="aswift_2" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script>
+</div>
+<div class="r_bd mt10 pb10">
+       <div class="tit_5 tit_6">LINUX系统最近更新</div>
+         <ul id="bbsRank_1" class="rank_ul2 rank_dot" style="border-top: 1px solid rgb(170, 197, 242); margin-top: -1px;">
+	<li><a href="http://www.bkjia.com/LINUXxt/345135.html">linux wc命令应用举例</a> </li>
+<li><a href="http://www.bkjia.com/LINUXxt/1014972.html">在Linux系统中安装使用WPS的方法，linuxwp</a> </li>
+<li><a href="http://www.bkjia.com/LINUXxt/345389.html">vmware 网络配置</a> </li>
+<li><a href="http://www.bkjia.com/LINUXxt/346878.html">BSD是什么系统 BSD简介</a> </li>
+<li><a href="http://www.bkjia.com/LINUXxt/958700.html">Linux如何建立静态链接库.lib文件，linux建</a> </li>
+
+</ul></div>
+<div class="art_rightad2 mt10"><script src="about:blank" type="text/javascript"></script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script>
+
+</div>
+<div class="r_bd mt10 pb10">
+       <div class="tit_5 tit_6">热点关注</div>
+	   <ul id="bbsRank_1" class="rank_ul2 rank_dot" style="border-top: 1px solid rgb(170, 197, 242); margin-top: -1px;">
+	<li><a href="http://www.bkjia.com/jingyan/ios2.html">IOS消息推送机制中pem文件如何生成？</a></li>
+<li><a href="http://www.bkjia.com/headlines/433097.html">SQLSERVER的中文排序规则介绍</a></li>
+<li><a href="http://www.bkjia.com/headlines/437047.html">帮客头条：盘点十大界面精美优雅如艺术</a></li>
+<li><a href="http://www.bkjia.com/jingyan/jsbiaodan.html">js防止表单的重复提交简单有效的策略</a></li>
+<li><a href="http://www.bkjia.com/jingyan/512295.html">codeigniter教程:Codeigniter防止XSS攻击和防止</a></li>
+	
+	</ul>
+        </div>
+<div class="r_bd mt10 pb10"><div style="margin-top: 0pt;" class="tit_5 tit_6">热点推荐</div>
+<script type="text/javascript" src="about:blank"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>title</title>
+<base target="_blank">
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+.clearfix::after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+.clearfix { display: block; }
+body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p, blockquote, pre, form, fieldset, legend, input, button, textarea, hr { margin: 0px; padding: 0px; }
+li { list-style: outside none none; }
+body, button, input, select, textarea { font: 12px/1.125 Tahoma,Helvetica,"宋体",san-serif; color: rgb(0, 0, 0); }
+a { color: rgb(0, 0, 156); text-decoration: none; }
+a:hover { color: rgb(255, 102, 0); text-decoration: underline; }
+img { border: 0px none; }
+.tab_ul { padding-left: 5px; margin-top: 5px; }
+.tab_ul li { float: left; display: inline; border-width: 1px 1px medium; border-style: solid solid none; border-color: rgb(170, 197, 242) rgb(170, 197, 242) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; height: 20px; line-height: 20px; background: rgb(228, 237, 253) none repeat scroll 0% 0%; width: 40px; text-align: center; margin-left: 5px; cursor: pointer; }
+.tab_ul li.now { background: rgb(255, 255, 255) none repeat scroll 0% 0%; font-weight: bold; position: relative; height: 21px; }
+.mobileContent, .applianceContent, .photoContent, .carsContent { padding: 10px 6px 5px 8px; border-top: 1px solid rgb(170, 197, 242); margin-top: -1px; }
+.mImageList li { float: left; padding: 0px 0px 11px 3px; }
+.mImageList .mImageFirst { padding: 0px 0px 12px; }
+.mImageList li img, .applianceOne dt img, .applianceTwo dt img, .photoOne li img, .carsContent img { display: block; border: 1px solid rgb(218, 227, 242); }
+.mImageList li p { text-align: center; height: 18px; line-height: 18px; cursor: pointer; }
+.mContentList li { width: 127px; overflow: hidden; float: left; padding-left: 14px; background: transparent url("dian.jpg") no-repeat scroll 4px 8px; height: 21px; line-height: 21px; }
+.mContentList .even { padding-right: 0px; }
+.carsOne dt { float: left; }
+.carsOne dt { margin: 0px 3px 12px; }
+.applianceOne dt p, .applianceTwo dt p, .photoOne li p, .carsOne p { height: 18px; line-height: 18px; text-align: center; cursor: pointer; overflow: hidden; }
+.carsOne dd, .mImageList li { width: 77px; overflow: hidden; }
+.carsOne dt, .photoOne li, .mImageList .mImageFirst, .applianceOne dt, .applianceTwo dt { width: 122px; overflow: hidden; }
+.carsOne dd a { display: block; margin-bottom: 10px; }
+.mImageList li p { overflow: hidden; }
+.mImageList li { margin-left: 3px; padding: 0px; }
+.mobileContent, .applianceContent, .photoContent, .carsContent {  }
+.l { float: left; }
+.r { float: right; }
+</style>
+
+
+        <style>
+/* Code tidied up by ScrapBook */
+.mobileContent, .applianceContent, .photoContent, .carsContent { padding-left: 7px; }
+.carsOne dt { margin-left: 5px; }
+</style>
+<div style="width: 298px; height: 350px;">
+    <ul id="rediantuijian" class="clearfix tab_ul switch">
+                                <li rel="rel3" id="carsClass" class="">汽车</li>
+								<li rel="rel18" id="55bbsClass" class="now">娱乐</li>
+								</ul>
+            <!--------------------------------娱乐 start----------------------->
+            <div id="rel18" class="mobileContent clearfix" style="display: block;"><ul class="mImageList clearfix">
+    		<li class="mImageFirst">
+    		    <a title="私照大比美" href="http://kansha.bkjia.com/other/49.html?1391957012">
+    				<img alt="私照大比美" src="z2014020726284cad7aa1ac4806_1391755035_0207.jpg" height="180" width="120">
+    				<p>私照大比美</p></a></li>
+    		    		<li><a title="青城山妙乳峰" href="http://kansha.bkjia.com/other/29.html">
+    				<img alt="青城山妙乳峰" src="z20140209225506.jpg" height="75" width="75">
+    				<p>青城山妙乳峰</p></a></li>
+    		    		<li><a title="总有一张图能让你凌乱" href="http://kansha.bkjia.com/other/43.html">
+    				<img alt="总有一张图能让你凌乱" src="z58_1391763926_0207.jpg" height="75" width="75"><p>让你凌乱的图</p></a></li>
+    		    		<li><a title="看到没法冷静" href="http://kansha.bkjia.com/other/50.html?1391957118">
+    				<img alt="看到没法冷静" src="z20140207a1a616f21c1ea609c3_1391754888_0207.jpg" height="75" width="75">
+    				<p>看到没法冷静</p></a></li>
+    		    		<li><a title="看这些乘客你一定能兴奋" href="http://kansha.bkjia.com/other/24.html">
+    		<img alt="看这些乘客你一定能兴奋" src="z20140209225210.jpg" height="75" width="75">
+    				<p>让你兴奋乘客</p></a></li>
+    		    	</ul>
+    	<ul class="clearfix mContentList">
+    	    <li><a title="老师，这游泳课没法上了" href="http://kansha.bkjia.com/other/27.html">老师，这游泳课没法上了</a></li>
+    		<li class="even"><a title="电影里的那些波霸花瓶" href="http://kansha.bkjia.com/other/28.html">电影里的那些波霸花瓶</a></li>
+    		<li><a title="18岁鸡排妹身材超火爆" href="http://kansha.bkjia.com/other/31.html">18岁鸡排妹身材超火爆</a></li>
+    		<li class="even"><a title="拿这些当壁纸绝对提神" href="http://kansha.bkjia.com/other/32.html">拿这些当壁纸绝对提神</a></li>
+    		<li><a title="360年会有亮点啊" href="http://kansha.bkjia.com/other/72.html">360年会有亮点啊</a></li>
+    		<li class="even"><a title="这些广告创意你都懂么" href="http://kansha.bkjia.com/other/73.html">这些广告创意你都懂么</a></li>
+    		<li><a title="柳岩最想销毁的喷血照" href="http://kansha.bkjia.com/other/74.html">柳岩最想销毁的喷血照</a></li>
+    		<li class="even"><a title="亲，床戏不是这么拍的" href="http://kansha.bkjia.com/other/75.html">亲，床戏不是这么拍的</a></li>
+    		<li><a title="女生做脚妓10分钟赚150元" href="http://kansha.bkjia.com/other/25.html">女生做脚妓10分钟赚150</a></li>
+    		<li class="even"><a title="中国版李敏镐95%相似" href="http://www.km18.net/">中国版李敏镐95%相似</a></li>
+    		    	</ul> </div>  
+	<!--------------------------------汽车 start----------------------->
+            <div style="display: none;" id="rel3" class="carsContent clearfix">
+    	<dl class="clearfix carsOne"><dd class="l">
+    		 <a title="超性感吸血鬼" href="http://kansha.bkjia.com/other/70.html">
+    			<img alt="超性感吸血鬼" src="z6_1390285003_0121.jpg" height="75" width="75">
+    				<p>超性感吸血鬼</p></a>
+    		<a title="豪车里的秘密" href="http://kansha.bkjia.com/other/51.html?1391954288">
+    			<img alt="豪车里的秘密" src="z5_1390284851_0121.jpg" height="75" width="75">
+    				<p>豪车里的秘密</p></a></dd><dt>
+    			        	    <a title="上下两个都是激情舞者" href="http://kansha.bkjia.com/other/52.html?1391954292">
+    	<img alt="上下两个都是激情舞者" src="z1_1389063928_0107.jpg" height="180" width="120">
+    				<p>上下两个都是激情舞者</p></a></dt>
+    		<dd class="r">
+    		        			<a title="布太小罩不住" href="http://kansha.bkjia.com/other/71.html">
+    			<img alt="布太小罩不住" src="z4_1390284816_0121.jpg" height="75" width="75">
+    				<p>布太小罩不住</p></a>
+    			    			<a title="地下街车宝贝" href="http://kansha.bkjia.com/other/55.html?1391954386">
+    			<img alt="地下街车宝贝" src="z3_1390284731_0121.jpg" height="75" width="75">
+    				<p>地下街车宝贝</p></a></dd></dl>
+    	<ul class="clearfix mContentList">
+<li><a title="擦！我还以为是柏芝！" href="http://kansha.bkjia.com/other/60.html?1391954359">擦！我还以为是柏芝！</a></li>
+<li class="even"><a title="刚出炉2013车模大盘点" href="http://kansha.bkjia.com/other/59.html?1391954353">刚出炉2013车模大盘点</a></li>
+<li><a title="嫩白腿长透视装晃瞎你" href="http://kansha.bkjia.com/other/62.html?1391954675">嫩白腿长透视装晃瞎你</a></li>
+<li class="even"><a title="比基尼也可以小清新" href="http://kansha.bkjia.com/other/63.html">比基尼也可以小清新</a></li>
+<li><a title="萌萝莉妹纸滴甜美车照" href="http://kansha.bkjia.com/other/54.html?1391954380">萌萝莉妹纸滴甜美车照</a></li>
+<li class="even"><a title="夏日纯美短裙车拍" href="http://kansha.bkjia.com/other/61.html?1391955750">夏日纯美短裙车拍</a></li>
+<li><a title="柔美女人让你欲血狂飙" href="http://kansha.bkjia.com/other/65.html?1391955768">柔美女人让你欲血狂飙</a></li>
+<li class="even"><a title="眼睛美女的魅惑" href="http://kansha.bkjia.com/other/64.html">眼睛美女的魅惑</a></li>
+<li><a title="龚叶轩气质出镜香车美女" href="http://kansha.bkjia.com/other/66.html?1391955790">龚叶轩气质出镜香车美女</a></li>
+<li class="even"><a title="白外黑内红保时捷卡雷拉 白衣大模风情诠释" href="http://kansha.bkjia.com/other/53.html">保时捷卡雷拉大模风情诠释</a></li>
+   </ul></div>
+    </div>
+	<script>/* Code removed by ScrapBook */</script>
+
+</div>
+<div class="art_rightad3"><script src="about:blank" type="text/javascript"></script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank"></script>
+
+</div>
+<div id="focus_look" class="instant-focus mt10"><div class="instant-focus-header clearfix"><h3>即时看点</h3><span>大家正在看什么</span></div>
+<script type="text/javascript" src="about:blank"></script><div style="text-align: center; margin-top: 5px;" id="jsjd"></div><div id="focus_look_div"><ul id="tab-x-1" class="instant-focus-list">
+<li data-tm="2分钟前">
+<a href="http://kansha.bkjia.com/kansha/38.html?1" class="pic">
+<img src="135510676171908cb6a.jpg" alt="怎样快速合法赚到一百万？" height="75" width="100"></a>
+<h3><a href="http://kansha.bkjia.com/kansha/38.html?2">怎样快速合法赚到一百万？</a></h3>
+<p><a href="http://kansha.bkjia.com/kansha/38.html?3">围观</a><span>9966人正在浏览</span></p></li>
+
+<li data-tm="1分钟前"><a href="http://kansha.bkjia.com/other/79.html?1" class="pic"><img src="1328877521259978668.jpg" alt="胸器PK：干露露vs柳岩" height="75" width="100"></a><h3><a href="http://kansha.bkjia.com/other/79.html?2">胸器PK：干露露vs柳岩</a></h3><p><a href="http://kansha.bkjia.com/other/79.html?3">围观</a><span>2683人正在浏览</span></p></li>
+
+<li data-tm="1分钟前"><a href="http://kansha.bkjia.com/kansha/39.html?1" class="pic"><img src="10330123L-10.jpg" alt="十大适合Geek 的手表品牌" height="75" width="100"></a><h3><a href="http://kansha.bkjia.com/kansha/39.html?2">十大适合Geek 的手表品牌</a></h3><p><a href="http://kansha.bkjia.com/kansha/39.html?3">围观</a><span>1290人正在浏览</span></p></li>
+
+<li data-tm="1分钟前"><a href="http://kansha.bkjia.com/other/81.html?1" class="pic"><img src="jzyyo_1004022uji_00100x100.jpg" alt="当性感遇上清纯" height="75" width="100"></a><h3><a href="http://kansha.bkjia.com/other/81.html?2">当性感遇上清纯</a></h3><p><a href="http://kansha.bkjia.com/other/81.html?3">围观</a><span>1602人正在浏览</span></p></li>
+
+<li data-tm="2分钟前"><a href="http://kansha.bkjia.com/kansha/40.html?1" class="pic"><img src="1352076958472241bd7.jpg" alt="十大程序员必看电影，关于程序员的电影" height="75" width="100"></a><h3><a href="http://kansha.bkjia.com/kansha/40.html?2">十大程序员必看电影，关于程序员的电影</a></h3><p><a href="http://kansha.bkjia.com/kansha/40.html?3">围观</a><span>3328人正在浏览</span></p></li></ul>
+</div>
+</div>
+<div class="art_rightad4 mt10"><script src="about:blank" type="text/javascript"></script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div style="width: 300px; height: 250px; display: inline-block;" id="BAIDU_SSP__wrapper_u2433061_0"><iframe id="iframeu2433061_0" src="index_29.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" align="center,center" frameborder="0" height="250" width="300"></iframe></div>
+
+</div>
+</aside></div></div>
+<footer id="footer" class="div_body">
+<script type="text/javascript" src="about:blank"></script><style>
+/* Code tidied up by ScrapBook */
+.bkjia-footer { margin: 10px 10px 0px; padding: 0px 10px; border: 1px solid rgb(225, 225, 225); background: rgb(255, 255, 255) none repeat scroll 0px 0px; float: none; clear: both; }
+</style>
+<div class="bkjia-footer clearfix">
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u1044402_0"></div>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u2640825_0"><iframe id="iframeu2640825_0" src="index_31.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" align="center,center" frameborder="0" height="250" width="980"></iframe></div>
+</div>
+<script type="text/javascript" src="about:blank"></script><style>
+/* Code tidied up by ScrapBook */
+#cs_couplet_left, #cs_couplet_right, #cs_right_bottom, #ft_couplet_left, #ft_couplet_right, #ft_right_bottom { z-index: 2147483647; }
+</style>
+
+
+<script type="text/javascript" src="about:blank"></script><style>
+/* Code tidied up by ScrapBook */
+.footerw { color: rgb(171, 153, 188); margin: 0px auto; float: none; text-align: left; font-size: 12px; font-family: arial; line-height: 30px; padding: 5px 0px; }
+.footerw span { color: rgb(204, 204, 204); float: right; font-family: "宋体"; font-size: 10px; }
+.footerw a { color: rgb(102, 102, 102); text-decoration: none; font-family: Arial; font-size: 12px; }
+</style>
+<div class="footerw"><span><a href="http://www.bkjia.com/about.html">关于我们</a> <a href="http://www.bkjia.com/ad.html">站点合作</a> <a href="http://www.bkjia.com/ys.html">免责声明</a> <a href="http://www.bkjia.com/sitemap.html">站点地图</a> <a href="http://www.bkjia.com/contactus.html">联系我们</a>  <a href="http://bbs.bkjia.com/forum-100-1.html" class="aboutme">反馈/纠错</a></span><i></i> &nbsp;©2014 bkjia.com. All rights reserved. 帮客之家 版权所有.</div>
+
+<div style="display: none;"><script src="about:blank" type="text/javascript"></script><script src="about:blank" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=1cb337280b3ed72a25ea96214cebad72" target="_blank"><img src="21.gif" border="0" height="20" width="20"></a><script src="about:blank" language="JavaScript"></script><script src="about:blank" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=3047616" target="_blank" title="站长统计">站长统计</a>
+</div>
+<div id="roll"><a title="回顶部" id="roll_top" href="#top" style="opacity: 0.7; display: block;" target="_self" rel="nofllow"></a></div>
+</footer>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script>/* Code removed by ScrapBook */</script>
+
+<div style="position: fixed; bottom: 0px; right: 0px; overflow: hidden; display: none;" id="cs_right_bottom"><div style="margin: 0px; padding: 0px; width: 300px; height: 250px;" id="_cs_rich_flash_div_cs_right_bottom"><div style="position: absolute; z-index: 3;"><a target="_blank" href="http://c.k429fma.com/s/1/147/0.html?uid=219551&amp;ext=NDkgICAgICAgICAgMDJSUVlVVVFMUldVVlRMWFBUVUxQTFNSV1dVTFFSVU5YU05ZVU5SU1hMUlBRV1BRUFdRVFBXVVQ%3D"><img style="background-color: transparent;" src="dot.gif" border="0" height="250" width="300"></a></div><div style="position: absolute; z-index: 2; width: 26px; height: 12px; top: 237px; background: transparent url(&quot;adtag.png&quot;) no-repeat scroll 0% 0%;"></div><object id="_cs_rich_flash_cs_right_bottom" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,24,0" align="middle" height="250" width="300"><param name="movie" value="http://c.k429fma.com/b/1/147/gdd9fid.swf?uid=219551"><param name="quality" value="high"><param name="wmode" value="transparent"><param name="scale" value="exactfit"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="gdd9fid.swf" scale="exactfit" quality="high" wmode="transparent" align="middle" height="250" width="300"></object></div><div closetype="0" eps="NDkgICAgICAgICAgMDJSUVlVVVFMUldVVlRMWFBUVUxQTFNSV1dVTFFSVU5YU05ZVU5SU1hMUlBRV1BRUFdRVFBXVVQ%3D" dsturl="http://c.k429fma.com/s/1/147/0.html?uid=219551" kc="0" style="z-index: 1999999; top: 3px; left: 264px; width: 25px; height: 13px; position: absolute; display: block;" id="cs_rich_close"><a target="_self"><img ck="cs_rich_close_hide" src="close.gif" style="width: 25px; height: 13px; cursor: pointer;" border="0"></a></div></div></body>
+</html>

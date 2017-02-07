@@ -1,0 +1,8 @@
+/* Code tidied up by ScrapBook */
+#heatmapthemead-widget-position-header .heatmapthemead-social-icons { width: 320px; }
+@media screen and (max-width: 800px) {
+  #heatmapthemead-widget-position-header .heatmapthemead-social-icons { width: auto; }
+}
+button, input, select, textarea {  }
+button, input {  }
+#heatmapthemead-main {  }

@@ -1,0 +1,53 @@
+/* Code tidied up by ScrapBook */
+@charset "utf-8";
+.side-bar { width: 20%; min-width: 250px; padding-left: 50px; }
+.side-bar .side-bar-box { padding-top: 60px; }
+.side-bar .side-bar-box .sbar-title { font-size: 1.4em; text-align: center; }
+.side-bar .side-bar-box .sbar-content { padding-top: 20px; }
+.side-bar .self-introduction { padding-top: 80px ! important; text-align: center; font-family: "country_gothic",Arial,Helvetica,Simsun,STHeiti; }
+.side-bar .self-introduction .avatar #avatar { border-radius: 50%; }
+.side-bar .self-introduction .nickname { padding-top: 15px; font-size: 1.4em; }
+.side-bar .self-introduction .intro { padding-top: 15px; }
+.side-bar .category .cate-item { padding: 20px 0px; border-bottom: 2px solid rgb(221, 221, 221); }
+.side-bar .search #search_box { position: relative; padding-top: 25px; }
+.side-bar .search #search_icon { position: absolute; bottom: 0px; }
+.side-bar .search #search_form_box { margin-left: 50px; padding-bottom: 15px; border-bottom: 2px solid rgb(221, 221, 221); text-align: center; }
+.side-bar .search #search_form_box #search_form #search_content { border: 0px none; background-color: transparent; width: 95%; color: rgb(85, 84, 84); }
+.side-bar .extra { padding-top: 60px; text-align: center; }
+.content { padding: 0px 0px 80px ! important; }
+.blog { width: 70%; min-width: 320px; }
+.blog .blog-box { padding-top: 80px; }
+.blog .blog-box .blog-info { font-size: 1.2em; }
+.blog .blog-box .blog-info .dc-sep { padding: 0px 10px; }
+.blog .blog-box .blog-info .blog-category { font-weight: bold; }
+.blog .blog-box .blog-title { font-size: 2em; padding-top: 10px; font-weight: bold; }
+.blog .blog-box .blog-content { font-size: 1em; padding-top: 30px; line-height: 1.4em; overflow: hidden; }
+.blog .blog-box .blog-sep { width: 200px; margin-top: 40px; font-size: 1px; line-height: 0; height: 2px; background-color: rgb(221, 221, 221); }
+.blog .blog-tag { padding-top: 20px; }
+.blog .blog-tag .tag-item { display: inline-block; margin-top: 20px; padding: 20px; border: 2px solid rgb(221, 221, 221); margin-right: 10px; }
+.blog .comments, .blog .comment-post-box { padding-top: 40px; }
+.blog .comments .title { font-family: "country_gothic",Arial,Helvetica,Simsun,STHeiti; font-size: 1.4em; }
+.blog .comment-post-box .comment-post-form-box { padding-top: 10px; }
+.blog .comment-post-box .comment-post-form-box .input-box-r1 { position: relative; width: 80%; padding-top: 30px; }
+.blog .comment-post-box .comment-post-form-box .input-box-r2 { position: relative; padding-top: 30px; }
+.blog .comment-post-box .comment-post-form-box .comment-form-icon { position: absolute; bottom: 0px; left: 0px; }
+.blog .comment-post-box .comment-post-form-box .input-box-r1 div, .blog .comment-post-box .comment-post-form-box .input-box-r2 div { margin-left: 50px; padding-bottom: 15px; border-bottom: 2px solid rgb(221, 221, 221); text-align: center; }
+.blog .comment-post-box .comment-post-form-box textarea { border: 0px none; background-color: transparent; color: rgb(85, 84, 84); font-family: DengXian,"Microsoft Yahei",Tahoma,Arial,Helvetica,Simsun,STHeiti; }
+.blog .comment-post-box .comment-post-form-box input { width: 95%; font-size: 1.2em; border: 0px none; background-color: transparent; color: rgb(85, 84, 84); font-family: DengXian,"Microsoft Yahei",Tahoma,Arial,Helvetica,Simsun,STHeiti; }
+.blog .comment-post-box .comment-post-form-box textarea { width: 96%; min-width: 96%; max-width: 96%; font-size: 1.2em; }
+.blog .comment-post-box .comment-post-form-box .input-box-r3 { padding-top: 50px; text-align: center; }
+.blog .comment-post-box .comment-post-form-box .input-box-r3 a { text-decoration: underline; font-family: "country_gothic",Arial,Helvetica,Simsun,STHeiti; font-weight: bold; font-size: 1.2em; cursor: pointer; }
+.blog .comment-post-box .error { margin-top: 40px; padding: 20px 40px; font-size: 1.2em; color: rgb(255, 255, 255); background-color: rgb(255, 102, 51); }
+@media screen and (max-width: 1150px) {
+  .blog { width: 65%; }
+}
+@media screen and (max-width: 950px) {
+  .blog { width: 60%; }
+}
+@media screen and (max-width: 850px) {
+  .blog { width: 100%; }
+  .side-bar { width: 100%; min-width: 250px; padding-left: 0px; }
+  .side-bar .self-introduction { display: none; }
+}
+@media screen and (max-width: 450px) {
+}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head><script src="about:blank"></script><script src="about:blank"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ubuntu系统中git每次提交都要输入密码的解决方法 - U大侠,装机专家</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="近日，不少用户在ubuntu系统中使用Git时，经常会遇到需要频繁输入密码的情况，在每次提交代码的时候都要求输入密码，输入正确密码后能正常的登录和使用git。很多用户觉得每次提交">
+    <link type="text/css" rel="stylesheet" href="common.css">
+	<link type="text/css" rel="stylesheet" href="common_g.css">
+    <link type="text/css" rel="stylesheet" href="helparticle.css">
+    
+<link type="text/css" rel="stylesheet" href="bdsstyle.css"><script src="about:blank"></script><script charset="utf-8" type="text/javascript" src="about:blank"></script></head>
+<body><iframe src="index_5.html" style="display: none;" frameborder="0"></iframe><div style="display: block;" id="bdshare_s"><iframe src="index_6.html" id="bdsIfr" style="position: absolute; display: none; z-index: 9999;" frameborder="0"></iframe><div style="display: none;" id="bdshare_l"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="#" class="bds_mshare mshare">一键分享</a></li><li><a href="#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="#" class="bds_renren rrw">人人网</a></li><li><a href="#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="#" class="bds_douban db">豆瓣网</a></li><li><a href="#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="#" class="bds_sqq sqq">QQ好友</a></li><li><a href="#" class="bds_thx thx">和讯微博</a></li><li><a href="#" class="bds_more">更多...</a></li></ul><p><a href="#" class="goWebsite">百度分享</a></p></div></div></div>
+<div class="wrap">
+<div class="header">
+  <div class="head"> <a href="http://www.udaxia.com/" class="logo1 left"></a>
+    <div class="nav1 left">
+      <ul>
+        <li><a href="http://www.udaxia.com/">主页</a></li>
+        
+        <li><a href="http://www.udaxia.com/download/">下载中心</a></li>
+        <li class="sel"><a href="http://www.udaxia.com/help/">U盘教程</a></li>
+        <li><a href="http://www.udaxia.com/xtzx/">系统资讯</a></li>
+        
+        <li><a href="http://bbs.haozhuodao.com/forum.php?gid=41" title="U大侠论坛" target="_blank" rel="nofollow">官方论坛</a></li>
+      </ul>
+    </div>
+        <div id="search" class="search right">
+      <form method="" action="http://www.udaxia.com/PlugModule/search.php" name="formsearch">
+        <input name="kwtype" value="0" type="hidden">
+        <input name="searchtype" value="titlekeyword" type="hidden">
+        <input maxlength="50" value="输入关键字" class="searchTxt" name="q" type="text">
+        <input value="" class="searchBtn" type="submit">
+      </form>
+    </div>
+  </div>
+</div>
+<div class="containt">
+    <div class="main1">
+        <div class="banner">
+			<a href="http://download.udaxia.com/Installer/UDXInstaller.exe" title="点击此下载" class="down-btn" rel="nofollow" target="_blank"></a>
+			<a href="http://download.udaxia.com/Installer/UDXInstaller.exe" title="点击此下载" class="down-btn2" rel="nofollow" target="_blank"></a>
+            <div class="edition_tit3">
+                <p><span>当前版本:V3.0.8.921</span><span class="editspan">文件大小:404.68 MB</span></p>
+                <p><span>更新时间:2016-09-21</span></p>
+            </div>
+            <div class="zan">
+                <span class="count">已有<em class="orange" id="UdxDow">42267</em>人体验U大侠</span>
+                    <span class="zanIframe">
+                       <iframe version="1.0" src="index_7.html" scrolling="no" style="border: medium none; overflow: hidden; width: 130px; height: 30px;" allowtransparency="true" frameborder="0"></iframe><script src="about:blank" charset="utf-8" defer="defer"></script>
+                    </span>
+
+            </div>
+        </div>
+    <div class="row row-position">
+        <p>当前位置：<a href="http://www.udaxia.com/">主页</a> &gt; <a href="http://www.udaxia.com/help/">U盘教程</a> &gt; <a href="http://www.udaxia.com/wtjd/">常见问题解答</a></p>
+    </div>
+    <div class="row mb14">
+    <!--详细内容-->
+    <div class="fl art-wrap">
+        <span class="sector-leftT"></span>
+        <span class="sector-rightT"></span>
+        <span class="sector-leftB"></span>
+        <span class="sector-rightB"></span>
+        <div class="title">
+            <h1>Ubuntu系统中git每次提交都要输入密码的解决方法</h1>
+            <p class="from">来源：U大侠  时间：2016-03-21</p>
+        </div>
+        <div class="desc">
+            <p>
+	　　近日，不少用户在ubuntu系统中使用Git时，经常会遇到需要频繁输入密码的情况，在每次提交代码的时候都要求输入密码，输入正确密码后能正常的登录和使用git。很多用户觉得每次提交都要输入密码很麻烦，那么，Ubuntu系统中git每次提交都要输入密码怎么办?下面，U大侠小编就给大家介绍Ubuntu系统中git每次提交都要输入密码的解决方法。</p>
+<p style="text-align: center;">
+	<img alt="ubuntu系统" src="8-16032109512VM.jpg" style="width: 400px; height: 192px;"><br>
+	ubuntu系统</p>
+<p>
+	<strong>　　操作步聚如下：</strong></p>
+<p>
+	　　1： cd 回车;进入当前用户目录下。</p>
+<p>
+	　　2： vim .git-credentials (如果没有安装vim 用其它编辑器也可以或 sudo apt-get install vim 安装一个)</p>
+<p>
+	　　3：按照以下格式输入内容：</p>
+<p>
+	　　https://{username}：{password}@github.com</p>
+<p>
+	　　其中username，password，github.com 都换成你自己的内容</p>
+<p>
+	　　4：保存退出后执行下面命令</p>
+<p>
+	　　git config --global credential.helper store</p>
+<p>
+	　　执行完后</p>
+<p>
+	　　/home/用户名/.gitconfig 会新增一项</p>
+<p>
+	　　helper = store</p>
+<p>
+	　　这是再执行git push/pull的时候就不会在要求你输入密码了。</p>
+<p>
+	　　当然，还有一种方式就是在git clone 的时候，不用https://的形式，而用git@git (ssh)的形式。这种方式也可以避免每次都要输密码。</p>
+<p>
+	　　最后，如果是在Mac os x或Uindows平台下，还可以用sourcetree 这样的ide工具，不过现在好要FQ才能下载了。</p>
+
+             <div id="pager_container">
+                <div class="page_list2">
+                
+                </div>
+            </div>
+            <div class="other">
+                <span class="editor fl">责任编辑：tianzhen</span>
+                <div class="bdshareWrap fr">
+                    <!-- Baidu Button BEGIN -->
+                    <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+                        <a href="#" title="分享到QQ空间" class="bds_qzone"></a>
+                        <a href="#" title="分享到新浪微博" class="bds_tsina"></a>
+                        <a href="#" title="分享到腾讯微博" class="bds_tqq"></a>
+                        <a href="#" title="分享到人人网" class="bds_renren"></a>
+                        <a href="#" title="分享到网易微博" class="bds_t163"></a>
+                        <span class="bds_more"></span>
+                        <a href="#" class="shareCount"></a>
+                    </div>
+                    <script src="about:blank" type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6719036"></script>
+                    
+                    <script type="text/javascript">/* Code removed by ScrapBook */</script>
+                    <!-- Baidu Button END -->
+                </div>
+            </div>
+            <div class="reco-link">
+                <a href="http://www.udaxia.com/wtjd/6820.html" class="fl">上一篇：Win7预防Adobe Photoshop自动联网验证的方法</a>
+                <a href="http://www.udaxia.com/wtjd/6822.html" class="fr">下一篇：Win8.1风暴语音无法使用怎么办？</a>
+            </div>
+        </div>
+        <div class="recommendLink">
+            <h2>相关新闻</h2>
+            <div class="lists-three">
+                <ul>
+                <li><a href="http://www.udaxia.com/wtjd/263.html" title="找不到GHO目录或U盘提示需" target="_blank">找不到GHO目录或U盘提示需</a> </li>
+<li><a href="http://www.udaxia.com/wtjd/2036.html" title="win10系统开机出现黑屏的完" target="_blank">win10系统开机出现黑屏的完</a> </li>
+<li><a href="http://www.udaxia.com/wtjd/281.html" title="电脑经常突然自动关机的" target="_blank">电脑经常突然自动关机的</a> </li>
+<li><a href="http://www.udaxia.com/wtjd/10.html" title="ISO镜像文件包制作教程" target="_blank">ISO镜像文件包制作教程</a> </li>
+<li><a href="http://www.udaxia.com/wtjd/375.html" title="详细介绍u大侠一键急救系" target="_blank">详细介绍u大侠一键急救系</a> </li>
+<li><a href="http://www.udaxia.com/wtjd/7.html" title="自动安装系统功能教程" target="_blank">自动安装系统功能教程</a> </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="span-side">
+            <div id="search" class="search right">
+      <form method="" action="http://www.udaxia.com/PlugModule/search.php" name="formsearch">
+        <input name="kwtype" value="0" type="hidden">
+        <input name="searchtype" value="titlekeyword" type="hidden">
+        <input maxlength="50" value="输入关键字" class="searchTxt" name="q" type="text">
+        <input value="" class="searchBtn" type="submit">
+      </form>
+    </div>
+        <!--使用教程-->
+        <div class="mb14" id="course">
+            <span class="sector-leftT"></span>
+            <span class="sector-rightT"></span>
+            <span class="sector-leftB"></span>
+            <span class="sector-rightB"></span>
+            <div class="hd">使用教程</div>
+            <div class="bd">
+                <div class="picRecommend">
+                    <a href="http://www.udaxia.com/wtjd/5192.html" title="Win10系统打开此电脑很" target="_blank">
+                        <img alt="Win10系统打开此电脑很" src="8-1510261006254O-lp.jpg" height="197" width="282">
+                        <span class="txt">Win10系统打开此电脑很</span>
+                        <span class="bgmask"></span>
+                    </a>
+                </div>
+
+                <div class="lists-one">
+                    <ul>
+                    <li class="list list-first"><a title="电脑重装系统进入WinPE时固定U盘盘" href="http://www.udaxia.com/pejc/4611.html" target="_blank">1.电脑重装系统进入WinPE时固定U盘盘</a> </li>
+<li class="list"><a title="开机提示ntldr is missing怎么解决" href="http://www.udaxia.com/pejc/8409.html" target="_blank">2.开机提示ntldr is missing怎么解决</a> </li>
+<li class="list"><a title="使用pe系统进行电脑驱动备份的教程" href="http://www.udaxia.com/pejc/6470.html" target="_blank">3.使用pe系统进行电脑驱动备份的教程</a> </li>
+<li class="list"><a title="电脑使用PE工具进行注册表备份图文" href="http://www.udaxia.com/pejc/6614.html" target="_blank">4.电脑使用PE工具进行注册表备份图文</a> </li>
+<li class="list"><a title="使用pe工具进行硬盘数据擦除图文教" href="http://www.udaxia.com/pejc/6686.html" target="_blank">5.使用pe工具进行硬盘数据擦除图文教</a> </li>
+<li class="list"><a title="巧用U盘启动盘重装Ghost XP系统" href="http://www.udaxia.com/pejc/655.html" target="_blank">6.巧用U盘启动盘重装Ghost XP系统</a> </li>
+<li class="list"><a title="U大侠装机版与UEFI的区别" href="http://www.udaxia.com/pejc/7768.html" target="_blank">7.U大侠装机版与UEFI的区别</a> </li>
+<li class="list"><a title="Thinkpad笔记本重装系统时无法UEFI启" href="http://www.udaxia.com/pejc/7780.html" target="_blank">8.Thinkpad笔记本重装系统时无法UEFI启</a> </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--使用教程 end-->
+        <!--常见问题-->
+        <div class="mb14" id="question">
+            <span class="sector-leftT"></span>
+            <span class="sector-rightT"></span>
+            <span class="sector-leftB"></span>
+            <span class="sector-rightB"></span>
+            <div class="hd">常见问题</div>
+            <div class="bd">
+                <div class="lists-one">
+                    <ul>
+                    <li class="list list-first"><a title="Win10系统打开此电脑很慢总显示在加" href="http://www.udaxia.com/wtjd/5192.html" target="_blank">1.Win10系统打开此电脑很慢总显示在加</a> </li>
+<li class="list"><a title="电脑黑屏的原因分析" href="http://www.udaxia.com/wtjd/913.html" target="_blank">2.电脑黑屏的原因分析</a> </li>
+<li class="list"><a title="Win10访问小米路由器硬盘操作方法" href="http://www.udaxia.com/wtjd/8564.html" target="_blank">3.Win10访问小米路由器硬盘操作方法</a> </li>
+<li class="list"><a title="苹果电脑怎么创建加密文件夹？M" href="http://www.udaxia.com/wtjd/8566.html" target="_blank">4.苹果电脑怎么创建加密文件夹？M</a> </li>
+<li class="list"><a title="Win10搜狗输入法用户遭遇winlogon.ex" href="http://www.udaxia.com/wtjd/8565.html" target="_blank">5.Win10搜狗输入法用户遭遇winlogon.ex</a> </li>
+<li class="list"><a title="Win7系统提示Physical Memory蓝屏的解决" href="http://www.udaxia.com/wtjd/8563.html" target="_blank">6.Win7系统提示Physical Memory蓝屏的解决</a> </li>
+<li class="list"><a title="打开Word时总提示“向程序发送命令" href="http://www.udaxia.com/wtjd/8562.html" target="_blank">7.打开Word时总提示“向程序发送命令</a> </li>
+<li class="list"><a title="Win7系统英雄联盟老是崩溃的解决方" href="http://www.udaxia.com/wtjd/8561.html" target="_blank">8.Win7系统英雄联盟老是崩溃的解决方</a> </li>
+<li class="list"><a title="Win8.1系统玩战地4提示DirectX Error错误" href="http://www.udaxia.com/wtjd/8560.html" target="_blank">9.Win8.1系统玩战地4提示DirectX Error错误</a> </li>
+<li class="list"><a title="Win10管理员阻止此应用怎么办 阻止" href="http://www.udaxia.com/wtjd/8546.html" target="_blank">10.Win10管理员阻止此应用怎么办 阻止</a> </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--常见问题 end-->
+    </div>
+    </div>
+    </div>
+    <div class="footer">
+  <div class="ft1">
+    <div class="txt left">Copyright © 2012. All Rights Reserved. 厦门易天下网络科技有限公司版权所有&nbsp;-&nbsp;<a rel="nofollow" target="_blank" title="关于我们" href="http://www.udaxia.com/about.html">关于我们</a> <br>
+      <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">闽ICP备11010938号-4</a></div>
+    <div class="right lianxi">
+      <div class="left one">
+        <h2>用户交流群</h2>
+        <p class="qq">418834720　99610370(满)　376387102(满)　150438190(满)</p>
+        <p><a target="_blank" rel="nofollow" href="http://shang.qq.com/wpa/qunwpa?idkey=2d04f217c405ee6d34bfe875be05ffde590275e6931ad4d888705eeb1f9858c5"><img src="group.png" alt="U大侠官方群④" title="U大侠官方群④" border="0"></a> 
+		</p>
+	  </div>
+      <div class="left three">
+        <h2>扫一扫</h2>
+        <p><img src="udxbg_26.jpg" height="63" width="63"></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div style="display: none;">
+<script src="about:blank" type="text/javascript" language="javascript"></script>226
+</div>
+<!--[if IE 6]>
+<script type="text/javascript" src="/images/DD_belatedPNG.js"></script>
+<script type="text/javascript">DD_belatedPNG.fix('.lists-three li,.row-position');</script>
+<![endif]-->
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div class="Hide">
+<script type="text/javascript">/* Code removed by ScrapBook */</script><span id="cnzz_stat_icon_5825786"><a href="http://www.cnzz.com/stat/website.php?web_id=5825786" target="_blank" title="站长统计">站长统计</a></span><script src="about:blank" type="text/javascript"></script><script src="about:blank" charset="utf-8" type="text/javascript"></script>
+</div>
+
+</body>
+</html>

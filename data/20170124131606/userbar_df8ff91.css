@@ -1,0 +1,13 @@
+/* Code tidied up by ScrapBook */
+.userbar { position: absolute; z-index: 1003; top: 4px; right: 0px; padding-right: 10px; font: 12px arial; text-align: right; color: rgb(153, 153, 153); }
+.userbar a:link, .userbar a:visited { text-decoration: none; color: rgb(85, 85, 85); }
+.userbar a:hover { text-decoration: underline; }
+.userbar .g-un { font-weight: 700; }
+.userbar span {  }
+.userbar .my-info { position: relative; display: inline; padding-bottom: 5px; vertical-align: top; }
+.userbar .i-arrow-down { display: inline-block; width: 16px; height: 16px; vertical-align: middle; background: transparent url("arrow-b_e9c380c.png") no-repeat scroll 3px 4px; -moz-box-orient: vertical; }
+.userbar .dropdown-menu { position: absolute; top: 19px; left: 2px; display: none; width: 70px; border: 1px solid rgb(155, 155, 155); background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 1px 1px 2px rgb(204, 204, 204); }
+.userbar .dropdown-menu a:hover { background-color: rgb(235, 235, 235); }
+.userbar .dropdown-menu a { display: block; padding: 6px; border-bottom: 1px solid rgb(235, 235, 235); line-height: 12px; text-align: left; text-decoration: none; }
+.userbar .menu-hide .dropdown-menu { display: none; }
+#my-income { height: 16px; padding: 1px 0px 1px 20px; display: inline-block; background: transparent url("bg_icon_v2_f9950f8.png") no-repeat scroll 0px -404px; }

@@ -1,0 +1,8 @@
+/* Code tidied up by ScrapBook */
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,"MonacoRegular","Courier New",monospace ! important; }

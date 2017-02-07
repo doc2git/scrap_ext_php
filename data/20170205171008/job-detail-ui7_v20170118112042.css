@@ -1,0 +1,286 @@
+/* Code tidied up by ScrapBook */
+@charset "utf-8";
+body, div, dl, dt, dd, ul, li, h1, h2, h3, input, p, span, table, th, td { margin: 0px; padding: 0px; }
+img, input { vertical-align: middle; border: medium none; }
+ul { list-style: outside none none; }
+h1, h2, h3 { font-size: 100%; }
+i, em { font-style: normal; }
+a { text-decoration: none; color: rgb(17, 85, 204); outline: 0px none; }
+a:hover { text-decoration: none; color: red; }
+.red { color: red; }
+.black { color: rgb(40, 40, 40); }
+.fl { display: inline; float: left; }
+.fr { display: inline; float: right; }
+.clearfix {  }
+.clearfix::after { display: block; visibility: hidden; clear: both; height: 0px; content: "."; }
+.pb15 { padding-bottom: 15px; }
+.pb25 { padding-bottom: 25px; }
+.mr10 { margin-right: 5px; }
+.mt10 { margin-top: 10px; }
+.f12 { font-size: 12px; }
+body { font-family: Arial,"宋体"; font-size: 14px; color: rgb(40, 40, 40); }
+.wb-header, .wb-content { width: 1002px; margin: 0px auto; }
+.bar_left, .bar_right { height: 30px; word-spacing: normal; }
+.bar_left span { color: rgb(136, 136, 136); }
+.bar_right .arrow { top: 13px; width: 5px; height: 3px; background: transparent url("hirelist.png") no-repeat scroll -203px -5px ! important; }
+.wb-header { position: relative; height: 81px; }
+.wb-header .logo { position: absolute; top: 16px; left: 0px; width: 188px; height: 52px; }
+.breadCrumb { font-size: 12px; line-height: 24px; position: absolute; top: 40px; left: 180px; }
+.breadCrumb span { display: inline; float: left; margin-right: 8px; }
+.breadCrumb span a { color: rgb(88, 88, 88); }
+.breadCrumb span a:hover { color: red; }
+.breadCrumb .crb_i { padding-left: 10px; background-position: 0px -124px; }
+.breadCrumb .crb_i, .postBtn, .big, h3.h3, .cl, .tx, .abg, .abg span { background-image: url("job-detail.png"); background-repeat: no-repeat; }
+.wb-header .fabu { width: 199px; height: 31px; margin-top: 27px; padding-top: 1px; border: 1px solid rgb(255, 179, 140); background: transparent url("hl_bg.png") repeat-x scroll 0px -218px; }
+.wb-header .fabu a { font: 700 14px/31px "宋体"; float: left; width: 99px; height: 31px; text-align: center; color: rgb(238, 85, 0); }
+.wb-header .fabu .fabu_zp { border-right: 1px dashed rgb(255, 179, 140); }
+.wb-header .fabu a:hover { text-decoration: underline; }
+.wb-sidebar-left { font-size: 14px; float: left; width: 782px; }
+.wb-sidebar-left .wrap { position: relative; padding: 0px; border-width: 2px 1px 1px; border-style: solid; border-color: rgb(238, 119, 17) rgb(220, 222, 225) rgb(220, 222, 225); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+.wb-sidebar-left .posCont { padding: 0px 30px; }
+.posSum { padding: 19px 0px 0px; color: rgb(35, 35, 35); }
+.posSum a:link { color: rgb(35, 35, 35); }
+.posSum a:hover { color: red; }
+.posSum .company .companyName { display: inline-block; float: left; margin-right: 5px; overflow: hidden; max-width: 350px; white-space: nowrap; text-overflow: ellipsis; }
+.posSum .vip-yan, .posSum .hr-yan, .posSum .dz-yan { font-size: 12px; position: relative; color: rgb(8, 122, 1); }
+.posSum .vip-yan { margin-right: 10px; }
+.posSum .vip-yan .licIcon, .posSum .hr-yan .hrIcon, .posSum .dz-yan .dzIcon { display: inline-block; margin-right: 4px; cursor: pointer; vertical-align: middle; background-image: url("job-detail-btn.png"); background-repeat: no-repeat; }
+.posSum .vip-yan .licIcon { width: 23px; height: 16px; background-position: -78px -107px; }
+.posSum .company .vip-yan { font-size: 14px; }
+.posSum .compMsg { clear: left; }
+.posSum .compMsg li { float: left; margin: 20px 30px 0px 0px; }
+.posSum .compMsg li span { color: rgb(104, 104, 104); }
+.posSum .scale, .posSum .joinday { width: 170px; margin-right: 0px; }
+.posSum .compMsg .joinday { clear: left; }
+.posinfo .xq { padding: 14px 0px; }
+.posinfo .xq .condition { clear: both; overflow: hidden; padding: 10px 0px; }
+.posinfo .xq .condition span { color: rgb(105, 104, 104); }
+.posinfo .w380 { float: left; width: 380px; }
+.posinfo .conTip { line-height: 34px; color: rgb(35, 35, 35); }
+.applyPos-top { font-size: 12px; margin-bottom: 80px; }
+.applyBtn { line-height: 48px; display: inline-block; height: 48px; padding-left: 2px; vertical-align: middle; background: transparent url("job-detail-btn.png") no-repeat scroll left -192px; }
+.applyBtn span { font: 400 22px/46px "微软雅黑"; float: left; padding: 0px 35px 0px 33px; cursor: pointer; color: rgb(255, 255, 255); background: transparent url("job-detail-btn.png") no-repeat scroll right -192px; }
+.tabT { height: 33px; border-bottom: 1px solid rgb(238, 119, 17); background: rgb(245, 245, 245) none repeat scroll 0% 0%; }
+.tabT ul { line-height: 32px; float: left; height: 33px; padding-left: 1px; }
+.tabT ul li { font-size: 14px; position: relative; z-index: 1; float: left; height: 32px; margin-left: -1px; padding: 0px 20px; color: rgb(40, 40, 40); border-style: solid; border-color: rgb(222, 223, 224); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 1px 1px 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.tabT ul a { color: rgb(40, 40, 40); }
+.tabT ul a:hover { text-decoration: underline; color: red; }
+.tabT .currentinfo { font-weight: 700; z-index: 2; margin-top: -2px; padding: 1px 20px; border-style: solid; border-color: rgb(238, 119, 17); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 2px 1px 0px; }
+.tabFix { position: fixed; z-index: 100; top: 0px; width: 722px; }
+.headline { position: relative; padding-bottom: 13px; border-bottom: 2px solid rgb(184, 184, 184); }
+.tabC { margin-top: 20px; }
+.posDes { line-height: 28px; }
+.borb { padding-bottom: 17px; }
+.posDes .applyBtn { margin: 10px 0px; }
+.compIntro p { line-height: 28px; padding-bottom: 20px; }
+#gongsi_h { margin-bottom: 11px; }
+.comPics p { padding: 0px; }
+.companySlide { position: relative; overflow: hidden; width: 710px; margin: 0px 0px 34px -3px; }
+.contList { margin-left: -3px; }
+.contList div { display: inline; float: left; overflow: hidden; width: 175px; height: 131px; margin-left: 3px; background: rgb(248, 248, 248) none repeat scroll 0% 0%; }
+.contList img { display: block; margin: 0px auto; }
+.companySlide a { position: absolute; top: 0px; right: 0px; width: 55px; height: 131px; background: rgb(0, 0, 0) none repeat scroll 0% 0%; }
+.companySlide a:hover { opacity: 0.6; }
+.companySlide a i { position: absolute; top: 55px; right: 23px; width: 11px; height: 19px; background: transparent url("job-m-rollBox.gif") no-repeat scroll -23px -74px; }
+.companySlide .leftarrow { left: 0px; }
+.companySlide .leftarrow i { left: 23px; background-position: -20px -42px; }
+.outermask { position: fixed; z-index: 999; top: 0px; right: 0px; display: none; width: 100%; height: 100%; opacity: 0.85; background: rgb(0, 0, 0) none repeat scroll 0% 0%; }
+.rollBox { position: fixed; z-index: 1000; top: 0px; right: 0px; display: none; width: 100%; padding-top: 10px; }
+.rollBoxwrap { position: relative; width: 1040px; margin: 0px auto; padding-top: 20px; background: rgb(0, 0, 0) none repeat scroll 0% 0%; }
+.scollCont { height: 478px; margin: 0px 100px 15px 101px; }
+.nextBtn, .prevBtn { float: left; width: 19px; height: 32px; margin-top: 224px; background-image: url("company.png"); background-repeat: no-repeat; }
+.nextBtn { background-position: 0px -32px; }
+.photoDis { position: relative; display: inline; float: left; overflow: hidden; width: 641px; height: 480px; margin: 0px 80px; }
+.scollList1 { position: absolute; }
+.photoPrev, .photoNext { font-size: 100%; position: absolute; top: 0px; left: 0px; width: 50%; height: 100%; cursor: url("leftcur.cur"), auto; opacity: 0; background: transparent url("about://blank/") repeat scroll 0% 0%; }
+.photoNext { left: 320px; cursor: url("rightcur.cur"), auto; }
+.scrollList2 { padding: 0px 0px 16px 99px; }
+.scrollList2 img { margin: 18px 6px 0px 7px; }
+.closeroll { position: absolute; top: 0px; right: 0px; display: block; width: 35px; height: 35px; background: transparent url("hireinfo.gif") no-repeat scroll right -235px; }
+.mt25 { margin-top: 25px; }
+.applyPos-bot { position: relative; margin: 21px 0px 32px; }
+.mtit0, .mtit1, .mtit2, .mtit3, .mtit4, .mtit5 { display: inline-block; overflow: hidden; width: 12px; height: 12px; margin-right: 5px; vertical-align: middle; background: transparent url("main_title_bg.png") no-repeat scroll -4px -233px; }
+.mtit1 { width: 10px; height: 13px; background-position: -5px -585px; }
+.mtit2 { width: 13px; height: 12px; background-position: -4px -564px; }
+.mtit4 { width: 12px; height: 15px; background-position: -3px -542px; }
+.mtit_con_right .mtit1 { vertical-align: top; }
+#report { color: rgb(255, 85, 0); }
+.mtit_con_right li { font-size: 12px; position: relative; display: block; float: left; margin-left: 5px; padding: 1px 1px 0px; cursor: pointer; color: rgb(153, 153, 153); border: 0px none; }
+.ml_1, .ml_2, .ml_3, .ml_4, .ml_5 { line-height: 14px; display: block; padding: 3px 5px; white-space: nowrap; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.collectBox li, .reportBox li, .controlBox1 li, .controlBox li { line-height: 22px; padding: 0px 15px 0px 0px; text-align: right; }
+.collectBox, .reportBox, .controlBox1, .controlBox { position: absolute; z-index: 3; top: 30px; left: 323px; display: none; width: 61px; border: 1px solid rgb(224, 224, 224); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.collectBox { left: 323px; width: 195px; }
+.reportBox { left: 560px; width: 100px; }
+.mtit_con_right a, .collectBox a, .reportBox a { font-size: 12px; color: rgb(153, 153, 153) ! important; }
+.mtit_con_right a:hover, .collectBox a:hover, .reportBox a:hover { color: rgb(255, 85, 0) ! important; }
+.goldCompany .mtit_con_right { position: relative; }
+.goldCompany .mtit_con_right {  }
+.goldCompany .mtit_con_right .mtit_con_ul li { line-height: 22px; display: block; float: none; padding: 0px 13px 0px 0px; text-align: right; }
+.goldCompany li.share, .goldCompany li.report { margin: 0px; }
+.goldCompany .mtit_con_right .reportBox { top: 20px; left: 21px ! important; width: 100px; }
+.compotherPos { padding-bottom: 22px; }
+#direct_ad_bottom ul {  }
+.topSearch_t { font-weight: 400; margin: 15px 0px 8px; color: rgb(153, 153, 153); }
+.topSearch_c { line-height: 24px; }
+.topSearch_c a { margin-right: 5px; color: rgb(102, 102, 102); }
+.topSearch_c a:hover { color: rgb(255, 85, 0); }
+.detailBottomAd { margin-top: 12px; }
+.detailBottomAd .col_con { font-size: 12px; padding: 10px; border: 1px solid rgb(224, 224, 224); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.detailBottomAd .col_con h2 { font: 300 12px/16px simsun; margin-bottom: 10px; color: rgb(153, 153, 153); }
+.detailBottomAd .links { color: rgb(102, 102, 102); }
+.detailBottomAd .links a { color: rgb(102, 102, 102); }
+.detailBottomAd .links a:hover { color: red; }
+.detailBottomAd .links dl { border-top: 1px dotted rgb(221, 221, 221); }
+.detailBottomAd .links dl { line-height: 24px; clear: both; overflow: hidden; padding: 8px 0px; }
+.detailBottomAd .links dt { float: left; margin-top: 4px; }
+.detailBottomAd .links dd { margin-left: 70px; }
+.sRele a, .sRecom a, .fLink a { display: inline; float: left; margin-right: 13px; white-space: nowrap; }
+#a125 .topSearch .topSearch_t { float: left; margin-top: 12px; }
+#a125 .topSearch .topSearch_c { margin-left: 70px; padding-top: 8px; }
+.detailBottomAd .links h2 { margin: 0px; }
+.footer { font-size: 12px; line-height: 22px; padding: 15px 0px; text-align: center; color: rgb(153, 153, 153); }
+.wb-sidebar-right { float: left; width: 217px; border-width: 2px 1px 1px medium; border-style: solid solid solid none; border-color: rgb(184, 184, 184) rgb(220, 222, 225) rgb(220, 222, 225) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background: rgb(245, 245, 245) none repeat scroll 0% 0%; }
+.wb-sidebar-right a { color: rgb(17, 85, 204); }
+.wb-sidebar-right a:hover { color: red; }
+#jobAd { border-bottom: 1px solid rgb(234, 234, 234); }
+.s_ad { font-family: Arial,sans-serif; padding: 0px 10px; word-wrap: break-word; word-break: break-all; color: rgb(102, 102, 102); }
+.s_ad li { font-size: 12px; line-height: 26px; }
+.s_ad h3 { font-weight: 700; margin: 20px 0px 5px; }
+#jobtext h3 a { font-size: 12px; font-weight: 400; color: rgb(88, 88, 88); }
+.newAd { padding: 15px 8px; color: rgb(88, 88, 88); border-bottom: 1px solid rgb(230, 231, 232); }
+.newAd .title { margin-bottom: 10px; }
+.newAd .title h3 { font-size: 12px; font-weight: 400; }
+.newAd li { padding: 5px 0px; }
+.newAd li h3 { font-size: 12px; font-weight: 400; }
+.newAd p { font-size: 12px; line-height: 1.5; margin: 3px 0px; color: rgb(88, 88, 88); }
+.tuan sup, #minsearch, #myfeet li, #minsearchsearchbtn, #topbar, .msgTips_arrow, .msgTips_close, .msgTips_con, .ntTips_con, .bangbang_pr, .ft_ls_c { background-image: url("topbar.png") ! important; }
+.wb-content { position: relative; }
+.applyPos-top .securityCont { padding: 40px 8px 41px 10px; border: 1px solid rgb(233, 246, 233); background: rgb(246, 255, 242) none repeat scroll 0% 0%; }
+.applyPos-top .securityCenter { width: 259px; height: 61px; margin-right: 5px; margin-left: 20px; vertical-align: middle; background: transparent url("securityCenter.png") no-repeat scroll 0% 0%; }
+.applyPos-top .securityTips { font-size: 12px; line-height: 20px; margin: 24px 0px 0px 62px; color: rgb(142, 142, 142); }
+.applyPos-top .securityCont .applyBtn { margin-top: 7px; }
+.goldCompany { position: absolute; top: 20px; right: 0px; overflow: visible; }
+.posSumLeft { float: left; overflow: hidden; width: 594px; }
+.posSum { position: relative; clear: both; overflow: visible; }
+.headCon { overflow: hidden; padding: 12px 0px 9px; border-bottom: 1px dashed rgb(220, 222, 225); }
+.headCon h1 { font: 400 22px "微软雅黑"; display: inline-block; float: left; margin-bottom: 10px; }
+.headTag { clear: both; }
+.headTag li { font-size: 12px; display: inline-block; padding-right: 20px; color: rgb(152, 152, 152); }
+.headConLeft { float: left; }
+.nextMsg { font-size: 14px; display: inline-block; float: right; padding-top: 7px; }
+.nextMsg a#nextUrl { color: rgb(246, 121, 14); }
+.posSum::after { display: table; clear: both; content: ""; }
+.posSum .company { overflow: hidden; }
+.posSum .company .vip-yan, .posSum .company .vip-noyan { font-size: 12px; padding-left: 14px; }
+.posSum .compMsg li { font-size: 12px; float: left; margin: 3px 30px 0px 0px; }
+.posSum .compMsg li span { color: rgb(104, 104, 104); }
+.posinfo .xq .condition span.salaNum { color: rgb(249, 41, 41); }
+.posinfo .xq .condition { font-size: 14px; padding: 11px 0px; }
+.posinfo .xq .map { position: relative; margin-left: 5px; padding-left: 19px; cursor: pointer; }
+.posinfo .xq .map i { position: absolute; top: -3px; left: 0px; width: 14px; height: 18px; background: transparent url("job-detail-btn.png") no-repeat scroll 0px -107px; }
+.posinfo .xq .nearRoom { font-size: 12px; padding-left: 15px; }
+.companyCon { overflow: hidden; padding: 4px 20px; background-color: rgb(255, 255, 255); }
+.companyCon .comName { font-size: 14px; display: inline-block; padding: 17px 0px 14px; }
+.comIcon { position: relative; overflow: hidden; padding-bottom: 20px; }
+.listInfo { background: transparent url("listInfoImg.png") no-repeat scroll 0% 0%; }
+.comIcon span.comTime { font: 700 12px SimSun; display: inline-block; width: 21px; height: 14px; padding-left: 15px; vertical-align: middle; color: rgb(251, 88, 0); background-position: -46px -61px; margin: 5px 3px 0px; }
+.companyCon li { font-size: 12px; position: relative; padding-bottom: 12px; color: rgb(88, 88, 88); }
+.companyCon .bangbangIcon { position: absolute; top: 0px; left: 111px; width: 16px; height: 16px; cursor: pointer; background-position: 0px -78px; }
+.tabC .contact dl { line-height: 32px; margin-top: 18px; }
+.tabC .contact dl dt { float: left; clear: both; width: 79px; height: 32px; padding-top: 3px; color: rgb(112, 112, 112); }
+.tabC .contact dl dd { position: relative; margin-left: 79px; padding-top: 3px; color: rgb(62, 62, 62); }
+.tabC .contact .conTip { line-height: 32px; color: rgb(62, 62, 62); }
+.tabC .contact .conTip span { color: rgb(153, 153, 153); }
+.tabC .contact .map { position: relative; margin-left: 5px; padding-left: 19px; }
+.tabC .contact .map i { position: absolute; top: -3px; left: 0px; width: 14px; height: 18px; background: transparent url("job-detail-btn.png") no-repeat scroll 0px -107px; }
+#bangbangWrapBox img { padding-bottom: 6px; }
+#ck2 img { position: relative; top: -2px; }
+.nextMsg { margin-right: 10px; }
+@keyframes blink {
+0% { opacity: 0.2; }
+50% { opacity: 1; }
+100% { opacity: 0.2; }
+}
+@keyframes blink {
+0% { opacity: 0.2; }
+50% { opacity: 1; }
+100% { opacity: 0.2; }
+}
+.recommend-position { margin-top: 15px; border: 1px solid rgb(224, 224, 224); }
+.recPos-header { padding: 8px 0px 8px 15px; border: 1px solid rgb(231, 231, 231); background: rgb(246, 246, 246) none repeat scroll 0% 0%; }
+.recPos-header a { float: right; margin-right: 10px; }
+.recPos-body { position: relative; overflow: hidden; }
+.recPos-list { position: relative; }
+.recPos-list ul { overflow: hidden; }
+.recPos-list .recPos-item { position: relative; float: left; width: 50%; height: 126px; border-bottom: 1px solid rgb(231, 231, 231); }
+.recPos-list .recPos-even { margin-left: -1px; border-left: 1px solid rgb(231, 231, 231); }
+.recPos-list a:hover, .recPos-footer a:hover { text-decoration: none; }
+.recPos-select { position: absolute; top: 28px; left: 24px; height: 20px; padding-right: 6px; padding-bottom: 50px; cursor: pointer; }
+.recPos-select a { display: block; margin-top: 2px; }
+.recPos-select a i { display: block; width: 12px; height: 12px; cursor: pointer; border: 1px solid rgb(147, 147, 147); outline: 0px none; }
+.recPos-info { display: block; padding: 26px 38px 21px 46px; }
+.recPos-info:hover { background: rgb(246, 246, 246) none repeat scroll 0% 0%; }
+.recPos-info .recPos-detail { position: relative; margin-bottom: 12px; }
+.recPos-info h4 { font-size: 16px; line-height: 20px; margin-right: 40px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: rgb(51, 51, 51); }
+.recPos-info p { font-size: 14px; line-height: 20px; margin-top: 4px; color: gray; }
+.recPos-info .recPos-company { overflow: hidden; width: 175px; white-space: nowrap; text-overflow: ellipsis; }
+.recPos-info .recPos-salary { position: absolute; top: 0px; right: 0px; }
+.recPos-info .recPos-welfare { clear: both; }
+.recPos-info .recPos-welfare ul { overflow: hidden; height: 23px; margin-bottom: 0px; padding-bottom: 0px; }
+.recPos-info .recPos-welfare ul li { font-size: 12px; line-height: 21px; float: left; margin-right: 4px; padding: 0px 3px; color: rgb(145, 193, 119); border: 1px solid rgb(145, 193, 119); border-radius: 4px; }
+.recPos-body .recPos-more { font-size: 20px; line-height: 79px; height: 79px; text-align: center; color: rgb(255, 106, 34); }
+.recPos-body .recPos-more:hover { color: rgb(255, 106, 34); }
+.recPos-footer { padding: 13px 20px; }
+.recPos-footer .recPos-button { padding: 16px 0px; }
+.recPos-footer .recPos-button a { font-size: 20px; line-height: 44px; display: block; width: 202px; height: 44px; margin: 0px auto; text-align: center; color: rgb(255, 255, 255); border-radius: 4px; background: rgb(241, 122, 1) none repeat scroll 0% 0%; }
+.recPos-footer .recPos-button .disabled { background: rgb(153, 153, 153) none repeat scroll 0% 0%; }
+.recPos-list-new .recPos-item { position: relative; float: left; width: 50%; height: 126px; border-bottom: 1px solid rgb(231, 231, 231); }
+.recPos-list-new .recPos-even { margin-left: -1px; border-left: 1px solid rgb(231, 231, 231); }
+.recPos-list-new .recPos-select { position: absolute; top: 28px; left: 10px; height: 20px; padding-right: 6px; padding-bottom: 50px; cursor: pointer; }
+.recPos-list-new .recPos-info { display: block; height: 79px; padding: 26px 10px 21px 30px; }
+.recPos-list-new .recPos-info h4 { font-size: 16px; float: left; line-height: 20px; max-width: 200px; margin-top: 0px; margin-bottom: 0px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: rgb(51, 51, 51); }
+.recPos-list-new .recPos-info .recPos-company { clear: both; float: left; }
+.recPos-list-new .recPos-info .recPos-companyName { display: inline-block; overflow: hidden; max-width: 160px; white-space: nowrap; text-overflow: ellipsis; }
+.recPos-list-new .recPos-info .recPos-salary { position: absolute; top: -3px; right: 0px; color: rgb(255, 0, 46); font-size: 16px; }
+.recPos-list-new .recPos-info .recPos-salary strong { font-weight: 400; }
+.recPos-list-new .recPos-info .recPos-welfare ul { overflow: hidden; float: left; height: 23px; margin-bottom: 0px; padding-bottom: 0px; margin-top: 5px; }
+.recPos-list-new .recPos-info .recPos-company { overflow: visible; }
+.recPos-address { float: right; color: rgb(57, 51, 60); position: relative; margin-top: 4px; }
+.recPos-address i { position: absolute; top: 0px; left: -16px; }
+.recPos-icons { display: inline-block; background: transparent url("recPos-icon.png") no-repeat scroll 0% 0%; }
+.recPos-icons-location { width: 14px; height: 16px; background-position: 0px -20px; }
+.recPos-icons-license { width: 23px; height: 16px; background-position: 0px -40px; }
+.recPos-icons-famousCompany { width: 45px; height: 15px; background-position: 0px 0px; }
+.recPos-date { float: right; color: rgb(57, 51, 60); font-size: 14px; margin-top: 5px; line-height: 20px; }
+.recPos-info .recPos-welfare ul li.testB { color: rgb(255, 102, 0); border: 1px solid rgb(255, 102, 0); }
+.applyPos-append { float: left; }
+.applyPos-qrcode { width: 114px; height: 142px; margin-left: 13px; border: 1px solid rgb(233, 246, 233); background: rgb(246, 255, 242) none repeat scroll 0% 0%; }
+.applyPos-qrcode a { display: block; width: 90px; height: 90px; margin: 11px auto 6px; }
+.qrcode-58app { border: 1px solid rgb(251, 223, 183); background: rgb(255, 250, 243) none repeat scroll 0% 0%; }
+.applyPos-qrcode p { font-size: 12px; line-height: 15px; text-align: center; }
+.qrcode-58app p { color: rgb(212, 87, 16); }
+.qrcode-wechat p { color: rgb(70, 137, 42); }
+.qrcode-wechat { border: 1px solid rgb(205, 239, 189); background: rgb(246, 255, 242) none repeat scroll 0% 0%; }
+#share .bds_tools span.bds_more, .bds_tools .bds_more { display: inline; float: none; padding: 0px 0px 0px 15px; background: transparent url("main_title_bg.png") no-repeat scroll -5px -625px ! important; }
+#ck1 { height: 34px; line-height: 34px; display: inline-block; }
+#ck2 { height: 34px; line-height: 34px; position: relative; }
+@font-face {
+  font-family: "pc_job_detail";
+  src: url("urn:scrapbook-download-error:http://img.58.com.cn/webfonts/job/job_detail.eot"), url("urn:scrapbook-download-error:http://img.58.com.cn/webfonts/job/job_detail.eot?#iefix") format("embedded-opentype"), url("job_detail.woff") format("woff"), url("job_detail.ttf") format("truetype"), url("job_detail.svg") format("svg");
+}
+.bbLayerSmall { position: fixed; bottom: 0px; right: 0px; width: 180px; height: 310px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 1px solid rgb(221, 221, 221); z-index: 1000000; padding: 15px 0px; }
+.bbLayerSmall .user { overflow: hidden; margin-bottom: 10px; }
+.bbLayerSmall .user dt { float: left; width: 34px; height: 34px; margin: 2px 5px 0px 18px; background: transparent url("touxiang_k.png") no-repeat scroll 0% 0%; }
+.bbLayerSmall .user dd { float: left; }
+.bbLayerSmall .user dd .txt { display: block; font-size: 14px; color: rgb(51, 51, 51); }
+.bbLayerSmall .user dd .orange { display: block; text-align: center; width: 66px; height: 17px; font-size: 12px; color: rgb(255, 255, 255); background: rgb(255, 156, 0) none repeat scroll 0% 0%; border-radius: 100px; }
+.bbLayerSmall .talk { font-size: 12px; color: rgb(51, 51, 51); height: 60px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 1px solid rgb(216, 216, 216); margin: 0px 14px 15px; padding: 7px 0px 9px 9px; position: relative; line-height: 20px; }
+.bbLayerSmall .talk i { position: absolute; width: 9px; height: 16px; background: transparent url("arrow_k.png") no-repeat scroll 0% 0%; left: -9px; top: 50%; margin-top: -8px; }
+.bbLayerSmall .code { width: 100px; height: 100px; margin: 0px auto 5px; }
+.bbLayerSmall .code img { display: block; height: 100%; width: 100%; }
+.bbLayerSmall .txtBig { font-size: 14px; color: rgb(51, 51, 51); text-align: center; margin-bottom: 5px; }
+.bbLayerSmall .txtSmall { font-size: 12px; color: rgb(153, 153, 153); text-align: center; }
+.bbLayerSmall .closeBtn { width: 13px; height: 13px; background: transparent url("close_k.png") no-repeat scroll 0% 0%; position: absolute; top: 17px; right: 17px; cursor: pointer; }
+#openApp_banner .appTip { width: 780px; height: 152px; background: transparent url("appTip_banner2.png") no-repeat scroll 0% 0%; margin: 0px auto 90px; position: relative; }
+#openApp_banner .appTip .code { position: absolute; top: 33px; right: 35px; width: 110px; height: 110px; }
+#openApp_banner .appTip .code img { display: block; width: 100%; height: 100%; }

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>简介 | Composer 中文文档 | Composer 中文网</title>
+        <meta name="description" content="Composer 是 PHP 中用来管理依赖（dependency）关系的工具">
+        <meta name="keywords" content="PHP, Composer, Packagist, 依赖管理, npm, Symfony, Laravel">
+
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="prism.css">
+
+        <script src="about:blank"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                    <a href="http://docs.phpcomposer.com/">首页</a>
+                    <a href="#">入门</a>
+                    <a href="https://getcomposer.org/download/" target="_blank">下载</a>
+                    <a href="http://packagist.org/" target="_blank">安装包列表</a>
+                    <a class="last" href="http://pkg.phpcomposer.com/" target="_blank">中国镜像</a>
+            </header>
+            <div id="main" role="main">
+    
+    <p><a name="Introduction"></a></p>
+<h1>简介</h1>
+<p>Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。</p>
+<hr>
+<ul>
+<li><a href="#Introduction">简介</a>
+<ul>
+<li><a href="#Dependency-management">依赖管理</a></li>
+<li><a href="#Declaring-dependencies">声明依赖关系</a></li>
+<li><a href="#System-Requirements">系统要求</a></li>
+<li><a href="#Installation-*nix">安装 - *nix</a>
+<ul>
+<li><a href="#Downloading-the-Composer-Executable">下载 Composer 的可执行文件</a>
+<ul>
+<li><a href="#Locally">局部安装</a></li>
+<li><a href="#Globally">全局安装</a></li>
+<li><a href="#Globally-on-OSX-via-homebrew">全局安装 (on OSX via homebrew)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Installation-Windows">安装 - Windows</a>
+<ul>
+<li><a href="#Using-the-Installer">使用安装程序</a></li>
+<li><a href="#Manual-Installation">手动安装</a></li>
+</ul>
+</li>
+<li><a href="#Using-Composer">使用 Composer</a></li>
+<li><a href="#Autoloading">自动加载</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><a name="Dependency-management"></a></p>
+<h2>依赖管理</h2>
+<p>Composer 不是一个包管理器。是的，它涉及 "packages" 和 "libraries"，但它在每个项目的基础上进行管理，在你项目的某个目录中（例如 <code>vendor</code>）进行安装。默认情况下它不会在全局安装任何东西。因此，这仅仅是一个依赖管理。</p>
+<p>这种想法并不新鲜，Composer 受到了 node's <a href="http://npmjs.org/" target="_blank">npm</a>
+和 ruby's <a href="http://gembundler.com/" target="_blank">bundler</a> 的强烈启发。而当时 PHP 下并没有类似的工具。</p>
+<p>Composer 将这样为你解决问题：</p>
+<p>a) 你有一个项目依赖于若干个库。</p>
+<p>b) 其中一些库依赖于其他库。</p>
+<p>c) 你声明你所依赖的东西。</p>
+<p>d) Composer 会找出哪个版本的包需要安装，并安装它们（将它们下载到你的项目中）。</p>
+<p><a name="Declaring-dependencies"></a></p>
+<h2>声明依赖关系</h2>
+<p>比方说，你正在创建一个项目，你需要一个库来做日志记录。你决定使用 <a href="https://github.com/Seldaek/monolog" target="_blank">monolog</a>。为了将它添加到你的项目中，你所需要做的就是创建一个 <code>composer.json</code> 文件，其中描述了项目的依赖关系。</p>
+<pre><code class="language-json">{
+    "require": {
+        "monolog/monolog": "1.2.*"
+    }
+}
+</code></pre>
+<p>我们只要指出我们的项目需要一些 <code>monolog/monolog</code> 的包，从 <code>1.2</code> 开始的任何版本。</p>
+<p><a name="System-Requirements"></a></p>
+<h2>系统要求</h2>
+<p>运行 Composer 需要 PHP 5.3.2+ 以上版本。一些敏感的 PHP 设置和编译标志也是必须的，但对于任何不兼容项安装程序都会抛出警告。</p>
+<p>我们将从包的来源直接安装，而不是简单的下载 zip 文件，你需要 git 、 svn 或者 hg ，这取决于你载入的包所使用的版本管理系统。</p>
+<p>Composer 是多平台的，我们努力使它在 Windows 、 Linux 以及 OSX 平台上运行的同样出色。</p>
+<p><a name="Installation-*nix"></a></p>
+<h2>安装 - *nix</h2>
+<p><a name="Downloading-the-Composer-Executable"></a></p>
+<h3>下载 Composer 的可执行文件</h3>
+<p><a name="Locally"></a></p>
+<h4>局部安装</h4>
+<p>要真正获取 Composer，我们需要做两件事。首先安装 Composer （同样的，这意味着它将下载到你的项目中）：</p>
+<pre><code class="language-sh">curl -sS https://getcomposer.org/installer | php
+</code></pre>
+<blockquote>
+<p><strong>注意：</strong> 如果上述方法由于某些原因失败了，你还可以通过 <code>php</code> &gt;下载安装器：</p>
+</blockquote>
+<pre><code class="language-sh">php -r "readfile('https://getcomposer.org/installer');" | php
+</code></pre>
+<p>这将检查一些 PHP 的设置，然后下载 <code>composer.phar</code> 到你的工作目录中。这是 Composer 的二进制文件。这是一个 PHAR 包（PHP 的归档），这是 PHP 的归档格式可以帮助用户在命令行中执行一些操作。</p>
+<p>你可以通过 <code>--install-dir</code> 选项指定 Composer 的安装目录（它可以是一个绝对或相对路径）：</p>
+<pre><code class="language-sh">curl -sS https://getcomposer.org/installer | php -- --install-dir=bin
+</code></pre>
+<p><a name="Globally"></a></p>
+<h4>全局安装</h4>
+<p>你可以将此文件放在任何地方。如果你把它放在系统的 <code>PATH</code> 目录中，你就能在全局访问它。 在类Unix系统中，你甚至可以在使用时不加 <code>php</code> 前缀。</p>
+<p>你可以执行这些命令让 <code>composer</code> 在你的系统中进行全局调用：</p>
+<pre><code class="language-sh">curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+</code></pre>
+<blockquote>
+<p><strong>注意：</strong> 如果上诉命令因为权限执行失败，
+请使用 sudo 再次尝试运行 <code>mv</code> 那行命令。</p>
+</blockquote>
+<p>现在只需要运行 <code>composer</code> 命令就可以使用 Composer 而不需要输入 <code>php composer.phar</code>。</p>
+<p><a name="Globally-on-OSX-via-homebrew"></a></p>
+<h4>全局安装 (on OSX via homebrew)</h4>
+<p>Composer 是 homebrew-php 项目的一部分。</p>
+<pre><code class="language-sh">brew update
+brew tap josegonzalez/homebrew-php
+brew tap homebrew/versions
+brew install php55-intl
+brew install josegonzalez/php/composer
+</code></pre>
+<p><a name="Installation-Windows"></a></p>
+<h2>安装 - Windows</h2>
+<p><a name="Using-the-Installer"></a></p>
+<h3>使用安装程序</h3>
+<p>这是将 Composer 安装在你机器上的最简单的方法。</p>
+<p>下载并且运行 <a href="https://getcomposer.org/Composer-Setup.exe" target="_blank">Composer-Setup.exe</a>，它将安装最新版本的 Composer ，并设置好系统的环境变量，因此你可以在任何目录下直接使用 <code>composer</code> 命令。</p>
+<p><a name="Manual-Installation"></a></p>
+<h3>手动安装</h3>
+<p>设置系统的环境变量 <code>PATH</code> 并运行安装命令下载 composer.phar 文件：</p>
+<pre><code class="language-sh">C:\Users\username&gt;cd C:\bin
+C:\bin&gt;php -r "readfile('https://getcomposer.org/installer');" | php
+</code></pre>
+<blockquote>
+<p><strong>注意：</strong> 如果收到 readfile 错误提示，请使用 <code>http</code> 链接或者在 php.ini 中开启 php_openssl.dll 。</p>
+</blockquote>
+<p>在 <code>composer.phar</code> 同级目录下新建文件 <code>composer.bat</code> ：</p>
+<pre><code class="language-sh">C:\bin&gt;echo @php "%~dp0composer.phar" %*&gt;composer.bat
+</code></pre>
+<p>关闭当前的命令行窗口，打开新的命令行窗口进行测试：</p>
+<pre><code class="language-sh">C:\Users\username&gt;composer -V
+Composer version 27d8904
+</code></pre>
+<p><a name="Using-Composer"></a></p>
+<h2>使用 Composer</h2>
+<p>现在我们将使用 Composer 来安装项目的依赖。如果在当前目录下没有一个 <code>composer.json</code> 文件，请查看<a href="http://docs.phpcomposer.com/01-basic-usage.html">基本用法</a>章节。</p>
+<p>要解决和下载依赖，请执行 <code>install</code> 命令：</p>
+<pre><code class="language-sh">php composer.phar install
+</code></pre>
+<p>如果你进行了全局安装，并且没有 phar 文件在当前目录，请使用下面的命令代替：</p>
+<pre><code class="language-sh">composer install
+</code></pre>
+<p>继续 <a href="#Declaring-dependencies">上面的例子</a>，这里将下载 monolog 到 <code>vendor/monolog/monolog</code> 目录。</p>
+<p><a name="Autoloading"></a></p>
+<h2>自动加载</h2>
+<p>除了库的下载，Composer 还准备了一个自动加载文件，它可以加载 Composer 下载的库中所有的类文件。使用它，你只需要将下面这行代码添加到你项目的引导文件中：</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword">require</span> <span class="token string">'vendor/autoload.php'</span><span class="token punctuation">;</span>
+</code></pre>
+<p>现在我们就可以使用 monolog 了！想要学习更多关于 Composer 的知识，请查看“基本用法”章节。</p>
+<p><a href="http://docs.phpcomposer.com/01-basic-usage.html">基本用法</a> →</p>
+
+
+    <p class="fork-and-edit">
+        如果您发现文档中有错误，或者能够帮我们完善文档，请提交到我们的 <a href="https://github.com/5-say/composer-doc-cn" target="_blank">Github 仓库吧</a>！
+    </p>
+            </div>
+            <footer>
+
+                <p class="license">Composer 以及本网站上的所有内容全部遵循 <a href="https://github.com/composer/composer/blob/master/LICENSE" target="_blank">MIT 开源协议</a>。</p>
+            </footer>
+        </div>
+
+        <script src="about:blank"></script>
+        <script type="text/javascript">/* Code removed by ScrapBook */</script><script src="about:blank" type="text/javascript"></script>
+    
+
+</body>
+</html>

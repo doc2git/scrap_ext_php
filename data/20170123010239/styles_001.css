@@ -1,0 +1,26 @@
+/* Code tidied up by ScrapBook */
+@font-face {
+  font-family: "FontAwesomeSlick";
+  src: url("fontawesome-webfont.eot") format("embedded-opentype"), url("urn:scrapbook-download-error:https://www.unixmen.com/wp-content/plugins/custom-google-plus-feed/feeds/css/font/fontawesome-webfont.woff?v=3.2.1") format("woff"), url("urn:scrapbook-download-error:https://www.unixmen.com/wp-content/plugins/custom-google-plus-feed/feeds/css/font/fontawesome-webfont.ttf?v=3.2.1") format("truetype"), url("urn:scrapbook-download-error:https://www.unixmen.com/wp-content/plugins/custom-google-plus-feed/feeds/css/font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1") format("svg");
+}
+pre { white-space: pre-wrap; word-wrap: break-word; }
+@media not all, only screen and (min--moz-device-pixel-ratio: 2), not all, not all {
+}
+@keyframes gpf-fb-bouncedelay {
+0%, 100%, 80% { transform: scale(0); }
+40% { transform: scale(1); }
+}
+@media only screen and (max-width: 640px) {
+}
+@keyframes spinY {
+0% { transform: rotateY(0deg); }
+100% { transform: rotateY(360deg); }
+}
+@keyframes spinY {
+0% { transform: rotateY(0deg); }
+100% { transform: rotateY(360deg); }
+}
+@keyframes fade {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.5; }
+}

@@ -1,0 +1,15 @@
+/* Code tidied up by ScrapBook */
+.change_btn { padding: 0px; text-align: center; font-size: 12px; }
+html, body, p { padding: 0px; margin: 0px; }
+.change_btn img.icon { width: 32px; height: 32px; background: transparent url("btn_trans.gif") repeat scroll 0px 0px; border: medium none; }
+.change_btn .number { position: relative; display: inline-block; height: 22px; margin-bottom: 8px; padding-left: 6px; background: transparent url("btn_trans.gif") no-repeat scroll 0px -98px; }
+.change_btn .number em { position: relative; display: inline-block; height: 22px; margin-right: -1px; padding-right: 5px; background: transparent url("btn_trans.gif") no-repeat scroll right -98px; font-family: verdana; font-size: 11px; font-style: normal; line-height: 22px; z-index: 2; }
+.change_btn img.arrow { position: absolute; width: 5px; height: 4px; left: 50%; bottom: -3px; margin-left: -2px; background: transparent url("btn_trans.gif") no-repeat scroll -10px -136px; z-index: 3; }
+.change_btn .type3 p { text-align: left; }
+.change_btn .type3 img.icon { width: 16px; height: 16px; background-position: 0px -56px; }
+.change_btn .type3 .number { float: left; height: 16px; margin: 0px 0px -24px 19px; padding-left: 5px; background-position: 0px -120px; }
+.change_btn .type3 .number em { height: 16px; padding-right: 5px; background-position: right -120px; line-height: 16px; }
+.change_btn .type3 img.arrow { position: absolute; width: 3px; height: 5px; left: 0px; top: 6px; background-position: -30px -136px; }
+.change_btn .number { display: none; }
+.change_btn .showNum .number { display: inline-block; }
+.change_btn p a { outline: medium none; }

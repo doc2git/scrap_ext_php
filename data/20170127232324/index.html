@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns="http://www.w3.org/1999/xhtml" class=" js flexbox flexboxlegacy datauri">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <title>PHP: date - Manual </title>
+
+ <link rel="shortcut icon" href="favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="http://php.net/manual/zh/function.date.php">
+ <link rel="shorturl" href="http://php.net/date">
+ <link rel="alternate" href="http://php.net/date" hreflang="x-default">
+
+ <link rel="contents" href="http://php.net/manual/zh/index.php">
+ <link rel="index" href="http://php.net/manual/zh/ref.datetime.php">
+ <link rel="prev" href="http://php.net/manual/zh/function.date-timezone-set.php">
+ <link rel="next" href="http://php.net/manual/zh/function.getdate.php">
+
+ <link rel="alternate" href="http://php.net/manual/en/function.date.php" hreflang="en">
+ <link rel="alternate" href="http://php.net/manual/pt_BR/function.date.php" hreflang="pt_BR">
+ <link rel="alternate" href="http://php.net/manual/zh/function.date.php" hreflang="zh">
+ <link rel="alternate" href="http://php.net/manual/fr/function.date.php" hreflang="fr">
+ <link rel="alternate" href="http://php.net/manual/de/function.date.php" hreflang="de">
+ <link rel="alternate" href="http://php.net/manual/ja/function.date.php" hreflang="ja">
+ <link rel="alternate" href="http://php.net/manual/kr/function.date.php" hreflang="kr">
+ <link rel="alternate" href="http://php.net/manual/ro/function.date.php" hreflang="ro">
+ <link rel="alternate" href="http://php.net/manual/ru/function.date.php" hreflang="ru">
+ <link rel="alternate" href="http://php.net/manual/es/function.date.php" hreflang="es">
+ <link rel="alternate" href="http://php.net/manual/tr/function.date.php" hreflang="tr">
+
+<link rel="stylesheet" type="text/css" href="cached.php" media="screen">
+<link rel="stylesheet" type="text/css" href="cached_001.php" media="screen">
+<link rel="stylesheet" type="text/css" href="cached_002.php" media="screen">
+<link rel="stylesheet" type="text/css" href="cached_003.php" media="screen">
+
+ <!--[if lte IE 7]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie7.css" media="screen">
+ <![endif]-->
+
+ <!--[if lte IE 8]>
+ <script type="text/javascript">
+  window.brokenIE = true;
+ </script>
+ <![endif]-->
+
+ <!--[if lte IE 9]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie9.css" media="screen">
+ <![endif]-->
+
+ <!--[if IE]>
+ <script type="text/javascript" src="http://php.net/js/ext/html5.js"></script>
+ <![endif]-->
+
+ <base href="">
+
+</head>
+<body class="docs ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="http://php.net/" class="brand"><img src="php-logo.svg" alt="php" height="24" width="48"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input id="mainmenu-toggle" type="checkbox">
+    <ul class="nav">
+      <li class=""><a href="http://php.net/downloads">Downloads</a></li>
+      <li class="active"><a href="http://php.net/docs.php">Documentation</a></li>
+      <li class=""><a href="http://php.net/get-involved">Get Involved</a></li>
+      <li class=""><a href="http://php.net/support">Help</a></li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="http://php.net/search.php">
+      <input name="show" value="quickref" type="hidden">
+      <span style="position: relative; display: inline-block;" class="twitter-typeahead"><input style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: rgb(255, 255, 255) none repeat scroll 0% 0%;" class="tt-hint search-query" autocomplete="off" spellcheck="off" disabled="" type="text"><input dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" spellcheck="false" autocomplete="off" name="pattern" class="search-query tt-query" placeholder="Search" accesskey="s" type="search"><input style="visibility: hidden; position: fixed;" type="submit"><span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: &quot;Fira Sans&quot;,&quot;Source Sans Pro&quot;,Helvetica,Arial,sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: optimizelegibility; text-transform: none;"></span><span style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;" class="tt-dropdown-menu"></span></span>
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<nav id="trick"><div><dl>
+<dt><a href="http://php.net/manual/en/getting-started.php">Getting Started</a></dt>
+	<dd><a href="http://php.net/manual/en/introduction.php">Introduction</a></dd>
+	<dd><a href="http://php.net/manual/en/tutorial.php">A simple tutorial</a></dd>
+<dt><a href="http://php.net/manual/en/langref.php">Language Reference</a></dt>
+	<dd><a href="http://php.net/manual/en/language.basic-syntax.php">Basic syntax</a></dd>
+	<dd><a href="http://php.net/manual/en/language.types.php">Types</a></dd>
+	<dd><a href="http://php.net/manual/en/language.variables.php">Variables</a></dd>
+	<dd><a href="http://php.net/manual/en/language.constants.php">Constants</a></dd>
+	<dd><a href="http://php.net/manual/en/language.expressions.php">Expressions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.operators.php">Operators</a></dd>
+	<dd><a href="http://php.net/manual/en/language.control-structures.php">Control Structures</a></dd>
+	<dd><a href="http://php.net/manual/en/language.functions.php">Functions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.oop5.php">Classes and Objects</a></dd>
+	<dd><a href="http://php.net/manual/en/language.namespaces.php">Namespaces</a></dd>
+	<dd><a href="http://php.net/manual/en/language.errors.php">Errors</a></dd>
+	<dd><a href="http://php.net/manual/en/language.exceptions.php">Exceptions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.generators.php">Generators</a></dd>
+	<dd><a href="http://php.net/manual/en/language.references.php">References Explained</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.variables.php">Predefined Variables</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.exceptions.php">Predefined Exceptions</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.interfaces.php">Predefined Interfaces and Classes</a></dd>
+	<dd><a href="http://php.net/manual/en/context.php">Context options and parameters</a></dd>
+	<dd><a href="http://php.net/manual/en/wrappers.php">Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href="http://php.net/manual/en/security.php">Security</a></dt>
+	<dd><a href="http://php.net/manual/en/security.intro.php">Introduction</a></dd>
+	<dd><a href="http://php.net/manual/en/security.general.php">General considerations</a></dd>
+	<dd><a href="http://php.net/manual/en/security.cgi-bin.php">Installed as CGI binary</a></dd>
+	<dd><a href="http://php.net/manual/en/security.apache.php">Installed as an Apache module</a></dd>
+	<dd><a href="http://php.net/manual/en/security.sessions.php">Session Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.filesystem.php">Filesystem Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.database.php">Database Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.errors.php">Error Reporting</a></dd>
+	<dd><a href="http://php.net/manual/en/security.globals.php">Using Register Globals</a></dd>
+	<dd><a href="http://php.net/manual/en/security.variables.php">User Submitted Data</a></dd>
+	<dd><a href="http://php.net/manual/en/security.magicquotes.php">Magic Quotes</a></dd>
+	<dd><a href="http://php.net/manual/en/security.hiding.php">Hiding PHP</a></dd>
+	<dd><a href="http://php.net/manual/en/security.current.php">Keeping Current</a></dd>
+<dt><a href="http://php.net/manual/en/features.php">Features</a></dt>
+	<dd><a href="http://php.net/manual/en/features.http-auth.php">HTTP authentication with PHP</a></dd>
+	<dd><a href="http://php.net/manual/en/features.cookies.php">Cookies</a></dd>
+	<dd><a href="http://php.net/manual/en/features.sessions.php">Sessions</a></dd>
+	<dd><a href="http://php.net/manual/en/features.xforms.php">Dealing with XForms</a></dd>
+	<dd><a href="http://php.net/manual/en/features.file-upload.php">Handling file uploads</a></dd>
+	<dd><a href="http://php.net/manual/en/features.remote-files.php">Using remote files</a></dd>
+	<dd><a href="http://php.net/manual/en/features.connection-handling.php">Connection handling</a></dd>
+	<dd><a href="http://php.net/manual/en/features.persistent-connections.php">Persistent Database Connections</a></dd>
+	<dd><a href="http://php.net/manual/en/features.safe-mode.php">Safe Mode</a></dd>
+	<dd><a href="http://php.net/manual/en/features.commandline.php">Command line usage</a></dd>
+	<dd><a href="http://php.net/manual/en/features.gc.php">Garbage Collection</a></dd>
+	<dd><a href="http://php.net/manual/en/features.dtrace.php">DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href="http://php.net/manual/en/funcref.php">Function Reference</a></dt>
+	<dd><a href="http://php.net/manual/en/refs.basic.php.php">Affecting PHP's Behaviour</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.audio.php">Audio Formats Manipulation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.auth.php">Authentication Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.cmdline.php">Command Line Specific Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.compression.php">Compression and Archive Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.creditcard.php">Credit Card Processing</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.crypto.php">Cryptography Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.database.php">Database Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.calendar.php">Date and Time Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.fileprocess.file.php">File System Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.international.php">Human Language and Character Encoding Support</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.image.php">Image Processing and Generation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.mail.php">Mail Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.math.php">Mathematical Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.nontext.php">Non-Text MIME Output</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.fileprocess.process.php">Process Control Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.other.php">Other Basic Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.other.php">Other Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.search.php">Search Engine Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.server.php">Server Specific Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.session.php">Session Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.text.php">Text Processing</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.vartype.php">Variable and Type Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.webservice.php">Web Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.windows.php">Windows Only Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.xml.php">XML Manipulation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.ui.php">GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="http://php.net/manual/zh/function.getdate.php">
+          getdate »
+        </a>
+      </div>
+              <div class="prev">
+        <a href="http://php.net/manual/zh/function.date-timezone-set.php">
+          « date_timezone_set        </a>
+      </div>
+          <ul>
+            <li><a href="http://php.net/manual/zh/index.php">PHP 手册</a></li>      <li><a href="http://php.net/manual/zh/funcref.php">函数参考</a></li>      <li><a href="http://php.net/manual/zh/refs.calendar.php">日期与时间相关扩展</a></li>      <li><a href="http://php.net/manual/zh/book.datetime.php">日期/时间</a></li>      <li><a href="http://php.net/manual/zh/ref.datetime.php">Date/Time 函数</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="http://php.net/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select name="page" id="changelang-langs">
+            <option value="en/function.date.php">English</option>
+            <option value="pt_BR/function.date.php">Brazilian Portuguese</option>
+            <option value="zh/function.date.php" selected="selected">Chinese (Simplified)</option>
+            <option value="fr/function.date.php">French</option>
+            <option value="de/function.date.php">German</option>
+            <option value="ja/function.date.php">Japanese</option>
+            <option value="kr/function.date.php">Korean</option>
+            <option value="ro/function.date.php">Romanian</option>
+            <option value="ru/function.date.php">Russian</option>
+            <option value="es/function.date.php">Spanish</option>
+            <option value="tr/function.date.php">Turkish</option>
+            <option value="help-translate.php">Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="edit-bug">
+      <a href="https://edit.php.net/?project=PHP&amp;perm=zh/function.date.php">Edit</a>
+      <a href="https://bugs.php.net/report.php?bug_type=Documentation+problem&amp;manpage=function.date">Report a Bug</a>
+    </div>
+  </div><div id="function.date" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">date</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">date</span> — <span class="dc-title">格式化一个本地时间／日期</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.date-description">
+  <h3 class="title">说明<a class="genanchor" href="#refsect1-function.date-description"> ¶</a></h3>
+   <div class="methodsynopsis dc-description">
+    <span class="type">string</span> <span class="methodname"><strong>date</strong></span>
+     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
+    [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp</code></span>
+   ] )</div>
+
+  <p class="para rdfs-comment">
+   返回将整数 <code class="parameter">timestamp</code>
+   按照给定的格式字串而产生的字符串。如果没有给出时间戳则使用本地当前时间。换句话说，<code class="parameter">timestamp</code>
+   是可选的，默认值为 <span class="function"><a href="http://php.net/manual/zh/function.time.php" class="function">time()</a></span>。
+  </p>
+  <div class="tip"><strong class="tip">Tip</strong>
+   <p class="para">
+    自 PHP 5.1.1 起有几个有用的<a href="http://php.net/manual/zh/datetime.constants.php" class="link">常量</a>可用作标准的日期／时间格式来指定
+    <code class="parameter">format</code> 参数。
+   </p>
+  </div>
+  <div class="tip"><strong class="tip">Tip</strong>
+   <p class="para">
+    自 PHP 5.1 起在 <var class="varname"><var class="varname"><a href="http://php.net/manual/zh/reserved.variables.server.php" class="classname">$_SERVER['REQUEST_TIME']</a></var></var>
+    中保存了发起该请求时刻的时间戳。
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   </p><p class="para">
+    有效的时间戳典型范围是格林威治时间 1901 年 12 月 13 日 20:45:54
+    到 2038 年 1 月 19 日 03:14:07。（此范围符合 32
+    位有符号整数的最小值和最大值）。不过在 PHP 5.1 之前此范围在某些系统（如
+    Windows）中限制为从 1970 年 1 月 1 日到 2038 年 1 月 19 日。
+   </p>
+  </blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   </p><p class="para">
+    要将字符串表达的时间转换成时间戳，应该使用
+    <span class="function"><a href="http://php.net/manual/zh/function.strtotime.php" class="function">strtotime()</a></span>。此外一些数据库有一些函数将其时间格式转换成时间戳（例如
+    MySQL 的 <a href="http://dev.mysql.com/doc/mysql/en/date-and-time-functions.html" class="link external">»&nbsp;UNIX_TIMESTAMP</a> 函数）。
+   </p>
+  </blockquote>
+  <table class="doctable table">
+    <caption><strong>格式字串可以识别以下 <code class="parameter">format</code> 参数的字符串</strong></caption>
+    
+     <thead>
+      <tr>
+       <th><code class="parameter">format</code> 字符</th>
+       <th>说明</th>
+       <th>返回值例子</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td style="text-align: center;"><em class="emphasis">日</em></td>
+       <td>---</td>
+       <td>---</td>
+      </tr>
+
+      <tr>
+       <td><em>d</em></td>
+       <td>月份中的第几天，有前导零的 2 位数字</td>
+       <td><em>01</em> 到 <em>31</em></td>
+      </tr>
+
+      <tr>
+       <td><em>D</em></td>
+       <td>星期中的第几天，文本表示，3 个字母</td>
+       <td><em>Mon</em> 到 <em>Sun</em></td>
+      </tr>
+
+      <tr>
+       <td><em>j</em></td>
+       <td>月份中的第几天，没有前导零</td>
+       <td><em>1</em> 到 <em>31</em></td>
+      </tr>
+
+      <tr>
+       <td><em>l</em>（“L”的小写字母）</td>
+       <td>星期几，完整的文本格式</td>
+       <td><em>Sunday</em> 到 <em>Saturday</em></td>
+      </tr>
+
+      <tr>
+       <td><em>N</em></td>
+       <td>ISO-8601 格式数字表示的星期中的第几天（PHP 5.1.0 新加）</td>
+       <td><em>1</em>（表示星期一）到 <em>7</em>（表示星期天）</td>
+      </tr>
+
+      <tr>
+       <td><em>S</em></td>
+       <td>每月天数后面的英文后缀，2 个字符</td>
+       <td><em>st</em>，<em>nd</em>，<em>rd</em>
+        或者 <em>th</em>。可以和 <em>j</em> 一起用</td>
+      </tr>
+
+      <tr>
+       <td><em>w</em></td>
+       <td>星期中的第几天，数字表示</td>
+       <td><em>0</em>（表示星期天）到 <em>6</em>（表示星期六）</td>
+      </tr>
+
+      <tr>
+       <td><em>z</em></td>
+       <td>年份中的第几天</td>
+       <td><em>0</em> 到 <em>365</em></td>
+      </tr>
+
+      <tr>
+       <td style="text-align: center;"><em class="emphasis">星期</em></td>
+       <td>---</td>
+       <td>---</td>
+      </tr>
+
+      <tr>
+       <td><em>W</em></td>
+       <td>ISO-8601 格式年份中的第几周，每周从星期一开始（PHP 4.1.0 新加的）</td>
+       <td>例如：<em>42</em>（当年的第 42 周）</td>
+      </tr>
+
+      <tr>
+       <td style="text-align: center;"><em class="emphasis">月</em></td>
+       <td>---</td>
+       <td>---</td>
+      </tr>
+
+      <tr>
+       <td><em>F</em></td>
+       <td>月份，完整的文本格式，例如 January 或者 March</td>
+       <td><em>January</em> 到 <em>December</em></td>
+      </tr>
+
+      <tr>
+       <td><em>m</em></td>
+       <td>数字表示的月份，有前导零</td>
+       <td><em>01</em> 到 <em>12</em></td>
+      </tr>
+
+      <tr>
+       <td><em>M</em></td>
+       <td>三个字母缩写表示的月份</td>
+       <td><em>Jan</em> 到 <em>Dec</em></td>
+      </tr>
+
+      <tr>
+       <td><em>n</em></td>
+       <td>数字表示的月份，没有前导零</td>
+       <td><em>1</em> 到 <em>12</em></td>
+      </tr>
+
+      <tr>
+       <td><em>t</em></td>
+       <td>给定月份所应有的天数</td>
+       <td><em>28</em> 到 <em>31</em></td>
+      </tr>
+
+      <tr>
+       <td style="text-align: center;"><em class="emphasis">年</em></td>
+       <td>---</td>
+       <td>---</td>
+      </tr>
+
+      <tr>
+       <td><em>L</em></td>
+       <td>是否为闰年</td>
+       <td>如果是闰年为 <em>1</em>，否则为 <em>0</em></td>
+      </tr>
+
+      <tr>
+       <td><em>o</em></td>
+       <td>ISO-8601 格式年份数字。这和
+        <em>Y</em> 的值相同，只除了如果 ISO
+        的星期数（<em>W</em>）属于前一年或下一年，则用那一年。（PHP 5.1.0 新加）</td>
+       <td>Examples: <em>1999</em> or <em>2003</em></td>
+      </tr>
+
+      <tr>
+       <td><em>Y</em></td>
+       <td>4 位数字完整表示的年份</td>
+       <td>例如：<em>1999</em> 或 <em>2003</em></td>
+      </tr>
+
+      <tr>
+       <td><em>y</em></td>
+       <td>2 位数字表示的年份</td>
+       <td>例如：<em>99</em> 或 <em>03</em></td>
+      </tr>
+
+      <tr>
+       <td style="text-align: center;"><em class="emphasis">时间</em></td>
+       <td>---</td>
+       <td>---</td>
+      </tr>
+
+      <tr>
+       <td><em>a</em></td>
+       <td>小写的上午和下午值</td>
+       <td><em>am</em> 或 <em>pm</em></td>
+      </tr>
+
+      <tr>
+       <td><em>A</em></td>
+       <td>大写的上午和下午值</td>
+       <td><em>AM</em> 或 <em>PM</em></td>
+      </tr>
+
+      <tr>
+       <td><em>B</em></td>
+       <td>Swatch Internet 标准时</td>
+       <td><em>000</em> 到 <em>999</em></td>
+      </tr>
+
+      <tr>
+       <td><em>g</em></td>
+       <td>小时，12 小时格式，没有前导零</td>
+       <td><em>1</em> 到 <em>12</em></td>
+      </tr>
+
+      <tr>
+       <td><em>G</em></td>
+       <td>小时，24 小时格式，没有前导零</td>
+       <td><em>0</em> 到 <em>23</em></td>
+      </tr>
+
+      <tr>
+       <td><em>h</em></td>
+       <td>小时，12 小时格式，有前导零</td>
+       <td><em>01</em> 到 <em>12</em></td>
+      </tr>
+
+      <tr>
+       <td><em>H</em></td>
+       <td>小时，24 小时格式，有前导零</td>
+       <td><em>00</em> 到 <em>23</em></td>
+      </tr>
+
+      <tr>
+       <td><em>i</em></td>
+       <td>有前导零的分钟数</td>
+       <td><em>00</em> 到 <em>59</em>&gt;</td>
+      </tr>
+
+      <tr>
+       <td><em>s</em></td>
+       <td>秒数，有前导零</td>
+       <td><em>00</em> 到 <em>59</em>&gt;</td>
+      </tr>
+
+      <tr>
+           <td><em>u</em></td>
+           <td>
+            毫秒 （PHP 5.2.2 新加）。需要注意的是
+            <span class="function"><strong>date()</strong></span> 函数总是返回
+            <em>000000</em> 因为它只接受 <span class="type"><a href="http://php.net/manual/zh/language.types.integer.php" class="type integer">integer</a></span>
+            参数， 而 <span class="methodname"><a href="http://php.net/manual/zh/datetime.format.php" class="methodname">DateTime::format()</a></span> 才支持毫秒。
+           </td>
+           <td>示例: <em>654321</em></td>
+          </tr>
+
+      <tr>
+       <td style="text-align: center;"><em class="emphasis">时区</em></td>
+       <td>---</td>
+       <td>---</td>
+      </tr>
+
+      <tr>
+       <td><em>e</em></td>
+       <td>时区标识（PHP 5.1.0 新加）</td>
+       <td>例如：<em>UTC</em>，<em>GMT</em>，<em>Atlantic/Azores</em></td>
+      </tr>
+
+      <tr>
+       <td><em>I</em></td>
+       <td>是否为夏令时</td>
+       <td>如果是夏令时为 <em>1</em>，否则为 <em>0</em></td>
+      </tr>
+
+      <tr>
+       <td><em>O</em></td>
+       <td>与格林威治时间相差的小时数</td>
+       <td>例如：<em>+0200</em></td>
+      </tr>
+
+      <tr>
+       <td><em>P</em></td>
+       <td>与格林威治时间（GMT）的差别，小时和分钟之间有冒号分隔（PHP 5.1.3 新加）</td>
+       <td>例如：<em>+02:00</em></td>
+      </tr>
+
+      <tr>
+       <td><em>T</em></td>
+       <td>本机所在的时区</td>
+       <td>例如：<em>EST</em>，<em>MDT</em>（【译者注】在 Windows
+       下为完整文本格式，例如“Eastern Standard Time”，中文版会显示“中国标准时间”）。</td>
+      </tr>
+
+      <tr>
+       <td><em>Z</em></td>
+       <td>时差偏移量的秒数。UTC 西边的时区偏移量总是负的，UTC 东边的时区偏移量总是正的。</td>
+       <td><em>-43200</em> 到 <em>43200</em></td>
+      </tr>
+
+      <tr>
+       <td style="text-align: center;"><em class="emphasis">完整的日期／时间</em></td>
+       <td>---</td>
+       <td>---</td>
+      </tr>
+
+      <tr>
+       <td><em>c</em></td>
+       <td>ISO 8601 格式的日期（PHP 5 新加）</td>
+       <td>2004-02-12T15:19:21+00:00</td>
+      </tr>
+
+      <tr>
+       <td><em>r</em></td>
+       <td>RFC 822 格式的日期</td>
+       <td>例如：<em>Thu, 21 Dec 2000 16:01:07 +0200</em></td>
+      </tr>
+
+      <tr>
+       <td><em>U</em></td>
+       <td>从 Unix 纪元（January 1 1970 00:00:00 GMT）开始至今的秒数</td>
+       <td>参见 <span class="function"><a href="http://php.net/manual/zh/function.time.php" class="function">time()</a></span></td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  
+  <p class="para">
+   格式字串中不能被识别的字符将原样显示。<em>Z</em> 格式在使用
+   <span class="function"><a href="http://php.net/manual/zh/function.gmdate.php" class="function">gmdate()</a></span> 时总是返回 <em>0</em>。
+  </p>
+  <div class="example" id="example-2467">
+    <p><strong>Example #1 <span class="function"><strong>date()</strong></span> 例子</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 187);">&lt;?php<br></span><span style="color: rgb(255, 128, 0);">//&nbsp;设定要用的默认时区。自&nbsp;PHP&nbsp;5.1&nbsp;可用<br></span><span style="color: rgb(0, 0, 187);">date_default_timezone_set</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'UTC'</span><span style="color: rgb(0, 119, 0);">);<br><br><br></span><span style="color: rgb(255, 128, 0);">//&nbsp;输出类似：Monday<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"l"</span><span style="color: rgb(0, 119, 0);">);<br><br></span><span style="color: rgb(255, 128, 0);">//&nbsp;输出类似：Monday&nbsp;15th&nbsp;of&nbsp;August&nbsp;2005&nbsp;03:12:46&nbsp;PM<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'l&nbsp;dS&nbsp;\of&nbsp;F&nbsp;Y&nbsp;h:i:s&nbsp;A'</span><span style="color: rgb(0, 119, 0);">);<br><br></span><span style="color: rgb(255, 128, 0);">//&nbsp;输出：July&nbsp;1,&nbsp;2000&nbsp;is&nbsp;on&nbsp;a&nbsp;Saturday<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(221, 0, 0);">"July&nbsp;1,&nbsp;2000&nbsp;is&nbsp;on&nbsp;a&nbsp;"&nbsp;</span><span style="color: rgb(0, 119, 0);">.&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"l"</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">7</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">2000</span><span style="color: rgb(0, 119, 0);">));<br><br></span><span style="color: rgb(255, 128, 0);">/*&nbsp;在格式参数中使用常量&nbsp;*/<br>//&nbsp;输出类似：Wed,&nbsp;25&nbsp;Sep&nbsp;2013&nbsp;15:28:57&nbsp;-0700<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">DATE_RFC2822</span><span style="color: rgb(0, 119, 0);">);<br><br></span><span style="color: rgb(255, 128, 0);">//&nbsp;输出类似：2000-07-01T00:00:00+00:00<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">DATE_ATOM</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">7</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">2000</span><span style="color: rgb(0, 119, 0);">));<br></span><span style="color: rgb(0, 0, 187);">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   在格式字串中的字符前加上反斜线来转义可以避免它被按照上表解释。如果加上反斜线后的字符本身就是一个特殊序列，那还要转义反斜线。
+   </p><div class="example" id="example-2468">
+    <p><strong>Example #2 在 <span class="function"><strong>date()</strong></span> 中转义字符</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 187);">&lt;?php<br></span><span style="color: rgb(255, 128, 0);">//&nbsp;prints&nbsp;something&nbsp;like:&nbsp;Wednesday&nbsp;the&nbsp;15th<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"l&nbsp;\\t\h\e&nbsp;jS"</span><span style="color: rgb(0, 119, 0);">);<br></span><span style="color: rgb(0, 0, 187);">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   可以把 <span class="function"><strong>date()</strong></span> 和
+   <span class="function"><a href="http://php.net/manual/zh/function.mktime.php" class="function">mktime()</a></span> 函数结合使用来得到未来或过去的日期。
+   </p><div class="example" id="example-2469">
+    <p><strong>Example #3 <span class="function"><strong>date()</strong></span> 和 <span class="function"><a href="http://php.net/manual/zh/function.mktime.php" class="function">mktime()</a></span> 例子</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 187);">&lt;?php<br>$tomorrow&nbsp;&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"m"</span><span style="color: rgb(0, 119, 0);">)&nbsp;&nbsp;,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"d"</span><span style="color: rgb(0, 119, 0);">)+</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"Y"</span><span style="color: rgb(0, 119, 0);">));<br></span><span style="color: rgb(0, 0, 187);">$lastmonth&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"m"</span><span style="color: rgb(0, 119, 0);">)-</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"d"</span><span style="color: rgb(0, 119, 0);">),&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"Y"</span><span style="color: rgb(0, 119, 0);">));<br></span><span style="color: rgb(0, 0, 187);">$nextyear&nbsp;&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"m"</span><span style="color: rgb(0, 119, 0);">),&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"d"</span><span style="color: rgb(0, 119, 0);">),&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"Y"</span><span style="color: rgb(0, 119, 0);">)+</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">);<br></span><span style="color: rgb(0, 0, 187);">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    </p><p class="para">
+     由于夏令时的缘故，这种方法比简单地在时间戳上加减一天或者一个月的秒数更可靠。
+    </p>
+   </blockquote>
+  
+  <p class="para">
+   一些使用 <span class="function"><strong>date()</strong></span>
+   格式化日期的例子。注意要转义所有其它的字符，因为目前有特殊含义的字符会产生不需要的结果，而其余字符在
+   PHP 将来的版本中可能会被用上。当转义时，注意用单引号以避免类似 \n 的字符变成了换行符。
+   </p><div class="example" id="example-2470">
+    <p><strong>Example #4 <span class="function"><strong>date()</strong></span> 格式举例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 187);">&lt;?php<br></span><span style="color: rgb(255, 128, 0);">//&nbsp;假定今天是：March&nbsp;10th,&nbsp;2001,&nbsp;5:16:18&nbsp;pm<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"F&nbsp;j,&nbsp;Y,&nbsp;g:i&nbsp;a"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;March&nbsp;10,&nbsp;2001,&nbsp;5:16&nbsp;pm<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"m.d.y"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;03.10.01<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"j,&nbsp;n,&nbsp;Y"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;10,&nbsp;3,&nbsp;2001<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"Ymd"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;20010310<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'h-i-s,&nbsp;j-m-y,&nbsp;it&nbsp;is&nbsp;w&nbsp;Day&nbsp;z&nbsp;'</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;05-16-17,&nbsp;10-03-01,&nbsp;1631&nbsp;1618&nbsp;6&nbsp;Fripm01<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'\i\t&nbsp;\i\s&nbsp;\t\h\e&nbsp;jS&nbsp;\d\a\y.'</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;It&nbsp;is&nbsp;the&nbsp;10th&nbsp;day.<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"D&nbsp;M&nbsp;j&nbsp;G:i:s&nbsp;T&nbsp;Y"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;Sat&nbsp;Mar&nbsp;10&nbsp;15:16:08&nbsp;MST&nbsp;2001<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'H:m:s&nbsp;\m&nbsp;\i\s\&nbsp;\m\o\n\t\h'</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;17:03:17&nbsp;m&nbsp;is&nbsp;month<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"H:i:s"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;17:16:17<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"Y-m-d&nbsp;H:i:s"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;2001-03-10&nbsp;17:16:18&nbsp;（MySQL&nbsp;DATETIME&nbsp;格式）<br></span><span style="color: rgb(0, 0, 187);">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   要格式化其它语种的日期，应该用 <span class="function"><a href="http://php.net/manual/zh/function.setlocale.php" class="function">setlocale()</a></span> 和
+   <span class="function"><a href="http://php.net/manual/zh/function.strftime.php" class="function">strftime()</a></span> 函数来代替 <span class="function"><strong>date()</strong></span>。
+  </p>
+  <p class="para">
+   参见 <span class="function"><a href="http://php.net/manual/zh/function.getlastmod.php" class="function">getlastmod()</a></span>，<span class="function"><a href="http://php.net/manual/zh/function.gmdate.php" class="function">gmdate()</a></span>，<span class="function"><a href="http://php.net/manual/zh/function.mktime.php" class="function">mktime()</a></span>，<span class="function"><a href="http://php.net/manual/zh/function.strftime.php" class="function">strftime()</a></span>
+   和 <span class="function"><a href="http://php.net/manual/zh/function.time.php" class="function">time()</a></span>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.date-parameters">
+  <h3 class="title">参数<a class="genanchor" href="#refsect1-function.date-parameters"> ¶</a></h3>
+  <dl>
+
+    
+     <dt>
+<code class="parameter">format</code></dt>
+
+     <dd>
+
+      <p class="para">
+       输出的日期 <span class="type"><a href="http://php.net/manual/zh/language.types.string.php" class="type string">string</a></span> 格式。 参见下文中的
+       格式化选项。 同时，还可以使用
+       <a href="http://php.net/manual/zh/class.datetime.php#datetime.constants.types" class="link">预定义日期常量</a>
+       ，例如：常量 <strong><code>DATE_RSS</code></strong>
+       表示格式化字符串 <em>'D, d M Y H:i:s'</em>。
+      </p>
+      <table class="doctable table">
+        <caption><strong>
+        <code class="parameter">format</code> 参数字符串中可识别下列字符</strong></caption>
+        
+         <thead>
+          <tr>
+           <th><code class="parameter">format</code> 字符</th>
+           <th>描述</th>
+           <th>返回值示例</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="text-align: center;"><em class="emphasis">天</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><em>d</em></td>
+           <td>一个月中的第几天，有前导 0 的 2 位数字</td>
+           <td>从 <em>01</em> 到 <em>31</em></td>
+          </tr>
+
+          <tr>
+           <td><em>D</em></td>
+           <td>3 个字符表示的星期几</td>
+           <td>从 <em>Mon</em> 到 <em>Sun</em></td>
+          </tr>
+
+          <tr>
+           <td><em>j</em></td>
+           <td>一个月中的第几天，无前导 0</td>
+           <td>从 <em>1</em> 到 <em>31</em></td>
+          </tr>
+
+          <tr>
+           <td><em>l</em> (lowercase 'L')</td>
+           <td>星期几，英文全称</td>
+           <td>从 <em>Sunday</em> 到 <em>Saturday</em></td>
+          </tr>
+
+          <tr>
+           <td><em>N</em></td>
+           <td>ISO-8601 规定的数字表示的星期几（PHP 5.1.0 
+            新加
+            ）</td>
+           <td>从 <em>1</em> （表示星期一）到 <em>7</em> （表示星期日）</td>
+          </tr>
+
+          <tr>
+           <td><em>S</em></td>
+           <td>一个月中的第几天，带有 2 个字符表示的英语序数词。</td>
+           <td>
+            <em>st</em>， <em>nd</em>， <em>rd</em> 或者
+            <em>th</em>。  可以和 <em>j</em> 联合使用。
+           </td>
+          </tr>
+
+          <tr>
+           <td><em>w</em></td>
+           <td>数字表示的星期几</td>
+           <td>从 <em>0</em> （星期日） 到 <em>6</em> （星期六）</td>
+          </tr>
+
+          <tr>
+           <td><em>z</em></td>
+           <td>一年中的第几天，从 0 开始计数</td>
+           <td>从 <em>0</em> 到 <em>365</em></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em class="emphasis">周</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><em>W</em></td>
+           <td>ISO-8601 规范的一年中的第几周，周一视为一周开始。（PHP 4.1.0 新加）</td>
+           <td>示例： <em>42</em> （本年第42周）</td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em class="emphasis">月</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><em>F</em></td>
+           <td>月份英文全拼，例如：January 或 March</td>
+           <td>从 <em>January</em> 到 <em>December</em></td>
+          </tr>
+
+          <tr>
+           <td><em>m</em></td>
+           <td>带有 0 前导的数字表示的月份</td>
+           <td>从 <em>01</em> 到 <em>12</em></td>
+          </tr>
+
+          <tr>
+           <td><em>M</em></td>
+           <td>3 个字符表示的月份的英文简拼</td>
+           <td>从 <em>Jan</em> 到 <em>Dec</em></td>
+          </tr>
+
+          <tr>
+           <td><em>n</em></td>
+           <td>月份的数字表示，无前导 0 </td>
+           <td><em>1</em> through <em>12</em></td>
+          </tr>
+
+          <tr>
+           <td><em>t</em></td>
+           <td>给定月份中包含多少天</td>
+           <td>从 <em>28</em> 到 <em>31</em></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em class="emphasis">年</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><em>L</em></td>
+           <td>是否为闰年</td>
+           <td>如果是闰年，则返回 <em>1</em>，反之返回 <em>0</em>。</td>
+          </tr>
+
+          <tr>
+           <td><em>o</em></td>
+           <td>ISO-8601 规范的年份，同
+            <em>Y</em> 格式。有一种情况除外：当 ISO 的周数（<em>W</em>）属于前一年或者后一年时，会返回前一年或者后一年的年份数字表达。
+            属于前一年或者后一年时，会返回前一年或者后一年的年份数字表达。
+            （PHP 5.1.0 新加）</td>
+           <td>示例：<em>1999</em> 或 <em>2003</em></td>
+          </tr>
+
+          <tr>
+           <td><em>Y</em></td>
+           <td>4 位数字的年份</td>
+           <td>示例：<em>1999</em> 或 <em>2003</em></td>
+          </tr>
+
+          <tr>
+           <td><em>y</em></td>
+           <td>2 位数字的年份</td>
+           <td>示例： <em>99</em> 或 <em>03</em></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em class="emphasis">时间</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><em>a</em></td>
+           <td>上午还是下午，2 位小写字符</td>
+           <td><em>am</em> 或 <em>pm</em></td>
+          </tr>
+
+          <tr>
+           <td><em>A</em></td>
+           <td>上午还是下午，2 位大写字符</td>
+           <td><em>AM</em> 或 <em>PM</em></td>
+          </tr>
+
+          <tr>
+           <td><em>B</em></td>
+           <td>斯沃琪因特网时间</td>
+           <td>从 <em>000</em> 到 <em>999</em></td>
+          </tr>
+
+          <tr>
+           <td><em>g</em></td>
+           <td>小时，12时制，无前导 0 </td>
+           <td>从 <em>1</em> 到 <em>12</em></td>
+          </tr>
+
+          <tr>
+           <td><em>G</em></td>
+           <td>小时，24时制，无前导 0 </td>
+           <td>从 <em>0</em> 到 <em>23</em></td>
+          </tr>
+
+          <tr>
+           <td><em>h</em></td>
+           <td>小时，12时制，有前导 0 的 2 位数字</td>
+           <td>从 <em>01</em> 到 <em>12</em></td>
+          </tr>
+
+          <tr>
+           <td><em>H</em></td>
+           <td>小时，24时制，有前导 0 的 2 位数字</td>
+           <td><em>00</em> through <em>23</em></td>
+          </tr>
+
+          <tr>
+           <td><em>i</em></td>
+           <td>分钟，有前导 0 的 2 位数字</td>
+           <td>从 <em>00</em> 到 <em>59</em></td>
+          </tr>
+
+          <tr>
+           <td><em>s</em></td>
+           <td>秒，有前导 0 的 2 位数字</td>
+           <td>从 <em>00</em> 到 <em>59</em></td>
+          </tr>
+
+          <tr>
+           <td><em>u</em></td>
+           <td>毫秒 （PHP 5.2.2 新加）</td>
+           <td>示例： <em>654321</em></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em class="emphasis">时区</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><em>e</em></td>
+           <td>时区标识（PHP 5.1.0 新加）</td>
+           <td>示例: <em>UTC</em>, <em>GMT</em>, <em>Atlantic/Azores</em></td>
+          </tr>
+
+          <tr>
+           <td><em>I</em> （大写字母 i）</td>
+           <td>是否夏令时</td>
+           <td>如果是夏令时则返回 <em>1</em>，反之返回 <em>0</em>。</td>
+          </tr>
+
+          <tr>
+           <td><em>O</em></td>
+           <td>和格林威治时间（GMT）的时差，以小时为单位</td>
+           <td>示例： <em>+0200</em></td>
+          </tr>
+
+          <tr>
+           <td><em>P</em></td>
+           <td>和格林威治时间（GMT）的时差，包括小时和分钟，小时和分钟之间使用冒号（:）分隔（PHP 5.1.3 新加）</td>
+           <td>示例： <em>+02:00</em></td>
+          </tr>
+
+          <tr>
+           <td><em>T</em></td>
+           <td>时区缩写</td>
+           <td>示例：<em>EST</em>, <em>MDT</em> ...</td>
+          </tr>
+
+          <tr>
+           <td><em>Z</em></td>
+           <td>以秒为单位的时区偏移量。UTC 以西的时区返回负数，UTC 以东的时区返回正数。</td>
+           <td>从 <em>-43200</em> 到 <em>50400</em></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em class="emphasis">完整的日期/时间</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><em>c</em></td>
+           <td>ISO 8601 日期及时间（PHP 5 新加）</td>
+           <td>2004-02-12T15:19:21+00:00</td>
+          </tr>
+
+          <tr>
+           <td><em>r</em></td>
+           <td><a href="http://www.faqs.org/rfcs/rfc2822" class="link external">»&nbsp;RFC 2822</a> 格式的日期和时间</td>
+           <td>示例：<em>Thu, 21 Dec 2000 16:01:07 +0200</em></td>
+          </tr>
+
+          <tr>
+           <td><em>U</em></td>
+           <td>自 1970 年 1 月 1 日 0 时 0 分 0 秒（GMT 时间）以来的时间，以秒为单位</td>
+           <td>参见<span class="function"><a href="http://php.net/manual/zh/function.time.php" class="function">time()</a></span></td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      
+      <p class="para">
+       格式化字符串中的不可识别字符将原样输出。
+       当使用 <span class="function"><a href="http://php.net/manual/zh/function.gmdate.php" class="function">gmdate()</a></span> 函数时， <em>Z</em> 格式永远返回 <em>0</em>。
+      </p>       
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       </p><p class="para">
+        由于本函数仅接受 <span class="type"><a href="http://php.net/manual/zh/language.types.integer.php" class="type integer">integer</a></span> 类型的时间戳参数，所以
+        <em>u</em> 格式仅在使用 <span class="function"><a href="http://php.net/manual/zh/function.date-format.php" class="function">date_format()</a></span> 函数并且使用
+        <span class="function"><a href="http://php.net/manual/zh/function.date-create.php" class="function">date_create()</a></span> 函数创建时间戳时才是有用的。
+       </p>
+      </blockquote>
+     </dd>
+
+    
+    
+    <dt>
+<code class="parameter">timestamp</code></dt>
+<dd>
+<p class="para">
+可选的 <code class="parameter">timestamp</code> 参数是一个 <span class="type"><a href="http://php.net/manual/zh/language.types.integer.php" class="type integer">integer</a></span> 的 Unix
+时间戳，如未指定，参数值默认为当前本地时间。也就是说，其值默认为
+<span class="function"><a href="http://php.net/manual/zh/function.time.php" class="function">time()</a></span> 的返回值。</p></dd>
+
+   
+   </dl>
+
+  
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.date-returnvalues">
+  <h3 class="title">返回值<a class="genanchor" href="#refsect1-function.date-returnvalues"> ¶</a></h3>
+  <p class="para">
+   返回格式化后的日期时间的字符串表达。
+   如果 <code class="parameter">timestamp</code> 参数不是一个有效数值，则返回 <strong><code>FALSE</code></strong> 
+   并引发 <strong><code>E_WARNING</code></strong> 级别的错误。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.date-errors">
+  <h3 class="title">错误／异常<a class="genanchor" href="#refsect1-function.date-errors"> ¶</a></h3>
+   
+   <p class="para">
+在每 次调用日期/时间函数时，如果时区无效则会引发 <strong><code>E_NOTICE</code></strong> 错误，如果使用系统设定值或 <var class="varname"><var class="varname">TZ</var></var>
+环境变量，则会引发 <strong><code>E_STRICT</code></strong> 或 <strong><code>E_WARNING</code></strong> 消息。参见
+<span class="function"><a href="http://php.net/manual/zh/function.date-default-timezone-set.php" class="function">date_default_timezone_set()</a></span>。</p>
+ 
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.date-changelog">
+  <h3 class="title">更新日志<a class="genanchor" href="#refsect1-function.date-changelog"> ¶</a></h3>
+  <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        时间戳的有效取值范围为 GMT 时间的 1901 年 12 月 13 日至 GMT 时间的 2038 年 1 月 19 日。
+        （32 位有符号整数的取值范围）。
+        但是，在 PHP 5.1.0 之前的版本，在某些系统（例如 Windows）上有效取值范围为 1970 年 1 月 1 日至 2038 年 1 月 19 日。
+       </td>
+      </tr>
+
+      
+      <tr><td>5.1.0</td><td><p class="para">
+现在发布 <strong><code>E_STRICT</code></strong> 和 <strong><code>E_NOTICE</code></strong>
+时区错误。</p></td></tr>
+
+
+      <tr>
+       <td>5.1.1</td>
+       <td>
+        <code class="parameter">format</code> 参数标准的可用日期/时间格式常量见： <a href="http://php.net/manual/zh/datetime.constants.php" class="link">常量</a> 
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.date-examples">
+  <h3 class="title">范例<a class="genanchor" href="#refsect1-function.date-examples"> ¶</a></h3>
+  <div class="example" id="example-2471">
+    <p><strong>Example #5 <span class="function"><strong>date()</strong></span> 函数示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 187);">&lt;?php<br></span><span style="color: rgb(255, 128, 0);">//&nbsp;设置默认时区。PHP&nbsp;5.1&nbsp;之后版本可用<br></span><span style="color: rgb(0, 0, 187);">date_default_timezone_set</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'UTC'</span><span style="color: rgb(0, 119, 0);">);<br><br><br></span><span style="color: rgb(255, 128, 0);">//&nbsp;输出类似：&nbsp;Monday<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"l"</span><span style="color: rgb(0, 119, 0);">);<br><br></span><span style="color: rgb(255, 128, 0);">//&nbsp;输出类似：Monday&nbsp;8th&nbsp;of&nbsp;August&nbsp;2005&nbsp;03:12:46&nbsp;PM<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'l&nbsp;jS&nbsp;\of&nbsp;F&nbsp;Y&nbsp;h:i:s&nbsp;A'</span><span style="color: rgb(0, 119, 0);">);<br><br></span><span style="color: rgb(255, 128, 0);">//&nbsp;输出：July&nbsp;1,&nbsp;2000&nbsp;is&nbsp;on&nbsp;a&nbsp;Saturday<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(221, 0, 0);">"July&nbsp;1,&nbsp;2000&nbsp;is&nbsp;on&nbsp;a&nbsp;"&nbsp;</span><span style="color: rgb(0, 119, 0);">.&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"l"</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">7</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">2000</span><span style="color: rgb(0, 119, 0);">));<br><br></span><span style="color: rgb(255, 128, 0);">/*&nbsp;使用格式常量&nbsp;*/<br>//&nbsp;输出类似：&nbsp;Mon,&nbsp;15&nbsp;Aug&nbsp;2005&nbsp;15:12:46&nbsp;UTC<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">DATE_RFC822</span><span style="color: rgb(0, 119, 0);">);<br><br></span><span style="color: rgb(255, 128, 0);">//&nbsp;输出类似：2000-07-01T00:00:00+00:00<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">DATE_ATOM</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">7</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">2000</span><span style="color: rgb(0, 119, 0);">));<br></span><span style="color: rgb(0, 0, 187);">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   可以使用反斜线进行转义来阻止函数解析格式字符串中的可识别字符。
+   如果反斜线和要转义的字符连在一起依然是一个有效的字符序列，那么需要对
+   反斜线再次进行转义。
+   </p><div class="example" id="example-2472">
+    <p><strong>Example #6 对 <span class="function"><strong>date()</strong></span> 函数中的格式字符串进行转义</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 187);">&lt;?php<br></span><span style="color: rgb(255, 128, 0);">//&nbsp;输出类似：&nbsp;Wednesday&nbsp;the&nbsp;15th<br></span><span style="color: rgb(0, 119, 0);">echo&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'l&nbsp;\t\h\e&nbsp;jS'</span><span style="color: rgb(0, 119, 0);">);<br></span><span style="color: rgb(0, 0, 187);">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   可以联合使用 <span class="function"><strong>date()</strong></span> 
+   和 <span class="function"><a href="http://php.net/manual/zh/function.mktime.php" class="function">mktime()</a></span> 函数
+   来构造之前或者之后的日期时间。
+   </p><div class="example" id="example-2473">
+    <p><strong>Example #7 <span class="function"><strong>date()</strong></span> 和 <span class="function"><a href="http://php.net/manual/zh/function.mktime.php" class="function">mktime()</a></span> 联合使用示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 187);">&lt;?php<br>$tomorrow&nbsp;&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"m"</span><span style="color: rgb(0, 119, 0);">)&nbsp;&nbsp;,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"d"</span><span style="color: rgb(0, 119, 0);">)+</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"Y"</span><span style="color: rgb(0, 119, 0);">));<br></span><span style="color: rgb(0, 0, 187);">$lastmonth&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"m"</span><span style="color: rgb(0, 119, 0);">)-</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"d"</span><span style="color: rgb(0, 119, 0);">),&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"Y"</span><span style="color: rgb(0, 119, 0);">));<br></span><span style="color: rgb(0, 0, 187);">$nextyear&nbsp;&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">mktime</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">0</span><span style="color: rgb(0, 119, 0);">,&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"m"</span><span style="color: rgb(0, 119, 0);">),&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"d"</span><span style="color: rgb(0, 119, 0);">),&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"Y"</span><span style="color: rgb(0, 119, 0);">)+</span><span style="color: rgb(0, 0, 187);">1</span><span style="color: rgb(0, 119, 0);">);<br></span><span style="color: rgb(0, 0, 187);">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    </p><p class="para">
+     由于存在夏令时时间，
+     所以此方案相对于直接在时间戳上加/减秒数
+     要更加可靠。
+    </p>
+   </blockquote>
+  
+  <p class="para">
+   <span class="function"><strong>date()</strong></span> 函数格式化的一些示例。
+   需要注意的是，即使是对于当前来说并不具有特殊含义的字符，
+   也要像对待具有特殊含义的字符那样进行转义，以避免函数返回非预期的值。
+   因为可能在将来的 PHP 版本中，这些字符会被赋予特殊的含义。
+   进行转义的时候，请确保使用单引号，以避免 \n 被解释为换行符号。
+   </p><div class="example" id="example-2474">
+    <p><strong>Example #8 <span class="function"><strong>date()</strong></span> 函数格式化</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 187);">&lt;?php<br></span><span style="color: rgb(255, 128, 0);">//&nbsp;假设今天是&nbsp;2001&nbsp;年&nbsp;3&nbsp;月&nbsp;10&nbsp;日下午&nbsp;5&nbsp;点&nbsp;16&nbsp;分&nbsp;18&nbsp;秒，<br>//&nbsp;并且位于山区标准时间（MST）时区<br><br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"F&nbsp;j,&nbsp;Y,&nbsp;g:i&nbsp;a"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;March&nbsp;10,&nbsp;2001,&nbsp;5:16&nbsp;pm<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"m.d.y"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;03.10.01<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"j,&nbsp;n,&nbsp;Y"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;10,&nbsp;3,&nbsp;2001<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"Ymd"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;20010310<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'h-i-s,&nbsp;j-m-y,&nbsp;it&nbsp;is&nbsp;w&nbsp;Day'</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;05-16-18,&nbsp;10-03-01,&nbsp;1631&nbsp;1618&nbsp;6&nbsp;Satpm01<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'\i\t&nbsp;\i\s&nbsp;\t\h\e&nbsp;jS&nbsp;\d\a\y.'</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;it&nbsp;is&nbsp;the&nbsp;10th&nbsp;day.<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"D&nbsp;M&nbsp;j&nbsp;G:i:s&nbsp;T&nbsp;Y"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;Sat&nbsp;Mar&nbsp;10&nbsp;17:16:18&nbsp;MST&nbsp;2001<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">'H:m:s&nbsp;\m&nbsp;\i\s\&nbsp;\m\o\n\t\h'</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;17:03:18&nbsp;m&nbsp;is&nbsp;month<br></span><span style="color: rgb(0, 0, 187);">$today&nbsp;</span><span style="color: rgb(0, 119, 0);">=&nbsp;</span><span style="color: rgb(0, 0, 187);">date</span><span style="color: rgb(0, 119, 0);">(</span><span style="color: rgb(221, 0, 0);">"H:i:s"</span><span style="color: rgb(0, 119, 0);">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(255, 128, 0);">//&nbsp;17:16:18<br></span><span style="color: rgb(0, 0, 187);">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   如果需要将日期时间格式化为其他语言，你应该使用
+   <span class="function"><a href="http://php.net/manual/zh/function.setlocale.php" class="function">setlocale()</a></span> 和 <span class="function"><a href="http://php.net/manual/zh/function.strftime.php" class="function">strftime()</a></span> 函数
+   来替代 <span class="function"><strong>date()</strong></span> 函数。
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.date-notes">
+  <h3 class="title">注释<a class="genanchor" href="#refsect1-function.date-notes"> ¶</a></h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   </p><p class="para">
+    使用 <span class="function"><a href="http://php.net/manual/zh/function.strtotime.php" class="function">strtotime()</a></span> 函数将一个字符串表达的日期时间转换为时间戳。
+    另外，一些数据库产品也提供了将日期时间格式转换为时间戳的函数。
+    （例如 MySQL 中的
+    <a href="http://dev.mysql.com/doc/mysql/en/date-and-time-functions.html" class="link external">»&nbsp;UNIX_TIMESTAMP</a> 函数）。
+   </p>
+  </blockquote>
+  <div class="tip"><strong class="tip">Tip</strong>
+   <p class="para">
+    从 PHP 5.1 版本开始，请求的开始时间可以从变量
+    <var class="varname"><var class="varname"><a href="http://php.net/manual/zh/reserved.variables.server.php" class="classname">$_SERVER['REQUEST_TIME']</a></var></var> 中获取。
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.date-seealso">
+  <h3 class="title">参见<a class="genanchor" href="#refsect1-function.date-seealso"> ¶</a></h3>
+  <ul class="simplelist">
+    <li class="member"><span class="function"><a href="http://php.net/manual/zh/function.gmdate.php" class="function" rel="rdfs-seeAlso">gmdate()</a> - 格式化一个 GMT/UTC 日期／时间</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/zh/function.idate.php" class="function" rel="rdfs-seeAlso">idate()</a> - 将本地时间日期格式化为整数</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/zh/function.getdate.php" class="function" rel="rdfs-seeAlso">getdate()</a> - 取得日期／时间信息</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/zh/function.getlastmod.php" class="function" rel="rdfs-seeAlso">getlastmod()</a> - 获取页面最后修改的时间</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/zh/function.mktime.php" class="function" rel="rdfs-seeAlso">mktime()</a> - 取得一个日期的 Unix 时间戳</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/zh/function.strftime.php" class="function" rel="rdfs-seeAlso">strftime()</a> - 根据区域设置格式化本地时间／日期</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/zh/function.time.php" class="function" rel="rdfs-seeAlso">time()</a> - 返回当前的 Unix 时间戳</span></li>
+    <li class="member"><span class="function"><a href="http://php.net/manual/zh/function.strtotime.php" class="function" rel="rdfs-seeAlso">strtotime()</a> - 将任何字符串的日期时间描述解析为 Unix 时间戳</span></li>
+    <li class="member"><a href="http://php.net/manual/zh/class.datetime.php#datetime.constants.types" class="link">预定义的日期时间常量</a></li>
+   </ul>
+  
+ </div>
+
+</div>
+<section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="http://php.net/manual/add-note.php?sect=function.date&amp;redirect=http://php.net/manual/zh/function.date.php"><img src="notes-add@2x.png" alt="add a note" height="12" width="12"> <small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">21 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="106974">  <div class="votes">
+    <div id="Vu106974">
+    <a href="http://php.net/manual/vote-note.php?id=106974&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd106974">
+    <a href="http://php.net/manual/vote-note.php?id=106974&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V106974" title="64% like this...">
+    117
+    </div>
+  </div>
+  <a href="#106974" class="name">
+  <strong class="user"><em>Jimmy</em></strong></a><a class="genanchor" href="#106974"> ¶</a><div class="date" title="2011-12-22 05:04"><strong>5 years ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom106974">
+<div class="phpcode"><code><span class="html">
+Things to be aware of when using week numbers with years.<br><br><span class="default">&lt;?php<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">"YW"</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"2011-01-07"</span><span class="keyword">)); </span><span class="comment">// gives 201101<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">"YW"</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"2011-12-31"</span><span class="keyword">)); </span><span class="comment">// gives 201152<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">"YW"</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"2011-01-01"</span><span class="keyword">)); </span><span class="comment">// gives 201152 too<br></span><span class="default">?&gt;<br></span><br>BUT<br><br><span class="default">&lt;?php<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">"oW"</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"2011-01-07"</span><span class="keyword">)); </span><span class="comment">// gives 201101<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">"oW"</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"2011-12-31"</span><span class="keyword">)); </span><span class="comment">// gives 201152<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">"oW"</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"2011-01-01"</span><span class="keyword">)); </span><span class="comment">// gives 201052 (Year is different than previous example)<br></span><span class="default">?&gt;<br></span><br>Reason:<br>Y is year from the date<br>o is ISO-8601 year number<br>W is ISO-8601 week number of year<br><br>Conclusion:<br>if using 'W' for the week number use 'o' for the year.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="119974">  <div class="votes">
+    <div id="Vu119974">
+    <a href="http://php.net/manual/vote-note.php?id=119974&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd119974">
+    <a href="http://php.net/manual/vote-note.php?id=119974&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V119974" title="77% like this...">
+    5
+    </div>
+  </div>
+  <a href="#119974" class="name">
+  <strong class="user"><em>david dot thomas at elliott-thomas dot com dot au</em></strong></a><a class="genanchor" href="#119974"> ¶</a><div class="date" title="2016-10-01 02:16"><strong>3 months ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom119974">
+<div class="phpcode"><code><span class="html">
+Prior to PHP 5.6.23,&nbsp; Relative Formats for the start of the week aligned with PHP's (0=Sunday,6=Saturday). Since 5.6.23,&nbsp; Relative Formats for the start of the week align with ISO-8601 (1=Monday,7=Sunday). (<a href="http://php.net/manual/en/datetime.formats.relative.php" rel="nofollow" target="_blank">http://php.net/manual/en/datetime.formats.relative.php</a>)<br><br>This can produce different, and seemingly incorrect, results depending on your PHP version and your choice of 'w' or 'N' for the Numeric representation of the day of the week: <br><br><span class="default">&lt;?php<br></span><span class="keyword">echo </span><span class="string">"Today is Sun 2 Oct 2016, day "</span><span class="keyword">,</span><span class="default">date</span><span class="keyword">(</span><span class="string">'w'</span><span class="keyword">,</span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">'2016-10-02'</span><span class="keyword">)),</span><span class="string">" of this week. "</span><span class="keyword">;&nbsp; <br>echo </span><span class="string">"Day "</span><span class="keyword">,</span><span class="default">date</span><span class="keyword">(</span><span class="string">'w'</span><span class="keyword">,</span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">'2016-10-02 Monday next week'</span><span class="keyword">)),</span><span class="string">" of next week is "</span><span class="keyword">,</span><span class="default">date</span><span class="keyword">(</span><span class="string">'d M Y'</span><span class="keyword">,</span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">'2016-10-02 Monday next week'</span><span class="keyword">)),</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">;<br><br>echo </span><span class="string">"Today is Sun 2 Oct 2016, day "</span><span class="keyword">,</span><span class="default">date</span><span class="keyword">(</span><span class="string">'N'</span><span class="keyword">,</span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">'2016-10-02'</span><span class="keyword">)),</span><span class="string">" of this week. "</span><span class="keyword">;&nbsp; <br>echo </span><span class="string">"Day "</span><span class="keyword">,</span><span class="default">date</span><span class="keyword">(</span><span class="string">'w'</span><span class="keyword">,</span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">'2016-10-02 Monday next week'</span><span class="keyword">)),</span><span class="string">" of next week is "</span><span class="keyword">,</span><span class="default">date</span><span class="keyword">(</span><span class="string">'d M Y'</span><span class="keyword">,</span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">'2016-10-02 Monday next week'</span><span class="keyword">));<br></span><span class="default">?&gt;</span> <br><br>Prior to PHP 5.6.23, this results in: <br><br>Today is Sun 2 Oct 2016, day 0 of this week. Day 1 of next week is 10 Oct 2016<br>Today is Sun 2 Oct 2016, day 7 of this week. Day 1 of next week is 10 Oct 2016<br><br>Since PHP 5.6.23, this results in: <br><br>Today is Sun 2 Oct 2016, day 0 of this week. Day 1 of next week is 03 Oct 2016<br>Today is Sun 2 Oct 2016, day 7 of this week. Day 1 of next week is 03 Oct 2016</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="116914">  <div class="votes">
+    <div id="Vu116914">
+    <a href="http://php.net/manual/vote-note.php?id=116914&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd116914">
+    <a href="http://php.net/manual/vote-note.php?id=116914&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V116914" title="60% like this...">
+    23
+    </div>
+  </div>
+  <a href="#116914" class="name">
+  <strong class="user"><em>ivijan dot stefan at gmail dot com</em></strong></a><a class="genanchor" href="#116914"> ¶</a><div class="date" title="2015-03-20 04:45"><strong>1 year ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom116914">
+<div class="phpcode"><code><span class="html">
+If you have a problem with the different time zone, this is the solution for that.<br><span class="default">&lt;?php<br></span><span class="comment">// first line of PHP<br></span><span class="default">$defaultTimeZone</span><span class="keyword">=</span><span class="string">'UTC'</span><span class="keyword">;<br>if(</span><span class="default">date_default_timezone_get</span><span class="keyword">()!=</span><span class="default">$defaultTimeZone</span><span class="keyword">)) </span><span class="default">date_default_timezone_set</span><span class="keyword">(</span><span class="default">$defaultTimeZone</span><span class="keyword">);<br><br></span><span class="comment">// somewhere in the code<br></span><span class="keyword">function </span><span class="default">_date</span><span class="keyword">(</span><span class="default">$format</span><span class="keyword">=</span><span class="string">"r"</span><span class="keyword">, </span><span class="default">$timestamp</span><span class="keyword">=</span><span class="default">false</span><span class="keyword">, </span><span class="default">$timezone</span><span class="keyword">=</span><span class="default">false</span><span class="keyword">)<br>{<br>&nbsp; &nbsp; </span><span class="default">$userTimezone </span><span class="keyword">= new </span><span class="default">DateTimeZone</span><span class="keyword">(!empty(</span><span class="default">$timezone</span><span class="keyword">) ? </span><span class="default">$timezone </span><span class="keyword">: </span><span class="string">'GMT'</span><span class="keyword">);<br>&nbsp; &nbsp; </span><span class="default">$gmtTimezone </span><span class="keyword">= new </span><span class="default">DateTimeZone</span><span class="keyword">(</span><span class="string">'GMT'</span><span class="keyword">);<br>&nbsp; &nbsp; </span><span class="default">$myDateTime </span><span class="keyword">= new </span><span class="default">DateTime</span><span class="keyword">((</span><span class="default">$timestamp</span><span class="keyword">!=</span><span class="default">false</span><span class="keyword">?</span><span class="default">date</span><span class="keyword">(</span><span class="string">"r"</span><span class="keyword">,(int)</span><span class="default">$timestamp</span><span class="keyword">):</span><span class="default">date</span><span class="keyword">(</span><span class="string">"r"</span><span class="keyword">)), </span><span class="default">$gmtTimezone</span><span class="keyword">);<br>&nbsp; &nbsp; </span><span class="default">$offset </span><span class="keyword">= </span><span class="default">$userTimezone</span><span class="keyword">-&gt;</span><span class="default">getOffset</span><span class="keyword">(</span><span class="default">$myDateTime</span><span class="keyword">);<br>&nbsp; &nbsp; return </span><span class="default">date</span><span class="keyword">(</span><span class="default">$format</span><span class="keyword">, (</span><span class="default">$timestamp</span><span class="keyword">!=</span><span class="default">false</span><span class="keyword">?(int)</span><span class="default">$timestamp</span><span class="keyword">:</span><span class="default">$myDateTime</span><span class="keyword">-&gt;</span><span class="default">format</span><span class="keyword">(</span><span class="string">'U'</span><span class="keyword">)) + </span><span class="default">$offset</span><span class="keyword">);<br>}<br><br></span><span class="comment">/* Example */<br></span><span class="keyword">echo </span><span class="string">'System Date/Time: '</span><span class="keyword">.</span><span class="default">date</span><span class="keyword">(</span><span class="string">"Y-m-d | h:i:sa"</span><span class="keyword">).</span><span class="string">'&lt;br&gt;'</span><span class="keyword">;<br>echo </span><span class="string">'New York Date/Time: '</span><span class="keyword">.</span><span class="default">_date</span><span class="keyword">(</span><span class="string">"Y-m-d | h:i:sa"</span><span class="keyword">, </span><span class="default">false</span><span class="keyword">, </span><span class="string">'America/New_York'</span><span class="keyword">).</span><span class="string">'&lt;br&gt;'</span><span class="keyword">;<br>echo </span><span class="string">'Belgrade Date/Time: '</span><span class="keyword">.</span><span class="default">_date</span><span class="keyword">(</span><span class="string">"Y-m-d | h:i:sa"</span><span class="keyword">, </span><span class="default">false</span><span class="keyword">, </span><span class="string">'Europe/Belgrade'</span><span class="keyword">).</span><span class="string">'&lt;br&gt;'</span><span class="keyword">;<br>echo </span><span class="string">'Belgrade Date/Time: '</span><span class="keyword">.</span><span class="default">_date</span><span class="keyword">(</span><span class="string">"Y-m-d | h:i:sa"</span><span class="keyword">, </span><span class="default">514640700</span><span class="keyword">, </span><span class="string">'Europe/Belgrade'</span><span class="keyword">).</span><span class="string">'&lt;br&gt;'</span><span class="keyword">;<br></span><span class="default">?&gt;<br></span>This is the best and fastest solution for this problem. Working almost identical to date() function only as a supplement has the time zone option.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="111514">  <div class="votes">
+    <div id="Vu111514">
+    <a href="http://php.net/manual/vote-note.php?id=111514&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd111514">
+    <a href="http://php.net/manual/vote-note.php?id=111514&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V111514" title="58% like this...">
+    23
+    </div>
+  </div>
+  <a href="#111514" class="name">
+  <strong class="user"><em>FiraSEO</em></strong></a><a class="genanchor" href="#111514"> ¶</a><div class="date" title="2013-02-28 07:23"><strong>3 years ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom111514">
+<div class="phpcode"><code><span class="html">
+this how you make an HTML5 &lt;time&gt; tag correctly<br><br><span class="default">&lt;?php<br><br></span><span class="keyword">echo </span><span class="string">'&lt;time datetime="'</span><span class="keyword">.</span><span class="default">date</span><span class="keyword">(</span><span class="string">'c'</span><span class="keyword">).</span><span class="string">'"&gt;'</span><span class="keyword">.</span><span class="default">date</span><span class="keyword">(</span><span class="string">'Y - m - d'</span><span class="keyword">).</span><span class="string">'&lt;/time&gt;'</span><span class="keyword">;<br><br></span><span class="default">?&gt;<br></span><br>in the "datetime" attribute you should put a machine-readable value which represent time , the best value is a full time/date with ISO 8601 ( date('c') ) ,,, the attr will be hidden from users<br><br>and it doesn't really matter what you put as a shown value to the user,, any date/time format is okay !<br><br>This is very good for SEO especially search engines like Google .</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="118621">  <div class="votes">
+    <div id="Vu118621">
+    <a href="http://php.net/manual/vote-note.php?id=118621&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118621">
+    <a href="http://php.net/manual/vote-note.php?id=118621&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118621" title="60% like this...">
+    5
+    </div>
+  </div>
+  <a href="#118621" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#118621"> ¶</a><div class="date" title="2016-01-10 02:04"><strong>1 year ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom118621">
+<div class="phpcode"><code><span class="html">
+If timestamp is a string, date converts it to an integer in a possibly unexpected way:<br><br><span class="default">&lt;?php<br></span><span class="keyword">echo (int)</span><span class="string">'0x10'</span><span class="keyword">; </span><span class="comment">//0<br></span><span class="keyword">echo </span><span class="default">intval</span><span class="keyword">(</span><span class="string">'0x10'</span><span class="keyword">); </span><span class="comment">//0<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">'s'</span><span class="keyword">, </span><span class="string">'0x10'</span><span class="keyword">); </span><span class="comment">//gives 16<br>//however, no octal conversion:<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">'s'</span><span class="keyword">, </span><span class="string">'010'</span><span class="keyword">); </span><span class="comment">//gives 10<br></span><span class="default">?&gt;<br></span><br>(PHP 5.6.16)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="114259">  <div class="votes">
+    <div id="Vu114259">
+    <a href="http://php.net/manual/vote-note.php?id=114259&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd114259">
+    <a href="http://php.net/manual/vote-note.php?id=114259&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V114259" title="57% like this...">
+    8
+    </div>
+  </div>
+  <a href="#114259" class="name">
+  <strong class="user"><em>matthew dot hotchen at worldfirst dot com</em></strong></a><a class="genanchor" href="#114259"> ¶</a><div class="date" title="2014-01-30 10:25"><strong>2 years ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom114259">
+<div class="phpcode"><code><span class="html">
+FYI: there's a list of constants with predefined formats on the DateTime object, for example instead of outputting ISO 8601 dates with:<br><br><span class="default">&lt;?php<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">'c'</span><span class="keyword">);<br></span><span class="default">?&gt;<br></span><br>or<br><br><span class="default">&lt;?php<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="string">'Y-m-d\TH:i:sO'</span><span class="keyword">);<br></span><span class="default">?&gt;<br></span><br>You can use<br><br><span class="default">&lt;?php<br></span><span class="keyword">echo </span><span class="default">date</span><span class="keyword">(</span><span class="default">DateTime</span><span class="keyword">::</span><span class="default">ISO8601</span><span class="keyword">);<br></span><span class="default">?&gt;<br></span><br>instead, which is much easier to read.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="113413">  <div class="votes">
+    <div id="Vu113413">
+    <a href="http://php.net/manual/vote-note.php?id=113413&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd113413">
+    <a href="http://php.net/manual/vote-note.php?id=113413&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V113413" title="55% like this...">
+    11
+    </div>
+  </div>
+  <a href="#113413" class="name">
+  <strong class="user"><em>adityabhai at gmail dot com</em></strong></a><a class="genanchor" href="#113413"> ¶</a><div class="date" title="2013-10-08 01:57"><strong>3 years ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom113413">
+<div class="phpcode"><code><span class="html">
+For Microseconds, we can get by following:<br><br>echo date('Ymd His'.substr((string)microtime(), 1, 8).' e');<br><br>Thought, it might be useful to someone !</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="107822">  <div class="votes">
+    <div id="Vu107822">
+    <a href="http://php.net/manual/vote-note.php?id=107822&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd107822">
+    <a href="http://php.net/manual/vote-note.php?id=107822&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V107822" title="55% like this...">
+    12
+    </div>
+  </div>
+  <a href="#107822" class="name">
+  <strong class="user"><em>bakerj417 at gmail dot com</em></strong></a><a class="genanchor" href="#107822"> ¶</a><div class="date" title="2012-03-07 04:48"><strong>4 years ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom107822">
+<div class="phpcode"><code><span class="html">
+If you are having an issue getting u to work so is everyone else. The solution that I am using which I found on another site(so not taking credit) is to use this:<br><br>&nbsp; &nbsp;&nbsp; date("Y/m/d H:i:s"). substr((string)microtime(), 1, 6);<br><br>that will give you:<br><br>&nbsp; &nbsp;&nbsp; yyyy/mm/dd hh:ii:ss.uuuuuu<br><br>hope this helps someone in need!<br><br>thanks all</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="90423">  <div class="votes">
+    <div id="Vu90423">
+    <a href="http://php.net/manual/vote-note.php?id=90423&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd90423">
+    <a href="http://php.net/manual/vote-note.php?id=90423&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V90423" title="55% like this...">
+    7
+    </div>
+  </div>
+  <a href="#90423" class="name">
+  <strong class="user"><em>eduardo at digmotor dot com dot br</em></strong></a><a class="genanchor" href="#90423"> ¶</a><div class="date" title="2009-04-21 01:34"><strong>7 years ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom90423">
+<div class="phpcode"><code><span class="html">
+Thanks to tcasparr at gmail dot com for the great idea (at least for me) ;)<br>I changed the code a little to replicate the functionality of date_parse_from_format, once I don't have PHP 5.3.0 yet. This might be useful for someone. Hope you don't mind changing your code tcasparr at gmail dot com.<br><br><span class="default">&lt;?php<br></span><span class="comment">/*******************************************************<br> * Simple function to take in a date format and return array of associated <br> * formats for each date element<br> *<br> * @return array<br> * @param string $strFormat<br> * <br> * Example: Y/m/d g:i:s becomes <br> * Array<br> * (<br> *&nbsp; &nbsp;&nbsp; [year] =&gt; Y<br> *&nbsp; &nbsp;&nbsp; [month] =&gt; m<br> *&nbsp; &nbsp;&nbsp; [day] =&gt; d<br> *&nbsp; &nbsp;&nbsp; [hour] =&gt; g<br> *&nbsp; &nbsp;&nbsp; [minute] =&gt; i<br> *&nbsp; &nbsp;&nbsp; [second] =&gt; s<br> * )<br> *<br> *&nbsp; This function is needed for&nbsp; PHP &lt; 5.3.0<br> ********************************************************/<br></span><span class="keyword">function </span><span class="default">dateParseFromFormat</span><span class="keyword">(</span><span class="default">$stFormat</span><span class="keyword">, </span><span class="default">$stData</span><span class="keyword">)<br>{<br>&nbsp; &nbsp; </span><span class="default">$aDataRet </span><span class="keyword">= array();<br>&nbsp; &nbsp; </span><span class="default">$aPieces </span><span class="keyword">= </span><span class="default">split</span><span class="keyword">(</span><span class="string">'[:/.\ \-]'</span><span class="keyword">, </span><span class="default">$stFormat</span><span class="keyword">);<br>&nbsp; &nbsp; </span><span class="default">$aDatePart </span><span class="keyword">= </span><span class="default">split</span><span class="keyword">(</span><span class="string">'[:/.\ \-]'</span><span class="keyword">, </span><span class="default">$stData</span><span class="keyword">);<br>&nbsp; &nbsp; foreach(</span><span class="default">$aPieces </span><span class="keyword">as </span><span class="default">$key</span><span class="keyword">=&gt;</span><span class="default">$chPiece</span><span class="keyword">)&nbsp; &nbsp; <br>&nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; switch (</span><span class="default">$chPiece</span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'d'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'j'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$aDataRet</span><span class="keyword">[</span><span class="string">'day'</span><span class="keyword">] = </span><span class="default">$aDatePart</span><span class="keyword">[</span><span class="default">$key</span><span class="keyword">];<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'F'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'M'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'m'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'n'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$aDataRet</span><span class="keyword">[</span><span class="string">'month'</span><span class="keyword">] = </span><span class="default">$aDatePart</span><span class="keyword">[</span><span class="default">$key</span><span class="keyword">];<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'o'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'Y'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'y'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$aDataRet</span><span class="keyword">[</span><span class="string">'year'</span><span class="keyword">] = </span><span class="default">$aDatePart</span><span class="keyword">[</span><span class="default">$key</span><span class="keyword">];<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'g'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'G'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'h'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'H'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$aDataRet</span><span class="keyword">[</span><span class="string">'hour'</span><span class="keyword">] = </span><span class="default">$aDatePart</span><span class="keyword">[</span><span class="default">$key</span><span class="keyword">];<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;&nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'i'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$aDataRet</span><span class="keyword">[</span><span class="string">'minute'</span><span class="keyword">] = </span><span class="default">$aDatePart</span><span class="keyword">[</span><span class="default">$key</span><span class="keyword">];<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case </span><span class="string">'s'</span><span class="keyword">:<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$aDataRet</span><span class="keyword">[</span><span class="string">'second'</span><span class="keyword">] = </span><span class="default">$aDatePart</span><span class="keyword">[</span><span class="default">$key</span><span class="keyword">];<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; &nbsp; &nbsp; <br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return </span><span class="default">$aDataRet</span><span class="keyword">;<br>}<br></span><span class="default">?&gt;<br></span><br>Also, if you need to change the format of dates:<br><br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">changeDateFormat</span><span class="keyword">(</span><span class="default">$stDate</span><span class="keyword">,</span><span class="default">$stFormatFrom</span><span class="keyword">,</span><span class="default">$stFormatTo</span><span class="keyword">)<br>{<br>&nbsp; </span><span class="comment">// When PHP 5.3.0 becomes available to me<br>&nbsp; //$date = date_parse_from_format($stFormatFrom,$stDate);<br>&nbsp; //For now I use the function above<br>&nbsp; </span><span class="default">$date </span><span class="keyword">= </span><span class="default">dateParseFromFormat</span><span class="keyword">(</span><span class="default">$stFormatFrom</span><span class="keyword">,</span><span class="default">$stDate</span><span class="keyword">);<br>&nbsp; return </span><span class="default">date</span><span class="keyword">(</span><span class="default">$stFormatTo</span><span class="keyword">,</span><span class="default">mktime</span><span class="keyword">(</span><span class="default">$date</span><span class="keyword">[</span><span class="string">'hour'</span><span class="keyword">],<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$date</span><span class="keyword">[</span><span class="string">'minute'</span><span class="keyword">],<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$date</span><span class="keyword">[</span><span class="string">'second'</span><span class="keyword">],<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$date</span><span class="keyword">[</span><span class="string">'month'</span><span class="keyword">],<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$date</span><span class="keyword">[</span><span class="string">'day'</span><span class="keyword">],<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$date</span><span class="keyword">[</span><span class="string">'year'</span><span class="keyword">]));<br>}<br><br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="99807">  <div class="votes">
+    <div id="Vu99807">
+    <a href="http://php.net/manual/vote-note.php?id=99807&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd99807">
+    <a href="http://php.net/manual/vote-note.php?id=99807&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V99807" title="55% like this...">
+    5
+    </div>
+  </div>
+  <a href="#99807" class="name">
+  <strong class="user"><em>@PeteWilliams</em></strong></a><a class="genanchor" href="#99807"> ¶</a><div class="date" title="2010-09-08 04:29"><strong>6 years ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom99807">
+<div class="phpcode"><code><span class="html">
+If you want to use HTML5's &lt;date&gt; tag, the following code will generate the machine-readable value for the 'datetime' attribute:<br><br><span class="default">&lt;?php<br><br></span><span class="comment">/** <br> * formats the date passed into format required by 'datetime' attribute of &lt;date&gt; tag<br> * if no intDate supplied, uses current date.<br> * @param intDate integer optional<br> * @return string<br> **/<br></span><span class="keyword">function </span><span class="default">getDateTimeValue</span><span class="keyword">( </span><span class="default">$intDate </span><span class="keyword">= </span><span class="default">null </span><span class="keyword">) {<br><br>&nbsp; &nbsp; </span><span class="default">$strFormat </span><span class="keyword">= </span><span class="string">'Y-m-d\TH:i:s.uP'</span><span class="keyword">;<br>&nbsp; &nbsp; </span><span class="default">$strDate </span><span class="keyword">= </span><span class="default">$intDate </span><span class="keyword">? </span><span class="default">date</span><span class="keyword">( </span><span class="default">$strFormat</span><span class="keyword">, </span><span class="default">$intDate </span><span class="keyword">) : </span><span class="default">date</span><span class="keyword">( </span><span class="default">$strFormat </span><span class="keyword">) ; <br>&nbsp; &nbsp; <br>&nbsp; &nbsp; return </span><span class="default">$strDate</span><span class="keyword">;<br>}<br><br>echo </span><span class="default">getDateTimeValue</span><span class="keyword">();<br><br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="107971">  <div class="votes">
+    <div id="Vu107971">
+    <a href="http://php.net/manual/vote-note.php?id=107971&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd107971">
+    <a href="http://php.net/manual/vote-note.php?id=107971&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V107971" title="54% like this...">
+    4
+    </div>
+  </div>
+  <a href="#107971" class="name">
+  <strong class="user"><em>Bas Vijfwinkel</em></strong></a><a class="genanchor" href="#107971"> ¶</a><div class="date" title="2012-03-19 06:47"><strong>4 years ago</strong></div>
+  <div class="text" id="Hcom107971">
+<div class="phpcode"><code><span class="html">
+Note that some formatting options are different from MySQL.<br>For example using a 24 hour notation without leading zeros is the option '%G' in PHP but '%k' in MySQL.<br>When using dynamically generated date formatting string, be careful to generate the correct options for either PHP or MySQL.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="109023">  <div class="votes">
+    <div id="Vu109023">
+    <a href="http://php.net/manual/vote-note.php?id=109023&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd109023">
+    <a href="http://php.net/manual/vote-note.php?id=109023&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V109023" title="53% like this...">
+    5
+    </div>
+  </div>
+  <a href="#109023" class="name">
+  <strong class="user"><em>Tim Connolly</em></strong></a><a class="genanchor" href="#109023"> ¶</a><div class="date" title="2012-06-13 02:56"><strong>4 years ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom109023">
+<div class="phpcode"><code><span class="html">
+Here's my solution for looking up the month number by name (used when parsing an 'ls'):
+<br>
+<br><span class="default">&lt;?php
+<br>&nbsp; </span><span class="keyword">for(</span><span class="default">$m</span><span class="keyword">=</span><span class="default">1</span><span class="keyword">;</span><span class="default">$m</span><span class="keyword">&lt;=</span><span class="default">12</span><span class="keyword">;</span><span class="default">$m</span><span class="keyword">++){
+<br>&nbsp; &nbsp; </span><span class="default">$month</span><span class="keyword">=</span><span class="default">date</span><span class="keyword">(</span><span class="string">"M"</span><span class="keyword">,</span><span class="default">mktime</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">,</span><span class="default">0</span><span class="keyword">,</span><span class="default">0</span><span class="keyword">,</span><span class="default">$m</span><span class="keyword">,</span><span class="default">1</span><span class="keyword">,</span><span class="default">2000</span><span class="keyword">));
+<br>&nbsp; &nbsp; </span><span class="default">$mon</span><span class="keyword">[</span><span class="string">"</span><span class="default">$month</span><span class="string">"</span><span class="keyword">]=</span><span class="default">$m</span><span class="keyword">;
+<br>&nbsp; }
+<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="118457">  <div class="votes">
+    <div id="Vu118457">
+    <a href="http://php.net/manual/vote-note.php?id=118457&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118457">
+    <a href="http://php.net/manual/vote-note.php?id=118457&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118457" title="52% like this...">
+    2
+    </div>
+  </div>
+  <a href="#118457" class="name">
+  <strong class="user"><em>Charlie</em></strong></a><a class="genanchor" href="#118457"> ¶</a><div class="date" title="2015-12-09 02:30"><strong>1 year ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom118457">
+<div class="phpcode"><code><span class="html">
+For HTML5 datetime-local HTML input controls (<a href="http://www.w3.org/TR/html-markup/input.datetime-local.html" rel="nofollow" target="_blank">http://www.w3.org/TR/html-markup/input.datetime-local.html</a>) use format example: 1996-12-19T16:39:57<br><br>To generate this, escape the 'T', as shown below:<br><br><span class="default">&lt;?php<br>date</span><span class="keyword">(</span><span class="string">'Y-m-d\TH:i:s'</span><span class="keyword">);<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="64046">  <div class="votes">
+    <div id="Vu64046">
+    <a href="http://php.net/manual/vote-note.php?id=64046&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd64046">
+    <a href="http://php.net/manual/vote-note.php?id=64046&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V64046" title="53% like this...">
+    5
+    </div>
+  </div>
+  <a href="#64046" class="name">
+  <strong class="user"><em>mel dot boyce at gmail dot com</em></strong></a><a class="genanchor" href="#64046"> ¶</a><div class="date" title="2006-04-06 04:46"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom64046">
+<div class="phpcode"><code><span class="html">
+I've been flicking through the comments looking for some succinct date code and have noticed an alarming number of questions and over-burdened examples related to date mathematics. One of the most useful skills you can utilize when performing date math is taking full advantage of the UNIX timestamp. The UNIX timestamp was built for this kind of work.<br><br>An example of this relates to a comment made by james at bandit-dot-co-dot-en-zed. James was looking for a way to calculate the number of days which have passed since a certain date. Rather than using mktime() and a loop, James can subtract the current timestamp from the timestamp of the date in question and divide that by the number of seconds in a day:<br><span class="default">&lt;?php<br>$days </span><span class="keyword">= </span><span class="default">floor</span><span class="keyword">((</span><span class="default">time</span><span class="keyword">() - </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"01-Jan-2006"</span><span class="keyword">))/</span><span class="default">86400</span><span class="keyword">);<br>print(</span><span class="string">"</span><span class="default">$days</span><span class="string"> days have passed.\n"</span><span class="keyword">);<br></span><span class="default">?&gt;<br></span><br>Another usage could find itself in a class submitted by Kyle M Hall which aids in the creation of timestamps from the recent past for use with MySQL. Rather than the looping and fine tuning of a date, Kyle can use the raw UNIX timestamps (this is untested code):<br><span class="default">&lt;?php<br>$ago </span><span class="keyword">= </span><span class="default">14</span><span class="keyword">; </span><span class="comment">// days<br></span><span class="default">$timestamp </span><span class="keyword">= </span><span class="default">time</span><span class="keyword">() - (</span><span class="default">$ago </span><span class="keyword">* </span><span class="default">86400</span><span class="keyword">);<br></span><span class="default">?&gt;<br></span><br>Hopefully these two examples of "UNIX-style" timestamp usage will help those finding date mathematics more elusive than it should be.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="101379">  <div class="votes">
+    <div id="Vu101379">
+    <a href="http://php.net/manual/vote-note.php?id=101379&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd101379">
+    <a href="http://php.net/manual/vote-note.php?id=101379&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V101379" title="51% like this...">
+    4
+    </div>
+  </div>
+  <a href="#101379" class="name">
+  <strong class="user"><em>ghotinet</em></strong></a><a class="genanchor" href="#101379"> ¶</a><div class="date" title="2010-12-13 10:06"><strong>6 years ago</strong></div>
+  <div style="opacity: 1;" class="text" id="Hcom101379">
+<div class="phpcode"><code><span class="html">
+Most spreadsheet programs have a rather nice little built-in function called NETWORKDAYS to calculate the number of business days (i.e. Monday-Friday, excluding holidays) between any two given dates. I couldn't find a simple way to do that in PHP, so I threw this together. It replicates the functionality of OpenOffice's NETWORKDAYS function - you give it a start date, an end date, and an array of any holidays you want skipped, and it'll tell you the number of business days (inclusive of the start and end days!) between them.<br><br>I've tested it pretty strenuously but date arithmetic is complicated and there's always the possibility I missed something, so please feel free to check my math.<br><br>The function could certainly be made much more powerful, to allow you to set different days to be ignored (e.g. "skip all Fridays and Saturdays but include Sundays") or to set up dates that should always be skipped (e.g. "skip July 4th in any year, skip the first Monday in September in any year"). But that's a project for another time.<br><br><span class="default">&lt;?php<br><br></span><span class="keyword">function </span><span class="default">networkdays</span><span class="keyword">(</span><span class="default">$s</span><span class="keyword">, </span><span class="default">$e</span><span class="keyword">, </span><span class="default">$holidays </span><span class="keyword">= array()) {<br>&nbsp; &nbsp; </span><span class="comment">// If the start and end dates are given in the wrong order, flip them.&nbsp; &nbsp; <br>&nbsp; &nbsp; </span><span class="keyword">if (</span><span class="default">$s </span><span class="keyword">&gt; </span><span class="default">$e</span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">networkdays</span><span class="keyword">(</span><span class="default">$e</span><span class="keyword">, </span><span class="default">$s</span><span class="keyword">, </span><span class="default">$holidays</span><span class="keyword">);<br><br>&nbsp; &nbsp; </span><span class="comment">// Find the ISO-8601 day of the week for the two dates.<br>&nbsp; &nbsp; </span><span class="default">$sd </span><span class="keyword">= </span><span class="default">date</span><span class="keyword">(</span><span class="string">"N"</span><span class="keyword">, </span><span class="default">$s</span><span class="keyword">);<br>&nbsp; &nbsp; </span><span class="default">$ed </span><span class="keyword">= </span><span class="default">date</span><span class="keyword">(</span><span class="string">"N"</span><span class="keyword">, </span><span class="default">$e</span><span class="keyword">);<br><br>&nbsp; &nbsp; </span><span class="comment">// Find the number of weeks between the dates.<br>&nbsp; &nbsp; </span><span class="default">$w </span><span class="keyword">= </span><span class="default">floor</span><span class="keyword">((</span><span class="default">$e </span><span class="keyword">- </span><span class="default">$s</span><span class="keyword">)/(</span><span class="default">86400</span><span class="keyword">*</span><span class="default">7</span><span class="keyword">));&nbsp; &nbsp; </span><span class="comment"># Divide the difference in the two times by seven days to get the number of weeks.<br>&nbsp; &nbsp; </span><span class="keyword">if (</span><span class="default">$ed </span><span class="keyword">&gt;= </span><span class="default">$sd</span><span class="keyword">) { </span><span class="default">$w</span><span class="keyword">--; }&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment"># If the end date falls on the same day of the week or a later day of the week than the start date, subtract a week.<br><br>&nbsp; &nbsp; // Calculate net working days.<br>&nbsp; &nbsp; </span><span class="default">$nwd </span><span class="keyword">= </span><span class="default">max</span><span class="keyword">(</span><span class="default">6 </span><span class="keyword">- </span><span class="default">$sd</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">);&nbsp; &nbsp; </span><span class="comment"># If the start day is Saturday or Sunday, add zero, otherewise add six minus the weekday number.<br>&nbsp; &nbsp; </span><span class="default">$nwd </span><span class="keyword">+= </span><span class="default">min</span><span class="keyword">(</span><span class="default">$ed</span><span class="keyword">, </span><span class="default">5</span><span class="keyword">);&nbsp; &nbsp; </span><span class="comment"># If the end day is Saturday or Sunday, add five, otherwise add the weekday number.<br>&nbsp; &nbsp; </span><span class="default">$nwd </span><span class="keyword">+= </span><span class="default">$w </span><span class="keyword">* </span><span class="default">5</span><span class="keyword">;&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment"># Add five days for each week in between.<br><br>&nbsp; &nbsp; // Iterate through the array of holidays. For each holiday between the start and end dates that isn't a Saturday or a Sunday, remove one day.<br>&nbsp; &nbsp; </span><span class="keyword">foreach (</span><span class="default">$holidays </span><span class="keyword">as </span><span class="default">$h</span><span class="keyword">) {<br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$h </span><span class="keyword">= </span><span class="default">strtotime</span><span class="keyword">(</span><span class="default">$h</span><span class="keyword">);<br>&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">$h </span><span class="keyword">&gt; </span><span class="default">$s </span><span class="keyword">&amp;&amp; </span><span class="default">$h </span><span class="keyword">&lt; </span><span class="default">$e </span><span class="keyword">&amp;&amp; </span><span class="default">date</span><span class="keyword">(</span><span class="string">"N"</span><span class="keyword">, </span><span class="default">$h</span><span class="keyword">) &lt; </span><span class="default">6</span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$nwd</span><span class="keyword">--;<br>&nbsp; &nbsp; }<br><br>&nbsp; &nbsp; return </span><span class="default">$nwd</span><span class="keyword">;<br>}<br><br></span><span class="default">$start </span><span class="keyword">= </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"1 January 2010"</span><span class="keyword">);<br></span><span class="default">$end </span><span class="keyword">= </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"13 December 2010"</span><span class="keyword">);<br><br></span><span class="comment">// Add as many holidays as desired.<br></span><span class="default">$holidays </span><span class="keyword">= array();<br></span><span class="default">$holidays</span><span class="keyword">[] = </span><span class="string">"4 July 2010"</span><span class="keyword">;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Falls on a Sunday; doesn't affect count<br></span><span class="default">$holidays</span><span class="keyword">[] = </span><span class="string">"6 September 2010"</span><span class="keyword">;&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Falls on a Monday; reduces count by one<br><br></span><span class="keyword">echo </span><span class="default">networkdays</span><span class="keyword">(</span><span class="default">$start</span><span class="keyword">, </span><span class="default">$end</span><span class="keyword">, </span><span class="default">$holidays</span><span class="keyword">);&nbsp; &nbsp; </span><span class="comment">// Returns 246<br><br></span><span class="default">?&gt;<br></span><br>Or, if you just want to know how many work days there are in any given year, here's a quick function for that one:<br><br><span class="default">&lt;?php<br><br></span><span class="keyword">function </span><span class="default">workdaysinyear</span><span class="keyword">(</span><span class="default">$y</span><span class="keyword">) {<br>&nbsp; &nbsp; </span><span class="default">$j1 </span><span class="keyword">= </span><span class="default">mktime</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">,</span><span class="default">0</span><span class="keyword">,</span><span class="default">0</span><span class="keyword">,</span><span class="default">1</span><span class="keyword">,</span><span class="default">1</span><span class="keyword">,</span><span class="default">$y</span><span class="keyword">);<br>&nbsp; &nbsp; if (</span><span class="default">date</span><span class="keyword">(</span><span class="string">"L"</span><span class="keyword">, </span><span class="default">$j1</span><span class="keyword">)) {<br>&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">date</span><span class="keyword">(</span><span class="string">"N"</span><span class="keyword">, </span><span class="default">$j1</span><span class="keyword">) == </span><span class="default">6</span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">260</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; elseif (</span><span class="default">date</span><span class="keyword">(</span><span class="string">"N"</span><span class="keyword">, </span><span class="default">$j1</span><span class="keyword">) == </span><span class="default">5 </span><span class="keyword">or </span><span class="default">date</span><span class="keyword">(</span><span class="string">"N"</span><span class="keyword">, </span><span class="default">$j1</span><span class="keyword">) == </span><span class="default">7</span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">261</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; else<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">262</span><span class="keyword">;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; else {<br>&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">date</span><span class="keyword">(</span><span class="string">"N"</span><span class="keyword">, </span><span class="default">$j1</span><span class="keyword">) == </span><span class="default">6 </span><span class="keyword">or </span><span class="default">date</span><span class="keyword">(</span><span class="string">"N"</span><span class="keyword">, </span><span class="default">$j1</span><span class="keyword">) == </span><span class="default">7</span><span class="keyword">)<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">260</span><span class="keyword">;<br>&nbsp; &nbsp; &nbsp; &nbsp; else<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">261</span><span class="keyword">;<br>&nbsp; &nbsp; }<br>}<br><br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="114591">  <div class="votes">
+    <div id="Vu114591">
+    <a href="http://php.net/manual/vote-note.php?id=114591&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd114591">
+    <a href="http://php.net/manual/vote-note.php?id=114591&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V114591" title="51% like this...">
+    2
+    </div>
+  </div>
+  <a href="#114591" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#114591"> ¶</a><div class="date" title="2014-03-10 09:09"><strong>2 years ago</strong></div>
+  <div class="text" id="Hcom114591">
+<div class="phpcode"><code><span class="html">
+It's common for us to overthink the complexity of date/time calculations and underthink the power and flexibility of PHP's built-in functions.&nbsp; Consider <a href="http://php.net/manual/en/function.date.php#108613" rel="nofollow" target="_blank">http://php.net/manual/en/function.date.php#108613</a><br><br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">get_time_string</span><span class="keyword">(</span><span class="default">$seconds</span><span class="keyword">)<br>{<br>&nbsp; &nbsp; return </span><span class="default">date</span><span class="keyword">(</span><span class="string">'H:i:s'</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"2000-01-01 + </span><span class="default">$seconds</span><span class="string"> SECONDS"</span><span class="keyword">));<br>}</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="62792">  <div class="votes">
+    <div id="Vu62792">
+    <a href="http://php.net/manual/vote-note.php?id=62792&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd62792">
+    <a href="http://php.net/manual/vote-note.php?id=62792&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V62792" title="52% like this...">
+    4
+    </div>
+  </div>
+  <a href="#62792" class="name">
+  <strong class="user"><em>SpikeDaCruz</em></strong></a><a class="genanchor" href="#62792"> ¶</a><div class="date" title="2006-03-09 11:12"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom62792">
+<div class="phpcode"><code><span class="html">
+The following function will return the date (on the Gregorian calendar) for Orthodox Easter (Pascha).&nbsp; Note that incorrect results will be returned for years less than 1601 or greater than 2399. This is because the Julian calendar (from which the Easter date is calculated) deviates from the Gregorian by one day for each century-year that is NOT a leap-year, i.e. the century is divisible by 4 but not by 10.&nbsp; (In the old Julian reckoning, EVERY 4th year was a leap-year.)
+<br>
+<br>This algorithm was first proposed by the mathematician/physicist Gauss.&nbsp; Its complexity derives from the fact that the calculation is based on a combination of solar and lunar calendars.
+<br>
+<br><span class="default">&lt;?php
+<br></span><span class="keyword">function </span><span class="default">getOrthodoxEaster</span><span class="keyword">(</span><span class="default">$date</span><span class="keyword">){
+<br>&nbsp; </span><span class="comment">/*
+<br>&nbsp;&nbsp; Takes any Gregorian date and returns the Gregorian
+<br>&nbsp;&nbsp; date of Orthodox Easter for that year.
+<br>&nbsp; */
+<br>&nbsp; </span><span class="default">$year </span><span class="keyword">= </span><span class="default">date</span><span class="keyword">(</span><span class="string">"Y"</span><span class="keyword">, </span><span class="default">$date</span><span class="keyword">);
+<br>&nbsp; </span><span class="default">$r1 </span><span class="keyword">= </span><span class="default">$year </span><span class="keyword">% </span><span class="default">19</span><span class="keyword">;
+<br>&nbsp; </span><span class="default">$r2 </span><span class="keyword">= </span><span class="default">$year </span><span class="keyword">% </span><span class="default">4</span><span class="keyword">;
+<br>&nbsp; </span><span class="default">$r3 </span><span class="keyword">= </span><span class="default">$year </span><span class="keyword">% </span><span class="default">7</span><span class="keyword">;
+<br>&nbsp; </span><span class="default">$ra </span><span class="keyword">= </span><span class="default">19 </span><span class="keyword">* </span><span class="default">$r1 </span><span class="keyword">+ </span><span class="default">16</span><span class="keyword">;
+<br>&nbsp; </span><span class="default">$r4 </span><span class="keyword">= </span><span class="default">$ra </span><span class="keyword">% </span><span class="default">30</span><span class="keyword">;
+<br>&nbsp; </span><span class="default">$rb </span><span class="keyword">= </span><span class="default">2 </span><span class="keyword">* </span><span class="default">$r2 </span><span class="keyword">+ </span><span class="default">4 </span><span class="keyword">* </span><span class="default">$r3 </span><span class="keyword">+ </span><span class="default">6 </span><span class="keyword">* </span><span class="default">$r4</span><span class="keyword">;
+<br>&nbsp; </span><span class="default">$r5 </span><span class="keyword">= </span><span class="default">$rb </span><span class="keyword">% </span><span class="default">7</span><span class="keyword">;
+<br>&nbsp; </span><span class="default">$rc </span><span class="keyword">= </span><span class="default">$r4 </span><span class="keyword">+ </span><span class="default">$r5</span><span class="keyword">;
+<br>&nbsp; </span><span class="comment">//Orthodox Easter for this year will fall $rc days after April 3
+<br>&nbsp; </span><span class="keyword">return </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"3 April </span><span class="default">$year</span><span class="string"> + </span><span class="default">$rc</span><span class="string"> days"</span><span class="keyword">);
+<br>}
+<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="85692">  <div class="votes">
+    <div id="Vu85692">
+    <a href="http://php.net/manual/vote-note.php?id=85692&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd85692">
+    <a href="http://php.net/manual/vote-note.php?id=85692&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V85692" title="50% like this...">
+    2
+    </div>
+  </div>
+  <a href="#85692" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#85692"> ¶</a><div class="date" title="2008-09-12 06:01"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom85692">
+<div class="phpcode"><code><span class="html">
+Correct format for a MySQL DATETIME column is<br><span class="default">&lt;?php $mysqltime </span><span class="keyword">= </span><span class="default">date </span><span class="keyword">(</span><span class="string">"Y-m-d H:i:s"</span><span class="keyword">, </span><span class="default">$phptime</span><span class="keyword">); </span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="113873">  <div class="votes">
+    <div id="Vu113873">
+    <a href="http://php.net/manual/vote-note.php?id=113873&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd113873">
+    <a href="http://php.net/manual/vote-note.php?id=113873&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V113873" title="49% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#113873" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#113873"> ¶</a><div class="date" title="2013-12-11 08:21"><strong>3 years ago</strong></div>
+  <div style="opacity: 0.75;" class="text" id="Hcom113873">
+<div class="phpcode"><code><span class="html">
+To quickly convert date("N") to a 0 based index with Sunday being represented as 0, you can run it against modulus 7: <br><br><span class="default">&lt;?php <br>$first_of_month_index </span><span class="keyword">= </span><span class="default">date</span><span class="keyword">(</span><span class="string">'N'</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">'4/1/1990'</span><span class="keyword">)) % </span><span class="default">7</span><span class="keyword">;<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="92533">  <div class="votes">
+    <div id="Vu92533">
+    <a href="http://php.net/manual/vote-note.php?id=92533&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd92533">
+    <a href="http://php.net/manual/vote-note.php?id=92533&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V92533" title="49% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#92533" class="name">
+  <strong class="user"><em>Just.Kevin</em></strong></a><a class="genanchor" href="#92533"> ¶</a><div class="date" title="2009-07-28 09:52"><strong>7 years ago</strong></div>
+  <div style="opacity: 0.75;" class="text" id="Hcom92533">
+<div class="phpcode"><code><span class="html">
+In order to determine if a year is a leap year an earlier poster suggested simply checking to see if the year is a multiple of four:<br><br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">is_leapyear_broken</span><span class="keyword">(</span><span class="default">$year </span><span class="keyword">= </span><span class="default">2004</span><span class="keyword">) {<br>return (</span><span class="default">$year</span><span class="keyword">%</span><span class="default">4</span><span class="keyword">)==</span><span class="default">0</span><span class="keyword">;<br>}<br></span><span class="default">?&gt;<br></span><br>While this will work for the majority of years it will not work on years that are multiples of 100 but not multiples of 400 i.e.(2100).<br>A function not using php's date() function that will also account for this small anomaly in leap years:<br><br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">is_leapyear_working</span><span class="keyword">(</span><span class="default">$year </span><span class="keyword">= </span><span class="default">2004</span><span class="keyword">) {<br>&nbsp; &nbsp; if(((</span><span class="default">$year</span><span class="keyword">%</span><span class="default">4</span><span class="keyword">==</span><span class="default">0</span><span class="keyword">) &amp;&amp; (</span><span class="default">$year</span><span class="keyword">%</span><span class="default">100</span><span class="keyword">!=</span><span class="default">0</span><span class="keyword">)) || </span><span class="default">$year</span><span class="keyword">%</span><span class="default">400</span><span class="keyword">==</span><span class="default">0</span><span class="keyword">) {<br>&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">true</span><span class="keyword">;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return </span><span class="default">false</span><span class="keyword">;<br>}<br></span><span class="default">?&gt;<br></span><br>While is_leapyear_working will not return true for the few non-leap years divisible by four I couldn't tell you if this is more or less efficient than using php's date() as an even earlier poster suggested:<br><br><span class="default">&lt;?php<br></span><span class="keyword">function </span><span class="default">is_leapyear</span><span class="keyword">(</span><span class="default">$year </span><span class="keyword">= </span><span class="default">2004</span><span class="keyword">) {<br></span><span class="default">$is_leap </span><span class="keyword">= </span><span class="default">date</span><span class="keyword">(</span><span class="string">'L'</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">(</span><span class="string">"</span><span class="default">$year</span><span class="string">-1-1"</span><span class="keyword">));<br>return </span><span class="default">$is_leap</span><span class="keyword">;<br>}<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="119325">  <div class="votes">
+    <div id="Vu119325">
+    <a href="http://php.net/manual/vote-note.php?id=119325&amp;page=function.date&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd119325">
+    <a href="http://php.net/manual/vote-note.php?id=119325&amp;page=function.date&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V119325" title="27% like this...">
+    -5
+    </div>
+  </div>
+  <a href="#119325" class="name">
+  <strong class="user"><em>Al Roker</em></strong></a><a class="genanchor" href="#119325"> ¶</a><div class="date" title="2016-05-13 02:18"><strong>8 months ago</strong></div>
+  <div style="opacity: 0.35;" class="text" id="Hcom119325">
+<div class="phpcode"><code><span class="html">
+When using 'U' to return a UNIX time stamp, you may not get what you expect. In the following example, we try to get the current Unix time stamp for a user in a different timezone.<br><br><span class="default">&lt;?php<br></span><span class="comment">// Doesn't work<br></span><span class="default">$timezone </span><span class="keyword">= new \</span><span class="default">DateTimeZone</span><span class="keyword">(</span><span class="default">$userTimeZone</span><span class="keyword">);<br></span><span class="default">$date </span><span class="keyword">= new \</span><span class="default">DateTime</span><span class="keyword">(</span><span class="string">'@' </span><span class="keyword">. </span><span class="default">time</span><span class="keyword">(), </span><span class="default">$timezone</span><span class="keyword">);<br></span><span class="default">$date</span><span class="keyword">-&gt;</span><span class="default">setTimezone</span><span class="keyword">(</span><span class="default">$timezone</span><span class="keyword">);<br></span><span class="default">$now </span><span class="keyword">= </span><span class="default">$date</span><span class="keyword">-&gt;</span><span class="default">format</span><span class="keyword">(</span><span class="string">'U'</span><span class="keyword">);<br></span><span class="default">?&gt;<br></span><br>$now will return the same (the server's current) Unix time stamp regardless which timezone your user is in.<br><br>To get the actual Unix time stamp based on a time zone, replace format('U') as in the following example;<br><br><span class="default">&lt;?php<br></span><span class="comment">// This works<br></span><span class="default">$timezone </span><span class="keyword">= new \</span><span class="default">DateTimeZone</span><span class="keyword">(</span><span class="default">$userTimeZone</span><span class="keyword">);<br></span><span class="default">$date </span><span class="keyword">= new \</span><span class="default">DateTime</span><span class="keyword">(</span><span class="string">'@' </span><span class="keyword">. </span><span class="default">time</span><span class="keyword">(), </span><span class="default">$timezone</span><span class="keyword">);<br></span><span class="default">$date</span><span class="keyword">-&gt;</span><span class="default">setTimezone</span><span class="keyword">(</span><span class="default">$timezone</span><span class="keyword">);<br></span><span class="default">$now </span><span class="keyword">= </span><span class="default">$date</span><span class="keyword">-&gt;</span><span class="default">getTimestamp</span><span class="keyword">() + </span><span class="default">$date</span><span class="keyword">-&gt;</span><span class="default">getOffset</span><span class="keyword">();<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div></div>
+
+ <div class="foot"><a href="http://php.net/manual/add-note.php?sect=function.date&amp;redirect=http://php.net/manual/zh/function.date.php"><img src="notes-add@2x.png" alt="add a note" height="12" width="12"> <small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class="layout-menu">
+    
+        <ul class="parent-menu-list">
+                                    <li>
+                <a href="http://php.net/manual/zh/ref.datetime.php">Date/Time 函数</a>
+    
+                                    <ul class="child-menu-list">
+    
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.checkdate.php" title="checkdate">checkdate</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-add.php" title="date_​add">date_​add</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-create-from-format.php" title="date_​create_​from_​format">date_​create_​from_​format</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-create-immutable-from-format.php" title="date_​create_​immutable_​from_​format">date_​create_​immutable_​from_​format</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-create-immutable.php" title="date_​create_​immutable">date_​create_​immutable</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-create.php" title="date_​create">date_​create</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-date-set.php" title="date_​date_​set">date_​date_​set</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-default-timezone-get.php" title="date_​default_​timezone_​get">date_​default_​timezone_​get</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-default-timezone-set.php" title="date_​default_​timezone_​set">date_​default_​timezone_​set</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-diff.php" title="date_​diff">date_​diff</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-format.php" title="date_​format">date_​format</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-get-last-errors.php" title="date_​get_​last_​errors">date_​get_​last_​errors</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-interval-create-from-date-string.php" title="date_​interval_​create_​from_​date_​string">date_​interval_​create_​from_​date_​string</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-interval-format.php" title="date_​interval_​format">date_​interval_​format</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-isodate-set.php" title="date_​isodate_​set">date_​isodate_​set</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-modify.php" title="date_​modify">date_​modify</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-offset-get.php" title="date_​offset_​get">date_​offset_​get</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-parse-from-format.php" title="date_​parse_​from_​format">date_​parse_​from_​format</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-parse.php" title="date_​parse">date_​parse</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-sub.php" title="date_​sub">date_​sub</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-sun-info.php" title="date_​sun_​info">date_​sun_​info</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-sunrise.php" title="date_​sunrise">date_​sunrise</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-sunset.php" title="date_​sunset">date_​sunset</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-time-set.php" title="date_​time_​set">date_​time_​set</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-timestamp-get.php" title="date_​timestamp_​get">date_​timestamp_​get</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-timestamp-set.php" title="date_​timestamp_​set">date_​timestamp_​set</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-timezone-get.php" title="date_​timezone_​get">date_​timezone_​get</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.date-timezone-set.php" title="date_​timezone_​set">date_​timezone_​set</a>
+                        </li>
+                          
+                        <li class="current">
+                            <a href="#" title="date">date</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.getdate.php" title="getdate">getdate</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.gettimeofday.php" title="gettimeofday">gettimeofday</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.gmdate.php" title="gmdate">gmdate</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.gmmktime.php" title="gmmktime">gmmktime</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.gmstrftime.php" title="gmstrftime">gmstrftime</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.idate.php" title="idate">idate</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.localtime.php" title="localtime">localtime</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.microtime.php" title="microtime">microtime</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.mktime.php" title="mktime">mktime</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.strftime.php" title="strftime">strftime</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.strptime.php" title="strptime">strptime</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.strtotime.php" title="strtotime">strtotime</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.time.php" title="time">time</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.timezone-abbreviations-list.php" title="timezone_​abbreviations_​list">timezone_​abbreviations_​list</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.timezone-identifiers-list.php" title="timezone_​identifiers_​list">timezone_​identifiers_​list</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.timezone-location-get.php" title="timezone_​location_​get">timezone_​location_​get</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.timezone-name-from-abbr.php" title="timezone_​name_​from_​abbr">timezone_​name_​from_​abbr</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.timezone-name-get.php" title="timezone_​name_​get">timezone_​name_​get</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.timezone-offset-get.php" title="timezone_​offset_​get">timezone_​offset_​get</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.timezone-open.php" title="timezone_​open">timezone_​open</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.timezone-transitions-get.php" title="timezone_​transitions_​get">timezone_​transitions_​get</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/function.timezone-version-get.php" title="timezone_​version_​get">timezone_​version_​get</a>
+                        </li>
+                            
+                    </ul>
+                    
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+         
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="http://php.net/copyright.php">Copyright © 2001-2017 The PHP Group</a></li>
+        <li><a href="http://php.net/my.php">My PHP.net</a></li>
+        <li><a href="http://php.net/contact.php">Contact</a></li>
+        <li><a href="http://php.net/sites.php">Other PHP.net sites</a></li>
+        <li><a href="http://php.net/mirrors.php">Mirror sites</a></li>
+        <li><a href="http://php.net/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+ <!-- External and third party libraries. -->
+ <script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+
+<a style="display: inline;" id="toTop"><span id="toTopHover"></span><img alt="To Top" src="to-top@2x.png" height="40" width="40"></a>
+
+
+
+
+</body>
+</html>

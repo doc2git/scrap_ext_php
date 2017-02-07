@@ -1,0 +1,8 @@
+/* Code tidied up by ScrapBook */
+body { margin: 0px; padding: 0px; }
+.container { position: relative; }
+a { display: inline-block; position: absolute; background: rgb(255, 255, 255) none repeat scroll 0% 0%; text-align: center; overflow: hidden; color: rgb(0, 0, 0); font-family: "����"; text-decoration: none; }
+.block1 { font-size: 24px; font-weight: bolder; }
+.block2 { font-size: 20px; }
+.block2_5 { font-size: 18px; }
+.block3 { font-size: 12px; }

@@ -1,0 +1,33 @@
+/* Code tidied up by ScrapBook */
+.pleft { width: 712px; float: left; overflow: hidden; }
+.pleft .place { width: 712px; height: 24px; line-height: 24px; background: rgb(242, 252, 254) none repeat scroll 0% 0%; border-top: 1px solid rgb(224, 236, 243); border-bottom: 1px solid rgb(224, 236, 243); text-indent: 12px; color: rgb(204, 204, 204); overflow: hidden; }
+.pleft .place strong { color: rgb(57, 124, 190); font-weight: normal; letter-spacing: 1px; }
+.pleft .place a { color: rgb(57, 124, 190); margin: 0px 2px; }
+.pleft .place a:hover { color: rgb(70, 156, 242); text-decoration: none; }
+.pright { width: 240px; float: right; overflow: hidden; }
+.dede_pages {  }
+.dede_pages ul { float: left; padding: 12px 0px 12px 16px; }
+.viewbox { width: 712px; overflow: hidden; padding-bottom: 8px; }
+.viewbox .title { height: 56px; line-height: 56px; text-align: center; overflow: hidden; padding-top: 10px; }
+.viewbox .title h2 { font-size: 24px; color: rgb(51, 102, 153); }
+.viewbox .info { height: 24px; line-height: 17px; text-align: center; overflow: hidden; color: rgb(102, 102, 102); }
+.viewbox .info small { margin-left: 8px; margin-right: 3px; color: rgb(153, 153, 153); font-size: 12px; }
+.viewbox .info a { color: rgb(102, 153, 0); }
+.viewbox .content { font-size: 14px; padding: 12px 16px; line-height: 25px; color: rgb(51, 51, 51); }
+.viewbox .dede_pages { width: 712px; float: none; overflow: hidden; text-align: center; }
+.viewbox .dede_pages ul { margin: 0px auto; float: none; clear: both; overflow: hidden; text-align: center; white-space: nowrap; }
+.viewbox .boxoff { height: 10px; overflow: hidden; clear: both; background: transparent url("boxoff.gif") repeat-x scroll left 15px; margin: 4px auto; padding-top: 10px; }
+.viewbox .boxoff strong { display: block; width: 8px; height: 10px; overflow: hidden; font-size: 0px; line-height: 100px; background: transparent url("boxoff.gif") no-repeat scroll right -10px; float: left; }
+.viewbox .newdigg { width: 710px; height: 90px; margin: 8px auto; clear: both; overflow: hidden; padding-left: 8px; }
+.viewbox .handle { height: 59px; padding-top: 12px; overflow: hidden; clear: both; }
+.viewbox .actbox { width: 260px; text-align: center; float: right; padding-top: 20px; padding-right: 10px; }
+.viewbox .actbox ul li { display: inline; padding-left: 22px; background-image: url("actbox-ico.gif"); background-repeat: no-repeat; margin-right: 10px; }
+.viewbox .actbox ul li a { color: rgb(102, 102, 102); }
+.viewbox .actbox ul li#act-fav { background-position: 4px 0px; }
+.viewbox .actbox ul li#act-err { background-position: 4px -37px; }
+.viewbox .actbox ul li#act-pus { background-position: 4px -73px; }
+.viewbox .actbox ul li#act-pnt { background-position: 4px -109px; }
+.dede_comment_post { padding: 5px; }
+.dcmp-title { line-height: 25px; }
+.dcmp-title small { font-size: 12px; color: rgb(153, 153, 153); }
+pre { font-family: "Courier New",monospace; font-size: 12px; width: 99%; overflow: auto; margin: 0px 0px 1em; background: rgb(247, 247, 247) none repeat scroll 0% 0%; }

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<title>Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法 | Linux–不是那么难</title>
+<meta name="description" content="其实这些镜像已经很多了，根本不需要我们自己再来镜像，但是博主蛋疼，为了治疗还是这样做了。">
+<meta name="keywords" content="rsync,镜像">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="114x114" href="https://www.dwhd.org/wp-content/themes/begin/img/favicon.png">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.dwhd.org/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="https://www.dwhd.org/wp-content/themes/begin/js/html5.js"></script>
+<script src="https://www.dwhd.org/wp-content/themes/begin/js/css3-mediaqueries.js"></script>
+<![endif]-->
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="stylesheet" id="font-awesome-four-css" href="font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="style-css" href="style.css" type="text/css" media="all">
+<link rel="stylesheet" id="highlight-css" href="highlight.css" type="text/css" media="all">
+<link rel="stylesheet" id="tablepress-default-css" href="default.min.css" type="text/css" media="all">
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<link rel="canonical" href="https://www.dwhd.org/20150720_191117.html">
+<style>
+/* Code tidied up by ScrapBook */
+a:hover, .top-menu a:hover, .show-more span, .cat-box .icon-cat, .single-content a, .single-content a:visited, #site-nav .down-menu > .current-menu-item > a, .entry-meta a, #site-nav .down-menu > .current-menu-item > a:hover, #site-nav .down-menu > li > a:hover, #site-nav .down-menu > li.sfHover > a, .cat-title .fa-bars, .widget-title .fa-bars, .at, .at a, #user-profile a:hover, #comments .fa-exclamation-circle, #comments .fa-check-square, #comments .fa-spinner, #comments .fa-pencil-square-o { color: rgb(221, 51, 51); }
+.sf-arrows > li > .sf-with-ul:focus::after, .sf-arrows > li:hover > .sf-with-ul::after, .sf-arrows > .sfHover > .sf-with-ul::after { border-top-color: rgb(221, 51, 51); }
+#login h1 a, .format-aside .post-format a, #searchform button, .li-icon-1, .li-icon-2, .li-icon-3, .new-icon, .title-l, .buttons a, .li-number, .post-format { background: rgb(221, 51, 51) none repeat scroll 0% 0%; }
+.entry-more a, #login input[type="submit"] { background: rgb(221, 51, 51) none repeat scroll 0% 0%; }
+#down a, .page-links span, .reply a:hover, .widget_categories a:hover, .widget_links a:hover, #respond #submit:hover, #navigation-toggle:hover, .rslides_tabs .rslides_here a, #scroll li a:hover, #fontsize:hover, .single-meta .comment a:hover, .single-meta .edit-link a:hover, .r-hide a:hover, .meta-nav:hover, .nav-single i:hover, .widget_categories a:hover, .widget_links a:hover, .tagcloud a:hover, #sidebar .widget_nav_menu a:hover { background: rgb(221, 51, 51) none repeat scroll 0% 0%; border: 1px solid rgb(221, 51, 51); }
+.comment-tool a, .link-all a:hover, .link-f a:hover { background: rgb(221, 51, 51) none repeat scroll 0% 0%; border: 1px solid rgb(221, 51, 51); }
+.login-t, .login-t a, .login-b, .social-main a { background: rgb(221, 51, 51) none repeat scroll 0% 0%; }
+.entry-header h1 { border-left: 5px solid rgb(221, 51, 51); border-right: 5px solid rgb(221, 51, 51); }
+@media screen and (min-width: 900px) {
+  .nav-search, .mobile-login a { background: rgb(221, 51, 51) none repeat scroll 0% 0%; }
+}
+@media screen and (min-width: 550px) {
+}
+@media screen and (max-width: 550px) {
+}
+.single-content a:hover { color: rgb(85, 85, 85); }
+.social-main a:hover { color: rgb(255, 255, 255); }
+</style><style>
+/* Code tidied up by ScrapBook */
+</style><style>
+/* Code tidied up by ScrapBook */
+#content, .top-nav, #top-menu, #mobile-nav, #main-search, #search-main, .breadcrumb, #links, .footer-widget { width: 1200px; }
+@media screen and (max-width: 1200px) {
+  #content, #colophon, .breadcrumb, .footer-widget { width: 98%; }
+  #top-menu { width: 98%; }
+  .top-nav { width: 98%; }
+  #main-search, #search-main, #mobile-nav { width: 98%; }
+  .breadcrumb { width: 98%; }
+}
+</style><link href="shCore.css" type="text/css" rel="stylesheet"><link href="shThemeEmacs.css" type="text/css" rel="stylesheet"><style type="text/css" id="syntaxhighlighteranchor">
+/* Code tidied up by ScrapBook */
+</style>
+ <style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style></head>
+<body class="post-template-default single single-post postid-1652 single-format-standard">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header">
+
+	<nav id="top-header">
+		<div class="top-nav">
+							<div id="user-profile">
+					<a href="https://www.dwhd.org/registered" target="_blank">立即注册</a>
+			
+										<span class="nav-set">
+				 	<span class="nav-login">
+				 						<a href="#login" class="flatbtn" id="login-main">登录</a>
+										</span>
+				</span>
+							</div>			
+			<div class="menu-%e9%a1%b6%e9%83%a8%e8%8f%9c%e5%8d%95-container"><ul id="menu-%e9%a1%b6%e9%83%a8%e8%8f%9c%e5%8d%95" class="top-menu"><li id="menu-item-2542" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2542"><a href="https://www.dwhd.org/music"><i class="fa fa-music"></i><span class="fontawesome-text"> 音乐</span></a></li>
+<li id="menu-item-400" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-400"><a href="http://www.dwhd.org/links"><i class="fa fa-link"></i><span class="fontawesome-text"> 友情链接</span></a></li>
+</ul></div>		</div>
+	</nav><!-- #top-header -->
+
+	<div class="shadow" id="menu-box">
+		<div id="top-menu">
+			<span class="nav-search"><i class="fa fa-search"></i></span>
+			<span class="mobile-login"><a href="#login" id="login-mobile"><i class="fa fa-sun-o"></i></a></span>						<hgroup class="logo-site">
+																    	<p class="site-title">
+						    						        <a href="https://www.dwhd.org/"><img src="legion.png" alt="Linux–不是那么难" height="50" width="220"></a>
+													</p>
+				       								</hgroup><!-- .logo-site -->
+
+			<div id="site-nav-wrap">
+				<div id="sidr-close"><a href="#sidr-close" class="toggle-sidr-close">×</a></div>
+				<nav id="site-nav" class="main-nav">
+										<a href="#sidr-main" id="navigation-toggle" class="bars"><i class="fa fa-bars"></i></a>
+										<div class="menu-%e9%a6%96%e9%a1%b5%e5%af%bc%e8%88%aa-container"><ul id="menu-%e9%a6%96%e9%a1%b5%e5%af%bc%e8%88%aa" class="down-menu nav-menu sf-js-enabled sf-arrows"><li id="menu-item-54" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-54"><a title="首页" href="http://www.dwhd.org/"><i class="fa fa-home"></i><span class="fontawesome-text"> 首页</span></a></li>
+<li id="menu-item-86" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-86"><a class="sf-with-ul" href="https://www.dwhd.org/category/linux/"><i class="fa fa-linux"></i><span class="fontawesome-text"> Linux</span></a>
+<ul style="display: none;" class="sub-menu">
+	<li id="menu-item-81" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-81"><a href="https://www.dwhd.org/category/linux/linuxbasic/"><i class="fa fa-linux"></i><span class="fontawesome-text"> Linux基础</span></a></li>
+	<li id="menu-item-1250" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1250"><a href="https://www.dwhd.org/category/linux/linux_network/"><i class="fa fa-wifi"></i><span class="fontawesome-text"> Linux网络</span></a></li>
+	<li id="menu-item-928" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-928"><a href="https://www.dwhd.org/category/linux/postfix/"><i class="fa fa-envelope-o"></i><span class="fontawesome-text"> Linux邮局</span></a></li>
+	<li id="menu-item-4180" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4180"><a href="https://www.dwhd.org/category/linux/awk-mark/"><i class="fa fa-battery-three-quarters"></i><span class="fontawesome-text"> AWK使用笔记</span></a></li>
+	<li id="menu-item-1029" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1029"><a href="https://www.dwhd.org/category/linux/%e8%87%aa%e5%8a%a8%e5%8c%96%e8%bf%90%e7%bb%b4/"><i class="fa fa-wrench"></i><span class="fontawesome-text"> 自动化运维</span></a></li>
+</ul>
+</li>
+<li id="menu-item-308" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-308"><a href="https://www.dwhd.org/category/linux/linux%e9%9b%86%e7%be%a4%e9%ab%98%e5%8f%af%e7%94%a8/"><i class="fa fa-cloud"></i><span class="fontawesome-text"> Linux高可用</span></a></li>
+<li id="menu-item-3244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-3244"><a class="sf-with-ul" href="https://www.dwhd.org/category/virtualization/"><i class="fa fa-vimeo"></i><span class="fontawesome-text"> 虚拟化</span></a>
+<ul style="display: none;" class="sub-menu">
+	<li id="menu-item-3247" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3247"><a href="https://www.dwhd.org/category/virtualization/docker/"><i class="fa fa-plus"></i><span class="fontawesome-text"> Docker</span></a></li>
+	<li id="menu-item-4626" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4626"><a href="https://www.dwhd.org/category/virtualization/xenserver/"><i class="fa fa-xing"></i><span class="fontawesome-text"> Xenserver</span></a></li>
+</ul>
+</li>
+<li id="menu-item-273" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-273"><a class="sf-with-ul" href="https://www.dwhd.org/category/sql/"><i class="fa fa-database"></i><span class="fontawesome-text"> 数据库</span></a>
+<ul style="display: none;" class="sub-menu">
+	<li id="menu-item-274" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-274"><a href="https://www.dwhd.org/category/sql/mysql/"><i class="fa fa-database"></i><span class="fontawesome-text"> MySQL&amp;MariaDB</span></a></li>
+</ul>
+</li>
+<li id="menu-item-1558" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1558"><a class="sf-with-ul" href="https://www.dwhd.org/category/program_script/"><i class="fa-cogs fa"></i><span class="fontawesome-text"> 编程&amp;脚本</span></a>
+<ul style="display: none;" class="sub-menu">
+	<li id="menu-item-1559" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1559"><a href="https://www.dwhd.org/category/program_script/python/"><i class="fa fa-code-fork"></i><span class="fontawesome-text"> Python</span></a></li>
+	<li id="menu-item-1560" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1560"><a href="https://www.dwhd.org/category/program_script/shellscript/"><i class="fa fa-code"></i><span class="fontawesome-text"> Shell脚本</span></a></li>
+</ul>
+</li>
+<li id="menu-item-275" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-275"><a class="sf-with-ul" href="https://www.dwhd.org/category/windows/"><i class="fa fa-windows"></i><span class="fontawesome-text"> Windows</span></a>
+<ul style="display: none;" class="sub-menu">
+	<li id="menu-item-276" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-276"><a href="https://www.dwhd.org/category/windows/windowsserver/"><i class="fa fa-windows"></i><span class="fontawesome-text"> Windows Server</span></a></li>
+</ul>
+</li>
+<li id="menu-item-2114" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2114"><a target="_blank" href="https://www.dwhd.org/go.php?url=http://git.dwhd.org"><i class="fa fa-github"></i><span class="fontawesome-text"> GitLab</span></a></li>
+<li id="menu-item-1550" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1550"><a target="_blank" href="https://www.dwhd.org/about"><i class="fa fa-heartbeat"></i><span class="fontawesome-text"> 关于我</span></a></li>
+</ul></div>				</nav><!-- #site-nav -->
+				
+			</div><!-- #site-nav-wrap -->
+
+		</div><!-- #top-menu -->
+	</div><!-- #menu-box -->
+</header><!-- #masthead -->
+
+<div class="shadow" id="search-main">
+	<div id="searchbar">
+	<form method="get" id="searchform" action="https://www.dwhd.org/">
+		<input value="" name="s" id="s" placeholder="输入搜索内容" required="" type="text">
+		<button type="submit" id="searchsubmit">搜索</button>
+	</form>
+</div>	<div id="searchbar">
+	<form method="get" id="searchform" action="https://www.dwhd.org/search" target="_blank">
+		<input value="1" name="entry" type="hidden">
+		<input class="swap_value" placeholder="输入百度站内搜索关键词" name="q">
+		<button type="submit" id="searchsubmit">百度</button>
+	</form>
+</div>	<div class="clear"></div>
+</div>
+	
+	<nav class="breadcrumb">
+		<a title="返回首页" href="https://www.dwhd.org/">首页</a><i class="fa fa-angle-right"></i><a href="https://www.dwhd.org/category/%e9%9a%8f%e6%89%8b%e5%b0%8f%e8%ae%b0/" rel="category tag">随手小记</a><i class="fa fa-angle-right"></i>正文 			</nav>
+	<div id="content" class="site-content shadow">
+		
+<div class="clear"></div>
+	<div id="primary" class="primary">
+		<main id="main" class="site-main" role="main">
+
+			
+				<article id="post-1652" class="post-1652 post type-post status-publish format-standard hentry category-13 tag-rsync tag-137">
+		<header class="entry-header">
+					<h1 class="entry-title">Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法</h1>			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+					<div class="single-content">
+				<span class="abstract"><span>摘要</span><p>其实这些镜像已经很多了，根本不需要我们自己再来镜像，但是博主蛋疼，为了治疗还是这样做了。</p>
+<div class="clear"></div></span>
+				
+				<h2>一、本站镜像了哪些官方源？</h2>
+<p>本站自建EPEL源地址：<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://mirrors.dwhd.org/EPEL" target="_blank">http://mirrors.dwhd.org/EPEL</a></p>
+<p>本站自建RepoForge源地址：<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://mirrors.dwhd.org/RepoForge/" target="_blank">http://mirrors.dwhd.org/RepoForge/</a></p>
+<p>本站自建MariaDB源地址：<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://mirrors.dwhd.org/SQL/MariaDB/" target="_blank">http://mirrors.dwhd.org/SQL/MariaDB/</a></p>
+<p>本站自建MySQL源地址：<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://mirrors.dwhd.org/SQL/MySQL/" target="_blank">http://mirrors.dwhd.org/SQL/MySQL/</a></p>
+<p>本站自建Percona源地址：<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://mirrors.dwhd.org/SQL/Percona/" target="_blank">http://mirrors.dwhd.org/SQL/Percona/</a></p>
+<p>本站自建Slackware镜像地址：<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://mirrors.dwhd.org/Slackware/" target="_blank">http://mirrors.dwhd.org/Slackware/</a></p>
+<p>本站自建Gentoo镜像地址：<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://mirrors.dwhd.org/Gentoo/" target="_blank">http://mirrors.dwhd.org/Gentoo/</a></p>
+<p>本站自建CPAN镜像地址：<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://mirrors.dwhd.org/CPAN/" target="_blank">http://mirrors.dwhd.org/CPAN/</a></p>
+<p>本站自建puppet源地址：<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://mirrors.dwhd.org/Puppet/" target="_blank">http://mirrors.dwhd.org/Puppet/</a></p>
+<p>上面这些内容镜像之后的总空间大约是1165GB</p>
+<div><div id="highlighter_825560" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">01</div><div class="line number2 index1 alt1">02</div><div class="line number3 index2 alt2">03</div><div class="line number4 index3 alt1">04</div><div class="line number5 index4 alt2">05</div><div class="line number6 index5 alt1">06</div><div class="line number7 index6 alt2">07</div><div class="line number8 index7 alt1">08</div><div class="line number9 index8 alt2">09</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">[root@vps197119 oneinstack]</code><code class="bash comments"># rsync -v rsync://mirrors.dwhd.org/</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">vRBRj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vRBv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sBR&nbsp;&nbsp; RBS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vBRv&nbsp; LBbRv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div><div class="line number4 index3 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">bBRBRBRBv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RBRB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RBRB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RBRB&nbsp; qBRR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vBbB&nbsp;&nbsp; BRBRBRBZv&nbsp;&nbsp;&nbsp;&nbsp; </code></div><div class="line number5 index4 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">BbBvbRBRBRQ&nbsp;&nbsp;&nbsp;&nbsp; vRBRv&nbsp;&nbsp;&nbsp; RBbBR&nbsp;&nbsp;&nbsp;&nbsp; jBbB&nbsp;&nbsp; BRB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BbBl&nbsp; zRBqsRBRBRBi&nbsp;&nbsp; </code></div><div class="line number6 index5 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">sRBF&nbsp;&nbsp;&nbsp; kRBbBv&nbsp;&nbsp;&nbsp; BbBv&nbsp;&nbsp; RBRBRB&nbsp;&nbsp;&nbsp; vBRB&nbsp;&nbsp;&nbsp; RBR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RBR&nbsp;&nbsp; RBbv&nbsp;&nbsp; vQBRBR&nbsp; </code></div><div class="line number7 index6 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">EBRi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ZBRB&nbsp;&nbsp;&nbsp; QBRm&nbsp; EBRBRBR&nbsp;&nbsp; vBbB&nbsp;&nbsp;&nbsp; LBbv&nbsp;&nbsp;&nbsp;&nbsp; vvLZBRB&nbsp;&nbsp; BRB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BRBR </code></div><div class="line number8 index7 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">BbB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bBRZ&nbsp;&nbsp; sRBk sBRB BRB&nbsp; vBRB&nbsp;&nbsp;&nbsp;&nbsp; BRBRBbBRBRBRBRBv&nbsp; vRBR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BRB </code></div><div class="line number9 index8 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;</code><code class="bash plain">vRBR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BRBv&nbsp;&nbsp;&nbsp; BRBvBbB&nbsp; bBb&nbsp; BRB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bBRBRBEqcv vRBR&nbsp;&nbsp; zBbF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RBR </code></div><div class="line number10 index9 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;</code><code class="bash plain">qBRz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; zbBR&nbsp;&nbsp;&nbsp;&nbsp; RBRBRB&nbsp;&nbsp; BbBiBRB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CBRS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BRB&nbsp;&nbsp; BRB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hBRm </code></div><div class="line number11 index10 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;</code><code class="bash plain">BbB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BRBR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BbBbB&nbsp;&nbsp;&nbsp; bBRBRB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BRB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ZRBE&nbsp; vRBb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ibBRD&nbsp; </code></div><div class="line number12 index11 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">iRBRBRBbBRBRBj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RBRB&nbsp;&nbsp;&nbsp;&nbsp; BbBbB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VRBR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bBRN&nbsp; mBRBbBRBRBRBRv&nbsp;&nbsp; </code></div><div class="line number13 index12 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;</code><code class="bash plain">lVBbBRBRBZv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sDBv&nbsp;&nbsp;&nbsp;&nbsp; cBRb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iBbv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yQO&nbsp;&nbsp;&nbsp; vRRBRBbBbq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div><div class="line number14 index13 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number15 index14 alt2"><code class="bash comments">################################################################################</code></div><div class="line number16 index15 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#&nbsp;&nbsp; EPEL rsync://mirrors.dwhd.org/epel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #</code></div><div class="line number17 index16 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#&nbsp;&nbsp; RepoForge rsync://mirrors.dwhd.org/repoforge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #</code></div><div class="line number18 index17 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#&nbsp;&nbsp; MariaDB rsync://mirrors.dwhd.org/mariadb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #</code></div><div class="line number19 index18 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#&nbsp;&nbsp; MySQL rsync://mirrors.dwhd.org/mysql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #</code></div><div class="line number20 index19 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#&nbsp;&nbsp; Percona rsync://mirrors.dwhd.org/percona&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #</code></div><div class="line number21 index20 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#&nbsp;&nbsp; LinuxEye rsync://mirrors.dwhd.org/linuxeye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #</code></div><div class="line number22 index21 alt1"><code class="bash comments">#################################################################################</code></div><div class="line number23 index22 alt2">&nbsp;</div><div class="line number24 index23 alt1"><code class="bash plain">epel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/epel</code></div><div class="line number25 index24 alt2"><code class="bash plain">repoforge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/repoforge</code></div><div class="line number26 index25 alt1"><code class="bash plain">mariadb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/mariadb</code></div><div class="line number27 index26 alt2"><code class="bash plain">mysql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/mysql</code></div><div class="line number28 index27 alt1"><code class="bash plain">percona&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/percona</code></div><div class="line number29 index28 alt2"><code class="bash plain">linuxeye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/linuxeye</code></div></div></td></tr></tbody></table></div></div>
+<div><div id="highlighter_320596" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">01</div><div class="line number2 index1 alt1">02</div><div class="line number3 index2 alt2">03</div><div class="line number4 index3 alt1">04</div><div class="line number5 index4 alt2">05</div><div class="line number6 index5 alt1">06</div><div class="line number7 index6 alt2">07</div><div class="line number8 index7 alt1">08</div><div class="line number9 index8 alt2">09</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">[root@LookBack ~]</code><code class="bash comments"># localDir=(/home/wwwroot/epel.awk.ovh \</code></div><div class="line number2 index1 alt1"><code class="bash plain">&gt; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/SQL/MariaDB</code> <code class="bash plain">\</code></div><div class="line number3 index2 alt2"><code class="bash plain">&gt; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/SQL/Percona</code> <code class="bash plain">\</code></div><div class="line number4 index3 alt1"><code class="bash plain">&gt; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/SQL/MySQL</code> <code class="bash plain">\</code></div><div class="line number5 index4 alt2"><code class="bash plain">&gt; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/Puppet</code> <code class="bash plain">\</code></div><div class="line number6 index5 alt1"><code class="bash plain">&gt; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/CPAN</code> <code class="bash plain">\</code></div><div class="line number7 index6 alt2"><code class="bash plain">&gt; </code><code class="bash plain">/home/wwwroot/repoforge</code><code class="bash plain">.dwhd.org \</code></div><div class="line number8 index7 alt1"><code class="bash plain">&gt; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/Gentoo</code> <code class="bash plain">\</code></div><div class="line number9 index8 alt2"><code class="bash plain">&gt; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/Slackware</code><code class="bash plain">)</code></div><div class="line number10 index9 alt1"><code class="bash plain">[root@LookBack ~]</code><code class="bash comments"># for i in ${localDir[*]};do du -sh $i &amp;&amp; du -s $i;done | awk '{if ($1~/G|M|T/){print $0}else{a=$1/(1024^2);b+=a}}END{printf("%dG\n",b~/./?int(b)+1:b)}'</code></div><div class="line number11 index10 alt2"><code class="bash plain">122G&nbsp;&nbsp;&nbsp; </code><code class="bash plain">/home/wwwroot/epel</code><code class="bash plain">.</code><code class="bash functions">awk</code><code class="bash plain">.ovh</code></div><div class="line number12 index11 alt1"><code class="bash plain">122G&nbsp;&nbsp;&nbsp; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/SQL/MariaDB</code></div><div class="line number13 index12 alt2"><code class="bash plain">96G&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/SQL/Percona</code></div><div class="line number14 index13 alt1"><code class="bash plain">364G&nbsp;&nbsp;&nbsp; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/SQL/MySQL</code></div><div class="line number15 index14 alt2"><code class="bash plain">38G&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/Puppet</code></div><div class="line number16 index15 alt1"><code class="bash plain">20G&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/CPAN</code></div><div class="line number17 index16 alt2"><code class="bash plain">53G&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash plain">/home/wwwroot/repoforge</code><code class="bash plain">.dwhd.org</code></div><div class="line number18 index17 alt1"><code class="bash plain">285G&nbsp;&nbsp;&nbsp; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/Gentoo</code></div><div class="line number19 index18 alt2"><code class="bash plain">69G&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/Slackware</code></div><div class="line number20 index19 alt1"><code class="bash plain">1165G</code></div><div class="line number21 index20 alt2"><code class="bash plain">[root@LookBack ~]</code><code class="bash comments">#</code></div></div></td></tr></tbody></table></div></div>
+<p><a href="https://www.dwhd.org/wp-content/uploads/2015/07/rsyncMirrors2015_07_21_08_35_46.png" class="fancybox" data-fancybox-group="button" 1652=""><img class="alignnone size-full wp-image-1712" data-echo="https://www.dwhd.org/wp-content/uploads/2015/07/rsyncMirrors2015_07_21_08_35_46.png" src="blank.gif" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" srcset="rsyncMirrors2015_07_21_08_35_46.png 1253w, rsyncMirrors2015_07_21_08_35_46-300x111.png 300w, rsyncMirrors2015_07_21_08_35_46-1024x380.png 1024w" sizes="(max-width: 1253px) 100vw, 1253px" height="465" width="1253"></a><br>
+<noscript><img class="alignnone size-full wp-image-1712" src="https://www.dwhd.org/wp-content/uploads/2015/07/rsyncMirrors2015_07_21_08_35_46.png" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" alt="rsyncMirrors2015_07_21_08_35_46" width="1253" height="465" srcset="https://www.dwhd.org/wp-content/uploads/2015/07/rsyncMirrors2015_07_21_08_35_46.png 1253w, https://www.dwhd.org/wp-content/uploads/2015/07/rsyncMirrors2015_07_21_08_35_46-300x111.png 300w, https://www.dwhd.org/wp-content/uploads/2015/07/rsyncMirrors2015_07_21_08_35_46-1024x380.png 1024w" sizes="(max-width: 1253px) 100vw, 1253px" /></a><br /></noscript>
+<a href="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_55_20.png" class="fancybox" data-fancybox-group="button" 1652=""><img class="alignnone size-full wp-image-1750" data-echo="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_55_20.png" src="blank.gif" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" srcset="mirrors_source2015_07_23_02_55_20.png 1083w, mirrors_source2015_07_23_02_55_20-300x240.png 300w, mirrors_source2015_07_23_02_55_20-1024x821.png 1024w" sizes="(max-width: 1083px) 100vw, 1083px" height="868" width="1083"></a><br>
+<noscript><img class="alignnone size-full wp-image-1750" src="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_55_20.png" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" alt="mirrors_source2015_07_23_02_55_20" width="1083" height="868" srcset="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_55_20.png 1083w, https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_55_20-300x240.png 300w, https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_55_20-1024x821.png 1024w" sizes="(max-width: 1083px) 100vw, 1083px" /></a><br /></noscript>
+<a href="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_51_00.png" class="fancybox" data-fancybox-group="button" 1652=""><img class="alignnone size-full wp-image-1748" data-echo="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_51_00.png" src="blank.gif" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" srcset="mirrors_source2015_07_23_02_51_00.png 854w, mirrors_source2015_07_23_02_51_00-287x300.png 287w" sizes="(max-width: 854px) 100vw, 854px" height="893" width="854"></a></p>
+<noscript><img class="alignnone size-full wp-image-1748" src="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_51_00.png" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" alt="mirrors_source2015_07_23_02_51_00" width="854" height="893" srcset="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_51_00.png 854w, https://www.dwhd.org/wp-content/uploads/2015/07/mirrors_source2015_07_23_02_51_00-287x300.png 287w" sizes="(max-width: 854px) 100vw, 854px" /></a></p></noscript>
+<hr>
+<h2>二、本站镜像的效果截图</h2>
+<p>下面是本站美化后的效果。。。。。。然并卵~~~~</p>
+<p><a href="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_16_59.png" class="fancybox" data-fancybox-group="button" 1652=""><img class="alignnone size-full wp-image-1656" data-echo="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_16_59.png" src="blank.gif" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" srcset="mirrors2015_07_20_19_16_59.png 1050w, mirrors2015_07_20_19_16_59-300x251.png 300w, mirrors2015_07_20_19_16_59-1024x858.png 1024w" sizes="(max-width: 1050px) 100vw, 1050px" height="880" width="1050"></a></p>
+<noscript><img class="alignnone size-full wp-image-1656" src="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_16_59.png" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" alt="mirrors2015_07_20_19_16_59" width="1050" height="880" srcset="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_16_59.png 1050w, https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_16_59-300x251.png 300w, https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_16_59-1024x858.png 1024w" sizes="(max-width: 1050px) 100vw, 1050px" /></a></p></noscript>
+<p>&nbsp;</p>
+<p><a href="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_17.png" class="fancybox" data-fancybox-group="button" 1652=""><img class="alignnone size-full wp-image-1658" data-echo="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_17.png" src="blank.gif" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" srcset="mirrors2015_07_20_19_19_17.png 1919w, mirrors2015_07_20_19_19_17-300x102.png 300w, mirrors2015_07_20_19_19_17-1024x347.png 1024w" sizes="(max-width: 1919px) 100vw, 1919px" height="651" width="1919"></a></p>
+<noscript><img class="alignnone size-full wp-image-1658" src="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_17.png" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" alt="mirrors2015_07_20_19_19_17" width="1919" height="651" srcset="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_17.png 1919w, https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_17-300x102.png 300w, https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_17-1024x347.png 1024w" sizes="(max-width: 1919px) 100vw, 1919px" /></a></p></noscript>
+<p><a href="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_53.png" class="fancybox" data-fancybox-group="button" 1652=""><img class="alignnone size-full wp-image-1660" data-echo="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_53.png" src="blank.gif" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" srcset="mirrors2015_07_20_19_19_53.png 1919w, mirrors2015_07_20_19_19_53-300x163.png 300w, mirrors2015_07_20_19_19_53-1024x557.png 1024w" sizes="(max-width: 1919px) 100vw, 1919px" height="1043" width="1919"></a></p>
+<noscript><img class="alignnone size-full wp-image-1660" src="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_53.png" alt="Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法" alt="mirrors2015_07_20_19_19_53" width="1919" height="1043" srcset="https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_53.png 1919w, https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_53-300x163.png 300w, https://www.dwhd.org/wp-content/uploads/2015/07/mirrors2015_07_20_19_19_53-1024x557.png 1024w" sizes="(max-width: 1919px) 100vw, 1919px" /></a></p></noscript>
+<p>&nbsp;</p>
+<hr>
+<h2>三、本站镜像的方法和具体脚本</h2>
+<p>下面来看看本站自动镜像使用的简单脚本，这里就没为了高大上而去换装逼写法了。绝对的实事求是的只要结果不看源码的，本站是4小时去同步一次</p>
+<div><div id="highlighter_581959" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">01</div><div class="line number2 index1 alt1">02</div><div class="line number3 index2 alt2">03</div><div class="line number4 index3 alt1">04</div><div class="line number5 index4 alt2">05</div><div class="line number6 index5 alt1">06</div><div class="line number7 index6 alt2">07</div><div class="line number8 index7 alt1">08</div><div class="line number9 index8 alt2">09</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash preprocessor bold">#!/bin/bash</code></div><div class="line number2 index1 alt1"><code class="bash comments">#########################################################################</code></div><div class="line number3 index2 alt2"><code class="bash comments"># File Name: epelMirrors.sh</code></div><div class="line number4 index3 alt1"><code class="bash comments"># Author: LookBack</code></div><div class="line number5 index4 alt2"><code class="bash comments"># Email: admin#dwhd.org</code></div><div class="line number6 index5 alt1"><code class="bash comments"># Version:</code></div><div class="line number7 index6 alt2"><code class="bash comments"># Created Time: Fri 17 Jul 2015 02:29:53 AM CST</code></div><div class="line number8 index7 alt1"><code class="bash comments">#########################################################################</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="bash keyword">if</code> <code class="bash plain">! </code><code class="bash functions">which</code> <code class="bash functions">rsync</code> <code class="bash plain">&gt;</code><code class="bash plain">/dev/null</code> <code class="bash plain">2&gt;&amp;1;</code><code class="bash keyword">then</code> <code class="bash functions">exit</code> <code class="bash plain">1;</code><code class="bash keyword">fi</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="bash plain">rsyncUrl=(</code></div><div class="line number13 index12 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//epel</code><code class="bash plain">.mirrors.ovh.net</code><code class="bash plain">/fedora-epel</code></div><div class="line number14 index13 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code><code class="bash plain">.osuosl.org::mariadb</code></div><div class="line number15 index14 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//rsync</code><code class="bash plain">.percona.com</code><code class="bash plain">/rsync/</code></div><div class="line number16 index15 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//ftp5</code><code class="bash plain">.gwdg.de</code><code class="bash plain">/pub/linux/mysql/</code></div><div class="line number17 index16 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//apt</code><code class="bash plain">.puppetlabs.com</code><code class="bash plain">/packages/</code></div><div class="line number18 index17 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//cpan</code><code class="bash plain">.mirrors.ovh.net</code><code class="bash plain">/CPAN/</code></div><div class="line number19 index18 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//mirror1</code><code class="bash plain">.hs-esslingen.de</code><code class="bash plain">/repoforge/</code></div><div class="line number20 index19 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//mirror</code><code class="bash plain">.wdc1.us.leaseweb.net</code><code class="bash plain">/gentoo</code></div><div class="line number21 index20 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code><code class="bash plain">:</code><code class="bash plain">//mirror</code><code class="bash plain">.wdc1.us.leaseweb.net</code><code class="bash plain">/slackware</code></div><div class="line number22 index21 alt1"><code class="bash plain">)</code></div><div class="line number23 index22 alt2">&nbsp;</div><div class="line number24 index23 alt1"><code class="bash plain">localDir=(</code></div><div class="line number25 index24 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/EPEL</code></div><div class="line number26 index25 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/SQL/MariaDB</code></div><div class="line number27 index26 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/SQL/Percona</code></div><div class="line number28 index27 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/SQL/MySQL</code></div><div class="line number29 index28 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/Puppet</code></div><div class="line number30 index29 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/CPAN</code></div><div class="line number31 index30 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/RepoForge</code></div><div class="line number32 index31 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/Gentoo</code></div><div class="line number33 index32 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/home/wwwroot/mirrors</code><code class="bash plain">.dwhd.org</code><code class="bash plain">/Slackware</code></div><div class="line number34 index33 alt1"><code class="bash plain">)</code></div><div class="line number35 index34 alt2">&nbsp;</div><div class="line number36 index35 alt1"><code class="bash plain">rsync_Mirrors() {</code></div><div class="line number37 index36 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">rsync</code> <code class="bash plain">-vai4CH --safe-links --numeric-ids --delete --delete-delay --delay-updates $1 $2</code></div><div class="line number38 index37 alt1"><code class="bash plain">}</code></div><div class="line number39 index38 alt2">&nbsp;</div><div class="line number40 index39 alt1"><code class="bash comments">#https://mariadb.com/kb/en/mariadb/mirroring-mariadb/</code></div><div class="line number41 index40 alt2"><code class="bash comments">#https://www.percona.com/blog/2014/02/14/using-percona-rsync-repositories-set-local-centos-mirror/</code></div><div class="line number42 index41 alt1"><code class="bash comments">#http://dev.mysql.com/downloads/how-to-mirror.html</code></div><div class="line number43 index42 alt2">&nbsp;</div><div class="line number44 index43 alt1"><code class="bash keyword">for</code> <code class="bash plain">i </code><code class="bash keyword">in</code> <code class="bash plain">`</code><code class="bash functions">seq</code> <code class="bash plain">0 ${</code><code class="bash comments">#localDir[@]}`;do</code></div><div class="line number45 index44 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">[ ! -d ${localDir[$i]} ] &amp;&amp; </code><code class="bash functions">mkdir</code> <code class="bash plain">-p ${localDir[$i]}</code></div><div class="line number46 index45 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">rsync_Mirrors ${rsyncUrl[$i]} ${localDir[$i]}</code></div><div class="line number47 index46 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#[ "$i" = "0" ] &amp;&amp; cp -a `dirname ${localDir[7]}`/fancyindex ${localDir[0]}</code></div><div class="line number48 index47 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#[ "$i" = "1" ] &amp;&amp; mv ${localDir[1]}/index.html ${localDir[1]}/index.html_backup</code></div><div class="line number49 index48 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#[ "$i" = "3" ] &amp;&amp; mv ${localDir[3]}/index.html ${localDir[3]}/index.html_backup</code></div><div class="line number50 index49 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#[ "$i" = "6" ] &amp;&amp;cp -a `dirname ${localDir[7]}`/fancyindex ${localDir[6]}/ &amp;&amp; mv ${localDir[6]}/index.html ${localDir[6]}/index.html_backup</code></div><div class="line number51 index50 alt2"><code class="bash keyword">done</code></div></div></td></tr></tbody></table></div></div>
+<div id="down"><a id="load" title="下载链接" href="#button_file"><i class="fa fa-download"></i>下载镜像脚本</a><div class="clear"></div></div>
+<div style="float: right;"></div>			</div>
+
+			<div id="button_box">
+	<div id="button_file">
+		<h3>文件下载</h3>
+			<div class="file_ad" align="center"><a href="http://www.dwhd.org/" target="_blank"><img src="adf.jpg" alt="博客主机"></a></div>
+			<div class="buttons">
+															<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://www.dwhd.org/wp-content/uploads/2015/07/mirrorsSource.sh" rel="external nofollow" target="_blank"><i class="fa fa-cloud-download"></i> 镜像脚本下载</a>
+												
+			
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+			
+									
+				
+									<div class="clear"></div>
+<div id="social">
+	<div class="social-main">
+		<span class="like">
+	         <a data-action="ding" data-id="1652" title="我赞" class="favorite"><i class="fa fa-thumbs-up"></i>赞 <i class="count">
+	            2</i>
+	        </a>
+		</span>
+		<span class="shang-p"><a href="#shang" id="shang-p" title="赞助Legion博客">赏</a></span>
+		<span class="share-s"><a href="#share" id="share-s" title="分享"><i class="fa fa-share-alt"></i>分享</a></span>
+		<div class="clear"></div>
+	</div>
+	<div style="display: block;" id="share">
+	<div class="bdsharebuttonbox">
+		<a title="分享到QQ空间" class="fa fa-qq" data-cmd="qzone" href="#"></a>
+		<a title="分享到新浪微博" class="fa fa-weibo" data-cmd="tsina"></a>
+		<a title="分享到腾讯微博" class="fa fa-pinterest-square" data-cmd="tqq"></a>
+		<a title="分享到人人网" class="fa fa-renren" data-cmd="renren"></a>
+		<a title="分享到微信" class="fa fa-weixin" data-cmd="weixin"></a>
+		<a title="更多" class="bds_more fa fa-plus-square" data-cmd="more"></a>
+	</div>
+</div>
+	<div id="shang">
+		<div class="shang-main">
+			<h4>您可以选择一种方式赞助本站</h4>							<img title="支付宝扫一扫赞助" src="2015-07-19-2216266430.png">
+				<h4>支付宝扫一扫赞助</h4>			
+							<img title="支付宝扫一扫赞助" src="2015-07-19-2212165519.png">
+				<h4>微信钱包扫描赞助</h4>					</div>
+	</div>
+</div>				
+			<footer class="single-footer">
+				<ul class="single-meta">
+																<li class="comment"><a href="#comments"><i class="fa fa-comment-o"></i> 4</a></li>
+										<li class="views"><i class="fa fa-eye"></i> 2,030 次</li>				 	<li class="r-hide"><a title="侧边栏"><i class="fa fa-caret-left"></i> <i class="fa fa-caret-right"></i></a></li>
+				</ul>
+
+				<ul id="fontsize">A+</ul>
+				<div class="single-cat-tag">
+					<div class="single-cat">发布日期：2015年07月20日&nbsp;&nbsp;所属分类：<a href="https://www.dwhd.org/category/%e9%9a%8f%e6%89%8b%e5%b0%8f%e8%ae%b0/" rel="category tag">随手小记</a></div>
+					<div class="single-tag">标签：<a href="https://www.dwhd.org/tag/rsync/" rel="tag">rsync</a><a href="https://www.dwhd.org/tag/%e9%95%9c%e5%83%8f/" rel="tag">镜像</a></div>
+				</div>
+			</footer><!-- .entry-footer -->
+
+				<div class="clear"></div>
+	</div><!-- .entry-content -->
+
+	</article><!-- #post -->
+									<div class="authorbio">
+	<img alt="lookback" src="46f8656804f0_avatar-64x64.gif" class="avatar avatar-64 photo" height="64" width="64">
+	<ul class="spostinfo">
+				<li><strong>版权声明：</strong>本站原创文章，于2年前，由<a href="https://www.dwhd.org/author/lookback/" title="由lookback发布" rel="author">lookback</a>发表，共 4430字。</li>
+		<li><strong>转载请注明：</strong><a href="#" rel="bookmark" title="本文固定链接 https://www.dwhd.org/20150720_191117.html">Linux之使用Rsync镜像同步EPEL、RepoForge、MariaDB、MySQL、puppet等官方源的方法 | Linux–不是那么难</a><a href="#"> +复制链接</a></li>
+			</ul>
+</div>
+				
+				
+									<div id="related-img">
+		
+	<div class="r4">
+		<div class="related-site">
+			<figure class="related-site-img">
+				<a href="https://www.dwhd.org/20150705_055954.html"><img src="sersync1.png" data-echo="https://www.dwhd.org/wp-content/uploads/2015/07/sersync1.png" alt="Linux之Rsync+Sersync实现负载均衡节点文件数据实时同步"></a>			 </figure>
+			<div class="related-title"><a href="https://www.dwhd.org/20150705_055954.html">Linux之Rsync+Sersync实现负载均衡节点文件数据实时同步</a></div>
+		</div>
+	</div>
+
+		
+	<div class="r4">
+		<div class="related-site">
+			<figure class="related-site-img">
+				<a href="https://www.dwhd.org/20170118_053046.html"><img src="SSL_Certificates.jpg" data-echo="//www.dwhd.org/wp-content/uploads/2017/01/SSL_Certificates.jpg" alt="签发免费 SSL 泛域名证书"></a>			 </figure>
+			<div class="related-title"><a href="https://www.dwhd.org/20170118_053046.html">签发免费 SSL 泛域名证书</a></div>
+		</div>
+	</div>
+
+		
+	<div class="r4">
+		<div class="related-site">
+			<figure class="related-site-img">
+				<a href="https://www.dwhd.org/20161008_101917.html"><img src="Bash_Scripting.jpeg" data-echo="//www.dwhd.org/wp-content/uploads/2015/08/Bash_Scripting.jpeg" alt="Linux之使用shell生成随机mac地址"></a>			 </figure>
+			<div class="related-title"><a href="https://www.dwhd.org/20161008_101917.html">Linux之使用shell生成随机mac地址</a></div>
+		</div>
+	</div>
+
+		
+	<div class="r4">
+		<div class="related-site">
+			<figure class="related-site-img">
+				<a href="https://www.dwhd.org/20160903_002323.html"><img src="Docker.png" data-echo="//www.dwhd.org/wp-content/uploads/2015/11/Docker.png" alt="网络免费资源使用之借助Arukas.io的免费Docker平台搭建去往世界的桥梁"></a>			 </figure>
+			<div class="related-title"><a href="https://www.dwhd.org/20160903_002323.html">网络免费资源使用之借助Arukas.io的免费Docker平台搭建去往世界的桥梁</a></div>
+		</div>
+	</div>
+
+			<div class="clear"></div>
+</div>				
+				<div id="single-widget">
+										<div class="clear"></div>
+				</div>
+
+				
+				<nav class="nav-single">
+					<a href="https://www.dwhd.org/20150720_145007.html" rel="prev"><span class="meta-nav"><span class="post-nav"><i class="fa fa-angle-left"></i> 上一篇</span><br>Linux之awk实现进一法计算</span></a><a href="https://www.dwhd.org/20150720_221719.html" rel="next"><span class="meta-nav"><span class="post-nav">下一篇 <i class="fa fa-angle-right"></i></span><br>114DNS到底是啥，你还相信114DNS吗？[转载于”佳佳酱”博客]</span></a>					<div class="clear"></div>
+				</nav>
+				<nav class="nav-single-c">
+					
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">文章导航</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.dwhd.org/20150720_145007.html" rel="prev"><span class="meta-nav-r" aria-hidden="true"><i class="fa fa-angle-left"></i></span> </a></div><div class="nav-next"><a href="https://www.dwhd.org/20150720_221719.html" rel="next"><span class="meta-nav-l" aria-hidden="true"><i class="fa fa-angle-right"></i></span> </a></div></div>
+	</nav>				</nav>
+									
+<!-- 引用 -->
+<div class="scroll-comments"></div>
+<div id="comments" class="comments-area">
+		<h2 class="comments-title">
+		 目前评论：4 &nbsp;&nbsp;其中：访客&nbsp;&nbsp;4 &nbsp;&nbsp;博主&nbsp;&nbsp;0  			</h2>
+
+	<ol class="comment-list">
+			<div id="anchor"><div id="comment-195"></div></div>
+	<li class="comment even thread-even depth-1 parent" id="comment-195">
+			<div id="div-comment-195" class="comment-body">
+		<div class="comment-author vcard">
+					<img class="avatar" src="920babb83de2a9980607592c1596bf27.jpg" alt="avatar" data-echo="https://gravatar.legion.pt/avatar/920babb83de2a9980607592c1596bf27?s=64&amp;r=g' srcset='https://gravatar.legion.pt/avatar/920babb83de2a9980607592c1596bf27?s=128&amp;r=g 2x">				<!--<cite class="fn"><a href='http://epel.awk.ovh' rel='external nofollow' class='url'>MonDeoLove</a></cite> <span class="says">:</span>-->
+		<strong>
+						<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://epel.awk.ovh" rel="external nofollow" target="_blank" class="url">MonDeoLove</a>					</strong>
+		<a class="vip2" title="评论达人 VIP.2"><i class="fa fa-vimeo-square"></i><span class="lv">2</span></a>		<span class="comment-meta commentmetadata">
+			<a href="https://www.dwhd.org/20150720_191117.html/#comment-195"></a><br>
+			<span class="comment-aux">
+				<span class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.dwhd.org/20150720_191117.html?replytocom=195#respond" aria-label="回复给MonDeoLove">回复</a></span>
+				2015年07月20日 下午9:12												<span class="floor">
+					&nbsp;沙发									</span>
+			</span>
+		</span>
+	</div>
+				</div>
+	<ul class="children">
+	<div id="anchor"><div id="comment-196"></div></div>
+	<li class="comment byuser comment-author-lookback bypostauthor odd alt depth-2" id="comment-196">
+			<div id="div-comment-196" class="comment-body">
+		<div class="comment-author vcard">
+					<img class="avatar" src="46f8656804f0_avatar-64x64.gif" alt="avatar" data-echo="https://www.dwhd.org/wp-content/uploads/2015/07/46f8656804f0_avatar-64x64.gif">				<!--<cite class="fn">lookback</cite> <span class="says">:</span>-->
+		<strong>
+						lookback					</strong>
+		<a class="vip4" title="评论达人 VIP.4"><i class="fa fa-vimeo-square"></i><span class="lv">4</span></a>		<span class="comment-meta commentmetadata">
+			<a href="https://www.dwhd.org/20150720_191117.html/#comment-196"></a><br>
+			<span class="comment-aux">
+				<span class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.dwhd.org/20150720_191117.html?replytocom=196#respond" aria-label="回复给lookback">回复</a></span>
+				2015年07月20日 下午9:15												<span class="floor">
+										&nbsp;1层				</span>
+			</span>
+		</span>
+	</div>
+	<p><span class="at">@<a href="#comment-195">MonDeoLove</a></span> </p>
+			</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<div id="anchor"><div id="comment-272"></div></div>
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-272">
+			<div id="div-comment-272" class="comment-body">
+		<div class="comment-author vcard">
+					<img class="avatar" src="8dea3eb0855a6b2f421dbb3aecb9d999.jpg" alt="avatar" data-echo="https://gravatar.legion.pt/avatar/8dea3eb0855a6b2f421dbb3aecb9d999?s=64&amp;r=g' srcset='https://gravatar.legion.pt/avatar/8dea3eb0855a6b2f421dbb3aecb9d999?s=128&amp;r=g 2x">				<!--<cite class="fn">aa</cite> <span class="says">:</span>-->
+		<strong>
+						aa					</strong>
+		<a class="vip0" title="评论达人 VIP.0"><i class="fa fa-vimeo-square"></i><span class="lv">0</span></a>		<span class="comment-meta commentmetadata">
+			<a href="https://www.dwhd.org/20150720_191117.html/#comment-272"></a><br>
+			<span class="comment-aux">
+				<span class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.dwhd.org/20150720_191117.html?replytocom=272#respond" aria-label="回复给aa">回复</a></span>
+				2015年08月21日 下午5:31												<span class="floor">
+					&nbsp;板凳									</span>
+			</span>
+		</span>
+	</div>
+				</div>
+	</li><!-- #comment-## -->
+	<div id="anchor"><div id="comment-309"></div></div>
+	<li class="comment odd alt thread-even depth-1" id="comment-309">
+			<div id="div-comment-309" class="comment-body">
+		<div class="comment-author vcard">
+					<img class="avatar" src="7d0ab638b9b7820e885b0bea9372e1f7.jpg" alt="avatar" data-echo="https://gravatar.legion.pt/avatar/7d0ab638b9b7820e885b0bea9372e1f7?s=64&amp;r=g' srcset='https://gravatar.legion.pt/avatar/7d0ab638b9b7820e885b0bea9372e1f7?s=128&amp;r=g 2x">				<!--<cite class="fn"><a href='http://imm.im' rel='external nofollow' class='url'>爱美爱魅</a></cite> <span class="says">:</span>-->
+		<strong>
+						<a href="https://www.dwhd.org/wp-content/themes/begin/inc/go.php?url=http://imm.im" rel="external nofollow" target="_blank" class="url">爱美爱魅</a>					</strong>
+		<a class="vip2" title="评论达人 VIP.2"><i class="fa fa-vimeo-square"></i><span class="lv">2</span></a>		<span class="comment-meta commentmetadata">
+			<a href="https://www.dwhd.org/20150720_191117.html/#comment-309"></a><br>
+			<span class="comment-aux">
+				<span class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.dwhd.org/20150720_191117.html?replytocom=309#respond" aria-label="回复给爱美爱魅">回复</a></span>
+				2015年09月07日 上午2:06												<span class="floor">
+					&nbsp;地板									</span>
+			</span>
+		</span>
+	</div>
+				</div>
+	</li><!-- #comment-## -->
+	</ol><!-- .comment-list -->
+
+	<div class="loading-comments">评论加载中...</div>
+	<div class="clear"></div>
+
+	
+	
+		
+		<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title"><i class="fa fa-pencil-square-o"></i>发表评论<small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">取消回复</a></small></h3>
+
+			
+			<form action="https://www.dwhd.org/wp-comments-post.php" method="post" id="commentform">
+				
+								<div id="comment-author-info">
+					<p class="comment-form-author">
+						<input name="author" id="author" class="commenttext" value="" tabindex="1" type="text">
+						<label for="author">昵称（必填）</label>
+					</p>
+					<p class="comment-form-email">
+						<input name="email" id="email" class="commenttext" value="" tabindex="2" type="text">
+						<label for="email">邮箱（必填）</label>
+					</p>
+					<p class="comment-form-url">
+						<input name="url" id="url" class="commenttext" value="" tabindex="3" type="text">
+						<label for="url">网址</label>
+					</p>
+				</div>
+				
+		        <p class="emoji-box"><script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<a><img src="icon_question.gif" alt=":?:" title="疑问"></a>
+<a><img src="icon_razz.gif" alt=":razz:" title="调皮"></a>
+<a><img src="icon_sad.gif" alt=":sad:" title="难过"></a>
+<a><img src="icon_evil.gif" alt=":evil:" title="抠鼻"></a>
+<a><img src="icon_exclaim.gif" alt=":!:" title="吓"></a>
+<a><img src="icon_smile.gif" alt=":smile:" title="微笑"></a>
+<a><img src="icon_redface.gif" alt=":oops:" title="憨笑"></a>
+<a><img src="icon_biggrin.gif" alt=":grin:" title="坏笑"></a>
+<a><img src="icon_surprised.gif" alt=":eek:" title="惊讶"></a>
+<a><img src="icon_eek.gif" alt=":shock:" title="发呆"></a>
+<a><img src="icon_confused.gif" alt=":???:" title="撇嘴"></a>
+<a><img src="icon_cool.gif" alt=":cool:" title="大兵"></a>
+<a><img src="icon_lol.gif" alt=":lol:" title="偷笑"></a>
+<a><img src="icon_mad.gif" alt=":mad:" title="咒骂"></a>
+<a><img src="icon_twisted.gif" alt=":twisted:" title="发怒"></a>
+<a><img src="icon_rolleyes.gif" alt=":roll:" title="白眼"></a>
+<a><img src="icon_wink.gif" alt=":wink:" title="鼓掌"></a>
+<a><img src="icon_idea.gif" alt=":idea:" title="酷"></a>
+<a><img src="icon_arrow.gif" alt=":arrow:" title="擦汗"></a>
+<a><img src="icon_neutral.gif" alt=":neutral:" title="亲亲"></a>
+<a><img src="icon_cry.gif" alt=":cry:" title="大哭"></a>
+<a><img src="icon_mrgreen.gif" alt=":mrgreen:" title="呲牙"></a>
+<br></p>
+				<div class="clear"></div>
+				<div class="qaptcha"><div class="bgslider"><div style="position: relative;" class="slider ui-draggable ui-draggable-handle"></div></div><div class="Icons"></div><div class=" txtstatus droperror">滑动解锁才能提交</div><div class="clr"></div><input value="yAgpQfR" name="dvxQA-uN7wQh5WHdJPY2#68MNb2#z-H" type="hidden"></div>
+
+		        <p class="comment-form-comment"><div class="QapTcha"><div class="bgslider"><div style="position: relative;" class="slider ui-draggable ui-draggable-handle"></div></div><div class="Icons"></div><div class=" txtstatus droperror">滑动解锁才能提交</div><div class="clr"></div><input value="5cBRbMV" name="69cHpFSq3-5jkaE3s8ZdUpjg4m@9bn-V" type="hidden"></div><textarea id="comment" name="comment" rows="4" tabindex="4"></textarea><div style="display: none;" id="loading"><i class="fa fa-spinner"></i>正在提交, 请稍候...</div><div style="display: none;" id="error">#</div></p>
+
+		        <p class="comment-tool">
+		        	<a class="tool-img" title="插入图片"><i class="icon-img"></i><i class="fa fa-picture-o"></i></a>
+		        	<a class="emoji" href="#" title="插入表情"><i class="fa fa-meh-o"></i></a>
+		        </p>
+
+				<p class="form-submit">
+					<input disabled="disabled" id="submit" name="submit" tabindex="5" value="提交评论" type="submit">
+					<input name="comment_post_ID" value="1652" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="f227a61f3c" type="hidden"></p><p style="display: none;"></p>				<p></p>
+			<input id="ak_js" name="ak_js" value="1484835104494" type="hidden"></form>
+	 				</div>
+		
+</div>
+<!-- #comments -->				
+			
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+<div id="sidebar" class="sidebar">
+	
+					<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title"><i class="fa fa-bars"></i>近期文章</h3>		<ul>
+					<li>
+				<a href="https://www.dwhd.org/20170118_053046.html">签发免费 SSL 泛域名证书</a>
+						</li>
+					<li>
+				<a href="https://www.dwhd.org/20170115_200011.html">Linux之Centos 7 编译升级Bison</a>
+						</li>
+					<li>
+				<a href="https://www.dwhd.org/20161220_155922.html">Linux之LVM修改VG和LV名字</a>
+						</li>
+					<li>
+				<a href="https://www.dwhd.org/20161215_014610.html">Mac OS 之安装ip命令和关闭ipv6的方法</a>
+						</li>
+					<li>
+				<a href="https://www.dwhd.org/20161119_114121.html">Linux之在CentOS 7系统上基于ipmitool命令实现配置主板的ipmi</a>
+						</li>
+				</ul>
+		<div class="clear"></div></aside>		<aside id="hot_post-3" class="widget widget_hot_post"><h3 class="widget-title"><i class="fa fa-bars"></i>热门文章</h3>
+<div id="hot_post_widget">
+	<ul>
+	     
+	    <li><span class="li-icon li-icon-1">1</span><a href="https://www.dwhd.org/20161023_110618.html">Docker之企业级私有镜像仓库Harbor的部署</a></li><li><span class="li-icon li-icon-2">2</span><a href="https://www.dwhd.org/20161031_082211.html">Docker之搭建Redis主从集群</a></li><li><span class="li-icon li-icon-3">3</span><a href="https://www.dwhd.org/20161030_201614.html">Docker之Redis 大量抛Can’t save in background: fork: Out of memory错误的解决方案</a></li><li><span class="li-icon li-icon-4">4</span><a href="https://www.dwhd.org/20161119_114121.html">Linux之在CentOS 7系统上基于ipmitool命令实现配置主板的ipmi</a></li><li><span class="li-icon li-icon-5">5</span><a href="https://www.dwhd.org/20161220_155922.html">Linux之LVM修改VG和LV名字</a></li>	    			</ul>
+</div>
+
+<div class="clear"></div></aside><aside id="cx_tag_cloud-3" class="widget widget_cx_tag_cloud"><h3 class="widget-title"><i class="fa fa-bars"></i>热门标签</h3>	<div id="tag_cloud_widget">
+	<a href="https://www.dwhd.org/tag/shell/" class="tag-link-34 tag-link-position-1" title="4个话题" style="font-size: 14px; left: -28.8328px; top: -82.4112px; z-index: 149; opacity: 1.54504;">shell</a>
+<a href="https://www.dwhd.org/tag/mysql/" class="tag-link-8 tag-link-position-2" title="14个话题" style="font-size: 14px; left: -4.42881px; top: -34.9906px; z-index: 194; opacity: 9.49165;">MySQL</a>
+<a href="https://www.dwhd.org/tag/puppet/" class="tag-link-79 tag-link-position-3" title="5个话题" style="font-size: 14px; left: 62.7044px; top: -46.3591px; z-index: 163; opacity: 2.69997;">puppet</a>
+<a href="https://www.dwhd.org/tag/%e9%ab%98%e5%8f%af%e7%94%a8/" class="tag-link-27 tag-link-position-4" title="5个话题" style="font-size: 14px; left: 53.5082px; top: -84.4788px; z-index: 101; opacity: 0.101269; display: none;">高可用</a>
+<a href="https://www.dwhd.org/tag/git/" class="tag-link-232 tag-link-position-5" title="5个话题" style="font-size: 14px; left: -17.5241px; top: -98.4493px; z-index: 101; opacity: 0.105243; display: none;">git</a>
+<a href="https://www.dwhd.org/tag/xenserver/" class="tag-link-378 tag-link-position-6" title="9个话题" style="font-size: 14px; left: -80.6792px; top: -59.079px; z-index: 101; opacity: 0.104517; display: none;">xenserver</a>
+<a href="https://www.dwhd.org/tag/%e8%84%9a%e6%9c%ac/" class="tag-link-4 tag-link-position-7" title="5个话题" style="font-size: 14px; left: -85.4393px; top: -4.11532px; z-index: 152; opacity: 1.7494;">脚本</a>
+<a href="https://www.dwhd.org/tag/redis/" class="tag-link-62 tag-link-position-8" title="7个话题" style="font-size: 14px; left: -30.1729px; top: 36.6356px; z-index: 189; opacity: 7.52375;">Redis</a>
+<a href="https://www.dwhd.org/tag/gitlab/" class="tag-link-233 tag-link-position-9" title="6个话题" style="font-size: 14px; left: 46.7484px; top: 41.543px; z-index: 179; opacity: 5.00401;">GitLab</a>
+<a href="https://www.dwhd.org/tag/awk/" class="tag-link-88 tag-link-position-10" title="10个话题" style="font-size: 14px; left: 95.9497px; top: 13.0418px; z-index: 125; opacity: 0.539864;">awk</a>
+<a href="https://www.dwhd.org/tag/keepalived/" class="tag-link-54 tag-link-position-11" title="4个话题" style="font-size: 14px; left: 87.0818px; top: -49.1466px; z-index: 102; opacity: 0.109554; display: none;">Keepalived</a>
+<a href="https://www.dwhd.org/tag/centos-7/" class="tag-link-303 tag-link-position-12" title="4个话题" style="font-size: 14px; left: 25.6162px; top: -96.6601px; z-index: 101; opacity: 0.105286; display: none;">CentOS 7</a>
+<a href="https://www.dwhd.org/tag/shadowsocks/" class="tag-link-163 tag-link-position-13" title="4个话题" style="font-size: 14px; left: -50.3879px; top: -86.3764px; z-index: 101; opacity: 0.100959; display: none;">ShadowSocks</a>
+<a href="https://www.dwhd.org/tag/windows/" class="tag-link-39 tag-link-position-14" title="5个话题" style="font-size: 14px; left: -91.9529px; top: -39.2894px; z-index: 102; opacity: 0.107613; display: none;">Windows</a>
+<a href="https://www.dwhd.org/tag/mariadb/" class="tag-link-9 tag-link-position-15" title="15个话题" style="font-size: 14px; left: -69.8027px; top: 69.6964px; z-index: 117; opacity: 0.343044;">MariaDB</a>
+<a href="https://www.dwhd.org/tag/docker/" class="tag-link-245 tag-link-position-16" title="17个话题" style="font-size: 14px; left: 1.58854px; top: 94.6371px; z-index: 133; opacity: 0.762413;">docker</a>
+<a href="https://www.dwhd.org/tag/ssl/" class="tag-link-15 tag-link-position-17" title="3个话题" style="font-size: 14px; left: 64.4182px; top: -76.478px; z-index: 102; opacity: 0.109799; display: none;">ssl</a>
+<a href="https://www.dwhd.org/tag/iptables/" class="tag-link-216 tag-link-position-18" title="4个话题" style="font-size: 14px; left: 56.2393px; top: -82.685px; z-index: 101; opacity: 0.102796; display: none;">iptables</a>
+<a href="https://www.dwhd.org/tag/python/" class="tag-link-123 tag-link-position-19" title="5个话题" style="font-size: 14px; left: -16.3002px; top: -98.6586px; z-index: 101; opacity: 0.106246; display: none;">Python</a>
+<a href="https://www.dwhd.org/tag/nginx/" class="tag-link-7 tag-link-position-20" title="5个话题" style="font-size: 14px; left: -25.3333px; top: -96.7254px; z-index: 102; opacity: 0.114093; display: none;">Nginx</a>	<div class="clear"></div>
+	</div>
+
+<div class="clear"></div></aside>		<div class="sidebar-roll follow">
+			<aside id="like_most-2" class="widget widget_like_most"><h3 class="widget-title"><i class="fa fa-bars"></i>大家喜欢</h3>
+<div id="like" class="like_most">
+	<ul>
+	     
+	    <li><span class="li-icon li-icon-1">1</span><a href="https://www.dwhd.org/20161023_110618.html">Docker之企业级私有镜像仓库Harbor的部署</a></li><li><span class="li-icon li-icon-2">2</span><a href="https://www.dwhd.org/20161220_155922.html">Linux之LVM修改VG和LV名字</a></li><li><span class="li-icon li-icon-3">3</span><a href="https://www.dwhd.org/20161119_114121.html">Linux之在CentOS 7系统上基于ipmitool命令实现配置主板的ipmi</a></li>	    			</ul>
+</div>
+
+<div class="clear"></div></aside><aside id="random_post-4" class="widget widget_random_post"><h3 class="widget-title"><i class="fa fa-bars"></i>随机文章</h3>
+<div id="random_post_widget">
+	<ul>
+					<li><a href="https://www.dwhd.org/20151114_003920.html" rel="bookmark">Linux之Google Compute Engine云服务器磁盘空间只有10G的解决方法</a></li>
+					<li><a href="https://www.dwhd.org/20150705_052824.html" rel="bookmark">Linux之SVN服务器同时支持http https和svnserve独立服务器两种模式且使用相同的访问权限账号的搭建</a></li>
+					<li><a href="https://www.dwhd.org/20150601_100747.html" rel="bookmark">Centos 6.5 配置分离式LAMP平台环境 多服务器编译安装Apache2.4.x PHP5.4.x  MariaDB5.5.x Xcache3.1.x</a></li>
+					<li><a href="https://www.dwhd.org/20150613_193824.html" rel="bookmark">Linux基础入门之网络属性配置之单接口配置多IP+TUI界面配置IP</a></li>
+					<li><a href="https://www.dwhd.org/20160718_081032.html" rel="bookmark">GitLab之HTTP和SSH模式下免输密码</a></li>
+					</ul>
+</div>
+
+<div class="clear"></div></aside><aside id="recent_comments-3" class="widget widget_recent_comments"><h3 class="widget-title"><i class="fa fa-bars"></i>近期评论</h3>
+<div id="message" class="message-widget">
+	<ul>
+						<li>
+					<a href="https://www.dwhd.org/20150519_162243.html#comment-362" title="zabbix server&amp;agent端自动安装脚本-纯编译版">
+						<img alt="" src="836244e4d90296dc6306f79dd4609c19.jpg" srcset="836244e4d90296dc6306f79dd4609c19_001.jpg 2x" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>lq</strong></span>
+						我试了 ，还是不能下载。					</a>
+				</li>
+								<li>
+					<a href="https://www.dwhd.org/20150519_162243.html#comment-361" title="zabbix server&amp;agent端自动安装脚本-纯编译版">
+						<img alt="lookback" src="46f8656804f0_avatar-64x64.gif" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>lookback</strong></span>
+						已经修复					</a>
+				</li>
+								<li>
+					<a href="https://www.dwhd.org/20150519_162243.html#comment-360" title="zabbix server&amp;agent端自动安装脚本-纯编译版">
+						<img alt="" src="836244e4d90296dc6306f79dd4609c19.jpg" srcset="836244e4d90296dc6306f79dd4609c19_001.jpg 2x" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>lq</strong></span>
+						http://www.05hd.com 这个网站上的软件下载不了了。					</a>
+				</li>
+								<li>
+					<a href="https://www.dwhd.org/20151030_153746.html#comment-359" title="借助DNS隧道实现绕过公共 Wifi 热点登陆免费上网">
+						<img alt="" src="0264f2cc1e8757c524cc1cb80eeec77a.jpg" srcset="0264f2cc1e8757c524cc1cb80eeec77a_001.jpg 2x" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>rayes</strong></span>
+						加密内容如何查看？密码如何得到呢					</a>
+				</li>
+								<li>
+					<a href="https://www.dwhd.org/20150723_011447.html#comment-358" title="Linux之自建KMS服务器实现激活Windows 7、8、10等系统">
+						<img alt="" src="ea630c0753d234d2b688d37fbb754b1a.jpg" srcset="ea630c0753d234d2b688d37fbb754b1a_001.jpg 2x" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>cisco</strong></span>
+						惭愧，新手不会命令，麻烦指教哈！还有一个疑问是你给出的那个脚本只能激活win10的，若是想激活win7 2008 2012,需要修改哪些东西？我修改了哈 /v "ProductName"
+set Windows Server 2012 R2 Essentials=KNC87-3J2TX-XB4WP-VCPJV-M4FWM，总也是激活不了，修改失败。					</a>
+				</li>
+								<li>
+					<a href="https://www.dwhd.org/20150723_011447.html#comment-355" title="Linux之自建KMS服务器实现激活Windows 7、8、10等系统">
+						<img alt="lookback" src="46f8656804f0_avatar-64x64.gif" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>lookback</strong></span>
+						没做开机启动啊。。。。					</a>
+				</li>
+								<li>
+					<a href="https://www.dwhd.org/20150723_011447.html#comment-352" title="Linux之自建KMS服务器实现激活Windows 7、8、10等系统">
+						<img alt="" src="ea630c0753d234d2b688d37fbb754b1a.jpg" srcset="ea630c0753d234d2b688d37fbb754b1a_001.jpg 2x" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>cisco</strong></span>
+						已经解决了，重启后需要 重新输入 vlmcsd-x64-musl-static					</a>
+				</li>
+								<li>
+					<a href="https://www.dwhd.org/20150723_011447.html#comment-349" title="Linux之自建KMS服务器实现激活Windows 7、8、10等系统">
+						<img alt="lookback" src="46f8656804f0_avatar-64x64.gif" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>lookback</strong></span>
+						074错误我记得就是无法和kms服务器通信造成的					</a>
+				</li>
+								<li>
+					<a href="https://www.dwhd.org/20150723_011447.html#comment-346" title="Linux之自建KMS服务器实现激活Windows 7、8、10等系统">
+						<img alt="" src="ea630c0753d234d2b688d37fbb754b1a.jpg" srcset="ea630c0753d234d2b688d37fbb754b1a_001.jpg 2x" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>cisco</strong></span>
+						我防火墙关闭也是这样的提示！					</a>
+				</li>
+								<li style="border: medium none;">
+					<a href="https://www.dwhd.org/20150723_011447.html#comment-343" title="Linux之自建KMS服务器实现激活Windows 7、8、10等系统">
+						<img alt="" src="ea630c0753d234d2b688d37fbb754b1a.jpg" srcset="ea630c0753d234d2b688d37fbb754b1a_001.jpg 2x" class="avatar avatar-64 photo" height="64" width="64">						<span class="comment_author"><strong>cisco</strong></span>
+						是的，打开了					</a>
+				</li>
+					</ul>
+</div>
+
+<div class="clear"></div></aside>		</div>
+			
+	</div>
+
+<div class="clear"></div><script>/* Code removed by ScrapBook */</script>
+	<div class="clear"></div>
+					</div><!-- .site-content -->
+			<div id="footer-widget-box">
+			<div class="footer-widget">
+				<aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title"><div class="s-icon"></div>综合栏目</h3><div class="menu-%e9%a1%b5%e8%84%9a%e8%8f%9c%e5%8d%95-container"><ul id="menu-%e9%a1%b5%e8%84%9a%e8%8f%9c%e5%8d%95" class="menu"><li id="menu-item-507" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-507"><a target="_blank" href="http://www.dwhd.org/archives"><i class="fa fa-bar-chart"></i><span class="fontawesome-text"> 文章归档</span></a></li>
+<li id="menu-item-2077" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2077"><a href="https://www.dwhd.org/random"><i class="fa fa-random"></i><span class="fontawesome-text"> 试试运气</span></a></li>
+<li id="menu-item-1617" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1617"><a href="https://www.dwhd.org/coderender"><i class="fa fa-code"></i><span class="fontawesome-text"> 代码高亮</span></a></li>
+<li id="menu-item-1619" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1619"><a target="_blank" href="http://www.dwhd.org/go.php?url=http://mirrors.dwhd.org/EPEL/"><i class="fa-soundcloud fa"></i><span class="fontawesome-text"> EPEL镜像</span></a></li>
+<li id="menu-item-1634" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1634"><a target="_blank" href="http://www.dwhd.org/go.php?url=http://mirrors.dwhd.org/RepoForge/"><i class="fa-soundcloud fa"></i><span class="fontawesome-text"> RepoForge镜像</span></a></li>
+<li id="menu-item-1620" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1620"><a target="_blank" href="http://www.dwhd.org/go.php?url=http://mirrors.dwhd.org/"><i class="fa-soundcloud fa"></i><span class="fontawesome-text"> 软件镜像</span></a></li>
+<li id="menu-item-508" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-508"><a target="_blank" href="http://www.dwhd.org/feed"><i class="fa fa-rss"></i><span class="fontawesome-text"> RSS订阅</span></a></li>
+<li id="menu-item-1612" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1612"><a href="https://www.dwhd.org/about"><i class="fa-heartbeat fa"></i><span class="fontawesome-text"> 关于我</span></a></li>
+</ul></div><div class="clear"></div></aside><aside id="text-2" class="widget widget_text"><h3 class="widget-title"><div class="s-icon"></div>关于本站</h3>			<div class="textwidget">     Linux--不是那么难，学习Linux--那么难是不？Legion是一个个人的linux学习记录型博客，本人不望博客多出名，只期待自己能把自己在linux路上的点点滴滴都做个记录。只期望自己能很好的坚持写下去。</div>
+		<div class="clear"></div></aside>				<div class="clear"></div>
+			</div>
+		</div>
+		<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<div class="site-info">
+			<p style="text-align: center;"><span style="font-family: 微软雅黑,&quot;Microsoft YaHei&quot;;"><span style="font-size: 15px; line-height: 27px; text-align: center; text-indent: 30px;">Copyright&nbsp;&nbsp;&nbsp;<a title="Legion博客" href="https://www.dwhd.org/" target="_blank">Legion博客</a>&nbsp;<a title="Legion博客" href="https://www.dwhd.org/" target="_blank">www.dwhd.org</a>&nbsp;(2011-2015) 版权所有.</span></span></p>
+<p style="text-align: center;"><span style="font-family: 微软雅黑,&quot;Microsoft YaHei&quot;;"><span style="line-height: 25.2px;">这是个</span><span style="line-height: 18px;">经</span><span style="line-height: 18px; font-size: medium;"><a title="备案号 : 皖ICP备15007710号-1" href="http://www.miibeian.gov.cn/" target="_blank"><span style="color: rgb(255, 0, 0);">工信部认证</span></a></span><span style="color: rgb(68, 68, 68); line-height: 25.2px;">、</span><a style="line-height: 18px;" href="http://cn.wordpress.org/" target="_blank" data-ke-src="http://cn.wordpress.org/"><span style="font-size: medium;"><span style="color: rgb(255, 0, 0);">WordPress</span></span></a><span style="line-height: 18px;">驱动</span><span style="color: rgb(68, 68, 68); line-height: 25.2px;">、</span><a style="line-height: 18px;" href="http://zmingcx.com/wordpress-theme-begin.html" target="_blank" data-ke-src="http://zmingcx.com/wordpress-theme-begin.html"><span style="font-size: medium;"><span style="color: rgb(255, 0, 0);">Begin</span></span></a><span style="line-height: 18px;">美化</span><span style="color: rgb(68, 68, 68); line-height: 25.2px;">、</span><a style="line-height: 18px;" href="http://www.dwhd.org/" target="_blank" data-ke-src="http://www.dwhd.org/"><span style="font-size: medium;"><span style="color: rgb(255, 0, 0);">Legion</span></span></a><span style="line-height: 18px;">维护</span><span style="color: rgb(68, 68, 68); line-height: 25.2px;">、</span><a style="line-height: 18px;" href="http://www.baidu.com/" target="_blank" data-ke-src="http://www.baidu.com/"><span style="font-size: medium;"><span style="color: rgb(255, 0, 0);">百度</span></span></a><span style="line-height: 18px;">&amp;</span><a style="line-height: 18px;" href="http://www.google.com/" target="_blank" data-ke-src="http://www.google.com/"><span style="font-size: medium;"><span style="color: rgb(255, 0, 0);">谷歌</span></span></a><span style="line-height: 25.2px;">大力推荐的网站</span></span></p>			<span class="add-info">
+											</span>
+		</div><!-- .site-info -->
+	</footer><!-- .site-footer -->
+<div id="login">
+			<div class="login-t">用户登录</div>
+		<form action="https://www.dwhd.org/wp-login.php?redirect_to=https%3A%2F%2Fwww.dwhd.org%2F20150720_191117.html" method="post" id="loginform">
+			<input name="log" id="log" placeholder="名称" required="" type="username">
+			<input name="pwd" id="pwd" placeholder="密码" required="" type="password">
+			<input id="submit" value="登录" type="submit">
+			<input name="redirect_to" value="/20150720_191117.html" type="hidden">
+		<label><input name="rememberme" id="modlogn_remember" value="yes" checked="checked" alt="Remember Me" type="checkbox">自动登录</label>
+		  <a href="https://www.dwhd.org/wp-login.php?action=lostpassword">&nbsp;&nbsp;忘记密码？</a>
+	  </form>
+			<div class="login-b"></div>
+</div>
+
+<ul id="scroll">
+	<li><a class="scroll-h" title="返回顶部"><i class="fa fa-angle-up"></i></a></li>
+	<li><a class="scroll-c" title="评论"><i class="fa fa-comment-o"></i></a></li>	<li><a class="scroll-b" title="转到底部"><i class="fa fa-angle-down"></i></a></li>
+	<li><a title="繁體" name="gb2big5" id="gb2big5"><span>繁</span></a></li>	<li><a class="qr" title="二维码"><i class="fa fa-qrcode"></i></a></li></ul>
+
+<span class="qr-img"><div id="output"><img class="alignnone" src="favicon.png"><canvas height="150" width="150"></canvas><script>(function (data) { var scripts = document.getElementsByTagName("script"); var script = scripts[scripts.length-1], canvas = script.previousSibling; var img = new Image(); img.onload = function(){ canvas.getContext("2d").drawImage(img, 0, 0); }; img.src = data; script.parentNode.removeChild(script); })("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAFP0lEQVR4nO3TQZIjIQxEUd//0jP7bjtAykyBq78ivKJAKXh+vV6vf5O/n3XiTPf3q0qf190T/gELWMAC1oe8nT3AAtYyb2fPKCx3Oc5XoaUzT8N1/NncBaxAZmABK5IZWMCKZAZWA5b6qOojdeC4Hy49k7p/An9jP7Dc69WZ1P3AuvQS3evVmdT9wLr0Et3r1ZnU/cBqnq9mOv1ncOfvFLCABSxg7eVx5+8UsIAFrMQjdSqNvdovfWenzgQWsOIzbewHlroOLGBtZQLWACy1qufvDLGz5+QlV8sNtTNzYAZgVc8D1tYMwKqeB6ytGYBVPQ9YWzP4h3IP7IbytPXOGQM/YH37eucMYF3wcLevd84A1gUPd/t654z4723Kg+XA6Mav9nevdzJN1/kEPwpYwIoUsIAVKWD9EVjuR+zsr+6pzjQxw8k/SgeafKdqA2AB621GtQGwgPU2o9oAWMB6m7HcMRwokSF96U+cGVgbZwILWJEMwAJWJAOwgBXJAKwDsNwNE4+a7nl6f3XeThmgVO8AWKf3V+ftFLAO9Dy9vzpvp4B1oOfp/dV5OzUOyx3YPYAL5+RM7n4Td2T/M6UvRd0PLGABK9QPWMCK9HsErGkojkt2P1R1xuq6+3zHHagzAAtYwAIWsGIDAetLYamX4A7U+Wb60qrfu3+dmv5zAgtYwAIWsIAFLG0I9yN2ekyfp0JIwHLjr54PLMN5wAJW5DxgAStyHrA2ZnJfYvpSHXjdmd1145+x2g9YwLIUsDYyqN+rBSxgAetDv5f6aO71iYd2w3X376Bwn2l4N2ABa31eox+wgLU+r9EPWMBan1fup16SGmgnsLuHWuk7cmRyYFXOB1ajgAUsYAHr8wDuHmoBywArHWjne7Wn+n35Us0/x8zj0E4H2Ple7al+D6x1P2A1vgfWuh+wGt8Da91vCUsNpK53hnJnnpih0n+nnxuOWsAKzKjOAyxgAetDASswozrPI2BVA7gfqbq/0/O230R+97tUC1jAAhawgAUsYN0VeOJSq+sTmZP5Omeo3wOrcYmJzMBaH3j8kaqXdENmYK0PPP5I1Uu6IfPjYFUPdF/aTp3G7374BCT3n0NdBxawLJmABaxIJmABK5Lpzb2evbQERjck92+i0tA29gPLkRFYv/YDy5ERWL/2A8uREVg/9qsN0zAdPdJQ3TO68zh6lDMtdxSHsgcElpwHWBvnAwtYnoDAkvNcAUt91MQAt11idX86vyODeifAamZQ9gPLEABYwAJWIYOy/0/CGmggX5qaqZrRPdMTYDW+BxawgNXKVM3onglYwAKW63v1QLUmoKmX5F6v5nNgVDOVZ6gO6S5gAQtYpvVqPmA1CljAApZpvZrvK2G5LzE9cKenmrFa0zBP3MnGOrCABawjl1gtYAELWClYW6mD5XjowL/N+mdKz7OTudpT3Q8sYEX2AwtYkf3AAlZk/0u9pIlL3fnG+XDqTO58nfzqmYY7AxawgLU1ZKcHsIAFrG+E5a7EJVXPmN6vnp/Ars5Q3Q+swH71fGAZAgMLWK0CFrAsQ1YDdwYKXEJ0xur3HTQOjGb8wAIWsNp7lJmABazWfmA9ENZOP/XiT8NI53m3xz1TtR+wDBmn13cyAWujXzVTNQOwgLWVqZoBWA+E5Tiz8xDipUl3ciJPtYe6Dqw3BSxgXfuQt+Wp9lDXgfWmgDUAS630+Ts91EtO/3mq309gXtXGDMBafQ+s3wWsRgZgrQtYjQzAWlcZVvpXDdw5033p04/cOe9C/MBKZAIWsCKZgAWsSKa/Dus/uTF+Qkt7wDIAAAAASUVORK5CYII=")</script></div></span>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<div class="qqonline"><a target="blank" href="http://wpa.qq.com/msgrd?V=3&amp;uin=1310245678&amp;Site=QQ&amp;Menu=yes"><i class="fa fa-qq"></i><span>在</span><span>线</span><span>咨</span><span>询</span></a></div><link rel="stylesheet" href="myQaptcha.jquery.css" type="text/css">
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+		<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+
+</div><div id="overlay"></div><div class="sidr left" id="sidr-main"><div class="sidr-inner"><a href="#sidr-close" class="sidr-class-toggle-sidr-close">×</a></div><div class="sidr-inner">
+										<a href="#sidr-main" id="sidr-id-navigation-toggle" class="sidr-class-bars"><i class="sidr-class-fa sidr-class-fa-bars"></i></a>
+										<div class="sidr-class-menu-%sidr-class-e9%sidr-class-a6%sidr-class-96%sidr-class-e9%sidr-class-a1%sidr-class-b5%sidr-class-e5%sidr-class-af%sidr-class-bc%sidr-class-e8%sidr-class-88%sidr-class-aa-container"><ul id="sidr-id-menu-%sidr-id-e9%sidr-id-a6%sidr-id-96%sidr-id-e9%sidr-id-a1%sidr-id-b5%sidr-id-e5%sidr-id-af%sidr-id-bc%sidr-id-e8%sidr-id-88%sidr-id-aa" class="sidr-class-down-menu sidr-class-nav-menu sidr-class-sf-js-enabled sidr-class-sf-arrows"><li id="sidr-id-menu-item-54" class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-home sidr-class-menu-item-54"><a title="首页" href="http://www.dwhd.org/"><i class="sidr-class-fa sidr-class-fa-home"></i><span class="sidr-class-fontawesome-text"> 首页</span></a></li>
+<li id="sidr-id-menu-item-86" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-has-children sidr-class-menu-item-86"><a class="sidr-class-sf-with-ul" href="https://www.dwhd.org/category/linux/"><i class="sidr-class-fa sidr-class-fa-linux"></i><span class="sidr-class-fontawesome-text"> Linux</span></a>
+<ul class="sidr-class-sub-menu">
+	<li id="sidr-id-menu-item-81" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-81"><a href="https://www.dwhd.org/category/linux/linuxbasic/"><i class="sidr-class-fa sidr-class-fa-linux"></i><span class="sidr-class-fontawesome-text"> Linux基础</span></a></li>
+	<li id="sidr-id-menu-item-1250" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-1250"><a href="https://www.dwhd.org/category/linux/linux_network/"><i class="sidr-class-fa sidr-class-fa-wifi"></i><span class="sidr-class-fontawesome-text"> Linux网络</span></a></li>
+	<li id="sidr-id-menu-item-928" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-928"><a href="https://www.dwhd.org/category/linux/postfix/"><i class="sidr-class-fa sidr-class-fa-envelope-o"></i><span class="sidr-class-fontawesome-text"> Linux邮局</span></a></li>
+	<li id="sidr-id-menu-item-4180" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-4180"><a href="https://www.dwhd.org/category/linux/awk-mark/"><i class="sidr-class-fa sidr-class-fa-battery-three-quarters"></i><span class="sidr-class-fontawesome-text"> AWK使用笔记</span></a></li>
+	<li id="sidr-id-menu-item-1029" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-1029"><a href="https://www.dwhd.org/category/linux/%e8%87%aa%e5%8a%a8%e5%8c%96%e8%bf%90%e7%bb%b4/"><i class="sidr-class-fa sidr-class-fa-wrench"></i><span class="sidr-class-fontawesome-text"> 自动化运维</span></a></li>
+</ul>
+</li>
+<li id="sidr-id-menu-item-308" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-308"><a href="https://www.dwhd.org/category/linux/linux%e9%9b%86%e7%be%a4%e9%ab%98%e5%8f%af%e7%94%a8/"><i class="sidr-class-fa sidr-class-fa-cloud"></i><span class="sidr-class-fontawesome-text"> Linux高可用</span></a></li>
+<li id="sidr-id-menu-item-3244" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-has-children sidr-class-menu-item-3244"><a class="sidr-class-sf-with-ul" href="https://www.dwhd.org/category/virtualization/"><i class="sidr-class-fa sidr-class-fa-vimeo"></i><span class="sidr-class-fontawesome-text"> 虚拟化</span></a>
+<ul class="sidr-class-sub-menu">
+	<li id="sidr-id-menu-item-3247" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-3247"><a href="https://www.dwhd.org/category/virtualization/docker/"><i class="sidr-class-fa sidr-class-fa-plus"></i><span class="sidr-class-fontawesome-text"> Docker</span></a></li>
+	<li id="sidr-id-menu-item-4626" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-4626"><a href="https://www.dwhd.org/category/virtualization/xenserver/"><i class="sidr-class-fa sidr-class-fa-xing"></i><span class="sidr-class-fontawesome-text"> Xenserver</span></a></li>
+</ul>
+</li>
+<li id="sidr-id-menu-item-273" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-has-children sidr-class-menu-item-273"><a class="sidr-class-sf-with-ul" href="https://www.dwhd.org/category/sql/"><i class="sidr-class-fa sidr-class-fa-database"></i><span class="sidr-class-fontawesome-text"> 数据库</span></a>
+<ul class="sidr-class-sub-menu">
+	<li id="sidr-id-menu-item-274" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-274"><a href="https://www.dwhd.org/category/sql/mysql/"><i class="sidr-class-fa sidr-class-fa-database"></i><span class="sidr-class-fontawesome-text"> MySQL&amp;MariaDB</span></a></li>
+</ul>
+</li>
+<li id="sidr-id-menu-item-1558" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-has-children sidr-class-menu-item-1558"><a class="sidr-class-sf-with-ul" href="https://www.dwhd.org/category/program_script/"><i class="sidr-class-fa-cogs sidr-class-fa"></i><span class="sidr-class-fontawesome-text"> 编程&amp;脚本</span></a>
+<ul class="sidr-class-sub-menu">
+	<li id="sidr-id-menu-item-1559" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-1559"><a href="https://www.dwhd.org/category/program_script/python/"><i class="sidr-class-fa sidr-class-fa-code-fork"></i><span class="sidr-class-fontawesome-text"> Python</span></a></li>
+	<li id="sidr-id-menu-item-1560" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-1560"><a href="https://www.dwhd.org/category/program_script/shellscript/"><i class="sidr-class-fa sidr-class-fa-code"></i><span class="sidr-class-fontawesome-text"> Shell脚本</span></a></li>
+</ul>
+</li>
+<li id="sidr-id-menu-item-275" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-has-children sidr-class-menu-item-275"><a class="sidr-class-sf-with-ul" href="https://www.dwhd.org/category/windows/"><i class="sidr-class-fa sidr-class-fa-windows"></i><span class="sidr-class-fontawesome-text"> Windows</span></a>
+<ul class="sidr-class-sub-menu">
+	<li id="sidr-id-menu-item-276" class="sidr-class-menu-item sidr-class-menu-item-type-taxonomy sidr-class-menu-item-object-category sidr-class-menu-item-276"><a href="https://www.dwhd.org/category/windows/windowsserver/"><i class="sidr-class-fa sidr-class-fa-windows"></i><span class="sidr-class-fontawesome-text"> Windows Server</span></a></li>
+</ul>
+</li>
+<li id="sidr-id-menu-item-2114" class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-2114"><a target="_blank" href="https://www.dwhd.org/go.php?url=http://git.dwhd.org"><i class="sidr-class-fa sidr-class-fa-github"></i><span class="sidr-class-fontawesome-text"> GitLab</span></a></li>
+<li id="sidr-id-menu-item-1550" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-1550"><a target="_blank" href="https://www.dwhd.org/about"><i class="sidr-class-fa sidr-class-fa-heartbeat"></i><span class="sidr-class-fontawesome-text"> 关于我</span></a></li>
+</ul></div>				</div></div></body>
+</html>

@@ -1,0 +1,14 @@
+/* Code tidied up by ScrapBook */
+.bdshare-slide-button-box { height: 326px; position: fixed; overflow: visible; }
+.bdshare-slide-button-box .bdshare-slide-button { width: 24px; height: 88px; display: block; position: absolute; top: 58px; }
+.bdshare-slide-style-r3 .bdshare-slide-button { background: transparent url("r3.gif") no-repeat scroll 0px 0px; }
+.bdshare-slide-list-box { border: 1px solid rgb(233, 233, 233); text-align: left; overflow: hidden; background: rgb(246, 246, 246) none repeat scroll 0% 0%; }
+.bdshare-slide-top { height: 28px; color: rgb(98, 98, 98); overflow: hidden; font-weight: bold; font-size: 14px; line-height: 28px; padding: 0px 5px; }
+.bdshare-slide-list { padding: 5px 0px; margin: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; overflow-y: auto; overflow-x: hidden; }
+.bdshare-slide-list-ul { padding: 0px; margin: 0px; border: 0px none; list-style: outside none none; }
+.bdshare-slide-bottom { line-height: 25px; font-size: 12px; text-align: right; clear: both; height: 30px; }
+.bdshare-slide-bottom a { color: rgb(153, 153, 153); text-decoration: none; border: 0px none; float: right; }
+.bdshare-slide-bottom a:hover { color: rgb(0, 169, 224); }
+.bdshare-slide-list a, .bdshare-slide-bottom a { color: rgb(86, 86, 86); font: 12px/18px "宋体"; display: block; background-image: url("icons_0_16.png"); background-repeat: no-repeat; padding: 5px 0px 5px 28px; text-decoration: none; border: 1px solid rgb(255, 255, 255); }
+.slide-more { background-position: 4px 5px; }
+.bdshare-slide-bottom .slide-more { border: medium none; margin-right: 10px; }

@@ -1,0 +1,39 @@
+/* Code tidied up by ScrapBook */
+a:link, a:active { color: rgb(26, 139, 200); text-decoration: none; }
+a:visited { color: rgb(26, 139, 200); text-decoration: none; }
+a:hover { color: rgb(86, 182, 233); }
+body { background-image: url("back.gif"); margin: 0px; padding: 0px; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; font-size: 13px; word-wrap: break-word; line-height: 150%; }
+img { border: 0px none; }
+td { font-size: 12px; color: rgb(69, 69, 69); font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; word-wrap: break-word; line-height: 120%; }
+.header { height: 145px; background-color: rgb(255, 255, 255); background-image: url("bg_header.jpg"); background-repeat: no-repeat; border-bottom: 1px dotted rgb(139, 141, 114); padding-left: 264px; padding-top: 50px; }
+a.headermaintitle:visited, a.headermaintitle:active, a.headermaintitle:link { color: rgb(0, 0, 0); font-size: 18px; font-weight: bold; text-decoration: none; }
+a.headermaintitle:hover { color: rgb(255, 85, 17); }
+#leftcontent { position: absolute; top: 110px; left: 20px; width: 220px; background-color: rgb(255, 255, 255); border-width: 1px 1px 8px; border-style: dotted dotted solid; border-color: rgb(139, 141, 114); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; font-family: Arial; font-size: 12px; }
+#leftcontentcontainer h1 { font-size: 13px; }
+#leftcontentcontainer h3 { font-size: 13px; }
+#leftcontentcontainer { padding: 10px; }
+#centercontent { padding-top: 25px; padding-right: 20px; padding-left: 260px; }
+a.menu:link, a.menu:visited, a.menu:active { color: black; }
+a.menu:hover { color: rgb(86, 182, 233); }
+#mytopmenu { border-width: 0px 1px 1px; border-style: none dotted dotted; border-color: -moz-use-text-color rgb(139, 141, 114) rgb(139, 141, 114); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background-color: White; padding: 5px 10px; margin-top: 0px; margin-right: 20px; margin-left: 260px; text-align: left; font-size: 12px; }
+#mylinks { font-size: 12px; margin-top: 0px; margin-bottom: 0px; padding: 0px 12px; text-align: left; }
+#mylinks a { text-decoration: underline; }
+#mystats { font-size: 12px; text-align: right; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; }
+.footer { background-image: url("bg_footer.gif"); color: rgb(139, 141, 114); padding: 12px 12px 12px 10px; margin-top: 0px; margin-right: 19px; margin-left: 260px; text-align: center; line-height: 20px; }
+.newsItem { margin-top: 2px; margin-bottom: 20px; }
+.post { border: 1px dotted rgb(139, 141, 114); background-color: White; padding: 20px; color: rgb(75, 75, 75); font-size: 13px; }
+.postTitle { font-size: 14.7px; font-weight: bold; margin-bottom: 10px; }
+.postTitle2 { text-decoration: none; }
+.postDesc { color: rgb(48, 48, 48); margin-top: 10px; text-align: right; }
+.catListTitle { background-image: url("bg_listtitle.gif"); background-repeat: no-repeat; font-family: Verdana; font-size: 14.7px; margin-bottom: 10px; height: 21px; }
+.catList { list-style: outside none none; border-top: 0px none; margin: 0px 0px 20px; padding-left: 10px; }
+.catListItem { padding: 1px 0px; margin-top: 3px; margin-left: 5px; text-align: left; }
+ul { list-style: outside none none; margin: 0px 0px 10px 5px; padding-left: 5px; font-size: 12px; }
+.Cal { border-color: white; width: 200px; font-family: Arial; font-size: 12px; margin-top: 10px; margin-bottom: 10px; height: 180px; }
+.CalTitle { background-color: rgb(255, 255, 255); font-family: verdana; font-size: 12px; margin-left: 0px; padding: 0px; height: 100%; font-weight: normal; }
+.CalOtherMonthDay { color: rgb(128, 128, 128); }
+.CalNextPrev { color: rgb(255, 255, 255); }
+.CalDayHeader { background-color: white; font-weight: bold; }
+.CalWeekendDay { background-color: white; }
+h1 { margin: 10px 0px 5px; font-size: 14.7px; color: rgb(102, 102, 102); text-align: left; }
+h3 { background-image: url("bg_listtitle.gif"); background-repeat: no-repeat; font-family: Verdana; margin-bottom: 10px; height: 21px; font-size: 14.7px; color: rgb(102, 102, 102); }

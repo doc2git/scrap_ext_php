@@ -1,0 +1,5 @@
+/* Code tidied up by ScrapBook */
+body {  }
+.more_tags { padding: 10px 20px 0px; overflow: hidden; }
+.more_tags span { display: inline-block; vertical-align: top; width: 111px; height: 30px; text-indent: 13px; font-family: Microsoft Yahei; color: rgb(255, 255, 255); line-height: 30px; font-size: 14px; background: transparent url("icons.png") no-repeat scroll 0px -275px; margin-right: 15px; }
+.more_tags a { font-family: Microsoft Yahei; line-height: 30px; font-size: 14px; margin-right: 20px; }

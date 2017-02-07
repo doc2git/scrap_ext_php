@@ -1,0 +1,26 @@
+/* Code tidied up by ScrapBook */
+.bdsharebuttonbox { line-height: 24px; height: 24px; overflow: hidden; vertical-align: top; }
+.bdsharebuttonbox a { width: 24px; height: 24px; display: inline-block; margin-right: 5px; background: transparent url("share.png") no-repeat scroll 0% 0%; cursor: pointer; margin-bottom: 0px; opacity: 0.8; }
+.bdsharebuttonbox a:hover { opacity: 1; }
+.bdsharebuttonbox a.bds_tsina { background-position: 0px 0px; }
+.bdsharebuttonbox a.bds_weixin { background-position: 0px -33px; }
+.bdsharebuttonbox a.bds_qzone { background-position: 0px -65px; }
+.bdsharebuttonbox a.bds_sqq { background-position: 0px -98px; }
+.bdsharebuttonbox a.bds_renren { background-position: 0px -131px; }
+.bdsharebuttonbox a.bds_tqq { background-position: 0px -163px; }
+.bdsharebuttonbox a.bds_diandian { background-position: 0px -356px; }
+.bdsharebuttonbox a.bds_youdao { background-position: 0px -388px; }
+.bdsharebuttonbox a.bds_ty { background-position: 0px -420px; }
+.bdsharebuttonbox a.bds_fbook { background-position: 0px -452px; }
+.bdsharebuttonbox a.bds_twi { background-position: 0px -484px; }
+.bdsharebuttonbox a.bds_kaixin001 { background-position: 0px -228px; }
+.bdsharebuttonbox a.bds_taobao { background-position: 0px -196px; }
+.bdsharebuttonbox a.bds_douban { background-position: 0px -324px; }
+.bdsharebuttonbox a.bds_mail { background-position: 0px -548px; }
+.bdsharebuttonbox a.bds_copy { background-position: 0px -516px; }
+.bdsharebuttonbox a.bds_bdhome { background-position: 0px -292px; }
+.bdsharebuttonbox a.bds_tqf { background-position: 0px -260px; }
+.bdsharebuttonbox a.bds_more, .bdsharebuttonbox a.bds_count { background: transparent none repeat scroll 0% 0%; width: auto; height: auto; position: relative; top: -6px; }
+.bdsharebuttonbox a.bds_count { margin: 0px 2px; }
+@media (max-width: 560px) {
+}

@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> -->
+	<title>在htaccess文件中隐藏index.php - ThinkPHP框架</title>
+	<meta name="keywords" content="thinkphp代码，代码示例，代码参考，php短信，数据库备份代码，令牌验证，去除代码中的空白和注释htaccess 隐藏index.php">
+	<meta name="description" content="提供各种官方和用户发布的代码示例，代码参考，欢迎大家交流学习">
+	<meta property="wb:webmaster" content="06779971d6009b5a">
+	<link rel="alternate" type="application/rss+xml" title="ThinkPHP官方资讯" href="http://www.thinkphp.cn/rss/index.xml">
+	<link href="favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="base.css" media="all">
+	<link rel="stylesheet" type="text/css" href="header.css" media="all">
+	<link rel="stylesheet" type="text/css" href="module.css" media="all">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="img.css">
+	<link rel="stylesheet" type="text/css" href="prettify.css">
+	<script src="about:blank"></script><script type="text/javascript" src="about:blank"></script>
+	<script type="text/javascript" src="about:blank"></script>
+	<script type="text/javascript" src="about:blank"></script>
+	<script type="text/javascript" src="about:blank"></script>
+	<script type="text/javascript" src="about:blank"></script>
+	<script type="text/javascript" src="about:blank"></script>
+	<script type="text/javascript">/* Code removed by ScrapBook */</script>
+	<script type="text/javascript" src="about:blank"></script>
+	<script type="text/javascript" src="about:blank"></script>
+<script src="about:blank" type="text/javascript"></script><script src="about:blank" type="text/javascript"></script><script src="about:blank" type="text/javascript"></script><script src="about:blank" type="text/javascript"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+.thinkad_default_images {  }
+.thinkad_default_images a:hover { border: 0px none; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+.thinkad_default_images {  }
+.thinkad_default_images a:hover { border: 0px none; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+.thinkad_default_images {  }
+.thinkad_default_images a:hover { border: 0px none; }
+</style></head>
+<body>
+	<!-- 头部 -->
+	<div class="header">
+		<div class="hd-main cf">
+			<!-- logo -->
+			<h3 class="logo"><a href="http://www.thinkphp.cn/" title="返回首页"></a></h3>
+			<!-- /logo -->
+
+			<!-- 主导航 -->
+			<ul class="main-nav">
+				<li><a href="http://www.thinkphp.cn/">首页</a></li>
+				<li><a href="http://www.thinkphp.cn/down.html">下载</a></li>
+				<li><a href="http://www.thinkphp.cn/extend/index.html">扩展</a></li>
+				<li><a href="http://www.topthink.com/products.html" target="app">应用</a></li>
+				<li><a href="http://www.thinkphp.cn/document/index.html">教程</a></li>
+				<li class="current"><a href="http://www.thinkphp.cn/code/index.html">代码</a></li>
+				<li><a href="http://www.topthink.com/group/1525.html" target="case">案例</a></li>
+				<li><a href="http://www.topthink.com/topics.html" target="topic">资讯</a></li>
+				<li><a href="http://www.thinkphp.cn/topic/index.html">讨论</a></li>
+			</ul>
+			<script type="text/javascript">/* Code removed by ScrapBook */</script>
+			<!-- /主导航 -->
+
+			<div class="header-bar">
+				<!-- 搜索 -->
+				<form action="http://www.thinkphp.cn/Search/" method="post" class="search cf">
+					<div id="header-search" class="search-sort">
+						<span class="search-sort-txt">全部</span><em></em>						<input name="type" id="search" value="10" type="hidden">
+						<ul id="search-sort-list" class="search-sort-list">
+							<li value="10">全部</li>
+							<li value="0">资讯</li>
+    						<li value="1">下载</li>
+    						<li value="2">讨论</li>
+    						<li value="6">代码</li>
+    						<li value="3">BUG</li>
+    						<li value="4">建议</li>
+    						<li value="5">更新</li>
+                            <li value="7">应用</li>
+						</ul>
+					</div>
+					<input name="time" value="0" type="hidden">
+					<input name="name" class="search-input" x-webkit-speech="" type="text">
+					<a class="search-btn">搜索</a>
+				</form>
+				<!-- /搜索 -->
+				<script type="text/javascript" src="about:blank"></script><div class="entrance">	<a class="unlogin" href="http://www.thinkphp.cn/member/login.html">		<b class="unlogin-ic"></b>		<i class="entr-icon"></i>	</a>	<ul class="user-menu set-l">		<li><a href="http://www.thinkphp.cn/member/login.html">登录</a></li>		<li><a href="http://www.thinkphp.cn/Member/register.html">注册</a></li>	</ul></div>
+			</div>
+		</div>
+	</div>
+	<div class="changeName" style="display: none;">
+		<form action="http://www.thinkphp.cn/user/changeUsername" method="post" class="change-name">
+			<div class="error-tips"> 系统检测到您的用户名不符合规范：<span></span> </div>
+			<label class="lab">用户名</label>
+			<input class="text" name="username" datatype="*1-16" errormsg="用户名不超过16个字节" nullmsg="用户名不能为空" type="text">
+			<input value="提交" class="btn" type="submit">
+		</form>
+	</div>
+
+<!-- 主体 -->
+<div class="main cf">
+	<!-- 左边 -->
+	<div class="wrapper">
+		<!-- 详情内容 -->
+		<div class="box detail-box">
+			<!-- 标签 -->
+																					<!-- /标签 -->
+
+			<!-- 标题栏 -->
+			<div class="detail-hd">
+				<div class="t-head cf">
+					<!-- 标题名称 -->
+					<h2>在htaccess文件中隐藏index.php</h2>
+					<!-- /标题名称 -->
+
+					<!-- 圆形翻页按钮 -->
+					<div class="turn">
+						
+	<a class="prev" href="http://www.thinkphp.cn/code/26.html" title="上一篇：设置图片的HTTP缓存"></a>		<a class="dir" href="http://www.thinkphp.cn/code/system.html" title="返回目录"></a>
+	<a class="next" href="http://www.thinkphp.cn/code/24.html" title="下一篇：U方法使用示例"></a>
+					</div>
+					<!-- /圆形翻页按钮 -->
+				</div>
+				<div class="t-foot">
+					<span>浏览：6104</span>
+					<!-- 发布日期 -->
+					<span>发布日期：2012/10/10</span>
+					<!-- /发布日期 -->
+					<!-- 分类 -->
+					<span>分类：系统代码</span>					<!-- /分类 -->
+					<!-- 关键字 -->
+					<span>关键字： <a href="http://www.thinkphp.cn/code/tag/name/htaccess.html">htaccess</a>   <a href="http://www.thinkphp.cn/code/tag/name/%E9%9A%90%E8%97%8Findex.php.html">隐藏index.php</a>  </span>					<!-- /关键字 -->
+
+					<input value="3" id="editbtn_user_id" type="hidden">
+<input value="25" id="editbtn_article_id" type="hidden">
+<input value="Code" id="editbtn_article_module" type="hidden">
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+				</div>
+			</div>
+			<!-- /标题栏 -->
+
+			<!-- 内容介绍 -->
+			<div class="detail-bd">
+				
+	<br>仅适用于Apache下面，如果你的Apache已经开启rewrite模块的话（大部分环境都已经开启），可以在.htaccess文件中添加下面代码：<code style="" class="prettyprint linenums lang-php prettyprinted"><ol class="linenums"><li class="L0"><span class="tag">&lt;IfModule</span><span class="pln">&nbsp;</span><span class="atn">mod_rewrite</span><span class="pln">.</span><span class="atn">c</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln"> RewriteEngine&nbsp;on</span></li><li class="L2"><span class="pln"> RewriteCond&nbsp;%{REQUEST_FILENAME}&nbsp;!-d</span></li><li class="L3"><span class="pln"> RewriteCond&nbsp;%{REQUEST_FILENAME}&nbsp;!-f</span></li><li class="L4"><span class="pln"> RewriteRule&nbsp;^(.*)$&nbsp;index.php/$1&nbsp;[QSA,PT,L]</span></li><li class="L5"><span class="pln"> </span><span class="tag">&lt;/IfModule&gt;</span></li></ol><div class="think-copy"><span>复制代码</span></div><div style="position: absolute; left: 605px; top: -1px; width: 82px; height: 29px; z-index: 99;" id="zclip-ZeroClipboardMovie_1" class="zclip"><embed id="ZeroClipboardMovie_1" src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboardMovie_1" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=82&amp;height=29" wmode="transparent" height="29" width="82" align="middle"></div></code>即可实现，把<code style="" class="prettyprint linenums lang-php prettyprinted"><ol class="linenums"><li class="L0"><span class="pln">&nbsp;http</span><span class="pun">:</span><span class="com">//thinkphp.cn/index.php/down</span></li></ol><div class="think-copy"><span>复制代码</span></div><div style="position: absolute; left: 605px; top: -1px; width: 82px; height: 29px; z-index: 99;" id="zclip-ZeroClipboardMovie_2" class="zclip"><embed id="ZeroClipboardMovie_2" src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboardMovie_2" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=2&amp;width=82&amp;height=29" wmode="transparent" height="29" width="82" align="middle"></div></code>地址中的index.php隐藏，利用SEO。		<div class="da_word"><think style="display: block; overflow: hidden;" parse="1" id="ad_196de4c105c1d8be"><div style="border-top: 1px solid rgb(212, 212, 212); margin-top: 10px; padding: 12px 6px;">
+<b>【推广】</b> <a href="http://e.topthink.com/api/go/ec34217f6d305d7d1" target="_blank">【选型推荐】0基础1小时建站，满足多种建站需求</a><br><b>【推广】</b> <a href="http://e.topthink.com/api/go/ad_840ca7e569ef831c" target="_blank">ThinkPHP5.0 入门必读系列 [ 官方出品 ]</a><br></div></think></div>
+
+			</div>
+			<!-- /内容介绍 -->
+		</div>
+		<!-- /详情内容 -->
+
+		<div class="aw720">
+		<script type="text/javascript" src="about:blank"></script>
+		<think style="display: block; width: 728px; height: 90px; overflow: hidden;" parse="1" id="ad_6b7d22ed07ed248d"><div class="thinkad_default_images">
+        <a href="http://e.topthink.com/api/go/e1818fbf22a8bc451" title="阿里云" target="_blank"><img src="TB14aAiPXXXXXcKXXXXXXXXXXXX-728-90.jpg" alt="阿里云" height="90" width="728"></a></div></think>
+		</div>
+
+		<!-- 最佳评论(只有讨论有) -->
+		
+		<!-- /最佳评论(只有讨论有) -->
+
+		<!--选项卡显隐块-->
+		<div id="tabbar" class="box tabbar">
+			<!-- 选项卡导航 -->
+			<div class="tab-nav cf">
+				
+				<span class="item selected" data-target="comment">评论（<span class="review-count">4</span>）</span>
+				<span class="item" data-target="similar">相关</span>			</div>
+			<!-- /选项卡导航 -->
+
+			<!-- 内容 -->
+			<div id="tab-wrap" class="tab-wrap">
+				<!-- 应用摘要 -->
+				
+				<!-- /应用摘要 -->
+
+				<!-- 评论 -->
+				
+					
+<div style="display: block;" class="tab-comment item-content" id="comment">
+    <!-- <div class="tab-title">
+        评论（<span class="review-count">0</span>）
+    </div> -->
+    
+    <div class="cmt-box">
+        <div class="cmt-item review_item_list"><a class="avatar" user_id="9078" href="http://www.thinkphp.cn/u/9078.html" target="_blank"><img src="80_80.gif"></a> <div class="comment-hd cf"><span class="username">yanhuaguo</span><span class="commment-time">2014年06月10日</span></div><div class="comment-bd" id="88224"><div class="cmt-txt">请问 怎么设置 在htaccess里排除某个目录，比如upload目录是上传的文件，</div></div></div><div class="cmt-item review_item_list"><a class="avatar" user_id="59496" href="http://www.thinkphp.cn/u/henhao163.html" target="_blank"><img src="80_80_001.gif"></a> <div class="comment-hd cf"><span class="username">henhao163</span><span class="commment-time">2012年11月18日</span></div><div class="comment-bd" id="2146"><div class="cmt-txt">为什么我的还是显示index.php？ 经检测Apache中的Loaded Modules是存在mod_rewrite的，  .htaccess文件是将上述代码复制进去保存并重启Apache，通过U方法后，index.php是依然存在的。</div></div><div class="cmt-item reply-item" id="44780"><a class="avatar" user_id="24340" href="http://www.thinkphp.cn/u/24340.html" target="_blank"><img src="80_80_002.gif"></a><div class="comment-hd cf"><a class="reply-btn" reply="2146" at-user="true">回复<i></i></a><span class="username">304429404</span><span class="commment-time">2013年09月18日</span></div><div class="comment-bd"><div>你的找到解决办法了吗</div></div></div><div class="cmt-item reply-item" id="109961"><a class="avatar" user_id="135463" href="http://www.thinkphp.cn/u/135463.html" target="_blank"><img src="80_80_003.gif"></a><div class="comment-hd cf"><a class="reply-btn" reply="2146" at-user="true">回复<i></i></a><span class="username">black_star</span><span class="commment-time">2014年12月11日</span></div><div class="comment-bd"><div>你的找到解决办法了没有</div></div></div><div class="cmt-item reply-item" id="109979"><a class="avatar" user_id="59496" href="http://www.thinkphp.cn/u/henhao163.html" target="_blank"><img src="80_80_001.gif"></a><div class="comment-hd cf"><a class="reply-btn" reply="2146" at-user="true">回复<i></i></a><span class="username">henhao163</span><span class="commment-time">2014年12月12日</span></div><div class="comment-bd"><div>回复 <a class="at" user_id="24340">304429404</a> : URL_MODEL = 2</div></div></div></div><div class="cmt-item review_item_list"><a class="avatar" user_id="71851" href="http://www.thinkphp.cn/u/71851.html" target="_blank"><img src="80_80_004.gif"></a> <div class="comment-hd cf"><span class="username">forevergang</span><span class="commment-time">2012年10月29日</span></div><div class="comment-bd" id="1519"><div class="cmt-txt">这段代码放在哪里啊？？？急求……</div></div></div><div class="cmt-item review_item_list"><a class="avatar" user_id="50434" href="http://www.thinkphp.cn/u/administrator.html" target="_blank"><img src="80_80_005.gif"></a> <div class="comment-hd cf"><span class="username">麦当苗儿<i class="icon-approve" title="认证用户"></i></span><span class="commment-time">2012年10月11日</span></div><div class="comment-bd" id="976"><div class="cmt-txt">重复啦 。。。  o(∩_∩)o 哈哈  前面发过了 </div></div></div><div style="display: none;" class="more-comment">
+            后面还有<span id="more_count"></span>条评论，<a>点击查看&gt;&gt;</a>
+        </div>
+        <form action="http://www.thinkphp.cn/review/update.html" method="post" class="cmt-item" id="reviewForm" style="display: none;" autocomplete="off">
+        	<input name="app_name" value="" type="hidden">
+        	<input name="author_id" value="3" type="hidden">
+        	<input name="title" value="在htaccess文件中隐藏index.php" type="hidden">
+        	<input value="41" name="model_id" type="hidden">
+    		<input value="25" name="record_id" type="hidden">
+        	<input value="0" name="review_id" type="hidden">
+        	<span class="avatar">
+                <img src=".dat" alt="" id="my_avatar">
+            </span>
+        	<div class="comment-bd" id="review">
+        		<div class="cmt-textarea">
+					<textarea name="content" placeholder="我也来说两句..."></textarea>
+				</div>
+			</div>
+            <div class="comment-ft">
+				<input class="cmt-btn" value="评论&nbsp;[&nbsp;Ctrl+Enter&nbsp;]" type="submit">
+				<span class="c-tips">评论支持使用[code][/code]标签添加代码</span>
+			</div>
+            <!-- <span class="syn">同步到：<a href="#">新浪微博</a><a href="#">腾讯微博</a></span> -->
+        </form>
+        <div class="login-tip" style="">
+        	您需要登录后才可以评论 <a href="http://www.thinkphp.cn/member/login.html">登录</a> | <a href="http://www.thinkphp.cn/member/register.html">立即注册</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+				
+				<!-- /评论 -->
+
+				<!-- 同类推荐 -->
+				<div style="display: none;" class="tab-similar item-content" id="similar">
+					<!-- <div class="tab-title">同类推荐</div> -->
+					<ul class="similar-list">
+						
+	<li>
+			<div class="info">
+				<span>快客</span>
+				<span class="time">09-01</span>
+			</div>
+			<a href="http://www.thinkphp.cn/code/2276.html">修改thinkphp每次跳转时都会显示一个笑脸logo</a>
+
+		</li><li>
+			<div class="info">
+				<span>ζั͡ޓއއއ๓</span>
+				<span class="time">08-08</span>
+			</div>
+			<a href="http://www.thinkphp.cn/code/2223.html">PHP四种基本排序算法精髓</a>
+
+		</li><li>
+			<div class="info">
+				<span>_syntax_error</span>
+				<span class="time">05-07</span>
+			</div>
+			<a href="http://www.thinkphp.cn/code/648.html">htaccess禁止指定后缀文件下载/扫描</a>
+
+		</li><li>
+			<div class="info">
+				<span>942292735@qq.com</span>
+				<span class="time">08-01</span>
+			</div>
+			<a href="http://www.thinkphp.cn/code/263.html">ThinPHP源码分析之C函数</a>
+
+		</li><li>
+			<div class="info">
+				<span>奇异番茄</span>
+				<span class="time">14:05</span>
+			</div>
+			<a href="http://www.thinkphp.cn/code/2771.html">thinkphp5的文件上传到服务器问题</a>
+
+		</li>
+					</ul>
+				</div>
+				<!-- /同类推荐 -->
+			</div>
+			<!-- /内容 -->
+			<script async="" src="about:blank"></script>
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 720px; height: 89px;" data-ad-client="ca-pub-2076739524120221" data-ad-slot="5295221043"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 89px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 720px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 89px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 720px; background-color: transparent;"><iframe src="index_14.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="89" width="720"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script>
+		</div>
+		<!--/选项卡显隐块-->
+	</div>
+	<!-- /左边 -->
+
+	<!-- 边栏 -->
+	<div class="sidebar">
+		<!-- 浏览，评论，赞，下载等 -->
+		
+			<div class="sn-wrap">
+				<div class="count-box count-3 cf">
+					<dl class="count-item c-view " id="collect">
+						<dt class="cit"><i></i>收藏</dt>
+						<dd class="cib" id="collect_count">7</dd>
+						<input id="collect_model_id" value="41" type="hidden">
+<input id="collect_record_id" value="25" type="hidden">
+<input id="collect_title" value="在htaccess文件中隐藏index.php" type="hidden">
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+					</dl>
+
+					<!--赞 -->
+					<dl class="count-item c-like support">
+						<dt class="cit" record_id="25">
+							<i></i>赞
+						</dt>
+						<dd class="cib support_num">0</dd>
+						<script type="text/javascript" src="about:blank"></script>
+						<input id="su_model_id" value="41" type="hidden">
+					</dl>
+					<!--赞 -->
+
+					<!-- 评论 -->
+					<a class="count-item c-cmt">
+						<span class="cit"><i></i>评论</span>
+						<span class="cib review-count">4</span>
+					</a>
+					<!-- /评论 -->
+				</div>
+			</div>
+		
+		<!-- /浏览，评论，赞，下载等 -->
+
+		<!-- 发布者信息 -->
+		
+			<div class="box promulgator">
+				<div class="avatar" user_id="3"><a href="http://www.thinkphp.cn/u/thinkphp.html" target="blank" title="进入Ta的主页"><img src="80_80_006.gif"></a></div>
+				<div class="name">
+					<span class="send"><i class="icon-send"></i></span>
+					thinkphp					<i class="icon-approve" title="认证用户"></i>				</div>
+				<span class="mr">积分：30848</span>
+				<span>等级：LV9</span>
+			</div>
+		
+		<!-- /发布者信息 -->
+
+        <div class="box da-link">
+            <think style="display: block; width: 250px; height: 120px; overflow: hidden;" parse="1" id="ad_371631b55214bd30"><div class="thinkad_default_images">
+        <a href="http://e.topthink.com/api/go/e9afece774028fe00" title="SUBMAIL 短信平台" target="_blank"><img src="584e53132364e.jpg" alt="SUBMAIL 短信平台" height="120" width="250"></a></div></think>
+        </div>
+
+		<!-- 分享到 -->
+		
+			<div class="box share">
+				<span>分享到：</span>
+				<a class="sina" title="新浪微博"></a>
+				<a class="tencent" title="腾讯微博"></a>
+			</div>
+		
+		<!-- /分享到 -->
+
+		<!-- a6广告 -->
+		<div class="a6">
+		<think style="display: block; width: 250px; height: 250px; overflow: hidden;" parse="1" id="ad_bcc8b2582eedc4f3"><div class="thinkad_default_images">
+        <a href="http://e.topthink.com/api/go/ef28f256a91aecfb9" title="TPShop" target="_blank"><img src="58611da6ad77c.jpg" alt="TPShop" height="250" width="250"></a></div></think>
+			<!-- <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+<!-- 正方形 -->
+<!-- <ins class="adsbygoogle"
+     style="display:inline-block;width:250px;height:250px"
+     data-ad-client="ca-pub-2076739524120221"
+     data-ad-slot="8248687447"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({ });
+</script> -->
+		</div>
+		<!-- /a6广告 -->
+
+		
+	<!-- 热点推荐 -->
+<div class="box ranking hot-rec">
+	<div class="index-hd">
+		<div class="title"> 
+			<i class="t-icon"></i><em>热点推荐</em>
+		</div>
+	</div>
+	<ul class="bd ellipsis">
+		<li class="top3"><i>1</i><a title="ThinkPHP实现支付宝接口功能" href="http://www.thinkphp.cn/code/240.html">ThinkPHP实现支付宝接口功能</a></li><li class="top3"><i>2</i><a title="ThinkPHP写的后台管理系统" href="http://www.thinkphp.cn/code/287.html">ThinkPHP写的后台管理系统</a></li><li class="top3"><i>3</i><a title="强大的flash头像编辑上传插件(已更新至2.3)" href="http://www.thinkphp.cn/code/354.html">强大的flash头像编辑上传插件(已更新至2.3)</a></li><li><i>4</i><a title="php混淆加密破解工具(找源码)" href="http://www.thinkphp.cn/code/785.html">php混淆加密破解工具(找源码)</a></li><li><i>5</i><a title="在线解密zend加密" href="http://www.thinkphp.cn/code/501.html">在线解密zend加密</a></li>	</ul>
+</div>
+<!-- /热点推荐 -->
+		<div class="a6">
+			<script async="" src="about:blank"></script>
+<!-- 正方形 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 250px; height: 250px;" data-ad-client="ca-pub-2076739524120221" data-ad-slot="8248687447"><ins id="aswift_1_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 250px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 250px; background-color: transparent;"><iframe src="index_15.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_1" name="aswift_1" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="250"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script>
+		</div>
+<!-- 最新更新 -->
+<div class="box ranking lupd">
+	<div class="index-hd">
+		<div class="title"> 
+			<i class="t-icon"></i><em>最新更新</em>
+		</div>
+	</div>
+	<ul class="bd ellipsis">
+		<li class="top3"><i>1</i><a title="thinkphp5的文件上传到服务器问题" href="http://www.thinkphp.cn/code/2771.html">thinkphp5的文件上传到服务器问题</a></li><li class="top3"><i>2</i><a title="手机号码月消费档次API" href="http://www.thinkphp.cn/code/2770.html">手机号码月消费档次API</a></li><li class="top3"><i>3</i><a title="ThinkPHP3.2 条形码处理" href="http://www.thinkphp.cn/code/2769.html">ThinkPHP3.2 条形码处理</a></li><li><i>4</i><a title="amr格式转mp3" href="http://www.thinkphp.cn/code/2768.html">amr格式转mp3</a></li><li><i>5</i><a title="一个类封装微信提现" href="http://www.thinkphp.cn/code/2767.html">一个类封装微信提现</a></li>	</ul>
+</div>
+<!-- /最新更新 -->
+
+
+		
+
+		
+
+	</div>
+	<!-- /边栏 -->
+</div>
+<!-- 主体 -->
+
+<!-- 分享脚本 -->
+
+	<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<!-- /分享脚本 -->
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<!-- 底部 -->
+<!-- 底部 -->
+<div class="footer">
+	<div class="ft-main cf">
+		<div class="ft-col">
+			<h3>我们</h3>
+			<ul>
+				<li><a href="http://www.thinkphp.cn/about/index.html">关于我们</a></li>
+				<li><a href="http://www.thinkphp.cn/7year.html">公司动态</a></li>
+				<li><a href="http://www.thinkphp.cn/about/contact.html">联系我们</a></li>
+				<li><a href="http://www.thinkphp.cn/about/disclaimer.html">免责声明</a></li>
+				<li><a href="http://www.thinkphp.cn/about/join_us.html">加入我们</a></li>
+				<li><a href="http://www.thinkphp.cn/about/donate.html">捐赠我们</a></li>
+			</ul>
+		</div>
+		<div class="ft-col">
+			<h3>合作</h3>
+			<ul>
+				<li><a href="http://www.thinkphp.cn/cooperation/training.html">技术培训</a></li>
+				<li><a href="http://www.thinkphp.cn/cooperation/adcoop.html">广告合作</a></li>
+				<li><a href="http://www.thinkphp.cn/cooperation/projectcoop.html">项目合作</a></li>
+				<li><a href="http://www.thinkphp.cn/cooperation/investcoop.html">投资合作</a></li>
+				<li><a href="http://www.thinkphp.cn/cooperation/partner.html">合作伙伴</a></li>
+				<li><a href="http://www.thinkphp.cn/cooperation/bussiness.html">商务合作</a></li>
+			</ul>
+		</div>
+		<div class="ft-col">
+			<h3>网站</h3>
+			<ul>
+				<li><a href="http://www.thinkphp.cn/rss.html">RSS订阅</a></li>
+				<li><a href="http://www.thinkphp.cn/help/contribute.html">投稿指南</a></li>
+				<li><a href="http://www.thinkphp.cn/help/sitehelp.html">网站帮助</a></li>
+				<li><a href="http://www.thinkphp.cn/link/index.html">友情链接</a></li>
+			</ul>
+		</div>
+		<div class="ft-col">
+			<h3>信息</h3>
+			<ul>
+				<li><a href="http://www.thinkphp.cn/update/index.html">更新列表</a></li>
+				<li><a href="http://www.thinkphp.cn/bug/index.html">BUG反馈</a></li>
+				<li><a href="http://www.thinkphp.cn/topic/index.html">技术讨论</a></li>
+				<li><a href="http://www.thinkphp.cn/info/index.html">教程资讯</a></li>
+			</ul>
+		</div>
+		<div class="ft-intro">
+			<div class="btm-logo">
+				<p>ThinkPHP 是一个免费开源的，快速、简单的面向对象的 轻量级PHP开发框架 ，创立于2006年初，遵循Apache2开源协议发布，是为了敏捷WEB应用开发和简化企业应用开发而诞生的。ThinkPHP从诞生以来一直秉承简洁实用的设计原则，在保持出色的性能和至简的代码的同时，也注重易用性。并且拥有众多的原创功能和特性，在社区团队的积极参与下，在易用性、扩展性和性能方面不断优化和改进，已经成长为国内最领先和最具影响力的WEB应用开发框架，众多的典型案例确保可以稳定用于商业以及门户级的开发。</p>
+				<div class="copyright">沪ICP备12007941号-2<a style="margin-left: 25px;" href="http://www.topthink.net/" target="_blank">本网站由顶想科技维护支持</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /底部 -->
+
+<div class="hidden">
+    <script charset="UTF-8" src="about:blank" type="text/javascript"></script>
+</div>
+
+
+<div id="gotoTop">返回顶部</div></body>
+</html>

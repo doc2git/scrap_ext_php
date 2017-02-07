@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="stormtrooper.css" rel="stylesheet" type="text/css"><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script>/* Code removed by ScrapBook */</script><style data-jwplayer-id="all-players" type="text/css">
+/* Code tidied up by ScrapBook */
+.jw-reset { color: inherit; background-color: transparent; padding: 0px; margin: 0px; float: none; font-family: Arial,Helvetica,sans-serif; font-size: 1em; line-height: 1em; list-style: outside none none; text-align: left; text-transform: none; vertical-align: baseline; border: 0px none; direction: ltr; font-variant: inherit; font-stretch: inherit; }
+@font-face {
+  font-family: "jw-icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url("jw-icons.woff") format("woff"), url("jw-icons.ttf") format("truetype");
+}
+.jw-controlbar .jw-menu .jw-option::before, .jw-icon-display, .jw-icon-inline, .jw-icon-tooltip { font-family: jw-icons; font-style: normal; font-weight: 400; text-transform: none; background-color: transparent; font-variant: normal; font-feature-settings: "liga"; }
+.jw-icon-audio-tracks::before { content: ""; }
+.jw-icon-cast::before { content: ""; }
+.jw-icon-cast.jw-off::before { content: ""; }
+.jw-icon-cc::before { content: ""; }
+.jw-icon-fullscreen::before { content: ""; }
+.jw-icon-hd::before { content: ""; }
+.jw-icon-next::before { content: ""; }
+.jw-icon-volume::before { content: ""; }
+.jw-icon-rewind::before { content: ""; }
+.jwplayer { width: 100%; font-size: 16px; position: relative; display: block; min-height: 0px; overflow: hidden; box-sizing: border-box; font-family: Arial,Helvetica,sans-serif; background-color: rgb(0, 0, 0); -moz-user-select: none; }
+.jwplayer * { box-sizing: inherit; }
+.jwplayer .jw-aspect { display: none; }
+.jwplayer.jw-no-focus:focus, .jwplayer .jw-swf { outline: medium none; }
+.jwplayer:hover .jw-display-icon-container { background-color: rgb(33, 33, 33); }
+.jw-controls, .jw-media, .jw-overlays, .jw-preview { position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; bottom: 0px; right: 0px; }
+.jw-media { overflow: hidden; cursor: pointer; }
+.jw-overlays { cursor: auto; }
+.jw-controls .jw-controls-right { position: absolute; top: 0px; right: 0px; left: 0px; bottom: 2.5em; }
+.jw-text { height: 1em; font-family: Arial,Helvetica,sans-serif; font-size: 0.75em; font-style: normal; font-weight: 400; color: rgb(255, 255, 255); text-align: center; font-variant: normal; font-stretch: normal; }
+.jw-plugin { position: absolute; bottom: 2.5em; }
+.jw-icon-playback::before { content: ""; }
+.jw-captions, .jw-controls, .jw-overlays, .jw-preview, .jw-title { pointer-events: none; }
+.jw-autostart-mute, .jw-controlbar, .jw-display-icon-container, .jw-display-icon-container .jw-icon, .jw-dock .jw-dock-button, .jw-logo, .jw-media, .jw-nextup-container, .jw-overlays .jw-plugin, .jw-skip { pointer-events: all; }
+.jw-click, .jw-preview { position: absolute; width: 100%; height: 100%; }
+.jw-preview { display: none; opacity: 1; visibility: visible; background: rgb(0, 0, 0) none no-repeat scroll 50% 50%; }
+.jw-error .jw-preview, .jw-stretch-uniform .jw-preview, .jwplayer .jw-preview { background-size: contain; }
+.jw-display-icon-container { position: relative; top: 50%; display: table; height: 3.75em; width: 3.75em; margin: -1.875em auto 0px; cursor: pointer; }
+.jw-display-icon-container .jw-icon-display { position: relative; display: table-cell; text-align: center; vertical-align: middle ! important; background-position: 50% 50%; background-repeat: no-repeat; font-size: 2.5em; }
+.jw-icon { font-family: jw-icons; font-style: normal; font-weight: 400; text-transform: none; background-color: transparent; font-variant: normal; font-feature-settings: "liga"; }
+.jw-controlbar { display: table; position: absolute; bottom: 0px; height: 2.5em; width: 100%; padding: 0px 0.5em; }
+.jw-controlbar .jw-hidden { display: none; }
+.jw-background-color { background-color: rgba(33, 33, 33, 0.8); }
+.jw-slider-horizontal { background-color: transparent; }
+.jw-group { display: table-cell; }
+.jw-controlbar-center-group { width: 100%; padding: 0px 0.5em; }
+.jw-controlbar-center-group .jw-slider-time, .jw-controlbar-center-group .jw-text-alt { padding: 0px; }
+.jw-controlbar-center-group .jw-text-alt { display: none; }
+.jw-controlbar-left-group, .jw-controlbar-right-group { white-space: nowrap; }
+.jw-icon-inline, .jw-icon-tooltip, .jw-slider-horizontal, .jw-text-duration, .jw-text-elapsed { display: inline-block; height: 2.5em; position: relative; line-height: 2.5em; vertical-align: middle; cursor: pointer; padding: 0px 0.5em; }
+.jw-icon-inline, .jw-icon-tooltip { min-width: 1.5625em; text-align: center; }
+.jw-icon-playback { min-width: 2.25em; }
+.jw-icon-volume { min-width: 1.75em; text-align: left; }
+.jw-time-tip { line-height: 1em; pointer-events: none; }
+.jw-icon-cast, .jw-icon-inline.jw-icon-volume, .jw-slider-volume.jw-slider-horizontal { display: none; }
+.jw-button-color { color: rgba(255, 255, 255, 0.6); }
+.jw-button-color:hover { color: rgb(255, 255, 255); }
+.jw-button-color:focus { outline: medium none; color: rgb(255, 255, 255); }
+.jw-toggle { color: rgb(255, 255, 255); }
+.jw-toggle.jw-off { color: rgba(255, 255, 255, 0.6); }
+.jw-toggle:focus { outline: medium none; color: rgb(255, 255, 255); }
+.jw-dock { clear: right; margin: 0.75em; display: block; opacity: 1; }
+.jw-dock::after { content: ""; clear: both; display: block; }
+.jw-title { display: none; position: absolute; top: 0px; width: 100%; font-size: 0.875em; height: 8em; background: transparent linear-gradient(180deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 18%, transparent) repeat scroll 0% 0%; }
+.jw-title-primary, .jw-title-secondary { padding: 0.75em 1.5em; min-height: 2.5em; width: 100%; color: rgb(255, 255, 255); white-space: nowrap; text-overflow: ellipsis; overflow-x: hidden; }
+.jw-title-primary { font-weight: 700; }
+.jw-title-secondary { margin-top: -0.5em; }
+.jw-slider-container { height: 1em; width: 100%; position: relative; }
+.jw-buffer, .jw-progress, .jw-rail { position: absolute; cursor: pointer; }
+.jw-progress { background-color: rgb(255, 255, 255); }
+.jw-rail { background-color: rgba(255, 255, 255, 0.2); }
+.jw-buffer { background-color: rgba(255, 255, 255, 0.3); }
+.jw-cue, .jw-knob { position: absolute; cursor: pointer; }
+.jw-knob { background-color: rgb(255, 255, 255); width: 0.5em; height: 0.5em; border-radius: 0.25em; }
+.jw-slider-horizontal { height: 0.25em; }
+.jw-slider-horizontal.jw-slider-volume { width: 4em; }
+.jw-slider-horizontal .jw-rail { width: 100%; }
+.jw-slider-horizontal .jw-knob { top: -0.125em; margin-left: -0.25em; }
+.jw-slider-horizontal .jw-buffer, .jw-slider-horizontal .jw-progress, .jw-slider-horizontal .jw-rail { height: 0.25em; }
+.jw-slider-vertical { padding: 1em 1em 0px; position: absolute; }
+.jw-slider-vertical .jw-buffer, .jw-slider-vertical .jw-progress, .jw-slider-vertical .jw-rail { bottom: 0px; height: 100%; left: 0px; right: 0px; margin: 0px auto; }
+.jw-slider-vertical .jw-progress, .jw-slider-vertical .jw-rail, .jw-slider-vertical .jw-slider-container { width: 0.25em; }
+.jw-slider-vertical .jw-slider-container { height: 4em; }
+.jw-slider-vertical .jw-knob { right: 0px; left: -0.125em; }
+.jw-slider-time { width: 100%; }
+.jw-tooltip-time { position: absolute; }
+.jw-slider-volume .jw-buffer { display: none; }
+.jw-captions { position: absolute; width: 100%; height: inherit; text-align: center; display: none; max-height: 81.375%; line-height: 1.3em; letter-spacing: normal; word-spacing: normal; text-transform: none; text-indent: 0px; text-decoration: none; pointer-events: none; overflow: hidden; top: 0px; }
+.jw-captions.jw-captions-enabled { display: block; }
+.jw-icon-tooltip.jw-hidden { display: none; }
+.jw-overlay::before { position: absolute; top: 0px; bottom: 0px; left: -50%; width: 100%; background-color: transparent; content: " "; }
+.jw-slider-time .jw-overlay::before { height: 1em; top: auto; }
+.jw-menu, .jw-time-tip, .jw-volume-tip { position: relative; left: -50%; margin: 0px; }
+.jw-volume-tip { width: 100%; height: 100%; display: block; }
+.jw-time-tip { text-align: center; font-family: inherit; bottom: 1.25em; padding: 0.5em; border-radius: 0.25em; }
+.jw-time-tip .jw-text { color: rgb(255, 255, 255); line-height: 1em; }
+.jw-controlbar .jw-overlay { margin: 0px; position: absolute; bottom: 2.5em; left: 50%; opacity: 0; visibility: hidden; }
+.jw-nextup-container { background-color: transparent; bottom: 3em; cursor: pointer; max-width: 300px; min-width: 200px; opacity: 0; position: absolute; right: 0.5em; transform: translateY(5px); transition: all 0.15s ease 0s; visibility: hidden; width: 40%; }
+.jw-nextup { border-radius: 0px; overflow: hidden; position: relative; }
+.jw-nextup-header { background: rgba(33, 33, 33, 0.8) none repeat scroll 0% 0%; box-sizing: border-box; color: rgb(255, 255, 255); font-size: 12px; font-weight: 700; line-height: normal; padding: 8px; }
+.jw-nextup-body { background: rgba(0, 0, 0, 0.8) none repeat scroll 0% 0%; color: rgb(255, 255, 255); overflow: hidden; }
+.jw-nextup-thumbnail { background-position: 50% center; background-size: cover; display: none; float: left; height: 60px; width: 45%; }
+.jw-nextup-title { box-sizing: border-box; float: left; font-size: 12px; font-weight: 700; line-height: 1.3; overflow: hidden; padding: 5px 6px; position: relative; text-overflow: ellipsis; white-space: nowrap; width: 100%; }
+.jw-nextup-close { font-family: jw-icons; font-style: normal; font-weight: 400; text-transform: none; background-color: transparent; font-variant: normal; font-feature-settings: "liga"; border: medium none; color: rgba(255, 255, 255, 0.6); font-size: 13px; opacity: 0; position: absolute; right: 5px; top: 6px; transition: color 0.15s ease 0s, opacity 0.15s ease 0s, visibility 0.15s ease 0s; visibility: hidden; }
+.jw-nextup-close::before { content: ""; }
+.jw-nextup-close:active, .jw-nextup-close:hover { color: rgb(255, 255, 255); }
+.jwplayer.jw-state-buffering .jw-display-icon-container .jw-icon-display { animation: 2s linear 0s normal none infinite running spin; }
+.jwplayer.jw-state-buffering .jw-display-icon-container .jw-icon-display::before { content: ""; }
+@keyframes spin {
+100% { transform: rotate(1turn); }
+}
+.jwplayer.jw-state-buffering .jw-icon-playback::before { content: ""; }
+.jwplayer.jw-flag-user-inactive.jw-state-buffering .jw-controlbar { display: none; }
+.jwplayer.jw-flag-user-inactive.jw-state-buffering .jw-nextup-container { bottom: 0.5em; }
+</style><script src="about:blank" async="" charset="utf-8" type="text/javascript"></script><style data-jwplayer-id="myElement" type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style data-jwplayer-id="all-players" type="text/css">
+/* Code tidied up by ScrapBook */
+.jw-plugin-related { background-color: rgba(34, 34, 34, 0.9); bottom: 0px; display: block; left: 0px; opacity: 0; right: 0px; top: 0px; visibility: hidden; }
+@media (orientation: portrait) {
+}
+@media (orientation: landscape) {
+}
+@keyframes relatedItem {
+0% { opacity: 0; transform: scale3d(0.9, 0.9, 0.9); visibility: hidden; }
+100% { opacity: 1; transform: scaleX(1); visibility: visible; }
+}
+@media (orientation: landscape) {
+}
+@keyframes jw-dash {
+100% { stroke-dashoffset: 0; }
+}
+</style><script src="about:blank" async="" charset="utf-8" type="text/javascript"></script></head><body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0"><div style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="gen_204.gif" alt="" style="display: none;" border="0" height="1" width="1"></div><div><div style="position: relative; display: inline-block;"><div class="GoogleActiveViewClass" id="DfaVisibilityIdentifier_658381720"><script language="javascript" src="about:blank"></script><div id="ad_unit"></div><iframe src="index_72.html" style="display: none;"></iframe><script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script>/* Code removed by ScrapBook */</script><script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script><div style="width: 480px; height: 320px;" id="myElement" class="jwplayer jw-reset jw-state-buffering jw-skin-stormtrooper jw-stretch-uniform jw-breakpoint-2 jw-flag-user-inactive" tabindex="0">
+    <div class="jw-aspect jw-reset"></div>
+    <div class="jw-media jw-reset"><object style="display: block; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" class="jw-swf jw-reset" name="myElement_swf_0" id="myElement_swf_0" bgcolor="#000000" data="jwplayer.flash.swf" type="application/x-shockwave-flash" height="100%" width="100%"><param value="true" name="allowfullscreen"><param value="always" name="allowscriptaccess"><param value="opaque" name="wmode"><param value="false" name="menu"></object></div>
+    
+    <div class="jw-preview jw-reset"></div><div class="jw-captions jw-captions-enabled jw-reset"></div><div style="display: none; padding-left: 0px; padding-right: 0px;" class="jw-title jw-reset">
+        <div class="jw-title-primary jw-reset"></div>
+        <div class="jw-title-secondary jw-reset"></div>
+    </div>
+    <div class="jw-overlays jw-reset"><div style="display: none;" class="jw-plugin jw-reset" id="myElement_ping"></div><div class="jw-plugin jw-reset" id="myElement_vast"></div><div class="jw-plugin jw-reset" id="myElement_jwpsrv"></div><div class="jw-plugin jw-reset jw-plugin-related" id="myElement_related"></div></div>
+    <div class="jw-controls jw-reset"><div class="jw-display-icon-container jw-background-color jw-reset">
+    <div class="jw-icon jw-icon-display jw-button-color jw-reset" role="button" tabindex="0" aria-label="Loading"></div>
+</div><div class="jw-controls-right jw-reset"><div class="jw-dock jw-reset">
+</div></div><div class="jw-nextup-container jw-reset"><div class="jw-nextup jw-reset">
+    <div class="jw-nextup-tooltip jw-reset">
+        <div class="jw-nextup-header jw-reset">
+            
+        </div>
+        <div class="jw-nextup-body jw-background-color jw-reset">
+            <div class="jw-nextup-thumbnail jw-reset"></div>
+            <div class="jw-nextup-title jw-reset"></div>
+        </div>
+    </div>
+    <button class="jw-nextup-close" aria-label="Next Up Close"></button>
+</div></div><div class="jw-controlbar jw-background-color jw-reset"><div class="jw-group jw-controlbar-left-group jw-reset"><div style="" aria-label="Play" tabindex="0" role="button" class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-playback"></div><div style="" aria-label="Rewind 10s" tabindex="0" role="button" class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-rewind"></div><span role="timer" class="jw-text jw-reset jw-text-elapsed">00:00</span></div><div class="jw-group jw-controlbar-center-group jw-reset"><div class="jw-slider-time jw-background-color jw-reset jw-slider-horizontal jw-reset" aria-hidden="true">
+    <div class="jw-slider-container jw-reset">
+        <div class="jw-rail jw-reset"></div>
+        <div style="width: 0%;" class="jw-buffer jw-reset"></div>
+        <div style="width: 0%;" class="jw-progress jw-reset"></div>
+        <div style="left: 0%;" class="jw-knob jw-reset"></div>
+    <div aria-hidden="true" class="jw-icon jw-icon-tooltip jw-tooltip-time jw-button-color jw-reset"><div class="jw-overlay jw-reset"><div class="jw-time-tip jw-background-color jw-reset"><div style="width: 0px; height: 0px;" class="jw-reset"></div><span class="jw-text jw-reset"></span></div></div></div></div>
+</div><span role="status" class="jw-text jw-reset jw-text-alt"></span></div><div class="jw-group jw-controlbar-right-group jw-reset"><span role="timer" class="jw-text jw-reset jw-text-duration">00:00</span><div style="display: none;" aria-label="Next" tabindex="0" role="button" class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-next"></div><div aria-hidden="true" aria-label="Quality" role="button" tabindex="0" class="jw-icon jw-icon-tooltip jw-icon-hd jw-button-color jw-reset jw-hidden"><div class="jw-overlay jw-reset"></div></div><div aria-hidden="true" aria-label="Closed captions" role="button" tabindex="0" class="jw-icon jw-icon-tooltip jw-icon-cc jw-button-color jw-reset jw-hidden jw-toggle jw-off"><div class="jw-overlay jw-reset"></div></div><div aria-hidden="true" aria-label="Audio tracks" role="button" tabindex="0" class="jw-icon jw-icon-tooltip jw-icon-audio-tracks jw-button-color jw-reset jw-hidden"><div class="jw-overlay jw-reset"></div></div><div style="" aria-label="Volume" tabindex="0" role="button" class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-volume"></div><div style="display: none;" aria-label="Chromecast" tabindex="0" role="button" class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-cast jw-off"></div><div class="jw-slider-volume jw-background-color jw-reset jw-slider-horizontal jw-reset" aria-hidden="true">
+    <div class="jw-slider-container jw-reset">
+        <div class="jw-rail jw-reset"></div>
+        <div class="jw-buffer jw-reset"></div>
+        <div style="width: 90%;" class="jw-progress jw-reset"></div>
+        <div style="left: 90%;" class="jw-knob jw-reset"></div>
+    </div>
+</div><div aria-hidden="false" aria-label="Volume" role="button" tabindex="0" class="jw-icon jw-icon-tooltip jw-icon-volume jw-button-color jw-reset"><div class="jw-overlay jw-reset"><div class="jw-slider-volume jw-volume-tip jw-background-color jw-reset jw-slider-vertical jw-reset" aria-hidden="true">
+    <div class="jw-slider-container jw-reset">
+        <div class="jw-rail jw-reset"></div>
+        <div class="jw-buffer jw-reset"></div>
+        <div style="height: 90%;" class="jw-progress jw-reset"></div>
+        <div style="bottom: 90%;" class="jw-knob jw-reset"></div>
+    </div>
+</div></div></div><div style="" aria-label="Fullscreen" tabindex="0" role="button" class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-fullscreen"></div></div></div></div>
+<div style="width: 1px; height: 1px; position: absolute; background: transparent none repeat scroll 0% 0%;" class="afs_ads">&nbsp;</div></div><script>/* Code removed by ScrapBook */</script><script src="about:blank"></script><iframe id="ba.html" style="display: none;" scrolling="no" src="index_73.html" frameborder="0" height="0" width="0"></iframe></div></div></div><iframe style="display: none;" src="index_74.html" height="0" width="0"></iframe><script>/* Code removed by ScrapBook */</script><iframe scrolling="no" src="index_75.html" style="position: absolute;" frameborder="0" height="0" width="0"></iframe><script type="text/javascript">/* Code removed by ScrapBook */</script><script type="text/javascript">/* Code removed by ScrapBook */</script><img src="l_003.dat" style="display: none;"><script>/* Code removed by ScrapBook */</script><div style="display: none;" data-google-query-id="CJ6G0r7njNECFdCMfgodb-UF5A"></div><script src="about:blank"></script><style type="text/css" id="bass-COMMON">
+/* Code tidied up by ScrapBook */
+.bap-blue, .bap-close, .bap-div, .bap-gradient, .bap-gray, .bap-img-container, .bap-notice, .bap-link-div { color: rgb(0, 0, 0); white-space: normal; word-wrap: normal; vertical-align: middle ! important; margin: 0px; padding: 0px; border: 0px none; outline: 0px none; font-family: Arial ! important; font-size: 100%; border-collapse: collapse; border-spacing: 0px; line-height: 13px; list-style: outside none none; letter-spacing: 0px ! important; text-align: left; overflow: visible ! important; }
+.bap-notice { background-color: rgb(255, 255, 255); padding: 2px; font-size: 16px; line-height: 13px; z-index: 9991; top: -100px; left: -100px; }
+.bap-blue, .bap-blue:link, .bap-blue:visited { color: rgb(43, 47, 152); }
+.bap-close { width: 20px; color: rgb(112, 112, 112); font-size: 10px; font-weight: bold; margin-left: -22px; position: relative; top: 1px; left: 100%; cursor: pointer; }
+.bap-div { border: 1px solid rgb(171, 171, 171); }
+.bap-div p { float: none; padding: 0px; }
+.bap-gray, .bap-gray:visited { color: rgb(68, 68, 68); }
+.bap-img-container a { vertical-align: middle; display: table-cell; height: 45px; }
+.bap-link-div { height: 14px; color: rgb(43, 47, 152); border-top: 1px solid rgb(171, 171, 171); padding: 3px 10px 4px; text-decoration: none; font-size: 0.67em ! important; font-weight: bold; }
+.bap-link-div a, .bap-link-div span { text-decoration: none; font-size: inherit; font-weight: bold; }
+#BAP-holder img { margin: 0px; padding: 0px; border: 0px none; font: inherit; vertical-align: baseline; max-width: 100%; box-shadow: 0px 0px ! important; background: transparent none repeat scroll 0% 0% ! important; }
+#BAP-holder { position: static ! important; }
+#BAP-holder .bap-trigger { z-index: 9990; }
+.bap-trigger { cursor: pointer; display: block; font-family: Arial; font-size: 8pt; white-space: nowrap; }
+.bap-trigger img { width: auto; height: auto; }
+</style><div id="BAP-holder"><div id="trigger-container-7531" style="position: static ! important; display: block;"><span id="trigger-box-7531" class="bap-trigger" style="z-index: 100000; position: absolute; opacity: 0.7; width: 19px; height: 15px; top: 0px; left: 281px;"><img id="trigger-box-image-7531" src="box_19_top-right.png"></span><span id="trigger-7531" style="z-index: 100000; position: absolute; top: 0px; left: 281px;" class="bap-trigger"><img src="ci.png"></span></div><div id="bap-notice-7531" class="bap1 bap-notice" style="width: auto ! important; max-width: 299px; min-width: 276px; display: none; z-index: 100001;"><div class="bap-div"><div class="bap-close">[ X ]</div><div class="bap-img-container"><a class="bap-blue" target="_blank" href="http://www.google.com/policies/privacy/"><img id="bap-logo-7531" border="0"></a></div><p>This Advertiser used Google's DoubleClick ad serving/targeting    platform to determine that you might be interested in this ad.
+
+Depending on your settings, this ad may have been matched to your interests or previous visits to websites, or it may have been selected based solely on the website you are visiting.</p><div class="bap-link-div"><a class="bap-blue" href="about:blank" id="bap-link-1-7531" target="_blank">More information &amp; opt-out options »</a></div><div class="bap-link-div"><a class="bap-blue" href="about:blank" id="bap-link-2-7531" target="_blank">What is interest based advertising »</a></div><div class="bap-link-div"><a class="bap-blue" target="_blank" href="http://www.google.com/policies/privacy/">Google Privacy Policy »</a></div><div class="bap-link-div"><span class="bap-gray">Privacy Controls by Ghostery, Inc.</span></div></div></div></div><img style="display: none;" src="pixel.gif" height="0" width="0"><style type="text/css" id="bass-1">
+/* Code tidied up by ScrapBook */
+.bap1 .bap-img-container { margin: -18px 0px 9px 10px; height: 45px; position: static; }
+.bap1 .bap-img-container img { margin-top: 6px ! important; }
+.bap1 p { font-size: 0.7em; margin: 4px 5px 0px 10px; padding-bottom: 6px; line-height: 13px; width: 259px; }
+.bap1 .bap-close { left: 273px ! important; }
+</style></body>
+</html>

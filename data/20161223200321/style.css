@@ -1,0 +1,67 @@
+/* Code tidied up by ScrapBook */
+body { color: rgb(45, 55, 75); font: 12px/1.5 Verdana,Geneva,sans-serif; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { padding: 0px; margin: 0px; }
+img { border: 0px none; }
+ul, ol { list-style: outside none none; }
+a { text-decoration: none; outline: medium none; }
+a:hover { color: rgb(0, 0, 0); text-decoration: underline; }
+pre { background: rgb(230, 233, 237) none repeat scroll 0% 0%; border-left: 4px solid rgb(122, 208, 58); color: rgb(34, 34, 34); font: 12px/20px Consolas,"Courier New",Courier,monospace; margin: 0px 0px 25px; padding: 10px 12px; white-space: pre-wrap; word-wrap: break-word; overflow: hidden; }
+code { border: 1px solid rgb(212, 215, 219); border-radius: 2px; color: rgb(102, 102, 102); font-family: "Courier New",Courier,monospace; margin: 0px 2px; padding: 2px 3px 1px; }
+.man_linuxde_net_page { background-color: rgb(255, 255, 255); width: 100%; }
+.layout { width: 1000px; margin: 0px auto; }
+.layout_hd { background: rgb(45, 45, 45) none repeat scroll 0% 0%; height: 42px; line-height: 42px; overflow: hidden; padding: 0px 20px; }
+.layout_bd {  }
+.layout_ft { overflow: hidden; border-top: 1px solid rgb(212, 215, 219); padding: 20px 0px 30px; }
+.layout::after, .wrapper_box::after { clear: both; content: " "; display: block; height: 0px; }
+.clearfix::after { clear: both; content: " "; display: block; font-size: 0px; height: 0px; visibility: hidden; }
+.l { float: left; }
+.r { float: right; }
+.c { clear: both; }
+.f_yh { font-family: "微软雅黑","Microsoft YaHei",Tahoma,Arial; }
+em.sx { background: rgb(153, 153, 153) none repeat scroll 0% 0%; display: inline-block; height: 12px; margin: 0px 10px; vertical-align: -2px; width: 1px; }
+.backToTop { background: rgb(153, 153, 153) url("backToTop.png") no-repeat scroll center center; display: none; width: 50px; height: 50px; position: fixed; bottom: 20px; right: 20px; cursor: pointer; }
+.backToTop:hover { background-color: rgb(51, 51, 51); display: block; }
+#fixedBox { position: relative; }
+.logo a { color: rgb(255, 255, 255); }
+.logo a:hover { text-decoration: none; }
+.nav { font-size: 14px; }
+.menu { overflow: hidden; }
+.menu a { color: rgb(153, 153, 153); display: inline-block; padding: 0px 15px; height: 40px; line-height: 40px; border-top: 2px solid rgb(45, 45, 45); }
+.menu li { float: left; }
+.menu li:hover a { color: rgb(255, 255, 255); text-decoration: none; }
+.menu li.current-menu-ancestor a, .menu li.current-menu-item a, .menu li.current-menu-parent a, .menu li.current-post-ancestor a { background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(0, 0, 0); border-top-color: rgb(122, 208, 58) ! important; }
+.main { width: 800px; float: right; margin-bottom: 25px; }
+.breadcrumb { overflow: hidden; height: 30px; line-height: 30px; color: rgb(153, 153, 153); }
+.breadcrumb a { color: rgb(153, 153, 153); }
+.single_default { overflow: hidden; margin-top: 50px; }
+.single_default .post_hd { border-top: 2px solid rgb(230, 233, 237); margin-bottom: 50px; padding-top: 20px; font-size: 28px; }
+.single_default .post_hd h1 { color: rgb(0, 0, 0); font-size: 28px; margin-right: 30px; }
+.single_default .tag a { color: rgb(218, 221, 225); text-decoration: none; }
+.single_default .post_bd { margin-bottom: 50px; }
+.single_default .post { font-size: 14px; }
+.single_default .post_ft { overflow: hidden; margin-bottom: 50px; }
+.single_default .post_ft .title { background: rgb(179, 182, 186) none repeat scroll 0% 0%; height: 40px; line-height: 40px; font-size: 14px; padding: 0px 15px; font-weight: bold; margin-bottom: 10px; }
+.single_default .post_ft li { float: left; margin: 0px 10px 10px 0px; }
+.single_default .post_ft a { background: rgb(230, 233, 237) none repeat scroll 0% 0%; border-radius: 5px; color: rgb(0, 0, 0); display: block; padding: 5px 8px; }
+.single_default .post_ft a:hover { background: rgb(0, 0, 0) none repeat scroll 0% 0%; color: rgb(255, 255, 255); text-decoration: none; }
+.post { overflow: hidden; }
+.post p { line-height: 28px; margin-bottom: 25px; }
+.post h2, .post h3, .post h4, .post h5, .post h6, .post table { margin-bottom: 25px; overflow: hidden; }
+.post h3, .post h4, .post h5, .post h6 { font-size: 16px; display: table; padding: 5px 8px; }
+.post h3 { background: rgb(45, 45, 45) none repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+.sidebar { width: 160px; float: left; margin-right: 30px; }
+.sidebar .widget { margin-bottom: 30px; }
+.sidebar .widget .hd { background: rgb(179, 182, 186) none repeat scroll 0% 0%; height: 40px; line-height: 40px; padding: 0px 15px; }
+.sidebar .widget h3 { font-size: 14px; }
+.sidebar .widget .bd { padding: 10px 20px; }
+.sidebar .widget li { padding-bottom: 10px; font-size: 14px; }
+.sidebar .widget a { color: rgb(0, 0, 0); }
+.sidebar_search_box { margin-bottom: 30px; overflow: hidden; }
+#sidebar_search { border: 1px solid rgb(204, 204, 204); padding: 10px; color: rgb(153, 153, 153); width: 138px; margin-bottom: 10px; }
+.sidebar .related { background-color: rgb(230, 233, 237); }
+.layout_ft .footer { background: transparent url("linux.png") no-repeat scroll right center; padding-right: 150px; }
+.layout_ft .footer .copyright { height: 50px; line-height: 50px; font-weight: 700; }
+.layout_ft .footer a { color: rgb(45, 55, 75); }
+.layout_ft .footer .des { margin-bottom: 10px; }
+.layout_ft .footer .info { color: rgb(153, 153, 153); }
+#comments { overflow: hidden; }

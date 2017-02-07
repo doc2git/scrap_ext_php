@@ -1,0 +1,788 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head id="Head"><title>
+	 CentOS 7 安裝 Nginx、PHP7、PHP-FPM - Alpha - BlogJava
+</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta id="metaKeywords" name="keywords" content=" CentOS 7 安裝 Nginx、PHP7、PHP-FPM"><meta name="google-site-verification" content="hKt1bEVNTOaEOkYyHHv6Cbms3U3NbbEq-9d1gefpKVM"><link type="text/css" rel="stylesheet" href="common.css"><link id="MainCss" type="text/css" rel="stylesheet" href="style.css"><link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://www.blogjava.net/Alpha/rss.aspx"><script src="about:blank"></script><script src="about:blank"></script><script async="" src="about:blank"></script><link href="http://tpc.googlesyndication.com/safeframe/1-0-5/html/container.html" rel="prefetch"></head>
+<body>
+    <form name="Form1" method="post" action="http://www.blogjava.net/Alpha/archive/2016/08/10/431515.html" id="Form1">
+<div>
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="
+__VIEWSTATE" value="" type="hidden">
+</div>
+
+<script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" type="text/javascript" async=""></script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+<script src="about:blank" type="text/javascript"></script>
+
+<script language="JavaScript">/* Code removed by ScrapBook */</script>
+												<script language="JavaScript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script>
+<script src="about:blank" type="text/javascript"></script>
+        
+<!--done-->
+<div id="header">
+	
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.blogjava.net/Alpha/">Alpha</a><br>
+		多少春秋风雨改 多少崎岖不变爱
+	</div>
+</div>
+
+</div>
+
+<div id="mytopmenu">
+	
+		<div id="mylinks">
+<!--done-->
+<a id="MyLinks1_HomeLink" class="menu" href="http://www.blogjava.net/">BlogJava</a>&nbsp;&nbsp;
+<a id="MyLinks1_MyHomeLink" class="menu" href="http://www.blogjava.net/Alpha/">首页</a>&nbsp;&nbsp;
+<a id="MyLinks1_NewPostLink" class="menu" href="http://www.blogjava.net/Alpha/admin/EditPosts.aspx?opt=1">新随笔</a>
+<a id="MyLinks1_ContactLink" class="menu" href="http://www.blogjava.net/Alpha/contact.aspx?id=1">联系</a>&nbsp;&nbsp;
+<a id="MyLinks1_Syndication" class="menu" href="http://www.blogjava.net/Alpha/rss">聚合</a><a id="MyLinks1_XMLLink" href="http://www.blogjava.net/Alpha/rss"><img src="xml_001.gif" style="border-width: 0px;"></a>&nbsp;&nbsp;
+<a id="MyLinks1_Admin" class="menu" href="http://www.blogjava.net/Alpha/admin/EditPosts.aspx">管理</a>
+</div>
+		<div id="mystats">
+<!--done-->
+随笔-174&nbsp;
+评论-666&nbsp;
+文章-29&nbsp;
+trackbacks-0
+</div>
+	
+</div>
+<div id="centercontent">
+	
+					
+<!--done-->
+<div class="post">
+	<div class="postTitle">
+		<a id="viewpost1_TitleUrl" class="postTitle2" href="#"> CentOS 7 安裝 Nginx、PHP7、PHP-FPM</a>
+	</div>
+	<br><ol style="padding: 0px; margin: 0px 0px 0.75em 25px; font-size: 16px; line-height: 27.2px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;,Helvetica,Tahoma,Arial,STXihei,&quot;Microsoft YaHei&quot;,微软雅黑,sans-serif; background-color: rgb(254, 254, 254);"><li style="line-height: 1.7em;">安裝 nginx&nbsp;<br>CentOS 7 沒有內建的 nginx，所以先到 nginx 官網&nbsp;&nbsp;<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="nofollow,noindex" style="color: rgb(148, 148, 148); text-decoration: none; transition: all 0.25s ease 0s; outline: 0px none; border-bottom: 1px dashed rgb(148, 148, 148); font-style: italic; font-weight: bold;">http://nginx.org/en/linux_packages.html#stable</a>&nbsp;，找到 CentOS 7 的 nginx-release package 檔案連結，然後如下安裝<pre ruby"="" style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 1.5em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">rpm -Uvh <span style="color: rgb(153, 0, 115);">http:</span>/<span style="color: rgb(0, 153, 38);">/nginx.org/packages</span><span style="color: rgb(0, 153, 38);">/centos/</span><span style="color: rgb(0, 153, 153);">7</span>/noarch/RPMS/nginx-release-centos-<span style="color: rgb(0, 153, 153);">7</span>-<span style="color: rgb(0, 153, 153);">0</span>.el7.ngx.noarch.rpm</pre>安裝後，會自動產生 yum 的 repository 設定(在 /etc/yum.repos.d/nginx.repo)，&nbsp;<br>接下來便可以使用 yum 指令安裝 nginx<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">yum install nginx</pre></li><li style="line-height: 1.7em;">啟動&nbsp;nginx&nbsp;<br>以前用 chkconfig 管理服務，CentOS 7 改用&nbsp;systemctl 管理系統服務&nbsp;<br>立即啟動<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">systemctl <span style="font-weight: bold;">start nginx</span></pre>查看目前運作狀態<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">systemctl status nginx</pre>查看 nginx 服務目前的啟動設定<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">systemctl <span style="font-weight: bold;">list</span>-unit-files | grep nginx</pre>若是 disabled，可以改成開機自動啟動<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">systemctl enable nginx</pre>若有設定防火牆，查看防火牆運行狀態，看是否有開啟 nginx 使用的 port<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">firewall-cmd <span style="color: rgb(153, 153, 136); font-style: italic;">--state</span></pre>永久開放開啟防火牆的 http 服務<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">firewall-cmd --permanent --zone=<span style="font-weight: bold;">public</span> --add-service=http</pre><pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">firewall-cmd <span style="color: rgb(153, 153, 136); font-style: italic;">--reload</span></pre>列出防火牆 public 的設定<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">firewall-cmd --<span style="font-weight: bold;">list</span>-all --zone=<span style="font-weight: bold;">public</span></pre>經過以上設定，應該就可以使用瀏覽器訪問 nginx 的預設頁面。</li><li style="line-height: 1.7em;">安裝 PHP-FPM&nbsp;<br>使用 yum 安裝 php、php-fpm、php-mysql<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">yum install php php-fpm php-mysql</pre>查看 php-fpm 服務目前的啟動設定&nbsp;<br><pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">systemctl <span style="font-weight: bold;">list</span>-unit-files | grep php-fpm</pre>改成開機自動啟動<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">systemctl enable php-fpm</pre>立即啟動<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">systemctl <span style="font-weight: bold;">start php-fpm</span></pre>查看目前運作狀態<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">systemctl status php-fpm</pre></li><li style="line-height: 1.7em;">修改&nbsp;PHP-FPM listen 的方式&nbsp;<br>若想將&nbsp;PHP-FPM listen 的方式，改成 unix socket，可以編輯 /etc/php-fpm.d/www.conf&nbsp;<br>將<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">listen = <span style="color: rgb(0, 153, 153);">127.0.0.1:9000</span></pre>改成<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">listen = <span style="color: rgb(0, 153, 38);">/var/run</span><span style="color: rgb(0, 153, 38);">/php-fpm/php</span>-fpm.sock</pre>然後重新啟動 php-fpm<pre style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">systemctl re<span style="font-weight: bold;">start php-fpm</span></pre>註：不要改成 listen = /tmp/php-fcgi.sock (將 php-fcgi.sock 設定在 /tmp 底下)， 因為系統產生 php-fcgi.sock 時，會放在 /tmp/systemd-private-*/tmp/php-fpm.sock 隨機私有目錄下， 除非把 /usr/lib/systemd/system/ 裡面的 PrivateTmp=true 設定改成 PrivateTmp=false， 但還是會產生其他問題，所以還是換個位置最方便&nbsp;<br><br><br><h2>删除之前的版本</h2><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);"><code style="margin: 1px 5px; height: 20px; line-height: 1.8; vertical-align: middle; display: inline-block; padding: 0px 5px ! important; font-family: &quot;Courier New&quot;,sans-serif ! important; border: 1px solid rgb(204, 204, 204) ! important; border-radius: 3px ! important; background-color: rgb(245, 245, 245) ! important;"># yum remove php*</code></p><h2>rpm 安装 Php7 相应的 yum源</h2><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);">CentOS/RHEL 7.x:</p><pre style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word; color: rgb(0, 0, 0); font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);"><code cpp"="" style="margin: auto; height: auto; vertical-align: middle; display: block; overflow-x: auto; padding: 5px ! important; line-height: 1.5 ! important; font-family: &quot;Courier New&quot;,sans-serif ! important; border: 1px solid rgb(204, 204, 204) ! important; border-radius: 3px ! important; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><span style="margin: 0px; padding: 0px; color: rgb(43, 145, 175);"># rpm -Uvh https:<span style="margin: 0px; padding: 0px; color: green;">//dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span></span> <span style="margin: 0px; padding: 0px; color: rgb(43, 145, 175);"># rpm -Uvh https:<span style="margin: 0px; padding: 0px; color: green;">//mirror.webtatic.com/yum/el7/webtatic-release.rpm</span></span></code></pre><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);">CentOS/RHEL 6.x:<br style="margin: 0px; padding: 0px;"><code style="margin: 1px 5px; height: 20px; line-height: 1.8; vertical-align: middle; display: inline-block; padding: 0px 5px ! important; font-family: &quot;Courier New&quot;,sans-serif ! important; border: 1px solid rgb(204, 204, 204) ! important; border-radius: 3px ! important; background-color: rgb(245, 245, 245) ! important;"># rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm</code></p><h2>yum安装php7</h2><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);"><code style="margin: 1px 5px; height: 20px; line-height: 1.8; vertical-align: middle; display: inline-block; padding: 0px 5px ! important; font-family: &quot;Courier New&quot;,sans-serif ! important; border: 1px solid rgb(204, 204, 204) ! important; border-radius: 3px ! important; background-color: rgb(245, 245, 245) ! important;">yum install php70w php70w-opcache</code><br style="margin: 0px; padding: 0px;">安装其他插件（选装）<br style="margin: 0px; padding: 0px;">注：如果安装pear，需要安装php70w-devel<br style="margin: 0px; padding: 0px;">php70w<br style="margin: 0px; padding: 0px;">php70w-bcmath<br style="margin: 0px; padding: 0px;">php70w-cli<br style="margin: 0px; padding: 0px;">php70w-common<br style="margin: 0px; padding: 0px;">php70w-dba<br style="margin: 0px; padding: 0px;">php70w-devel<br style="margin: 0px; padding: 0px;">php70w-embedded<br style="margin: 0px; padding: 0px;">php70w-enchant<br style="margin: 0px; padding: 0px;">php70w-fpm<br style="margin: 0px; padding: 0px;">php70w-gd<br style="margin: 0px; padding: 0px;">php70w-imap<br style="margin: 0px; padding: 0px;">php70w-interbase<br style="margin: 0px; padding: 0px;">php70w-intl<br style="margin: 0px; padding: 0px;">php70w-ldap<br style="margin: 0px; padding: 0px;">php70w-mbstring<br style="margin: 0px; padding: 0px;">php70w-mcrypt<br style="margin: 0px; padding: 0px;">php70w-mysql<br style="margin: 0px; padding: 0px;">php70w-mysqlnd<br style="margin: 0px; padding: 0px;">php70w-odbc<br style="margin: 0px; padding: 0px;">php70w-opcache<br style="margin: 0px; padding: 0px;">php70w-pdo<br style="margin: 0px; padding: 0px;">php70w-pdo_dblib<br style="margin: 0px; padding: 0px;">php70w-pear<br style="margin: 0px; padding: 0px;">php70w-pecl-apcu<br style="margin: 0px; padding: 0px;">php70w-pecl-imagick<br style="margin: 0px; padding: 0px;">php70w-pecl-xdebug<br style="margin: 0px; padding: 0px;">php70w-pgsql<br style="margin: 0px; padding: 0px;">php70w-phpdbg<br style="margin: 0px; padding: 0px;">php70w-process<br style="margin: 0px; padding: 0px;">php70w-pspell<br style="margin: 0px; padding: 0px;">php70w-recode<br style="margin: 0px; padding: 0px;">php70w-snmp<br style="margin: 0px; padding: 0px;">php70w-soap<br style="margin: 0px; padding: 0px;">php70w-tidy<br style="margin: 0px; padding: 0px;">php70w-xml<br style="margin: 0px; padding: 0px;">php70w-xmlrp</p><h1>编译安装php7</h1><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);">配置（configure）、编译（make）、安装（make install）</p><h2>使用configure --help</h2><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);">编译安装一定要指定定prefix，这是安装目录，会把所有文件限制在这个目录，卸载时只需要删除那个目录就可以，如果不指定会安装到很多地方，后边删除不方便。</p><pre style="margin-top: 10px; margin-bottom: 10px; padding: 0px; white-space: pre-wrap; word-wrap: break-word; color: rgb(0, 0, 0); font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);"><code swift"="" style="margin: auto; height: auto; vertical-align: middle; display: block; overflow-x: auto; padding: 5px ! important; line-height: 1.5 ! important; font-family: &quot;Courier New&quot;,sans-serif ! important; border: 1px solid rgb(204, 204, 204) ! important; border-radius: 3px ! important; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><span style="margin: 0px; padding: 0px; color: rgb(163, 21, 21);">Configuration</span>: --cache-file=<span style="margin: 0px; padding: 0px; color: rgb(163, 21, 21);">FILE</span>       cache test results <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">in</span> <span style="margin: 0px; padding: 0px; color: rgb(163, 21, 21);">FILE</span> --help                  <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">print</span> this message --no-create             <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">do</span> not create output files --quiet, --silent       <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">do</span> not <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">print</span> `checking...' messages --version               <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">print</span> the version of autoconf that created configure <span style="margin: 0px; padding: 0px; color: rgb(163, 21, 21);">Directory</span> and file names: --<span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">prefix</span>=<span style="margin: 0px; padding: 0px; color: rgb(163, 21, 21);">PREFIX</span>         install architecture-independent files <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">in</span> <span style="margin: 0px; padding: 0px; color: rgb(163, 21, 21);">PREFIX</span> [/usr/local] --exec-<span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">prefix</span>=<span style="margin: 0px; padding: 0px; color: rgb(163, 21, 21);">EPREFIX</span>   install architecture-dependent files <span style="margin: 0px; padding: 0px; color: rgb(0, 0, 255);">in</span> <span style="margin: 0px; padding: 0px; color: rgb(163, 21, 21);">EPREFIX</span></code></pre><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);"><strong style="margin: 0px; padding: 0px;">注意</strong><br style="margin: 0px; padding: 0px;">内存小于1G安装往往会出错，在编译参数后面加上一行内容<code style="margin: 1px 5px; height: 20px; line-height: 1.8; vertical-align: middle; display: inline-block; padding: 0px 5px ! important; font-family: &quot;Courier New&quot;,sans-serif ! important; border: 1px solid rgb(204, 204, 204) ! important; border-radius: 3px ! important; background-color: rgb(245, 245, 245) ! important;">--disable-fileinfo</code></p><h2>其他配置参数</h2><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);">--exec-prefix=EXEC-PREFIX<br style="margin: 0px; padding: 0px;">可以把体系相关的文件安装到一个不同的位置，而不是PREFIX设置的地方．这样做可以比较方便地在不同主机之间共享体系相关的文件<br style="margin: 0px; padding: 0px;">--bindir=DIRECTORY<br style="margin: 0px; padding: 0px;">为可执行程序声明目录，缺省是 EXEC-PREFIX/bin<br style="margin: 0px; padding: 0px;">--datadir=DIRECTORY<br style="margin: 0px; padding: 0px;">设置所安装的程序需要的只读文件的目录．缺省是 PREFIX/share<br style="margin: 0px; padding: 0px;">--sysconfdir=DIRECTORY<br style="margin: 0px; padding: 0px;">用于各种各样配置文件的目录，缺省为 PREFIX/etc<br style="margin: 0px; padding: 0px;">--libdir=DIRECTORY<br style="margin: 0px; padding: 0px;">库文件和动态装载模块的目录．缺省是 EXEC-PREFIX/lib<br style="margin: 0px; padding: 0px;">--includedir=DIRECTORY<br style="margin: 0px; padding: 0px;">C 和 C++ 头文件的目录．缺省是 PREFIX/include<br style="margin: 0px; padding: 0px;">--docdir=DIRECTORY<br style="margin: 0px; padding: 0px;">文档文件，（除 “man（手册页）”以外， 将被安装到这个目录．缺省是 PREFIX/doc<br style="margin: 0px; padding: 0px;">--mandir=DIRECTORY<br style="margin: 0px; padding: 0px;">随着程序一起带的手册页 将安装到这个目录．在它们相应的manx子目录里． 缺省是PREFIX/man<br style="margin: 0px; padding: 0px;"><strong style="margin: 0px; padding: 0px;">注意</strong>: 为了减少对共享安装位置（比如 /usr/local/include） 的污染，configure 自动在 datadir， sysconfdir，includedir， 和 docdir 上附加一个 “/postgresql” 字串， 除非完全展开以后的目录名字已经包含字串 “postgres” 或者 “pgsql”．比如，如果你选择 /usr/local 做前缀，那么 C 的头文件将安装到 /usr/local/include/postgresql， 但是如果前缀是 /opt/postgres，那么它们将 被放进 /opt/postgres/include<br style="margin: 0px; padding: 0px;">--with-includes=DIRECTORIES<br style="margin: 0px; padding: 0px;">DIRECTORIES 是一系列冒号分隔的目录，这些目录将被加入编译器的头文件 搜索列表中．如果你有一些可选的包（比如 GNU Readline）安装在 非标准位置，你就必须使用这个选项，以及可能还有相应的 --with-libraries 选项．<br style="margin: 0px; padding: 0px;">--with-libraries=DIRECTORIES<br style="margin: 0px; padding: 0px;">DIRECTORIES 是一系列冒号分隔的目录，这些目录是用于查找库文件的． 如果你有一些包安装在非标准位置，你可能就需要使用这个选项 （以及对应的--with-includes选项）<br style="margin: 0px; padding: 0px;">--enable-XXX<br style="margin: 0px; padding: 0px;">打开XXX支持<br style="margin: 0px; padding: 0px;">--with-XXX<br style="margin: 0px; padding: 0px;">制作XXX模块<br><br></p><ul style="padding: 0px; margin: 0px 0px 0.75em 25px; list-style-type: none; line-height: 27.2px;"><li style="line-height: 1.7em; list-style-type: disc;">PHP FPM設定參考<pre class="prettyprint ruby" style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 1.5em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">[global]
+pid = <span class="regexp" style="color: rgb(0, 153, 38);">/usr/local</span><span class="regexp" style="color: rgb(0, 153, 38);">/php/var</span><span class="regexp" style="color: rgb(0, 153, 38);">/run/php</span>-fpm.pid
+error_log = <span class="regexp" style="color: rgb(0, 153, 38);">/usr/local</span><span class="regexp" style="color: rgb(0, 153, 38);">/php/var</span><span class="regexp" style="color: rgb(0, 153, 38);">/log/php</span>-fpm.log
+[www]
+listen = <span class="regexp" style="color: rgb(0, 153, 38);">/var/run</span><span class="regexp" style="color: rgb(0, 153, 38);">/php-fpm/php</span>-fpm.sock
+user = www
+group = www
+pm = dynamic
+pm.max_children = <span class="number" style="color: rgb(0, 153, 153);">800</span>
+pm.start_servers = <span class="number" style="color: rgb(0, 153, 153);">200</span>
+pm.min_spare_servers = <span class="number" style="color: rgb(0, 153, 153);">100</span>
+pm.max_spare_servers = <span class="number" style="color: rgb(0, 153, 153);">800</span>
+pm.max_requests = <span class="number" style="color: rgb(0, 153, 153);">4000</span>
+rlimit_files = <span class="number" style="color: rgb(0, 153, 153);">51200</span>
+
+listen.backlog = <span class="number" style="color: rgb(0, 153, 153);">65536</span>
+;設 <span class="number" style="color: rgb(0, 153, 153);">65536</span> 的原因是-<span class="number" style="color: rgb(0, 153, 153);">1</span> 可能不是unlimited
+;說明 <span class="symbol" style="color: rgb(153, 0, 115);">http:</span>/<span class="regexp" style="color: rgb(0, 153, 38);">/php.net/manual</span><span class="regexp" style="color: rgb(0, 153, 38);">/en/install</span>.fpm.configuration.php<span class="comment" style="color: rgb(153, 153, 136); font-style: italic;">#104172</span>
+
+slowlog = <span class="regexp" style="color: rgb(0, 153, 38);">/usr/local</span><span class="regexp" style="color: rgb(0, 153, 38);">/php/var</span><span class="regexp" style="color: rgb(0, 153, 38);">/log/slow</span>.log
+request_slowlog_timeout = <span class="number" style="color: rgb(0, 153, 153);">10</span></pre></li><li style="line-height: 1.7em; list-style-type: disc;">nginx.conf 設定參考&nbsp;<br><pre class="prettyprint php" style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 1.5em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">user  nginx;
+worker_processes  <span class="number" style="color: rgb(0, 153, 153);">8</span>;
+error_log  /<span class="keyword" style="font-weight: bold;">var</span>/log/nginx/error.log warn;
+pid		/<span class="keyword" style="font-weight: bold;">var</span>/run/nginx.pid;
+events {
+<span class="indent">  </span><span class="keyword" style="font-weight: bold;">use</span> epoll;
+<span class="indent">  </span>worker_connections  <span class="number" style="color: rgb(0, 153, 153);">65535</span>;
+}
+worker_rlimit_nofile <span class="number" style="color: rgb(0, 153, 153);">65535</span>;
+<span class="comment" style="color: rgb(153, 153, 136); font-style: italic;">#若沒設定，可能出現錯誤:65535 worker_connections exceed open file resource limit: 1024</span>
+http {
+<span class="indent">  </span><span class="keyword" style="font-weight: bold;">include</span>	   /etc/nginx/mime.types;
+<span class="indent">  </span>default_type  application/octet-stream;
+<span class="indent">  </span>log_format  main  <span class="string" style="color: rgb(221, 17, 68);">'$remote_addr - $remote_user [$time_local] "$request" '</span>
+<span class="indent">  </span><span class="indent">  </span><span class="indent">  </span><span class="indent">  </span><span class="indent">  </span>  <span class="string" style="color: rgb(221, 17, 68);">'$status $body_bytes_sent "$http_referer" '</span>
+<span class="indent">  </span><span class="indent">  </span><span class="indent">  </span><span class="indent">  </span><span class="indent">  </span>  <span class="string" style="color: rgb(221, 17, 68);">'"$http_user_agent" "$http_x_forwarded_for"'</span>;
+<span class="indent">  </span>access_log  /<span class="keyword" style="font-weight: bold;">var</span>/log/nginx/access.log  main;
+<span class="indent">  </span>sendfile		on;
+<span class="indent">  </span>tcp_nopush	 on;
+<span class="indent">  </span>keepalive_timeout  <span class="number" style="color: rgb(0, 153, 153);">65</span>;
+<span class="indent">  </span>server_names_hash_bucket_size <span class="number" style="color: rgb(0, 153, 153);">128</span>;
+<span class="indent">  </span>client_header_buffer_size <span class="number" style="color: rgb(0, 153, 153);">32</span>k;
+<span class="indent">  </span>large_client_header_buffers <span class="number" style="color: rgb(0, 153, 153);">4</span> <span class="number" style="color: rgb(0, 153, 153);">32</span>k;
+<span class="indent">  </span>client_max_body_size <span class="number" style="color: rgb(0, 153, 153);">8</span>m;
+<span class="indent">  </span>server_tokens  off;
+<span class="indent">  </span>client_body_buffer_size  <span class="number" style="color: rgb(0, 153, 153);">512</span>k;
+<span class="indent">  </span><span class="comment" style="color: rgb(153, 153, 136); font-style: italic;"># fastcgi</span>
+<span class="indent">  </span>fastcgi_connect_timeout <span class="number" style="color: rgb(0, 153, 153);">300</span>;
+<span class="indent">  </span>fastcgi_send_timeout <span class="number" style="color: rgb(0, 153, 153);">300</span>;
+<span class="indent">  </span>fastcgi_read_timeout <span class="number" style="color: rgb(0, 153, 153);">300</span>;
+<span class="indent">  </span>fastcgi_buffer_size <span class="number" style="color: rgb(0, 153, 153);">64</span>k;
+<span class="indent">  </span>fastcgi_buffers <span class="number" style="color: rgb(0, 153, 153);">4</span> <span class="number" style="color: rgb(0, 153, 153);">64</span>k;
+<span class="indent">  </span>fastcgi_busy_buffers_size <span class="number" style="color: rgb(0, 153, 153);">128</span>k;
+<span class="indent">  </span>fastcgi_temp_file_write_size <span class="number" style="color: rgb(0, 153, 153);">128</span>k;
+<span class="indent">  </span>fastcgi_intercept_errors on;
+<span class="indent">  </span><span class="comment" style="color: rgb(153, 153, 136); font-style: italic;">#gzip (說明 http://nginx.org/en/docs/http/ngx_http_gzip_module.html)</span>
+<span class="indent">  </span>gzip  off;
+<span class="indent">  </span>gzip_min_length  <span class="number" style="color: rgb(0, 153, 153);">1</span>k;<span class="comment" style="color: rgb(153, 153, 136); font-style: italic;">#1k以上才壓縮</span>
+<span class="indent">  </span>gzip_buffers <span class="number" style="color: rgb(0, 153, 153);">32</span>  <span class="number" style="color: rgb(0, 153, 153);">4</span>k;
+<span class="indent">  </span>  <span class="comment" style="color: rgb(153, 153, 136); font-style: italic;">#http://stackoverflow.com/questions/4888067/how-to-get-linux-kernel-page-size-programatically</span>
+<span class="indent">  </span>  <span class="comment" style="color: rgb(153, 153, 136); font-style: italic;">#使用 getconf PAGESIZE 取得系統 one memory page size，</span>
+<span class="indent">  </span>gzip_http_version  <span class="number" style="color: rgb(0, 153, 153);">1.0</span>;
+<span class="indent">  </span>gzip_comp_level  <span class="number" style="color: rgb(0, 153, 153);">2</span>;
+<span class="indent">  </span>gzip_types  text/css text/xml application/javascript application/atom+xml application/rss+xml text/plain application/json;
+<span class="indent">  </span>  <span class="comment" style="color: rgb(153, 153, 136); font-style: italic;">#查看 nginx 的 mime.types 檔案(/etc/nginx/mime.types),裡面有各種類型的定義</span>
+<span class="indent">  </span>gzip_vary  on;
+<span class="indent">  </span><span class="keyword" style="font-weight: bold;">include</span> /etc/nginx/conf.d<span class="comment" style="color: rgb(153, 153, 136); font-style: italic;">/*.conf;
+}
+</span></pre>若出現出現錯誤:setrlimit(RLIMIT_NOFILE, 65535) failed (1: Operation not permitted)&nbsp;<br>先查看目前系統的設定值<pre class="undefined" style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">ulimit -n</pre>若設定值太小，修改 /etc/security/limits.conf<pre class="undefined" style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">vi /etc/security/limits.conf</pre>加上或修改以下兩行設定<pre class="undefined" style="padding: 0.3em; font-family: Monaco,Menlo,Consolas,&quot;Courier New&quot;,monospace; border-radius: 4px; margin-top: 0px; margin-bottom: 0.75em; font-size: 12px; line-height: 1.5em; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.15); overflow-y: auto; background-color: rgb(246, 246, 246);">* soft nofile 65535
+* hard nofile 65535</pre></li></ul><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 12px; line-height: 21.6px; background-color: rgb(255, 255, 255);"><br><br></p></li></ol>
+	<div class="postDesc">posted on 2016-08-10 13:44 <a href="http://www.blogjava.net/Alpha/">Alpha</a> 阅读(470) <a href="#Post">评论(0)</a> &nbsp;<a href="http://www.blogjava.net/Alpha/admin/EditPosts.aspx?postid=431515">编辑</a> &nbsp;<a href="http://www.blogjava.net/Alpha/AddToFavorite.aspx?id=431515">收藏</a>  所属分类: <a href="http://www.blogjava.net/Alpha/category/10062.html">Linux Nginx</a> </div>
+</div>
+<img src="431515.html" height="1" width="1">
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://www.blogjava.net/Alpha/archive/2016/08/10/431515.html"
+dc:identifier="http://www.blogjava.net/Alpha/archive/2016/08/10/431515.html"
+dc:title=" CentOS 7 安裝 Nginx、PHP7、PHP-FPM"
+trackback:ping="http://www.blogjava.net/Alpha/services/trackbacks/431515.aspx" />
+</rdf:RDF>
+-->
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<div id="AjaxHolder_UpdatePanel1">
+	    
+    
+<style>
+/* Code tidied up by ScrapBook */
+td { font-size: 12px; }
+</style>
+<!--Beging Temp Save-->
+<style>
+/* Code tidied up by ScrapBook */
+.userData {  }
+</style>
+<div class="userData" id="CommentsPersistDiv"></div>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!--Ene TempSave-->
+<div id="divRefreshComments" style="text-align: right; margin-right: 10px; margin-bottom: 5px; font-size: 12px;"><a href="http://www.blogjava.net/RequireRegister.aspx">新用户注册</a>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_refreshList">刷新评论列表</a>&nbsp;&nbsp;</div>
+<div class="commentform">
+<span id="AjaxHolder_PostComment_ltSubmitMsg" style="color: Red;"></span>
+<br>
+<a name="Feedback"></a>
+	<table border="0" cellpadding="1" cellspacing="1">
+		<tbody><tr>
+		<td id="AjaxHolder_PostComment_tdOnCommentForm" colspan="3" style="line-height: 1.5;">		
+		</td>
+	
+		</tr>
+		
+		<tr><td colspan="3">只有注册用户<a href="http://www.blogjava.net/login.aspx?ReturnUrl=/Alpha/archive/2016/08/10/431515.html">登录</a>后才能发表评论。</td></tr>
+		<tr>
+			<td colspan="3"><!----></td>
+		</tr>
+		<!--
+		<TR>
+			<TD colSpan="3" height="5"></TD>
+		</TR>	
+		-->	
+		<tr>
+		<td colspan="3">
+		<br>
+		
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!-- blogjava_blogpost_bottom -->
+<div data-google-query-id="COag9oHnotECFYQUPwod3uYAKg" id="div-gpt-ad-1364133350381-0" style="width: 300px; height: 250px;">
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div style="border: 0pt none; display: inline-block; width: 300px; height: 250px;" id="google_ads_iframe_/1090369/blogjava_blogpost_bottom_0__container__"><iframe data-is-safeframe="true" marginheight="0" marginwidth="0" scrolling="no" name="" title="3rd party ad content" id="google_ads_iframe_/1090369/blogjava_blogpost_bottom_0" src="index_7.html" style="border: 0px none; vertical-align: bottom;" frameborder="0" height="250" width="300"></iframe></div><iframe src="index_8.html" srcdoc="" style="border: 0px none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" scrolling="no" name="google_ads_iframe_/1090369/blogjava_blogpost_bottom_0__hidden__" title="" id="google_ads_iframe_/1090369/blogjava_blogpost_bottom_0__hidden__" frameborder="0" height="0" width="0"></iframe></div>
+<br>
+
+		</td>
+		</tr>
+		<tr>			
+		<td colspan="3">
+		
+		</td>
+		</tr>
+		<tr>
+		<td colspan="3"></td>
+		</tr>
+		<tr>
+			<td colspan="3" height="1">网站导航:<div id="blogsite">
+			<a href="http://www.cnblogs.com/" title="开发者的网上家园">博客园</a>&nbsp;&nbsp;
+			<a href="https://news.cnblogs.com/">IT新闻</a>&nbsp;&nbsp;
+			<a href="http://kb.cnblogs.com/">知识库</a>&nbsp;&nbsp;
+			<a href="http://www.cppblog.com/">C++博客</a>&nbsp;&nbsp;
+			<a href="https://q.cnblogs.com/">博问</a>&nbsp;&nbsp;
+			<a href="http://www.blogjava.net/Alpha/archive/2016/08/10/431515.html?opt=admin">管理</a>
+			</div>
+		</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="5">
+<div id="divRelativePosts">
+相关文章:
+	
+			<ul style="margin-top: 0px; padding-left: 0px;">
+		
+			<li style="list-style: outside none none; display: none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl01_Hyperlink1" href="#"> CentOS 7 安裝 Nginx、PHP7、PHP-FPM</a>
+			</li>
+		
+			<li style="list-style: outside none none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl02_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/02/25/429437.html">CentOS 6.4 配置VPN服务教程</a>
+			</li>
+		
+			<li style="list-style: outside none none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl03_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2015/10/31/428001.html">在Ubuntu 12.04上利用IP Tables来设置防火墙</a>
+			</li>
+		
+			<li style="list-style: outside none none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl04_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2015/10/07/427653.html">Ubuntu 14.04 安装 php nginx mysql JDK 8 svn</a>
+			</li>
+		
+			<li style="list-style: outside none none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl05_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2012/09/17/387950.html">iptables 开启80端口  </a>
+			</li>
+		
+			<li style="list-style: outside none none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl06_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2012/09/13/387663.html">Linux Web服务器网站故障分析常用的命令</a>
+			</li>
+		
+			<li style="list-style: outside none none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl07_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2012/09/13/387640.html">iptables 开启80端口 </a>
+			</li>
+		
+			<li style="list-style: outside none none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl08_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2012/09/12/387583.html">yum搭建lnmp环境（CentOS6)</a>
+			</li>
+		
+			<li style="list-style: outside none none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl09_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2012/03/22/372455.html">使用日志系统保护Linux安全</a>
+			</li>
+		
+			<li style="list-style: outside none none;">
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl10_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2012/02/02/369246.html">CentOS 5.5下FTP安装及配置</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</td>
+		</tr>	
+		<tr>
+			<td colspan="3">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="5"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				</td>
+		</tr>		
+	</tbody></table>	
+</div>
+<div id="AjaxHolder_PostComment_ValidationSummary1" style="color: Red; display: none;">
+
+	</div>
+
+</div>
+
+				
+</div>
+<div id="leftcontent" style="display: inline;">
+	
+		<div id="leftcontentcontainer">
+			
+<!--done-->
+<div class="newsItem">
+	<a href="http://www.blogjava.net/Alpha/"><img src="o_alphalogo04.gif" alt="" border="0"></a>
+<center>今日记一事，明日悟一理，积久而成学。<br>
+<!--font color="#aaaaaa">
+<strong>&nbsp;>>&nbsp;共有<script src='http://fastonlineusers.com/online.php?d=http://www.blogjava.net/Alpha/'></script>人正在访问Alpha's Blog</strong></font--></center>
+  
+</div>
+
+			<table id="Calendar1_entryCal" class="Cal" title="日历" style="border-width: 1px; border-style: solid; border-collapse: collapse;" border="0" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7" style="background-color: Silver;"><table class="CalTitle" style="width: 100%; border-collapse: collapse;" border="0" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev" style="width: 15%;"><a style="color: Black;" title="转到上一个月">&lt;</a></td><td style="width: 70%;" align="center">2016年8月</td><td class="CalNextPrev" style="width: 15%;" align="right"><a style="color: Black;" title="转到下一个月">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" style="width: 14%;" align="center">31</td><td style="width: 14%;" align="center">1</td><td style="width: 14%;" align="center">2</td><td style="width: 14%;" align="center">3</td><td style="width: 14%;" align="center">4</td><td style="width: 14%;" align="center">5</td><td class="CalWeekendDay" style="width: 14%;" align="center">6</td></tr><tr><td class="CalWeekendDay" style="width: 14%;" align="center">7</td><td style="width: 14%;" align="center">8</td><td style="width: 14%;" align="center">9</td><td style="width: 14%;" align="center"><a href="http://www.blogjava.net/Alpha/archive/2016/08/10.html"><u>10</u></a></td><td style="width: 14%;" align="center">11</td><td style="width: 14%;" align="center">12</td><td class="CalWeekendDay" style="width: 14%;" align="center">13</td></tr><tr><td class="CalWeekendDay" style="width: 14%;" align="center">14</td><td style="width: 14%;" align="center">15</td><td style="width: 14%;" align="center">16</td><td style="width: 14%;" align="center">17</td><td style="width: 14%;" align="center">18</td><td style="width: 14%;" align="center">19</td><td class="CalWeekendDay" style="width: 14%;" align="center">20</td></tr><tr><td class="CalWeekendDay" style="width: 14%;" align="center">21</td><td style="width: 14%;" align="center">22</td><td style="width: 14%;" align="center">23</td><td style="width: 14%;" align="center">24</td><td style="width: 14%;" align="center">25</td><td style="width: 14%;" align="center">26</td><td class="CalWeekendDay" style="width: 14%;" align="center">27</td></tr><tr><td class="CalWeekendDay" style="width: 14%;" align="center">28</td><td style="width: 14%;" align="center">29</td><td style="width: 14%;" align="center">30</td><td style="width: 14%;" align="center">31</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">1</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">2</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">3</td></tr><tr><td class="CalOtherMonthDay" style="width: 14%;" align="center">4</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">5</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">6</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">7</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">8</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">9</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">10</td></tr>
+</tbody></table>
+<br>
+			
+<h3>常用链接</h3>
+<ul>
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl01_lnkLinkItem" href="http://www.blogjava.net/Alpha/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl02_lnkLinkItem" href="http://www.blogjava.net/Alpha/MyComments.html">我的评论</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl03_lnkLinkItem" href="http://www.blogjava.net/Alpha/OtherPosts.html">我的参与</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl04_lnkLinkItem" href="http://www.blogjava.net/Alpha/RecentComments.html">最新评论</a></li>
+	</ul>
+<h3>留言簿<span style="font-size: 11px; font-weight: normal;">(30)</span></h3>
+<ul>
+	<li>
+		<a id="SingleColumn1_ctl01_lnkMessages" href="http://www.blogjava.net/Alpha/Contact.aspx?id=1">给我留言</a>
+	</li><li>
+		<a id="SingleColumn1_ctl01_lnkPublicMsgView" href="http://www.blogjava.net/Alpha/default.aspx?opt=msg">查看公开留言</a>
+	</li><li>
+		<a id="SingleColumn1_ctl01_lnkPrivateMsgView" href="http://www.blogjava.net/Alpha/admin/MyMessages.aspx">查看私人留言</a>
+	</li>
+</ul>
+
+<!--done-->
+
+		<h1 class="catListTitle">随笔分类<span style="font-size: 11px; font-weight: normal;">(179)</span></h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/53949.html">Android 移动开发</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_RssLink" title="Subscribe to Android 移动开发" class="listitem" href="http://www.blogjava.net/Alpha/category/53949.html/rss"><img title="Subscribe to Android 移动开发" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/6824.html">Hibernate(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_RssLink" title="Subscribe to Hibernate(2)" class="listitem" href="http://www.blogjava.net/Alpha/category/6824.html/rss"><img title="Subscribe to Hibernate(2)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/1968.html">Java J2EE JSP(31)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_RssLink" title="Subscribe to Java J2EE JSP(31)" class="listitem" href="http://www.blogjava.net/Alpha/category/1968.html/rss"><img title="Subscribe to Java J2EE JSP(31)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/6826.html">jQuery JavaScript Flex(5)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_RssLink" title="Subscribe to jQuery JavaScript Flex(5)" class="listitem" href="http://www.blogjava.net/Alpha/category/6826.html/rss"><img title="Subscribe to jQuery JavaScript Flex(5)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/10062.html">Linux Nginx(25)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_RssLink" title="Subscribe to Linux Nginx(25)" class="listitem" href="http://www.blogjava.net/Alpha/category/10062.html/rss"><img title="Subscribe to Linux Nginx(25)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/9664.html">MySQL NoSQL(14)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_RssLink" title="Subscribe to MySQL NoSQL(14)" class="listitem" href="http://www.blogjava.net/Alpha/category/9664.html/rss"><img title="Subscribe to MySQL NoSQL(14)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/40501.html">PHP ThinkPHP(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_RssLink" title="Subscribe to PHP ThinkPHP(2)" class="listitem" href="http://www.blogjava.net/Alpha/category/40501.html/rss"><img title="Subscribe to PHP ThinkPHP(2)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/53948.html">SEO优化 网站推广(1)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_RssLink" title="Subscribe to SEO优化 网站推广(1)" class="listitem" href="http://www.blogjava.net/Alpha/category/53948.html/rss"><img title="Subscribe to SEO优化 网站推广(1)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/6825.html">Spring(3)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_RssLink" title="Subscribe to Spring(3)" class="listitem" href="http://www.blogjava.net/Alpha/category/6825.html/rss"><img title="Subscribe to Spring(3)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl10_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/1746.html">吴语轮笔(81)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl10_RssLink" title="Subscribe to 吴语轮笔(81)" class="listitem" href="http://www.blogjava.net/Alpha/category/1746.html/rss"><img title="Subscribe to 吴语轮笔(81)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl11_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/14900.html">吾亦好摄(8)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl11_RssLink" title="Subscribe to 吾亦好摄(8)" class="listitem" href="http://www.blogjava.net/Alpha/category/14900.html/rss"><img title="Subscribe to 吾亦好摄(8)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl12_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/40502.html">开源开发工具使用(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl12_RssLink" title="Subscribe to 开源开发工具使用(2)" class="listitem" href="http://www.blogjava.net/Alpha/category/40502.html/rss"><img title="Subscribe to 开源开发工具使用(2)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl13_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/24652.html">网站设计 用户体验(5)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl13_RssLink" title="Subscribe to 网站设计 用户体验(5)" class="listitem" href="http://www.blogjava.net/Alpha/category/24652.html/rss"><img title="Subscribe to 网站设计 用户体验(5)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">文章分类<span style="font-size: 11px; font-weight: normal;">(39)</span></h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/1967.html">J2EE＋JSP(1)</a><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl01_RssLink" title="Subscribe to J2EE＋JSP(1)" class="listitem" href="http://www.blogjava.net/Alpha/category/1967.html/rss"><img title="Subscribe to J2EE＋JSP(1)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/1966.html">JavaScript(9)</a><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl02_RssLink" title="Subscribe to JavaScript(9)" class="listitem" href="http://www.blogjava.net/Alpha/category/1966.html/rss"><img title="Subscribe to JavaScript(9)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/2197.html">Linux、操作系统(9)</a><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl03_RssLink" title="Subscribe to Linux、操作系统(9)" class="listitem" href="http://www.blogjava.net/Alpha/category/2197.html/rss"><img title="Subscribe to Linux、操作系统(9)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/17795.html">人生哲理(4)</a><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl04_RssLink" title="Subscribe to 人生哲理(4)" class="listitem" href="http://www.blogjava.net/Alpha/category/17795.html/rss"><img title="Subscribe to 人生哲理(4)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/17270.html">多愁善感(11)</a><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl05_RssLink" title="Subscribe to 多愁善感(11)" class="listitem" href="http://www.blogjava.net/Alpha/category/17270.html/rss"><img title="Subscribe to 多愁善感(11)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/15859.html">愤青集中营(2)</a><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl06_RssLink" title="Subscribe to 愤青集中营(2)" class="listitem" href="http://www.blogjava.net/Alpha/category/15859.html/rss"><img title="Subscribe to 愤青集中营(2)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/Alpha/category/1965.html">数据库SQL(3)</a><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl07_RssLink" title="Subscribe to 数据库SQL(3)" class="listitem" href="http://www.blogjava.net/Alpha/category/1965.html/rss"><img title="Subscribe to 数据库SQL(3)" src="xml.gif" style="border-width: 0px;"></a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">相册</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/Alpha/gallery/18662.html">06圣诞节</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/Alpha/gallery/19016.html">07.1.7水濂山</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/Alpha/gallery/18908.html">07年元旦</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/Alpha/gallery/14901.html">原创图片</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/Alpha/gallery/21843.html">杂七杂八</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/Alpha/gallery/16867.html">校庆</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/Alpha/gallery/33168.html">梅花</a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">友情链接</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl01_Link" class="listitem" href="http://abook.blog.hexun.com/" target="_blank">QQ's Blog</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl02_Link" class="listitem" href="http://www.dgmeizu.cn/" target="_blank">东莞魅族专卖</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/badboyryan/" target="_blank">坏男孩</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl04_Link" class="listitem" href="http://upto.cnblogs.com/" target="_blank">黎波</a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">我的地盘</h1>
+		
+				<ul class="catList">
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">技术文档</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl05_LinkList_ctl01_Link" class="listitem" href="http://www.htmlhelp.com/zh/reference/css/">CSS 样式表参考文档</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl05_LinkList_ctl02_Link" class="listitem" href="http://www.poptool.net/docs/dhtml/" target="_blank">DHTML 参考手册</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl05_LinkList_ctl03_Link" class="listitem" href="http://wiki.javascud.org/display/dwrcn/Home" target="_blank">DWR中文文档</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl05_LinkList_ctl04_Link" class="listitem" href="http://docs.huihoo.com/mysql/refman-5.1-zh/" target="_blank">MySQL 5.1参考手册</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl05_LinkList_ctl05_Link" class="listitem" href="http://www.jactiongroup.net/reference/html/index.html" target="_blank">Spring Framework 开发参考手册</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl05_LinkList_ctl06_Link" class="listitem" href="http://docs.huihoo.com/" target="_blank">灰狐文档中心</a></li>
+			
+				</ul>
+			
+	
+
+
+<script language="JavaScript">/* Code removed by ScrapBook */</script>
+<h3>搜索</h3>
+<ul>
+	<li>
+		</li><li><input style="width: 130px;" name="q" id="q" type="text">&nbsp;<input value="搜索" name="sa" type="button">
+	</li>
+</ul>
+
+<h3>积分与排名</h3>
+<ul>
+	<li>
+		积分 -
+		1111340
+	</li><li>
+		排名 -
+		18
+	</li>
+</ul>
+
+<h3>最新随笔</h3>
+<div class="RecentComment">
+<ul style="word-break: break-all;">
+	
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl00_RecentPostsList2_ctl00_Hyperlink1" href="#">1.&nbsp; CentOS 7 安裝 Nginx、PHP7、PHP-FPM</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl01_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/04/29/430290.html">2.&nbsp;Tomcat8 安全配置与性能优化</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl02_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/04/07/430008.html">3.&nbsp;Ubuntu14.04下部署FastDFS 5.08+Nginx 1.9.14</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl03_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/03/07/429559.html">4.&nbsp;Ubuntu14.04下搭建VPN服务</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl04_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/02/25/429437.html">5.&nbsp;CentOS 6.4 配置VPN服务教程</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl05_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2015/10/31/428001.html">6.&nbsp;在Ubuntu 12.04上利用IP Tables来设置防火墙</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl06_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2015/10/28/427941.html">7.&nbsp;阿里云推荐码,aliyun优惠码,阿里云服务器ECS、云数据库RDS、负载均衡SLB推荐码,买阿里云主机省钱</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl07_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2015/10/07/427653.html">8.&nbsp;Ubuntu 14.04 安装 php nginx mysql JDK 8 svn</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl08_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2015/06/10/425600.html">9.&nbsp;软件工程师的创业陷阱：接私活</a></li>
+		
+		
+	
+			<li><a id="SingleColumn1_ctl05_RecentPostsList_ctl09_RecentPostsList2_ctl00_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2014/08/05/416592.html">10.&nbsp;jsp页面中，JSTL El表达式字符串比较常用方法</a></li>
+		
+	
+</ul>
+</div>
+
+<h3>最新评论
+	<a id="SingleColumn1__3610178_RSSHyperlink1" href="http://www.blogjava.net/Alpha/CommentsRSS.aspx"><img src="xml_001.gif" style="border-width: 0px;"></a></h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl01_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/08/02/430008.html#431422">1.&nbsp;re: Ubuntu14.04下部署FastDFS 5.08+Nginx 1.9.14</a>
+			</li>
+			<li style="word-break: break-all;">
+				相当成功
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--reatang</li>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl02_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/07/27/131912.html#431351">2.&nbsp;re: mysql alter 语句用法,添加、修改、删除字段等</a>
+			</li>
+			<li style="word-break: break-all;">
+				密密麻麻吗
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--，，，</li>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl03_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/05/26/296050.html#430676">3.&nbsp;eettafellamp</a>
+			</li>
+			<li style="word-break: break-all;">
+				评论内容较长,点击标题查看
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--eettafellamp</li>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl04_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/05/18/284241.html#430582">4.&nbsp;re: 使用Spring MVC表单标签</a>
+			</li>
+			<li style="word-break: break-all;">
+				水电费
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--  低调</li>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl05_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/05/18/296050.html#430568">5.&nbsp;aanrechtblad</a>
+			</li>
+			<li style="word-break: break-all;">
+				评论内容较长,点击标题查看
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--aanrechtblad</li>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl06_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/05/05/430290.html#430353">6.&nbsp;re: Tomcat8 安全配置与性能优化[未登录]</a>
+			</li>
+			<li style="word-break: break-all;">
+				评论内容较长,点击标题查看
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--aa</li>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl07_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/05/05/430290.html#430352">7.&nbsp;re: Tomcat8 安全配置与性能优化[未登录]</a>
+			</li>
+			<li style="word-break: break-all;">
+				评论内容较长,点击标题查看
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--aa</li>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl08_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/04/21/279814.html#430183">8.&nbsp;aa[未登录]</a>
+			</li>
+			<li style="word-break: break-all;">
+				啊啊啊啊
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--aa</li>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl09_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2016/04/15/430008.html#430104">9.&nbsp;re: Ubuntu14.04下部署FastDFS 5.08+Nginx 1.9.14</a>
+			</li>
+			<li style="word-break: break-all;">
+				可以可以可以
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--司马青衫</li>
+		
+			<li style="word-break: break-all;">
+				<a id="SingleColumn1__3610178_CommentList_ctl10_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2015/12/28/131912.html#428844">10.&nbsp;re: mysql alter 语句用法,添加、修改、删除字段等[未登录]</a>
+			</li>
+			<li style="word-break: break-all;">
+				1111
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--a</li>
+		
+			</ul>
+		
+</div>
+
+<h3>阅读排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break: break-all;">
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2007/08/10/135694.html">1.&nbsp;MySQL的mysqldump工具的基本用法(227511)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2007/07/23/131912.html">2.&nbsp;mysql alter 语句用法,添加、修改、删除字段等(133256)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2007/01/22/95216.html">3.&nbsp;HttpClient 学习整理(132909)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2009/03/29/262789.html">4.&nbsp;c3p0详细配置(76052)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2006/04/07/39844.html">5.&nbsp;Mysql日期和时间函数大全(56924)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl06_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2008/04/15/193094.html">6.&nbsp;Hibernate 不同数据库的连接及SQL方言(36565)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl07_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2009/06/27/284373.html">7.&nbsp;AS与JS相互通信(Flex中调用js函数)(25620)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl08_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2012/09/17/387950.html">8.&nbsp;iptables 开启80端口  (25548)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl09_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2009/06/26/284241.html">9.&nbsp;使用Spring MVC表单标签(22084)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl10_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2007/01/13/93569.html">10.&nbsp;JFreeChart在JSP中的应用实例(19144)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl11_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2011/06/21/352745.html">11.&nbsp;linux+nginx+tomcat负载均衡，实现session同步(19033)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl12_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2007/10/17/153578.html">12.&nbsp;scrollbar属性、样式详解(18806)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl13_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2011/06/30/353439.html">13.&nbsp;linux rsync同步设置详细指南(14346)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl14_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2006/07/12/57764.html">14.&nbsp;多级反向代理[Squid]下获取客户端真实IP地址(14015)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__343f6f1_TopList_ctl15_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2011/05/03/349454.html">15.&nbsp;JPA实体标识的自动生成(11002)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+<h3>评论排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break: break-all;">
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2006/11/03/78983.html">1.&nbsp;南雄中学百年校庆(91)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2007/01/22/95216.html">2.&nbsp;HttpClient 学习整理(44)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2007/01/13/93569.html">3.&nbsp;JFreeChart在JSP中的应用实例(29)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2009/03/29/262789.html">4.&nbsp;c3p0详细配置(26)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2009/09/22/296050.html">5.&nbsp;从MySQL得到最大的性能(20)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl06_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2006/11/18/81900.html">6.&nbsp;学会如何去爱一个人(16)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl07_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2006/11/28/84174.html">7.&nbsp;千年珠玑(15)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl08_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2006/08/21/64901.html">8.&nbsp;笑翻天乐园－痛并快乐着(14)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl09_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2005/06/14/6130.html">9.&nbsp;说说我们技术部(13)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl10_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2007/08/10/135694.html">10.&nbsp;MySQL的mysqldump工具的基本用法(12)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl11_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2005/07/19/8010.html">11.&nbsp;述 职 报 告(11)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl12_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2006/07/12/57764.html">12.&nbsp;多级反向代理[Squid]下获取客户端真实IP地址(11)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl13_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2006/09/15/69983.html">13.&nbsp;双喜临门(10)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl14_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2007/01/02/91444.html">14.&nbsp;元旦遭遇人山人海(9)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2440b4_TopList_ctl15_Hyperlink1" href="http://www.blogjava.net/Alpha/archive/2006/09/05/67910.html">15.&nbsp;第一次带着她去外拍(7)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</div>
+	
+</div>
+
+<!--done-->
+<div class="footer">
+	Powered by: <a href="http://www.cnblogs.com/">博客园</a>	模板提供：<a href="http://blog.hjenglish.com/">沪江博客</a>
+	Copyright ©2017 Alpha
+</div>
+
+
+<script language="javascript" type="text/javascript" src="about:blank"></script><a href="http://www.51.la/?701941" target="_blank" title="51.La 网站流量统计系统"><img alt="51.La 网站流量统计系统" src="icon_9.gif" style="border: medium none;"></a>
+
+<noscript><a href="http://www.51.la/?701941" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/701941.asp" style="border:none" /></a></noscript>
+    
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</form>
+    <script type="text/javascript" src="about:blank"></script>
+	<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+<iframe src="index_9.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_4251892197791"></iframe></body><iframe src="index_10.html" style="display: none;"></iframe>
+</html>

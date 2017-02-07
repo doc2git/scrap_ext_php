@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><script src="about:blank"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>openvpn 多机房互联 - lpfuture - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-darkgreentrip.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="bundle-darkgreentrip-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/lpfuture/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/lpfuture/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/lpfuture/wlwmanifest.xml">
+<script src="about:blank" type="text/javascript"></script>  
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script>
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style></head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/lpfuture/"><img id="blogLogo" src="logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/lpfuture/">lpfuture</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/lpfuture/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/lpfuture">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/lpfuture/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/lpfuture/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 207&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 7</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="#">openvpn 多机房互联</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p><a href="http://img1.51cto.com/attachment/201308/100532706.png" target="_blank"><iframe scrolling="no" style="border: medium none; width: 575px; height: 303px;" src="index_8.html" id="iframe_0.6708746744348594" frameborder="0"></iframe></a></p>
+<p>&nbsp;</p>
+<p>Server端安装配置</p>
+<p>一、安装</p>
+<p>1、下载及相关依赖包安装</p>
+<p>wget http://www.oberhumer.com/opensource/lzo/download/lzo-2.06.tar.gz</p>
+<p>wget http://swupdate.openvpn.org/community/releases/openvpn-2.2.1.tar.gz</p>
+<p>wget ftp://rpmfind.net/linux/epel/5/x86_64/pkcs11-helper-1.07-2.el5.1.x86_64.rpm</p>
+<p>wget ftp://rpmfind.net/linux/epel/5/x86_64/pkcs11-helper-devel-1.07-2.el5.1.x86_64.rpm</p>
+<p>yum -y install &nbsp;automake pkgconfig</p>
+<p>rpm -ivh pkcs11-helper-1.07-2.el5.1.x86_64.rpm</p>
+<p>rpm -ivh pkcs11-helper-devel-1.07-2.el5.1.x86_64.rpm</p>
+<p>&nbsp;</p>
+<p>2、安装openvpn</p>
+<p>tar -zxvf lzo-2.06.tar.gz</p>
+<p>cd lzo-2.06</p>
+<p>./configure &amp;&amp; make check &amp;&amp; make&amp;&amp; make install</p>
+<p>cd ..</p>
+<p>tar -zxvf openvpn-2.2.1.tar.gz</p>
+<p>cd openvpn-2.2.1</p>
+<p>./configure --prefix=/usr/local/openvpn --with-lzo-headers=/usr/local/include --with-lzo-lib=/usr/local/lib --with-ssl-headers=/usr/include/openssl --with-ssl-lib=/usr/lib</p>
+<p>make &amp;&amp; make install</p>
+<p>&nbsp;</p>
+<p>二、配置</p>
+<p>cp -R easy-rsa /usr/local/openvpn/</p>
+<p>cd /usr/local/openvpn/easy-rsa/2.0</p>
+<p>mv -f vars vars.bak</p>
+<p>&nbsp;</p>
+<p>#定义变量</p>
+<p>cat vars</p>
+<p>##########################################################################</p>
+<p>export EASY_RSA="`pwd`"</p>
+<p>export OPENSSL="openssl"</p>
+<p>export PKCS11TOOL="pkcs11-tool"</p>
+<p>export GREP="grep"</p>
+<p>export KEY_CONFIG=`$EASY_RSA/whichopensslcnf $EASY_RSA`</p>
+<p>export KEY_DIR="/usr/local/openvpn/keys"</p>
+<p>echo NOTE: If you run clean-all, I will be doing a rm-rf on $KEY_DIR</p>
+<p>export PKCS11_MODULE_PATH="dummy"</p>
+<p>export PKCS11_PIN="dummy"</p>
+<p>export KEY_SIZE=1024</p>
+<p>export CA_EXPIRE=3650</p>
+<p>export KEY_EXPIRE=3650</p>
+<p>&nbsp;</p>
+<p>export KEY_COUNTRY="CN"</p>
+<p>export KEY_PROVINCE="Beijing"</p>
+<p>export KEY_CITY="Zhaowei"</p>
+<p>export KEY_ORG="IDC"</p>
+<p>export KEY_EMAIL="root@nebulame.com"</p>
+<p>export KEY_EMAIL=root@nebulame.com</p>
+<p>export KEY_CN=IDC</p>
+<p>export KEY_NAME=IDC</p>
+<p>export KEY_OU=IDC</p>
+<p>export PKCS11_MODULE_PATH=changeme</p>
+<p>export PKCS11_PIN=1234</p>
+<p>##########################################################################</p>
+<p>&nbsp;</p>
+<p>chmod 755 /usr/local/openvpn/easy-rsa/2.0/vars</p>
+<p>source ./vars</p>
+<p>&nbsp;</p>
+<p>##########################################################################</p>
+<p>#注意：如果提示:file could be found</p>
+<p># openssl version &nbsp; 查看openssl版本</p>
+<p>#检查whichopensslcnf脚本中是否有相关版本，若有，请检查匹配命令</p>
+<p>#我的版本号内容：OpenSSL 1.0.0-fips 29 Mar 2010，但是脚本匹配中版本后面未考虑带-情</p>
+<p>#况，修改脚本后正常。</p>
+<p>##########################################################################</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>#生成ca证书和key文件</p>
+<p>./clean-all<span class="Apple-tab-span">#清除旧的</span></p>
+<p>./build-ca<span class="Apple-tab-span">#建立CA</span></p>
+<p>./build-key-server server<span class="Apple-tab-span">#建立server端cert和key文件</span></p>
+<p>./build-key sjhlidc<span class="Apple-tab-span">#创建client端cert和key文件</span></p>
+<p>/usr/local/openvpn/sbin/openvpn --genkey --secret /usr/local/openvpn/keys/ta.key</p>
+<p>./build-dh<span class="Apple-tab-span">#建立 Diffie Hellman文件；Diffie Hellman参数必须要在openvpn server中使用。</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>#新建server.conf</p>
+<p>cd /usr/local/openvpn/</p>
+<p>&nbsp;</p>
+<p>cat &lt;&lt; EOF &gt; /usr/local/openvpn/sever.conf</p>
+<p>;外网地址</p>
+<p>local 192.168.59.21</p>
+<p>port 11194</p>
+<p>proto udp</p>
+<p>dev tun</p>
+<p>ca /usr/local/openvpn/keys/ca.crt</p>
+<p>cert /usr/local/openvpn/keys/server.crt</p>
+<p>key /usr/local/openvpn/keys/server.key</p>
+<p>dh /usr/local/openvpn/keys/dh1024.pem</p>
+<p>tls-auth /usr/local/openvpn/keys/ta.key 0</p>
+<p>;tun 网段</p>
+<p>server 10.88.0.0 255.255.255.0</p>
+<p>ifconfig-pool-persist /usr/local/openvpn/ipp.txt</p>
+<p>client-config-dir /usr/local/openvpn/ccd</p>
+<p>;用于添加server端路由,可多个</p>
+<p>route 10.0.1.0 255.255.255.0</p>
+<p>;用于添加各客户端路由，可多个</p>
+<p>push "route 10.0.0.0 255.255.255.0"</p>
+<p>max-clients 10</p>
+<p>client-to-client</p>
+<p>keepalive 10 120</p>
+<p>cipher BF-CBC</p>
+<p>;cipher AES-128-CBC</p>
+<p>comp-lzo</p>
+<p>status /usr/local/openvpn/log/status.log</p>
+<p>log /usr/local/openvpn/log/log.log</p>
+<p>persist-key</p>
+<p>persist-tun</p>
+<p>verb 3</p>
+<p>mute 20</p>
+<p>EOF</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>chmod 755 /usr/local/openvpn/sever.conf</p>
+<p>tar –zcvf keys.tar.gz keys</p>
+<p>&nbsp;</p>
+<p>#客户端相关配置</p>
+<p>mkdir -p /usr/local/openvpn/ccd/</p>
+<p>cat &lt;&lt;EOF &gt; /usr/local/openvpn/ccd/sjhlidc</p>
+<p>;固定客户端tun网段IP</p>
+<p>ifconfig-push 10.88.0.5 10.88.0.6</p>
+<p>;客户端自动添加路由时，需要忽略的本端内网路由条目</p>
+<p>iroute 10.0.1.0 255.255.255.0</p>
+<p>EOF</p>
+<p>&nbsp;</p>
+<p>chmod 755 /usr/local/openvpn/ccd/sjhlidc</p>
+<p>&nbsp;</p>
+<p>#修改内核参数</p>
+<p>sed -i 's/net.ipv4.ip_forward = 0/net.ipv4.ip_forward= 1/g' /etc/sysctl.conf</p>
+<p>sysctl -p</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>ln -s /usr/local/openvpn/sbin/openvpn /usr/bin/openvpn</p>
+<p>&nbsp;</p>
+<p>#添加防火墙策略，使server和client可以同对端内网通信</p>
+<p>iptables -t nat -A POSTROUTING -s 10.88.0.0/24 -j SNAT --to 10.0.0.21 #snat 地址为内网地址，server或client其中一台添加既可</p>
+<p>&nbsp;</p>
+<p>启动</p>
+<p>openvpn --config server.conf 2&gt;&amp;1 &amp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Client端安装配置：</p>
+<p>一、安装及修改内核参数 同server端</p>
+<p>二、配置</p>
+<p>复制server端打包文件keys.tar.gz,并解压缩到client相应位置</p>
+<p>#创建配置文件</p>
+<p>cd /usr/local/openvpn/</p>
+<p>cat sjhlidc.conf</p>
+<p>client</p>
+<p>dev tun</p>
+<p>proto udp</p>
+<p>remote 192.168.59.21 11194</p>
+<p>ca /usr/local/openvpn/keys/ca.crt</p>
+<p>cert /usr/local/openvpn/keys/sjhlidc.crt</p>
+<p>key /usr/local/openvpn/keys/sjhlidc.key</p>
+<p>tls-auth /usr/local/openvpn/keys/ta.key 1</p>
+<p>ns-cert-type server</p>
+<p>cipher BF-CBC</p>
+<p>comp-lzo</p>
+<p>persist-key</p>
+<p>persist-tun</p>
+<p>verb 3</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>#启动</p>
+<p>cd /usr/local/openvpn/</p>
+<p>nohup sbin/openvpn --config ./shidc.conf &amp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>三、server、client端连接内网内服务器需要设置网关</p>
+<p>例如：</p>
+<p>client端内网：</p>
+<p>route &nbsp;add -net &nbsp;10.0.0.0/24 gw 10.0.1.22</p>
+<p>server端内网：</p>
+<p>route &nbsp;add -net &nbsp;10.0.1.0/24 gw 10.0.0.21</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/lpfuture/category/701824.html" target="_blank">运维</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a id="green_channel_digg">好文要顶</a>
+            <a id="green_channel_follow">关注我</a>
+    <a id="green_channel_favorite">收藏该文</a>
+    <a id="green_channel_weibo" title="分享至新浪微博"><img src="icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" title="分享至微信"><img src="wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lpfuture/" target="_blank"><img src="sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lpfuture/">lpfuture</a><br>
+            <a href="http://home.cnblogs.com/u/lpfuture/followees">关注 - 5</a><br>
+            <a href="http://home.cnblogs.com/u/lpfuture/followers">粉丝 - 4</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a>+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/lpfuture/p/5857738.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/lpfuture/p/5857738.html" title="发布于2016-09-09 18:41">linux route命令详解</a><br><a href="http://www.cnblogs.com/lpfuture/p/5859620.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/lpfuture/p/5859620.html" title="发布于2016-09-10 16:12">tcpdump 命令详解</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2016-09-10 14:24</span> <a href="http://www.cnblogs.com/lpfuture/">lpfuture</a> 阅读(<span id="post_view_count">157</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5859347" rel="nofollow">编辑</a> <a href="#">收藏</a></div>
+	</div>
+	<script type="text/javascript">/* Code removed by ScrapBook */</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" class="underline">登录</a> 或 <a rel="nofollow" class="underline">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://rongcloud.cn/reports/journal2" target="_blank">【推荐】融云发布 App 社交化白皮书 IM 提升活跃超 8 倍</a><br><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank">【推荐】自开发 零实施的BPM</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block">     <ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-4210569241504288" data-ad-slot="5457903683"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_9.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/561617/" target="_blank">搜狗浏览器2016“网事”盘点：春运抢票难度竟第三！</a><br> ·  <a href="http://news.cnblogs.com/n/561616/" target="_blank">谷歌公布新算法：识别潜在的恶意安卓应用</a><br> ·  <a href="http://news.cnblogs.com/n/561615/" target="_blank">败血症即时诊断设备仅售15美元 要挑战巨头雅培</a><br> ·  <a href="http://news.cnblogs.com/n/561614/" target="_blank">机器学习漫游指南 最完整的入门书单（外文版）</a><br> ·  <a href="http://news.cnblogs.com/n/561613/" target="_blank">闲鱼惊现大量未拆封格力手机2代：价格比官网便宜一半</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank"><img src="24442-20170118152220281-363324784.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/554260/" target="_blank">「代码家」的学习过程和学习经验分享</a><br> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/lpfuture/">lpfuture</a><br>园龄：<a href="http://home.cnblogs.com/u/lpfuture/" title="入园时间：2013-02-22">3年11个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/lpfuture/followers/">4</a><br>关注：<a href="http://home.cnblogs.com/u/lpfuture/followees/">5</a><div id="p_b_follow"><a>+加关注</a></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a>&lt;</a></td><td align="center">2017年1月</td><td class="CalNextPrev" align="right"><a>&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalTodayDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" class="input_my_zzk" type="text">&nbsp;<input value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" class="input_my_zzk" type="text">&nbsp;<input value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/lpfuture/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/lpfuture/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/lpfuture/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/lpfuture/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/lpfuture/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/lpfuture/p/6221405.html">1. Android手机用KSWEB搭建Web服务器成功安装WordPress</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/6110190.html">2. hping3</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/6073174.html">3. 理解syslinux，SYSLINUX和PXELINUX</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/6054896.html">4. 使用Postmark测试后端存储性能</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/6054882.html">5. linux使用FIO测试磁盘的iops</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/6054875.html">6. 使用iozone测试磁盘性能</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/6054867.html">7. iperf</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/6030271.html">8. vim 使用技巧</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/6027229.html">9. linux sysfs文件系统</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/6027091.html">10. linux udev学习</a></li>
+</ul>
+</div>
+</div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/lpfuture/tag/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>(26)</li><li><a href="http://www.cnblogs.com/lpfuture/tag/Mysql/">Mysql</a>(2)</li><li><a href="http://www.cnblogs.com/lpfuture/tag/phpdocumentor/">phpdocumentor</a>(1)</li><li><a href="http://www.cnblogs.com/lpfuture/tag/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">策略模式</a>(1)</li><li><a href="http://www.cnblogs.com/lpfuture/tag/CSS/">CSS</a>(1)</li><li><a href="http://www.cnblogs.com/lpfuture/tag/data%20structure/">data structure</a>(1)</li><li><a href="http://www.cnblogs.com/lpfuture/tag/HTML/">HTML</a>(1)</li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/lpfuture/category/466853.html">Android(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/lpfuture/category/454533.html">Apache(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/lpfuture/category/454526.html">CSS(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/lpfuture/category/454524.html">HTML(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/lpfuture/category/466387.html">java(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/lpfuture/category/454523.html">Javascript(18)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/lpfuture/category/577770.html">linux(39)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/lpfuture/category/701557.html">Mysql(23)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/lpfuture/category/454522.html">PHP(19)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/lpfuture/category/859754.html">redis(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/lpfuture/category/575297.html">shell(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/lpfuture/category/454525.html">XML</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/lpfuture/category/455928.html">程序思维(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/lpfuture/category/454532.html">设计模式(28)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/lpfuture/category/454521.html">数据结构(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/lpfuture/category/454534.html">算法(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/lpfuture/category/701824.html">运维(56)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/lpfuture/archive/2016/12.html">2016年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/lpfuture/archive/2016/11.html">2016年11月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/lpfuture/archive/2016/10.html">2016年10月 (17)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/lpfuture/archive/2016/09.html">2016年9月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/lpfuture/archive/2016/08.html">2016年8月 (39)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/lpfuture/archive/2016/07.html">2016年7月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/lpfuture/archive/2016/06.html">2016年6月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/lpfuture/archive/2016/05.html">2016年5月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/lpfuture/archive/2016/04.html">2016年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/lpfuture/archive/2016/03.html">2016年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/lpfuture/archive/2016/02.html">2016年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/lpfuture/archive/2016/01.html">2016年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/lpfuture/archive/2015/11.html">2015年11月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/lpfuture/archive/2015/09.html">2015年9月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/lpfuture/archive/2015/08.html">2015年8月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/lpfuture/archive/2015/07.html">2015年7月 (24)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/lpfuture/archive/2015/06.html">2015年6月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/lpfuture/archive/2015/04.html">2015年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/lpfuture/archive/2015/01.html">2015年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/lpfuture/archive/2014/06.html">2014年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/lpfuture/archive/2014/05.html">2014年5月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/lpfuture/archive/2014/04.html">2014年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/lpfuture/archive/2014/03.html">2014年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/lpfuture/archive/2013/07.html">2013年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/lpfuture/archive/2013/06.html">2013年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/lpfuture/archive/2013/05.html">2013年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/lpfuture/archive/2013/04.html">2013年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/lpfuture/archive/2013/03.html">2013年3月 (25)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/lpfuture/archive/2013/02.html">2013年2月 (21)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	22082
+	</li>
+	<li class="liRank">
+		排名 -	11322
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lpfuture/p/5881952.html#3531097">1. Re:ldap 配置过程详解</a></li>
+        <li class="recent_comment_body"><br><br>你好，楼主，我按照你这个文章执行，现在就一直报错，按照你下面的解决方案也不行，是不是因为我前面没有定义域名，但我后来直接用ip也是这样报错<br><br>能否帮忙看下，谢谢。</li>
+        <li class="recent_comment_author">--comb</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lpfuture/p/4638335.html#3510232">2. Re:linux nc命令详解</a></li>
+        <li class="recent_comment_body">！！！</li>
+        <li class="recent_comment_author">--skynku</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lpfuture/archive/2013/03/01/2938903.html#2627004">3. Re:62-63=1</a></li>
+        <li class="recent_comment_body">@以便以谢：“宇宙大爆炸”之前→新天新地新生命就是2的6次方...</li>
+        <li class="recent_comment_author">--lpfuture</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lpfuture/archive/2013/03/01/2938903.html#2626953">4. Re:62-63=1</a></li>
+        <li class="recent_comment_body">可不可以理解为我之前移动的是大写的“一”。。：）</li>
+        <li class="recent_comment_author">--以便以谢：“宇宙大爆炸”之前→新天新地新生命</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lpfuture/archive/2013/03/01/2938903.html#2626952">5. Re:62-63=1</a></li>
+        <li class="recent_comment_body">@lpfuture哦那就是2的6次方。。...</li>
+        <li class="recent_comment_author">--以便以谢：“宇宙大爆炸”之前→新天新地新生命</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/lpfuture/p/4638335.html">1. linux nc命令详解(2741)</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/5578274.html">2. laravel的启动过程解析(1629)</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/5756993.html">3. linux ntp时间服务器配置(1191)</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/5593965.html">4. laravel 查看sql(1119)</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/5853030.html">5. svn版本管理(1041)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/lpfuture/archive/2013/03/01/2938903.html">1. 62-63=1(5)</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/4638335.html">2. linux nc命令详解(1)</a></li><li><a href="http://www.cnblogs.com/lpfuture/p/5881952.html">3. ldap 配置过程详解(1)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/lpfuture/p/5853030.html">1. svn版本管理(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2017 lpfuture
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body>
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh" xml:lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+<head><script src="about:blank" async=""></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-style-type" content="text/css">
+    <meta http-equiv="content-script-type" content="text/javascript">
+    <meta name="version" content="neblog-1.0">
+    <script type="text/javascript">/* Code removed by ScrapBook */</script>
+<title>Linux挂载LVM分区的方法【转】 - 雨恋丽晴的日志 - 网易博客</title>
+<meta name="author" content="ljx198308,雨恋丽晴">
+<meta name="keywords" content="Linux挂载LVM分区的方法【转】,日志,雨恋丽晴,雨恋丽晴,网易博客,网易,blog">
+<meta name="description" content="Linux挂载LVM分区的方法【转】,雨恋丽晴的网易博客,平时上网较好东西的记录地,">
+  <script type="text/javascript">/* Code removed by ScrapBook */</script><style type="text/css">
+/* Code tidied up by ScrapBook */
+.icn0-016 { background-position: 0px -320px; }
+.icn0-41 { background-position: -160px -20px; }
+.icn0-421 { background-position: -160px -420px; }
+.icn0-516 { background-position: -200px -320px; }
+.icn0-619 { background-position: -240px -380px; }
+.icn0-620 { background-position: -240px -400px; }
+.icn0-621 { background-position: -240px -420px; }
+.icn0-722 { background-position: -280px -440px; }
+.icn0-919 { background-position: -360px -380px; }
+</style>
+    <link type="text/css" rel="stylesheet" href="c.css">
+    <link type="text/css" rel="stylesheet" href="b.css" id="blog-163-com-theme">
+  <!--[if lte IE 6]>
+  <style type="text/css">
+    html,body,#blog-163-com-ie6body{height:100%;width:100%;overflow:hidden;}
+    #blog-163-com-ie6body{overflow:auto;overflow-y:scroll;}
+    #blog-163-com{background:none;}
+  </style>
+  <![endif]-->
+  
+  
+  <style type="text/css">
+/* Code tidied up by ScrapBook */
+.m-3 .nbw-ryt .left .mcnt { padding-left: 10px; }
+#blog-163-com .m-3 .phide { display: none; }
+.m-3 .nbw-ryt .left .nbw-bitm { margin: 0px; padding: 0px 10px; position: relative; }
+.m-3 .nbw-ryt .left .nbw-bitm .title { margin: 30px 0px 20px; line-height: 32px; }
+.m-3 .nbw-ryt .left .nbw-bitm .title .tcnt { font-size: 26px; font-weight: bold; font-family: "Hiragino Sans GB W3","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,Helvetica,simsun,"宋体"; }
+.m-3 .nbw-ryt .left .nbw-bitm .tdep { margin-bottom: 20px; }
+.m-3 .nbw-ryt .left .nbw-bitm .tbar { margin: 5px 0px; padding: 10px 0px; line-height: 20px; text-align: right; }
+.m-3 .nbw-ryt .left .nbw-bitm .bct { font-size: 16px; padding-left: 0px; }
+.m-3 .nbw-ryt .cite { margin: 20px 0px 0px 50px; line-height: 24px; text-align: left; }
+.nas-icn0fix { margin-top: 4px; }
+.m-3 .ptc { position: absolute; cursor: pointer; }
+.m-3 .ptc .ptcp .bcmimg { float: left; background-image: url("blogcmtimg.png"); background-position: 0px 0px; background-repeat: no-repeat; height: 22px; line-height: 22px; width: 22px; padding: 0px 6px 0px 0px; }
+.m-3 .ptc .ptcp { cursor: pointer; position: absolute; left: 5px; bottom: 5px; clear: both; width: 94px; }
+.m-3 .ptc .ptcp .ptcmi { float: left; width: 16px; height: 16px; padding: 3px 6px 3px 5px; margin: 0px; }
+.m-3 .ptc .ptcp .ptcmt { background-position: -418px -50px; float: left; width: 67px; height: 22px; overflow: hidden; margin: 0px 0px 0px -3px; line-height: 22px; text-align: left; color: rgb(68, 68, 68); }
+.m-3 .ptc .ptcp .ptcmt-2 { width: 61px; padding-left: 6px; background-position: -424px -50px; }
+.m-3 .relateblog { text-align: left; }
+.m-3 .relateblog h4 { margin: 0px; padding: 0px 0px 0px 10px; line-height: 30px; }
+.m-3 .relateblog .cnt { padding-left: 8px; margin: 10px 0px; }
+.m-3 .author, .m-3 .comment { text-align: left; }
+.m-3 .author .nlogif { width: 150px; line-height: 20px; margin-left: 5px; }
+.m-3 .author .nlogif .nbw-fce { margin: 0px 3px 0px 10px; }
+.m-3 .author .nlogif .pright { width: 85px; margin: 0px; padding: 5px 0px; }
+.m-3 .author h4, .m-3 .comment h4 { margin: 0px; padding: 0px 0px 0px 10px; line-height: 30px; }
+.m-3 .author .cwd { border: 0px none; text-align: left; }
+.m-3 .author .vname { width: 50px; text-align: center; }
+.m-3 .author .cnt { margin: 10px 0px 10px -5px; }
+.m-3 .author .nbw-fce { margin: 0px 11px; }
+.m-3 .author .nbw-f50 { width: 50px; }
+.m-3 .nbw-ryt .left .top { position: relative; padding-bottom: 5px; line-height: 20px; }
+.m-3 .nbw-ryt .left .top .ilft { position: absolute; left: 0px; top: 0px; }
+.m-3 .nbw-ryt .left .top .irgt { position: absolute; right: -10px; top: 0px; }
+.m-3 .nbw-ryt .left .top .pleft { margin-left: 20px; overflow: hidden; width: 40%; height: 20px; text-align: left; }
+.m-3 .nbw-ryt .left .top .pright { margin-right: 10px; overflow: hidden; width: 40%; height: 20px; text-align: right; }
+.m-3 .nbw-ryt .left .snl .top { position: relative; padding: 5px 0px 15px; line-height: 20px; }
+.m-3 .nbw-ryt .left .snl .top .ilft { position: absolute; left: -10px; top: 5px; }
+.m-3 .nbw-ryt .left .snl .top .irgt { position: absolute; right: -10px; top: 5px; }
+.m-3 .nbw-ryt .left .snl .top .pleft { margin-left: 10px; overflow: hidden; width: 40%; height: 20px; text-align: left; }
+.m-3 .nbw-ryt .left .snl .top .pright { margin-right: 10px; overflow: hidden; width: 40%; height: 20px; text-align: right; }
+.m-3 .comment h4 { padding: 0px 0px 0px 10px; }
+.m-3 .comment .publish { margin: 10px 0px; padding: 0px 0px 10px 5px; text-align: left; }
+.m-3 .comment .nolog { border: 1px solid rgb(0, 0, 0); background-color: rgb(255, 255, 225); height: 40px; line-height: 40px; text-align: center; padding: 0px; }
+.m-3 .comment .case { padding-left: 5px; padding-bottom: 10px; }
+.m-3 .nbw-bitm .rdif { line-height: 24px; height: 24px; }
+.m-3 .snl .rdcnt { padding: 5px; text-align: left; }
+.m-3 #yodaoad { padding-left: 5px; }
+.m-3 #yodaoad_3 { padding: 20px 0px 25px; }
+.m-3 .nbw-act .blogsep { margin: 0px 2px; }
+.m-3 .zihao { position: relative; cursor: default; }
+.m-3 .zihaoshow { position: absolute; width: 26px; top: -57px; left: -3px; padding: 0px 0px 3px; line-height: 18px; }
+.m-3 .zihaoshow span { display: block; text-align: center; cursor: pointer; }
+.m-3 .zihaoc { border-style: solid; border-width: 1px; }
+.m-3 .toLofter { cursor: pointer; position: absolute; bottom: 5px; width: 112px; height: 22px; background: transparent url("tolofter.png") no-repeat scroll 0px 0px; text-indent: -9999px; }
+.m-3 .nbw-ryt .left .lcnt { padding-right: 20px; }
+.m-3 .nbw-ryt .left .nbw-bitm .title { margin: 34px 0px 10px; line-height: normal; }
+.m-3 .nbw-ryt .left .nbw-bitm .title .tcnt { line-height: 38px; }
+.m-3 .nbw-ryt .left .nbw-bitm .tdep { margin-bottom: 25px; }
+.m-3 .comment .publish { padding: 0px 5px 10px 0px; margin: 20px 0px 0px; }
+.m-3 .nbw-bitm .rdif { padding: 8px 0px; }
+.m-3 .rightoperatebar { height: 40px; line-height: 40px; margin-left: 0px; }
+.m-3 .reblogbtn, .m-3 .recommendbtn, .m-3 .likebtn { width: 48px; height: 38px; line-height: 38px; padding-left: 44px; margin: 0px 0px 0px 5px; font-size: 14px; color: rgb(255, 255, 255); text-align: left; }
+.m-3 .recommendbtn { background-position: 1px -271px; }
+.m-3 .likebtn { background-position: 1px -111px; }
+.m-3 .hotarea {  }
+.f-trans { transition: all 0.3s linear 0s; }
+.nbw-ryt .right { width: 260px; }
+.nbw-ryt .left { margin-right: -262px; }
+.nbw-ryt .left .lcnt { margin-right: 260px; }
+.m-3 .f-bkicons, .m-3 .rightoperatebar-new .f-myLikeIcons { background: transparent url("bkicons24.png") no-repeat scroll -9999px -9999px; }
+.m-3 .share-wrap .shareitm { float: left; width: 24px; height: 24px; padding: 0px 0px 0px 6px; cursor: pointer; }
+.m-3 .share-wrap .lofter { background-position: 0px -144px; }
+.m-3 .share-wrap .sinawb { background-position: 0px -192px; }
+.m-3 .share-wrap .qqzone { background-position: 0px -240px; }
+.m-3 .share-wrap .qqweibo { background-position: 0px -288px; }
+.m-3 .share-wrap .weixin { background-position: 0px -336px; }
+.m-3 .share-wrap .yixin { background-position: 0px -384px; }
+.m-3 .share-wrap .weixin, .m-3 .share-wrap .yixin { position: relative; }
+.m-3 .share-wrap .code2dimlayer { visibility: hidden; position: absolute; left: -22px; bottom: 28px; width: 242px; height: 113px; text-align: left; cursor: default; }
+.m-3 .share-wrap .code2dimlayer { background: transparent url("code2dbg24.png") no-repeat scroll 0px 0px; }
+.m-3 .share-wrap .code2dimlayer img { float: left; width: 84px; height: 84px; margin: 11px -108px 0px 11px; }
+.m-3 .share-wrap .code2dimlayer .tips { margin: 30px 0px 0px 108px; color: rgb(119, 119, 119); font-size: 12px; }
+.m-3 .share-wrap .code2dimlayer .tips p { padding: 0px; margin: 0px; line-height: 24px; }
+.m-3 .rightoperatebar-new { height: 25px; line-height: 25px; padding-top: 6px; }
+.m-3 .rightoperatebar-new .likebtn, .m-3 .rightoperatebar-new .reblogbtn, .m-3 .rightoperatebar-new .recommendbtn { width: 34px; height: 25px; line-height: 25px; padding-left: 29px; margin-left: 6px; color: rgb(255, 255, 255); font-size: 12px; }
+.m-3 .rightoperatebar-new .likebtn { background-position: 0px -96px; }
+.m-3 .rightoperatebar-new .recommendbtn { background-position: 0px -48px; }
+.m-3 .editopbar { margin-bottom: 10px; }
+.m-3 .author img.cwd, .m-3 .hotarea .expeadbg, .m-3 .comment .nbw-f40 img.cwd { border-radius: 20px; }
+#blog-163-com-main { z-index: 2; }
+.m-shareAndDownLoad { height: 24px; line-height: 24px; margin-top: -8px; }
+.m-lmiddlead { position: relative; width: 100%; overflow: hidden; }
+.m-lmiddlead img, .m-lmiddlead embed, .m-lmiddlead object { display: block; width: 100%; border: medium none; cursor: pointer; }
+.m-lmiddlead .adlink { display: block; position: relative; z-index: 10; max-width: 590px; background: transparent url("empty.png") repeat scroll 0px 0px; }
+.m-lmiddlead .flashadwrap {  }
+</style>
+  
+  <link href="prettify.css" type="text/css" rel="stylesheet">
+  <script src="about:blank" type="text/javascript"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+.ui-4704480442 { position: absolute; top: -99999px; left: -99999px; z-index: 100; text-align: center; }
+.ui-4704480442 .ztbr { height: 30px; line-height: 30px; text-align: left; background-color: rgb(94, 159, 247); font-size: 14px; font-weight: bold; }
+.ui-4704480442 .zttl { width: 85%; padding-left: 10px; }
+.ui-4704480442 .zcls { position: absolute; top: 5px; right: 10px; width: 20px; height: 20px; overflow: hidden; cursor: pointer; z-index: 5; }
+.ui-4704480442 .zcnt { padding: 10px; min-height: 30px; font-size: 12px; background-color: rgb(255, 255, 255); }
+.ui-4704480442 .zext { display: none; }
+.nbwindow { color: rgb(0, 0, 0); border: 1px solid rgb(190, 184, 171); }
+#blog-163-com #blog-163-com-layer .nbwindow { min-height: 100px; border: 1px solid rgb(190, 184, 171); }
+.nbwindow .zttl { font-size: 12px; }
+.nbwindow .txtclose { position: absolute; top: 4px; right: 11px; width: 10px; height: 10px; line-height: 10px; }
+.nbwindow .zcls { right: 12px; top: -1px; width: 32px; height: 18px; line-height: 18px; background: rgb(190, 184, 171) url("close_01.png") no-repeat scroll 0px center; color: rgb(100, 100, 100); text-indent: 1px; }
+.nbwindow .ztbr { height: 23px; line-height: 23px; margin: 0px auto; color: rgb(0, 0, 0); background: rgb(232, 232, 230) url("top_bg.png") repeat-x scroll center bottom; }
+.nbwindow .zbtnbar { height: 31px; line-height: 31px; background: rgb(238, 238, 238) none repeat scroll 0% 0%; }
+#blog-163-com #blog-163-com-layer .nbwinautoheight { height: auto; }
+.nbwindow .zcls .txtclose { visibility: hidden; }
+.nbwindow .zext { display: block; position: absolute; }
+.nbwindow .zext0 { left: 0px; top: -6px; width: 100%; height: 6px; background: transparent url("top_bg.png") repeat-x scroll center top; }
+.nbwindow .zext1 { left: 0px; bottom: -6px; width: 100%; height: 6px; background: transparent url("bottom_bg.png") repeat-x scroll center bottom; }
+.nbwindow .zext2 { left: -6px; top: 0px; width: 6px; height: 100%; background: transparent url("left_bg.png") repeat-y scroll left center; }
+.nbwindow .zext3 { right: -6px; top: 0px; width: 6px; height: 100%; background: transparent url("right_bg.png") repeat-y scroll right center; }
+.nbwindow .zext4 { left: -6px; top: -6px; width: 12px; height: 29px; background: transparent url("left_top.png") no-repeat scroll 0% 0%; }
+.nbwindow .zext5 { right: -6px; top: -6px; width: 12px; height: 29px; background: transparent url("right_top.png") no-repeat scroll 0% 0%; }
+.nbwindow .zext6 { left: -6px; bottom: -6px; width: 12px; height: 37px; background: transparent url("left_bottom.png") no-repeat scroll 0% 0%; }
+.nbwindow .zext7 { right: -6px; bottom: -6px; width: 12px; height: 37px; background: transparent url("right_bottom.png") no-repeat scroll 0% 0%; }
+.ui-6636131209 { font-size: 12px; padding-bottom: 3px; text-align: center; }
+.ui-6636131209 .frg { display: none; font-weight: bold; }
+.ui-6636131209 .iblock { height: 22px; line-height: 22px; padding: 1px 8px; margin: 0px 2px; cursor: pointer; text-decoration: underline; }
+.ui-6636131209 .pgi:hover, .ui-6636131209 .pgi.js-zhvr-258 { padding: 0px 7px; border-width: 1px; border-style: solid; }
+.ui-6636131209 .pgi.js-zslt-987 { padding: 1px 8px; border-width: 0px; background-color: transparent; font-weight: bold; cursor: default; text-decoration: none; }
+.ui-6636131209 .pgb.js-znpg-097 { visibility: hidden; }
+.ui-6636131209.js-zfrg-6540 .frg { display: none; }
+</style></head>
+<body id="blog-163-com" class="nb-body nb-inr nb-prv ">
+  <!--[if lte IE 6]><div id="blog-163-com-ie6bodywrap" class=""><![endif]-->
+    <!--[if lte IE 6]><div id="blog-163-com-ie6body" class="nb-body"><![endif]-->
+
+<div class="nb-nbar clearfix" id="blog-163-com-topbar">
+  <div class="pl fl clearfix">
+  <div id="" class="nbw-im fl im im0">
+    <a rel="nofollow" class="lbl bd ia noul " href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://www.163.com/" target="_blank" hidefocus="true"><span class="tx">网易</span><span class="iblock icn0 icn0-421">&nbsp;</span></a><div class="nbw-tcd box-shadow bd">
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://news.163.com/">
+            新闻
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://www.lofter.com/&amp;act=qbbkdl_20141211_01">
+            LOFTER
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://email.163.com/">
+            邮箱
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://photo.163.com/">
+            相册
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://yuedu.163.com/">
+            阅读
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://yuedu.163.com/book">
+            图书
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://www.youdao.com/">
+            有道
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://photo.163.com/pp/square/">
+            摄影
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://qiye.163.com/">
+            企业邮箱
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://quan.163.com/?from=blogdh">
+            优惠券
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://note.youdao.com/?vendor=163blog">
+            云笔记
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://fm.163.com/?fmblogzx0628">
+            闪电邮
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://mail.163.com/client/dl.html?from=mail27">
+            邮箱大师
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://yxp.163.com/">
+            印像派
+          </a>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://www.kaola.com/">
+            考拉海购
+          </a>
+        <div class="sep bd space">&nbsp;</div>
+          <a rel="nofollow" target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=http://sitemap.163.com/">
+            更多
+          </a>
+        
+    </div>
+  </div>
+
+    <span style="display: none; margin-left: 0px;" class="fl iblock space icn1 icn1-4">&nbsp;</span>
+
+  <div id="" class="nbw-im fl im im10">
+    <a class="lbl bd ia noul " href="http://blog.163.com/?frompersonalbloghome" target="_blank" hidefocus="true"><span class="tx">博客</span><span class="iblock icn0 icn0-421">&nbsp;</span></a><div class="nbw-tcd box-shadow bd">
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/services/wapblog.html?frompersonalbloghome">
+            手机博客
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/clone/clone.html?frompersonalbloghome">
+            博客搬家
+          </a>
+          <a target="_blank" class="itm noul youcai " hidefocus="true" href="http://blog.163.com/vip.do?frompersonalbloghome">
+            博客VIP服务
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/public/explore/?frompersonalbloghome">
+            发现
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/g/?frompersonalbloghome">
+            小组
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/public/theme/?frompersonalbloghome">
+            风格
+          </a>
+        <div class="sep bd space">&nbsp;</div>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/blog_admin/blog/static/721279201082863728829/?frompersonalbloghome">
+            LiveWriter写博
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/blog_admin/blog/static/721279201092713253500/?frompersonalbloghome">
+            word写博
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/services/mailblog.html?frompersonalbloghome">
+            邮件写博
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/services/emsblog.html?frompersonalbloghome">
+            短信写博
+          </a>
+        <div class="sep bd space">&nbsp;</div>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/showMultiUser.do?frompersonalbloghome">
+            群博客
+          </a>
+          <a target="_blank" class="itm noul youcai " hidefocus="true" href="http://blog.163.com/BLOG_YOUCAI/">
+            博客油菜地
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/ht/?frompersonalbloghome">
+            博客话题
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/hot/history/?frompersonalbloghome">
+            博客热点
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://q.163.com/#home?frompersonalbloghome">
+            博客圈子
+          </a>
+          <a target="_blank" class="itm noul  " hidefocus="true" href="http://blog.163.com/findFriend.do?type=5?frompersonalbloghome">
+            找朋友
+          </a>
+        
+    </div>
+  </div>
+                               
+    <span style="display: none; margin-left: 0px;" class="fl iblock space icn1 icn1-4">&nbsp;</span>
+    
+    <div id="topbar_gachaArea" class="fl topbar_gachaArea">
+        <a class="dlditm" rel="nofollow" target="_blank" hidefocus="true" href="http://gacha.163.com/discover/pic?tag=1&amp;utm_source=%E7%BD%91%E6%98%93%E5%8D%9A%E5%AE%A2%E5%B7%A6%E4%B8%8A%E8%A7%92%E6%96%87%E5%AD%97%E9%93%BE&amp;utm_campaign=%E7%BD%91%E6%98%93%E5%8D%9A%E5%AE%A2%E5%B7%A6%E4%B8%8A%E8%A7%92%E6%96%87%E5%AD%97%E9%93%BE">GACHA－紧身衣美少女诱惑<em></em></a>
+        <div class="m-gachaWrap">
+            <div class="clearfix part1">
+                <a class="jximgwrap" target="_blank" href="http://gacha.163.com/detail/post/42498300ab944f5e9c0da7fdb626ce3b"><img class="jximg" src="72453964d8604239b13dcbba9c62880f.jpg"></a>
+                <a class="jximgwrap" target="_blank" href="http://gacha.163.com/detail/post/f4aaf9b1a7a742989a58e59545df80d1"><img class="jximg" src="f61d7ef7576f460ca4b110f1db64ee33.jpeg"></a>
+                
+            </div>
+            <div class="part2">
+                <a class="moreimg" target="_blank" href="http://gacha.163.com/discover">更多美图&gt;</a>
+            </div>
+            <div class="part3">
+                <img src="erweima.png">
+                <p>扫码下载</p>
+            </div>
+            <div class="part4">&nbsp;</div>
+        </div>
+        
+    </div>
+    
+    
+    <div id="topbar_lofterDldArea" class="fl topbar_lofterDldArea">
+        <a class="dlditm" rel="nofollow" target="_blank" hidefocus="true" href="http://www.lofter.com/tag/%E5%B0%91%E5%A5%B3?act=qbbkdl_20160513_01">LOFTER-高清美女私房一网打尽<em></em></a>
+        <div class="m-lofterWrap">
+            <div class="clearfix part1">
+                <a href="http://www.lofter.com/?index163Image=1470371518797&amp;newloginentry=1&amp;from=blog" class="jximgwrap" target="_blank"><img src="6631719776095329972.jpg" class="jximg"></a>
+                <a href="http://www.lofter.com/?index163Image=1479203162713&amp;newloginentry=1&amp;from=blog" class="jximgwrap" target="_blank"><img src="6632169476350097176.jpg" class="jximg"></a>
+            </div>
+            <div class="part2">
+                <a class="moreimg" target="_blank" href="http://www.lofter.com/view?from=blog">更多美图&gt;</a>
+            </div>
+            <div class="part3">
+                <img src="code2d.png">
+                <p>扫码下载</p>
+            </div>
+            <div class="part4">&nbsp;</div>
+        </div>
+    </div>
+    
+    <div id="topbar_yxpArea" class="fl topbar_yxpArea">
+        <a class="dlditm" rel="nofollow" target="_blank" hidefocus="true" href="http://yxp.163.com/store/goods/photobook/">印像派-定制照片书<em></em></a>
+    </div>
+
+
+    <div class="nbw-im fl im1 im seebyway"><a rel="nofollow" title="随便看看" class="lbl bd ima spy" href="http://blog.163.com/randomUser.do"><span>&nbsp;</span></a></div>
+
+    <span style="display: none;" class="fl iblock space icn1 icn1-4">&nbsp;</span>
+    <div id="topbar_randShowArea" class="fl" style="display: block;">
+      <div class="nbw-im fl im1 im randtag"><a target="_blank" class="bd ima moveblog randshow" href="http://www.lofter.com/view?act=qbbkdlcsz_20160921_01&amp;utm_source=163blog&amp;utm_campaign=topbar-orange">颜值最高的图片社交社区</a></div>
+    </div>
+  </div>
+  <div class="fr pr clearfix">
+    <div id="topbar_loginAndReg" class="fr">
+      <a rel="nofollow" style="margin-left: 10px; color: rgb(255, 119, 0);" class="iblock fr ima" href="http://zc.reg.163.com/regInitialized?pd=blog&amp;pkid=EoMXCuf&amp;pkht=blog.163.com" target="_blank">注册</a>
+      <a rel="nofollow" class="iblock fr ima ztag" href="#">登录</a>
+      <span class="fr iblock space icn1 icn1-4 spx">&nbsp;</span>
+      <div id="topbar_followArea" class="nbw-im fr"><span class="lbl bd ima followit fl ztag"><span class="fl addicon">&nbsp;</span><span class="fl">加关注</span></span></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+<script src="about:blank"></script>
+
+<!-- @NOPARSE -->
+<script src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<!-- /@NOPARSE -->
+
+<div id="blogtoptips-yitou" class="blogtoptips blogtoptips-yitou phide">
+</div>
+
+<div class="blogtoptips phide" id="blog-163-com-toptips">
+ <div class="blogtoptipswrap">
+  <div id="newbulletinstip" class="newbulletinstip phide">
+    <a class="lnknews fc03 m2a tiptag phide" href="#" target="_blank"></a><span class="txtnews tiptag phide"></span>&nbsp;&nbsp;&nbsp;<a class="fc03 ul nextorprevnews tiptag phide" href="#" hidefocus="true">显示下一条</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="fc03 ul close tiptag" href="#" hidefocus="true">关闭</a>
+  </div>
+ </div>
+ 	<div id="sinaoauthtip" class="sinaoauthtip phide">
+    	<span style="">温馨提示！由于新浪微博认证机制调整，您的新浪微博帐号绑定已过期，请重新绑定！</span><a rel="nofollow" class="fc03 noul iblock" href="http://ljx198308.blog.163.com/settings/?fromnewcenter#m=6">立即重新绑定新浪微博》</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="fc03 iblock close" href="#">关闭</a>
+  	</div>
+    <div id="$_faxiantip" class="faxiantip phide">
+      <div>
+	    <a class="m2a iblock" href="http://blog.163.com/public/explore/?fromblogbanner" target="_blank"></a>
+	    <span class="faxiantag m2a"></span>
+      </div>
+    </div>
+    <div id="$_guanggaotip" class="guanggaotip phide">
+      <div>
+	    
+	    <span class="guanggaotag m2a"></span>
+      </div>
+    </div>
+    <div id="$_lofterInviteTip" class="lofterInviteTip phide">
+      <div>
+	    <a class="m2a iblock" href="http://www.lofter.com/invite/163blog/?email=" target="_blank"></a>
+	    <span class="lofterInviteTag m2a"></span>
+      </div>
+    </div>
+</div>  <div class="nb-wrap wsy" id="blog-163-com-main"><div class="nb-are nb-top">
+  <div class="wkg h" id="blog-163-com-banner">
+    
+    <div class="t">
+      <h1 class="n c"><span class="ztag pre">雨恋丽晴</span></h1>
+      <p class="d c"><span class="ztag pre">平时上网较好东西的记录地</span></p>
+    </div>
+    <div class="f h ztag">&nbsp;</div>
+    <a class="x" hidefocus="true" target="_blank" href="#"><span class="xx ztag"></span></a>
+  </div>
+</div><div class="nb-are nb-nav">
+  <div class="wkg">
+    <div class="c h">
+      <h2>导航</h2>
+      <ul class="noul clearfix">
+                
+	        <li class="w w0">
+	          <a class="i i0 fc01 h" hidefocus="true" href="http://ljx198308.blog.163.com/">首页</a>
+	        </li>
+	        <li class="w w1 selected">
+	          <a class="i i1 fc01 h" hidefocus="true" href="http://ljx198308.blog.163.com/blog/">日志</a>
+	        </li>
+	        <li class="w w9">
+	          <a class="i i9 fc01 h" hidefocus="true" href="http://ljx198308.blog.163.com/loftarchive/">LOFTER</a>
+	        </li>
+	        <li class="w w2">
+	          <a class="i i2 fc01 h" hidefocus="true" href="http://ljx198308.blog.163.com/album/">相册</a>
+	        </li>
+	        <li class="w w3">
+	          <a class="i i3 fc01 h" hidefocus="true" href="http://ljx198308.blog.163.com/music/">音乐</a>
+	        </li>
+	        <li class="w w4">
+	          <a class="i i4 fc01 h" hidefocus="true" href="http://ljx198308.blog.163.com/collection/">收藏</a>
+	        </li>
+	        <li class="w w5">
+	          <a class="i i5 fc01 h" hidefocus="true" href="http://ljx198308.blog.163.com/friends/">博友</a>
+	        </li>
+	        <li class="w w6">
+	          <a class="i i6 fc01 h" hidefocus="true" href="http://ljx198308.blog.163.com/profile/">关于我</a>
+	        </li>
+      </ul><!--
+ --></div>
+    <div class="l h">&nbsp;</div>
+    <div class="r h">&nbsp;</div>
+  </div>
+</div>  <div class="nb-are nb-smt"><div class="wkg h space"><div class="l h">&nbsp;</div><div class="r h">&nbsp;</div><div class="c h">&nbsp;</div></div></div>
+  <div class="nb-are nb-cnt">
+    <div class="wkg">
+      <div class="c wc h clearfix " id="blog-163-com-container">
+
+  <div class="nb-mdl lcr m-3 " id="-3">
+  <div class="nb-mt lcr th fc02">
+    <div class="c tc th lcr"><h2 class="thide nb-jsc mdl_t_t">日志</h2></div>
+    <div class="r tm th nb-jsc"></div>
+    <div class="l tl th">&nbsp;</div>
+    <div class="r tr th">&nbsp;</div>
+  </div>
+    <div class="nb-mc lcr">
+      <div class="c cc lcr nb-jsc">
+<script>/* Code removed by ScrapBook */</script>
+<div class="nbw-ryt ztag clearfix ">
+  <div class="right bdwl bds0 bdc0">
+    <div class="cnt ztag">
+    <div class="g-rsidebar">
+        <div class="m-aboutme">
+            <div class="ttlbar fc06 bdwb bdc0 bds0">关于我</div>
+            <a class="avatar" href="http://ljx198308.blog.163.com/" target="_blank" hidefocus="true">
+                <img id="rsavatarimg" src="ava_006.s">
+            </a>
+            <div class="nick fc03">
+                 <a href="http://ljx198308.blog.163.com/" target="_blank" hidefocus="true">雨恋丽晴</a>
+                 
+            </div>
+            <div id="r_statusNode" class="statusNode"><span class="findfrd"> <span class="iblock icn0 icn0-41">&nbsp;</span> <span class="fc03 ul ztag">加博友</span> </span><span class="dofollow"> <span class="iblock icn0 icn0-016">&nbsp;</span> <span class="fc03 ul tofollow">关注他</span> </span></div>
+        </div>
+        
+        <div style="display: block;" class="m-rtopad">
+            <a style="display: none;" href="#" target="_blank" hidefocus="true"><img style="border: medium none;" id="righttopadimg"></a>
+            <iframe src="index_7.html" marginwidth="0" marginheight="0" id="rtop_iframe" style="display: block;" scrolling="no" allowtransparency="true" frameborder="0" height="240" width="240"></iframe>
+        </div>
+        
+        <div class="m-blogclasses">
+            <div class="ttlbar fc06 bdwb bdc0 bds0">文章分类</div>
+            <ul>
+                    <li><a class="fc05" href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=1&amp;c=fks_084070092085089070084080082095085081087065083082084071082" target="_blank" hidefocus="true"><span class="iblock dot">·</span>模型设计（1）</a></li>
+                    <li><a class="fc05" href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=1&amp;c=fks_084071093081089064085087086095085081087065083082084071082" target="_blank" hidefocus="true"><span class="iblock dot">·</span>DELPHI（1）</a></li>
+                    <li><a class="fc05" href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=1&amp;c=fks_084065087086083075084081084095085081087065083082084071082" target="_blank" hidefocus="true"><span class="iblock dot">·</span>杂项（1）</a></li>
+                    <li><a class="fc05" href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=1&amp;c=fks_084065086082081065085086094095085081087065083082084071082" target="_blank" hidefocus="true"><span class="iblock dot">·</span>LINUX（24）</a></li>
+                    <li><a class="fc05" href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=1&amp;c=fks_084065086086082075080083081095085081087065083082084071082" target="_blank" hidefocus="true"><span class="iblock dot">·</span>日志（11）</a></li>
+                    <li><a class="fc05" href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=1&amp;c=fks_084066093080086068085087094095085081087065083082084071082" target="_blank" hidefocus="true"><span class="iblock dot">·</span>搞笑（3）</a></li>
+                    <li><a class="fc05" href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=1&amp;c=fks_084066092082085074085083086095085081087065083082084071082" target="_blank" hidefocus="true"><span class="iblock dot">·</span>游戏（1）</a></li>
+                    <li><a class="fc05" href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=1&amp;c=fks_084066082095086069087094086095085081087065083082084071082" target="_blank" hidefocus="true"><span class="iblock dot">·</span>股票（4）</a></li>
+                        <li><a class="fc05" href="http://ljx198308.blog.163.com/blog/#m=0" target="_blank" hidefocus="true"><span class="iblock dot">·</span>更多 &gt;</a></li>
+            </ul>
+        </div>
+        <div id="r_mlofteriframe" class="m-lofteriframe">
+            <div class="ttlbar fc06 bdwb bdc0 bds0"><a hidefocus="true" style="display: none; float: left; margin-left: 12px; color: rgb(255, 0, 0); font-size: 12px; text-decoration: none;" target="_blank" href="http://www.lofter.com/?act=qbbokejingxuan_20150109_03&amp;newloginentry=1">注册免费冲印20张照片</a><span>LOFTER精选</span></div>
+            <iframe src="index_8.html" id="r_lofteriframe" border="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" frameborder="0" height="745" width="240"></iframe>
+            
+            <div class="btlink" style="height: 20px; line-height: 20px; padding: 10px 0px 0px 12px;"><a target="_blank" href="http://www.lofter.com/?act=qbbokejingxuan_20150109_03&amp;newloginentry=1" hidefocus="true" class="fc03" style="font-size: 14px; text-decoration: none;">注册免费冲印20张照片 &gt;</a></div>
+            
+        </div>
+        <div id="r_mkaolaadv" class="m-kaolaadv">
+            <div class="ttlbar fc06 bdwb bdc0 bds0">网易考拉推荐</div>
+            <iframe marginheight="0" marginwidth="0" scrolling="no" border="0" allowtransparency="true" src="index_9.html" frameborder="0" height="275" width="240"></iframe>
+            
+        </div>
+        
+        <div id="r_m163news" class="m-163news"><div class="ttlbar fc06 bdwb bdc0 bds0">网易新闻</div>            <div class="newscnt">                <a class="headnews" hidefocus="true" target="_blank" href="#">                    <img src="_002.jpg">                    <span class="icover"></span>                    <span class="info"><span class="imgdesc thide">80后纹眉师一年挣30万&nbsp;购近百万元房产</span></span>                </a>                <ul>                                                                              <li class="thide"><a hidefocus="true" target="_blank" href="http://news.163.com/16/1225/11/C94LJHP80001899N.html" class="fc05"><span class="iblock dot">·</span>元旦出游全攻略:什么时候最堵?哪里最堵?</a></li>                                                            <li class="thide"><a hidefocus="true" target="_blank" href="http://news.163.com/16/1225/11/C94K05G10001875P.html" class="fc05"><span class="iblock dot">·</span>双胞胎女婴被不同家庭收养&nbsp;10年后因圣诞礼物相认</a></li>                                                            <li class="thide"><a hidefocus="true" target="_blank" href="http://news.163.com/16/1225/11/C94KJ8H10001899N.html" class="fc05"><span class="iblock dot">·</span>男子见妻子坐别人奥迪里聊天&nbsp;吃醋驾面包车撞上去</a></li>                                                            <li class="thide"><a hidefocus="true" target="_blank" href="http://news.163.com/16/1225/11/C94JURC70001875P.html" class="fc05"><span class="iblock dot">·</span>广东男子清晨开挖掘机抢银行&nbsp;被当场抓获</a></li>                                                            <li class="thide"><a hidefocus="true" target="_blank" href="http://news.163.com/16/1225/09/C94EE4TA0001875P.html" class="fc05"><span class="iblock dot">·</span>"凯里灭门案"嫌犯曾让亲戚出面低价买地高价卖出</a></li>                                                            <li class="thide"><a hidefocus="true" target="_blank" href="http://news.163.com/16/1225/09/C94E9A050001875N.html" class="fc05"><span class="iblock dot">·</span>厉害！税务员刷朋友圈刷出6000多万税款</a></li>                                                            <li class="thide"><a hidefocus="true" target="_blank" href="http://news.163.com/16/1225/09/C94E2N2V00018AOQ.html" class="fc05"><span class="iblock dot">·</span>唐山爆竹厂爆炸致2死6伤&nbsp;村民:一条街震塌好几家</a></li>                                                            <li class="thide"><a hidefocus="true" target="_blank" href="#" class="fc05"><span class="iblock dot">·</span>河南商家推“水果浴”&nbsp;满池水果吸引游客</a></li>                                                                          </ul>                <div class="download163news">                    <a class="fc03" target="_blank" hidefocus="true" href="http://www.163.com/newsapp/">下载网易新闻客户端 &gt;</a>                </div>            </div></div>
+        
+        
+        <div style="display: block;" class="m-rbottomad">
+            <a style="display: none;" href="#" target="_blank" hidefocus="true"><img style="border: medium none;" id="rightbottomadimg"></a>
+            <iframe src="index_10.html" marginwidth="0" marginheight="0" id="rbottom_iframe" style="display: block;" scrolling="no" allowtransparency="true" frameborder="0" height="240" width="240"></iframe>
+        </div>
+        
+        <div id="r_fixedNodesWrap" class="fixedNodesWrap"><div style="visibility: hidden; opacity: 0;" id="r_fixedNodesCnt" class="fixedNodesCnt f-trans"><div id="r_mlofteriframe2" class="f-trans m-lofteriframe m-lofteriframe-2">
+            <div class="ttlbar fc06 bdwb bdc0 bds0"><a hidefocus="true" style="display: none; float: left; margin-left: 12px; color: rgb(255, 0, 0); font-size: 12px; text-decoration: none;" target="_blank" href="http://www.lofter.com/?act=qbbokejingxuan_20150109_03&amp;newloginentry=1">注册免费冲印20张照片</a><span>LOFTER精选</span></div>
+            <iframe src="index_11.html" id="r_lofteriframe" border="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" frameborder="0" height="745" width="240"></iframe>
+            
+            <div class="btlink" style="height: 20px; line-height: 20px; padding: 10px 0px 0px 12px;"><a target="_blank" href="http://www.lofter.com/?act=qbbokejingxuan_20150109_03&amp;newloginentry=1" hidefocus="true" class="fc03" style="font-size: 14px; text-decoration: none;">注册免费冲印20张照片 &gt;</a></div>
+            
+        </div><div id="r_mkaolaadv2" class="m-kaolaadv m-kaolaadv-2">
+            <div class="ttlbar fc06 bdwb bdc0 bds0">网易考拉推荐</div>
+            <iframe marginheight="0" marginwidth="0" scrolling="no" border="0" allowtransparency="true" src="index_12.html" frameborder="0" height="275" width="240"></iframe>
+            
+        </div></div></div>
+    </div>
+    </div>
+  </div>
+  <div class="left">
+     <div class="lcnt bdwr bds0 bdc0 ">
+      <div id="$_newOldBlogLinkTopDiv" class="top fc03 bdwb bdc0 bds2 clearfix">       <span class="ilft iblock icn0 icn0-620">&nbsp;</span>       <div class="pleft thide"><a class="m2a" href="http://ljx198308.blog.163.com/blog/static/176274246201129103422220/">linux实用命令详解（新建删除复制文件夹，挂载）</a></div>                 <span class="irgt iblock icn0 icn0-619">&nbsp;</span>       <div class="pright thide"><a class="m2a" href="http://ljx198308.blog.163.com/blog/static/17627424620112111503243/">Oracle&nbsp;trunc</a></div>     </div>
+     <div class="mcnt ztag">
+      <div class="nbw-bitm bdwb bds2 bdc0 ">
+        <div class="multicntwrap">
+	      <div class="multicnt">
+	      	<div>
+		      <h3 class="title pre fs1"><span class="tcnt">Linux挂载LVM分区的方法【转】</span>&nbsp;&nbsp;<span class="bgc0 fc07 fw0 fs0"></span></h3>
+		      <p class="tdep clearfix nbw-act fc06" style="line-height: 20px;">
+		        <span class="pleft">
+		          
+		          <span class="blogsep">2011-03-09 14:13:41</span><span class="blogsep">|&nbsp;&nbsp;分类：</span>
+		          <a class="fc03 m2a" href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=1&amp;c=fks_084065086082081065085086094095085081087065083082084071082" title="LINUX">LINUX</a>
+		          <span class="blogsep" id="$_blogTagTitle">|&nbsp;&nbsp;标签：</span><span class="fc03" id="$_blogTagInfo"><a href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=3&amp;c=linux" class="fc03 m2a">linux</a>&nbsp;&nbsp;<a href="http://ljx198308.blog.163.com/blog/#m=0&amp;t=3&amp;c=lvm" class="fc03 m2a">lvm</a>&nbsp;&nbsp;</span>
+		        </span>
+		        <span class="pright fc07 ztag"><span class="blogsep">|</span><span id="$_spanReport" class="fc03 m2a">举报</span></span>
+		        <span class="pright fc07 ztag"><span class="blogsep">|</span><span class="zihao fc03" id="$_fontswitch">字号<span class="zihaoshow  phide" id="$_fontsTypes"><span class="zihaoc bdc0"><span class="stag"></span><span class="fc04 stag">大</span><span class="fc04 stag">中</span><span class="fc04 stag">小</span></span></span></span></span><span class="pright pnt fc03" id="$_blog_subscribe"><span class="iblock icn0 icn0-919">&nbsp;</span><a class="m2a">订阅</a></span>
+		      </p>
+		    </div>
+	      </div>
+	      
+	      <div class="m-shareAndDownLoad">
+              <div class="share-wrap pleft">
+                <span id="$_shareBtn_lofter2" title="分享到LOFTER" class="shareitm lofter f-bkicons">&nbsp;</span>
+                <span id="$_shareBtn_sinaweibo2" title="分享到新浪微博" class="shareitm sinawb f-bkicons">&nbsp;</span>
+                <span id="$_shareBtn_qq2" title="分享到QQ空间" class="shareitm qqzone f-bkicons">&nbsp;</span>
+                <span id="$_shareBtn_qqweibo2" title="分享到腾讯微博" class="shareitm qqweibo f-bkicons">&nbsp;</span>
+                <div id="$_shareBtn_weixin2" title="分享到微信" class="shareitm weixin f-bkicons">
+<div class="code2dimlayer fc06">
+    <img src="bitMaxImageGen.do">
+    <div class="tips">
+        <p>用微信&nbsp;&nbsp;“扫一扫”</p>
+        <p>将文章分享到朋友圈。</p>
+    </div>
+    <a class="close">&nbsp;</a>
+</div>
+                </div>
+                <div id="$_shareBtn_yixin2" title="分享到易信" class="shareitm yixin f-bkicons">
+<div class="code2dimlayer fc06">
+    <img src="bitMaxImageGen_001.do">
+    <div class="tips">
+        <p>用易信&nbsp;&nbsp;“扫一扫”</p>
+        <p>将文章分享到朋友圈。</p>
+    </div>
+    <a class="close">&nbsp;</a>
+</div>
+                </div>
+              </div>
+              <a class="pright fc03 noul" target="_blank" href="http://www.lofter.com/app?act=qbbkrzydb_20150408_01">&nbsp;&nbsp;下载LOFTER</a>
+              <a class="pright fc03 noul" target="_blank" href="http://yxp.163.com/">我的照片书&nbsp;&nbsp;|</a>
+          </div>
+          
+        </div>
+
+        <div>
+        
+        </div>
+
+        <div class="nbw-blog-start"></div>
+        <div class="bct fc05 fc11 nbw-blog ztag">Linux挂载LVM分区的方法  <p>这几天在折腾服务器 遇到需要挂载第二块硬盘的问题 第二块硬盘做了LVM<br>经过查找 找到了解决办法 备忘一下</p>  <p>#fdisk -l<br>[root@localhost /]# fdisk -l<br>Disk /dev/sda: 36.7 GB, 36778545152 bytes<br>255 heads, 63 sectors/track, 4471 cylinders<br>Units = cylinders of 16065 * 512 = 8225280 bytes<br>&nbsp;&nbsp; Device Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blocks&nbsp;&nbsp; Id&nbsp; System<br>/dev/sda1&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 104391&nbsp;&nbsp; 83&nbsp; Linux<br>/dev/sda2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2463&nbsp;&nbsp;&nbsp; 19679625&nbsp;&nbsp; 83&nbsp; Linux<br>/dev/sda3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2464&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3949&nbsp;&nbsp;&nbsp; 11936295&nbsp;&nbsp; 83&nbsp; Linux<br>/dev/sda4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3950&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4471&nbsp;&nbsp;&nbsp;&nbsp; 4192965&nbsp;&nbsp;&nbsp; 5&nbsp; Extended<br>/dev/sda5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3950&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4471&nbsp;&nbsp;&nbsp;&nbsp; 4192933+&nbsp; 82&nbsp; Linux swap / Solaris<br>Disk /dev/sdb: 73.4 GB, 73407868928 bytes<br>255 heads, 63 sectors/track, 8924 cylinders<br>Units = cylinders of 16065 * 512 = 8225280 bytes<br>&nbsp;&nbsp; Device Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blocks&nbsp;&nbsp; Id&nbsp; System<br>/dev/sdb1&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8924&nbsp;&nbsp;&nbsp; 71681998+&nbsp; 8e&nbsp; Linux LVM<br>Disk /dev/sdc: 36.7 GB, 36703934464 bytes<br>255 heads, 63 sectors/track, 4462 cylinders<br>Units = cylinders of 16065 * 512 = 8225280 bytes<br>&nbsp;&nbsp; Device Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blocks&nbsp;&nbsp; Id&nbsp; System<br>/dev/sdc1&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 104391&nbsp;&nbsp; 83&nbsp; Linux<br>/dev/sdc2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4462&nbsp;&nbsp;&nbsp; 35736592+&nbsp; 8e&nbsp; Linux LVM<br>[root@localhost /]# pvs<br>&nbsp; PV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fmt&nbsp; Attr PSize&nbsp; PFree <br>&nbsp; /dev/sdb1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lvm2 --&nbsp;&nbsp; 68.36G 68.36G<br>&nbsp; /dev/sdc2&nbsp; VolGroup00 lvm2 a-&nbsp;&nbsp; 34.06G 32.00M</p>  <p>sdc2就是我要挂接的<br>[root@localhost /]# vgscan<br>&nbsp; Reading all physical volumes.&nbsp; This may take a while...<br>&nbsp; Found volume group "VolGroup00" using metadata type lvm2</p>  <p>[root@localhost /]# lvscan<br>&nbsp; inactive&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '/dev/VolGroup00/LogVol00' [32.09 GB] inherit<br>&nbsp; inactive&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '/dev/VolGroup00/LogVol01' [1.94 GB] inherit<br>可以看到新修改的VolGroup00是inactive状态</p>  <p>[root@localhost /]# vgchange -a y <br>&nbsp; 2 logical volume(s) in volume group "VolGroup00" now active<br>[root@localhost /]# lvscan<br>&nbsp; ACTIVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '/dev/VolGroup00/LogVol00' [32.09 GB] inherit<br>&nbsp; ACTIVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '/dev/VolGroup00/LogVol01' [1.94 GB] inherit<br>好了，现在可以挂载了</p>  <p>[root@localhost /]# mount&nbsp; -t ext3 /dev/VolGroup00/LogVol00 /d1</p>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p>如果lvm两个卷同名,则需要对另一个进行重命名<br>[root@localhost ~]# pvs<br>PV VG Fmt Attr PSize PFree</p>  <p>/dev/hda2 VolGroup00 lvm2 a- 76.22G 32.00M<br>/dev/hdc2 VolGroup00 lvm2 a- 74.38G 32.00M</p>  <p>两个VG名称居然一样，</p>  <p>[root@localhost ~]# vgrename VolGroup00 VolGroup88<br>Found more than one VG called VolGroup00. Please supply VG uuid.</p>  <p>[root@localhost ~]#vgrename 0iHE6T-dGIa-zkG2-Hn6f-heiH-OOwD-OzRmEt VolGroup88<br>&nbsp;Volume group “VolGroup00″ still has active LVs</p>  <p><br>卸载</p>  <p>vgchange -a n /dev/Volxxx</p>  <p>kpartx -d /dev/loopx</p>  <p>losetup -d /dev/loopx</p>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p><br>[root@shmym dev]# vgscan<br>&nbsp; Reading all physical volumes.&nbsp; This may take a while...<br>&nbsp; Found volume group "VolGroup00" using metadata type lvm2<br>&nbsp; Found volume group "VolGroup00" using metadata type lvm2</p>  <p>[root@shmym dev]# pvscan<br>&nbsp; PV /dev/sda2&nbsp;&nbsp; VG VolGroup00&nbsp;&nbsp; lvm2 [68.25 GB / 64.00 MB free]<br>&nbsp; PV /dev/hda2&nbsp;&nbsp; VG VolGroup00&nbsp;&nbsp; lvm2 [232.78 GB / 160.00 MB free]<br>&nbsp; Total: 2 [301.03 GB] / in use: 2 [301.03 GB] / in no VG: 0 [0&nbsp;&nbsp; ]</p>  <p><br>[root@shmym dev]# pvs<br>&nbsp; PV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fmt&nbsp; Attr PSize&nbsp;&nbsp; PFree<br>&nbsp; /dev/hda2&nbsp; VolGroup00 lvm2 a-&nbsp;&nbsp; 232.78G 160.00M<br>&nbsp; /dev/sda2&nbsp; VolGroup00 lvm2 a-&nbsp;&nbsp;&nbsp; 68.25G&nbsp; 64.00M</p>  <p><br>[root@shmym dev]# vg<br>vgcfgbackup&nbsp;&nbsp; vgconvert&nbsp;&nbsp;&nbsp;&nbsp; vgextend&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vgreduce&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vgscan<br>vgcfgrestore&nbsp; vgcreate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vgimport&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vgremove&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vgsplit<br>vgchange&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vgdisplay&nbsp;&nbsp;&nbsp;&nbsp; vgmerge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vgrename<br>vgck&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vgexport&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vgmknodes&nbsp;&nbsp;&nbsp;&nbsp; vgs</p>  <p>&nbsp;</p>  <p><br>[root@shmym dev]# vgrename -h<br>&nbsp; vgrename: Rename a volume group</p>  <p>vgrename<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [-A|--autobackup y|n]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [-d|--debug]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [-h|--help]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [-t|--test]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [-v|--verbose]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [--version]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OldVolumeGroupPath NewVolumeGroupPath |<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OldVolumeGroupName NewVolumeGroupName</p>  <p><br>[root@shmym dev]# vgrename VolGroup00 VolGroup01<br>&nbsp; Found more than one VG called VolGroup00. Please supply VG uuid.<br>解释:找到一个以上的卷组名为VolGroup00 。请提供卷组的UUID 。</p>  <p><br>[root@shmym dev]# vgdisplay<br>&nbsp; --- Volume group ---<br>&nbsp; VG Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VolGroup00<br>&nbsp; System ID<br>&nbsp; Format&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lvm2<br>&nbsp; Metadata Areas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br>&nbsp; Metadata Sequence No&nbsp; 3<br>&nbsp; VG Access&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read/write<br>&nbsp; VG Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; resizable<br>&nbsp; MAX LV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp; Cur LV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2<br>&nbsp; Open LV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2<br>&nbsp; Max PV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp; Cur PV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br>&nbsp; Act PV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br>&nbsp; VG Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 68.25 GB<br>&nbsp; PE Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32.00 MB<br>&nbsp; Total PE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2184<br>&nbsp; Alloc PE / Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2182 / 68.19 GB<br>&nbsp; Free&nbsp; PE / Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 / 64.00 MB<br>&nbsp; VG UUID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0iHE6T-dGIa-zkG2-Hn6f-heiH-OOwD-OzRmEt</p>  <p>&nbsp; --- Volume group ---<br>&nbsp; VG Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VolGroup00<br>&nbsp; System ID<br>&nbsp; Format&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lvm2<br>&nbsp; Metadata Areas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br>&nbsp; Metadata Sequence No&nbsp; 3<br>&nbsp; VG Access&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read/write<br>&nbsp; VG Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; resizable<br>&nbsp; MAX LV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp; Cur LV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2<br>&nbsp; Open LV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2<br>&nbsp; Max PV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp; Cur PV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br>&nbsp; Act PV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br>&nbsp; VG Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 232.78 GB<br>&nbsp; PE Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32.00 MB<br>&nbsp; Total PE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7449<br>&nbsp; Alloc PE / Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7444 / 232.62 GB<br>&nbsp; Free&nbsp; PE / Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5 / 160.00 MB<br>&nbsp; VG UUID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5QwszM-BM1o-oG9i-sI8Y-T3Yw-sp0X-v6U2Pn</p>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p>使用LVM逻辑卷管理的利弊</p>  <p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 解决方案</p>  <p>　　在以往的Linux系统中（比Redhat AS4更早的版本），默认是不支持LVM逻辑卷管理的</p>  <p>　　当磁盘连接到服务器后，使用fdisk将其划分为主分区和扩展分区</p>  <p>　　随后直接把分区进行格式化，生成诸如/dev/sda1、/dev/sda2之类的分区</p>  <p>　　这些分区可以直接用mount命令挂载到目录来使用</p>  <p>　　当应用了LVM后，磁盘分区/dev/sda1、/dev/sda2这样的分区会被LVM认为是一整个VG，即卷组</p>  <p>　　这样的卷组是不能直接挂载的</p>  <p>　　要由LVM转换成/dev/VolGroup01这样的VG卷组</p>  <p>　　然后每个卷组又包含/dev/VolGroup01/LogVol01这样的LV，即逻辑卷</p>  <p>　　当使用他们的时候，需要将/dev/VolGroup01/LogVol01挂载到目录</p>  <p>　　因此，LVM虽然提供了可调节分区（卷）大小的能力</p>  <p>　　但是由于其PV-&gt;VG-LV三层架构的存在，在后期数据迁移和恢复上比较复杂</p>  <p>　　例如，当前磁盘使用了/dev/VolGroup00/LogVol01这样的名称</p>  <p>　　把这块磁盘挂载到其他服务器上后，如果存在另外一块硬盘名称也是由LVM管理</p>  <p>　　并且默认也使用了“/dev/VolGroup00/LogVol01”的名称</p>  <p>　　那么两个硬盘的VG名称冲突，就无法继续挂载LV读取数据了</p>  <p>　　这种冲突，在两个硬盘都是数据磁盘的时候，还可以修改名称来解决</p>  <p>　　但是，如果冲突双方中的一块是系统硬盘，那么则LVM拒绝对磁盘做卸载、改名等处理</p>  <p>　　此时第二块硬盘里边的数据就恢复不出来了</p>  <p>　　唯一的解决方法是把这个硬盘挂载到其他没有使用LVM的服务器上</p>  <p>　　或者找一个使用了LVM但是VG卷组名称不一样的服务器上</p>  <p>　　这是LVM设计应用中的一个无法解决的bug</p>  <p>　　因此，在服务器上，为了保证尽可能好的后期灾难恢复，不推荐用LVM</p>  <p>　　最好使用简单直接使用磁盘分区格式化，以便恢复数据</p>  <p>　　如果非要用LVM，请注意，在安装系统分区之初，就给自己磁盘的LVM起一个不容易冲突的唯一的名字</p>  <p>　　例如/dev/VolHehe001、/dev/VolHehe002等</p><wbr></div>
+        <div class="nbw-blog-end"></div>
+
+        <div>
+		</div>
+
+        <div>
+		</div>
+
+		<div>
+      	  <div>
+		  	<div class="wumii-hook"></div><script type="text/javascript" id="wumiiRelatedItems"></script>
+		  </div>
+		</div>
+
+        <div class="ptc phide ztag">
+          <span class="ptcp">
+            <span class="iblock bcmimg">&nbsp;</span>
+            <span class="nbc-0 nbc-0-40 ptcmt ptcmt-2">评论这张</span>
+          </span>
+        </div>
+		<div style="display: none;" class="ptc phide ztag">
+          <span class="ptcp">
+            <span class="nbc-0 nbc-0-40 ptcmi">
+              <img src="microblog.png">
+            </span>
+            <span class="nbc-0 nbc-0-40 ptcmt">转发至微博</span>
+          </span>
+        </div>
+        <div class="ptc phide">
+          <a id="publishtolofter" class="toLofter" title="发布到LOFTER" target="_blank" hidefocus="true">&nbsp;</a>
+        </div>
+        
+        <div style="display: none;" class="ptc phide ztag">
+          <span class="ptcp">
+            <span class="nbc-0 nbc-0-40 ptcmi">
+              <img src="microblog.png">
+            </span>
+            <span class="nbc-0 nbc-0-40 ptcmt">转发至微博</span>
+          </span>
+        </div>
+
+
+        <div class="nbw-act tbar fc03 clearfix">
+          
+          
+          <div class="editopbar" style="height: 32px; line-height: 32px; text-align: left;">
+            <span class="fc07">阅读(<span id="$_spaniReadCount">5630</span>)</span><span class="sep fc07">|</span>
+            <span class="fc07">评论(<span id="$_spaniCommentCount">0</span>)</span>
+          </div>
+          
+          
+          <div style="height: 40px; line-height: 40px;">
+            <div class="pleft rdif">
+              <span style="display: none;" class="pleft sep sep-last fc07">|</span>
+              <div class="share-wrap pleft">
+                <span id="$_shareBtn_lofter" title="分享到LOFTER" class="shareitm lofter f-bkicons">&nbsp;</span>
+                <span id="$_shareBtn_sinaweibo" title="分享到新浪微博" class="shareitm sinawb f-bkicons">&nbsp;</span>
+                <span id="$_shareBtn_qq" title="分享到QQ空间" class="shareitm qqzone f-bkicons">&nbsp;</span>
+                <span id="$_shareBtn_qqweibo" title="分享到腾讯微博" class="shareitm qqweibo f-bkicons">&nbsp;</span>
+                <div id="$_shareBtn_weixin" title="分享到微信" class="shareitm weixin f-bkicons">
+<div class="code2dimlayer fc06">
+    <img src="bitMaxImageGen_002.do">
+    <div class="tips">
+        <p>用微信&nbsp;&nbsp;“扫一扫”</p>
+        <p>将文章分享到朋友圈。</p>
+    </div>
+    <a class="close">&nbsp;</a>
+</div>
+                </div>
+                <div id="$_shareBtn_yixin" title="分享到易信" class="shareitm yixin f-bkicons">
+<div class="code2dimlayer fc06">
+    <img src="bitMaxImageGen_003.do">
+    <div class="tips">
+        <p>用易信&nbsp;&nbsp;“扫一扫”</p>
+        <p>将文章分享到朋友圈。</p>
+    </div>
+    <a class="close">&nbsp;</a>
+</div>
+                </div>
+              </div>
+              
+              <form style="display: none;" id="shareToLofterForm" method="post" target="_blank" action="http://www.lofter.com/sharetext?act=qbblogpost_20131023_04">
+                <input name="thirdId" value="fks_094068080081086075083081085095085081087065083082084071082" type="hidden">
+                <input name="from" value="BLOGPOST" type="hidden">
+                <input name="title" value="Linux挂载LVM分区的方法【转】" type="hidden">
+                <input name="content" value="Linux挂载LVM分区的方法  <P>这几天在折腾服务器 遇到需要挂载第二块硬盘的问题 第二块硬盘做了LVM<BR>经过查找 找到了解决办法 备忘一下</P>  <P>#fdisk -l<BR>[root@localhost /]# fdisk -l<BR>Disk /dev/sda: 36.7 GB, 36778545152 bytes<BR>255 heads, 63 sectors/track, 4471 cylinders<BR>Units = cylinders of 16065 * 512 = 8225280 bytes<BR>&amp;nbsp;&amp;nbsp; Device Boot&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Start&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; End&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Blocks&amp;nbsp;&amp;nbsp; Id&amp;nbsp; System<BR>/dev/sda1&amp;nbsp;&amp;nbsp; *&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 13&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 104391&amp;nbsp;&amp;nbsp; 83&amp;nbsp; Linux<BR>/dev/sda2&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 14&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2463&amp;nbsp;&amp;nbsp;&amp;nbsp; 19679625&amp;nbsp;&amp;nbsp; 83&amp;nbsp; Linux<BR>/dev/sda3&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2464&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3949&amp;nbsp;&amp;nbsp;&amp;nbsp; 11936295&amp;nbsp;&amp;nbsp; 83&amp;nbsp; Linux<BR>/dev/sda4&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3950&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4471&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4192965&amp;nbsp;&amp;nbsp;&amp;nbsp; 5&amp;nbsp; Extended<BR>/dev/sda5&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3950&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4471&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4192933+&amp;nbsp; 82&amp;nbsp; Linux swap / Solaris<BR>Disk /dev/sdb: 73.4 GB, 73407868928 bytes<BR>255 heads, 63 sectors/track, 8924 cylinders<BR>Units = cylinders of 16065 * 512 = 8225280 bytes<BR>&amp;nbsp;&amp;nbsp; Device Boot&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Start&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; End&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Blocks&amp;nbsp;&amp;nbsp; Id&amp;nbsp; System<BR>/dev/sdb1&amp;nbsp;&amp;nbsp; *&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 8924&amp;nbsp;&amp;nbsp;&amp;nbsp; 71681998+&amp;nbsp; 8e&amp;nbsp; Linux LVM<BR>Disk /dev/sdc: 36.7 GB, 36703934464 bytes<BR>255 heads, 63 sectors/track, 4462 cylinders<BR>Units = cylinders of 16065 * 512 = 8225280 bytes<BR>&amp;nbsp;&amp;nbsp; Device Boot&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Start&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; End&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Blocks&amp;nbsp;&amp;nbsp; Id&amp;nbsp; System<BR>/dev/sdc1&amp;nbsp;&amp;nbsp; *&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 13&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 104391&amp;nbsp;&amp;nbsp; 83&amp;nbsp; Linux<BR>/dev/sdc2&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 14&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4462&amp;nbsp;&amp;nbsp;&amp;nbsp; 35736592+&amp;nbsp; 8e&amp;nbsp; Linux LVM<BR>[root@localhost /]# pvs<BR>&amp;nbsp; PV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; VG&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Fmt&amp;nbsp; Attr PSize&amp;nbsp; PFree <BR>&amp;nbsp; /dev/sdb1&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; lvm2 --&amp;nbsp;&amp;nbsp; 68.36G 68.36G<BR>&amp;nbsp; /dev/sdc2&amp;nbsp; VolGroup00 lvm2 a-&amp;nbsp;&amp;nbsp; 34.06G 32.00M</P>  <P>sdc2就是我要挂接的<BR>[root@localhost /]# vgscan<BR>&amp;nbsp; Reading all physical volumes.&amp;nbsp; This may take a while...<BR>&amp;nbsp; Found volume group &quot;VolGroup00&quot; using metadata type lvm2</P>  <P>[root@localhost /]# lvscan<BR>&amp;nbsp; inactive&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; '/dev/VolGroup00/LogVol00' [32.09 GB] inherit<BR>&amp;nbsp; inactive&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; '/dev/VolGroup00/LogVol01' [1.94 GB] inherit<BR>可以看到新修改的VolGroup00是inactive状态</P>  <P>[root@localhost /]# vgchange -a y <BR>&amp;nbsp; 2 logical volume(s) in volume group &quot;VolGroup00&quot; now active<BR>[root@localhost /]# lvscan<BR>&amp;nbsp; ACTIVE&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; '/dev/VolGroup00/LogVol00' [32.09 GB] inherit<BR>&amp;nbsp; ACTIVE&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; '/dev/VolGroup00/LogVol01' [1.94 GB] inherit<BR>好了，现在可以挂载了</P>  <P>[root@localhost /]# mount&amp;nbsp; -t ext3 /dev/VolGroup00/LogVol00 /d1</P>  <P>&amp;nbsp;</P>  <P>&amp;nbsp;</P>  <P>&amp;nbsp;</P>  <P>&amp;nbsp;</P>  <P>&amp;nbsp;</P>  <P>&amp;nbsp;</P>  <P>如果lvm两个卷同名,则需要对另一个进行重命名<BR>[root@localhost ~]# pvs<BR>PV VG Fmt Attr PSize PFree</P>  <P>/dev/hda2 VolGroup00 lvm2 a- 76.22G 32.00M<BR>/dev/hdc2 VolGroup00 lvm2 a- 74.38G 32.00M</P>  <P>两个VG名称居然一样，</P>  <P>[root@localhost ~]# vgrename VolGroup00 VolGroup88<BR>Found more than one VG called VolGroup00. Please supply VG uuid.</P>  <P>[root@localhost ~]#vgrename 0iHE6T-dGIa-zkG2-Hn6f-heiH-OOwD-OzRmEt VolGroup88<BR>&amp;nbsp;Volume group “VolGroup00″ still has active LVs</P>  <P><BR>卸载</P>  <P>vgchange -a n /dev/Volxxx</P>  <P>kpartx -d /dev/loopx</P>  <P>losetup -d /dev/loopx</P>  <P>&amp;nbsp;</P>  <P>&amp;nbsp;</P>  <P><BR>[root@shmym dev]# vgscan<BR>&amp;nbsp; Reading all physical volumes.&amp;nbsp; This may take a while...<BR>&amp;nbsp; Found volume group &quot;VolGroup00&quot; using metadata type lvm2<BR>&amp;nbsp; Found volume group &quot;VolGroup00&quot; using metadata type lvm2</P>  <P>[root@shmym dev]# pvscan<BR>&amp;nbsp; PV /dev/sda2&amp;nbsp;&amp;nbsp; VG VolGroup00&amp;nbsp;&amp;nbsp; lvm2 [68.25 GB / 64.00 MB free]<BR>&amp;nbsp; PV /dev/hda2&amp;nbsp;&amp;nbsp; VG VolGroup00&amp;nbsp;&amp;nbsp; lvm2 [232.78 GB / 160.00 MB free]<BR>&amp;nbsp; Total: 2 [301.03 GB] / in use: 2 [301.03 GB] / in no VG: 0 [0&amp;nbsp;&amp;nbsp; ]</P>  <P><BR>[root@shmym dev]# pvs<BR>&amp;nbsp; PV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; VG&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Fmt&amp;nbsp; Attr PSize&amp;nbsp;&amp;nbsp; PFree<BR>&amp;nbsp; /dev/hda2&amp;nbsp; VolGroup00 lvm2 a-&amp;nbsp;&amp;nbsp; 232.78G 160.00M<BR>&amp;nbsp; /dev/sda2&amp;nbsp; VolGroup00 lvm2 a-&amp;nbsp;&amp;nbsp;&amp;nbsp; 68.25G&amp;nbsp; 64.00M</P>  <P><BR>[root@shmym dev]# vg<BR>vgcfgbackup&amp;nbsp;&amp;nbsp; vgconvert&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgextend&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgreduce&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgscan<BR>vgcfgrestore&amp;nbsp; vgcreate&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgimport&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgremove&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgsplit<BR>vgchange&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgdisplay&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgmerge&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgrename<BR>vgck&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgexport&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgmknodes&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vgs</P>  <P>&amp;nbsp;</P>  <P><BR>[root@shmym dev]# vgrename -h<BR>&amp;nbsp; vgrename: Rename a volume group</P>  <P>vgrename<BR>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; [-A|--autobackup y|n]<BR>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; [-d|--debug]<BR>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; [-h|--help]<BR>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; [-t|--test]<BR>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; [-v|--verbose]<BR>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; [--version]<BR>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; OldVolumeGroupPath NewVolumeGroupPath |<BR>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; OldVolumeGroupName NewVolumeGroupName</P>  <P><BR>[root@shmym dev]# vgrename VolGroup00 VolGroup01<BR>&amp;nbsp; Found more than one VG called VolGroup00. Please supply VG uuid.<BR>解释:找到一个以上的卷组名为VolGroup00 。请提供卷组的UUID 。</P>  <P><BR>[root@shmym dev]# vgdisplay<BR>&amp;nbsp; --- Volume group ---<BR>&amp;nbsp; VG Name&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; VolGroup00<BR>&amp;nbsp; System ID<BR>&amp;nbsp; Format&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; lvm2<BR>&amp;nbsp; Metadata Areas&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1<BR>&amp;nbsp; Metadata Sequence No&amp;nbsp; 3<BR>&amp;nbsp; VG Access&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; read/write<BR>&amp;nbsp; VG Status&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; resizable<BR>&amp;nbsp; MAX LV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0<BR>&amp;nbsp; Cur LV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2<BR>&amp;nbsp; Open LV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2<BR>&amp;nbsp; Max PV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0<BR>&amp;nbsp; Cur PV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1<BR>&amp;nbsp; Act PV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1<BR>&amp;nbsp; VG Size&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 68.25 GB<BR>&amp;nbsp; PE Size&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 32.00 MB<BR>&amp;nbsp; Total PE&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2184<BR>&amp;nbsp; Alloc PE / Size&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2182 / 68.19 GB<BR>&amp;nbsp; Free&amp;nbsp; PE / Size&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2 / 64.00 MB<BR>&amp;nbsp; VG UUID&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0iHE6T-dGIa-zkG2-Hn6f-heiH-OOwD-OzRmEt</P>  <P>&amp;nbsp; --- Volume group ---<BR>&amp;nbsp; VG Name&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; VolGroup00<BR>&amp;nbsp; System ID<BR>&amp;nbsp; Format&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; lvm2<BR>&amp;nbsp; Metadata Areas&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1<BR>&amp;nbsp; Metadata Sequence No&amp;nbsp; 3<BR>&amp;nbsp; VG Access&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; read/write<BR>&amp;nbsp; VG Status&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; resizable<BR>&amp;nbsp; MAX LV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0<BR>&amp;nbsp; Cur LV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2<BR>&amp;nbsp; Open LV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2<BR>&amp;nbsp; Max PV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0<BR>&amp;nbsp; Cur PV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1<BR>&amp;nbsp; Act PV&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1<BR>&amp;nbsp; VG Size&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 232.78 GB<BR>&amp;nbsp; PE Size&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 32.00 MB<BR>&amp;nbsp; Total PE&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 7449<BR>&amp;nbsp; Alloc PE / Size&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 7444 / 232.62 GB<BR>&amp;nbsp; Free&amp;nbsp; PE / Size&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 5 / 160.00 MB<BR>&amp;nbsp; VG UUID&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 5QwszM-BM1o-oG9i-sI8Y-T3Yw-sp0X-v6U2Pn</P>  <P>&amp;nbsp;</P>  <P>&amp;nbsp;</P>  <P>使用LVM逻辑卷管理的利弊</P>  <P><BR>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 解决方案</P>  <P>　　在以往的Linux系统中（比Redhat AS4更早的版本），默认是不支持LVM逻辑卷管理的</P>  <P>　　当磁盘连接到服务器后，使用fdisk将其划分为主分区和扩展分区</P>  <P>　　随后直接把分区进行格式化，生成诸如/dev/sda1、/dev/sda2之类的分区</P>  <P>　　这些分区可以直接用mount命令挂载到目录来使用</P>  <P>　　当应用了LVM后，磁盘分区/dev/sda1、/dev/sda2这样的分区会被LVM认为是一整个VG，即卷组</P>  <P>　　这样的卷组是不能直接挂载的</P>  <P>　　要由LVM转换成/dev/VolGroup01这样的VG卷组</P>  <P>　　然后每个卷组又包含/dev/VolGroup01/LogVol01这样的LV，即逻辑卷</P>  <P>　　当使用他们的时候，需要将/dev/VolGroup01/LogVol01挂载到目录</P>  <P>　　因此，LVM虽然提供了可调节分区（卷）大小的能力</P>  <P>　　但是由于其PV-&amp;gt;VG-LV三层架构的存在，在后期数据迁移和恢复上比较复杂</P>  <P>　　例如，当前磁盘使用了/dev/VolGroup00/LogVol01这样的名称</P>  <P>　　把这块磁盘挂载到其他服务器上后，如果存在另外一块硬盘名称也是由LVM管理</P>  <P>　　并且默认也使用了“/dev/VolGroup00/LogVol01”的名称</P>  <P>　　那么两个硬盘的VG名称冲突，就无法继续挂载LV读取数据了</P>  <P>　　这种冲突，在两个硬盘都是数据磁盘的时候，还可以修改名称来解决</P>  <P>　　但是，如果冲突双方中的一块是系统硬盘，那么则LVM拒绝对磁盘做卸载、改名等处理</P>  <P>　　此时第二块硬盘里边的数据就恢复不出来了</P>  <P>　　唯一的解决方法是把这个硬盘挂载到其他没有使用LVM的服务器上</P>  <P>　　或者找一个使用了LVM但是VG卷组名称不一样的服务器上</P>  <P>　　这是LVM设计应用中的一个无法解决的bug</P>  <P>　　因此，在服务器上，为了保证尽可能好的后期灾难恢复，不推荐用LVM</P>  <P>　　最好使用简单直接使用磁盘分区格式化，以便恢复数据</P>  <P>　　如果非要用LVM，请注意，在安装系统分区之初，就给自己磁盘的LVM起一个不容易冲突的唯一的名字</P>  <P>　　例如/dev/VolHehe001、/dev/VolHehe002等</P><WBR>" type="hidden">
+                <input name="source" value="雨恋丽晴" type="hidden">
+                <input name="sourceUrl" value="http://ljx198308.blog.163.com/blog/static/1762742462011292134116" type="hidden">
+                <input name="tag" value="linux,lvm" type="hidden">
+              </form>
+              
+            </div>
+            <div class="pright rightoperatebar rightoperatebar-new">
+              <span class="f-myLikeIcons likebtn pnt pright" id="$_spanLike">喜欢</span>
+	            <span class="f-myLikeIcons recommendbtn pnt pright" id="$_spanRecommend">推荐</span>
+	          <span style="display: none;" id="$_spanShowRecommend" class="pleft rdct  phide">
+	            <span class="pleft ul fc03"><span id="$_spanRecommendCount">0</span>人</span><span class="pleft iblock icn0 icn0-722 nbw-tgl1 nas-icn0fix">&nbsp;</span><span class="pleft iblock icn0 icn0-621 nbw-tgl0 nas-icn0fix">&nbsp;</span><span class="fc07"></span>|&nbsp;
+	          </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="snl">
+        <div style="display: none;" class="phide bdwb bds2 bdc0 rdcnt" id="$_divRecommendContent"></div>
+        <div id="yodaoad" class="bdwb bds2 bdc0" style="display: none;">&nbsp;</div>
+        <div id="$_newOldBlogLinkBottomDiv" class="top fc03 clearfix">       <span class="ilft iblock icn0 icn0-620">&nbsp;</span>       <div class="pleft thide"><a class="m2a" href="http://ljx198308.blog.163.com/blog/static/176274246201129103422220/">linux实用命令详解（新建删除复制文件夹，挂载）</a></div>                 <span class="irgt iblock icn0 icn0-619">&nbsp;</span>       <div class="pright thide"><a class="m2a" href="http://ljx198308.blog.163.com/blog/static/17627424620112111503243/">Oracle&nbsp;trunc</a></div>     </div>
+	    <div class="relateblog phide">
+          <h4 class="bdwb bds2 bdc0 fc07 fs0">历史上的今天</h4>
+          <div class="cnt ztag clearfix"></div>
+        </div>
+	    <div style="visibility: hidden; width: 0px; height: 0px; overflow: hidden;" class="author">
+	      <h4 class="bdwb bds2 bdc0 fc07 fs0">最近读者</h4>
+	      <div class="cnt ztag clearfix"><div class="pleft nlogif clearfix"> <div class="pleft nbw-f50 nbw-fce"><img class="cwd pnt" src="face60.png"></div> <div class="m2a pright fc03"><span class="ul">登录</span>后，您可以在此留下足迹。</div> </div>        <div class="iblock nbw-fce nbw-f40">      <a class="fc03 noul" target="_blank" hidefocus="true" href="http://blog.163.com/windows_ibm/">            <img alt="windows_ibm" class="cwd bdwa bdc0" src="ava.s">            </a>      <div class="cwd vname thide">                <a class="fc03 m2a" target="_blank" hidefocus="true" href="http://blog.163.com/windows_ibm/">          windows_        </a>      </div>    </div>                <div class="iblock nbw-fce nbw-f40">      <a class="fc03 noul" target="_blank" hidefocus="true" href="http://blog.163.com/shaoguangleo/">            <img alt="shaoguangleo" class="cwd bdwa bdc0" src="ava_007.s">            </a>      <div class="cwd vname thide">                <a class="fc03 m2a" target="_blank" hidefocus="true" href="http://blog.163.com/shaoguangleo/">          shaoguan        </a>      </div>    </div>                <div class="iblock nbw-fce nbw-f40">      <a class="fc03 noul" target="_blank" hidefocus="true" href="http://blog.163.com/dl890916/">            <img alt="dl890916" class="cwd bdwa bdc0" src="ava_001.s">            </a>      <div class="cwd vname thide">                <a class="fc03 m2a" target="_blank" hidefocus="true" href="http://blog.163.com/dl890916/">          dl890916        </a>      </div>    </div>                <div class="iblock nbw-fce nbw-f40">      <a class="fc03 noul" target="_blank" hidefocus="true" href="http://blog.163.com/zhou1988@126/">            <img alt="超超" class="cwd bdwa bdc0" src="ava_008.s">            </a>      <div class="cwd vname thide">                <a class="fc03 m2a" target="_blank" hidefocus="true" href="http://blog.163.com/zhou1988@126/">          超超        </a>      </div>    </div>                <div class="iblock nbw-fce nbw-f40">      <a class="fc03 noul" target="_blank" hidefocus="true" href="http://blog.163.com/guoxin001984/">            <img alt="郭鑫" class="cwd bdwa bdc0" src="ava_002.s">            </a>      <div class="cwd vname thide">                <a class="fc03 m2a" target="_blank" hidefocus="true" href="http://blog.163.com/guoxin001984/">          郭鑫        </a>      </div>    </div>                <div class="iblock nbw-fce nbw-f40">      <a class="fc03 noul" target="_blank" hidefocus="true" href="http://blog.163.com/ankang0215@126/">            <img alt="ankang0215@126" class="cwd bdwa bdc0" src="ava_003.s">            </a>      <div class="cwd vname thide">                <a class="fc03 m2a" target="_blank" hidefocus="true" href="http://blog.163.com/ankang0215@126/">          ankang02        </a>      </div>    </div>                <div class="iblock nbw-fce nbw-f40">      <a class="fc03 noul" target="_blank" hidefocus="true" href="http://blog.163.com/jyf0070/">            <img alt="（无）" class="cwd bdwa bdc0" src="ava_004.s">            </a>      <div class="cwd vname thide">                <a class="fc03 m2a" target="_blank" hidefocus="true" href="http://blog.163.com/jyf0070/">          （无）        </a>      </div>    </div>                <div class="iblock nbw-fce nbw-f40">      <a class="fc03 noul" target="_blank" hidefocus="true" href="http://blog.163.com/lanmingdt/">            <img alt="lanmingdt" class="cwd bdwa bdc0" src="ava_005.s">            </a>      <div class="cwd vname thide">                <a class="fc03 m2a" target="_blank" hidefocus="true" href="http://blog.163.com/lanmingdt/">          lanmingd        </a>      </div>    </div>        </div>
+	    </div>
+	    <div style="visibility: hidden; width: 0px; height: 0px; overflow: hidden;" id="hotarea" class="hotarea author ">
+	      <h4 class="bdwb bds2 bdc0 fc07 fs0">热度</h4>
+	      <div id="hotlist" class="cnt clearfix"></div>
+	    </div>
+	    <div class="phide" id="yodaoad_1" style="_zoom:1;"></div>
+	    
+	    <div class="m-lmiddlead" style="display: block;">
+	        <a style="display: none;" class="adlink" href="#" target="_blank" hidefocus="true"><img style="border: medium none;" id="leftmiddleadimg"></a>
+	        <div style="display: none;" id="flashadwrap" class="flashadwrap"></div>
+	        <iframe src="index_13.html" marginwidth="0" marginheight="0" id="lmid_iframe" style="display: block;" scrolling="no" allowtransparency="true" frameborder="0" height="100" width="590"></iframe>
+	    </div>
+	    
+	    <div id="loftertextlinkad" style="padding: 0px 6px 0px 5px;">
+	      <div style="height: 40px; line-height: 40px; margin: 15px 0px; border: 1px solid rgb(213, 213, 213); background: rgb(255, 255, 225) none repeat scroll 0% 0%; text-align: left;">
+	        <span style="float: right; height: 20px; line-height: 20px; padding: 10px 16px 10px 0px; color: rgb(215, 133, 78); cursor: pointer;">关闭</span>
+	        <div style="padding-left: 24px; color: rgb(0, 0, 0);">玩LOFTER，免费冲印20张照片，人人有奖！&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="color: rgb(215, 133, 78); text-decoration: none;" href="http://www.lofter.com/" target="_blank">我要抢&gt;</a></div>
+	      </div>
+	    </div>
+	    <div class="comment">
+	      <h4 class="bdwb bds2 bdc0 fc07 fs0">评论</h4>
+	      <a name="blogComment" id="blogComment"></a>
+	      <div class="ztag"><div>    <div class="publish ztag nolog"><span class="iblock icn0 icn0-516">&nbsp;</span> 登录后你可以发表评论，请先登录。<span class="m2a fc03">登录&gt;&gt;</span></div>
+    <div class="bdwt bds2 bdc0 phide" id="yodaoad_2" style="_zoom:1;"></div>
+    <div class="ztag bdwt bds2 bdc0">
+      <div class="case"></div>
+      <div style="display: none;" class="clearfix"><div style="display: none;" class="ui-6636131209 noselect js-zfrg-6540"><span class="pgi pgb iblock fc03 bgc9 bdc0 js-znpg-097">上一页</span> <span class="pgi zpg1 iblock fc03 bgc9 bdc0 js-zslt-987 fc05">1</span> <span class="frg fgp fc06">...</span> <span style="display: none;" class="pgi zpg2 iblock fc03 bgc9 bdc0">-1</span> <span style="display: none;" class="pgi zpg3 iblock fc03 bgc9 bdc0">-1</span> <span style="display: none;" class="pgi zpg4 iblock fc03 bgc9 bdc0">-1</span> <span style="display: none;" class="pgi zpg5 iblock fc03 bgc9 bdc0">-1</span> <span style="display: none;" class="pgi zpg6 iblock fc03 bgc9 bdc0">-1</span> <span style="display: none;" class="pgi zpg7 iblock fc03 bgc9 bdc0">-1</span> <span style="display: none;" class="pgi zpg8 iblock fc03 bgc9 bdc0">-1</span> <span class="frg fgn fc06">...</span> <span style="display: none;" class="pgi zpg9 iblock fc03 bgc9 bdc0">-1</span> <span class="pgi pgb iblock fc03 bgc9 bdc0 js-znpg-097">下一页</span></div></div>
+    </div>
+  </div></div>
+	    </div>
+	    <div class="phide" id="yodaoad_3" style="_zoom:1;"></div>
+      </div>
+      <div class="cite ztag fc03 phide"></div>
+    </div>
+   </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+</div>
+      <div class="l cl h100">&nbsp;</div>
+      <div class="r cr h100">&nbsp;</div>
+    </div>
+    <div class="nb-mb lcr bh space">
+      <div class="l bl bh">&nbsp;</div>
+      <div class="r br bh">&nbsp;</div>
+      <div class="c bc bh lcr">&nbsp;</div>
+    </div>
+  </div>
+
+</div>
+      <div class="l wl g lg h100">&nbsp;</div>
+      <div class="l wl t lt">&nbsp;</div>
+      <div class="l wl b lb">&nbsp;</div>
+      <div class="r wr g rg h100">&nbsp;</div>
+      <div class="r wr t rt">&nbsp;</div>
+      <div class="r wr b rb">&nbsp;</div>
+    </div>
+  </div>
+  <div class="nb-are nb-smb"><div class="wkg h space"><div class="l h">&nbsp;</div><div class="r h">&nbsp;</div><div class="c h">&nbsp;</div></div></div>
+<div class="nb-are nb-fot">
+  <div class="wkg h">
+    <h2>页脚</h2>
+    <div class="k">      <a rel="nofollow" class="m2a fc08" target="_blank" href="http://yxp.163.com/">我的照片书</a>
+      <span class="p fc10">-</span>
+      <a rel="nofollow" class="m2a fc08" target="_blank" href="http://blog.163.com/public/theme/">博客风格</a>
+      <span class="p fc10">-</span>
+      <a rel="nofollow" class="m2a fc08" target="_blank" href="http://blog.163.com/services/wapblog.html">手机博客</a>
+      <span class="p fc10">-</span>
+      <a rel="nofollow" class="m2a fc08" target="_blank" href="http://www.lofter.com/app?act=qbboke_20150209_02">下载LOFTER APP</a>
+      
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="http://ljx198308.blog.163.com/rss/">
+      <span class="p fc10">-</span><span class="fc08" id="$_foot_subscribe"><span class="iblock m2a icn0 icn0-919">&nbsp;</span><a class="m2a fc08">订阅此博客</a></span>
+    </div>
+    <p class="fc08">网易公司版权所有&nbsp;©1997-2016</p>
+  </div>
+</div></div>
+    <!--[if lte IE 6]></div><![endif]-->
+  <!--[if lte IE 6]></div><![endif]-->
+  <div class="nb-layer" id="blog-163-com-layer"><div class="ui-4704480442 postadlayer adpushwin nbw-win nbwindow nbwinautoheight"><div class="nbwinwrap"> <div class="zcls zflg" title="关闭"><div class="txtclose">×</div></div> <div class="ztbr noselect zflg"><div class="zttl thide zflg">信息提示</div></div> <div class="zcnt zflg"><div style="top: 100px; left: 200px;" class=""><div class="m-adv ztag" style="bottom: 2px;"> <div class="m-advc"> <a style="display: none;" class="ztag adv adv-img" href="#" target="_blank"> <p> <img class="ztag hidden"> <img class="ztag"> </p> <span class="cover ztag"></span> <span class="tag ztag"> <span class="logo">&nbsp;</span> <span class="source thide ztag"></span> </span> <span class="imgcover">&nbsp;</span> </a> <div style="display: none;" class="adv adv-flash xtag"> <a class="link xtag" href="#" target="_blank"></a> <div class="flashwrap"> <div class="stubwrap xtag"></div> <div class="showwrap xtag"></div> </div> </div> <a href="#" title="关闭" class="ztag btn-close"></a> <iframe style="display: block;" src="index_15.html" marginwidth="0" marginheight="0" class="ztag adv-iframe" scrolling="no" allowtransparency="true" frameborder="0" height="250" width="300"></iframe> </div> </div></div></div> <div class="zbtnbar zflg"></div> <div style="left: 6px;" class="zext zext0">&nbsp;</div> <div style="left: 6px;" class="zext zext1">&nbsp;</div> <div style="height: 46px; top: 23px;" class="zext zext2">&nbsp;</div> <div style="height: 46px; top: 23px;" class="zext zext3">&nbsp;</div> <div class="zext zext4">&nbsp;</div> <div class="zext zext5">&nbsp;</div> <div class="zext zext6">&nbsp;</div> <div class="zext zext7">&nbsp;</div> </div></div></div>
+  
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+    <script type="text/javascript" src="about:blank"></script><iframe src="index_16.html" id="api.blog.163.com" name="api.blog.163.com" style="display: none;" height="0" width="0"></iframe><iframe src="index_17.html" id="photo.163.com" name="photo.163.com" style="display: none;" height="0" width="0"></iframe><iframe src="index_18.html" id="ud.blog.163.com" name="ud.blog.163.com" style="display: none;" height="0" width="0"></iframe>
+    <script type="text/javascript" src="about:blank"></script>
+  <script src="about:blank" type="text/javascript"></script>
+  <script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script>/* Code removed by ScrapBook */</script> 
+
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+<script>/* Code removed by ScrapBook */</script> 
+    <script type="text/javascript" src="about:blank"></script>
+
+
+<script src="about:blank" async=""></script></body>
+</html>

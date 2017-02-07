@@ -1,0 +1,50 @@
+/* Code tidied up by ScrapBook */
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, time, tt, u, ul, var, video, xmp { border: 0px none; margin: 0px; padding: 0px; font-size: 100%; }
+html, body { height: 100%; }
+b, strong { font-weight: bold; }
+img { color: transparent; font-size: 0px; }
+ol, ul { list-style: outside none none; }
+li { display: list-item; }
+table { border-collapse: collapse; border-spacing: 0px; }
+th, td, caption { font-weight: normal; vertical-align: top; }
+body { margin: 0px auto; background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(102, 102, 102); font-family: "微软雅黑","宋体"; font-size: 12px; line-height: 14px; }
+em, i { font-style: normal; }
+h1, h2, h3, h4, h5, h6 { font-size: 12px; font-weight: normal; }
+input, textarea { font-size: 12px; padding: 0px; margin: 0px; }
+a { color: rgb(51, 51, 51); text-decoration: none; }
+a:hover { color: rgb(204, 0, 0); text-decoration: underline; }
+.clear, .area, .pic-group, .pic-text {  }
+.pic-group, .pic-text, .list12 ul, .list14 ul, .area { width: 100%; margin: 0px auto; }
+.pic-group::after, .pic-text::after, .area::after, .clear::after { content: "."; display: block; visibility: hidden; height: 0px; clear: both; }
+.pic-text { color: rgb(102, 102, 102); line-height: 20px; text-align: left; }
+.pic-text div { float: left; margin: 0px 10px 0px 0px; }
+.pic-text p { clear: none; }
+.left, .center, .l, .right, .r, .c { display: inline; float: left; }
+.right, .r { float: right; }
+.fontArial { font-family: "Arial"; }
+.area { width: 1000px; }
+#logo-intro { height: 106px; }
+#logo-intro .left { width: 210px; margin: 22px auto 0px; }
+#logo-intro .right { width: 790px; }
+#logo-intro .right .l { width: 450px; margin: 20px auto 0px 7px; }
+#logo-intro .search { position: relative; width: 400px; height: 32px; border: 1px solid rgb(255, 125, 122); border-radius: 4px; z-index: 200; }
+#logo-intro .search .sele { z-index: 200; position: relative; float: left; width: 65px; height: 32px; font-size: 14px; background: rgb(247, 247, 247) none repeat scroll 0% 0%; border-right: 1px solid rgb(219, 218, 218); border-radius: 4px 0px 0px 4px; }
+#logo-intro .search .sele .cur-res { cursor: pointer; padding-left: 12px; line-height: 32px; }
+#logo-intro .search .sele ul { display: none; position: absolute; left: -1px; top: 32px; width: 65px; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(219, 218, 218) rgb(219, 218, 218); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#logo-intro .search .sele li { cursor: pointer; color: rgb(140, 140, 140); padding-left: 14px; height: 32px; line-height: 32px; border-top: 1px solid rgb(219, 218, 218); }
+#logo-intro .search .sele li:hover { color: rgb(73, 179, 200); background: rgb(247, 247, 247) none repeat scroll 0% 0%; }
+#logo-intro .search .sele .arrow { cursor: pointer; position: absolute; top: 15px; right: 5px; width: 8px; height: 5px; transition: all 0.2s ease-in-out 0s; overflow: hidden; background: transparent url("bg01.gif") repeat scroll 0% 0%; }
+#logo-intro .search .sele:hover .arrow { transform: rotate(180deg); }
+#logo-intro .search .search-txt { border: 0px none; margin-right: 0px; margin-bottom: 0px; margin-left: 14px; margin-top: 6px ! important; display: inline; float: left; width: 210px; height: 20px; color: rgb(205, 205, 205); font: 16px/18px "微软雅黑","宋体"; outline: medium none; }
+#logo-intro .search .search-btn { float: right; cursor: pointer; width: 82px; height: 32px; border: 0px none; background: transparent url("bg01_001.gif") repeat scroll 0% 0%; }
+#logo-intro .hot-rec { margin: 6px auto 0px; line-height: 26px; font-size: 12px; padding-left: 3px; }
+#logo-intro .hot-rec a { margin-right: 12px; }
+#logo-intro .hot-rec span { color: rgb(255, 125, 122); }
+#logo-intro .right .r { margin: 20px auto 0px; }
+.tt-dropdown-menu { display: block; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(219, 218, 218) rgb(219, 218, 218); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; width: 240px; position: absolute; top: 34px ! important; left: 65px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.nab-bg, #nav { background: rgb(73, 179, 200) none repeat scroll 0% 0%; height: 38px; }
+#nav li { float: left; height: 38px; width: 90px; font-size: 16px; text-align: center; line-height: 38px; background: transparent url("bg02.gif") no-repeat scroll right 11px; }
+#nav a { color: rgb(255, 255, 255); }
+#nav .link { float: right; width: 110px; padding: 6px 0px 0px 36px; height: 32px; font-size: 14px; line-height: 26px; background: transparent url("bg03.gif") repeat scroll 0% 0%; }
+#nav .link img { width: 26px; height: 26px; float: left; margin-right: 10px; border-radius: 13px; }
+#foot { width: 1000px; margin: 30px auto; padding: 10px 0px 0px; border-top: 1px solid rgb(51, 51, 51); color: rgb(51, 51, 51); line-height: 22px; text-align: center; }

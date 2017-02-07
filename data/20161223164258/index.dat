@@ -1,0 +1,10 @@
+id	20161223164258
+create	20161223164258
+modify	20161223164258
+type	
+title	在Debian上搭建Gitlab,并禁用内嵌Nginx
+chars	UTF-8
+icon	favicon.ico
+source	https://moonagic.com/setup-gitlab-on-debian/
+comment	
+lock	

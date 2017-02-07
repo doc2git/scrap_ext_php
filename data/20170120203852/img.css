@@ -1,0 +1,6 @@
+/* Code tidied up by ScrapBook */
+.aw720, .aw270, .a7-wrap { margin-bottom: 10px; overflow: hidden; text-align: center; border: 1px solid rgb(212, 212, 212); background-color: rgb(255, 255, 255); }
+.aw720 { width: 718px; }
+.aw720 img, .aw270 img { max-width: 100%; }
+.a6 { margin-bottom: 20px; padding: 6px 9px; width: 250px; height: 250px; text-align: center; overflow: hidden; border: 1px solid rgb(212, 212, 212); background-color: rgb(255, 255, 255); }
+.a6 img { width: 250px; height: 250px; }

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Packagist / Composer 中国全量镜像是将所有安装包的元数据（来自 packagist.org 网站）、安装文件（来自 github.com 网站）全部镜像到国内的机房并通过 CDN 加速，让国内用户不必担心国外服务器无法访问的问题，加速 Composer install 的安装过程，让 PHP 的包管理系统在国内的使用更便捷。">
+    <meta name="keywords" content="Composer,Packagist,Composer镜像,全量镜像,package.json,Laravel,Synfony,PHP包管理系统,PHP,CDN加速">
+    <meta name="author" content="Composer 中文网">
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Site Title -->
+    <title>Packagist / Composer 中国全量镜像</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icon-font -->
+    <link href="font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="style.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+<body data-spy="scroll" data-target="#navbar-menu">
+
+  <div style="height: 78px;" class="sticky-wrapper is-sticky" id="undefined-sticky-wrapper"><header style="position: fixed; top: 0px;" class="navbar navbar-custom sticky" role="navigation">
+      <div class="container">
+
+        <!-- Navbar-header -->
+        <div class="navbar-header">
+
+          <!-- Responsive menu button -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+          </button>
+
+          <!-- LOGO -->
+          <a class="navbar-brand logo smooth-link" href="#home">
+           <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
+          </a>
+
+        </div>
+        <!-- end navbar-header -->
+
+        <!-- menu -->
+        <div class="navbar-collapse collapse" id="navbar-menu">
+
+          <!-- Navbar left -->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <a href="#how-to-use-packagist-mirror">镜像用法</a>
+            </li>
+            <li class="">
+              <a href="#how-to-install-composer">安装 Composer</a>
+            </li>
+            <li class="active">
+              <a href="#faq">FAQ</a>
+            </li>
+          </ul>
+
+        </div>
+        <!--/Menu -->
+      </div>
+      <!-- end container -->
+  </header></div>
+  <!-- End navbar-custom -->
+
+ 
+
+
+  <!-- HOME -->
+  <section class="home" id="home">
+    <!-- <div class="bg-overlay"></div> -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+
+          <div class="home-wrapper text-center">
+            <h1 class="animated fadeInDown wow" data-wow-delay=".1s">
+              Packagist / Composer<br>
+                  中国全量镜像
+            </h1>
+            <p id="status" class="text-muted"><span>本镜像共缓存了 <strong>127943</strong> 个项目(package)、<strong>1687746</strong> 个(zip)安装包。</span><span>最后同步时间：<time>2017/1/31 上午10:40:35</time> 。</span></p>
+            <a href="#how-to-use-packagist-mirror" class="btn btn-primary btn-shadow btn-rounded w-lg animated fadeInDown wow smooth-link">立即使用</a>
+            <div class="clearfix"></div>
+          </div><!-- home wrapper -->
+
+        </div> <!-- end col -->
+      </div> <!-- end row -->
+    </div> <!-- end container -->
+  </section>
+  <!-- END HOME -->
+
+
+  <section class="section bg-gray">
+    <div class="container">
+
+      <div class="docs-inner markdown-body" id="how-to-use-packagist-mirror">
+<h1>Packagist 镜像使用方法</h1>
+<blockquote>
+<p>还没安装 Composer 吗？请往下看<a href="#how-to-install-composer">如何安装 Composer</a> 。</p>
+</blockquote>
+<h2>镜像用法</h2>
+<p>有两种方式启用本镜像服务：</p>
+<ul>
+<li><strong>系统全局配置：</strong> 即将配置信息添加到 Composer 的全局配置文件 <code>config.json</code> 中。见<a href="#tip1">“方法一”</a></li>
+<li><strong>单个项目配置：</strong> 将配置信息添加到某个项目的 <code>composer.json</code> 文件中。见<a href="#tip2">“方法二”</a></li>
+</ul>
+<p><a id="tip1"></a></p>
+<h3><strong>方法一：</strong> 修改 composer 的全局配置文件<span class="text-success">（推荐方式）</span></h3>
+<p>打开命令行窗口（windows用户）或控制台（Linux、Mac 用户）并执行如下命令：</p>
+<div class="bd-clipboard"><span data-original-title="复制到剪贴板" class="btn-clipboard" title="">复制</span></div><pre><code class="language-bash">composer config -g repo.packagist composer https://packagist.phpcomposer.com
+</code></pre>
+<p><a id="tip2"></a></p>
+<h3><strong>方法二：</strong> 修改当前项目的 <code>composer.json</code> 配置文件：</h3>
+<p>打开命令行窗口（windows用户）或控制台（Linux、Mac 用户），进入你的项目的根目录（也就是 <code>composer.json</code> 文件所在目录），执行如下命令：</p>
+<div class="bd-clipboard"><span data-original-title="复制到剪贴板" class="btn-clipboard" title="">复制</span></div><pre><code class="language-bash">composer config repo.packagist composer https://packagist.phpcomposer.com
+</code></pre>
+<p>上述命令将会在当前项目中的 <code>composer.json</code> 文件的末尾自动添加镜像的配置信息（你也可以自己手工添加）：</p>
+<div class="bd-clipboard"><span data-original-title="复制到剪贴板" class="btn-clipboard" title="">复制</span></div><pre><code class="language-json">"repositories": {
+    "packagist": {
+        "type": "composer",
+        "url": "https://packagist.phpcomposer.com"
+    }
+}
+</code></pre>
+<p>以 laravel 项目的 <code>composer.json</code> 配置文件为例，执行上述命令后如下所示（注意最后几行）：</p>
+<div class="bd-clipboard"><span data-original-title="复制到剪贴板" class="btn-clipboard" title="">复制</span></div><pre><code class="language-json">{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "&gt;=5.5.9",
+        "laravel/framework": "5.2.*"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
+</code></pre>
+<p>OK，一切搞定！试一下 <code>composer install</code> 来体验飞一般的速度吧！</p>
+<h2>镜像原理：</h2>
+<p>一般情况下，安装包的数据（主要是 zip 文件）一般是从 <code>github.com</code> 上下载的，安装包的元数据是从 <code>packagist.org</code> 上下载的。</p>
+<p>然而，由于众所周知的原因，国外的网站连接速度很慢，并且随时可能被“墙”甚至“不存在”。</p>
+<p>“Packagist 中国全量镜像”所做的就是缓存所有安装包和元数据到国内的机房并通过国内的 CDN 进行加速，这样就不必再去向国外的网站发起请求，从而达到加速 <code>composer install</code> 以及 <code>composer update</code> 的过程，并且更加快速、稳定。因此，即使 <code>packagist.org</code>、<code>github.com</code>  发生故障（主要是连接速度太慢和被墙），你仍然可以下载、更新安装包。</p>
+
+      </div>
+
+      <div class="docs-inner markdown-body" id="how-to-install-composer">
+<h1>如何安装 Composer</h1>
+<h2>下载 Composer</h2>
+<blockquote>
+<p>安装前请务必确保已经正确安装了 <a href="http://php.net/">PHP</a>。打开命令行窗口并执行 <code>php -v</code> 查看是否正确输出版本号。</p>
+</blockquote>
+<p>打开命令行并依次执行下列命令安装最新版本的 Composer：</p>
+<div class="bd-clipboard"><span data-original-title="复制到剪贴板" class="btn-clipboard" title="">复制</span></div><pre><code class="language-bash">php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+</code></pre>
+<div class="bd-clipboard"><span data-original-title="复制到剪贴板" class="btn-clipboard" title="">复制</span></div><pre><code class="language-bash">php composer-setup.php
+</code></pre>
+<div class="bd-clipboard"><span data-original-title="复制到剪贴板" class="btn-clipboard" title="">复制</span></div><pre><code class="language-bash">php -r "unlink('composer-setup.php');"
+</code></pre>
+<p>执行第一条命令下载下来的 <code>composer-setup.php</code> 脚本将简单地检测 <code>php.ini</code> 中的参数设置，如果某些参数未正确设置则会给出警告；然后下载最新版本的 <code>composer.phar</code> 文件到当前目录。</p>
+<p>上述 3 条命令的作用依次是：</p>
+<ol>
+<li>下载安装脚本 － <code>composer-setup.php</code> － 到当前目录。</li>
+<li>执行安装过程。</li>
+<li>删除安装脚本。</li>
+</ol>
+<h2>局部安装</h2>
+<p>上述下载 Composer 的过程正确执行完毕后，可以将 <code>composer.phar</code> 文件复制到任意目录（比如项目根目录下），然后通过 <code>php composer.phar</code> 指令即可使用 Composer 了！</p>
+<h2>全局安装</h2>
+<p>全局安装是将 Composer 安装到系统环境变量 <code>PATH</code> 所包含的路径下面，然后就能够在命令行窗口中直接执行 <code>composer</code> 命令了。</p>
+<h3>Mac 或 Linux 系统：</h3>
+<p>打开命令行窗口并执行如下命令将前面下载的 <code>composer.phar</code> 文件移动到 <code>/usr/local/bin/</code> 目录下面：</p>
+<div class="bd-clipboard"><span data-original-title="复制到剪贴板" class="btn-clipboard" title="">复制</span></div><pre><code class="language-bash">sudo mv composer.phar /usr/local/bin/composer
+</code></pre>
+<h3>Windows 系统：</h3>
+<ol>
+<li>找到并进入 PHP 的安装目录（和你在命令行中执行的 <code>php</code> 指令应该是同一套 PHP）。</li>
+<li>将 <code>composer.phar</code> 复制到 PHP 的安装目录下面，也就是和 <code>php.exe</code> 在同一级目录。</li>
+<li>在 PHP 安装目录下新建一个 <code>composer.bat</code> 文件，并将下列代码保存到此文件中。</li>
+</ol>
+<div class="bd-clipboard"><span data-original-title="复制到剪贴板" class="btn-clipboard" title="">复制</span></div><pre><code class="language-bash">@php "%~dp0composer.phar" %*
+</code></pre>
+<p>最后重新打开一个命令行窗口试一试执行 <code>composer --version</code> 看看是否正确输出版本号。</p>
+<h2>最后</h2>
+<blockquote>
+<p>提示：不要忘了经常执行 <code>composer selfupdate</code> 以保持 Composer 一直是最新版本哦！</p>
+</blockquote>
+
+      </div>
+
+      <div class="docs-inner markdown-body" id="faq">
+<h1>FAQ</h1>
+<h2>有哪些沟通手段可以求助镜像使用上的问题或者报告故障？</h2>
+<p>最好通过邮箱提问或者报告故障：<strong><a href="mailto:packagist@bootcss.com">packagist@bootcss.com</a></strong></p>
+<p>一般我会每天查收邮件的，遇到紧急情况会立即处理。如果你的问题我也需要复现或者测试的话一般两天左右给出答复。
+请把遇到的问题说清楚，比如系统环境、软件版本、所在城市（用于定位网络异常的情况）等，并且<strong>务必截图、截图、再截图</strong>，
+多发截图有助于问题快速解决，一图顶千言！</p>
+
+      </div>
+
+    </div>
+    <!-- end of container-->
+  </section>
+
+
+  <footer class="footer section">
+    <div class="logo-elephant text-center">
+      <img src="apple-touch-icon.png" alt="packagist logo" with="180" height="180">
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="list-inline text-center">
+                    <li><span>友链：</span></li>
+                    <li><a href="http://www.bootcss.com/" target="_blank">Bootstrap中文网</a></li>
+                    <li><a href="http://www.bootcdn.cn/" target="_blank">BootCDN</a></li>
+                    <li><a href="http://www.golaravel.com/" target="_blank">Laravel中文网</a></li>
+                </ul>
+                <ul class="list-inline text-center">
+                    <li><span>赞助商：</span></li>
+                    <li><a href="https://www.upyun.com/" target="_blank">又拍云</a></li>
+                    <li><a href="https://ucloud.cn/" target="_blank">UCloud</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-muted"><p> © 2017 Composer 中文网</p></div>
+    </div>
+    </footer>
+
+
+    <!-- Back to top -->
+    <a style="display: inline;" href="#" class="back-to-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="about:blank"></script>
+    <script src="about:blank"></script>
+    <!-- Jquery easing -->                                                      
+    <script src="about:blank"></script>
+
+    <!--sticky header-->
+    <script src="about:blank"></script>
+
+    <!--clipboard-->
+    <script src="about:blank"></script>
+        
+    <!--common script for all pages-->
+    <script src="about:blank"></script>
+
+    <script type="text/javascript">/* Code removed by ScrapBook */</script><script src="about:blank" type="text/javascript"></script>
+    
+  
+
+</body>
+</html>

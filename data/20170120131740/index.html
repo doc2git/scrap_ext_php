@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://imen.me/xmlrpc.php">
+	<title>linux下批量替换文件名中的空格 – iMen</title>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="iMen » Feed" href="https://imen.me/feed/">
+<link rel="alternate" type="application/rss+xml" title="iMen » 评论Feed" href="https://imen.me/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="iMen » linux下批量替换文件名中的空格评论Feed" href="https://imen.me/2014/05/replace-space-file-name-in-linux-by-batch/feed/">
+		<script type="text/javascript">/* Code removed by ScrapBook */</script><script defer="" type="text/javascript" src="about:blank"></script>
+		<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+<link rel="stylesheet" id="llorix-one-lite-font-css" href="css.css" type="text/css" media="all">
+<link rel="stylesheet" id="llorix-one-lite-fontawesome-css" href="font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="llorix-one-lite-bootstrap-style-css" href="bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="llorix-one-lite-style-css" href="style.css" type="text/css" media="all">
+<style id="llorix-one-lite-style-inline-css" type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<link rel="https://api.w.org/" href="https://imen.me/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://imen.me/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://imen.me/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="iOS 7 正式版 下载链接 iPhone/iPad" href="https://imen.me/2013/09/ios-7-release-download-url/">
+<link rel="next" title="解决Mac OS X 10.11下Terminal命令行终端启动慢" href="https://imen.me/2016/03/%e8%a7%a3%e5%86%b3mac-os-x-10-11%e4%b8%8bterminal%e5%91%bd%e4%bb%a4%e8%a1%8c%e7%bb%88%e7%ab%af%e5%90%af%e5%8a%a8%e6%85%a2/">
+<meta name="generator" content="WordPress 4.7.1">
+<link rel="canonical" href="https://imen.me/2014/05/replace-space-file-name-in-linux-by-batch/">
+<link rel="shortlink" href="https://imen.me/?p=250">
+<link rel="alternate" type="application/json+oembed" href="https://imen.me/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fimen.me%2F2014%2F05%2Freplace-space-file-name-in-linux-by-batch%2F">
+<!--[if lt IE 9]>
+<script src="https://imen.me/wp-content/themes/llorix-one-lite/js/html5shiv.min.js"></script>
+<![endif]-->
+<link href="shCore.css" type="text/css" rel="stylesheet"><link href="shThemeRDark.css" type="text/css" rel="stylesheet"><style type="text/css" id="syntaxhighlighteranchor">
+/* Code tidied up by ScrapBook */
+</style>
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" class="post-template-default single single-post postid-250 single-format-standard" dir="ltr">
+<a class="skip-link screen-reader-text" href="#content">跳至内容</a>
+<!-- =========================
+	PRE LOADER
+============================== -->
+
+
+<!-- =========================
+	SECTION: HOME / HEADER
+============================== -->
+<!--header-->
+
+<header itemscope="" itemtype="http://schema.org/WPHeader" id="masthead" role="banner" data-stellar-background-ratio="0.5" class="header header-style-one site-header">
+
+	<!-- COLOR OVER IMAGE -->
+		<div style="min-height: 73px;" class="overlay-layer-nav sticky-navigation-open">
+
+		<!-- STICKY NAVIGATION -->
+		<div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation appear-on-scroll">
+			
+			<!-- CONTAINER -->
+			<div class="container">
+
+				<div class="navbar-header">
+
+					<!-- LOGO -->
+
+					<button title="切换菜单" aria-controls="site-navigation social-navigation" aria-expanded="false" type="button" class="navbar-toggle menu-toggle" id="menu-toggle" data-toggle="collapse" data-target="#menu-primary">
+						<span class="screen-reader-text">切换导航</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+					<div class="header-logo-wrap text-header"><h1 itemprop="headline" id="site-title" class="site-title"><a href="https://imen.me/" title="iMen" rel="home">iMen</a></h1><p itemprop="description" id="site-description" class="site-description">简洁生活</p></div>
+				</div>
+
+				<!-- MENU -->
+				<div itemscope="" itemtype="http://schema.org/SiteNavigationElement" aria-label="主要菜单" id="menu-primary" class="navbar-collapse collapse">
+					<!-- LOGO ON STICKY NAV BAR -->
+					<div id="site-header-menu" class="site-header-menu">
+						<nav aria-expanded="false" id="site-navigation" class="main-navigation" role="navigation">
+							<ul class="nav navbar-nav navbar-right main-navigation small-text no-menu"><li class="page_item page-item-6"><a href="https://imen.me/about/">关于我</a></li>
+</ul>						</nav>
+					</div>
+				</div>
+
+
+			</div>
+			<!-- /END CONTAINER -->
+		</div>
+		<!-- /END STICKY NAVIGATION -->
+
+	</div>
+	<!-- /END COLOR OVER IMAGE -->
+</header>
+<!-- /END HOME / HEADER  -->
+
+<div style="min-height: 1px;" class="content-wrap">
+	<div class="container">
+
+		<div id="primary" class="content-area col-md-12">
+			<main itemscope="" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage" id="main" class="site-main" role="main">
+
+			
+				
+<article id="post-250" class="content-single-page post-250 post type-post status-publish format-standard hentry category-linux tag-linux">
+	<header class="entry-header single-header">
+		<h1 itemprop="headline" class="entry-title single-title">linux下批量替换文件名中的空格</h1>		<div class="colored-line-left"></div>
+		<div class="clearfix"></div>
+
+		<div class="entry-meta single-entry-meta">
+			<span class="author-link" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<span itemprop="name" class="post-author author vcard">
+					<i class="fa fa-user" aria-hidden="true"></i>
+					<a href="https://imen.me/author/admin/" itemprop="url" rel="author">imen</a>
+				</span>
+			</span>
+						<time class="post-time posted-on published" datetime="2014-05-02T01:25:43+00:00" itemprop="datePublished">
+				<i class="fa fa-clock-o" aria-hidden="true"></i>
+				2014年5月2日			</time>
+						<a href="#respond" class="post-comments">
+				<i class="fa fa-comment" aria-hidden="true"></i>
+				无评论			</a>
+		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+	<div itemprop="text" class="entry-content">
+		<p>文件名中存在空格的话后续就比较难处理了。</p>
+<p>下面提供简单的命令，可以批量将文件名中的空格替换掉.</p>
+<p>习惯使然，空格会被替换为”.”，用户可根据自己的习惯修改命令。<br>
+<span id="more-250"></span></p>
+<div><div id="highlighter_268722" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">find</code> <code class="bash plain">. -</code><code class="bash functions">type</code> <code class="bash plain">f -name </code><code class="bash string">"* *"</code> <code class="bash plain">-print |</code></div><div class="line number2 index1 alt1"><code class="bash keyword">while</code> <code class="bash functions">read</code> <code class="bash plain">name; </code><code class="bash keyword">do</code></div><div class="line number3 index2 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">na=$(</code><code class="bash functions">echo</code> <code class="bash plain">$name | </code><code class="bash functions">tr</code> <code class="bash string">' '</code> <code class="bash string">'.'</code><code class="bash plain">)</code></div><div class="line number4 index3 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">mv</code> <code class="bash string">"$name"</code> <code class="bash plain">$na</code></div><div class="line number5 index4 alt2"><code class="bash keyword">done</code></div></div></td></tr></tbody></table></div></div>
+<p>其中用到了tr命令：translation命令，用法：</p>
+<p>tr [OPTION]… SET1 [SET2]</p>
+<p>用set2来替换set1,将标准输入的字符串转为标准输出，如：</p>
+<p>$tr a b</p>
+<p>进入输入模式后，你所输入的所有的字母a都会被翻译成字母b，然后输出到屏幕上</p>
+<p>在上面的脚本中，tr ‘ ‘ ‘.’，将管道传入的文件名中所有的空格翻译为句号，然后赋值给na变量，再使用mv命令，也就完成了替换。</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="cat-links"><i class="fa fa-folder-open" aria-hidden="true"></i>张贴在<a href="https://imen.me/category/linux/" rel="category tag">Linux</a></span><span class="tags-links"><i class="fa fa-tags" aria-hidden="true"></i>标签：<a href="https://imen.me/tag/linux/" rel="tag">Linux</a></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+				
+				
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">文章导航</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://imen.me/2013/09/ios-7-release-download-url/" rel="prev">iOS 7 正式版 下载链接 iPhone/iPad</a></div><div class="nav-next"><a href="https://imen.me/2016/03/%e8%a7%a3%e5%86%b3mac-os-x-10-11%e4%b8%8bterminal%e5%91%bd%e4%bb%a4%e8%a1%8c%e7%bb%88%e7%ab%af%e5%90%af%e5%8a%a8%e6%85%a2/" rel="next">解决Mac OS X 10.11下Terminal命令行终端启动慢</a></div></div>
+	</nav>
+				
+<div id="comments" class="comments-area">
+
+	
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">取消回复</a></small></h3><p class="must-log-in">要发表评论，您必须先<a href="https://imen.me/wp-login.php?redirect_to=https%3A%2F%2Fimen.me%2F2014%2F05%2Freplace-space-file-name-in-linux-by-batch%2F">登录</a>。</p>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+
+			
+			</main><!-- #main -->
+		</div><!-- #primary -->
+
+		
+	</div>
+</div><!-- .content-wrap -->
+
+
+	<footer itemscope="" itemtype="http://schema.org/WPFooter" id="footer" role="contentinfo" class="footer grey-bg">
+
+		<div class="container">
+			<div class="footer-widget-wrap">
+			
+				
+			</div><!-- .footer-widget-wrap -->
+
+	        <div class="footer-bottom-wrap">
+				<span class="llorix_one_lite_copyright_content">imen.me</span><div itemscope="" role="navigation" itemtype="http://schema.org/SiteNavigationElement" id="menu-secondary" aria-label="二级菜单"><h1 class="screen-reader-text">二级菜单</h1></div>			<ul class="social-icons">
+										<li>
+							<a href="#chengmengmeng">
+								<span class="screen-reader-text">fa-facebook</span>
+								<i class="fa llorix-one-lite-footer-icons fa-facebook transparent-text-dark" aria-hidden="true"></i>
+							</a>
+						</li>
+												<li>
+							<a href="http://twitter.com/">
+								<span class="screen-reader-text">fa-twitter</span>
+								<i class="fa llorix-one-lite-footer-icons fa-twitter transparent-text-dark" aria-hidden="true"></i>
+							</a>
+						</li>
+												<li>
+							<a href="#">
+								<span class="screen-reader-text">fa-google-plus-square</span>
+								<i class="fa llorix-one-lite-footer-icons fa-google-plus-square transparent-text-dark" aria-hidden="true"></i>
+							</a>
+						</li>
+									</ul>
+				            
+	        </div><!-- .footer-bottom-wrap -->
+
+
+			<div class="powered-by"><a href="http://themeisle.com/themes/llorix-one/" rel="nofollow">Llorix One Lite </a>提供于<a href="http://wordpress.org/" rel="nofollow">WordPress</a></div>
+
+	    </div><!-- container -->
+
+	</footer>
+
+	<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+
+
+
+
+
+
+
+</body>
+</html>

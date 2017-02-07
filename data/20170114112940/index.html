@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://easwy.com/blog/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="http://easwy.com/blog/wp-content/themes/twentyfifteen/js/html5.js"></script>
+	<![endif]-->
+	<script>/* Code removed by ScrapBook */</script>
+<title>vi/vim使用进阶: 目录 – 易水博客</title>
+<link rel="alternate" type="application/rss+xml" title="易水博客 » Feed" href="http://easwy.com/blog/feed/">
+<link rel="alternate" type="application/rss+xml" title="易水博客 » 评论Feed" href="http://easwy.com/blog/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="易水博客 » vi/vim使用进阶: 目录评论Feed" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/feed/">
+		<script type="text/javascript">/* Code removed by ScrapBook */</script><script type="text/javascript" src="about:blank"></script>
+		<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+<link rel="stylesheet" id="yarppWidgetCss-css" href="widget.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentyfifteen-fonts-css" href="css.css" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="genericons.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentyfifteen-style-css" href="style.css" type="text/css" media="all">
+<style id="twentyfifteen-style-inline-css" type="text/css">
+/* Code tidied up by ScrapBook */
+body { background-color: rgb(233, 242, 249); }
+body::before, .site-header { background-color: rgb(85, 195, 220); }
+.post-navigation, .pagination, .secondary, .site-footer, .hentry, .page-header, .page-content, .comments-area, .widecolumn { background-color: rgb(255, 255, 255); }
+button, input[type="button"], input[type="reset"], input[type="submit"], .pagination .prev, .pagination .next, .widget_calendar tbody a, .widget_calendar tbody a:hover, .widget_calendar tbody a:focus, .page-links a, .page-links a:hover, .page-links a:focus, .sticky-post { color: rgb(255, 255, 255); }
+button, input[type="button"], input[type="reset"], input[type="submit"], .pagination .prev, .pagination .next, .widget_calendar tbody a, .page-links a, .sticky-post { background-color: rgb(34, 49, 63); }
+body, blockquote cite, blockquote small, a, .dropdown-toggle::after, .image-navigation a:hover, .image-navigation a:focus, .comment-navigation a:hover, .comment-navigation a:focus, .widget-title, .entry-footer a:hover, .entry-footer a:focus, .comment-metadata a:hover, .comment-metadata a:focus, .pingback .edit-link a:hover, .pingback .edit-link a:focus, .comment-list .reply a:hover, .comment-list .reply a:focus, .site-info a:hover, .site-info a:focus { color: rgb(34, 49, 63); }
+.entry-content a, .entry-summary a, .page-content a, .comment-content a, .pingback .comment-body > a, .author-description a, .taxonomy-description a, .textwidget a, .entry-footer a:hover, .comment-metadata a:hover, .pingback .edit-link a:hover, .comment-list .reply a:hover, .site-info a:hover { border-color: rgb(34, 49, 63); }
+button:hover, button:focus, input[type="button"]:hover, input[type="button"]:focus, input[type="reset"]:hover, input[type="reset"]:focus, input[type="submit"]:hover, input[type="submit"]:focus, .pagination .prev:hover, .pagination .prev:focus, .pagination .next:hover, .pagination .next:focus, .widget_calendar tbody a:hover, .widget_calendar tbody a:focus, .page-links a:hover, .page-links a:focus { background-color: rgba(34, 49, 63, 0.7); }
+blockquote, a:hover, a:focus, .main-navigation .menu-item-description, .post-navigation .meta-nav, .post-navigation a:hover .post-title, .post-navigation a:focus .post-title, .image-navigation, .image-navigation a, .comment-navigation, .comment-navigation a, .widget, .author-heading, .entry-footer, .entry-footer a, .taxonomy-description, .page-links > .page-links-title, .entry-caption, .comment-author, .comment-metadata, .comment-metadata a, .pingback .edit-link, .pingback .edit-link a, .post-password-form label, .comment-form label, .comment-notes, .comment-awaiting-moderation, .logged-in-as, .form-allowed-tags, .no-comments, .site-info, .site-info a, .wp-caption-text, .gallery-caption, .comment-list .reply a, .widecolumn label, .widecolumn .mu_register label { color: rgba(34, 49, 63, 0.7); }
+blockquote, .logged-in-as a:hover, .comment-author a:hover { border-color: rgba(34, 49, 63, 0.7); }
+pre, abbr[title], table, th, td, input, textarea, .main-navigation ul, .main-navigation li, .post-navigation, .post-navigation div + div, .pagination, .comment-navigation, .widget li, .widget_categories .children, .widget_nav_menu .sub-menu, .widget_pages .children, .site-header, .site-footer, .hentry + .hentry, .author-info, .entry-content .page-links a, .page-links > span, .page-header, .comments-area, .comment-list + .comment-respond, .comment-list article, .comment-list .pingback, .comment-list .trackback, .comment-list .reply a, .no-comments { border-color: rgba(34, 49, 63, 0.1); }
+a:focus, button:focus, input:focus { outline-color: rgba(34, 49, 63, 0.3); }
+input:focus, textarea:focus { border-color: rgba(34, 49, 63, 0.3); }
+.secondary-toggle::before { color: rgb(255, 255, 255); }
+.site-title a, .site-description { color: rgb(255, 255, 255); }
+.site-title a:hover, .site-title a:focus { color: rgba(255, 255, 255, 0.7); }
+.secondary-toggle { border-color: rgba(255, 255, 255, 0.1); }
+.secondary-toggle:hover, .secondary-toggle:focus { border-color: rgba(255, 255, 255, 0.3); }
+.site-title a { outline-color: rgba(255, 255, 255, 0.3); }
+.entry-footer { background-color: rgb(241, 241, 241); }
+@media screen and (min-width: 38.75em) {
+}
+@media screen and (min-width: 59.6875em) {
+  .site-header, .secondary { background-color: transparent; }
+  .secondary a, .dropdown-toggle::after, .widget-title, .widget blockquote cite, .widget blockquote small { color: rgb(255, 255, 255); }
+  .secondary a:hover, .secondary a:focus, .main-navigation .menu-item-description, .widget, .widget blockquote, .widget .wp-caption-text, .widget .gallery-caption { color: rgba(255, 255, 255, 0.7); }
+  .main-navigation ul, .main-navigation li, .widget input, .widget textarea, .widget table, .widget th, .widget td, .widget pre, .widget li, .widget_categories .children, .widget_nav_menu .sub-menu, .widget_pages .children, .widget abbr[title] { border-color: rgba(255, 255, 255, 0.1); }
+  .sidebar a:focus, .dropdown-toggle:focus { outline-color: rgba(255, 255, 255, 0.3); }
+}
+body::before, .site-header { background-color: rgb(83, 157, 214); }
+@media screen and (min-width: 59.6875em) {
+  .site-header, .secondary { background-color: transparent; }
+}
+</style>
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfifteen-ie-css'  href='http://easwy.com/blog/wp-content/themes/twentyfifteen/css/ie.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentyfifteen-ie7-css'  href='http://easwy.com/blog/wp-content/themes/twentyfifteen/css/ie7.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<link rel="https://api.w.org/" href="http://easwy.com/blog/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://easwy.com/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://easwy.com/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="xlink:href不能生成html超链接" href="http://easwy.com/blog/archives/xlink-href-can-not-generate-hyperlink/">
+<link rel="next" title="vi/vim使用进阶: 序言" href="http://easwy.com/blog/archives/advanced-vim-skills-prologue/">
+<meta name="generator" content="WordPress 4.5.5">
+<link rel="canonical" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/">
+<link rel="shortlink" href="http://easwy.com/blog/?p=24">
+<link rel="alternate" type="application/json+oembed" href="http://easwy.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Feaswy.com%2Fblog%2Farchives%2Fadvanced-vim-skills-catalog%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://easwy.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Feaswy.com%2Fblog%2Farchives%2Fadvanced-vim-skills-catalog%2F&amp;format=xml">
+
+<!-- Bad Behavior 2.2.19 run time: 81.784 ms -->
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+			<script src="about:blank" type="text/javascript"></script>
+			<style type="text/css">
+/* Code tidied up by ScrapBook */
+.recentcomments a { display: inline ! important; padding: 0px ! important; margin: 0px ! important; }
+</style>
+		<link rel="icon" href="易2-150x150.png" sizes="32x32">
+<link rel="icon" href="易2.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="http://easwy.com/blog/uploads/2015/09/%E6%98%932.png">
+<meta name="msapplication-TileImage" content="http://easwy.com/blog/uploads/2015/09/易2.png">
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style></head>
+
+<body class="single single-post postid-24 single-format-standard">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">跳至内容</a>
+
+	<div id="sidebar" class="sidebar">
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-branding">
+										<p class="site-title"><a href="http://easwy.com/blog/" rel="home">易水博客</a></p>
+											<p class="site-description">关注Linux, Scala, Java, 开源软件和嵌入式系统</p>
+									<button aria-controls="secondary" aria-expanded="false" class="secondary-toggle">菜单和挂件</button>
+			</div><!-- .site-branding -->
+		</header><!-- .site-header -->
+
+			<div aria-expanded="false" id="secondary" class="secondary">
+
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+				<div class="menu-%e9%a1%b5%e9%9d%a2-container"><ul id="menu-%e9%a1%b5%e9%9d%a2" class="nav-menu"><li id="menu-item-1268" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1268"><a href="http://easwy.com/blog/practical-vim-errata/">《Vim实用技巧》第一版勘误表</a></li>
+<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1269"><a href="http://easwy.com/blog/about/">关于</a></li>
+</ul></div>			</nav><!-- .main-navigation -->
+		
+		
+					<div id="widget-area" class="widget-area" role="complementary">
+				<aside id="linkcat-95" class="widget widget_links"><h2 class="widget-title">VPN</h2>
+	<ul class="xoxo blogroll">
+<li><a href="https://portal.shadowsocks.com/aff.php?aff=2771" target="_blank">科学上网</a></li>
+
+	</ul>
+</aside>
+<aside id="categories-3" class="widget widget_categories"><h2 class="widget-title">分类目录</h2>		<ul>
+	<li class="cat-item cat-item-86"><a href="http://easwy.com/blog/archives/category/catalog-android/" title="此分类讨论与Android系统相关的话题，包括ROM定制、Android应用开发、Android手机使用技巧等。">Android</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://easwy.com/blog/archives/category/web-development/" title="本分类讨论web各种web开发技术，如PHP、JSP、JSF等。内容以基于Java的开发技术为主。">Web开发</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://easwy.com/blog/archives/category/daughter/" title="我的宝贝，我的天使，我的小情人......无数个词，都无法形容我对她的爱！
+她就是我的女儿，这一个分类，主要记录她成长的点点滴滴。">吾家有女</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://easwy.com/blog/archives/category/embedded/" title="讨论嵌入式系统，主要是嵌入式Linux和Android方面的话题">嵌入系统</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://easwy.com/blog/archives/category/website/" title="我的建站笔记，wordpress的配置，以及网站编程相关，如PHP，JSP，CSS...">建站手记</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://easwy.com/blog/archives/category/development/" title="讨论开发编程的话题，会包括各种编程语言、UML、设计模式、开发经验......">开发编程</a>
+</li>
+	<li class="cat-item cat-item-48"><a href="http://easwy.com/blog/archives/category/open-source/" title="本分类主要讨论开源软件，包括Linux操作系统，及开源工具。">开源软件</a>
+</li>
+	<li class="cat-item cat-item-44"><a href="http://easwy.com/blog/archives/category/text/" title="讨论文本处理，会涉及sed, awk, vim等工具，也包括docbook等">文本处理</a>
+</li>
+	<li class="cat-item cat-item-37"><a href="http://easwy.com/blog/archives/category/misc/" title="百宝箱，能容其它分类所不能容">百宝箱</a>
+</li>
+	<li class="cat-item cat-item-74"><a href="http://easwy.com/blog/archives/category/bookmarks/" title="本分类包含Easwy的网络书签">网络书签</a>
+</li>
+	<li class="cat-item cat-item-82"><a href="http://easwy.com/blog/archives/category/tweets/" title="本分类收藏Easwy发表在twitter上的内容。">网络微博</a>
+</li>
+		</ul>
+</aside>		<aside id="recent-posts-4" class="widget widget_recent_entries">		<h2 class="widget-title">近期文章</h2>		<ul>
+					<li>
+				<a href="http://easwy.com/blog/archives/memorize_yuangeng_forever/">沉痛悼念袁庚！</a>
+						</li>
+					<li>
+				<a href="http://easwy.com/blog/archives/tmux-no-sessions/">tmux attach提示“no sessions”的解决办法</a>
+						</li>
+					<li>
+				<a href="http://easwy.com/blog/archives/upgrade-ubuntu-14-04-12-04/">升级Ubuntu 12.04 LTS到14.04 LTS</a>
+						</li>
+					<li>
+				<a href="http://easwy.com/blog/archives/practical-vim-chinese-version/">Practical Vim中文版 －《Vim实用技巧》已出版</a>
+						</li>
+					<li>
+				<a href="http://easwy.com/blog/archives/install-ubuntu-12-04-on-lvm-partition/">在LVM分区上安装Ubuntu 12.04</a>
+						</li>
+				</ul>
+		</aside>		<aside id="recent-comments-3" class="widget widget_recent_comments"><h2 class="widget-title">近期评论</h2><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">CN</span>发表在《<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-100566">vi/vim使用进阶: 目录</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.dabaiw.cn/it/27873.html" rel="external nofollow" class="url">vim 使用点滴记录 - 大白网</a></span>发表在《<a href="http://easwy.com/blog/archives/advanced-vim-skills-vim-gdb-pyclewn/comment-page-1/#comment-100432">vi/vim使用进阶: 在VIM中使用GDB调试 – 使用pyclewn</a>》</li><li class="recentcomments"><span class="comment-author-link">wildbook</span>发表在《<a href="http://easwy.com/blog/archives/advanced-vim-skills-cscope/comment-page-1/#comment-100429">vi/vim使用进阶: 程序员的利器 – cscope</a>》</li><li class="recentcomments"><span class="comment-author-link">bin</span>发表在《<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-100402">vi/vim使用进阶: 目录</a>》</li><li class="recentcomments"><span class="comment-author-link">br</span>发表在《<a href="http://easwy.com/blog/about/comment-page-2/#comment-100375">关于</a>》</li></ul></aside><aside id="tag_cloud-4" class="widget widget_tag_cloud"><h2 class="widget-title">标签</h2><div class="tagcloud"><a href="http://easwy.com/blog/archives/tag/android/" class="tag-link-10 tag-link-position-1" title="8个话题" style="font-size: 14.5pt;">android</a>
+<a href="http://easwy.com/blog/archives/tag/apache/" class="tag-link-69 tag-link-position-2" title="1个话题" style="font-size: 8pt;">apache</a>
+<a href="http://easwy.com/blog/archives/tag/awk/" class="tag-link-13 tag-link-position-3" title="1个话题" style="font-size: 8pt;">awk</a>
+<a href="http://easwy.com/blog/archives/tag/cscope/" class="tag-link-16 tag-link-position-4" title="3个话题" style="font-size: 11pt;">cscope</a>
+<a href="http://easwy.com/blog/archives/tag/ctags/" class="tag-link-17 tag-link-position-5" title="5个话题" style="font-size: 12.8pt;">ctags</a>
+<a href="http://easwy.com/blog/archives/tag/cygwin/" class="tag-link-60 tag-link-position-6" title="2个话题" style="font-size: 9.8pt;">cygwin</a>
+<a href="http://easwy.com/blog/archives/tag/debian/" class="tag-link-50 tag-link-position-7" title="12个话题" style="font-size: 16.1pt;">debian</a>
+<a href="http://easwy.com/blog/archives/tag/delicious/" class="tag-link-75 tag-link-position-8" title="9个话题" style="font-size: 15pt;">delicious</a>
+<a href="http://easwy.com/blog/archives/tag/docbook/" class="tag-link-11 tag-link-position-9" title="6个话题" style="font-size: 13.5pt;">docbook</a>
+<a href="http://easwy.com/blog/archives/tag/easwy/" class="tag-link-61 tag-link-position-10" title="17个话题" style="font-size: 17.6pt;">easwy.com</a>
+<a href="http://easwy.com/blog/archives/tag/git/" class="tag-link-72 tag-link-position-11" title="1个话题" style="font-size: 8pt;">git</a>
+<a href="http://easwy.com/blog/archives/tag/google/" class="tag-link-77 tag-link-position-12" title="1个话题" style="font-size: 8pt;">google</a>
+<a href="http://easwy.com/blog/archives/tag/java/" class="tag-link-78 tag-link-position-13" title="1个话题" style="font-size: 8pt;">java</a>
+<a href="http://easwy.com/blog/archives/tag/kvm/" class="tag-link-90 tag-link-position-14" title="1个话题" style="font-size: 8pt;">kvm</a>
+<a href="http://easwy.com/blog/archives/tag/linux/" class="tag-link-51 tag-link-position-15" title="48个话题" style="font-size: 21.9pt;">linux</a>
+<a href="http://easwy.com/blog/archives/tag/lvm/" class="tag-link-88 tag-link-position-16" title="2个话题" style="font-size: 9.8pt;">lvm</a>
+<a href="http://easwy.com/blog/archives/tag/m9/" class="tag-link-87 tag-link-position-17" title="1个话题" style="font-size: 8pt;">m9</a>
+<a href="http://easwy.com/blog/archives/tag/maven/" class="tag-link-79 tag-link-position-18" title="1个话题" style="font-size: 8pt;">maven</a>
+<a href="http://easwy.com/blog/archives/tag/mysql/" class="tag-link-65 tag-link-position-19" title="1个话题" style="font-size: 8pt;">mysql</a>
+<a href="http://easwy.com/blog/archives/tag/sbt/" class="tag-link-91 tag-link-position-20" title="1个话题" style="font-size: 8pt;">sbt</a>
+<a href="http://easwy.com/blog/archives/tag/scala/" class="tag-link-84 tag-link-position-21" title="4个话题" style="font-size: 12pt;">scala</a>
+<a href="http://easwy.com/blog/archives/tag/seo/" class="tag-link-64 tag-link-position-22" title="3个话题" style="font-size: 11pt;">SEO</a>
+<a href="http://easwy.com/blog/archives/tag/subversion/" class="tag-link-46 tag-link-position-23" title="2个话题" style="font-size: 9.8pt;">subversion</a>
+<a href="http://easwy.com/blog/archives/tag/svn/" class="tag-link-93 tag-link-position-24" title="1个话题" style="font-size: 8pt;">svn</a>
+<a href="http://easwy.com/blog/archives/tag/thinkpad/" class="tag-link-62 tag-link-position-25" title="6个话题" style="font-size: 13.5pt;">thinkpad</a>
+<a href="http://easwy.com/blog/archives/tag/tmux/" class="tag-link-94 tag-link-position-26" title="1个话题" style="font-size: 8pt;">tmux</a>
+<a href="http://easwy.com/blog/archives/tag/tomcat/" class="tag-link-68 tag-link-position-27" title="1个话题" style="font-size: 8pt;">tomcat</a>
+<a href="http://easwy.com/blog/archives/tag/twitter/" class="tag-link-83 tag-link-position-28" title="31个话题" style="font-size: 20.1pt;">twitter</a>
+<a href="http://easwy.com/blog/archives/tag/ubuntu/" class="tag-link-85 tag-link-position-29" title="4个话题" style="font-size: 12pt;">ubuntu</a>
+<a href="http://easwy.com/blog/archives/tag/vim/" class="tag-link-96 tag-link-position-30" title="49个话题" style="font-size: 22pt;">Vim</a>
+<a href="http://easwy.com/blog/archives/tag/windows/" class="tag-link-63 tag-link-position-31" title="2个话题" style="font-size: 9.8pt;">windows</a>
+<a href="http://easwy.com/blog/archives/tag/wordpress/" class="tag-link-52 tag-link-position-32" title="17个话题" style="font-size: 17.6pt;">wordpress</a>
+<a href="http://easwy.com/blog/archives/tag/xen/" class="tag-link-73 tag-link-position-33" title="1个话题" style="font-size: 8pt;">xen</a>
+<a href="http://easwy.com/blog/archives/tag/embedded-linux/" class="tag-link-59 tag-link-position-34" title="1个话题" style="font-size: 8pt;">嵌入式Linux</a>
+<a href="http://easwy.com/blog/archives/tag/kindergarten/" class="tag-link-70 tag-link-position-35" title="2个话题" style="font-size: 9.8pt;">幼儿园</a>
+<a href="http://easwy.com/blog/archives/tag/baby/" class="tag-link-41 tag-link-position-36" title="3个话题" style="font-size: 11pt;">育儿</a>
+<a href="http://easwy.com/blog/archives/tag/debug/" class="tag-link-57 tag-link-position-37" title="2个话题" style="font-size: 9.8pt;">调试</a></div>
+</aside><aside id="archives-4" class="widget widget_archive"><h2 class="widget-title">文章归档</h2>		<ul>
+			<li><a href="http://easwy.com/blog/archives/2016/02/">2016年二月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2015/06/">2015年六月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2014/08/">2014年八月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2014/07/">2014年七月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2014/02/">2014年二月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2014/01/">2014年一月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2012/03/">2012年三月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2012/02/">2012年二月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2012/01/">2012年一月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2011/01/">2011年一月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/12/">2010年十二月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/11/">2010年十一月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/10/">2010年十月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/09/">2010年九月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/08/">2010年八月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/07/">2010年七月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/05/">2010年五月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/04/">2010年四月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/03/">2010年三月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/02/">2010年二月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2010/01/">2010年一月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/12/">2009年十二月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/11/">2009年十一月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/10/">2009年十月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/09/">2009年九月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/08/">2009年八月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/06/">2009年六月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/05/">2009年五月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/04/">2009年四月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/03/">2009年三月</a></li>
+	<li><a href="http://easwy.com/blog/archives/2009/02/">2009年二月</a></li>
+		</ul>
+		</aside><aside id="linkcat-12" class="widget widget_links"><h2 class="widget-title">Vim</h2>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.vimer.cn/" rel="contact met" title="一个vim爱好者的博客" target="_blank">Vimer的程序世界</a></li>
+
+	</ul>
+</aside>
+			</div><!-- .widget-area -->
+		
+	</div><!-- .secondary -->
+
+	</div><!-- .sidebar -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+<article id="post-24" class="post-24 post type-post status-publish format-standard hentry category-text tag-vim">
+	
+	<header class="entry-header">
+		<h1 class="entry-title">vi/vim使用进阶: 目录</h1>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>
+      本系列文章，是原来我在CSDN的<a class="ulink" href="http://blog.csdn.net/easwy" target="_top">Easwy专栏</a>撰写的”使用VIM开发软件项目”系列。<a class="ulink" href="http://easwy.com/blog/" target="_top">Easwy的博客</a>搬家以后，就把CSDN上的文章全部移到此处。
+    </p>
+<p>
+      写本系列文章的最初想法，是介绍如何用vi/vim开发软件。但纵观整个系列，讲述的其实和软件开发关系并不大，基本都在讲vim的使用技巧、vim的配置及vimrc、vim的命令和vim的插件。因此，把文章移到新站后，我把本系列的名字改为”vi/vim使用进阶”，希望大家一如既往的支持该系列。
+    </p>
+<p>
+      本文是这一系列文章的总目录，可由此访问本系列所有文章。
+    </p>
+<p>
+      我使用docbook重新整理了一下这些文章，你可以在这里下载html版本的<a class="ulink" href="http://easwy.com/blog/uploads/vim/advanced_vim_skills_html.zip" target="_top">vi/vim使用进阶</a>，现在也提供<a class="ulink" href="http://easwy.com/blog/uploads/vim/advanced_vim_skills_pdf.zip" target="_top">PDF版本</a>下载。
+    </p>
+<p></p>
+<p><span class="bold"><strong>[目录]</strong></span></p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-prologue/" target="_top">vi/vim使用进阶: 序言</a><p></p>
+<p>
+          本文是本系列的序言，讲述我使用vi/vim的经历和心得，以及对vi/vim初学者的一些建议。文中的抓图展示了我的vim使用环境。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-session-file-and-viminfo/" target="_top">vi/vim使用进阶: 使用会话和viminfo</a><p></p>
+<p>
+          本文介绍如何使用vim的会话 (session) 和viminfo来恢复vim的使用环境。如果你需要经常恢复到相同工作环境，此功能非常有用，你不必一次次重新打开文件、设置你的工作环境。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-introduce-vimrc/" target="_top">vi/vim使用进阶: vimrc初步</a><p></p>
+<p>
+          本文简要介绍了vimrc的知识以及如何使用vimrc保存vim的配置。文中还提供了一些键映射(map)，使用这些映射可以快速编辑和加载vimrc。关于vimrc的更多应用，参见本系列其它文章。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-save-project-configuration/" target="_top">vi/vim使用进阶: 保存项目相关配置</a><p></p>
+<p>
+          本篇主要以path选项为例，讲述如何保存和恢复项目相关的配置。在使用vim的过程中，你可能同时打开几个project，每个project的配置可能都不相同，文中介绍了两种方法来保存每个project自身的独有配置。一种是使用一个固定的vim配置脚本保存project相关的path设置、按键映射等；另外一种是利用前面文章所介绍的会话(session)机制。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-use-ctags-tag-file/" target="_top">vi/vim使用进阶: 使用标签(tag)文件</a><p></p>
+<p>          本文介绍了如何使用Exuberant ctags生成tag文件以及在vim中如何使用tag文件进行跳转、查找等操作。还简要介绍了tag文件的格式，在后面介绍的Lookupfile插件中，会利用tag文件便捷的查找、打开文件。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-taglist-plugin/" target="_top">vi/vim使用进阶: 使用taglist插件</a><p></p>
+<p>
+          本文介绍如何使用taglist插件(plugin)来查看程序中的标签(tag)，并介绍了taglist插件的配置和用法。taglist插件利用Exuberant ctags程序生成标签文件，并提供像Source Insight那样的标签窗口，可以方便的跳转到函数、变量等标签所在的位置。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-netrw-bufexplorer-winmanager-plugin/" target="_top">vi/vim使用进阶: 文件浏览和缓冲区浏览</a><p></p>
+<p>
+          本节介绍了如何在vim中浏览文件，以及如何查看当前打开的缓冲区。利用netrw插件，可以方便的在vim中浏览各个目录、打开指定文件，而不用切换到文件浏览器或shell；当然，netrw插件的作用并不仅仅局限于此。利用bufexplorer插件，则可以方便的查看打开的缓冲区(buffer)，在缓冲区间进行切换。本文的最后介绍了winmanager插件，使用这个插件，可以把netrw插件、bufexplorer插件和taglist插件整合起来，使vim看起来更像一个集成开发环境(IDE)。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-lookupfile-plugin/" target="_top">vi/vim使用进阶: lookupfile插件</a><p></p>
+<p>
+          如果你在开发一个大的项目，当你想在一大堆文件中查找或者编辑指定文件时，Lookupfile插件是必不可少的。使用它，可以快速查找项目文件、可以在缓冲区查找指定文件、可以浏览指定目录等。在查找时甚至可以使用正则表达式(regex)，在你只记得部分文件名或目录名时，这可是救命的手段。
+        </p>
+</li>
+<li>
+<p>        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-filetype-on/" target="_top">vi/vim使用进阶: 开启文件类型检测</a></p>
+<p>
+          vim最吸引人的一点是，它支持无穷多的文件类型，而且能够随意扩展。在本文主要介绍如何打开文件类型检测的功能，以及如何使用基于文件类型的插件(filetype plugin)。正因为有了文件类型检测的功能，我们才可能针对不同的类型的文件，定义不同的键映射(map)、设置不同的选项，进行语法高亮的染色(后续文章中介绍)…你可以实现任意你想实现的功能。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-syntax-on-colorscheme/" target="_top">vi/vim使用进阶: 乱花渐欲迷人眼 – 语法高亮</a><p></p>
+<p>
+          VIM并不是只有黑色两色。正相反，它提供了非常灵活的机制允许用户自定义色彩。运行在终端中的VIM，由于终端本身的限制，只能使用若干种固定的颜色；但对于GVIM来讲，你可以根据你的喜好调出任意的颜色。本文介绍的，正是vim的语法高亮功能。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-cscope/" target="_top">vi/vim使用进阶: 程序员的利器 – cscope</a><p></p>
+<p>
+          在前面的文章中介绍了利用ctags生成的tag文件，跳转到标签定义的地方。但如果想查找函数在哪里被调用，或者标签在哪些地方出现过，ctags就无能为力了，这时需要使用更为强大的cscope。本文就介绍如何使用cscope，有了它，你可以把source insight抛到一边去了。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-quickfix-mode/" target="_top">vi/vim使用进阶: 剑不离手 – quickfix</a><p></p>
+<p>          vim由一个程序员开发，并且为更多的程序员所使用，所以vim对开发人员的强大支持，也就可以理解了。quickfix模式的引入就是一个例子。quickfix模式，是一种加速你开发的工作方式，使你不必离开vim，就可以快速的完成”编辑-编译-修正”你的程序。它不仅仅对开发人员有用，只要你的工作有类似”编辑-编译-修正”的过程，它就可以极大的简化你的工作。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-omin-complete/" target="_top">vi/vim使用进阶: 智能补全</a><p></p>
+<p>
+          使用过Source Insight的人一定对它的自动补全功能印象深刻，在很多的集成开发环境中，也都支持自动补全。vim做为一个出色的编辑器，这样的功能当然少不了。本文主要介绍vim的OMNI补全。将在下一篇中介绍其它的补全方式。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-auto-complete/" target="_top">vi/vim使用进阶: 自动补全</a><p></p>
+<p>
+          本文继续介绍vim的补全功能。作为一个通用的编辑器，vim实现的补全功能并不仅仅限于对程序的补全，它可以对文件名补全、根据字典进行补全、根据本缓冲区或其它缓冲区类似的内容进行补全、根据文件语法补全等等，它甚至允许用户自己编写函数来实现定制的补全。本文简要介绍了这些补全的方法。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-basic-move-method/" target="_top">vi/vim使用进阶: 指随意动，移动如飞 (一)</a><p></p>
+<p>
+          VIM提供的移动方式多如牛毛，但我们并不需要掌握全部这些命令，只需要掌握最适合自己的那些命令。本文介绍了最常用的一些移动命令，在下篇文章中将介绍更高级的移动方法。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-advanced-move-method/" target="_top">vi/vim使用进阶: 指随意动，移动如飞 (二)</a><p></p>
+<p>
+          本文介绍如何在vim中移动，主要涉及如何使用跳转表(jump-motions)、使用标记(mark)、使用折行(fold)，以及如何在程序中移动。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-vim-gdb-vimgdb/" target="_top">vi/vim使用进阶: 在VIM中使用GDB调试 – 使用vimgdb</a><p></p>
+<p>
+          本文介绍了如何使用vimgdb补丁在vim中用gdb调试程序，同时还介绍了vim的编译方法。然而，vim只是一个编辑器，而不是一个集成开发环境(IDE)，所以它对调试的支持很有限。
+        </p>
+</li>
+<li class="listitem">
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-vim-gdb-vimgdb-faq/" target="_top">vi/vim使用进阶: vimgdb调试时的常见问题及解决</a><p></p>
+<p>
+          在上篇文章中我介绍了如何使用vimgdb补丁在vim/gvim中调试程序。后来陆续有一些读者反馈了他们在使用中遇到的问题。在本文中总结一下常见的问题及解决办法。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-vim-gdb-pyclewn/" target="_top">vi/vim使用进阶:  在gvim中使用GDB调试 – 使用pyclewn</a><p></p>
+<p>          本文介绍了如何使用pyclewn在gvim中用gdb调试程序。pyclewn是vimgdb作者的另外一个作品，使用它可以使gvim在UNIX/LINUX以及windows上与gdb集成调试。
+        </p>
+</li>
+<li>
+        <a class="ulink" href="http://easwy.com/blog/archives/advanced-vim-skills-solve-compile-problem/" target="_top">vi/vim使用进阶: vim编译中遇到的问题及解决方法</a><p></p>
+<p>
+          本文主要介绍vim编译中遇到的问题及解决办法。文中介绍了如何通过看config.log，来了解配置失败的原因。有些网友编译图形化的gvim失败，可以参照本文的方法解决。
+        </p>
+</li>
+<li>
+        vi/vim使用进阶: 在vim中使用拷贝/粘贴<p></p>
+<p>
+          未完待续
+        </p>
+</li>
+<li>
+        vi/vim使用进阶: 映射自己的vim按键<p></p>
+<p>
+          未完待续
+        </p>
+</li>
+<li>
+        vi/vim使用进阶: 巧用vim的缩写功能<p></p>
+<p>
+          未完待续
+        </p>
+</li>
+<li>
+        vi/vim使用进阶: 强大的自动命令(autocmd)<p></p>
+<p>
+          未完待续
+        </p>
+</li>
+<li>
+        其它你感兴趣的话题<p></p>
+<p>
+          未完待续
+        </p>
+</li>
+</ul>
+</div>
+<p><span class="bold"><strong>原创文章，转载请注明：</strong></span>转载自<a class="link" href="http://easwy.com/blog/">Easwy的博客</a> [  <a class="link" href="http://easwy.com/blog/">http://easwy.com/blog/</a> ]</p>
+<p><span class="bold"><strong>　　　　本文链接地址:</strong></span> <a class="ulink" href="#" target="_top">http://easwy.com/blog/archives/advanced-vim-skills-catalog/</a></p>
+<div class="posturl">
+<p><span class="bold"><strong>原创文章，请阅读页脚的<a href="#license">许可方式</a>，转载请注明：</strong></span>转载自<a class="link" href="http://easwy.com/blog/" target="_top">易水博客</a> [ <a class="link" href="http://easwy.com/blog/" target="_top">http://easwy.com/blog/</a> ]</p>
+<p><span class="bold"><strong>本文链接地址:</strong></span> <a class="link" href="#" target="_top">http://easwy.com/blog/archives/advanced-vim-skills-catalog/</a></p>
+</div>
+<p style="margin-top: 0px; margin-bottom: 15px; color: rgb(136, 136, 136); font-size: 80%; font-style: italic;">文章的脚注信息由WordPress的<a href="http://easwy.com/blog/wordpress/wp-posturl/" style="color: rgb(136, 136, 255); text-decoration: underline;">wp-posturl插件</a>自动生成</p>
+<div class="yarpp-related">
+<div class="fixed"></div><div id="related_posts"><h3 class="related_post_title">相关文章</h3><ul class="related_post">
+<li><a href="http://easwy.com/blog/archives/add_post_copyright_url/" rel="bookmark" title="在文章末尾添加版本声明和文章的链接">在文章末尾添加版本声明和文章的链接 </a></li>
+<li><a href="http://easwy.com/blog/archives/advanced-vim-skills-archive-up-to-2009/" rel="bookmark" title="《vi/vim使用进阶》2009年以前文章打包">《vi/vim使用进阶》2009年以前文章打包 </a></li>
+<li><a href="http://easwy.com/blog/archives/advanced-vim-skills-save-project-configuration/" rel="bookmark" title="vi/vim使用进阶: 保存项目相关配置">vi/vim使用进阶: 保存项目相关配置 </a></li>
+<li><a href="http://easwy.com/blog/archives/advanced-vim-skills-session-file-and-viminfo/" rel="bookmark" title="vi/vim使用进阶: 使用会话和viminfo">vi/vim使用进阶: 使用会话和viminfo </a></li>
+<li><a href="http://easwy.com/blog/archives/advanced-vim-skills-prologue/" rel="bookmark" title="vi/vim使用进阶: 序言">vi/vim使用进阶: 序言 </a></li>
+<li><a href="http://easwy.com/blog/archives/advanced-vim-skills-pdf-download/" rel="bookmark" title="vim使用进阶系列文章PDF版本下载">vim使用进阶系列文章PDF版本下载 </a></li>
+<li><a href="http://easwy.com/blog/archives/advanced-vim-skills-filetype-on/" rel="bookmark" title="vi/vim使用进阶: 开启文件类型检测">vi/vim使用进阶: 开启文件类型检测 </a></li>
+<li><a href="http://easwy.com/blog/archives/advanced-vim-skills-taglist-plugin/" rel="bookmark" title="vi/vim使用进阶: 使用taglist插件">vi/vim使用进阶: 使用taglist插件 </a></li>
+</ul></div><div class="fixed"></div>
+</div>
+	</div><!-- .entry-content -->
+
+	
+	<footer class="entry-footer">
+		<span class="posted-on"><span class="screen-reader-text">发布于 </span><a href="#" rel="bookmark"><time class="entry-date published" datetime="2009-02-06T12:49:53+00:00">2009年2月6日</time><time class="updated" datetime="2009-12-31T15:15:10+00:00">2009年12月31日</time></a></span><span class="byline"><span class="author vcard"><span class="screen-reader-text">作者 </span><a class="url fn n" href="http://easwy.com/blog/archives/author/easwy/">Easwy</a></span></span><span class="cat-links"><span class="screen-reader-text">分类 </span><a href="http://easwy.com/blog/archives/category/text/" rel="category tag">文本处理</a></span><span class="tags-links"><span class="screen-reader-text">标签 </span><a href="http://easwy.com/blog/archives/tag/vim/" rel="tag">Vim</a></span>			</footer><!-- .entry-footer -->
+
+</article><!-- #post-## -->
+
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			《vi/vim使用进阶: 目录》有143个想法		</h2>
+
+			<nav class="navigation comment-navigation" role="navigation">
+		<h2 class="screen-reader-text">评论导航</h2>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-2/#comments">较早评论</a></div>		</div><!-- .nav-links -->
+	</nav><!-- .comment-navigation -->
+	
+		<ol class="comment-list">
+					<li id="comment-11759" class="comment even thread-even depth-1">
+			<article id="div-comment-11759" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn"><a href="http://www.itbeihe.com/" rel="external nofollow" class="url">北河</a></b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-11759">
+							<time datetime="2011-10-28T14:19:46+00:00">
+								2011年10月28日 2:19 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>此系列相当棒，见过的最好的vim教程系列，感谢。</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=11759#respond" aria-label="回复给北河">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-11857" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-11857" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn"><a href="http://dqw.me/" rel="external nofollow" class="url">dqw</a></b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-11857">
+							<time datetime="2011-11-03T23:14:12+00:00">
+								2011年11月3日 11:14 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>非常好的教程，谢谢分享</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=11857#respond" aria-label="回复给dqw">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-11884" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://issacsuixing.com/2011/11/%e5%b5%8c%e5%85%a5%e5%bc%8f%e7%bb%84%e6%96%b0%e4%ba%ba%e4%bb%bb%e5%8a%a1%e2%80%94%e2%80%94linuxvim%e5%9f%ba%e7%a1%80/" rel="external nofollow" class="url">嵌入式组新人任务——Linux&amp;VIM基础 | iMID</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-12213" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-12213" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">uniqueliu</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-12213">
+							<time datetime="2011-11-22T16:14:20+00:00">
+								2011年11月22日 4:14 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>今天鼓了一包子要学vim，这样就可一告别万恶的vs了，谢谢楼主的文章！非常敬佩楼主的分享美德！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=12213#respond" aria-label="回复给uniqueliu">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-12214" class="comment even thread-even depth-1">
+			<article id="div-comment-12214" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">uniqueliu</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-12214">
+							<time datetime="2011-11-22T16:14:55+00:00">
+								2011年11月22日 4:14 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>希望楼主再接再厉，把还没有写完的东东写完，谢谢楼主了！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=12214#respond" aria-label="回复给uniqueliu">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-12403" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-12403" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">THX.</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-12403">
+							<time datetime="2011-12-02T12:51:43+00:00">
+								2011年12月2日 12:51 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>支持博主分享知识！thx.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=12403#respond" aria-label="回复给THX.">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-13532" class="comment even thread-even depth-1">
+			<article id="div-comment-13532" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">ths</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-13532">
+							<time datetime="2012-01-17T23:38:50+00:00">
+								2012年1月17日 11:38 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>非常感谢楼主，这是我找到的最完整的入门教程</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=13532#respond" aria-label="回复给ths">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-14726" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-14726" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">noovel</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-14726">
+							<time datetime="2012-02-29T17:15:29+00:00">
+								2012年2月29日 5:15 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>谢谢站长！！！！<br>
+真的非常非常有用！！<br>
+抱走了pdf版本~&gt;_&lt;~</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=14726#respond" aria-label="回复给noovel">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-15404" class="comment even thread-even depth-1">
+			<article id="div-comment-15404" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">linjxwell</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-15404">
+							<time datetime="2012-03-24T20:50:11+00:00">
+								2012年3月24日 8:50 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>很赞的教程！十分期待博主继续更新这个系列！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=15404#respond" aria-label="回复给linjxwell">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-15423" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-15423" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">kevinton</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-15423">
+							<time datetime="2012-03-25T12:55:07+00:00">
+								2012年3月25日 12:55 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>太感谢楼主的辛勤奉献了</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=15423#respond" aria-label="回复给kevinton">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-15543" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.xiaoyatou.net/archives/53.html" rel="external nofollow" class="url">小丫头 » VIM配置(持续更新中)</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-16984" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-16984" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">gerald</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-16984">
+							<time datetime="2012-05-17T22:28:59+00:00">
+								2012年5月17日 10:28 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>支持楼主，一直在跟你学习，将VIM进行到底！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=16984#respond" aria-label="回复给gerald">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-19090" class="comment even thread-even depth-1">
+			<article id="div-comment-19090" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">Sean</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-19090">
+							<time datetime="2012-06-30T02:50:00+00:00">
+								2012年6月30日 2:50 上午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>感谢!!<br>
+俺把pdf版供奉起来，有空则经颂下。</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=19090#respond" aria-label="回复给Sean">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-20617" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-20617" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn"><a href="http://none/" rel="external nofollow" class="url">fakir</a></b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-20617">
+							<time datetime="2012-08-02T14:06:49+00:00">
+								2012年8月2日 2:06 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>thank you very much~~~~~</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=20617#respond" aria-label="回复给fakir">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-21185" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://weager.sinaapp.com/?p=151" rel="external nofollow" class="url">樱花树下的家 » vi使用基础教程</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-23179" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-23179" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn"><a href="http://www.the5fire.net/" rel="external nofollow" class="url">the5fire</a></b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-23179">
+							<time datetime="2012-10-08T18:45:44+00:00">
+								2012年10月8日 6:45 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>感谢呀，收藏了。</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=23179#respond" aria-label="回复给the5fire">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-29326" class="comment even thread-even depth-1">
+			<article id="div-comment-29326" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">pan</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-29326">
+							<time datetime="2012-11-17T22:10:51+00:00">
+								2012年11月17日 10:10 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>谢谢博主！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=29326#respond" aria-label="回复给pan">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-37084" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.techpot.net/archives/47443" rel="external nofollow" class="url">打造属于自己的 Vim 神器 « T客网 ︱ Techpot</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-37368" class="comment even thread-even depth-1">
+			<article id="div-comment-37368" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">Worm004</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-37368">
+							<time datetime="2013-01-31T21:21:51+00:00">
+								2013年1月31日 9:21 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>对于我这种初学者来说，很有用，谢谢！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=37368#respond" aria-label="回复给Worm004">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-44379" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://blog.zzbalabala.com/?p=109" rel="external nofollow" class="url">vim笔记 « 伊谢尔伦的一角</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-49398" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.gdctp.cn/827.html" rel="external nofollow" class="url">Vim – 文本/代码编辑器之中最为优秀经典的上古神器！强大、高效、免费开源且跨平台！ – 哥太假博客</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-51902" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.ttsgs.com/2013/06/16/vim%e7%9b%b8%e5%85%b3%e8%b5%84%e6%96%99%e5%a4%a7%e5%85%a8/" rel="external nofollow" class="url">Vim相关资料大全 | 天天三国杀</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-53142" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.qianduanstudy.info/other/vim-%e6%96%87%e6%9c%ac%e4%bb%a3%e7%a0%81%e7%bc%96%e8%be%91%e5%99%a8%e4%b9%8b%e4%b8%ad%e6%9c%80%e4%b8%ba%e4%bc%98%e7%a7%80%e7%bb%8f%e5%85%b8%e7%9a%84%e4%b8%8a%e5%8f%" rel="external nofollow" class="url">Vim – 文本/代码编辑器之中最为优秀经典的上古神器！(转) | 前端学习笔记</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-58980" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.icultivator.com/p/511.html" rel="external nofollow" class="url">Vim-文本/代码编辑器之中最为优秀经典的上古神器！ | 农夫庄园</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-72012" class="comment even thread-even depth-1">
+			<article id="div-comment-72012" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn"><a href="http://114.214.163.69/" rel="external nofollow" class="url">franc</a></b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-72012">
+							<time datetime="2013-11-05T20:54:22+00:00">
+								2013年11月5日 8:54 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>也来赞一个，初学vim，正好需要有条理的总结归纳。。</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=72012#respond" aria-label="回复给franc">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-73437" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.not-web.com/?p=47" rel="external nofollow" class="url">Vim – 文本/代码编辑器之中最为优秀经典的上古神器！强大、高效、免费开源且跨平台！ | 屌丝码农</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-73712" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.7keji.cn/685.html" rel="external nofollow" class="url">Vim – 文本/代码编辑器之中最为优秀经典的上古神器！强大、高效、免费开源且跨平台！ - 7科技</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-79382" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-79382" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">happyqiang</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-79382">
+							<time datetime="2014-01-09T09:24:05+00:00">
+								2014年1月9日 9:24 上午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>lz就是国内IT界无私奉献的有才华的人，我作为一个初学者，拜读您这样的精华资料，这辈子都会感激您的。他日如果我也很牛了，也一定像lz这样无私奉献。如果遇见了lz本人，必须请lz吃饭～～</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=79382#respond" aria-label="回复给happyqiang">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-79383" class="comment byuser comment-author-easwy bypostauthor even thread-even depth-1">
+			<article id="div-comment-79383" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn"><a href="http://easwy.com/blog/" rel="external nofollow" class="url">Easwy</a></b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-79383">
+							<time datetime="2014-01-09T09:48:29+00:00">
+								2014年1月9日 9:48 上午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>@happyqiang:</p>
+<p>其实分享并不用等到你很牛的时候，如果能把自己从初学开始的历程分享出来，相信对其他初学者来说，也是一种帮助。<br>
+我们的口号是：分享，从现在开始！ :-)</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=79383#respond" aria-label="回复给Easwy">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-79384" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-79384" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">happyqiang</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-79384">
+							<time datetime="2014-01-09T10:17:13+00:00">
+								2014年1月9日 10:17 上午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>了解，一定做到！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=79384#respond" aria-label="回复给happyqiang">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-79886" class="comment even thread-even depth-1">
+			<article id="div-comment-79886" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">flia</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-79886">
+							<time datetime="2014-01-19T18:47:04+00:00">
+								2014年1月19日 6:47 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>非常好的介绍文章，正在为vim的配置苦恼，这些文章真的帮了我大忙。<br>
+多谢多谢！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=79886#respond" aria-label="回复给flia">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-81269" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://tech-trueelement.rhcloud.com/archives/694" rel="external nofollow" class="url">Vim 学习 | 果壳中的宇宙</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-84039" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://4gamers.cn/archives/261" rel="external nofollow" class="url">vim,打造vim神器 | 子龙山人</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-84679" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://luciuz.sinaapp.com/?p=43" rel="external nofollow" class="url">打造属于自己的Vim神器 | Luciuz's Homepage</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-87787" class="comment even thread-even depth-1">
+			<article id="div-comment-87787" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">nana</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-87787">
+							<time datetime="2014-12-19T17:29:31+00:00">
+								2014年12月19日 5:29 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>感谢楼主的无私分享！<br>
+对vs累觉不爱，刚开始接触linux，正想用简单的方式写程序。决定跟着楼主的讲解走了。<br>
+已抱走pdf，希望自己有恒心坚持下去吧。<br>
+再次感谢楼主！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=87787#respond" aria-label="回复给nana">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-88427" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.lookafar.net/?p=106" rel="external nofollow" class="url">vim | afarliu的技术生涯</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-90046" class="comment even thread-even depth-1">
+			<article id="div-comment-90046" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">刘诚</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-90046">
+							<time datetime="2015-08-03T12:29:29+00:00">
+								2015年8月3日 12:29 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>感觉写的是太好了，vim必学,谢谢楼主。</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=90046#respond" aria-label="回复给刘诚">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-90937" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-90937" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">xrd</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-90937">
+							<time datetime="2015-09-01T15:42:40+00:00">
+								2015年9月1日 3:42 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>感谢Easwy,  尤其佩服这么多年一直坚持在更新</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=90937#respond" aria-label="回复给xrd">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-94959" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-94959" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">卓义</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-94959">
+							<time datetime="2015-11-16T14:57:32+00:00">
+								2015年11月16日 2:57 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>想请教一个问题：<br>
+我今天使用vim帮助时，不能用Ctrl+]直接跳转了。比如我想直接跳转到quickref相应的帮助，出现如下错误：<br>
+E149: Sorry, no help for quickref</p>
+<p>如能帮忙，感激不尽！</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=94959#respond" aria-label="回复给卓义">回复</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-99834" class="comment byuser comment-author-eyang odd alt depth-2">
+			<article id="div-comment-99834" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn"><a href="http://easwy.com/blog/" rel="external nofollow" class="url">Easwy</a></b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-99834">
+							<time datetime="2016-03-14T10:17:28+00:00">
+								2016年3月14日 10:17 上午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>你试着执行一下 :helptags $VIMRUNTIME/doc</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=99834#respond" aria-label="回复给Easwy">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-100402" class="comment even thread-odd thread-alt depth-1">
+			<article id="div-comment-100402" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">bin</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-100402">
+							<time datetime="2016-09-03T18:53:33+00:00">
+								2016年9月3日 6:53 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>希望楼主能够坚持下去，把“未完待续”全都写完，造福一方。</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=100402#respond" aria-label="回复给bin">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-100566" class="comment odd alt thread-even depth-1">
+			<article id="div-comment-100566" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">CN</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-3/#comment-100566">
+							<time datetime="2016-12-31T10:09:57+00:00">
+								2016年12月31日 10:09 上午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>看的出来，您是在用心写文章。<br>
+感谢博主的无私分享。</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/?replytocom=100566#respond" aria-label="回复给CN">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+			<nav class="navigation comment-navigation" role="navigation">
+		<h2 class="screen-reader-text">评论导航</h2>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/comment-page-2/#comments">较早评论</a></div>		</div><!-- .nav-links -->
+	</nav><!-- .comment-navigation -->
+	
+	
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">取消回复</a></small></h3>				<form action="http://easwy.com/blog/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span> 必填项已用<span class="required">*</span>标注</p><p class="comment-form-comment"><label for="comment">评论</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">姓名 <span class="required">*</span></label> <input id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">电子邮件 <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="email"></p>
+<p class="comment-form-url"><label for="url">站点</label> <input id="url" name="url" value="" size="30" maxlength="200" type="url"></p>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="发表评论" type="submit"> <input name="comment_post_ID" value="24" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="a132af08c3" type="hidden"></p><p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1484363925135" type="hidden"><input value="1484363922 125.83.88.204" name="bb2_screener_" type="hidden"></form>
+					</div><!-- #respond -->
+		
+</div><!-- .comments-area -->
+
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">文章导航</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="http://easwy.com/blog/archives/xlink-href-can-not-generate-hyperlink/" rel="prev"><span class="meta-nav" aria-hidden="true">上一</span> <span class="screen-reader-text">上篇文章：</span> <span class="post-title">xlink:href不能生成html超链接</span></a></div><div class="nav-next"><a href="http://easwy.com/blog/archives/advanced-vim-skills-prologue/" rel="next"><span class="meta-nav" aria-hidden="true">下一</span> <span class="screen-reader-text">下篇文章：</span> <span class="post-title">vi/vim使用进阶: 序言</span></a></div></div>
+	</nav>
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+
+	</div><!-- .site-content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="https://cn.wordpress.org/">自豪地采用WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- .site-footer -->
+
+</div><!-- .site -->
+
+<script>/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<link rel="stylesheet" id="yarppRelatedCss-css" href="related.css" type="text/css" media="all">
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<!-- Beginning of <head> --><head>
+<!-- heatmapthemead_pre_wp_head hook -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>How to install and configure an Open-VPN with NAT server inside AWS VPC | LinuxFunda</title>
+<link rel="profile" href="http://gmpg.org/xfn/11"><link rel="pingback" href="http://www.linuxfunda.com/xmlrpc.php">
+<!-- end of heatmapthemead_pre_wp_head hook -->
+<!-- wp_head()-->
+<!-- All in One SEO Pack 2.3.11.1 by Michael Torbert of Semper Fi Web Design[384,475] -->
+<meta name="description" content="This tutorial will help you to built a Server with NAT and OpenVPN.">
+
+<meta name="keywords" content="aws,vpc,nat,pat,ec2,openvpn,openvpn inside vpc,nat and openvpn,vpn with nat in aws">
+
+<link rel="canonical" href="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/">
+<!-- /all in one seo pack -->
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://s.gravatar.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="LinuxFunda » Feed" href="http://www.linuxfunda.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="LinuxFunda » Comments Feed" href="http://www.linuxfunda.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="LinuxFunda » How to install and configure an Open-VPN with NAT server inside AWS VPC Comments Feed" href="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/feed/">
+		<script src="about:blank" id="twitter-wjs"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" async="" type="text/javascript"></script><script type="text/javascript">/* Code removed by ScrapBook */</script><script defer="" type="text/javascript" src="about:blank"></script>
+		<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+<link rel="stylesheet" id="crayon-css" href="crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-github-css" href="github.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="monaco.css" type="text/css" media="all">
+<link rel="stylesheet" id="siteorigin-panels-front-css" href="front.css" type="text/css" media="all">
+<link rel="stylesheet" id="arevico_scsfbcss-css" href="featherlight.css" type="text/css" media="all">
+<link rel="stylesheet" id="ts_fab_css-css" href="ts-fab.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpsr-socialbuttons-css" href="wp-socializer-buttons-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="display-authors-widget-styles-css" href="display-authors-widget.css" type="text/css" media="all">
+<link rel="stylesheet" id="style-css" href="style.css" type="text/css" media="all">
+<link rel="stylesheet" id="heatmapthemead-iefix-css" href="iefix.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<link rel="https://api.w.org/" href="http://www.linuxfunda.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.linuxfunda.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.linuxfunda.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="How to install and configure DNS (BIND) on CentOS" href="http://www.linuxfunda.com/2013/09/10/how-to-install-and-configure-dns-bind-on-centos/">
+<link rel="next" title="How to configure NFS on CentOS 6" href="http://www.linuxfunda.com/2013/09/20/how-to-configure-nfs-on-centos-6/">
+<meta name="generator" content="WordPress 4.7">
+<link rel="shortlink" href="http://wp.me/p3KGYV-on">
+<link rel="alternate" type="application/json+oembed" href="http://www.linuxfunda.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.linuxfunda.com%2F2013%2F09%2F14%2Fhow-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.linuxfunda.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.linuxfunda.com%2F2013%2F09%2F14%2Fhow-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc%2F&amp;format=xml">
+
+<link rel="dns-prefetch" href="http://v0.wordpress.com/">
+<link rel="dns-prefetch" href="http://jetpack.wordpress.com/">
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://s1.wp.com/">
+<link rel="dns-prefetch" href="http://s2.wp.com/">
+<link rel="dns-prefetch" href="http://public-api.wordpress.com/">
+<link rel="dns-prefetch" href="http://0.gravatar.com/">
+<link rel="dns-prefetch" href="http://1.gravatar.com/">
+<link rel="dns-prefetch" href="http://2.gravatar.com/">
+<link rel="dns-prefetch" href="http://widgets.wp.com/">
+<link rel="dns-prefetch" href="http://i0.wp.com/">
+<link rel="dns-prefetch" href="http://i1.wp.com/">
+<link rel="dns-prefetch" href="http://i2.wp.com/">
+		<style>
+/* Code tidied up by ScrapBook */
+a { color: rgb(27, 139, 224); }
+</style>
+			<style>
+/* Code tidied up by ScrapBook */
+#heatmapthemead-leaderboard, nav.main-navigation, nav.secondary-navigation, #heatmapthemead-branding-container, .heatmapthemead-layout-both-sidebars #heatmapthemead-main, .heatmapthemead-layout-primary-sidebar-content #heatmapthemead-main, .heatmapthemead-layout-content-secondary-sidebar #heatmapthemead-main, .heatmapthemead-layout-content #heatmapthemead-main { max-width: 1260px; }
+</style>
+		
+				<style>
+/* Code tidied up by ScrapBook */
+#heatmapthemead-header, #heatmapthemead-footer { max-width: 1260px; }
+</style>
+					
+					<style>
+/* Code tidied up by ScrapBook */
+h1, h2, h3, h4, h5, h6, #heatmapthemead-header-text p#site-title, #heatmapthemead-header-text p#site-description { font-family: Verdana,Geneva,sans-serif; }
+.heatmapthemead-menu { font-family: Verdana,Geneva,sans-serif; }
+body { font-size: 1.6em; }
+body, button, input, select, textarea { font-family: Verdana,Geneva,sans-serif; }
+</style> 
+			
+<!--WP Socializer v2.4.9.9 - Scripts Loader-->
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!--End WP Socializer - Scripts Loader-->
+	<style type="text/css">
+/* Code tidied up by ScrapBook */
+#site-title, #site-description { position: absolute ! important; clip: rect(1px, 1px, 1px, 1px); }
+</style>
+	
+<!-- WordPress Facebook Open Graph protocol plugin (WPFBOGP v2.0.13) http://rynoweb.com/wordpress-plugins/ -->
+<meta property="fb:admins" content="540820009">
+<meta property="og:url" content="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/">
+<meta property="og:title" content="How to install and configure an Open-VPN with NAT server inside AWS VPC">
+<meta property="og:site_name" content="LinuxFunda">
+<meta property="og:description" content="We are using AWS VPC to create an logically Isolated area for our servers. We have complete control on the networking for our AWS VPC. We can customize our netw">
+<meta property="og:type" content="article">
+<meta property="og:image" content="http://www.linuxfunda.com/wp-content/uploads/2013/10/LinuxFunda.jpeg">
+<meta property="og:locale" content="en_us">
+<!-- // end wpfbogp -->
+
+<!-- BEGIN GADWP v4.9.4 Classic Tracking - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!-- END GADWP Classic Tracking -->
+
+<!-- End of wp_head() -->
+<!-- heatmapthemead_post_wp_head hook -->
+<!-- end of heatmapthemead_post_wp_head hook -->
+<script src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+#li_ui_li_gen_1485100736692_0 { position: relative ! important; overflow: visible ! important; display: block ! important; }
+#li_ui_li_gen_1485100736692_0 span { box-sizing: content-box ! important; }
+#li_ui_li_gen_1485100736692_0 a#li_ui_li_gen_1485100736692_0-link { border: 0px none ! important; height: 20px ! important; text-decoration: none ! important; padding: 0px ! important; margin: 0px ! important; display: inline-block ! important; }
+#li_ui_li_gen_1485100736692_0 a#li_ui_li_gen_1485100736692_0-link:link, #li_ui_li_gen_1485100736692_0 a#li_ui_li_gen_1485100736692_0-link:visited, #li_ui_li_gen_1485100736692_0 a#li_ui_li_gen_1485100736692_0-link:hover, #li_ui_li_gen_1485100736692_0 a#li_ui_li_gen_1485100736692_0-link:active { border: 0px none ! important; text-decoration: none ! important; }
+#li_ui_li_gen_1485100736692_0 a#li_ui_li_gen_1485100736692_0-link::after { content: "." ! important; display: block ! important; clear: both ! important; visibility: hidden ! important; line-height: 0 ! important; height: 0px ! important; }
+#li_ui_li_gen_1485100736692_0 #li_ui_li_gen_1485100736692_0-logo { background-image: url("sprite_connect_v14.png") ! important; background-position: 0px -593px ! important; background-repeat: no-repeat ! important; background-color: rgb(0, 119, 181) ! important; background-size: initial ! important; cursor: pointer ! important; border-width: 0px 1px 0px 0px ! important; border-style: none solid none none ! important; border-color: -moz-use-text-color rgb(6, 96, 148) -moz-use-text-color -moz-use-text-color ! important; -moz-border-top-colors: none ! important; -moz-border-right-colors: none ! important; -moz-border-bottom-colors: none ! important; -moz-border-left-colors: none ! important; border-image: none ! important; text-indent: -9999em ! important; overflow: hidden ! important; padding: 0px ! important; margin: 0px ! important; position: absolute ! important; left: 0px ! important; top: 0px ! important; display: block ! important; width: 20px ! important; height: 20px ! important; float: right ! important; border-radius: 2px ! important; }
+#li_ui_li_gen_1485100736692_0 #li_ui_li_gen_1485100736692_0-title { color: rgb(255, 255, 255) ! important; cursor: pointer ! important; display: block ! important; white-space: nowrap ! important; float: left ! important; margin-left: 1px ! important; vertical-align: top ! important; overflow: hidden ! important; text-align: center ! important; height: 18px ! important; padding: 0px 4px 0px 23px ! important; border: 1px solid rgb(0, 119, 181) ! important; text-shadow: 0px -1px rgb(0, 88, 135) ! important; line-height: 20px ! important; border-radius: 2px ! important; background-color: rgb(0, 119, 181) ! important; background-image: -moz-linear-gradient(center top , rgb(0, 119, 181) 0%, rgb(0, 119, 181) 100%) ! important; }
+#li_ui_li_gen_1485100736692_0 #li_ui_li_gen_1485100736692_0-title-text, #li_ui_li_gen_1485100736692_0 #li_ui_li_gen_1485100736692_0-title-text * { color: rgb(255, 255, 255) ! important; font-size: 11px ! important; font-family: Arial,sans-serif ! important; font-weight: bold ! important; font-style: normal ! important; display: inline-block ! important; background: transparent none repeat scroll 0% 0% ! important; vertical-align: top ! important; height: 18px ! important; line-height: 20px ! important; float: none ! important; }
+#li_ui_li_gen_1485100736692_0 #li_ui_li_gen_1485100736692_0-title #li_ui_li_gen_1485100736692_0-mark { display: inline-block ! important; width: 0px ! important; overflow: hidden ! important; }
+#li_ui_li_gen_1485100736715_1-container.IN-right { display: inline-block ! important; float: left ! important; overflow: visible ! important; position: relative ! important; height: 20px ! important; padding-left: 2px ! important; line-height: 1px ! important; cursor: pointer ! important; }
+#li_ui_li_gen_1485100736715_1.IN-right { display: block ! important; float: left ! important; height: 20px ! important; margin-right: 4px ! important; padding-right: 4px ! important; background-image: url("sprite_connect_v14.png") ! important; background-color: transparent ! important; background-repeat: no-repeat ! important; background-position: right -447px ! important; }
+#li_ui_li_gen_1485100736715_1-inner.IN-right { display: block ! important; float: left ! important; padding-left: 8px ! important; text-align: center ! important; background-image: url("sprite_connect_v14.png") ! important; background-color: transparent ! important; background-repeat: no-repeat ! important; background-position: 0px -426px ! important; }
+#li_ui_li_gen_1485100736715_1-content.IN-right { display: inline ! important; font-size: 11px ! important; color: rgb(78, 78, 78) ! important; font-weight: bold ! important; font-family: Arial,sans-serif ! important; line-height: 20px ! important; padding: 0px 5px ! important; }
+#li_ui_li_gen_1485100736725_2 { position: relative ! important; overflow: visible ! important; display: block ! important; }
+#li_ui_li_gen_1485100736725_2 span { box-sizing: content-box ! important; }
+#li_ui_li_gen_1485100736725_2 a#li_ui_li_gen_1485100736725_2-link { border: 0px none ! important; height: 20px ! important; text-decoration: none ! important; padding: 0px ! important; margin: 0px ! important; display: inline-block ! important; }
+#li_ui_li_gen_1485100736725_2 a#li_ui_li_gen_1485100736725_2-link:link, #li_ui_li_gen_1485100736725_2 a#li_ui_li_gen_1485100736725_2-link:visited, #li_ui_li_gen_1485100736725_2 a#li_ui_li_gen_1485100736725_2-link:hover, #li_ui_li_gen_1485100736725_2 a#li_ui_li_gen_1485100736725_2-link:active { border: 0px none ! important; text-decoration: none ! important; }
+#li_ui_li_gen_1485100736725_2 a#li_ui_li_gen_1485100736725_2-link::after { content: "." ! important; display: block ! important; clear: both ! important; visibility: hidden ! important; line-height: 0 ! important; height: 0px ! important; }
+#li_ui_li_gen_1485100736725_2 #li_ui_li_gen_1485100736725_2-logo { background-image: url("sprite_connect_v14.png") ! important; background-position: 0px -593px ! important; background-repeat: no-repeat ! important; background-color: rgb(0, 119, 181) ! important; background-size: initial ! important; cursor: pointer ! important; border-width: 0px 1px 0px 0px ! important; border-style: none solid none none ! important; border-color: -moz-use-text-color rgb(6, 96, 148) -moz-use-text-color -moz-use-text-color ! important; -moz-border-top-colors: none ! important; -moz-border-right-colors: none ! important; -moz-border-bottom-colors: none ! important; -moz-border-left-colors: none ! important; border-image: none ! important; text-indent: -9999em ! important; overflow: hidden ! important; padding: 0px ! important; margin: 0px ! important; position: absolute ! important; left: 0px ! important; top: 0px ! important; display: block ! important; width: 20px ! important; height: 20px ! important; float: right ! important; border-radius: 2px ! important; }
+#li_ui_li_gen_1485100736725_2 #li_ui_li_gen_1485100736725_2-title { color: rgb(255, 255, 255) ! important; cursor: pointer ! important; display: block ! important; white-space: nowrap ! important; float: left ! important; margin-left: 1px ! important; vertical-align: top ! important; overflow: hidden ! important; text-align: center ! important; height: 18px ! important; padding: 0px 4px 0px 23px ! important; border: 1px solid rgb(0, 119, 181) ! important; text-shadow: 0px -1px rgb(0, 88, 135) ! important; line-height: 20px ! important; border-radius: 2px ! important; background-color: rgb(0, 119, 181) ! important; background-image: -moz-linear-gradient(center top , rgb(0, 119, 181) 0%, rgb(0, 119, 181) 100%) ! important; }
+#li_ui_li_gen_1485100736725_2 #li_ui_li_gen_1485100736725_2-title-text, #li_ui_li_gen_1485100736725_2 #li_ui_li_gen_1485100736725_2-title-text * { color: rgb(255, 255, 255) ! important; font-size: 11px ! important; font-family: Arial,sans-serif ! important; font-weight: bold ! important; font-style: normal ! important; display: inline-block ! important; background: transparent none repeat scroll 0% 0% ! important; vertical-align: top ! important; height: 18px ! important; line-height: 20px ! important; float: none ! important; }
+#li_ui_li_gen_1485100736725_2 #li_ui_li_gen_1485100736725_2-title #li_ui_li_gen_1485100736725_2-mark { display: inline-block ! important; width: 0px ! important; overflow: hidden ! important; }
+#li_ui_li_gen_1485100736731_3-container.IN-right { display: inline-block ! important; float: left ! important; overflow: visible ! important; position: relative ! important; height: 20px ! important; padding-left: 2px ! important; line-height: 1px ! important; cursor: pointer ! important; }
+#li_ui_li_gen_1485100736731_3.IN-right { display: block ! important; float: left ! important; height: 20px ! important; margin-right: 4px ! important; padding-right: 4px ! important; background-image: url("sprite_connect_v14.png") ! important; background-color: transparent ! important; background-repeat: no-repeat ! important; background-position: right -447px ! important; }
+#li_ui_li_gen_1485100736731_3-inner.IN-right { display: block ! important; float: left ! important; padding-left: 8px ! important; text-align: center ! important; background-image: url("sprite_connect_v14.png") ! important; background-color: transparent ! important; background-repeat: no-repeat ! important; background-position: 0px -426px ! important; }
+#li_ui_li_gen_1485100736731_3-content.IN-right { display: inline ! important; font-size: 11px ! important; color: rgb(78, 78, 78) ! important; font-weight: bold ! important; font-family: Arial,sans-serif ! important; line-height: 20px ! important; padding: 0px 5px ! important; }
+</style></head>
+<!-- End of <head> -->
+<body class="post-template-default single single-post postid-1511 single-format-standard siteorigin-panels heatmapthemead-layout-content-secondary-sidebar  heatmapthemead-max-width-1260  heatmapthemeadheader-active">
+<!-- heatmapthemead_start_body hook -->
+<!-- end of heatmapthemead_start_body hook -->
+<!-- The Header Bars -->
+<div id="heatmapthemead-header-wipe">
+<div id="heatmapthemead-header">
+<div id="heatmapthemead-header-container">
+  
+		<div id="heatmapthemead-primary-menu" class="heatmapthemead-menu">
+			<nav role="navigation" class="site-navigation main-navigation">
+				<p class="primary-small-nav-text">	
+					Top Menu				</p>
+				<div class="menu-top-menu-container"><ul id="menu-top-menu" class="menu"><li id="menu-item-1198" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1198"><a href="http://www.linuxfunda.com/articles/">Submit Articles</a></li>
+<li id="menu-item-1199" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1199"><a href="http://www.linuxfunda.com/opensource-applications-for-linux/">OpenSource Apps for Linux</a></li>
+</ul></div>			</nav>
+		</div>
+			<div id="heatmapthemead-header-branding">
+		<div id="heatmapthemead-branding-container">
+							<header id="branding" role="banner">
+							<div id="heatmapthemead-header-image">
+		<a href="http://www.linuxfunda.com/"> 				<img src="copy-l_f4.png" alt="" class="site-header" height="77" width="291">
+		</a>
+		</div>
+			<div id="heatmapthemead-header-text">
+			<aside>
+				<p id="site-title"><a href="http://www.linuxfunda.com/" title="LinuxFunda" rel="home">LinuxFunda</a></p>
+				<p id="site-description">Site for Linux Begineers!! Feel free to contribute your thoughts!!</p>
+			</aside>
+		</div>
+					</header><!-- #branding -->
+			<div id="heatmapthemead-widget-position-header" class="heatmapthemead-widget-position heatmapthemead-homeheader widget-area" role="complementary"><aside id="heatmapthemead_social_icons_widget-2" class="widget heatmapthemead_social_icons_widget_class"><h4 class="widget-title">Follow Us</h4><div class="heatmapthemead-social-icons"><a id="heatmapthemead-fb-social-icon" class="heatmapthemead-social-icon" href="http://www.facebook.com/linuxfunda" target="_blank"><img src="facebook.png" alt=""></a><a id="heatmapthemead-twitter-social-icon" class="heatmapthemead-social-icon" href="http://www.twitter.com/linux_funda" target="_blank"><img src="twitter.png" alt=""></a><a id="heatmapthemead-rss-social-icon" class="heatmapthemead-social-icon" href="http://www.linuxfunda.com/feed/"><img src="rss-feed.png" alt=""></a><a id="heatmapthemead-rss-comments-social-icon" class="heatmapthemead-social-icon" href="http://www.linuxfunda.com/comments/feed/"><img src="rss-comments.png" alt=""></a></div> <!--.heatmapthemead-social-icons --></aside></div> <!-- id="heatmapthemead-widget-position-header" -->
+		</div><!-- #heatmapthemead-branding-container -->
+	</div><!-- #heatmapthemead-header-branding -->		
+          
+		<div id="heatmapthemead-secondary-menu" class="heatmapthemead-menu">  
+			<nav role="navigation" class="site-navigation secondary-navigation">
+				<p class="secondary-small-nav-text">
+					Blogs				</p>
+				<div class="menu-blogs-container"><ul id="menu-blogs" class="menu"><li id="menu-item-163" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-163"><a href="http://www.linuxfunda.com/category/linux/">Linux</a>
+<ul class="sub-menu">
+	<li id="menu-item-304" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-304"><a href="http://www.linuxfunda.com/category/linux/ubuntu/">Ubuntu</a></li>
+	<li id="menu-item-301" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-301"><a href="http://www.linuxfunda.com/category/linux/centos/">CentOS</a></li>
+	<li id="menu-item-302" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-302"><a href="http://www.linuxfunda.com/category/linux/fedora/">Fedora</a></li>
+</ul>
+</li>
+<li id="menu-item-695" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-695"><a href="http://www.linuxfunda.com/category/database/">Database</a>
+<ul class="sub-menu">
+	<li id="menu-item-1840" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1840"><a href="http://www.linuxfunda.com/category/database/oracle/">Oracle</a></li>
+	<li id="menu-item-165" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165"><a href="http://www.linuxfunda.com/category/database/mysql/">MySQL</a></li>
+	<li id="menu-item-696" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-696"><a href="http://www.linuxfunda.com/category/database/couchbase/">CouchBase</a></li>
+</ul>
+</li>
+<li id="menu-item-305" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-305"><a href="http://www.linuxfunda.com/category/scripting/">Scripting</a>
+<ul class="sub-menu">
+	<li id="menu-item-1356" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1356"><a href="http://www.linuxfunda.com/category/scripting/shell-script/">Shell Script</a></li>
+</ul>
+</li>
+<li id="menu-item-303" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-303"><a href="http://www.linuxfunda.com/category/webserver/">Webserver</a>
+<ul class="sub-menu">
+	<li id="menu-item-1354" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1354"><a href="http://www.linuxfunda.com/category/webserver/apache/">Apache</a></li>
+	<li id="menu-item-1355" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1355"><a href="http://www.linuxfunda.com/category/webserver/nginx/">Nginx</a></li>
+</ul>
+</li>
+<li id="menu-item-306" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-306"><a href="http://www.linuxfunda.com/category/monitoring-applicaion/">Monitoring</a>
+<ul class="sub-menu">
+	<li id="menu-item-417" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-417"><a href="http://www.linuxfunda.com/category/monitoring-applicaion/cacti/">Cacti</a></li>
+	<li id="menu-item-307" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-307"><a href="http://www.linuxfunda.com/category/monitoring-applicaion/nagios/">Nagios</a></li>
+</ul>
+</li>
+<li id="menu-item-604" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-604"><a href="http://www.linuxfunda.com/category/aws/">AWS</a>
+<ul class="sub-menu">
+	<li id="menu-item-698" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-698"><a href="http://www.linuxfunda.com/category/aws/s3/">S3</a></li>
+	<li id="menu-item-697" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-697"><a href="http://www.linuxfunda.com/category/aws/ec2-aws/">Ec2</a></li>
+	<li id="menu-item-1353" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1353"><a href="http://www.linuxfunda.com/category/aws/autoscaling/">AutoScaling</a></li>
+</ul>
+</li>
+<li id="menu-item-1357" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1357"><a href="http://www.linuxfunda.com/category/language/">Language</a>
+<ul class="sub-menu">
+	<li id="menu-item-308" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-308"><a href="http://www.linuxfunda.com/category/language/php/">PHP</a></li>
+	<li id="menu-item-1358" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1358"><a href="http://www.linuxfunda.com/category/language/ror/">ROR</a></li>
+</ul>
+</li>
+</ul></div>			</nav>  
+		</div>
+		</div> <!-- id="heatmapthemead-header-container" -->
+</div> <!-- id="heatmapthemead-header" -->
+</div> <!-- id="heatmapthemead-header-wipe" -->
+<!-- The main part of the page (with content and sidebars) -->
+<div id="heatmapthemead-main-wipe">
+<div id="heatmapthemead-main">
+<div id="heatmapthemead-content">
+<div id="heatmapthemead-the-content" class="site-content">
+<div id="heatmapthemead-the-content-container" role="main">
+	
+	
+		<article id="post-1511" class="post-1511 post type-post status-publish format-standard hentry category-aws category-ec2-aws tag-aws tag-ec2 tag-nat tag-openvpn tag-pat tag-vpc">
+		
+					<header class="entry-header">
+			<h1 class="entry-title"><a href="#" title="Permalink to How to install and configure an Open-VPN with NAT server inside AWS VPC" rel="bookmark">How to install and configure an Open-VPN with NAT server inside AWS VPC</a></h1>
+		</header> <!-- heatmapthemead-entry-header -->
+	<div class="heatmapthemead-header-entry-meta entry-meta"><span class="heatmapthemead-post-details">Posted on <a href="#" title="6:48 pm" rel="bookmark"><time class="entry-date updated" datetime="2013-09-14T18:48:32+00:00">September 14, 2013</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="http://www.linuxfunda.com/author/admin/" title="View all posts by Tapas Mishra" rel="author">Tapas Mishra</a></span></span></span>					<span class="comments-link"><a href="#respond">Leave a comment</a></span>
+								</div><!-- .heatmapthemead-entry-meta -->
+			<div class="entry-content"><div class="wp-socializer-buttons clearfix">
+	<span class="wpsr-btn">
+<!-- Start WP Socializer Plugin - Facebook Button -->
+<div class="fb-like" data-href="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" data-share="false" data-layout="button_count" data-show-faces="0" data-action="like" data-colorscheme="light"></div>
+<!-- End WP Socializer Plugin - Facebook Button -->
+</span>
+	<span class="wpsr-btn">
+<!-- Start WP Socializer Plugin - Retweet Button -->
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-lang="en" data-url="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" data-text="How to install and configure an Open-VPN with NAT server inside AWS VPC - "></a>
+<!-- End WP Socializer Plugin - Retweet Button -->
+</span>
+	<span class="wpsr-btn">
+<!-- Start WP Socializer Plugin - +1 Button -->
+<div class="g-plusone" data-size="medium" data-href="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/"></div>
+<!-- End WP Socializer Plugin - +1 Button -->
+</span>
+	<span class="wpsr-btn">
+<!-- Start WP Socializer Plugin - LinkedIn Button -->
+<span class="IN-widget" style="line-height: 1; vertical-align: baseline; display: inline-block; text-align: center;"><span style="padding: 0px ! important; margin: 0px ! important; text-indent: 0px ! important; display: inline-block ! important; vertical-align: baseline ! important; font-size: 1px ! important;"><span id="li_ui_li_gen_1485100736692_0"><a id="li_ui_li_gen_1485100736692_0-link"><span id="li_ui_li_gen_1485100736692_0-logo">in</span><span id="li_ui_li_gen_1485100736692_0-title"><span id="li_ui_li_gen_1485100736692_0-mark"></span><span id="li_ui_li_gen_1485100736692_0-title-text">Share</span></span></a></span></span><span style="padding: 0px ! important; margin: 0px ! important; text-indent: 0px ! important; display: inline-block ! important; vertical-align: baseline ! important; font-size: 1px ! important;"><span id="li_ui_li_gen_1485100736715_1-container" class="IN-right"><span id="li_ui_li_gen_1485100736715_1" class="IN-right"><span id="li_ui_li_gen_1485100736715_1-inner" class="IN-right"><span id="li_ui_li_gen_1485100736715_1-content" class="IN-right">1</span></span></span></span></span></span><script type="IN/Share+init" data-url="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" data-counter="right"></script>
+<!-- End WP Socializer Plugin - LinkedIn Button -->
+</span>
+	<span class="wpsr-btn">
+<!-- Start WP Socializer Plugin - StumbleUpon Button -->
+<iframe id="iframe-stmblpn-widget-1" src="index_50.html" style="overflow: hidden; margin: 0px; padding: 0px; border: 0px none;" allowtransparency="true" scrolling="no" frameborder="0" height="18" width="74"></iframe>
+<!-- End WP Socializer Plugin - StumbleUpon Button -->
+</span>
+</div><span class="wpsr_floatbts_anchor" data-offset="25"></span><p><a href="https://i1.wp.com/www.linuxfunda.com/wp-content/uploads/2013/06/aws-logo.png"><img class="size-medium wp-image-732 alignright" alt="aws-logo" src="aws-logo_004.png" srcset="aws-logo_004.png 300w, aws-logo.png 625w, aws-logo_001.png 180w, aws-logo_002.png 350w, aws-logo_003.png 800w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1"></a>We are using AWS VPC to create an logically Isolated area for our servers. We have complete control on the networking for our AWS VPC. We can customize our networking like public facing subnet and private-facing subnets. We can put our webservers in the public-facing subnets that has internet access and all other backend servers like application servers and database servers in the private-facing subnet. But there is an issue that the instances belongs to private facing subnet will not able to connect to the internet. So we need to install a NAT server to provide internet connection to the instance belongs to private facing subnet. Another question is how to connect the instances in private facing subnet? And the best answer is to install and configure a VPN server to connect to those instances. So in this article I will describe you how to install and configure VPN and NAT in a single instance.</p>
+<p>Create an Instance in your public facing subnate using AWS AMI. Assign an EIP to it. We are going to make it as our NAT instance also. For this you need to do few more steps.</p>
+<blockquote><p>From the EC2 console select the newly made instance and right click and select .Change Source / Dest Check.</p>
+<p>Then press <span style="color: rgb(255, 102, 0);">Yes, Disable</span></p></blockquote>
+<p>Then SSH to your instance and start working over it.</p>
+<p>We have to enable EPEL repository on our Instance:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732bff990182208" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732bff990182208-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732bff990182208-2">2</div><div class="crayon-num" data-line="crayon-5857694732bff990182208-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732bff990182208-4">4</div><div class="crayon-num" data-line="crayon-5857694732bff990182208-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732bff990182208-6">6</div><div class="crayon-num" data-line="crayon-5857694732bff990182208-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732bff990182208-8">8</div><div class="crayon-num" data-line="crayon-5857694732bff990182208-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732bff990182208-10">10</div><div class="crayon-num" data-line="crayon-5857694732bff990182208-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732bff990182208-1"><span class="crayon-v">CentOS</span><span class="crayon-o">/</span><span class="crayon-i">RHEL</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">32</span><span class="crayon-h"> </span><span class="crayon-v">bit</span><span class="crayon-o">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732bff990182208-2"><span class="crayon-p"># rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm</span></div><div class="crayon-line" id="crayon-5857694732bff990182208-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5857694732bff990182208-4"><span class="crayon-v">CentOS</span><span class="crayon-o">/</span><span class="crayon-i">RHEL</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">64</span><span class="crayon-h"> </span><span class="crayon-v">bit</span><span class="crayon-o">:</span></div><div class="crayon-line" id="crayon-5857694732bff990182208-5"><span class="crayon-p"># rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732bff990182208-6">&nbsp;</div><div class="crayon-line" id="crayon-5857694732bff990182208-7"><span class="crayon-v">CentOS</span><span class="crayon-o">/</span><span class="crayon-i">RHEL</span><span class="crayon-h"> </span><span class="crayon-cn">6</span><span class="crayon-h"> </span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">32</span><span class="crayon-h"> </span><span class="crayon-v">bit</span><span class="crayon-o">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732bff990182208-8"><span class="crayon-p"># rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm</span></div><div class="crayon-line" id="crayon-5857694732bff990182208-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5857694732bff990182208-10"><span class="crayon-v">CentOS</span><span class="crayon-o">/</span><span class="crayon-i">RHEL</span><span class="crayon-h"> </span><span class="crayon-cn">6</span><span class="crayon-h"> </span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">64</span><span class="crayon-h"> </span><span class="crayon-v">bit</span><span class="crayon-o">:</span></div><div class="crayon-line" id="crayon-5857694732bff990182208-11"><span class="crayon-p"># rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0018 seconds] -->
+<p>Before continuing to the installation we should update our current machine:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c0b666786386" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c0b666786386-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c0b666786386-1"><span class="crayon-v">yum</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">y</span><span class="crayon-h"> </span><span class="crayon-v">update</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p>Install OpenVPN :</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c10421354756" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c10421354756-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c10421354756-1"><span class="crayon-e">yum </span><span class="crayon-e">install </span><span class="crayon-e">openvpn </span><span class="crayon-v">git</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p>Copy the easy-rsa directory from template directory to your /etc/openvpn/ directory</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c15672700781" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c15672700781-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c15672700781-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c15672700781-1"><span class="crayon-e">git </span><span class="crayon-r">clone</span><span class="crayon-h"> </span><span class="crayon-o">&lt;</span><span class="crayon-i">a</span><span class="crayon-h"> </span><span class="crayon-v">href</span><span class="crayon-o">=</span><span class="crayon-s">"https://github.com/OpenVPN/easy-rsa"</span><span class="crayon-h"> </span><span class="crayon-v">target</span><span class="crayon-o">=</span><span class="crayon-s">"_blank"</span><span class="crayon-o">&gt;</span><span class="crayon-v">https</span><span class="crayon-o">:</span><span class="crayon-c">//github.com/OpenVPN/easy-rsa&lt;/a&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c15672700781-2"><span class="crayon-v">cp</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">R</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">share</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-cn">2.</span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0015 seconds] -->
+<p>Create a new directory named “keys” inside the easy-rsa</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c1a948811242" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c1a948811242-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c1a948811242-1"><span class="crayon-v">mkdir</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-v">keys</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p>Now we’ll edit the “vars” file which provides the easy-rsa scripts with required information</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c1e481977304" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c1e481977304-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c1e481977304-1"><span class="crayon-v">vi</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-v">vars</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p>Modify the below lines as per your requirement.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c23479362572" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c23479362572-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c23479362572-2">2</div><div class="crayon-num" data-line="crayon-5857694732c23479362572-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c23479362572-4">4</div><div class="crayon-num" data-line="crayon-5857694732c23479362572-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c23479362572-6">6</div><div class="crayon-num" data-line="crayon-5857694732c23479362572-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c23479362572-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c23479362572-1"><span class="crayon-e">export </span><span class="crayon-v">KEY_COUNTRY</span><span class="crayon-o">=</span><span class="crayon-s">"IN"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c23479362572-2"><span class="crayon-e">export </span><span class="crayon-v">KEY_PROVINCE</span><span class="crayon-o">=</span><span class="crayon-s">"Keshabnagar"</span></div><div class="crayon-line" id="crayon-5857694732c23479362572-3"><span class="crayon-e">export </span><span class="crayon-v">KEY_CITY</span><span class="crayon-o">=</span><span class="crayon-s">"Pune"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c23479362572-4"><span class="crayon-e">export </span><span class="crayon-v">KEY_ORG</span><span class="crayon-o">=</span><span class="crayon-s">"LinuxFunda Inc."</span></div><div class="crayon-line" id="crayon-5857694732c23479362572-5"><span class="crayon-e">export </span><span class="crayon-v">KEY_EMAIL</span><span class="crayon-o">=</span><span class="crayon-s">"administrator@linuxfunda.com"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c23479362572-6"><span class="crayon-e">export </span><span class="crayon-v">KEY_CN</span><span class="crayon-o">=</span><span class="crayon-v">vpn</span><span class="crayon-sy">.</span><span class="crayon-v">linuxfunda</span><span class="crayon-sy">.</span><span class="crayon-e">com</span></div><div class="crayon-line" id="crayon-5857694732c23479362572-7"><span class="crayon-e">export </span><span class="crayon-v">KEY_NAME</span><span class="crayon-o">=</span><span class="crayon-e">server</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c23479362572-8"><span class="crayon-e">export </span><span class="crayon-v">KEY_OU</span><span class="crayon-o">=</span><span class="crayon-v">server</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0012 seconds] -->
+<p>Copy the openssl configuration file:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c27023009009" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c27023009009-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c27023009009-1"><span class="crayon-v">cp</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-v">openssl</span><span class="crayon-o">-</span><span class="crayon-cn">1.0.0.cnf</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-v">openssl</span><span class="crayon-sy">.</span><span class="crayon-v">cnf</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p>Now we’ll build our Certificate Authority, or CA.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c2c586205196" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c2c586205196-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c2c586205196-2">2</div><div class="crayon-num" data-line="crayon-5857694732c2c586205196-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c2c586205196-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c2c586205196-1"><span class="crayon-v">cd</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-e">rsa</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c2c586205196-2"><span class="crayon-i">source</span><span class="crayon-h"> </span><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-i">vars</span></div><div class="crayon-line" id="crayon-5857694732c2c586205196-3"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">clean</span><span class="crayon-o">-</span><span class="crayon-i">all</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c2c586205196-4"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">build</span><span class="crayon-o">-</span><span class="crayon-v">ca</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p>Now we’ll create our certificate for the OpenVPN server.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c30681369184" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c30681369184-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c30681369184-1"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">build</span><span class="crayon-o">-</span><span class="crayon-v">key</span><span class="crayon-o">-</span><span class="crayon-e">server </span><span class="crayon-v">server</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p>Also we need to generate our Diffie Hellman key exchange files using the build-dh script and then copy all of our files into /etc/openvpn</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c35462999600" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c35462999600-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c35462999600-2">2</div><div class="crayon-num" data-line="crayon-5857694732c35462999600-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c35462999600-1"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">build</span><span class="crayon-o">-</span><span class="crayon-e">dh</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c35462999600-2"><span class="crayon-v">cd</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-e">keys</span></div><div class="crayon-line" id="crayon-5857694732c35462999600-3"><span class="crayon-e">cp </span><span class="crayon-v">dh1024</span><span class="crayon-sy">.</span><span class="crayon-e">pem </span><span class="crayon-v">ca</span><span class="crayon-sy">.</span><span class="crayon-e">crt </span><span class="crayon-v">server</span><span class="crayon-sy">.</span><span class="crayon-e">crt </span><span class="crayon-v">server</span><span class="crayon-sy">.</span><span class="crayon-v">key</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p>For client authentication we need to generate client certificates too.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c39993318308" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c39993318308-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c39993318308-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c39993318308-1"><span class="crayon-v">cd</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-i">rsa</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c39993318308-2"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">build</span><span class="crayon-o">-</span><span class="crayon-e">key </span><span class="crayon-v">client1</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0007 seconds] -->
+<p>Create an iptables rule to allow proper routing of our VPN subnet.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c3d009995042" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c3d009995042-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c3d009995042-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c3d009995042-1"><span class="crayon-v">iptables</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">t</span><span class="crayon-h"> </span><span class="crayon-v">nat</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">A</span><span class="crayon-h"> </span><span class="crayon-v">POSTROUTING</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">s</span><span class="crayon-h"> </span><span class="crayon-cn">10.8.0.0</span><span class="crayon-o">/</span><span class="crayon-cn">24</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">o</span><span class="crayon-h"> </span><span class="crayon-v">eth0</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">j</span><span class="crayon-h"> </span><span class="crayon-e">MASQUERADE</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c3d009995042-2"><span class="crayon-e">service </span><span class="crayon-e">iptables </span><span class="crayon-v">save</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0010 seconds] -->
+<p>Enable IP Forwarding in sysctl:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c42341854268" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c42341854268-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c42341854268-1"><span class="crayon-v">vi</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">sysctl</span><span class="crayon-sy">.</span><span class="crayon-v">conf</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p>Replace 0 with 1</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c46348161429" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c46348161429-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c46348161429-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c46348161429-1"><span class="crayon-p"># Controls IP packet forwarding</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c46348161429-2"><span class="crayon-v">net</span><span class="crayon-sy">.</span><span class="crayon-v">ipv4</span><span class="crayon-sy">.</span><span class="crayon-v">ip_forward</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">1</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c4a578736584" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c4a578736584-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c4a578736584-1"><span class="crayon-v">sysctl</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">p</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p>Now we will create our OpenVPN server configuration file:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c4e314833792" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c4e314833792-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c4e314833792-1"><span class="crayon-v">vi</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">server</span><span class="crayon-sy">.</span><span class="crayon-v">conf</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p>Add the below configurations:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c52118397682" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c52118397682-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c52118397682-2">2</div><div class="crayon-num" data-line="crayon-5857694732c52118397682-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c52118397682-4">4</div><div class="crayon-num" data-line="crayon-5857694732c52118397682-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c52118397682-6">6</div><div class="crayon-num" data-line="crayon-5857694732c52118397682-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c52118397682-8">8</div><div class="crayon-num" data-line="crayon-5857694732c52118397682-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c52118397682-10">10</div><div class="crayon-num" data-line="crayon-5857694732c52118397682-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c52118397682-12">12</div><div class="crayon-num" data-line="crayon-5857694732c52118397682-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c52118397682-14">14</div><div class="crayon-num" data-line="crayon-5857694732c52118397682-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c52118397682-16">16</div><div class="crayon-num" data-line="crayon-5857694732c52118397682-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c52118397682-18">18</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c52118397682-1"><span class="crayon-i">port</span><span class="crayon-h"> </span><span class="crayon-cn">1194</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c52118397682-2"><span class="crayon-e">proto </span><span class="crayon-v">udp</span><span class="crayon-h"> </span><span class="crayon-p"># UDP is faster than TCP</span></div><div class="crayon-line" id="crayon-5857694732c52118397682-3"><span class="crayon-e">dev </span><span class="crayon-e">tun</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c52118397682-4"><span class="crayon-e">ca </span><span class="crayon-v">ca</span><span class="crayon-sy">.</span><span class="crayon-e">crt</span></div><div class="crayon-line" id="crayon-5857694732c52118397682-5"><span class="crayon-e">cert </span><span class="crayon-v">server</span><span class="crayon-sy">.</span><span class="crayon-e">crt</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c52118397682-6"><span class="crayon-e">key </span><span class="crayon-v">server</span><span class="crayon-sy">.</span><span class="crayon-e">key</span></div><div class="crayon-line" id="crayon-5857694732c52118397682-7"><span class="crayon-e">dh </span><span class="crayon-v">dh1024</span><span class="crayon-sy">.</span><span class="crayon-e">pem</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c52118397682-8"><span class="crayon-v">comp</span><span class="crayon-o">-</span><span class="crayon-e">lzo</span></div><div class="crayon-line" id="crayon-5857694732c52118397682-9"><span class="crayon-i">server</span><span class="crayon-h"> </span><span class="crayon-cn">10.8.0.0</span><span class="crayon-h"> </span><span class="crayon-cn">255.255.255.0</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c52118397682-10"><span class="crayon-i">push</span><span class="crayon-h"> </span><span class="crayon-s">"dhcp-option DNS 8.8.8.8"</span><span class="crayon-h"> </span><span class="crayon-p"># Change these to your own DNS Server for even greater security</span></div><div class="crayon-line" id="crayon-5857694732c52118397682-11"><span class="crayon-i">push</span><span class="crayon-h"> </span><span class="crayon-s">"dhcp-option DNS 8.8.4.4"</span><span class="crayon-h"> </span><span class="crayon-p"># Change these to your own DNS Server for even greater security</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c52118397682-12"><span class="crayon-i">push</span><span class="crayon-h"> </span><span class="crayon-s">"redirect-gateway def1 bypass-dhcp"</span></div><div class="crayon-line" id="crayon-5857694732c52118397682-13"><span class="crayon-v">ifconfig</span><span class="crayon-o">-</span><span class="crayon-v">pool</span><span class="crayon-o">-</span><span class="crayon-e">persist </span><span class="crayon-v">ipp</span><span class="crayon-sy">.</span><span class="crayon-e">txt</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c52118397682-14"><span class="crayon-i">keepalive</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-h"> </span><span class="crayon-cn">120</span></div><div class="crayon-line" id="crayon-5857694732c52118397682-15"><span class="crayon-v">persist</span><span class="crayon-o">-</span><span class="crayon-e">key</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c52118397682-16"><span class="crayon-v">persist</span><span class="crayon-o">-</span><span class="crayon-e">tun</span></div><div class="crayon-line" id="crayon-5857694732c52118397682-17"><span class="crayon-e">status </span><span class="crayon-v">openvpn</span><span class="crayon-o">-</span><span class="crayon-v">status</span><span class="crayon-sy">.</span><span class="crayon-e">log</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c52118397682-18"><span class="crayon-i">verb</span><span class="crayon-h"> </span><span class="crayon-cn">3</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0024 seconds] -->
+<p>Now start the OpenVPN server:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c57376352462" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c57376352462-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c57376352462-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c57376352462-1"><span class="crayon-e">service </span><span class="crayon-e">openvpn </span><span class="crayon-e">start</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c57376352462-2"><span class="crayon-e">chkconfig </span><span class="crayon-e">openvpn </span><span class="crayon-v">on</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0007 seconds] -->
+<p><strong>Please add the port 1194 to your security group.</strong></p>
+<p><strong>Now we need to configure our client machine:</strong></p>
+<p>Copy all client keys to the client machine including the ca.crt</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c5c467901164" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c5c467901164-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c5c467901164-2">2</div><div class="crayon-num" data-line="crayon-5857694732c5c467901164-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c5c467901164-1"><span class="crayon-v">vi</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-v">keys</span><span class="crayon-o">/</span><span class="crayon-v">ca</span><span class="crayon-sy">.</span><span class="crayon-e">crt</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c5c467901164-2"><span class="crayon-v">vi</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-v">keys</span><span class="crayon-o">/</span><span class="crayon-v">client</span><span class="crayon-sy">.</span><span class="crayon-e">crt</span></div><div class="crayon-line" id="crayon-5857694732c5c467901164-3"><span class="crayon-v">vi</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">openvpn</span><span class="crayon-o">/</span><span class="crayon-v">easy</span><span class="crayon-o">-</span><span class="crayon-v">rsa</span><span class="crayon-o">/</span><span class="crayon-v">keys</span><span class="crayon-o">/</span><span class="crayon-v">client</span><span class="crayon-sy">.</span><span class="crayon-v">key</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0015 seconds] -->
+<p>Now we will create a client configuration file on the client machine named client.ovpn</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c60931751126" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c60931751126-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c60931751126-1"><span class="crayon-e">vi </span><span class="crayon-v">client</span><span class="crayon-sy">.</span><span class="crayon-v">ovpn</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p>Add the below lines to that file</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c64890207074" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c64890207074-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c64890207074-2">2</div><div class="crayon-num" data-line="crayon-5857694732c64890207074-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c64890207074-4">4</div><div class="crayon-num" data-line="crayon-5857694732c64890207074-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c64890207074-6">6</div><div class="crayon-num" data-line="crayon-5857694732c64890207074-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c64890207074-8">8</div><div class="crayon-num" data-line="crayon-5857694732c64890207074-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c64890207074-10">10</div><div class="crayon-num" data-line="crayon-5857694732c64890207074-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c64890207074-12">12</div><div class="crayon-num" data-line="crayon-5857694732c64890207074-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c64890207074-14">14</div><div class="crayon-num" data-line="crayon-5857694732c64890207074-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c64890207074-16">16</div><div class="crayon-num" data-line="crayon-5857694732c64890207074-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c64890207074-18">18</div><div class="crayon-num" data-line="crayon-5857694732c64890207074-19">19</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c64890207074-1"><span class="crayon-e">client</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c64890207074-2"><span class="crayon-e">dev </span><span class="crayon-e">tun</span></div><div class="crayon-line" id="crayon-5857694732c64890207074-3"><span class="crayon-e">proto </span><span class="crayon-e">udp</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c64890207074-4"><span class="crayon-i">remote</span><span class="crayon-h"> </span><span class="crayon-v">x</span><span class="crayon-sy">.</span><span class="crayon-v">x</span><span class="crayon-sy">.</span><span class="crayon-v">x</span><span class="crayon-sy">.</span><span class="crayon-i">x</span><span class="crayon-h"> </span><span class="crayon-cn">1194</span><span class="crayon-h"> </span><span class="crayon-p">#Replace your OpenVPN server EIP with x.x.x.x</span></div><div class="crayon-line" id="crayon-5857694732c64890207074-5"><span class="crayon-v">resolv</span><span class="crayon-o">-</span><span class="crayon-e">retry </span><span class="crayon-e">infinite</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c64890207074-6"><span class="crayon-e">nobind</span></div><div class="crayon-line" id="crayon-5857694732c64890207074-7"><span class="crayon-v">persist</span><span class="crayon-o">-</span><span class="crayon-e">key</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c64890207074-8"><span class="crayon-v">persist</span><span class="crayon-o">-</span><span class="crayon-e">tun</span></div><div class="crayon-line" id="crayon-5857694732c64890207074-9"><span class="crayon-v">comp</span><span class="crayon-o">-</span><span class="crayon-e">lzo</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c64890207074-10"><span class="crayon-i">verb</span><span class="crayon-h"> </span><span class="crayon-cn">3</span></div><div class="crayon-line" id="crayon-5857694732c64890207074-11"><span class="crayon-o">&lt;</span><span class="crayon-v">ca</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c64890207074-12"><span class="crayon-e">Contents </span><span class="crayon-e">of </span><span class="crayon-v">ca</span><span class="crayon-sy">.</span><span class="crayon-v">crt</span></div><div class="crayon-line" id="crayon-5857694732c64890207074-13"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">ca</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c64890207074-14"><span class="crayon-o">&lt;</span><span class="crayon-v">cert</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5857694732c64890207074-15"><span class="crayon-e">Contents </span><span class="crayon-e">of </span><span class="crayon-v">client</span><span class="crayon-sy">.</span><span class="crayon-v">crt</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c64890207074-16"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">cert</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5857694732c64890207074-17"><span class="crayon-o">&lt;</span><span class="crayon-v">key</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c64890207074-18"><span class="crayon-e">Contents </span><span class="crayon-e">of </span><span class="crayon-v">client</span><span class="crayon-sy">.</span><span class="crayon-v">key</span></div><div class="crayon-line" id="crayon-5857694732c64890207074-19"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">key</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0025 seconds] -->
+<p>Start the OpenVPN with below command:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c69892919710" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c69892919710-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c69892919710-1"><span class="crayon-e">sudo </span><span class="crayon-v">openvpn</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">config</span><span class="crayon-h"> </span><span class="crayon-o">~</span><span class="crayon-o">/</span><span class="crayon-v">path</span><span class="crayon-o">/</span><span class="crayon-st">to</span><span class="crayon-o">/</span><span class="crayon-v">client</span><span class="crayon-sy">.</span><span class="crayon-v">ovpn</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p><strong>Now we will configure NAT on our OpenVPN server</strong>:</p>
+<p>Create a file ” /usr/local/sbin/configure-pat.sh”</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c6d499758895" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c6d499758895-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c6d499758895-1"><span class="crayon-v">vi</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-v">configure</span><span class="crayon-o">-</span><span class="crayon-v">pat</span><span class="crayon-sy">.</span><span class="crayon-v">sh</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p>Append the below lines:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c71273235458" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-mixed-highlight" title="Contains Mixed Languages"></span><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c71273235458-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-2">2</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-4">4</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-6">6</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-8">8</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-10">10</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-12">12</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-14">14</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-16">16</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-18">18</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-20">20</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-22">22</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-24">24</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-26">26</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-28">28</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-30">30</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-32">32</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-34">34</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c71273235458-36">36</div><div class="crayon-num" data-line="crayon-5857694732c71273235458-37">37</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c71273235458-1"><span class="crayon-p">#!/bin/bash</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-2">&nbsp;</div><div class="crayon-line" id="crayon-5857694732c71273235458-3"><span class="crayon-p"># Configure the instance to run as a Port Address Translator (PAT) to provide</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-4"><span class="crayon-p"># Internet connectivity to private instances.</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-5"><span class="crayon-p">#</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-6">&nbsp;</div><div class="crayon-line" id="crayon-5857694732c71273235458-7"><span class="crayon-v">set</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">x</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-8"><span class="crayon-i">echo</span><span class="crayon-h"> </span><span class="crayon-s">"Determining the MAC address on eth0"</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-9"><span class="crayon-v">ETH0_MAC</span><span class="crayon-o">=</span><span class="crayon-sy">`</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-v">ifconfig</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">bin</span><span class="crayon-o">/</span><span class="crayon-e">grep </span><span class="crayon-v">eth0</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-i">awk</span><span class="crayon-h"> </span><span class="crayon-s">'{print tolower($5)}'</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-i">grep</span><span class="crayon-h"> </span><span class="crayon-s">'^[0-9a-f]\{2\}<span class="crayon-sy">\</span><span class="crayon-sy">(</span><span class="crayon-o">:</span><span class="crayon-sy">[</span><span class="crayon-cn">0</span><span class="crayon-o">-</span><span class="crayon-cn">9a</span><span class="crayon-o">-</span><span class="crayon-e">f</span><span class="crayon-sy">]</span><span class="crayon-sy">\</span><span class="crayon-sy">{</span><span class="crayon-cn">2</span><span class="crayon-sy">\</span><span class="crayon-sy">}</span><span class="crayon-sy">\</span><span class="crayon-sy">)</span>\{5\}$'</span><span class="crayon-sy">`</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-10"><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-sy">?</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">ne</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-h"> </span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-st">then</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-11"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-i">echo</span><span class="crayon-h"> </span><span class="crayon-s">"Unable to determine MAC address on eth0"</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-v">logger</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">t</span><span class="crayon-h"> </span><span class="crayon-s">"ec2"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-12"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-i">exit</span><span class="crayon-h"> </span><span class="crayon-cn">1</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-13"><span class="crayon-e">fi</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-14"><span class="crayon-i">echo</span><span class="crayon-h"> </span><span class="crayon-s">"Found MAC: ${ETH0_MAC} on eth0"</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-v">logger</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">t</span><span class="crayon-h"> </span><span class="crayon-s">"ec2"</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-15">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-16"><span class="crayon-v">VPC_CIDR_URI</span><span class="crayon-o">=</span><span class="crayon-s">"http://169.254.169.254/latest/meta-data/network/interfaces/macs/${ETH0_MAC}/vpc-ipv4-cidr-block"</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-17"><span class="crayon-i">echo</span><span class="crayon-h"> </span><span class="crayon-s">"Metadata location for vpc ipv4 range: ${VPC_CIDR_URI}"</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-v">logger</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">t</span><span class="crayon-h"> </span><span class="crayon-s">"ec2"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-18">&nbsp;</div><div class="crayon-line" id="crayon-5857694732c71273235458-19"><span class="crayon-v">VPC_CIDR_RANGE</span><span class="crayon-o">=</span><span class="crayon-sy">`</span><span class="crayon-e">curl</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">retry</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">retry</span><span class="crayon-o">-</span><span class="crayon-e">delay</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">silent</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">fail</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-sy">{</span><span class="crayon-v">VPC_CIDR_URI</span><span class="crayon-sy">}</span><span class="crayon-sy">`</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-20"><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-sy">?</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">ne</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-h"> </span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-st">then</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-21"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-i">echo</span><span class="crayon-h"> </span><span class="crayon-s">"Unable to retrive VPC CIDR range from meta-data. Using 0.0.0.0/0 instead. PAT may not function correctly"</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-v">logger</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">t</span><span class="crayon-h"> </span><span class="crayon-s">"ec2"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-22"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-v">VPC_CIDR_RANGE</span><span class="crayon-o">=</span><span class="crayon-s">"0.0.0.0/0"</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-23"><span class="crayon-st">else</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-24"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-i">echo</span><span class="crayon-h"> </span><span class="crayon-s">"Retrived the VPC CIDR range: ${VPC_CIDR_RANGE} from meta-data"</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-v">logger</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">t</span><span class="crayon-h"> </span><span class="crayon-s">"ec2"</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-25"><span class="crayon-e">fi</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-26">&nbsp;</div><div class="crayon-line" id="crayon-5857694732c71273235458-27"><span class="crayon-e">echo</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-h"> </span><span class="crayon-o">&gt;</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">/</span><span class="crayon-e">proc</span><span class="crayon-o">/</span><span class="crayon-e">sys</span><span class="crayon-o">/</span><span class="crayon-e">net</span><span class="crayon-o">/</span><span class="crayon-e">ipv4</span><span class="crayon-o">/</span><span class="crayon-e">ip_forward</span><span class="crayon-h"> </span><span class="crayon-o">&amp;&amp;</span><span class="crayon-h"> </span><span class="crayon-sy">\</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-28"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-e">echo</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-h"> </span><span class="crayon-o">&gt;</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">/</span><span class="crayon-e">proc</span><span class="crayon-o">/</span><span class="crayon-e">sys</span><span class="crayon-o">/</span><span class="crayon-e">net</span><span class="crayon-o">/</span><span class="crayon-e">ipv4</span><span class="crayon-o">/</span><span class="crayon-e">conf</span><span class="crayon-o">/</span><span class="crayon-e">eth0</span><span class="crayon-o">/</span><span class="crayon-e">send_redirects</span><span class="crayon-h"> </span><span class="crayon-o">&amp;&amp;</span><span class="crayon-h"> </span><span class="crayon-sy">\</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-29"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-o">/</span><span class="crayon-e">sbin</span><span class="crayon-o">/</span><span class="crayon-e">iptables</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-e">t</span><span class="crayon-h"> </span><span class="crayon-e">nat</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-e">A</span><span class="crayon-h"> </span><span class="crayon-e">POSTROUTING</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-e">o</span><span class="crayon-h"> </span><span class="crayon-e">eth0</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-e">s</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-sy">{</span><span class="crayon-v">VPC_CIDR_RANGE</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">j</span><span class="crayon-h"> </span><span class="crayon-e">MASQUERADE</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-30">&nbsp;</div><div class="crayon-line" id="crayon-5857694732c71273235458-31"><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-sy">?</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">ne</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-h"> </span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-st">then</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-32"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-i">echo</span><span class="crayon-h"> </span><span class="crayon-s">"Configuration of PAT failed"</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-v">logger</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">t</span><span class="crayon-h"> </span><span class="crayon-s">"ec2"</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-33"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-i">exit</span><span class="crayon-h"> </span><span class="crayon-cn">0</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-34"><span class="crayon-e">fi</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-35">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c71273235458-36"><span class="crayon-i">echo</span><span class="crayon-h"> </span><span class="crayon-s">"Configuration of PAT complete"</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-v">logger</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">t</span><span class="crayon-h"> </span><span class="crayon-s">"ec2"</span></div><div class="crayon-line" id="crayon-5857694732c71273235458-37"><span class="crayon-i">exit</span><span class="crayon-h"> </span><span class="crayon-cn">0</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0166 seconds] -->
+<p>Make it executable.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c78622130980" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c78622130980-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c78622130980-1"><span class="crayon-i">chmod</span><span class="crayon-h"> </span><span class="crayon-v">u</span><span class="crayon-o">+</span><span class="crayon-v">x</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-v">configure</span><span class="crayon-o">-</span><span class="crayon-v">pat</span><span class="crayon-sy">.</span><span class="crayon-v">sh</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+<p>Edit /etc/rc.local file:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c7c448553073" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c7c448553073-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c7c448553073-1"><span class="crayon-v">vi</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">rc</span><span class="crayon-sy">.</span><span class="crayon-v">local</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p>Add the line “/usr/local/sbin/configure-pat.sh” to it</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5857694732c80757117245" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-5857694732c80757117245-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c80757117245-2">2</div><div class="crayon-num" data-line="crayon-5857694732c80757117245-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c80757117245-4">4</div><div class="crayon-num" data-line="crayon-5857694732c80757117245-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c80757117245-6">6</div><div class="crayon-num" data-line="crayon-5857694732c80757117245-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c80757117245-8">8</div><div class="crayon-num" data-line="crayon-5857694732c80757117245-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c80757117245-10">10</div><div class="crayon-num" data-line="crayon-5857694732c80757117245-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c80757117245-12">12</div><div class="crayon-num" data-line="crayon-5857694732c80757117245-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c80757117245-14">14</div><div class="crayon-num" data-line="crayon-5857694732c80757117245-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5857694732c80757117245-16">16</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-5857694732c80757117245-1"><span class="crayon-p">#!/bin/sh -e</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c80757117245-2"><span class="crayon-p">#</span></div><div class="crayon-line" id="crayon-5857694732c80757117245-3"><span class="crayon-p"># rc.local</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c80757117245-4"><span class="crayon-p">#</span></div><div class="crayon-line" id="crayon-5857694732c80757117245-5"><span class="crayon-p"># This script is executed at the end of each multiuser runlevel.</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c80757117245-6"><span class="crayon-p"># Make sure that the script will "exit 0" on success or any other</span></div><div class="crayon-line" id="crayon-5857694732c80757117245-7"><span class="crayon-p"># value on error.</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c80757117245-8"><span class="crayon-p">#</span></div><div class="crayon-line" id="crayon-5857694732c80757117245-9"><span class="crayon-p"># In order to enable or disable this script just change the execution</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c80757117245-10"><span class="crayon-p"># bits.</span></div><div class="crayon-line" id="crayon-5857694732c80757117245-11"><span class="crayon-p">#</span></div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c80757117245-12"><span class="crayon-p"># By default this script does nothing.</span></div><div class="crayon-line" id="crayon-5857694732c80757117245-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c80757117245-14"><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-v">configure</span><span class="crayon-o">-</span><span class="crayon-v">pat</span><span class="crayon-sy">.</span><span class="crayon-e">sh</span></div><div class="crayon-line" id="crayon-5857694732c80757117245-15">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5857694732c80757117245-16"><span class="crayon-i">exit</span><span class="crayon-h"> </span><span class="crayon-cn">0</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0010 seconds] -->
+<p>Reboot your instance.</p>
+<p>Now you can add this instance to your private facing subnate routing table.</p>
+<h3>Share and Enjoy</h3>
+
+<!-- Start WP Socializer - Social Buttons - Output -->
+<div class="wp-socializer 32px">
+<ul class="wp-socializer-opacity columns-no">
+ <li><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fwww.linuxfunda.com%2F2013%2F09%2F14%2Fhow-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc%2F&amp;t=How+to+install+and+configure+an+Open-VPN+with+NAT+server+inside+AWS+VPC" title="Share this on Facebook" target="_blank"><img src="wp-socializer-sprite-mask-32px.gif" alt="Facebook" style="width: 32px; height: 32px; background: transparent url(&quot;wp-socializer-sprite-32px.png&quot;) no-repeat scroll 0px -330px; border: 0px none;" data-recalc-dims="1"></a></li> 
+
+ <li><a href="http://twitter.com/home?status=How+to+install+and+configure+an+Open-VPN+with+NAT+server+inside+AWS+VPC%20-%20http%3A%2F%2Fwww.linuxfunda.com%2F2013%2F09%2F14%2Fhow-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc%2F%20" title="Tweet this !" target="_blank"><img src="wp-socializer-sprite-mask-32px.gif" alt="Twitter" style="width: 32px; height: 32px; background: transparent url(&quot;wp-socializer-sprite-32px.png&quot;) no-repeat scroll 0px -1386px; border: 0px none;" data-recalc-dims="1"></a></li> 
+
+ <li><a href="http://delicious.com/post?url=http%3A%2F%2Fwww.linuxfunda.com%2F2013%2F09%2F14%2Fhow-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc%2F&amp;title=How+to+install+and+configure+an+Open-VPN+with+NAT+server+inside+AWS+VPC&amp;notes=We+are+using+AWS+VPC+to+create+an+logically+Isolated+area+for+our+servers.+We+have+complete+control+on+the+networking+for+our+AWS+VPC.+We+can+customize+our+networking+like+public+facing+subnet+and+private-facing+subnets.+We+can+put+our+webservers+in" title="Post this on Delicious" target="_blank"><img src="wp-socializer-sprite-mask-32px.gif" alt="Delicious" style="width: 32px; height: 32px; background: transparent url(&quot;wp-socializer-sprite-32px.png&quot;) no-repeat scroll 0px -132px; border: 0px none;" data-recalc-dims="1"></a></li> 
+
+ <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwww.linuxfunda.com%2F2013%2F09%2F14%2Fhow-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc%2F&amp;title=How+to+install+and+configure+an+Open-VPN+with+NAT+server+inside+AWS+VPC&amp;source=LinuxFunda+-+Site+for+Linux+Begineers%21%21+Feel+free+to+contribute+your+thoughts%21%21&amp;summary=We+are+using+AWS+VPC+to+create+an+logically+Isolated+area+for+our+servers.+We+have+complete+control+on+the+networking+for+our+AWS+VPC.+We+can+customize+our+networking+like+public+facing+subnet+and+private-facing+subnets.+We+can+put+our+webservers+in" title="Share this on LinkedIn" target="_blank"><img src="wp-socializer-sprite-mask-32px.gif" alt="LinkedIn" style="width: 32px; height: 32px; background: transparent url(&quot;wp-socializer-sprite-32px.png&quot;) no-repeat scroll 0px -693px; border: 0px none;" data-recalc-dims="1"></a></li> 
+
+ <li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fwww.linuxfunda.com%2F2013%2F09%2F14%2Fhow-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc%2F&amp;title=How+to+install+and+configure+an+Open-VPN+with+NAT+server+inside+AWS+VPC" title="Submit this to StumbleUpon" target="_blank"><img src="wp-socializer-sprite-mask-32px.gif" alt="StumbleUpon" style="width: 32px; height: 32px; background: transparent url(&quot;wp-socializer-sprite-32px.png&quot;) no-repeat scroll 0px -1287px; border: 0px none;" data-recalc-dims="1"></a></li> 
+
+ <li><a href="#" title="Add to favorites" target="_blank"><img src="wp-socializer-sprite-mask-32px.gif" alt="Add to favorites" style="width: 32px; height: 32px; background: transparent url(&quot;wp-socializer-sprite-32px.png&quot;) no-repeat scroll 0px 0px; border: 0px none;" data-recalc-dims="1"></a></li> 
+
+ <li><a href="mailto:?to=&amp;subject=How+to+install+and+configure+an+Open-VPN+with+NAT+server+inside+AWS+VPC&amp;body=We+are+using+AWS+VPC+to+create+an+logically+Isolated+area+for+our+servers.+We+have+complete+control+on+the+networking+for+our+AWS+VPC.+We+can+customize+our+networking+like+public+facing+subnet+and+private-facing+subnets.+We+can+put+our+webservers+in%20-%20http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" title="Email this" target="_blank"><img src="wp-socializer-sprite-mask-32px.gif" alt="Email" style="width: 32px; height: 32px; background: transparent url(&quot;wp-socializer-sprite-32px.png&quot;) no-repeat scroll 0px -297px; border: 0px none;" data-recalc-dims="1"></a></li> 
+
+ <li><a href="http://www.linuxfunda.com/feed/rss/" title="Subscribe to RSS" target="_blank"><img src="wp-socializer-sprite-mask-32px.gif" alt="RSS" style="width: 32px; height: 32px; background: transparent url(&quot;wp-socializer-sprite-32px.png&quot;) no-repeat scroll 0px -1221px; border: 0px none;" data-recalc-dims="1"></a></li> 
+</ul> 
+<div class="wp-socializer-clearer"></div></div>
+<!-- End WP Socializer - Social Buttons - Output -->
+<div id="ts-fab-below" class="ts-fab-wrapper"><span class="screen-reader-text">The following two tabs change content below.</span><ul class="ts-fab-list"><li class="ts-fab-bio-link"><a href="#ts-fab-bio-below">Bio</a></li><li class="ts-fab-latest-posts-link"><a href="#ts-fab-latest-posts-below">Latest Posts</a></li></ul><div class="ts-fab-tabs">
+	<div class="ts-fab-tab" id="ts-fab-bio-below">
+		<div class="ts-fab-avatar"><img alt="" src="1bb44a0869881a3268bea34add77d10e_001.jpeg" srcset="1bb44a0869881a3268bea34add77d10e.jpeg 2x" class="avatar avatar-80 photo" height="80" width="80"><div class="ts-fab-social-links"><a href="http://twitter.com/tapasmisra" title="Twitter" rel="nofollow"><img src="twitter_001.png" alt="My Twitter profile" data-recalc-dims="1"></a><a href="http://facebook.com/tapasmisra" title="Facebook" rel="nofollow"><img src="facebook_001.png" alt="My Facebook profile" data-recalc-dims="1"></a><a href="http://plus.google.com/115691254512499015067?rel=author" title="Google+"><img src="googleplus.png" alt="My Google+ profile" data-recalc-dims="1"></a><a href="http://www.linkedin.com/in/tapasmisra" title="LinkedIn" rel="nofollow"><img src="linkedin.png" alt="My LinkedIn profile" data-recalc-dims="1"></a></div>
+		</div>
+		
+		<div class="ts-fab-text">
+			<div class="ts-fab-header"><h4><a href="http://www.linuxfunda.com/" rel="nofollow">Tapas Mishra</a></h4><div class="ts-fab-description"><span>Sr. Engineer (DevOps)</span></div></div><!-- /.ts-fab-header -->
+			<div class="ts-fab-content">Loves to work on Opensource products. Having experience on Linux environment. Knowledge on Public cloud services like AWS, Rackspace, DigitalOcean, Linode. Please don't hesitate to give a comment on the posts. Your comments are my strength.</div>
+		</div>
+	</div>
+	<div class="ts-fab-tab" id="ts-fab-latest-posts-below">
+		<div class="ts-fab-avatar"><img alt="" src="1bb44a0869881a3268bea34add77d10e_001.jpeg" srcset="1bb44a0869881a3268bea34add77d10e.jpeg 2x" class="avatar avatar-80 photo" height="80" width="80"><div class="ts-fab-social-links"><a href="http://twitter.com/tapasmisra" title="Twitter" rel="nofollow"><img src="twitter_001.png" alt="My Twitter profile" data-recalc-dims="1"></a><a href="http://facebook.com/tapasmisra" title="Facebook" rel="nofollow"><img src="facebook_001.png" alt="My Facebook profile" data-recalc-dims="1"></a><a href="http://plus.google.com/115691254512499015067?rel=author" title="Google+" rel="nofollow"><img src="googleplus.png" alt="My Google+ profile" data-recalc-dims="1"></a><a href="http://www.linkedin.com/in/tapasmisra" title="LinkedIn" rel="nofollow"><img src="linkedin.png" alt="My LinkedIn profile" data-recalc-dims="1"></a></div>
+		</div>
+		<div class="ts-fab-text">
+			<div class="ts-fab-header">
+				<h4>Latest posts by Tapas Mishra <span class="latest-see-all">(<a href="http://www.linuxfunda.com/author/admin/" rel="nofollow">see all</a>)</span></h4>
+			</div>
+			<ul class="ts-fab-latest">
+				<li>
+					<a href="http://www.linuxfunda.com/2016/12/16/working-with-docker-ii/">Working with Docker – II</a><span> - December 16, 2016</span> 
+				</li>
+				<li>
+					<a href="http://www.linuxfunda.com/2016/11/28/working-with-docker-i/">Working with Docker – I</a><span> - November 28, 2016</span> 
+				</li>
+				<li>
+					<a href="http://www.linuxfunda.com/2014/11/30/how-to-work-with-chef-using-oracle-virtualbox-and-vagrant-on-a-windows-host-part-ii/">How to work with Chef using Oracle VirtualBox and Vagrant on a Windows host – Part II</a><span> - November 30, 2014</span> 
+				</li>
+		</ul></div>
+	</div>
+		</div>
+	</div>
+<div id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div> <!-- .entry-content -->    
+    				<div class="heatmapthemead-footer-entry-meta">
+				<footer class="entry-meta">
+				
+										
+														<p class="heatmapthemead-cat-links">
+									Categories: <a href="http://www.linuxfunda.com/category/aws/" rel="tag">AWS</a>, <a href="http://www.linuxfunda.com/category/aws/ec2-aws/" rel="tag">Ec2</a>								</p>
+													
+													<p class="heatmapthemead-tag-links">
+								Tags: <a href="http://www.linuxfunda.com/tag/aws/" rel="tag">AWS</a>, <a href="http://www.linuxfunda.com/tag/ec2/" rel="tag">EC2</a>, <a href="http://www.linuxfunda.com/tag/nat/" rel="tag">NAT</a>, <a href="http://www.linuxfunda.com/tag/openvpn/" rel="tag">OpenVPN</a>, <a href="http://www.linuxfunda.com/tag/pat/" rel="tag">PAT</a>, <a href="http://www.linuxfunda.com/tag/vpc/" rel="tag">VPC</a>							</p>
+								
+								
+				</footer><!-- #heatmapthemead-article-meta -->    
+			</div><!-- #footer-entry-meta --> 
+    	<div id="comments" class="comments-area">
+	
+	
+	
+	
+	
+		<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3>
+			<form id="commentform" class="comment-form">
+				<iframe src="index_51.html" allowtransparency="false" style="width: 100%; height: 430px; border: 0px none;" scrolling="no" name="jetpack_remote_comment" id="jetpack_remote_comment" frameborder="0"></iframe>
+			<input value="1485100734993" name="ak_js" id="ak_js" type="hidden"></form>
+		</div>
+
+		
+		<input name="comment_parent" id="comment_parent" value="" type="hidden">
+
+		
+</div><!-- #comments .comments-area -->		</article><!-- #post-1511 -->        
+			<div id="heatmapthemead-post-navigation">
+            <nav role="navigation" id="nav-below" class="site-navigation post-navigation">
+        
+                    
+                <div class="nav-previous"><a href="http://www.linuxfunda.com/2013/09/10/how-to-install-and-configure-dns-bind-on-centos/" rel="prev"><span class="meta-nav">«</span> How to install and configure DNS (BIND) on CentOS</a></div>                <div class="nav-next"><a href="http://www.linuxfunda.com/2013/09/20/how-to-configure-nfs-on-centos-6/" rel="next">How to configure NFS on CentOS 6 <span class="meta-nav">»</span></a></div>        
+                    
+            </nav><!-- .site-navigation post-navigation -->
+        </div><!-- #heatmapthemead-post-navigation -->
+		</div> <!-- id="heatmapthemead-the-content-container" --> 
+</div> <!-- id="heatmapthemead-the-content" --> 
+</div> <!-- id="heatmapthemead-content" --> 
+<!-- secondary sidebar -->
+<div id="heatmapthemead-secondary-sidebar">
+<div id="heatmapthemead-secondary-sidebar-container" role="complementary">
+<div id="heatmapthemead-widget-position-secondary" class="heatmapthemead-widget-position heatmapthemead-secondary widget-area" role="complementary"><aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.linuxfunda.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form></aside><aside id="blog_subscription-3" class="widget jetpack_subscription_widget"><h4 class="widget-title">Subscribe to Blog via Email</h4>
+			<form action="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/#" method="post" accept-charset="utf-8" id="subscribe-blog-blog_subscription-3">
+				<div id="subscribe-text"><p>Enter your email address to subscribe to this blog and receive notifications of new posts by email.</p>
+</div><p>Join 77 other subscribers</p>
+					<p id="subscribe-email">
+						<label style="clip: rect(1px, 1px, 1px, 1px); position: absolute; height: 1px; width: 1px; overflow: hidden;" id="jetpack-subscribe-label" for="subscribe-field-blog_subscription-3">
+							Email Address						</label>
+						<input name="email" required="required" class="required" value="" id="subscribe-field-blog_subscription-3" placeholder="Email Address" type="email">
+					</p>
+
+					<p id="subscribe-submit">
+						<input name="action" value="subscribe" type="hidden">
+						<input name="source" value="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" type="hidden">
+						<input name="sub-type" value="widget" type="hidden">
+						<input name="redirect_fragment" value="blog_subscription-3" type="hidden">
+												<input value="Subscribe" name="jetpack_subscriptions_widget" type="submit">
+					</p>
+							</form>
+
+			<script>/* Code removed by ScrapBook */</script>
+				
+</aside><aside id="categories-3" class="widget widget_categories"><h4 class="widget-title">Categories</h4><label class="screen-reader-text" for="cat">Categories</label><select name="cat" id="cat" class="postform">
+	<option value="-1">Select Category</option>
+	<option class="level-0" value="2">AWS&nbsp;&nbsp;(18)</option>
+	<option class="level-1" value="29">&nbsp;&nbsp;&nbsp;AutoScaling&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="77">&nbsp;&nbsp;&nbsp;Ec2&nbsp;&nbsp;(7)</option>
+	<option class="level-1" value="219">&nbsp;&nbsp;&nbsp;Route 53&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="76">&nbsp;&nbsp;&nbsp;S3&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="3">Cloudfuse&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="75">Database&nbsp;&nbsp;(13)</option>
+	<option class="level-1" value="21">&nbsp;&nbsp;&nbsp;CouchBase&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="89">&nbsp;&nbsp;&nbsp;mongoDB&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="8">&nbsp;&nbsp;&nbsp;MySQL&nbsp;&nbsp;(9)</option>
+	<option class="level-1" value="202">&nbsp;&nbsp;&nbsp;Oracle&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="267">DevOps&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="268">&nbsp;&nbsp;&nbsp;Docker&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="153">Language&nbsp;&nbsp;(10)</option>
+	<option class="level-1" value="12">&nbsp;&nbsp;&nbsp;PHP&nbsp;&nbsp;(7)</option>
+	<option class="level-1" value="58">&nbsp;&nbsp;&nbsp;ROR&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="5">Linux&nbsp;&nbsp;(119)</option>
+	<option class="level-1" value="19">&nbsp;&nbsp;&nbsp;CentOS&nbsp;&nbsp;(40)</option>
+	<option class="level-1" value="222">&nbsp;&nbsp;&nbsp;Chef&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="186">&nbsp;&nbsp;&nbsp;DNS&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="22">&nbsp;&nbsp;&nbsp;Fedora&nbsp;&nbsp;(29)</option>
+	<option class="level-1" value="23">&nbsp;&nbsp;&nbsp;FreeRadius&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="98">&nbsp;&nbsp;&nbsp;FTP&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="24">&nbsp;&nbsp;&nbsp;GIT&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="209">&nbsp;&nbsp;&nbsp;Jenkins&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="6">&nbsp;&nbsp;&nbsp;Media Server&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="63">&nbsp;&nbsp;&nbsp;SVN&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="14">&nbsp;&nbsp;&nbsp;Ubuntu&nbsp;&nbsp;(34)</option>
+	<option class="level-1" value="87">&nbsp;&nbsp;&nbsp;User Directory&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="7">Monitoring&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="18">&nbsp;&nbsp;&nbsp;Cacti&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="9">&nbsp;&nbsp;&nbsp;Nagios&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="17">Scripting&nbsp;&nbsp;(16)</option>
+	<option class="level-1" value="101">&nbsp;&nbsp;&nbsp;Shell Script&nbsp;&nbsp;(15)</option>
+	<option class="level-0" value="176">Virtualization&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="230">&nbsp;&nbsp;&nbsp;Oracle VirtualBox&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="231">&nbsp;&nbsp;&nbsp;Vagrant&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="15">Webserver&nbsp;&nbsp;(23)</option>
+	<option class="level-1" value="27">&nbsp;&nbsp;&nbsp;Apache&nbsp;&nbsp;(17)</option>
+	<option class="level-1" value="25">&nbsp;&nbsp;&nbsp;Log Analyzer&nbsp;&nbsp;(5)</option>
+	<option class="level-1" value="97">&nbsp;&nbsp;&nbsp;Nginx&nbsp;&nbsp;(4)</option>
+</select>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+</aside><aside id="twitter_timeline-3" class="widget widget_twitter_timeline"><h4 class="widget-title">Follow me on Twitter</h4><a class="twitter-timeline" data-width="290" data-height="400" data-theme="light" data-link-color="#f96e5b" data-border-color="#e8e8e8" data-lang="EN" data-widget-id="357346115915509760">My Tweets</a></aside></div> <!-- id="heatmapthemead-widget-position-secondary" -->
+</div> <!-- id="heatmapthemead-secondary-sidebar-container" -->
+</div> <!-- id="heatmapthemead-secondary-sidebar" -->
+</div> <!-- id="heatmapthemead-main" -->
+</div> <!-- id="heatmapthemead-main-wipe" -->
+<!-- Footer -->
+<div id="heatmapthemead-footer-wipe">
+<div id="heatmapthemead-footer">
+<div id="heatmapthemead-footer-container" role="complementary">
+				<div id="heatmapthemead-footer-menu" class="heatmapthemead-menu">
+					<nav role="navigation" class="site-navigation footer-navigation">
+						<div class="menu"><ul>
+<li class="page_item page-item-2016"><a href="http://www.linuxfunda.com/chritmass/">Chritmass</a></li>
+<li class="page_item page-item-413"><a href="http://www.linuxfunda.com/opensource-applications-for-linux/">OpenSource Apps for Linux</a></li>
+<li class="page_item page-item-760"><a href="http://www.linuxfunda.com/articles/">Submit Articles</a></li>
+</ul></div>
+					</nav>
+				</div>
+	<div id="heatmapthemead-credits" class="heatmapthemead-menu"><p>Powered by <a href="http://wordpress.org/" target="_blank">WordPress</a> and <a href="http://heatmaptheme.com/" target="_blank">HeatMap AdAptive Theme</a></p></div></div> <!-- id="heatmapthemead-footer-container" -->
+</div> <!-- id="heatmapthemead-footer" -->
+</div> <!-- id="heatmapthemead-footer-wipe" -->
+<!-- wp_footer() -->
+<div class="wpsr-floatbar-bottom_fixed wpsr-floatbar-dark clearfix" style="width: 900px;" data-mobmode="1"><div class="wpsr_floatbt">
+<!-- Start WP Socializer Plugin - Facebook Button -->
+<div class="fb-like" data-href="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" data-share="false" data-layout="button_count" data-show-faces="1" data-action="like" data-colorscheme="light"></div>
+<!-- End WP Socializer Plugin - Facebook Button -->
+</div><div class="wpsr_floatbt">
+<!-- Start WP Socializer Plugin - Retweet Button -->
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-lang="en" data-url="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" data-text="How to install and configure an Open-VPN with NAT server inside AWS VPCLinuxFunda - "></a>
+<!-- End WP Socializer Plugin - Retweet Button -->
+</div><div class="wpsr_floatbt">
+<!-- Start WP Socializer Plugin - +1 Button -->
+<div class="g-plusone" data-size="medium" data-href="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/"></div>
+<!-- End WP Socializer Plugin - +1 Button -->
+</div><div class="wpsr_floatbt"><a href="mailto:?to=&amp;subject=How+to+install+and+configure+an+Open-VPN+with+NAT+server+inside+AWS+VPCLinuxFunda&amp;body=We+are+using+AWS+VPC+to+create+an+logically+Isolated+area+for+our+servers.+We+have+complete+control+on+the+networking+for+our+AWS+VPC.+We+can+customize+our+networking+like+public+facing+subnet+and+private-facing+subnets.+We+can+put+our+webservers+in%20-%20http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" title="Email this" target="_blank" rel="nofollow" class="wp-socializer-single"><img src="email.png" alt="Email" border="0"></a><span class="wp-socializer-label"><a href="mailto:?to=&amp;subject=How+to+install+and+configure+an+Open-VPN+with+NAT+server+inside+AWS+VPCLinuxFunda&amp;body=We+are+using+AWS+VPC+to+create+an+logically+Isolated+area+for+our+servers.+We+have+complete+control+on+the+networking+for+our+AWS+VPC.+We+can+customize+our+networking+like+public+facing+subnet+and+private-facing+subnets.+We+can+put+our+webservers+in%20-%20http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" title="Email this" target="_blank" rel="nofollow">Email</a></span></div><div class="wpsr_floatbt"><a href="http://www.printfriendly.com/print?url=http%3A%2F%2Fwww.linuxfunda.com%2F2013%2F09%2F14%2Fhow-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc%2F" title="Print this article" target="_blank" rel="nofollow" class="wp-socializer-single"><img src="printfriendly.png" alt="Print" border="0"></a><span class="wp-socializer-label"><a href="http://www.printfriendly.com/print?url=http%3A%2F%2Fwww.linuxfunda.com%2F2013%2F09%2F14%2Fhow-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc%2F" title="Print this article" target="_blank" rel="nofollow">Print</a></span></div><div class="wpsr_floatbt">
+<!-- Start WP Socializer Plugin - Reddit Button -->
+<script type="text/javascript">/* Code removed by ScrapBook */</script><script type="text/javascript" src="about:blank"></script><iframe src="index_52.html" scrolling="no" frameborder="0" height="22" width="120"></iframe>
+<!-- End WP Socializer Plugin - Reddit Button -->
+</div><div class="wpsr_floatbt">
+<!-- Start WP Socializer Plugin - LinkedIn Button -->
+<span class="IN-widget" style="line-height: 1; vertical-align: baseline; display: inline-block; text-align: center;"><span style="padding: 0px ! important; margin: 0px ! important; text-indent: 0px ! important; display: inline-block ! important; vertical-align: baseline ! important; font-size: 1px ! important;"><span id="li_ui_li_gen_1485100736725_2"><a id="li_ui_li_gen_1485100736725_2-link"><span id="li_ui_li_gen_1485100736725_2-logo">in</span><span id="li_ui_li_gen_1485100736725_2-title"><span id="li_ui_li_gen_1485100736725_2-mark"></span><span id="li_ui_li_gen_1485100736725_2-title-text">Share</span></span></a></span></span><span style="padding: 0px ! important; margin: 0px ! important; text-indent: 0px ! important; display: inline-block ! important; vertical-align: baseline ! important; font-size: 1px ! important;"><span id="li_ui_li_gen_1485100736731_3-container" class="IN-right"><span id="li_ui_li_gen_1485100736731_3" class="IN-right"><span id="li_ui_li_gen_1485100736731_3-inner" class="IN-right"><span id="li_ui_li_gen_1485100736731_3-content" class="IN-right">1</span></span></span></span></span></span><script type="IN/Share+init" data-url="http://www.linuxfunda.com/2013/09/14/how-to-install-and-configure-an-open-vpn-with-nat-server-inside-aws-vpc/" data-counter="right"></script>
+<!-- End WP Socializer Plugin - LinkedIn Button -->
+</div></div>	<div style="display: none;">
+	<div class="grofile-hash-map-1bb44a0869881a3268bea34add77d10e">
+	</div>
+	</div>
+<div style="display: none;">
+  <div id="arvlbdata" style="overflow: visible; width: 400px; height: 250px;">
+      <div allowtransparency="true" style="overflow: hidden; width: 400px; height: 250px;" class="fb-page" data-href="https://www.facebook.com/398321526903448" data-width="400" data-height="250" data-small-header="false" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="true" data-show-posts="false">
+    </div>
+
+
+</div>
+
+</div>
+      <script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+
+		<!--[if IE]>
+		<script type="text/javascript">
+		if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+			// window.location.reload() doesn't respect the Hash in IE
+			window.location.hash = window.location.hash;
+		}
+		</script>
+		<![endif]-->
+		<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+	<script type="text/javascript" src="about:blank" async="" defer=""></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!-- End of wp_footer() -->
+<!-- Number of Queries:78   Seconds: 1.265-->
+<!-- heatmapthemead_end_body hook -->
+<!-- end of heatmapthemead_end_body hook -->
+
+
+
+
+<img id="wpstats" alt=":)" src="g.gif" height="5" width="6"></body>
+</html>

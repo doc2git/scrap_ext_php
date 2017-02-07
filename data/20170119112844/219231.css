@@ -1,0 +1,8 @@
+/* Code tidied up by ScrapBook */
+#sideBar { font-size: 12px; font-family: Arial,Helvetica,sans-serif; text-align: left; position: fixed; top: 50px; right: 0px; width: auto; height: auto; }
+#sideBarTab { float: left; width: 30px; border-width: 1px medium 1px 1px; border-style: solid none solid solid; border-color: rgb(229, 229, 229) -moz-use-text-color rgb(229, 229, 229) rgb(229, 229, 229); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; text-align: center; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#sideBarContents { float: left; overflow-y: auto; overflow-x: hidden; width: 200px; min-height: 108px; max-height: 460px; border-width: 1px medium 1px 1px; border-style: solid none solid solid; border-color: rgb(229, 229, 229) -moz-use-text-color rgb(229, 229, 229) rgb(229, 229, 229); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#sideBarContents dl { margin: 0px; padding: 0px; }
+#sideBarContents dd, dt { cursor: pointer; }
+#sideBarContents dd:hover, dt:hover { color: rgb(167, 153, 90); }
+#sideBarContents dd { margin-left: 20px; }

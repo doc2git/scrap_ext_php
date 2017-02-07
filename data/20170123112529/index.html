@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>rsync ~/.ssh to $user@$host:/$home/ AND enable .ssh server rsa auth, login without password. AND ssh-agent & ssh-add the key. </title>
+</head>
+<body>
+<h2>rsync ~/.ssh to $user@$host:/$home/ AND enable .ssh server rsa auth, login without password. AND ssh-agent & ssh-add the key. </h2>
+<br>
+<br># Enable .sshd login with less passwd required.
+<br>## make sure ~/.ssh contain via correct files: authorized_keys, $cert-file, $cert-file.pub.
+<br>## rsync -r --progress ~/.ssh  $user@$host:/$home .
+<br>## login as the $usre@host, make sure $user@$host:/$home/.ssh[(/*)]? belongs to $user on $host. make sure premission of $host:/$home is 700, and that of $host:/$home/* are 600.
+<br>## then rm the known_hosts in $host:/$home/.ssh .
+<br>## uncomment the three lines in /etc/ssh/sshd_config:
+<br>####   RSAAuthentication yes
+<br>####   PubkeyAuthentication yes
+<br>####   AuthorizedKeysFile .ssh/authorized_keys
+<br>## sudo systemctl restart sshd.
+<br>## ssh $user@localhost
+<br>## It would have done, if not, check above step.
+<br>
+<br># ssh-agent & ssh-add the key use the key to less passwd login other enabled and loaded the key.pub server.
+<br>## eval "$(ssh-agent -s)"
+<br>## ssh-add $cert-file
+<br>## ssh $user@$host
+<br>## It would have done, if not, check above step.
+<br>
+<br># Enjoy it.
+</body>
+</html>

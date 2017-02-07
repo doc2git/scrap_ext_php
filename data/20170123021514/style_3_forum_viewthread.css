@@ -1,0 +1,52 @@
+/* Code tidied up by ScrapBook */
+#f_pst .tedt { width: auto; }
+.hasfsl { margin-right: 170px; }
+.ts { font: 700 16px \"Microsoft Yahei\",Hei,Tahoma,SimHei,sans-serif; }
+#nv_forum #ct { border-color: rgb(194, 213, 227); }
+.pl {  }
+.pl table { table-layout: fixed; width: 100%; }
+.plm { vertical-align: bottom ! important; }
+.plc, .pls { vertical-align: top; overflow: hidden; }
+.plc { padding: 0px 20px; }
+.pls { width: 160px; background: rgb(229, 237, 242) none repeat scroll 0% 0%; overflow: hidden; border-right: 1px solid rgb(0, 0, 0); }
+.pls .avatar { margin: 10px 15px; }
+.pls .avatar img { padding: 5px 5px 8px; background: rgb(255, 255, 255) url("midavt_shadow.gif") repeat-x scroll 0px 100%; }
+.pls p, .pls .pil, .pls .o { margin: 5px 0px 5px 10px; }
+.pls p em, .pls dt em { color: rgb(204, 102, 0); }
+.pls dd, .pls dt { float: left; height: 1.6em; line-height: 1.6em; }
+.pls dt { margin-right: 3px; width: 60px; }
+.pls dd { width: 80px; }
+.ad .pls { background: rgb(0, 0, 0) none repeat scroll 0% 0%; padding: 0px; height: 4px; }
+.ad .plc { background: rgb(229, 237, 242) none repeat scroll 0% 0%; padding: 0px; overflow: hidden; }
+.pi { overflow: hidden; margin-bottom: 10px; padding: 10px 0px; height: 16px; border-bottom: 1px solid rgb(0, 0, 0); }
+.pi strong a { float: right; margin-top: -6px; padding: 4px 6px; border: 1px solid rgb(255, 255, 255); font-weight: 400; }
+.pi strong a:hover { border-color: rgb(0, 0, 0); }
+.pls .pi { padding-left: 15px; }
+.pi em {  }
+.pti {  }
+.authicn { cursor: pointer; }
+.pcb { clear: left; margin-right: 130px; }
+#fj { margin-left: 5px; }
+#fj label, #fj input { margin-right: 4px; padding: 0px; height: 16px; line-height: 16px; }
+.pct { padding-bottom: 1em; }
+.t_fsz { min-height: 100px; }
+.t_f, .t_f td { font-size: 14px; line-height: 1.6em; }
+#f_pst .plc { padding: 20px; }
+.bui { position: absolute; margin: -1px 0px 0px -1px; padding: 15px 0px 15px 20px; width: 430px ! important; border: 1px solid rgb(0, 0, 0); background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 2px 2px 3px rgb(204, 204, 204); }
+.bui dl { margin: 5px 0px 10px; }
+.bui .i { width: 290px; }
+.imicn img { vertical-align: middle; margin-right: 8px; }
+.pls .o li { background-position: 0px 50%; background-repeat: no-repeat; text-indent: 18px; }
+.pls .o .callon { background-image: url("home.gif"); }
+.pls .o .buddy { background-image: url("friend.gif"); }
+.pls .o .poke2 { background-image: url("poke.gif"); }
+.pls .o .pm2 { background-image: url("pmto.gif"); }
+.pls .tip_4 { margin-left: -5px; }
+.pdbt { float: right; margin: -5px 10px 0px 0px; }
+#visitedforums_menu { width: 150px; }
+#visitedforums_menu li { display: block; float: none; }
+#visitedforums_menu td { padding: 5px 10px; vertical-align: top; }
+#visitedforums_menu a { white-space: normal ! important; display: inline-block; overflow: hidden; height: 1.5em; }
+#v_forums { width: 120px; }
+#v_threads li, #v_forums li { padding-left: 10px; background: transparent url("dot.gif") no-repeat scroll 0px 7px; }
+#fastsmilies { text-align: right; }

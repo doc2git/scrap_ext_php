@@ -1,0 +1,5 @@
+/* Code tidied up by ScrapBook */
+.list-icon-link { width: 32px; height: 34px; display: block; font-size: 16px; text-decoration: none; cursor: pointer; color: rgb(255, 255, 255); text-align: center; line-height: 32px; background: transparent url("step_ico_bg.png") no-repeat scroll 0px -68px; }
+.list-icon-current { background-position: 0px 0px; }
+.list-icon-link:hover { background-position: 0px 0px; text-decoration: none; }
+.list-icon-link:visited { color: rgb(255, 255, 255); }

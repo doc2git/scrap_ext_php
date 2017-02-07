@@ -1,0 +1,34 @@
+/* Code tidied up by ScrapBook */
+html, body { border: 0px none; margin: 0px; padding: 0px; width: 100%; height: 100%; overflow: hidden; }
+#adContent { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgb(255, 255, 255); -moz-user-select: none; }
+#text1 { font-family: "Roboto",Arial,sans-serif; font-weight: bold; opacity: 0; z-index: 1; }
+#text2 { font-family: "Roboto",Arial,sans-serif; font-weight: 300; opacity: 0; z-index: 1; }
+#url { font-family: "Roboto",Arial,sans-serif; font-weight: 300; z-index: 1; opacity: 0.7; }
+#product { opacity: 0; z-index: 0; }
+#button { border-radius: 50%; box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.4); text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1); display: block; z-index: 1; opacity: 0; }
+#color-slot1 { position: absolute; }
+#color-slot3, #color-slot2 { position: absolute; z-index: 1; }
+[data-variation="towerA"] #text1, [data-variation="towerA"] #text2, [data-variation="squareC"] #text1, [data-variation="squareC"] #text2 { text-align: center; }
+[data-variation]:not([data-variation*="small"]) #text1 { opacity: 1; }
+[data-variation]:not([data-variation*="small"]) #text2 { opacity: 1; }
+[data-variation]:not([data-variation*="small"]) #button { animation: 0.5s ease 0s normal both 1 running fadein_keyframes; }
+[data-variation]:not([data-variation*="small"]) #product { animation: 0.9s ease 0s normal both 1 running fadein_keyframes; }
+@keyframes fadein_keyframes {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+@keyframes frames1 {
+0%, 30% { opacity: 1; transform: translateY(0px); }
+35%, 95% { opacity: 0; transform: translateY(-200%); }
+100% { opacity: 1; transform: translateY(0px); }
+}
+@keyframes frames2 {
+0%, 30% { opacity: 0; transform: translateY(200%); }
+35%, 65% { opacity: 1; transform: translateY(0px); }
+70%, 100% { opacity: 0; transform: translateY(-200%); }
+}
+@keyframes frames3 {
+0%, 65% { opacity: 0; transform: translateY(200%); }
+70%, 95% { opacity: 1; transform: translateY(0px); }
+100% { opacity: 0; transform: translateY(200%); }
+}

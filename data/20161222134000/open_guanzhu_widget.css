@@ -1,0 +1,26 @@
+/* Code tidied up by ScrapBook */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, img, strong, li, ol, ul, form, label, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0px; padding: 0px; }
+html {  }
+body { color: rgb(153, 153, 153); font: 12px/1.5em Tahoma,"hiragino sans gb",Helvetica,Arial; text-align: center; height: 100%; word-break: break-all; }
+div { text-align: left; }
+a { text-decoration: none; color: rgb(19, 74, 143); }
+a:hover { text-decoration: underline; }
+a:active { outline: medium none; }
+*::-moz-selection { color: rgb(255, 255, 255); background-color: rgb(51, 51, 51); }
+.qz_like_mode .qz_like_op, .qz_like_mode .qz_liked_op { margin-bottom: 4px; overflow: auto; }
+.qz_like_mode .qz_like_bt { background: transparent url("like_bg_zan.png") no-repeat scroll 0% 0%; display: block; float: left; text-decoration: none; vertical-align: -12.5px; line-height: 21px; width: 57px; height: 21px; margin-right: 3px; margin-bottom: 6px; padding: 0px; overflow: hidden; }
+@media not all {
+  .qz_like_mode .qz_like_bt { vertical-align: 0px; }
+}
+.qz_like_mode .qz_like_bt span { padding-left: 22px; }
+.qz_like_mode .qz_like_stat { background-image: url("like_bg_guanzhu.png"); background-repeat: no-repeat; display: block; float: left; height: 21px; padding-left: 9px; }
+.qz_like_mode .qz_like_stat span { font-size: 11px; font-weight: normal; background-image: url("like_bg_guanzhu.png"); background-repeat: no-repeat; display: block; line-height: 21px; height: 21px; margin-right: -1px; padding-right: 5px; }
+.qz_like_op .qz_like_stat a, .qz_liked_op .qz_like_stat a { text-decoration: none; }
+.style_3 .qz_like_bt { color: rgb(240, 240, 240); }
+.style_3 .qz_like_op .qz_like_bt { background-position: -70px 0px; }
+.style_3 .qz_like_op .qz_like_stat { background-position: 0px -147px; }
+.style_3 .qz_like_stat, .style_3 .qz_like_stat a { color: rgb(241, 241, 241); }
+.style_3 .qz_like_op .qz_like_stat span { background-position: 100% -147px; }
+.style_2 .qz_like_op .qz_like_bt span, .style_3 .qz_like_op .qz_like_bt span, .style_4 .qz_like_op .qz_like_bt span { padding-left: 26px; }
+.qz_like_mode .qz_like_text { vertical-align: -3px; line-height: 15px; margin-left: 4px; }
+.style_3 .qz_like_op .qz_like_bt:hover { background-position: -70px -249px; }

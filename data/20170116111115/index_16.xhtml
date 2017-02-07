@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head xmlns="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8" />
+
+    <title>页面载入出错</title>
+    <link rel="stylesheet" href="chrome://browser/skin/aboutNetError.css" type="text/css" media="all" />
+    <!-- If the location of the favicon is changed here, the FAVICON_ERRORPAGE_URL symbol in
+         toolkit/components/places/src/nsFaviconService.h should be updated. -->
+    <link rel="icon" type="image/png" id="favicon" href="chrome://global/skin/icons/warning-16.png" />
+
+    <script type="application/javascript">/* Code removed by ScrapBook */</script>
+  </head>
+
+  <body xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+    <!-- ERROR ITEM CONTAINER (removed during loading to avoid bug 39098) -->
+    
+
+    <!-- PAGE CONTAINER (for styling purposes only) -->
+    <div id="errorPageContainer">
+
+      <!-- Error Title -->
+      <div id="errorTitle">
+        <h1 id="errorTitleText">连接被重置</h1>
+      </div>
+
+      <!-- LONG CONTENT (the section most likely to require scrolling) -->
+      <div id="errorLongContent">
+
+        <!-- Short Description -->
+        <div id="errorShortDesc">
+          <p id="errorShortDescText">载入页面时与服务器的连接被重置。</p>
+        </div>
+
+        <!-- Long Description (Note: See netError.dtd for used XHTML tags) -->
+        <div id="errorLongDesc"><ul> 
+<li>此站点暂时不可用或者太忙。请稍后再试。</li> 
+<li>如果您无法载入任何页面，请检查您计算机的网络连接。</li> 
+<li>如果您的计算机或网络受到防火墙或者代理服务器的保护，请确认 Firefox 已被授权访问网络。</li> 
+</ul></div>
+
+        <!-- Override section - For ssl errors only.  Removed on init for other
+             error types.  -->
+        
+
+        <div id="learnMoreContainer">
+          <p><a href="https://support.mozilla.org/kb/what-does-your-connection-is-not-secure-mean" id="learnMoreLink" target="new">详细了解…</a></p>
+        </div>
+
+        <div id="buttonContainer">
+          <button id="returnButton" autocomplete="off" autofocus="true">后退</button>
+          <div id="buttonSpacer"></div>
+          <button id="advancedButton" autocomplete="off" autofocus="true">高级</button>
+        </div>
+      </div>
+
+      <button id="errorTryAgain" autocomplete="off">重试</button>
+      <script>/* Code removed by ScrapBook */</script>
+
+      <!-- UI for option to report certificate errors to Mozilla. Removed on
+           init for other error types .-->
+      <div id="certificateErrorReporting">
+        <p>
+          <input type="checkbox" id="automaticallyReportInFuture" />
+          <label for="automaticallyReportInFuture" id="automaticallyReportInFuture">报告类似错误以帮助 Mozilla 识别和阻止恶意站点</label>
+
+          <span id="reportingState">
+            <button id="reportCertificateError">报告</button>
+            <button id="reportCertificateErrorRetry">重试</button>
+            <span id="reportSendingMessage">正在发送报告</span>
+            <span id="reportSentMessage">报告已发送</span>
+          </span>
+        </p>
+      </div>
+
+      <div id="weakCryptoAdvancedPanel">
+        <div id="weakCryptoAdvancedDescription">
+          <p><span class="hostname"></span> 使用了过时的安全技术，较容易遭受攻击。攻击者可以容易地获取您认为是安全的信息。</p>
+        </div>
+        <div id="advancedLongDesc"></div>
+        <div id="overrideWeakCryptoPanel">
+          <a id="overrideWeakCrypto" href="#">尝试使用过时的安全性设置载入此页面 <span class="hostname"></span>（不安全）</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!--
+    - Note: It is important to run the script this way, instead of using
+    - an onload handler. This is because error pages are loaded as
+    - LOAD_BACKGROUND, which means that onload handlers will not be executed.
+    -->
+    <script type="application/javascript">/* Code removed by ScrapBook */</script>
+
+  </body>
+
+</html>

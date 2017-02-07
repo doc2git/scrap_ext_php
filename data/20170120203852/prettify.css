@@ -1,0 +1,17 @@
+/* Code tidied up by ScrapBook */
+.pln { color: rgb(0, 0, 0); }
+@media screen {
+  .com { color: rgb(136, 0, 0); }
+  .pun, .opn, .clo { color: rgb(102, 102, 0); }
+  .tag { color: rgb(0, 0, 136); }
+  .atn { color: rgb(102, 0, 102); }
+}
+@media print, projection {
+  .com { color: rgb(102, 0, 0); font-style: italic; }
+  .pun, .opn, .clo { color: rgb(68, 68, 0); }
+  .tag { color: rgb(0, 0, 102); font-weight: bold; }
+  .atn { color: rgb(68, 0, 68); }
+}
+ol.linenums { margin: 0px 0px 0px 40px; color: rgb(43, 165, 216); white-space: normal; list-style: outside none decimal; }
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 { border-left: 1px solid rgb(209, 215, 220); padding: 0px 5px; line-height: 23px; background-color: rgb(250, 250, 250); text-indent: 0px; }
+code.prettyprint { position: relative; border: 1px solid rgb(209, 215, 220); padding: 2px; font-size: 14px; display: block; font-family: Consolas,"Liberation Mono",Courier,monospace,微软雅黑; margin: 10px 0px; white-space: normal; word-wrap: break-word; }

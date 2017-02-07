@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="吕文翰,岁寒,emlog,php,CodeIgniter,Laravel,TinyLara,Swift,iOS,Pitaya,JSONNeverDie,PHP,Laravel">
+  <meta name="description" content="基于最新 Laravel 5.2 的2016 版教程已经发布到 Github：">
+  <title>Laravel 4 系列入门教程（一）【最适合中国人的Laravel教程】 - 岁寒</title>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://lvwenhan.com/rss.php">
+  <script src="about:blank"></script>
+
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link href="main.css" rel="stylesheet" type="text/css">
+
+  <script src="about:blank"></script>
+  <script src="about:blank"></script>
+  <script src="about:blank"></script>
+
+  <script type="text/javascript">/* Code removed by ScrapBook */</script>
+<link rel="stylesheet" href="markdown.css"></head>
+<body>
+  <div id="wrap">
+    <div id="header">
+
+      <a href="https://lvwenhan.com/">
+        <img src="logo.png" id="logo" alt="LOGO">
+
+        <h1 id="title">
+            岁寒        </h1>
+      </a>
+
+      <h3 id="slogan">任何事情，从现在开始做，都不晚！</h3>
+
+    </div> <!-- end of #header -->
+
+    <div id="nav" class="navbar-wrapper" style="">
+      <div class="container">
+
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="https://lvwenhan.com/">岁寒</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              	<ul class="bar nav navbar-nav">
+			<li class="item common dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href="https://lvwenhan.com/sort/life">生活 <b class="caret"></b></a>
+			            <ul class="sub-nav dropdown-menu">
+                <li><a href="https://lvwenhan.com/sort/many">杂</a></li><li><a href="https://lvwenhan.com/sort/serialize">小说</a></li><li><a href="https://lvwenhan.com/sort/create">原创</a></li>			</ul>
+            
+            
+		</li>
+			<li class="item common dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href="https://lvwenhan.com/sort/web">WEB 技术 <b class="caret"></b></a>
+			            <ul class="sub-nav dropdown-menu">
+                <li><a href="https://lvwenhan.com/sort/web-front">web前端</a></li><li><a href="https://lvwenhan.com/sort/web-back">web后端</a></li><li><a href="https://lvwenhan.com/sort/mobile">移动互联网</a></li>			</ul>
+            
+            
+		</li>
+			<li class="item common dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href="https://lvwenhan.com/sort/keep-learning">其他技术 <b class="caret"></b></a>
+			            <ul class="sub-nav dropdown-menu">
+                <li><a href="https://lvwenhan.com/sort/C-language">C</a></li><li><a href="https://lvwenhan.com/sort/ruby">Ruby</a></li><li><a href="https://lvwenhan.com/sort/mac">MAC</a></li><li><a href="https://lvwenhan.com/sort/golang">Go语言</a></li><li><a href="https://lvwenhan.com/sort/vb6">Visual Basic 6.0</a></li>			</ul>
+            
+            
+		</li>
+			<li class="item common dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href="https://lvwenhan.com/sort/29">PHP <b class="caret"></b></a>
+			            <ul class="sub-nav dropdown-menu">
+                <li><a href="https://lvwenhan.com/sort/php">PHP</a></li><li><a href="https://lvwenhan.com/sort/laravel">Laravel</a></li><li><a href="https://lvwenhan.com/sort/31">TinyLara</a></li><li><a href="https://lvwenhan.com/sort/ci">CodeIgniter</a></li>			</ul>
+            
+            
+		</li>
+			<li class="item common">
+			<a href="https://lvwenhan.com/sort/ios">iOS</a>
+			
+            
+		</li>
+			<li class="item common">
+			<a href="https://github.com/johnlui" target="_blank">GitHub</a>
+			
+            
+		</li>
+			<li class="item common">
+			<a href="http://weibo.com/balishengmuyuan" target="_blank">微博</a>
+			
+            
+		</li>
+			<li class="item common">
+			<a href="https://lvwenhan.com/works">作品</a>
+			
+            
+		</li>
+			<li class="item common dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href="http:///#">更多 <b class="caret"></b></a><ul class="dropdown-menu"><li>
+			<a href="http://killtyz.com/" target="_blank">干掉拖延症</a>
+			
+            
+		</li><li>
+			<a href="http://lvwenhan.com/convertico" target="_blank">ICO 转换</a>
+			
+            
+		</li><li>
+			<a href="http://weizhonghuazhijueqi.com/" target="_blank">为中华之崛起</a>
+			
+            
+		</li><li>
+			<a href="http://lvwenhan.com/Guestbook">留言</a>
+			
+            
+		</li><li>
+			<a href="http://lvwenhan.com/about_me">关于</a>
+			
+            
+		</li></ul>
+			
+            
+		</li>
+			<li style="display: none;" class="item common">
+			<a href="http://killtyz.com/" target="_blank">干掉拖延症</a>
+			
+            
+		</li>
+			<li style="display: none;" class="item common">
+			<a href="http://lvwenhan.com/convertico" target="_blank">ICO 转换</a>
+			
+            
+		</li>
+			<li style="display: none;" class="item common">
+			<a href="http://weizhonghuazhijueqi.com/" target="_blank">为中华之崛起</a>
+			
+            
+		</li>
+			<li style="display: none;" class="item common">
+			<a href="http://lvwenhan.com/Guestbook">留言</a>
+			
+            
+		</li>
+			<li style="display: none;" class="item common">
+			<a href="http://lvwenhan.com/about_me">关于</a>
+			
+            
+		</li>
+		</ul>
+              <form class="navbar-form navbar-right" role="search" action="https://lvwenhan.com/index.php" method="GET">
+                <div class="form-group">
+                  <a href="https://lvwenhan.com/rss.php" id="rss">
+                    <img src="rss.png" alt="RSS">
+                  </a>
+                  <input name="keyword" class="form-control" placeholder="Search" id="search" value="" type="text">
+                  <button class="btn btn-success">搜索</button>
+                </div>
+              </form>
+              <span class="icon-bar"></span>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div><div id="content" class="container">
+<div id="contentleft">
+  <div class="m-post">
+    <h2 class="title"><a href="#">Laravel 4 系列入门教程（一）【最适合中国人的Laravel教程】</a></h2>
+
+    <h3><br></h3><hr><h3><font color="#333333">基于<b>最新 Laravel 5.2</b> 的&nbsp;2016 版教程已经发布到 Github：<a href="https://github.com/johnlui/Learn-Laravel-5/issues/4">https://github.com/johnlui/Learn-Laravel-5/issues/4</a></font></h3><h3><b><font color="#e33737">十分建议学习 5.2，4.2 早已不再维护。</font></b></h3><hr><p><br></p><p>	向&nbsp;<a href="http://www.codeforest.net/laravel4-simple-website-with-backend-1" target="_blank">Laravel 4 – simple website with backend tutorial – Part 1</a>&nbsp;致敬，本教程部分内容翻译自此文章。 </p><p>	每一个教程完成，我将会git commit一次。</p><h3>示例代码见 <a href="https://github.com/johnlui/Learn-Laravel-4" target="_blank">https://github.com/johnlui/Learn-Laravel-4</a></h3><p>大家在任何地方卡住，最快捷的解决方式就是去看我的示例代码。</p><p>	推荐&nbsp;Laravel 4.2&nbsp;中文文档&nbsp;<a href="http://laravel-china.org/docs" target="_blank">http://laravel-china.org/docs</a> </p><p>	<br> </p><h1><strong><strong>0. 默认条件</strong></strong></h1><p> </p><p>	本文默认你已经有配置完善的PHP+MySQL运行环境，懂得PHP网站运行的基础知识。跟随本教程走完一遍，你将会得到一个基础的包含登录的简单blog系统，并将学会如何使用一些强大的Laravel插件和composer包（Laravel插件也是composer包）。</p><p>	软件版本：PHP 5.4+，MySQL 5.1+<br> </p><p>	<br></p><p><font color="#e28b41">	本文不推荐完全不懂PHP与MVC编程的人学习。本文不是 “<b><i>一步一步跟我做</i></b>” 教程。本文需要你付出一定的心智去解决一些或大或小的隐藏任务，以达到真正理解 Laravel 运行逻辑的目的。</font></p><p>	<br> </p><h1>1. 安装</h1><p>	许多人被拦在了学习Laravel的第一步，安装。并不是因为安装教程有多复杂，而是因为【众所周知的原因】。在此我推荐一个composer全量中国镜像：<a href="http://pkg.phpcomposer.com/" target="_blank">http://pkg.phpcomposer.com/</a>。推荐以 “修改 composer 的配置文件” 方式配置。</p><p>	镜像配置完成后，切换到你想要放置该网站的目录下，运行命令： </p><p>	<br></p><pre class="lang-c++" data-lang="c++">composer create-project laravel/laravel learnlaravel 4.2.11</pre><p><b>为了大家学习的方便，请暂时使用 4.2.11 版本进行入门。春节假期我会抽时间写一下 Laravel 5 的入门教程。4.2.11 的 Github 下载地址为：<a href="https://github.com/laravel/laravel/archive/v4.2.11.zip">https://github.com/laravel/laravel/archive/v4.2.11.zip</a></b></p><p>	然后，稍等片刻，当前目录下就会出现一个叫 learnlaravel 的文件夹，这时候如果你通过浏览器访问&nbsp;learnlaravel/public/ 目录，基本都会显示&nbsp;Error in exception handler. &nbsp;，这是因为 learnlaravel/app/storage 目录没有 777 权限，设置好权限即可看见页面如下图： </p><p>	<img src="2eb51412091486.jpg" alt="QQ20140930-3.jpg" height="328" width="574"><br> </p><p>	恭喜你~Laravel安装成功！ </p><p>	<br> </p><p>	不想配置镜像的同学，可以使用 Laravel 界非常著名的<strong><a href="http://overtrue.me/" target="_blank">超超</a></strong>搞得安装神器：<a href="https://github.com/overtrue/latest-laravel" target="_blank">https://github.com/overtrue/latest-laravel</a> </p><p>	<br>  </p><h1>2. 必要插件安装及配置</h1><p>	我们使用著名的Sentry插件来构建登录等权限验证系统。 </p><p>	打开 ./composer.json ，变更为： </p><p>	  </p><pre class="lang-css" data-lang="css">"require": {
+	"laravel/framework": "4.2.*",
+	"cartalyst/sentry": "2.1.4"
+},</pre><p><br></p><p>然后，在项目根目录下运行命令</p><p>	  </p><pre class="lang-coffeeScript" data-lang="coffeeScript">composer update</pre><p><br></p><p>	然后稍等一会儿，它会提示&nbsp;cartalyst/sentry 2.1.4安装完成。  </p><p>	<br> </p><p>	同理，我们将安装一个开发用的非常强大的插件，way/generators，这是它在composer库中的名字。在 composer.json中增加： </p><p>	  </p><pre class="lang-html" data-lang="html">"require-dev": {
+    "way/generators": "~2.0"
+},</pre><p>和“require”同级，放在下面，不是里面哦~。 </p><p>	<br></p><p>	运行 composer update，之后在 ./app/config/app.php 中<a href="https://github.com/johnlui/Learn-Laravel-4/blob/master/app/config/app.php" target="_blank"> 恰当的位置 </a>增加配置： </p><p>	  </p><pre class="lang-json" data-lang="json">'Way\Generators\GeneratorsServiceProvider'</pre><p>安装完成过，在命令行中运行&nbsp;<font color="#ef6559">php artisan</font>，就可以看到这个插件带来的许多新的功能。 </p><p><br></p><p>	有人会问，为什么用了国内镜像还是如此之慢？其实composer在update的时候最慢的地方并不是下载，而是下载之前的依赖关系解析，由于Laravel依赖的composer包非常之多，PHP脚本的执行速度又比较慢，所以每次update等个两三分钟很正常，习惯就好。 </p><p>	<br> </p><h1>3. 数据库建立及迁移</h1><p><b><strong><b><strong><b><strong><br></strong></b></strong></b></strong></b></p><p>	数据库配置文件位于 ./app/config/database.php，我们需要把“connections”中的“mysql”项改成我们需要的配置。下面是我的配置： </p><p>	  </p><pre class="lang-java" data-lang="java">'mysql' =&gt; array(
+	'driver'    =&gt; 'mysql',
+	'host'      =&gt; 'localhost',
+	'database'  =&gt; 'laravel',
+	'username'  =&gt; 'root',
+	'password'  =&gt; 'password',
+	'charset'   =&gt; 'utf8',
+	'collation' =&gt; 'utf8_unicode_ci',
+	'prefix'    =&gt; 'l4_',
+),</pre><p>	<br></p><p><b><strong><b><b><strong><b><strong><b><strong> </strong></b></strong></b></strong></b></b></strong></b>prefix为表前缀，这个Laravel会帮我们自动维护，大胆写上不用担心。 </p><p>	<br></p><p>	这时候你需要去数据库建立此数据库，然后在命令行中输入： </p><p>	  </p><pre class="lang-js" data-lang="js">php artisan migrate --package=cartalyst/sentry</pre><p><br></p><p>执行完成后，你的数据库里就有了5张表，这是sentry自己建立的。sentry在Laravel4下的配置详情见&nbsp;<a href="https://cartalyst.com/manual/sentry#laravel-4" target="_blank">https://cartalyst.com/manual/sentry#laravel-4</a>，我大致说一下： </p><p>	<br></p><p>	在 ./app/config/app.php 中 <a href="https://github.com/johnlui/Learn-Laravel-4/blob/master/app/config/app.php" target="_blank">相应的位置</a> 分别增加以下两行： </p><p>	  </p><pre class="lang-markdown" data-lang="markdown">'Cartalyst\Sentry\SentryServiceProvider',</pre><pre class="lang-oc" data-lang="oc">'Sentry' =&gt; 'Cartalyst\Sentry\Facades\Laravel\Sentry',</pre><p> 权限系统的数据库配置到此为止。 </p><p>	<br> </p><p>	我们的简单blog系统将会有两种元素，Article和Page，下面我们将创建articles和pages数据表，命令行运行：</p><pre class="lang-php" data-lang="php">php artisan migrate:make create_articles_table --create=articles
+php artisan migrate:make create_pages_table --create=pages</pre><p>	<br></p><p>	 这时候，去到 ./app/database/migrations，将会看到多出了两个文件，这就是数据库迁移文件，过一会我们将操作artisan将这两个文件描述的两张表变成数据库中真实的两张表，放心，一切都是自动的。 </p><p>	下面，在***_create_articles_table.php中修改： </p><p>	  </p><pre class="lang-perl" data-lang="perl">Schema::create('articles', function(Blueprint $table)
+{
+	$table-&gt;increments('id');
+	$table-&gt;string('title');
+	$table-&gt;string('slug')-&gt;nullable();
+	$table-&gt;text('body')-&gt;nullable();
+	$table-&gt;string('image')-&gt;nullable();
+	$table-&gt;integer('user_id');
+	$table-&gt;timestamps();
+});</pre><p>	<br></p><p>	 在***_create_pages_table.php中修改： </p><p>	  </p><pre class="lang-python" data-lang="python">Schema::create('pages', function(Blueprint $table)
+{
+	$table-&gt;increments('id');
+	$table-&gt;string('title');
+	$table-&gt;string('slug')-&gt;nullable();
+	$table-&gt;text('body')-&gt;nullable();
+	$table-&gt;integer('user_id');
+	$table-&gt;timestamps();
+});</pre><p>	<br></p><p> 下面，就是见证奇迹的时刻，在命令行中运行：</p><p>	  </p><pre class="lang-ruby" data-lang="ruby">php artisan migrate</pre><p><br></p><p> 这时候数据库中的articles表和pages表就建立完成了。 </p><p>	<br></p><h1>4. 模型 Models</h1><p>	接下来我们将接触Laravel最为强大的部分，Eloquent ORM，真正提高生产力的地方，借用库克的话说一句，鹅妹子英！ </p><p>	我们在命令行运行下列语句以创建两个model： </p><p>	  </p><pre class="lang-sql" data-lang="sql">php artisan generate:model article
+php artisan generate:model page</pre><p>这时候，在 app/models/ 下就出现了两个文件 Article.php 和 Page.php，这是两个 Model 类，他们都继承了Laravel提供的核心类&nbsp;\Eloquent。这里需要强调一下，用命令行的方式创建文件，和自己手动创建文件没有任何区别，你也可以尝试自己创建这两个 Model 类哦。</p><p>Model 即为 MVC 中的 M，翻译为 模型，负责跟数据库交互。在 Eloquent 中，数据库中每一张表对应着一个 Model 类。</p><p>如果你从其他框架转过来，可能对这里一笔带过的 Model 部分很不适应，没办法，是因为 Eloquent 实在太强大了啦，真的没什么好做的，继承一下 Eloquent 类就能实现很多很多功能了。详见&nbsp;Eloquent 系列教程：<a href="https://lvwenhan.com/laravel/421.html" target="_blank">深入理解 Laravel Eloquent（一）——基本概念及用法</a></p><h1>5. 数据库填充</h1><p> </p><p>	分别运行下列命令： </p><p>	  </p><pre class="lang-c++" data-lang="c++">php artisan generate:seed page
+php artisan generate:seed article</pre><p> 这时，在 ./app/database/seeds/ 下就出现了两个新的文件，这就是我们的数据库填充文件。Laravel提供自动数据库填充，十分方便。</p><p> generator默认使用Faker\Factory作为随机数据生成器，所以我们需要安装这个composer包，地址是 <a href="https://packagist.org/packages/fzaninotto/faker" target="_blank">https://packagist.org/packages/fzaninotto/faker</a>&nbsp;，跟generator一起安装在 require-dev 中即可。具体安装请自行完成，可以参考Sentry和Generator，这是第一次练习。</p><p>	<br></p><p>	接下来，分别更改这两个文件： </p><p>	  </p><pre class="lang-css" data-lang="css">Article::create([
+  'title'   =&gt; $faker-&gt;sentence($nbWords = 6),
+  'slug'    =&gt; 'first-post',
+  'body'    =&gt; $faker-&gt;paragraph($nbSentences = 5),
+  'user_id' =&gt; 1,
+]);</pre><pre class="lang-coffeeScript" data-lang="coffeeScript">Page::create([
+  'title'   =&gt; $faker-&gt;sentence($nbWords = 6),
+  'slug'    =&gt; 'first-page',
+  'body'    =&gt; $faker-&gt;paragraph($nbSentences = 5),
+  'user_id' =&gt; 1,
+]);</pre><p><br></p><p> 然后，我们需要在&nbsp;DatabaseSeeder.php 中增加两行，让Laravel在seed的时候会带上我们新增的这两个seed文件。</p><p>	  </p><pre class="lang-html" data-lang="html">$this-&gt;call('ArticleTableSeeder');
+$this-&gt;call('PageTableSeeder');</pre><p><br></p><p> 下面就要真正的把数据填充进数据库了：</p><p>	  </p><pre class="lang-json" data-lang="json">php artisan db:seed</pre><p> 操作完成以后去数据库看看，数据已经填充进去了，article和page各10行。 </p><p><br></p><h3>接下来做什么？<a href="https://lvwenhan.com/laravel/399.html">Laravel 4 系列入门教程（二）</a></h3>
+    <style>
+/* Code tidied up by ScrapBook */
+#author { width: 100%; margin-top: 50px; box-shadow: 5px 5px 20px rgb(204, 204, 204); }
+#author h4 { padding-top: 10px; margin-left: 10px; margin-bottom: 30px; font-size: 16px; }
+#avatar { border-radius: 80px; box-shadow: 5px 5px 20px rgb(153, 153, 153); width: 160px; margin-left: 80px; margin-right: 50px; float: left; }
+#right { float: left; padding-top: 10px; margin-left: 20px; margin-bottom: 100px; margin-right: 20px; }
+</style>
+<div id="author">
+  <h4>WRITTEN BY</h4>
+   
+  <img src="cdc61414392103.jpg" alt="avatar" id="avatar">
+  <!-- <img src="../content/uploadfile/201410/cdc61414392103.jpg" alt="avatar" id="avatar"> -->
+  <div id="right">
+    <h3><a href="https://github.com/johnlui">JohnLui</a></h3>
+    <div id="description">
+    程序员，Swift Contributor，正在写<a href="https://autolayout.club/" target="_blank">《iOS 可视化编程与 Auto Layout》</a>。
+    </div>
+  </div>
+    <div style="clear: both;"></div>
+</div>
+<div id="related_log"><p><b>相关日志：</b></p><p><a href="https://lvwenhan.com/laravel/420.html">如何在 Laravel 中使用阿里云 OSS</a></p><p><a href="https://lvwenhan.com/laravel/403.html">用 Sublime 开发 Laravel —— Sublime Text 插件推荐</a></p><p><a href="https://lvwenhan.com/laravel/395.html">Laravel 4.2 中队列服务（queue）的使用感受和踩到的坑</a></p><p><a href="https://lvwenhan.com/laravel/389.html">Laravel上手小感</a></p><p><a href="https://lvwenhan.com/laravel/422.html">深入理解 Laravel Eloquent（二）——中间操作流（Builder）</a></p></div>
+    <div id="article-info">
+      <div class="tag little">标签:	<a href="https://lvwenhan.com/tag/PHP">PHP</a>	<a href="https://lvwenhan.com/tag/Laravel">Laravel</a></div>
+      <div class="date little">2014.9.29      <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span> 热度：132158 <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span> 分类：	    <a href="https://lvwenhan.com/sort/laravel">Laravel</a>
+	      </div>
+    </div>
+
+    <div class="nextlog">		<a class="left" href="https://lvwenhan.com/laravel/399.html">← Laravel 4 系列入门教程（二）【最适合中国人的Laravel教程】</a>
+		
+			<a class="right" href="https://lvwenhan.com/ruby/386.html">Ruby on Rails 折腾记（3）给 Rails 项目用上 mysql——在 Ubuntu/CentOS 系统上安装 mysql2 gem →</a>
+		<div style="clear: both;"></div>
+</div>
+
+    	<hr><a name="comments"></a>
+	<p class="comment-header"><b>评论：</b></p>
+			<div class="comment" id="comment-11460">
+		<a name="11460"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>zhangkz </b><br><span class="comment-time">2016-03-25 10:37</span>
+			<div class="comment-content">php artisan migrate:make create_articles_table --create=articles<br>
+php artisan migrate:make create_pages_table --create=pages<br>
+这两句有错误，不应该是migrate:make，而是make:migrate</div>
+			<div class="comment-reply"><a href="#comment-11460">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-11461">
+		<a name="11461"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="https://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2016-03-25 10:42</span>
+			<div class="comment-content">@zhangkz：4 时代大家还是用的 way 的 generator 插件，这个功能是在 5 才集成到 artisan 里的。</div>
+			<div class="comment-reply"><a href="#comment-11461">回复</a></div>		</div>
+			</div>
+		</div>
+		<div class="comment" id="comment-11233">
+		<a name="11233"></a>
+		<div class="avatar"><img src="4a9c34786eb3d2ef220185173aceb3c7.png"></div>		<div class="comment-info">
+			<b>相思人 </b><br><span class="comment-time">2015-12-16 20:23</span>
+			<div class="comment-content">大哥，你的laravel教程 我看了，很不错，我有一个问题：<br>
+1，你用的symfony&nbsp;&nbsp;调试不是默认的laravel调试吧，你怎么配置的呢？</div>
+			<div class="comment-reply"><a href="#comment-11233">回复</a></div>
+		</div>
+			</div>
+		<div class="comment" id="comment-10867">
+		<a name="10867"></a>
+		<div class="avatar"><img src="93c04dbf36e93c1d3f916ad61c732fd7.png"></div>		<div class="comment-info">
+			<b>码农一枚 </b><br><span class="comment-time">2015-10-01 20:46</span>
+			<div class="comment-content">请问：搭建成功，但是每当提交注册的时候就会提示“Method [validator] does not exist.”&nbsp;&nbsp;这是什么原因？</div>
+			<div class="comment-reply"><a href="#comment-10867">回复</a></div>
+		</div>
+			</div>
+		<div class="comment" id="comment-10620">
+		<a name="10620"></a>
+		<div class="avatar"><img src="df4e3326f0e83c7f96c1435b58b77d96.png"></div>		<div class="comment-info">
+			<b>小刘 </b><br><span class="comment-time">2015-08-18 17:03</span>
+			<div class="comment-content">老师啊，出个用项目串讲的laravel5视频吧！！！</div>
+			<div class="comment-reply"><a href="#comment-10620">回复</a></div>
+		</div>
+			</div>
+		<div class="comment" id="comment-10189">
+		<a name="10189"></a>
+		<div class="avatar"><img src="127682910d64bdca147eca71b99ad1a4.png"></div>		<div class="comment-info">
+			<b><a href="http://xxx.com/" target="_blank">guoer</a> </b><br><span class="comment-time">2015-06-17 13:56</span>
+			<div class="comment-content">第一次就被安装的步骤吓到了啊<img src="7.gif"></div>
+			<div class="comment-reply"><a href="#comment-10189">回复</a></div>
+		</div>
+			</div>
+		<div class="comment" id="comment-10139">
+		<a name="10139"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>秋风888 </b><br><span class="comment-time">2015-06-11 18:32</span>
+			<div class="comment-content">看完第一章，非常有用。谢谢老师。<br>
+<br>
+只是文中下面这段代码，是不是粘贴重复了，和数据表结构对应不上啊。<br>
+Article::create([<br>
+&nbsp;&nbsp;'title'&nbsp;&nbsp; =&gt; $faker-&gt;sentence($nbWords = 6),<br>
+&nbsp;&nbsp;'slug'&nbsp;&nbsp;&nbsp;&nbsp;=&gt; 'first-post',<br>
+&nbsp;&nbsp;'body'&nbsp;&nbsp;&nbsp;&nbsp;=&gt; $faker-&gt;paragraph($nbSentences = 5),<br>
+&nbsp;&nbsp;'user_id' =&gt; 1,<br>
+]);<br>
+<br>
+Page::create([<br>
+&nbsp;&nbsp;'title'&nbsp;&nbsp; =&gt; $faker-&gt;sentence($nbWords = 6),<br>
+&nbsp;&nbsp;'slug'&nbsp;&nbsp;&nbsp;&nbsp;=&gt; 'first-page',<br>
+&nbsp;&nbsp;'body'&nbsp;&nbsp;&nbsp;&nbsp;=&gt; $faker-&gt;paragraph($nbSentences = 5),<br>
+&nbsp;&nbsp;'user_id' =&gt; 1,<br>
+]);</div>
+			<div class="comment-reply"><a href="#comment-10139">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-10141">
+		<a name="10141"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-06-11 21:02</span>
+			<div class="comment-content">@秋风888：可能吧，但是建议去学 5 哦~</div>
+			<div class="comment-reply"><a href="#comment-10141">回复</a></div>		</div>
+			<div class="comment comment-children" id="comment-10729">
+		<a name="10729"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>php初学者~ </b><br><span class="comment-time">2015-09-10 12:13</span>
+			<div class="comment-content">@JohnLui：在一家公司想套用该框架，可惜php版本不高，最多只能用版本4，应该也没什么问题吧</div>
+			<div class="comment-reply"><a href="#comment-10729">回复</a></div>		</div>
+			<div class="comment comment-children" id="comment-10730">
+		<a name="10730"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-09-10 13:03</span>
+			<div class="comment-content">@php初学者~：有问题，完全跑不起来的。。。</div>
+			<div class="comment-reply"><a href="#comment-10730">回复</a></div>		</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		<div class="comment" id="comment-9917">
+		<a name="9917"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>page </b><br><span class="comment-time">2015-05-16 13:49</span>
+			<div class="comment-content">666666,文章写的很好，赞</div>
+			<div class="comment-reply"><a href="#comment-9917">回复</a></div>
+		</div>
+			</div>
+		<div class="comment" id="comment-9744">
+		<a name="9744"></a>
+		<div class="avatar"><img src="cfc0865e82a2138413c8a99b8d0bd15d.png"></div>		<div class="comment-info">
+			<b>长青 </b><br><span class="comment-time">2015-04-28 14:45</span>
+			<div class="comment-content">这个Faker\Factory或者fzaninotto/faker怎么安装？这个问题搞了我一个星期了，很急，很重要，我们就要用laravel做项目的<br>
+<br>
+我是在github下载了 faker 的安装包解压到 vendor 目录下，然后又在 app\config\app.php 文件的 'providers' 数组中添加了 'Fzaninotto\Faker\FakerServiceProvider'。就是不行，一直报错“ymfony \ Component \ Debug \ Exception \ FatalErrorException (E_UNKNOWN)<br>
+<br>
+Class 'Fzaninotto\Faker\FakerServiceProvider' not found ” ；求详细安装教程！<img src="2.gif"><img src="2.gif"></div>
+			<div class="comment-reply"><a href="#comment-9744">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-9747">
+		<a name="9747"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-04-28 15:21</span>
+			<div class="comment-content">@长青：Faker 可能需要老版本才支持 Laravel 4 了，推荐直接用 5。</div>
+			<div class="comment-reply"><a href="#comment-9747">回复</a></div>		</div>
+			</div>
+		</div>
+		<div class="comment" id="comment-9666">
+		<a name="9666"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>cstabor </b><br><span class="comment-time">2015-04-20 23:23</span>
+			<div class="comment-content">Installing laravel/laravel (v4.2.11)<br>
+&nbsp;&nbsp;- Installing laravel/laravel (v4.2.11)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Downloading: 100%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Failed to download laravel/laravel from dist: RecursiveDirectoryIterator::__construct(learnlaravel/): failed to open dir: No such file or directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Now trying to download from source<br>
+<br>
+安装总是提示这个错误。</div>
+			<div class="comment-reply"><a href="#comment-9666">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-9748">
+		<a name="9748"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-04-28 15:21</span>
+			<div class="comment-content">@cstabor：建议用 5 。</div>
+			<div class="comment-reply"><a href="#comment-9748">回复</a></div>		</div>
+			</div>
+		</div>
+		<div class="comment" id="comment-9552">
+		<a name="9552"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>徒步远行 </b><br><span class="comment-time">2015-04-10 18:16</span>
+			<div class="comment-content">Warning: require(/webserver/program/laravel/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /webserver/program/laravel/bootstrap/autoload.php on line 16<br>
+<br>
+Fatal error: require(): Failed opening required '/webserver/program/laravel/bootstrap/../vendor/autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /webserver/program/laravel/bootstrap/autoload.php on line 16<br>
+<br>
+安装了没有vendor 目录</div>
+			<div class="comment-reply"><a href="#comment-9552">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-9553">
+		<a name="9553"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-04-10 18:43</span>
+			<div class="comment-content">@徒步远行：这是因为没有执行 composer dump-autoload 的原因</div>
+			<div class="comment-reply"><a href="#comment-9553">回复</a></div>		</div>
+			</div>
+		</div>
+		<div class="comment" id="comment-9399">
+		<a name="9399"></a>
+		<div class="avatar"><img src="4efed65aca2af13ba5c008d7437d9bfb.png"></div>		<div class="comment-info">
+			<b>TIM </b><br><span class="comment-time">2015-03-27 14:24</span>
+			<div class="comment-content">laravel 5<br>
+执行了php artisan mak:console&nbsp;&nbsp;FindUser<br>
+然后也写好了<br>
+&lt;?php namespace Yoyo\Console\Commands;<br>
+<br>
+use Illuminate\Console\Command;<br>
+use Symfony\Component\Console\Input\InputOption;<br>
+use Symfony\Component\Console\Input\InputArgument;<br>
+<br>
+class UserFind extends Command {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;protected $name = 'user:find';<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;protected $description = 'user:find';<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public function __construct()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent::__construct();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public function fire()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;line('hello world');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;protected function getArguments()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//['example', InputArgument::REQUIRED, 'An example argument.'],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;protected function getOptions()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+}<br>
+<br>
+怎么将他添加到php artisan user:find来执行，</div>
+			<div class="comment-reply"><a href="#comment-9399">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-9405">
+		<a name="9405"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-03-27 15:24</span>
+			<div class="comment-content">@TIM：<img src="15.gif"><img src="15.gif"> 没搞过</div>
+			<div class="comment-reply"><a href="#comment-9405">回复</a></div>		</div>
+			</div>
+		</div>
+		<div class="comment" id="comment-9386">
+		<a name="9386"></a>
+		<div class="avatar"><img src="d1f35f36178eb14589d5903713af56a6.png"></div>		<div class="comment-info">
+			<b><a href="http://www.mgdi.me/" target="_blank">MoGoethe</a> </b><br><span class="comment-time">2015-03-26 17:34</span>
+			<div class="comment-content">Administrator@USER-20150318JG /c/wamp/www/learnlaravel (master)<br>
+$ php artisan migrate --package=cartalyst/sentry<br>
+**************************************<br>
+*&nbsp;&nbsp;&nbsp;&nbsp; Application In Production!&nbsp;&nbsp;&nbsp;&nbsp; *<br>
+**************************************<br>
+Do you really wish to run this command? yes<br>
+<br>
+&nbsp;&nbsp;[PDOException]<br>
+&nbsp;&nbsp;SQLSTATE[HY000] [2002] 目芫薹印<br>
+<br>
+<br>
+migrate [--bench[="..."]] [--database[="..."]] [--force] [--path[="..."]] [--pac<br>
+kage[="..."]] [--pretend] [--seed]<br>
+老师您好，如果wamp处于关闭状态只要执行 ： $ php artisan migrate --package=cartalyst/sentry&nbsp;&nbsp;&nbsp;&nbsp;这个命令就会出现上面这个问题，<br>
+<br>
+如果&nbsp;&nbsp;打开 wamp 那就会出现：<br>
+$ php artisan migrate --package=cartalyst/sentry<br>
+**************************************<br>
+*&nbsp;&nbsp;&nbsp;&nbsp; Application In Production!&nbsp;&nbsp;&nbsp;&nbsp; *<br>
+**************************************<br>
+<br>
+Do you really wish to run this command? yes<br>
+<br>
+<br>
+&nbsp;&nbsp;[PDOException]<br>
+&nbsp;&nbsp;SQLSTATE[HY000] [1049] Base 'laravel' inconnue<br>
+<br>
+<br>
+migrate [--bench[="..."]] [--database[="..."]] [--force] [--path[="..."]] [--pac<br>
+kage[="..."]] [--pretend] [--seed]<br>
+<br>
+这个问题，请问是怎么回事啊？我已经配置了N遍了<img src="2.gif"><img src="2.gif"><img src="2.gif"><img src="2.gif"></div>
+			<div class="comment-reply"><a href="#comment-9386">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-9389">
+		<a name="9389"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-03-26 17:49</span>
+			<div class="comment-content">@MoGoethe：去看 5 的教程吧。。。很多第三方包已经更新了，默认只支持 5 了。</div>
+			<div class="comment-reply"><a href="#comment-9389">回复</a></div>		</div>
+			</div>
+		</div>
+		<div class="comment" id="comment-9205">
+		<a name="9205"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>Bpio </b><br><span class="comment-time">2015-03-02 23:12</span>
+			<div class="comment-content">老师，老师，给出个5.0的教程吧！5.0变化有些大啊！<br>
+artisan好多命令都变了！目录结构也变了！<img src="9.gif"></div>
+			<div class="comment-reply"><a href="#comment-9205">回复</a></div>
+		</div>
+			</div>
+		<div class="comment" id="comment-9202">
+		<a name="9202"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>zone </b><br><span class="comment-time">2015-03-02 08:16</span>
+			<div class="comment-content">老师，请教个问题，为什么为执行<br>
+composer create-project laravel/laravel blog 4.2.11<br>
+老是出现这个异常呢，<br>
+ [Symfony\Component\Process\Exception\RuntimeException]&nbsp;&nbsp;<br>
+&nbsp;&nbsp;The process has been signaled with signal "11".<br>
+<br>
+还有，laravel 5 有教程吗！！</div>
+			<div class="comment-reply"><a href="#comment-9202">回复</a></div>
+		</div>
+			</div>
+		<div class="comment" id="comment-9186">
+		<a name="9186"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>baren </b><br><span class="comment-time">2015-02-25 03:37</span>
+			<div class="comment-content">D:\Apache2.2\htdocs\laravel&gt;php artisan db:seed<br>
+PHP Fatal error:&nbsp;&nbsp;Class 'Fzaninotto\Faker\FakerServiceprovider' n<br>
+Apache2.2\htdocs\laravel\bootstrap\compiled.php on line 4481<br>
+{"error":{"type":"Symfony\\Component\\Debug\\Exception\\FatalErro<br>
+ssage":"Class 'Fzaninotto\\Faker\\FakerServiceprovider' not found<br>
+pache2.2\\htdocs\\laravel\\bootstrap\\compiled.php","line":4481}}<br>
+D:\Apache2.2\htdocs\laravel&gt;<br>
+<br>
+老师：如上所示错误该怎么处理，拜谢</div>
+			<div class="comment-reply"><a href="#comment-9186">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-9193">
+		<a name="9193"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>baren </b><br><span class="comment-time">2015-02-26 19:16</span>
+			<div class="comment-content">@baren：明明安装了Faker却还是不行</div>
+			<div class="comment-reply"><a href="#comment-9193">回复</a></div>		</div>
+			</div>
+		</div>
+		<div class="comment" id="comment-9167">
+		<a name="9167"></a>
+		<div class="avatar"><img src="2149e874b655099f8a983b9482ce8d6b.png"></div>		<div class="comment-info">
+			<b>果大王 </b><br><span class="comment-time">2015-02-14 23:24</span>
+			<div class="comment-content">惭愧惭愧&nbsp;&nbsp; 望上个评论不要通过审核了&nbsp;&nbsp;感谢你的教程&nbsp;&nbsp;祝愿新年技术更上一层楼</div>
+			<div class="comment-reply"><a href="#comment-9167">回复</a></div>
+		</div>
+			</div>
+		<div class="comment" id="comment-9146">
+		<a name="9146"></a>
+		<div class="avatar"><img src="77620f444e161f8743bf88fce35ef5f2.png"></div>		<div class="comment-info">
+			<b>wusp </b><br><span class="comment-time">2015-02-11 10:42</span>
+			<div class="comment-content">老师你好，在使用您推荐的composer全量中国镜像的composer.json文件，并执行install之后，我碰到了这个问题：<br>
+<br>
+wuspdeMacBook-Air:laravel-master wusp$ composer install<br>
+Loading composer repositories with package information<br>
+Installing dependencies (including require-dev)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;[Composer\Downloader\TransportException]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;The "http://pkg.phpcomposer.com/repo/packagist/p/illuminate/pagination.json&nbsp;&nbsp;<br>
+&nbsp;&nbsp;" file could not be downloaded: php_network_getaddresses: getaddrinfo faile&nbsp;&nbsp;<br>
+&nbsp;&nbsp;d: nodename nor servname provided, or not known&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;failed to open stream: php_network_getaddresses: getaddrinfo failed: nodena&nbsp;&nbsp;<br>
+&nbsp;&nbsp;me nor servname provided, or not known <br>
+<br>
+同时在命令行使用 php artisan serve命令时出现以下反馈：<br>
+wuspdeMacBook-Air:laravel-master wusp$ php artisan<br>
+<br>
+Warning: require(/Applications/Web/laravel-master/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /Applications/Web/laravel-master/bootstrap/autoload.php on line 17<br>
+<br>
+Fatal error: require(): Failed opening required '/Applications/Web/laravel-master/bootstrap/../vendor/autoload.php' (include_path='.:') in /Applications/Web/laravel-master/bootstrap/autoload.php on line 17<br>
+<br>
+请问这个问题是如何引发的，该如何解决呢？<br>
+谢谢！</div>
+			<div class="comment-reply"><a href="#comment-9146">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-9147">
+		<a name="9147"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-02-11 12:55</span>
+			<div class="comment-content">@wusp：中国镜像会暂时抽疯。稳妥的解决办法是开 VPN 直连国外服务器。<br>
+后面一个问题是因为没有 composer update 安装依赖包导致的，在这个状态下，网站跑不起来。</div>
+			<div class="comment-reply"><a href="#comment-9147">回复</a></div>		</div>
+			</div>
+		</div>
+		<div class="comment" id="comment-9141">
+		<a name="9141"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>ok </b><br><span class="comment-time">2015-02-10 15:15</span>
+			<div class="comment-content">Symfony \ Component \ HttpKernel \ Exception \ NotFoundHttpException 这是为啥·？</div>
+			<div class="comment-reply"><a href="#comment-9141">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-9142">
+		<a name="9142"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-02-10 15:38</span>
+			<div class="comment-content">@ok：路由匹配失败，404 的意思。</div>
+			<div class="comment-reply"><a href="#comment-9142">回复</a></div>		</div>
+			</div>
+		</div>
+		<div class="comment" id="comment-9139">
+		<a name="9139"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>沐风待雨 </b><br><span class="comment-time">2015-02-10 10:36</span>
+			<div class="comment-content">Generating autoload files<br>
+exception "BadMethodCallException" with message "Call to undefined method [package]" in D:\wamp\www\laravel\storage\framework\compiled.php 4346<br>
+<br>
+在composer update 或者 php artisan 后会提示这个错误。我用的是laravel 5<br>
+composer.json 文件如下<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"name": "laravel/laravel",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"description": "The Laravel Framework.",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"keywords": ["framework", "laravel"],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"license": "MIT",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"type": "project",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"require": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"laravel/framework": "5.0.*",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cartalyst/sentry": "2.1.4"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"require-dev": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"way/generators": "~3.0",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"phpunit/phpunit": "~4.0",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"phpspec/phpspec": "~2.1"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"autoload": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"classmap": [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"database"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"psr-4": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"App\\": "app/"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"autoload-dev": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"classmap": [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tests/TestCase.php"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"scripts": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"post-install-cmd": [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"php artisan clear-compiled",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"php artisan optimize"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"post-update-cmd": [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"php artisan clear-compiled",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"php artisan optimize"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"post-create-project-cmd": [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"php -r \"copy('.env.example', '.env');\"",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"php artisan key:generate"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"config": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"preferred-install": "dist"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}</div>
+			<div class="comment-reply"><a href="#comment-9139">回复</a></div>
+		</div>
+			<div class="comment comment-children" id="comment-9140">
+		<a name="9140"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-02-10 11:41</span>
+			<div class="comment-content">@沐风待雨：sentry 2 不支持 Laravel 5。</div>
+			<div class="comment-reply"><a href="#comment-9140">回复</a></div>		</div>
+			<div class="comment comment-children" id="comment-9144">
+		<a name="9144"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>沐风待雨 </b><br><span class="comment-time">2015-02-10 21:59</span>
+			<div class="comment-content">@JohnLui：那怎么整呢，"cartalyst/sentry": "2.1.4" ，你sh4o的sentry 2 是指的这个吗？那这里应该用sentry 那个版本？</div>
+			<div class="comment-reply"><a href="#comment-9144">回复</a></div>		</div>
+			<div class="comment comment-children" id="comment-9148">
+		<a name="9148"></a>
+		<div class="avatar"><img src="70663f932b69304ce2283057d4a25c25.jpeg"></div>		<div class="comment-info">
+			<b><a href="http://lvwenhan.com/" target="_blank">JohnLui</a> </b><br><span class="comment-time">2015-02-11 12:56</span>
+			<div class="comment-content">@沐风待雨：<img src="12.gif"><img src="12.gif">Sentry 3 是收费的</div>
+			<div class="comment-reply"><a href="#comment-9148">回复</a></div>		</div>
+			<div class="comment comment-children" id="comment-9181">
+		<a name="9181"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>沐风待雨 </b><br><span class="comment-time">2015-02-23 01:32</span>
+			<div class="comment-content">@JohnLui：。。。。汗</div>
+					</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		<div class="comment" id="comment-9095">
+		<a name="9095"></a>
+		<div class="avatar"><img src="d41d8cd98f00b204e9800998ecf8427e.png"></div>		<div class="comment-info">
+			<b>penkku </b><br><span class="comment-time">2015-01-29 16:07</span>
+			<div class="comment-content">成功! 见到了楼主所说的丑页面。谢谢楼主！<br>
+<br>
+总结一下，从安装到现在，遇到了几处难点：<br>
+<br>
+1,安装第一步，“切换到你想要放置该网站的目录下”<br>
+一开始不知道网站根目录指的是哪里，还以为是public目录，百度上问也没人回答，google外国网站，才得知是app的父目录，这个难点差点把我挡在laravel门外。如果教程中写明网站的目录就是app的父目录就好了。<br>
+<br>
+2,"require": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"laravel/framework": "4.2.*",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"cartalyst/sentry": "2.1.4"<br>
+},<br>
+4.2.*原封不动就这样写。不要写成4.2.11之类的。<br>
+<br>
+3,composer.json就在learnlaravel根目录下。我一开始用的是/learnlaravel/vendor/laravel/framework/src/Illuminate/Support/composer.json,导致安装Sentry等插件失败。<br>
+<br>
+4,View [admin._partials.assets] not found. <br>
+不知道admin._partials.assets放在哪个目录下，看评论才知是在\app\views\admin\_partials目录下添加assets.blade.php这个文件，刷新后提示找不到admin._partials.navigation，如法炮制一下就好了。</div>
+			<div class="comment-reply"><a href="#comment-9095">回复</a></div>
+		</div>
+			</div>
+	    <div id="pagenavi">
+	     <span>1</span>  <a href="https://lvwenhan.com/laravel/398.html/comment-page-2#comments">2</a>  <a href="https://lvwenhan.com/laravel/398.html/comment-page-3#comments">3</a>     </div>
+    	<div id="comment-place">
+	<div class="comment-post" id="comment-post">
+		<div class="cancel-reply" id="cancel-reply" style="display: none;"><a>取消回复</a></div>
+		<hr><p class="comment-header"><b>发表评论：</b><a name="respond"></a></p>
+		<form method="post" name="commentform" action="https://lvwenhan.com/index.php?action=addcom" id="commentform">
+			<input name="gid" value="398" type="hidden">
+						<p>
+				<input name="comname" maxlength="49" value="" size="22" tabindex="1" type="text">
+				<label for="author"><small>昵称</small></label>
+			</p>
+			<p>
+				<input name="commail" maxlength="128" value="" size="22" tabindex="2" type="text">
+				<label for="email"><small>邮件地址 (选填)</small></label>
+			</p>
+			<p>
+				<input name="comurl" maxlength="128" value="" size="22" tabindex="3" type="text">
+				<label for="url"><small>个人主页 (选填)</small></label>
+			</p>
+						<p><textarea name="comment" id="comment" rows="10" tabindex="4"></textarea></p>
+			<p> <input class="btn btn-success" id="comment_submit" value="发表评论" tabindex="6" type="submit"></p>
+			<input name="pid" id="comment-pid" value="0" size="22" tabindex="1" type="hidden">
+		</form>
+	</div>
+	</div>
+	
+    <div style="clear: both;"></div>
+  </div>
+</div><!--end #contentleft-->
+</div><!--end #content-->
+<div style="clear: both;"></div>
+
+<div id="footerbar" class="container">
+  	<div id="link">
+		<span>友情链接：</span>
+					<a href="https://autolayout.club/" title="Auto Layout 俱乐部" target="_blank">#Auto Layout Club</a>
+					<a href="http://varwwwhtml.com/" title="屌炸天的超哥！" target="_blank">#木月土</a>
+					<a href="http://www.feizhaojun.com/" title="Mukti's Blog" target="_blank">#Mukti's Blog</a>
+					<a href="https://zhufaner.com/" title="年轻人的居住空间改造家：1 天时间，￥1599 起" target="_blank">#住范儿</a>
+					<a href="https://botu.me/" title="校友，牛人！" target="_blank">#孙伯图</a>
+					<a href="http://blog.helloarron.com/" title="徒弟？" target="_blank">#Arron.y</a>
+		    <a style="margin-left: 20px;" href="http://www.miibeian.gov.cn/" target="_blank">京ICP备13030650号</a>
+  </div>
+  <div style="display: none;">
+    <script language="JavaScript" src="about:blank" type="text/javascript"></script><script src="about:blank" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=3688733" target="_blank" title="站长统计"><img src="pic.gif" border="0" hspace="0" vspace="0"></a>  </div>
+  <div class="m-cprt">
+    © 2011-2017 <a href="https://lvwenhan.com/">岁寒</a>
+    &nbsp;|&nbsp;
+    Powered by <a href="http://www.emlog.net/" title="采用emlog系统" target="_blank">Emlog</a></div>
+  <script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div><!--end #footerbar-->
+
+</div><!--end #wrap-->
+
+</body>
+</html>

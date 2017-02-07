@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-hans" xml:lang="zh-hans" xmlns="http://www.w3.org/1999/xhtml" class="js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>CentOS怎么修改系统时间 | 海外主机侦探</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="idcspy_favicon.ico" type="image/x-icon">
+<meta name="dcterms.date" content="2015-11-17T00:00:00Z">
+<link rel="canonical" href="http://www.idcspy.org/centos-system-time.html">
+<meta name="revisit-after" content="1 day">
+  <link type="text/css" rel="stylesheet" media="all" href="css_61aaa360c6a20e9569623228179bd309.css">
+  <script src="about:blank"></script><script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<script src="about:blank"></script><script src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><link href="share_style0_16.css" rel="stylesheet"></head>
+
+<body class="not-front not-logged-in page-node node-type-story no-sidebars">
+<div class="wrap_bg">
+  <div class="wrap">
+    <div id="headertop">
+      <div class="fl"><a href="http://www.idcspy.org/">美国主机侦探</a> | 美国主机资讯评测教程 最大的中文美国空间交流社区</div>
+<div class="fr_search">        
+    <form action="http://www.idcspy.org/" accept-charset="UTF-8" method="post" id="search-theme-form"> 
+    <div><div id="search" class="container-inline"> 
+      <div class="form-item" id="edit-search-type-wrapper"> 
+     <select name="search_type" class="form-select" id="edit-search-type">
+        <option value="0" selected="selected">站内搜索</option>
+        <option value="1">全站搜索</option>
+     </select> 
+    </div> 
+    <div class="form-item" id="edit-search-theme-form-1-wrapper"> 
+     <input maxlength="128" name="search_theme_form" id="edit-search-theme-form-1" size="15" value="" title="请输入您想搜索的关键词。" class="form-text" type="text"> 
+    </div> 
+    <input name="submit" id="edit-submit" class="form-submit" src="search_btn_top.gif" type="image">
+     
+    <input name="form_build_id" id="form-59b5b5bcc534397a3b636d7165ce059c" value="form-59b5b5bcc534397a3b636d7165ce059c" type="hidden"> 
+    <input name="form_id" id="edit-search-theme-form" value="search_theme_form" type="hidden"> 
+    
+    </div> 
+     
+    </div>
+    </form>      
+      </div>
+    </div>
+    <div id="header">
+      <div id="logo">
+	        <a href="http://www.idcspy.org/" id="home">美国主机侦探</a>
+		      </div>
+      <div class="g_item1 g_item">
+        <p><a target="_blank" href="http://bbs.idcspy.org/">论 坛</a> | <a href="http://www.idcspy.org/video-all.html">视频教程</a> | <a href="http://www.idcspy.org/taxonomy/term/102">推荐主机</a></p>
+        <p><a href="http://www.idcspy.org/%E4%BC%98%E6%83%A0%E7%A0%81.html">优惠码</a> | <a target="_blank" href="http://www.freehost4life.com/">免费主机</a> | <a target="_blank" href="http://bbs.idcspy.org/thread-44619-1-1.html">域名代理</a></p>
+      </div>
+      <div class="g_item2 g_item">
+        <p><a target="_blank" href="http://kb.idcspy.org/%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86">入门</a> | <a href="http://kb.idcspy.org/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98" target="_blank">FAQ</a> | <a href="http://kb.idcspy.org/%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86" target="_blank">基础</a> | <a href="http://kb.idcspy.org/%E9%A6%96%E9%A1%B5" target="_blank">技术</a></p>
+        <p><a href="http://kb.idcspy.org/%E9%A6%96%E9%A1%B5" target="_blank">Wiki</a> | <a href="http://kb.idcspy.org/%E9%A6%96%E9%A1%B5" target="_blank">域名</a> | <a href="http://kb.idcspy.org/%E9%A6%96%E9%A1%B5" target="_blank">主机</a> | <a href="http://kb.idcspy.org/%E9%A6%96%E9%A1%B5" target="_blank">演示</a></p>
+      </div>
+      <div class="g_item3 g_item">
+        <p><a target="_blank" href="http://www.idcspy.net/domainregistration.php">域名注册</a> | <a href="http://www.idcspy.net/ssl.php" target="_blank">SSL证书</a> | <a target="_blank" href="http://www.idcspy.net/hosting.php">代购</a> </p>
+        <p><a target="_blank" href="http://www.idcspy.net/esp.php">建站套餐</a> | <a target="_blank" href="http://www.idcspy.net/crm.php">月租CRM</a> | <a href="http://www.idcspy.net/" target="_blank">更多</a></p>
+      </div>
+      <div class="fr">
+        <p><a href="#">设为首页</a></p>
+        <p><a href="#">加入收藏</a></p>
+        <p><a href="http://bbs.idcspy.org/" target="_blank">交流论坛</a></p>
+      </div>
+    </div>
+    
+          <div id="nav">
+<ul class="nice-menu nice-menu-down sf-js-enabled" id="nice-menu-0"><li class="menu-212 menu-path-front first  odd "><a href="http://www.idcspy.org/" title="" id="dhtml_menu-212"><span>网站首页</span></a></li>
+<li class="menu-206 menuparent menu-path-bbsidcspyorg even "><a href="http://bbs.idcspy.org/" title="" id="dhtml_menu-206"><span>美国主机论坛</span></a><ul style="display: none; visibility: hidden;"><li class="menu-1228 menu-path-bbsidcspyorg-forum-hostease-1html first  odd "><a href="http://bbs.idcspy.org/forum-hostease-1.html" title="" id="dhtml_menu-1228"><span>HostEase论坛</span></a></li>
+<li class="menu-1230 menu-path-bbsidcspyorg-forum-bluehost-1html even "><a href="http://bbs.idcspy.org/forum-bluehost-1.html" title="" id="dhtml_menu-1230"><span>BlueHost论坛</span></a></li>
+<li class="menu-1229 menu-path-bbsidcspyorg-forum-godaddy-1html odd "><a href="http://bbs.idcspy.org/forum-godaddy-1.html" title="" id="dhtml_menu-1229"><span>Godaddy论坛</span></a></li>
+<li class="menu-1231 menu-path-bbsidcspyorg-forum-hostgator-1html even  last "><a href="http://bbs.idcspy.org/forum-hostgator-1.html" title="" id="dhtml_menu-1231"><span>HostGator论坛</span></a></li>
+</ul>
+</li>
+<li class="menu-199 menuparent menu-path-taxonomy-term-38 odd "><a href="http://www.idcspy.org/coupons.html" title="" id="dhtml_menu-199"><span>优惠码</span></a><ul style="display: none; visibility: hidden;"><li class="menu-219 menu-path-node-997 first  odd "><a href="http://www.idcspy.org/godaddy-coupon.html" title="" id="dhtml_menu-219"><span>Godaddy优惠</span></a></li>
+<li class="menu-1240 menu-path-idcspyorg-arvixecnhtml even "><a href="http://www.idcspy.org/arvixecn.html" title="" id="dhtml_menu-1240"><span>Arvixe优惠</span></a></li>
+<li class="menu-1238 menu-path-idcspyorg-blyouhuihtml odd "><a href="http://www.idcspy.org/blyouhui.html" title="" id="dhtml_menu-1238"><span>Bluehost优惠</span></a></li>
+<li class="menu-1236 menu-path-node-1485 even "><a href="http://www.idcspy.org/hostease-coupons-huizong.html" title="" id="dhtml_menu-1236"><span>Hostease优惠</span></a></li>
+<li class="menu-1239 menu-path-idcspyorg-hostgatoryouhuihtml odd  last "><a href="http://www.idcspy.org/hostgatoryouhui.html" title="" id="dhtml_menu-1239"><span>Hostgator优惠</span></a></li>
+</ul>
+</li>
+<li class="menu-707 menu-path-node-459 even "><a href="http://www.idcspy.org/top10.html" title="美国十大主机" id="dhtml_menu-707"><span>十大国外主机</span></a></li>
+<li class="menu-208 menu-path-kbidcspyorg odd "><a href="http://kb.idcspy.org/" title="知识库" id="dhtml_menu-208"><span>知识库</span></a></li>
+<li class="menu-704 menu-path-promationhtml even "><a href="http://www.idcspy.org/promation.html" title="优惠信息" id="dhtml_menu-704"><span>优惠信息</span></a></li>
+<li class="menu-702 menu-path-idcnewshtml odd "><a href="http://www.idcspy.org/idcnews.html" title="美国主机新闻" id="dhtml_menu-702"><span>美国主机新闻</span></a></li>
+<li class="menu-207 menu-path-idcspynet even "><a href="http://www.idcspy.net/" title="" id="dhtml_menu-207"><span>美国主机代购</span></a></li>
+<li class="menu-708 menu-path-idcspyorg-book odd "><a href="http://www.idcspy.org/book" title="" id="dhtml_menu-708"><span>主机教程</span></a></li>
+<li class="menu-720 menuparent menu-path-cat-hp even "><a href="http://www.idcspy.org/cat/hp" title="" id="dhtml_menu-720"><span>海外主机商</span></a><ul style="display: none; visibility: hidden;"><li class="menu-1249 menu-path-node-471 first  odd "><a href="http://www.idcspy.org/asp-hosting.html" title="" id="dhtml_menu-1249"><span>ASP海外主机</span></a></li>
+<li class="menu-1248 menu-path-node-77 even "><a href="http://www.idcspy.org/wordpress-hosting.html" title="" id="dhtml_menu-1248"><span>Wordpress主机</span></a></li>
+<li class="menu-1250 menu-path-node-1028 odd  last "><a href="http://www.idcspy.org/eur-hosting.html" title="" id="dhtml_menu-1250"><span>欧洲主机</span></a></li>
+</ul>
+</li>
+<li class="menu-1234 menuparent menu-path-cat-jishu odd last "><a href="http://www.idcspy.org/cat/jishu" title="" id="dhtml_menu-1234"><span>技术教程</span></a><ul style="display: none; visibility: hidden;"><li class="menu-1235 menu-path-taxonomy-term-1047 first  odd "><a href="http://www.idcspy.org/cat/waimao" title="" id="dhtml_menu-1235"><span>外贸</span></a></li>
+<li class="menu-1254 menu-path-taxonomy-term-1030 even "><a href="http://www.idcspy.org/cat/dev" title="" id="dhtml_menu-1254"><span>开发</span></a></li>
+<li class="menu-1253 menu-path-taxonomy-term-1035 odd "><a href="http://www.idcspy.org/cat/server" title="" id="dhtml_menu-1253"><span>服务器</span></a></li>
+<li class="menu-1255 menu-path-taxonomy-term-1036 even "><a href="http://www.idcspy.org/cat/chengxu" title="" id="dhtml_menu-1255"><span>网站程序</span></a></li>
+<li class="menu-1252 menu-path-taxonomy-term-1046 odd  last "><a href="http://www.idcspy.org/cat/yunying" title="" id="dhtml_menu-1252"><span>运营推广</span></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+    <div id="sub_nav">
+      <div class="fl">&gt;&gt; 美国主机论坛版面推荐:</div>
+        <ul class="fl">
+        <li class="first"><a href="http://bbs.idcspy.org/forum-hostease-1.html" target="_blank">HostEase主机 </a></li>
+        <li><a href="http://bbs.idcspy.org/forum-godaddy-1.html" target="_blank">Godaddy主机 </a></li>
+        <li><a href="http://bbs.idcspy.org/forum-raksmart-1.html" target="_blank">raksmart服务器</a></li>
+        <li><a href="http://bbs.idcspy.org/forum-bluehost-1.html" target="_blank">BlueHost主机</a></li>
+        <li><a href="http://bbs.idcspy.org/forum-resellerclub-1.html" target="_blank">resellerclub主机</a></li>
+	<li><a href="http://bbs.idcspy.org/forum-lunarpages-1.html" target="_blank">Lunarpages主机</a></li>
+         <li><a href="http://bbs.idcspy.org/forum-hostgator-1.html" target="_blank">HostGator主机</a></li>
+        <!-- <li><a href="http://bbs.idcspy.org/forum-42-1.html" target="_blank">bluehost主机</a></li> -->
+		<li><a href="http://bbs.idcspy.org/forum-krypt-1.html" target="_blank">Krypt服务器</a></li>
+        <!-- <li><a href="http://bbs.idcspy.org/" target="_blank">进入论坛</a></li> -->
+      </ul>
+    </div>    <div class="container">
+    <div id="leftcontent">
+       	      <div class="bread_nav">
+		<a href="http://www.idcspy.org/node">首页</a> &gt; <ul class="links"><li class="taxonomy_term_36 first last"><a href="http://www.idcspy.org/taxonomy/term/36" rel="tag" title="">文章</a></li>
+</ul> &gt; <a href="#">CentOS怎么修改系统时间</a>		</div>
+	        
+            
+	  	        
+	    <h1 class="title">CentOS怎么修改系统时间</h1>
+	  	        
+           
+
+
+<div id="node-2493" class="node">
+
+     
+
+	<div id="author_info" style="border-bottom: 1px dashed rgb(25, 110, 178);">	
+	2015年11月17日14:12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;归档于：<ul class="links"><li class="taxonomy_term_36 first last"><a href="http://www.idcspy.org/taxonomy/term/36" rel="tag" title="">文章</a></li>
+</ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者：080103218<a href="#comments">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0b3b8c">我要评论</font></a>(<font color="#cc0000">0</font>)	<span style="float: right; margin-top: -8px;">
+	<!-- Baidu Button BEGIN -->
+    <div data-bd-bind="1485006217147" class="bdsharebuttonbox bdshare-button-style0-16"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>/* Code removed by ScrapBook */</script>
+<!-- Baidu Button END -->
+</span>
+   	</div>
+    <div class="storycontent">     
+                    <div id="hotnav">
+       <div class="hotnav_title">
+          <h2>热点主机导航</h2>
+          </div>
+          <div id="block-block-11" class="block block-block">
+
+  <div class="content">
+    <ul>
+<li style="text-align: left;"><a href="http://top.idcspy.org/hostease">HostEase，速度快，中文客服</a></li>
+<li style="text-align: left;"><a href="http://top.idcspy.org/bluehost">BlueHost,适合国内用户使用</a></li>
+<li style="text-align: left;"><a href="http://top.idcspy.org/lunarpages">LunarPages，外贸主机首选</a></li>
+<li style="text-align: left;"><a href="http://top.idcspy.org/godaddy">Goddady，50%优惠码！</a></li>
+<li style="text-align: left;"><a href="http://top.idcspy.org/asp">美国Windows虚拟主机推荐</a></li>
+<li style="text-align: left;"><a href="http://go.idcspy.org/cn.raksmart.com/">美国加州服务器, 稳定性高&nbsp;</a></li>
+</ul>
+  </div>
+</div>
+             
+       </div>
+              
+       
+       
+<div class="node-body">
+
+ <p>在我们使用CentOS系统的时候，也许时区经常会出现问题，有时候改完之后还是会出错，下面我们就来学习一种方法来改变这个状况。如果没有安装，而你使用的是 CentOS系统，那使用命令 yum install ntp。</p>
+<p>然后：ntpdate us.pool.ntp.org 。</p>
+<p>因为CentOS系统是用rhas的源码再编译的，很多地方是完全一样的。</p>
+<p>rhas5的时区是以文件形式存在的，当前的时区文件是在/etc/localtime</p>
+<p>那么其他时区的文件存放在哪里呢？</p>
+<p>在/usr/share/zoneinfo下</p>
+<p>我们用东八区，北京，上海的时间</p>
+<p>#cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</p>
+<p>#reboot</p>
+<p>重启之后，date查看时间、查看当前时区 &nbsp; date -R、查看/修改Linux时区和时间</p>
+<p>一、时区</p>
+<p>1. 查看当前时区</p>
+<p>date -R</p>
+<p>2. 修改设置时区</p>
+<p>方法(1)</p>
+<p>tzselect</p>
+<p>方法(2) 仅限于RedHat Linux 和 CentOS系统</p>
+<p>timeconfig</p>
+<p>方法(3) 适用于Debian</p>
+<p>dpkg-reconfigure tzdata</p>
+<p>3. 复制相应的时区文件，替换CentOS系统时区文件；或者创建链接文件</p>
+<p>cp /usr/share/zoneinfo/$主时区/$次时区 /etc/localtime</p>
+<p>在中国可以使用：</p>
+<p>cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</p>
+<p>二、时间</p>
+<p>1、查看时间和日期</p>
+<p>date</p>
+<p>2、设置时间和日期</p>
+<p>将CentOS系统日期设定成1996年6月10日的命令</p>
+<p>date -s 06/22/96</p>
+<p>将CentOS系统时间设定成下午1点52分0秒的命令</p>
+<p>date -s 13:52:00</p>
+<p>3. 将当前时间和日期写入BIOS，避免重启后失效</p>
+<p>hwclock -w</p>
+<p>三、定时同步时间</p>
+<p># /usr/sbin/ntpdate 210.72.145.44 &gt; /dev/null 2&gt;&amp;1</p>
+<p>这样我们就完成了关于设置修改CentOS系统时区的问题了。希望大家可以学习到更多的知识。</p>
+  
+</div>
+
+<div class="content_copyright">
+      <span>本文由美国主机侦探（www.idcspy.org）原创，转载请注明!</span>
+</div>
+     <div class="rate-widget-1 rate-widget clear-block rate-average rate-widget-emotion rate-7ff1d8fb82007d364cf6e4ff0eb33ffa rate-processed" id="rate-node-2493-1-1"><div class="item-list"><ul><li class="first last"><a class="rate-button rate-emotion-btn" id="rate-button-1" rel="nofollow" href="http://www.idcspy.org/centos-system-time.html?rate=3d91b46b4cc4dbc3aba13c694b6ccd9e">支持</a>16</li>
+</ul></div></div> 
+ <!-- <div class="share">
+      <a class="bshareDiv" href="http://www.bshare.cn/share">share button</a>
+      <script language="javascript" type="text/javascript" src="http://www.bshare.cn/button.js#uuid=&amp;style=1"></script>
+      </div>  -->
+<!-- Baidu Button BEGIN -->
+    <div data-bd-bind="1485006217147" class="bdsharebuttonbox bdshare-button-style0-16" style="width: 100%; margin-left: 5px;"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>/* Code removed by ScrapBook */</script>
+<!-- Baidu Button END -->
+      
+</div> 
+<div style="width: 647px; height: 92px; margin: 30px 0px 0px 10px; border: 1px dashed rgb(255, 196, 86); background: rgb(255, 255, 204) none repeat scroll 0% 0%;">
+	<p style="font-size: 14px; font-weight: bold; color: rgb(255, 102, 0); text-indent: 10px; margin: 10px 0px;">温馨提示：</p>
+	<p style="text-indent: 10px;">1.本文评论没有专人回复，如果您有问题请到<a href="http://bbs.idcspy.org/" style="color: rgb(11, 59, 140);">美国主机侦探论坛</a>提问！</p>
+	<p style="text-indent: 10px;">2.美国主机侦探免费为您提供美国主机购买咨询及代购，请联系QQ：800013301</p>
+	<p style="text-indent: 10px;">3.400热线：4000-800-149 客服QQ：800013301 电话：0551-63639022</p>
+</div>
+  
+ <div class="tags" style="border: 0px none;">Tags: <ul class="links"><li class="taxonomy_term_1272 first"><a href="http://www.idcspy.org/tag/centos" rel="tag" title="">centos</a></li>
+<li class="taxonomy_term_1483 last"><a href="http://www.idcspy.org/tag/%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4" rel="tag" title="">系统时间</a></li>
+</ul> </div>
+	                <div class="similar_article"><div id="block-views-similarterms-block_1" class="block block-views">
+  <h2>相关文章</h2>
+
+  <div class="content">
+    <div class="view view-similarterms view-id-similarterms view-display-id-block_1 similar-article view-dom-id-1">
+    
+  
+  
+      <div class="view-content">
+      <div class="item-list">
+    <ul>
+          <li class="views-row views-row-1 views-row-odd views-row-first">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-fanghuo-qiang.html" title="如何配置CentOS防火墙80端">如何配置CentOS防火墙80端</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-2 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-win7-system.html" title="Win7可以安装CentOS吗？">Win7可以安装CentOS吗？</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-3 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-duankou.html" title="CentOS怎么开启端口">CentOS怎么开启端口</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-4 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-moren-lunarpages.html" title="CentOS怎么查看系统默认语言">CentOS怎么查看系统默认语言</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-5 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-cpu-usage.html" title="CentOS怎么查看CPU的使用情况">CentOS怎么查看CPU的使用情况</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-6 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-wenjian-daxiao.html" title="如何在centos查看文件夹大小">如何在centos查看文件夹大小</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-7 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-ftp-account.html" title="CentOS如何配置FTP账户">CentOS如何配置FTP账户</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-8 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-iscsi-target.html" title="Centos上iscsi-target使用lvm卷作为Lun的设备">Centos上iscsi-target使用lv...</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-9 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-ftp-server.html" title="CentOS如何安装FTP服务器端">CentOS如何安装FTP服务器端</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-10 views-row-even views-row-last">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/centos-sever.html" title="CentOS 7.0如何让一台服务器挂了其他服务器上的磁盘">CentOS 7.0如何让一台服务器挂了其他服...</a></span>
+  </div>
+</li>
+      </ul>
+</div>    </div>
+  
+  
+  
+  
+  
+  
+</div>   </div>
+</div>
+</div>
+        
+
+
+
+</div>
+
+<div><a target="_blank" href="http://top.idcspy.org/hostease"><img src="adhe.jpg" alt="HostEase主机"></a></div>
+
+<div id="comments">
+<div id="vistor_comment">
+<span id="comment_title">网友评论</span>  
+<span class="commnet_count">
+
+暂无评论！   </span>
+   </div>
+ <div class="box">
+
+  <h2>发表新评论</h2>
+
+  <div class="content"><form action="http://www.idcspy.org/comment/reply/2493" accept-charset="UTF-8" method="post" id="comment-form">
+<div><div class="form-item" id="edit-comment-wrapper">
+ <div class="resizable-textarea"><span><textarea cols="60" rows="5" name="comment" id="edit-comment" class="form-textarea resizable required textarea-processed"></textarea><div style="margin-right: -33px;" class="grippie"></div></span></div>
+</div>
+<fieldset class=" collapsible collapsed"><legend class="collapse-processed"><a href="#">输入格式</a></legend><div class="fieldset-wrapper"><div class="form-item" id="edit-format-1-wrapper">
+ <label class="option" for="edit-format-1"><input id="edit-format-1" name="format" value="1" class="form-radio" type="radio"> Filtered HTML</label>
+</div><div class="form-item" id="edit-format-2-wrapper">
+ <label class="option" for="edit-format-2"><input id="edit-format-2" name="format" value="2" checked="checked" class="form-radio" type="radio"> Full HTML</label>
+</div></div>
+
+</fieldset>
+<div class="form-item" id="edit-mycaptcha-ask-wrapper">
+ <label for="edit-mycaptcha-ask">验证下:google中文名字是什么？(提示：二个汉字) <span class="form-required" title="此项必填。"></span></label>
+ <input maxlength="128" name="mycaptcha_ask" id="edit-mycaptcha-ask" size="60" value="" class="form-text required" type="text">
+ <div class="description"><a href="http://www.google.com/search?q=google%E4%B8%AD%E6%96%87%E5%90%8D%E5%AD%97%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F" target="_blank">不知道答案点我？</a></div>
+</div>
+<div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">昵称 <span class="form-required" title="此项必填。"></span></label>
+ <input maxlength="60" name="name" id="edit-name" size="30" value="匿名用户" class="form-text required" type="text">
+</div>
+<div class="form-item" id="edit-mail-wrapper">
+ <label for="edit-mail">邮箱 <span class="form-required" title="此项必填。"></span></label>
+ <input maxlength="64" name="mail" id="edit-mail" size="30" value="" class="form-text required" type="text">
+</div>
+<div class="form-item" id="edit-homepage-wrapper">
+ <label for="edit-homepage">网址 </label>
+ <input maxlength="255" name="homepage" id="edit-homepage" size="30" value="" class="form-text" type="text">
+</div>
+<input name="submit" id="edit-submit" class="form-submit" src="submit_btn.jpg" type="image">
+<input name="form_build_id" id="form-Guv7eqf1QY9J-3EM1CHB0ZikBbGlQDnAP3PZdEwWu2I" value="form-Guv7eqf1QY9J-3EM1CHB0ZikBbGlQDnAP3PZdEwWu2I" type="hidden">
+<input name="form_id" id="edit-comment-form" value="comment_form" type="hidden">
+
+</div></form>
+</div>
+</div>
+
+</div>           
+        
+    </div>
+    
+    <div class="contentsidebar">
+        <div id="block-block-10" class="block block-block">
+
+  <div class="content">
+    <a href="http://top.idcspy.org/hostease"><img src="300_70a.gif"></a>  </div>
+</div>
+<div id="block-views-video_show-block_2" class="block block-views">
+  <h2>热门视频</h2>
+
+  <div class="content">
+    <div class="view view-video-show view-id-video_show view-display-id-block_2 video-rightblock view-dom-id-6">
+    
+  
+  
+      <div class="view-content">
+      <table class="views-view-grid col-2">
+  <tbody>
+                <tr class="row-1 row-first">
+                  <td class="col-1 col-first">
+              
+  <div class="views-field-field-videoimg-fid">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1917" class="imagefield imagefield-nodelink imagefield-field_videoimg"><img class="imagefield imagefield-field_videoimg" alt="" src="rak5_0.jpg" height="76" width="117"></a></span>
+  </div>
+  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1917" title="raksmart vps Windows磁盘分区（可切换高清版）">raksmart v...</a></span>
+  </div>
+          </td>
+                  <td class="col-2 col-last">
+              
+  <div class="views-field-field-videoimg-fid">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1916" class="imagefield imagefield-nodelink imagefield-field_videoimg"><img class="imagefield imagefield-field_videoimg" alt="" src="rak2_0.jpg" height="76" width="117"></a></span>
+  </div>
+  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1916" title="raksmart vps Webmin-3上安装virtualmin管理网站（可切换高清版）">raksmart v...</a></span>
+  </div>
+          </td>
+              </tr>
+                <tr class="row-2 row-last">
+                  <td class="col-1 col-first">
+              
+  <div class="views-field-field-videoimg-fid">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1915" class="imagefield imagefield-nodelink imagefield-field_videoimg"><img class="imagefield imagefield-field_videoimg" alt="" src="rak4_0.jpg" height="76" width="117"></a></span>
+  </div>
+  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1915" title="raksmart vps Webmin-2面板安装（可切换高清版）">raksmart v...</a></span>
+  </div>
+          </td>
+                  <td class="col-2 col-last">
+              
+  <div class="views-field-field-videoimg-fid">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1914" class="imagefield imagefield-nodelink imagefield-field_videoimg"><img class="imagefield imagefield-field_videoimg" alt="" src="rak6_0.jpg" height="76" width="117"></a></span>
+  </div>
+  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1914" title="raksmart vps Webmin-1面板安装（可切换高清版）">raksmart v...</a></span>
+  </div>
+          </td>
+              </tr>
+      </tbody>
+</table>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>   </div>
+</div>
+<div id="block-views-idcbook-block_1" class="block block-views">
+  <h2>书籍教程</h2>
+
+  <div class="content">
+    <div class="view view-idcbook view-id-idcbook view-display-id-block_1 view-dom-id-7">
+    
+  
+  
+      <div class="view-content">
+      <div class="item-list">
+    <ul>
+          <li class="views-row views-row-1 views-row-odd views-row-first">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/hostease-share-host.html" title="香港HostEase共享主机">香港HostEase共享主机</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-2 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/website-yunying.html" title="网站打不开确依然有排名">网站打不开确依然有排名</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-3 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1744" title="美国主机可以月付么？">美国主机可以月付么？</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-4 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/node/1743" title="PHP美国主机推荐">PHP美国主机推荐</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-5 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/cpanel-wendang.html" title="cPanel虚拟主机管理系统使用手册">cPanel虚拟主机管理系统使用手册</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-6 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/jingxiaoshang_wangluo_yonghu.html" title="经销商和网络托管用户注意事项">经销商和网络托管用户注意事项</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-7 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/qita_chengxu_chongxin.html" title="其他应用程序和重写">其他应用程序和重写</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-8 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/chuanjian_yige_chongxie.html" title="创建一个重写">创建一个重写</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-9 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/chuangjian_ruby_onrails.html" title="创建一个Ruby on Rails应用程序">创建一个Ruby on Rails应用程序</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-10 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/ruby_on_rails.html" title="设置Ruby on Rails环境">设置Ruby on Rails环境</a></span>
+  </div>
+</li>
+          <li class="views-row views-row-11 views-row-odd views-row-last">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.idcspy.org/wanzhan_ruanjian.html" title="网站软件">网站软件</a></span>
+  </div>
+</li>
+      </ul>
+</div>    </div>
+  
+  
+  
+  
+  
+  
+</div>   </div>
+</div>
+<div id="block-block-13" class="block block-block">
+
+  <div class="content">
+    <p><a href="http://go.idcspy.org/cn.raksmart.com/"><img src="raksmart.gif" alt=""></a></p>  </div>
+</div>
+         </div>
+      </div>
+<div id="footer">
+      <div id="friendlinktext"><a href="http://bbs.idcspy.org/">美国主机论坛</a> | <a href="http://kb.idcspy.org/">主机知识库</a> | <a href="http://www.idcspy.org/promation.html">优惠信息</a> | <a href="http://www.idcspy.org/top10.html">十大美国主机</a> | <a href="http://www.idcspy.org/idcnews.html">美国主机新闻</a> | <a href="http://bbs.idcspy.org/forum-30-1.html">主机代购</a> | <a href="http://www.idcspy.org/map.html">网站地图</a> | <a href="http://www.idcspy.org/aboutus.html">关于我们</a> | <a href="http://www.idcspy.org/contactus.html">联系我们</a> | <a href="http://www.idcspy.org/partner.html">合作伙伴</a></div>
+      <p>Copyright © 2005‐2017 <a href="http://www.idcspy.org/">海外主机侦探</a> | 地址 ：中国合肥金寨路93号 | 400热线：4000-800-149 电话：0551-63639022
+       代购客服QQ：<a href="http://wpa.qq.com/msgrd?V=1&amp;Uin=800013301&amp;Site=www.idcspy.org&amp;Menu=yes">800013301</a></p>
+      <p>本站为您提供美国主机资讯及导购，同时提供美国空间代购服务，<a href="http://bbs.idcspy.org/thread-11407-1-1.html">点击查看本站客服</a></p>
+</div>
+<script src="about:blank" type="text/javascript"></script>  
+<script>/* Code removed by ScrapBook */</script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script><script id="pap_x2s6df8d" src="about:blank" type="text/javascript"></script><script src="about:blank" type="text/javascript"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+  </div>
+
+
+
+</div></body>
+</html>

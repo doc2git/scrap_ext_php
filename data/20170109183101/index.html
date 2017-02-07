@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>php __tostring 与 tostring  - PHP - 网页特效代码</title>
+<meta name="keywords" content="php,,tostring,php __tostring 与 tostring">
+<meta name="description" content="本文介绍了php __tostring 与 tostring，function __toString() { return $this->content; }//输出字符串 function toString() { return $this->content; }内容是一样，不知道前面那两个特殊的下划线有什么意义，是同一个类中的两个方法？回...">
+<link href="reset.css" rel="stylesheet" type="text/css">
+<link href="default_blue.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script src="about:blank" type="text/javascript"></script><iframe src="index_3.html" style="display: none;"></iframe></head>
+<body>
+<div class="body-top">
+    <div class="content">
+    		<div id="announ">
+                 <ul style="margin-top: -11.6217px;">
+                                       
+                                            
+                                            
+                                            
+                                            
+                                            
+                                       <li><a href="http://www.6a8a.com/2011/PHP_0801/2893.html">PHP Session原理</a></li><li><a href="http://www.6a8a.com/2011/PHP_0801/2892.html">DEDECMS列表页输入数字跳转到指定分页代码</a></li><li><a href="http://www.6a8a.com/2011/PHP_0728/2891.html">php 图片地址和删除网址部份正则方法</a></li><li><a href="http://www.6a8a.com/2011/PHP_0728/2890.html">php 生成缩略图代码可自动填充空白处</a></li><li><a href="http://www.6a8a.com/2011/PHP_0728/2889.html">php缩略图生成几种方法代码</a></li><li><a href="http://www.6a8a.com/2011/PHP_0801/2894.html">用PHP实现的四则运算表达式计算</a></li></ul>
+            </div>
+     <script type="text/javascript">/* Code removed by ScrapBook */</script>
+            <div class="login lh24 blue"></div>
+    </div>
+</div>
+<div class="header">
+	<div class="logo"><a href="http://www.6a8a.com/"><img src="logo.jpg"></a></div>
+    <div class="search">
+    	<div class="tab" id="search">
+			
+		</div>
+
+        <div class="bd">
+           
+        </div>
+    </div>
+
+    <div class="banner"></div>
+    <div class="bk3"></div>
+    <div class="nav-bar">
+    	<map>
+    	        	<ul class="nav-site">
+			<li><a href="http://www.6a8a.com/"><span>首页</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/caidandaohang/"><span>菜单导航</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/biaogexiangguan/"><span>表格相关</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/biaodananniu/"><span>表单及按钮</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/buju/"><span>层和布局</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/jisuanzhuanhuan/"><span>计算转换</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/youxiyule/"><span>游戏娱乐</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/guanggaodaima/"><span>广告代码</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/tupiantexiao/"><span>图片特效</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/liulanqi/"><span>浏览器相关</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/riqi/"><span>日期时间</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/beijing/"><span>背景特效</span></a></li>
+						<li class="line">|</li>
+			<li><a href="http://www.6a8a.com/wenbenlianjie/"><span>文本链接</span></a></li>
+			            </ul>
+                </map>
+    </div>
+	
+    <div class="subnav">
+	<a href="http://www.6a8a.com/web/"><strong>web开发资料</strong></a><span> | </span>
+								<a href="http://www.6a8a.com/web/Apache/">Apache</a><span> | </span>						<a href="http://www.6a8a.com/web/Mysql/">Mysql</a><span> | </span>						<a href="http://www.6a8a.com/web/PHP/">PHP</a><span> | </span>						<a href="http://www.6a8a.com/web/JavaScript/">JavaScript</a><span> | </span>						<a href="http://www.6a8a.com/web/Ajax/">Ajax</a><span> | </span>						<a href="http://www.6a8a.com/web/XML/">XML</a><span> | </span>						<a href="http://www.6a8a.com/web/DIVCSS/">DIV&amp;CSS</a><span> | </span>						<a href="http://www.6a8a.com/web/Linux/">Linux</a><span> | </span>						<a href="http://www.6a8a.com/web/shujukujishu/">数据库技术</a>			            	
+    </div>
+	
+</div><div class="main">
+	<div class="col-left">
+    	<div class="crumbs"><a href="http://www.6a8a.com/">首页</a><span> &gt; </span><a href="http://www.6a8a.com/web/">web开发资料</a> &gt; <a href="http://www.6a8a.com/web/PHP/">PHP</a> &gt;  php __tostring 与 tostring</div>
+        <div id="Article">
+        	<h1>php __tostring 与 tostring</h1>
+ <div class="coder-left-hit">分类：<a href="http://www.6a8a.com/web/PHP/">PHP</a>&nbsp;&nbsp;&nbsp;时间：2011-07-07 15:18:19&nbsp;&nbsp;&nbsp;点击：<span id="hits"></span></div>			
+			<div class="content">
+										<p>
+	function __toString()<br>
+	&nbsp;&nbsp;&nbsp; {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return $this-&gt;content;<br>
+	&nbsp;&nbsp;&nbsp; }<br>
+	//输出字符串<br>
+	&nbsp;&nbsp;&nbsp; function toString()<br>
+	&nbsp;&nbsp;&nbsp; {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return $this-&gt;content;<br>
+	&nbsp;&nbsp;&nbsp; }<br>
+	内容是一样，不知道前面那两个特殊的下划线有什么意义，是同一个类中的两个方法？<br>
+	回答：<br>
+	执行的结果相同. 区别在于,<br>
+	前一个是魔术函数, 在需要字符串值的地方会自动调用它进行对象的类型转换.<br>
+	后一个需要在代码中明确调用才有机会执行.<br>
+	实例<br>
+	class MyClass<br>
+	{<br>
+	&nbsp;&nbsp;&nbsp; public function __toString()<br>
+	&nbsp;&nbsp;&nbsp; {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'call __toString()';<br>
+	&nbsp;&nbsp;&nbsp; }<br>
+	&nbsp;&nbsp;&nbsp; public function toString()<br>
+	&nbsp;&nbsp;&nbsp; {<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'call toString()';<br>
+	&nbsp;&nbsp;&nbsp; }<br>
+	}</p>
+<p>
+	$my = new MyClass();<br>
+	echo $my . '&lt;br /&gt;'; //自动调用(隐式)__toString转成string<br>
+	echo $my-&gt;toString() . '&lt;br /&gt;'; //调用(显式)toString去转成string<br>
+	echo $my-&gt;__toString() . '&lt;br /&gt;'; //如果这样调用, 代码会不好看<br>
+	echo (string)$my . '&lt;br /&gt;';<br>
+	__toString()会在需要转成字符串时, 会隐式自动调用它, 在PHP内部.&nbsp; 这个也是来自JAVA的. 建议在__toString()中调用toString(), 这样就不会代码重复了.</p>
+				
+				              
+						</div>
+			<div id="pages" class="text-c"></div>
+            <p style="margin-bottom: 10px;">
+            
+            </p>
+            <p class="f14">
+                <strong>上一篇：</strong><a href="http://www.6a8a.com/2011/PHP_0707/2753.html">codeigniter的url重写问题（去掉index.php路由）</a><br>
+                <strong>下一篇：</strong><a href="http://www.6a8a.com/2011/PHP_0707/2755.html">PHP Session的生存周期</a>
+            </p>
+                                        <div class="related">
+                    <h5 class="blue">延伸阅读：</h5>
+                    <ul class="list blue lh24 f14">
+                                                    <li>·<a href="http://www.6a8a.com/2011/PHP_0128/94.html" target="_blank">jquery+php实现用户输入搜索内容时自动提示</a><span>(2011-01-28)</span></li>
+                                                    <li>·<a href="http://www.6a8a.com/2011/PHP_0204/131.html" target="_blank">PHP最主要的7个安全漏洞</a><span>(2011-02-04)</span></li>
+                                                    <li>·<a href="http://www.6a8a.com/2011/PHP_0216/216.html" target="_blank">PHP打印环状数字圈</a><span>(2011-02-16)</span></li>
+                                                    <li>·<a href="http://www.6a8a.com/2011/PHP_0216/219.html" target="_blank">PHP5计划任务离线功能的原理</a><span>(2011-02-16)</span></li>
+                                                    <li>·<a href="http://www.6a8a.com/2011/PHP_0216/223.html" target="_blank">在PHP中 执行root 命令</a><span>(2011-02-16)</span></li>
+                                            </ul>
+                </div>
+                                  <div class="bk15"></div>
+          
+      </div>
+      <div class="Article-Tool">
+         
+      
+	  
+	  </div>
+      <div class="bk10"></div>
+     
+  </div>
+    <div class="col-auto">
+	 <div class="box"><div style="text-align: center;">
+	
+           </div>
+        </div>
+        <div class="bk10"></div>
+        <div class="box">
+            <h5 class="title-2">频道总排行</h5>
+            <ul class="content digg">
+												<li><a href="http://www.6a8a.com/2011/PHP_0607/2257.html" target="_blank" title="Warning: session_start() [function.session-start]: Cannot send session cookie解">Warning: session_start() </a></li>
+									<li><a href="http://www.6a8a.com/2011/PHP_0402/958.html" target="_blank" title="115网盘外链代码,115网盘盗链代码PHP源码 ">115网盘外链代码,115网盘盗链</a></li>
+									<li><a href="http://www.6a8a.com/2011/PHP_0117/39.html" target="_blank" title="通过腾讯QQ微博API接口获取微博内容">通过腾讯QQ微博API接口获取微</a></li>
+									<li><a href="http://www.6a8a.com/2011/PHP_0402/946.html" target="_blank" title="PHP商品秒杀倒计时">PHP商品秒杀倒计时</a></li>
+									<li><a href="http://www.6a8a.com/2011/PHP_0424/1430.html" target="_blank" title="QQ登录PHP Oauth示例">QQ登录PHP Oauth示例</a></li>
+									<li><a href="http://www.6a8a.com/2011/PHP_0526/2040.html" target="_blank" title="新浪微博自动添加删除粉丝的实现方法">新浪微博自动添加删除粉丝的实</a></li>
+									<li><a href="http://www.6a8a.com/2011/PHP_0410/1141.html" target="_blank" title="推荐ajaxfilemanager for tiny_mce 比较完善的tiny_mce编辑器的图片上传及图片管理插">推荐ajaxfilemanager for t</a></li>
+									<li><a href="http://www.6a8a.com/2011/PHP_0508/1713.html" target="_blank" title="php获取复选框 文本框、密码域、隐藏域、按钮、文本域值实例">php获取复选框 文本框、密码</a></li>
+									<li><a href="http://www.6a8a.com/2011/PHP_0510/1755.html" target="_blank" title="php mysql 数据表获取字段名，长度，信息">php mysql 数据表获取字段名</a></li>
+									<li><a href="http://www.6a8a.com/2011/PHP_0508/1712.html" target="_blank" title="PHP中比较两个时间的大小与日期的差值">PHP中比较两个时间的大小与日</a></li>
+							            </ul>
+        </div>
+        <div class="bk10"></div>
+        <div class="box">
+            <h5 class="title-2">频道本月排行</h5>
+            <ul class="content rank">
+											<li><span>14</span><a href="http://www.6a8a.com/2011/PHP_0705/2738.html" style="" class="title" title="Discuz! X2与jQuery不兼容的解决方法">Discuz! X2与jQuery不兼容的解决方法</a></li>
+								<li><span>11</span><a href="http://www.6a8a.com/2011/PHP_0722/2869.html" style="" class="title" title="PHP获取用户IP所在地的信息">PHP获取用户IP所在地的信息</a></li>
+								<li><span>10</span><a href="http://www.6a8a.com/2011/PHP_0414/1217.html" style="" class="title" title="Web服务器透明获得客户端的IP地址">Web服务器透明获得客户端的IP地址</a></li>
+								<li><span>10</span><a href="http://www.6a8a.com/2011/PHP_0515/1848.html" style="" class="title" title="php中字符查找函数">php中字符查找函数</a></li>
+								<li><span>10</span><a href="http://www.6a8a.com/2011/PHP_0719/2852.html" style="" class="title" title="DEDEv5.5/v5.6怎么取消后台验证码,DEDE取消后台验证码">DEDEv5.5/v5.6怎么取消后台验证码,DEDE取消后台验证码</a></li>
+								<li><span>10</span><a href="http://www.6a8a.com/2011/PHP_0429/1534.html" style="" class="title" title="php时间的操作，前一天，后一天时间的获取">php时间的操作，前一天，后一天时间的获取</a></li>
+								<li><span>8</span><a href="http://www.6a8a.com/2011/PHP_0515/1843.html" style="" class="title" title="php header()函数详细介绍与实例">php header()函数详细介绍与实例</a></li>
+								<li><span>8</span><a href="http://www.6a8a.com/2011/PHP_0515/1845.html" style="" class="title" title="php session 使用详细实例代码">php session 使用详细实例代码</a></li>
+								<li><span>8</span><a href="http://www.6a8a.com/2011/PHP_0614/2412.html" style="" class="title" title="PHP生成曲线图函数">PHP生成曲线图函数</a></li>
+								<li><span>8</span><a href="http://www.6a8a.com/2011/PHP_0402/938.html" style="" class="title" title="尝试使用GraphicsMagick的缩略图功能">尝试使用GraphicsMagick的缩略图功能</a></li>
+							            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div class="footer">
+<p class="info">
+Powered by <strong><a href="http://www.6a8a.com/">6a8a网页特效代码</a></strong> © 2011 <img src="copyright.gif"><br>
+<a href="http://www.6a8a.com/">6a8a.com</a>致力为中国站长提供有质量的网页代码！ 鄂ICP备07005366号 <script src="about:blank" language="JavaScript"></script><script src="about:blank" charset="utf-8" type="text/javascript"></script></p>
+</div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+</body>
+</html>

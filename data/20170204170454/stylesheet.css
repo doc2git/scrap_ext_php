@@ -1,0 +1,10 @@
+/* Code tidied up by ScrapBook */
+@font-face {
+  font-family: "country_gothic";
+  font-style: normal;
+  src: url("gothic.eot");
+}
+@font-face {
+  font-family: "country_gothic";
+  src: url("gothic.ttf");
+}

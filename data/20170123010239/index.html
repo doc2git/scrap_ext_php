@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-US" class=" td-md-is-firefox">
+<!--<![endif]--><head>
+    <title>How To Install OpenVPN On CentOS 7 | Unixmen</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="pingback" href="https://www.unixmen.com/xmlrpc.php">
+    		<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+	
+			<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+	<meta property="og:image" content="https://www.unixmen.com/wp-content/uploads/2014/12/VPN.png"><meta name="author" content="Jijo">
+<link rel="icon" type="image/png" href="favicon.png">
+<!-- This site is optimized with the Yoast SEO plugin v3.3.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="https://www.unixmen.com/install-openvpn-centos-7/">
+<link rel="publisher" href="https://plus.google.com/+Unixmen/posts">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Security is most important aspect in internet. Outsiders can monitor internet traffic between your computer and the web. Here the importance of VPN comes. VPN, or virtual private network, is a secure method of connecting remote internet resources together as if they were under the same LAN. OpenVPN is a popular open source application that ">
+<meta name="twitter:title" content="How To Install OpenVPN On CentOS 7 | Unixmen">
+<meta name="twitter:site" content="@unixmen">
+<meta name="twitter:image" content="https://www.unixmen.com/wp-content/uploads/2014/12/VPN.png">
+<meta name="twitter:creator" content="@unixmen">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Unixmen » Feed" href="https://www.unixmen.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Unixmen » Comments Feed" href="https://www.unixmen.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Unixmen » How To Install OpenVPN On CentOS 7 Comments Feed" href="https://www.unixmen.com/install-openvpn-centos-7/feed/">
+		<script type="text/javascript" async="" src="about:blank"></script><script src="about:blank" id="twitter-wjs"></script><script src="about:blank" async=""></script><script type="text/javascript">/* Code removed by ScrapBook */</script><script type="text/javascript" src="about:blank"></script>
+		<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+<link rel="stylesheet" id="contact-form-7-css" href="styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="gpf-feeds-css" href="styles_001.css" type="text/css" media="all">
+<link rel="stylesheet" id="google_font_open_sans-css" href="css.css" type="text/css" media="all">
+<link rel="stylesheet" id="google_font_roboto-css" href="css_001.css" type="text/css" media="all">
+<link rel="stylesheet" id="google-fonts-style-css" href="css_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="js_composer_front-css" href="js_composer.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="td-theme-css" href="style.css" type="text/css" media="all">
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<link rel="https://api.w.org/" href="https://www.unixmen.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.unixmen.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.unixmen.com/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://www.unixmen.com/?p=32089">
+<link rel="alternate" type="application/json+oembed" href="https://www.unixmen.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.unixmen.com%2Finstall-openvpn-centos-7%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.unixmen.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.unixmen.com%2Finstall-openvpn-centos-7%2F&amp;format=xml">
+
+        <!-- BuySellAds.com Ad Code -->
+        <script type="text/javascript">/* Code removed by ScrapBook */</script><script src="about:blank" async="" type="text/javascript"></script>
+        <!-- END BuySellAds.com Ad Code --> 
+      <script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!--[if lt IE 9]><script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress.">
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://www.unixmen.com/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><!--[if IE  8]><link rel="stylesheet" type="text/css" href="https://www.unixmen.com/wp-content/plugins/js_composer/assets/css/vc-ie8.min.css" media="screen"><![endif]-->
+<!-- JS generated by theme -->
+
+<script>/* Code removed by ScrapBook */</script>
+
+
+<!-- Header style compiled by theme -->
+
+<style>
+/* Code tidied up by ScrapBook */
+.td-header-wrap .black-menu .sf-menu > .current-menu-item > a, .td-header-wrap .black-menu .sf-menu > .current-menu-ancestor > a, .td-header-wrap .black-menu .sf-menu > .current-category-ancestor > a, .td-header-wrap .black-menu .sf-menu > li > a:hover, .td-header-wrap .black-menu .sf-menu > .sfHover > a, .td-header-style-12 .td-header-menu-wrap-full, .sf-menu > .current-menu-item > a::after, .sf-menu > .current-menu-ancestor > a::after, .sf-menu > .current-category-ancestor > a::after, .sf-menu > li:hover > a::after, .sf-menu > .sfHover > a::after, .sf-menu ul .td-menu-item > a:hover, .sf-menu ul .sfHover > a, .sf-menu ul .current-menu-ancestor > a, .sf-menu ul .current-category-ancestor > a, .sf-menu ul .current-menu-item > a, .td-header-style-12 .td-affix, .header-search-wrap .td-drop-down-search::after, .header-search-wrap .td-drop-down-search .btn:hover, input[type="submit"]:hover, .td-read-more a, .td-post-category:hover, .td-grid-style-1.td-hover-1 .td-big-grid-post:hover .td-post-category, .td-grid-style-5.td-hover-1 .td-big-grid-post:hover .td-post-category, .td_top_authors .td-active .td-author-post-count, .td_top_authors .td-active .td-author-comments-count, .td_top_authors .td_mod_wrap:hover .td-author-post-count, .td_top_authors .td_mod_wrap:hover .td-author-comments-count, .td-404-sub-sub-title a:hover, .td-search-form-widget .wpb_button:hover, .td-rating-bar-wrap div, .td_category_template_3 .td-current-sub-category, .td-login-wrap .btn, .td_display_err, .td_display_msg_ok, .dropcap, .td_wrapper_video_playlist .td_video_controls_playlist_wrapper, .wpb_default, .wpb_default:hover, .td-left-smart-list:hover, .td-right-smart-list:hover, .woocommerce-checkout .woocommerce input.button:hover, .woocommerce-page .woocommerce a.button:hover, .woocommerce-account div.woocommerce .button:hover, #bbpress-forums button:hover, .bbp_widget_login .button:hover, .td-footer-wrapper .td-post-category, .td-footer-wrapper .widget_product_search input[type="submit"]:hover, .woocommerce .product a.button:hover, .woocommerce .product #respond input#submit:hover, .woocommerce .checkout input#place_order:hover, .woocommerce .woocommerce.widget .button:hover, .single-product .product .summary .cart .button:hover, .woocommerce-cart .woocommerce table.cart .button:hover, .woocommerce-cart .woocommerce .shipping-calculator-form .button:hover, .td-next-prev-wrap a:hover, .td-load-more-wrap a:hover, .td-post-small-box a:hover, .page-nav .current, .page-nav:first-child > div, .td_category_template_8 .td-category-header .td-category a.td-current-sub-category, .td_category_template_4 .td-category-siblings .td-category a:hover, #bbpress-forums .bbp-pagination .current, #bbpress-forums #bbp-single-user-details #bbp-user-navigation li.current a, .td-theme-slider:hover .slide-meta-cat a, a.vc_btn-black:hover, .td-trending-now-wrapper:hover .td-trending-now-title, .td-scroll-up-visible, .td-mobile-close a, .td-smart-list-button:hover, .td-weather-information::before, .td-weather-week::before { background-color: rgb(50, 142, 195); }
+a, cite a:hover, .td_mega_menu_sub_cats .cur-sub-cat, .td-mega-span h3 a:hover, .td_mod_mega_menu:hover .entry-title a, .header-search-wrap .result-msg a:hover, .top-header-menu li a:hover, .top-header-menu .current-menu-item > a, .top-header-menu .current-menu-ancestor > a, .top-header-menu .current-category-ancestor > a, .td-social-icon-wrap > a:hover, .td-header-sp-top-widget .td-social-icon-wrap a:hover, .td-page-content blockquote p, .td-post-content blockquote p, .mce-content-body blockquote p, .comment-content blockquote p, .wpb_text_column blockquote p, .td_block_text_with_title blockquote p, .td_module_wrap:hover .entry-title a, .td-subcat-filter .td-subcat-list a:hover, .td-subcat-filter .td-subcat-dropdown a:hover, .td_quote_on_blocks, .dropcap2, .dropcap3, .td_top_authors .td-active .td-authors-name a, .td_top_authors .td_mod_wrap:hover .td-authors-name a, .td-post-next-prev-content a:hover, .author-box-wrap .td-author-social a:hover, .td-author-name a:hover, .td-author-url a:hover, .td_mod_related_posts:hover h3 > a, .td-post-template-11 .td-related-title .td-related-left:hover, .td-post-template-11 .td-related-title .td-related-right:hover, .td-post-template-11 .td-related-title .td-cur-simple-item, .td-post-template-11 .td_block_related_posts .td-next-prev-wrap a:hover, .comment-reply-link:hover, .logged-in-as a:hover, #cancel-comment-reply-link:hover, .td-search-query, .td-category-header .td-pulldown-category-filter-link:hover, .td-category-siblings .td-subcat-dropdown a:hover, .td-category-siblings .td-subcat-dropdown a.td-current-sub-category, .td-login-wrap .td-login-info-text a:hover, .widget a:hover, .widget_calendar tfoot a:hover, .woocommerce a.added_to_cart:hover, #bbpress-forums li.bbp-header .bbp-reply-content span a:hover, #bbpress-forums .bbp-forum-freshness a:hover, #bbpress-forums .bbp-topic-freshness a:hover, #bbpress-forums .bbp-forums-list li a:hover, #bbpress-forums .bbp-forum-title:hover, #bbpress-forums .bbp-topic-permalink:hover, #bbpress-forums .bbp-topic-started-by a:hover, #bbpress-forums .bbp-topic-started-in a:hover, #bbpress-forums .bbp-body .super-sticky li.bbp-topic-title .bbp-topic-permalink, #bbpress-forums .bbp-body .sticky li.bbp-topic-title .bbp-topic-permalink, .widget_display_replies .bbp-author-name, .widget_display_topics .bbp-author-name, .footer-email-wrap a, .td-subfooter-menu li a:hover, .footer-social-wrap a:hover, a.vc_btn-black:hover, .td-mobile-content li a:hover, .td-mobile-content .sfHover > a, .td-mobile-content .current-menu-item > a, .td-mobile-content .current-menu-ancestor > a, .td-mobile-content .current-category-ancestor > a, .td-smart-list-dropdown-wrap .td-smart-list-button:hover { color: rgb(50, 142, 195); }
+.td-next-prev-wrap a:hover, .td-load-more-wrap a:hover, .td-post-small-box a:hover, .page-nav .current, .page-nav:first-child > div, .td_category_template_8 .td-category-header .td-category a.td-current-sub-category, .td_category_template_4 .td-category-siblings .td-category a:hover, #bbpress-forums .bbp-pagination .current, .td-login-panel-title, .post .td_quote_box, .page .td_quote_box, a.vc_btn-black:hover { border-color: rgb(50, 142, 195); }
+.header-search-wrap .td-drop-down-search::before { border-color: transparent transparent rgb(50, 142, 195); }
+.block-title > span, .block-title > a, .block-title > label, .widgettitle, .widgettitle::after, .td-trending-now-title, .td-trending-now-wrapper:hover .td-trending-now-title, .wpb_tabs li.ui-tabs-active a, .wpb_tabs li:hover a, .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container .vc_tta-tab.vc_active > a, .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container .vc_tta-tab:hover > a, .td-related-title .td-cur-simple-item, .woocommerce .product .products h2, .td-subcat-filter .td-subcat-dropdown:hover .td-subcat-more { background-color: rgb(50, 142, 195); }
+.block-title, .td-related-title, .wpb_tabs .wpb_tabs_nav, .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container, .woocommerce div.product .woocommerce-tabs ul.tabs::before { border-color: rgb(50, 142, 195); }
+.block-title > span, .block-title > a, .block-title > label, .widgettitle, .widgettitle::after, .td-trending-now-title, .td-trending-now-wrapper:hover .td-trending-now-title, .wpb_tabs li.ui-tabs-active a, .wpb_tabs li:hover a, .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container .vc_tta-tab.vc_active > a, .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container .vc_tta-tab:hover > a, .td-related-title .td-cur-simple-item, .woocommerce .product .products h2, .td-subcat-filter .td-subcat-dropdown:hover .td-subcat-more, .td-weather-information::before, .td-weather-week::before { background-color: rgb(34, 34, 34); }
+.block-title, .td-related-title, .wpb_tabs .wpb_tabs_nav, .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container, .woocommerce div.product .woocommerce-tabs ul.tabs::before { border-color: rgb(34, 34, 34); }
+.td-header-wrap .td-header-top-menu-full, .td-header-wrap .top-header-menu .sub-menu { background-color: rgb(50, 142, 195); }
+.td-header-wrap .td-header-top-menu-full .td-header-top-menu, .td-header-wrap .td-header-top-menu-full { border-bottom: medium none; }
+.td-header-top-menu, .td-header-top-menu a, .td-header-wrap .td-header-top-menu-full .td-header-top-menu, .td-header-wrap .td-header-top-menu-full a, .td-header-style-8 .td-header-top-menu, .td-header-style-8 .td-header-top-menu a { color: rgb(255, 255, 255); }
+.top-header-menu .current-menu-item > a, .top-header-menu .current-menu-ancestor > a, .top-header-menu .current-category-ancestor > a, .top-header-menu li a:hover { color: rgb(242, 242, 242); }
+.sf-menu ul .td-menu-item > a:hover, .sf-menu ul .sfHover > a, .sf-menu ul .current-menu-ancestor > a, .sf-menu ul .current-category-ancestor > a, .sf-menu ul .current-menu-item > a, .sf-menu > .current-menu-item > a::after, .sf-menu > .current-menu-ancestor > a::after, .sf-menu > .current-category-ancestor > a::after, .sf-menu > li:hover > a::after, .sf-menu > .sfHover > a::after, .td_block_mega_menu .td-next-prev-wrap a:hover, .td-mega-span .td-post-category:hover, .td-header-wrap .black-menu .sf-menu > li > a:hover, .td-header-wrap .black-menu .sf-menu > .current-menu-ancestor > a, .td-header-wrap .black-menu .sf-menu > .sfHover > a, .header-search-wrap .td-drop-down-search::after, .header-search-wrap .td-drop-down-search .btn:hover, .td-header-wrap .black-menu .sf-menu > .current-menu-item > a, .td-header-wrap .black-menu .sf-menu > .current-menu-ancestor > a, .td-header-wrap .black-menu .sf-menu > .current-category-ancestor > a, .td-mobile-close a { background-color: rgb(50, 142, 195); }
+.header-search-wrap .td-drop-down-search::before { border-color: transparent transparent rgb(50, 142, 195); }
+.td_mega_menu_sub_cats .cur-sub-cat, .td_mod_mega_menu:hover .entry-title a, .td-mobile-content li a:hover, .td-mobile-content .current-menu-item > a, .td-mobile-content .current-menu-ancestor > a, .td-mobile-content .current-category-ancestor > a { color: rgb(50, 142, 195); }
+.post .td-post-header .entry-title { color: rgb(30, 115, 190); }
+.td-post-content h1, .td-post-content h2, .td-post-content h3, .td-post-content h4, .td-post-content h5, .td-post-content h6 { color: rgb(30, 115, 190); }
+.top-header-menu > li > a, .td-header-sp-top-menu .td_data_time { font-size: 12px; }
+ul.sf-menu > .td-menu-item > a { font-size: 12px; }
+.post .td-post-header .entry-title { font-family: Cabin; }
+</style>
+
+<script>/* Code removed by ScrapBook */</script><noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" type="text/javascript"></script><script src="about:blank" type="text/javascript"></script><script src="about:blank" data-requiremodule="https://d2ymkpxi1rgldj.cloudfront.net/web-clients/ui/desktop_classic/widget.js" data-requirecontext="_" async="" charset="utf-8" type="text/javascript"></script></head>
+
+<body class="single single-post postid-32089 single-format-standard install-openvpn-centos-7 wpb-js-composer js-comp-ver-4.11 vc_responsive td-animation-stack-type0 td-full-layout" itemscope="itemscope" itemtype="https://schema.org/WebPage">
+
+
+<div class="td-scroll-up"><i class="td-icon-menu-up"></i></div>
+
+<div id="td-outer-wrap">
+
+<script>/* Code removed by ScrapBook */</script>
+
+    <div class="td-transition-content-and-menu td-mobile-nav-wrap">
+        <div id="td-mobile-nav">
+    <!-- mobile menu close -->
+    <div class="td-mobile-close">
+        <a href="#">CLOSE</a>
+        <div class="td-nav-triangle"></div>
+    </div>
+
+    <div class="td-mobile-content">
+        <div class="menu-main-menu-container"><ul id="menu-main-menu" class=""><li id="menu-item-47234" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-first menu-item-47234"><a href="https://www.unixmen.com/">Home</a></li>
+<li id="menu-item-47224" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-47224"><a href="https://www.unixmen.com/category/linux-distributions/">Linux distributions</a></li>
+<li id="menu-item-47226" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47226"><a href="https://www.unixmen.com/category/linux-tutorials/">Linux tutorials</a></li>
+<li id="menu-item-47227" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47227"><a href="https://www.unixmen.com/category/news/">News</a></li>
+<li id="menu-item-47230" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47230"><a href="https://www.unixmen.com/category/frequently-asked-questions/">Frequently Asked Questions</a></li>
+<li id="menu-item-47231" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47231"><a href="https://www.unixmen.com/category/opensource/">Opensource</a></li>
+<li id="menu-item-47232" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47232"><a href="https://www.unixmen.com/category/unix/">Unix</a></li>
+<li id="menu-item-47625" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-47625"><a href="http://ask.unixmen.com/">Ask/unixmen</a></li>
+</ul></div>    </div>
+</div>    </div>
+
+        <div class="td-transition-content-and-menu td-content-wrap">
+
+
+
+<!--
+Header style 3
+-->
+
+<div class="td-header-wrap td-header-style-3">
+
+    <div class="td-header-top-menu-full">
+        <div class="td-container td-header-row td-header-top-menu">
+            
+    <div class="top-bar-style-1">
+        
+<div class="td-header-sp-top-menu">
+
+
+	<div class="td_data_time">Sunday, January 22, 2017</div><div class="menu-top-container"><ul id="menu-top-menu" class="top-header-menu"><li id="menu-item-47221" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-first td-menu-item td-normal-menu menu-item-47221"><a href="https://www.unixmen.com/about-us/">About Us</a></li>
+<li id="menu-item-47223" class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-47223"><a href="https://www.unixmen.com/advertising/">Advertising on Unixmen</a></li>
+<li id="menu-item-47219" class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-47219"><a href="https://www.unixmen.com/work-for-us/">Become a Contributor</a></li>
+<li id="menu-item-48133" class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-48133"><a href="https://www.unixmen.com/unixmen-collaborated-with-unixstickers/">Unixmen collaborated with Unixstickers</a></li>
+<li id="menu-item-47222" class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-47222"><a href="https://www.unixmen.com/contact-us/">Contact Us</a></li>
+</ul></div></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="td-banner-wrap-full">
+        <div class="td-container td-header-row td-header-header">
+            <div class="td-header-sp-logo">
+                    <a href="https://www.unixmen.com/">
+        <img class="td-retina-data" data-retina="http://www.unixmen.com/wp-content/uploads/2016/02/unixmen-logo-retina-300x177.png" src="unixmen-logo.png" alt="Unixmen" title="Unixmen">
+    </a>
+            </div>
+            <div class="td-header-sp-recs">
+                <div class="td-header-rec-wrap">
+    
+</div>            </div>
+        </div>
+    </div>
+
+    <div class="td-header-menu-wrap-full">
+        <div class="td-header-menu-wrap">
+            <div class="td-container td-header-row td-header-main-menu black-menu">
+                <div id="td-header-menu">
+    <div id="td-top-mobile-toggle"><a href="#"><i class="td-icon-font td-icon-mobile"></i></a></div>
+    <div class="td-main-menu-logo">
+        		<a class="td-mobile-logo td-sticky-header" href="https://www.unixmen.com/">
+			<img class="td-retina-data" data-retina="http://www.unixmen.com/wp-content/uploads/2016/02/unixmen-logo-mobile-retina.png" src="unixmen-logo-mobile.png" alt="Unixmen" title="Unixmen">
+		</a>
+			<a class="td-header-logo td-sticky-header" href="https://www.unixmen.com/">
+			<img class="td-retina-data" data-retina="http://www.unixmen.com/wp-content/uploads/2016/02/unixmen-logo-retina-300x177.png" src="unixmen-logo.png" alt="Unixmen" title="Unixmen">
+		</a>
+	    </div>
+    <div class="menu-main-menu-container"><ul id="menu-main-menu-1" class="sf-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-first td-menu-item td-normal-menu menu-item-47234"><a href="https://www.unixmen.com/">Home</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent td-menu-item td-normal-menu menu-item-47224"><a href="https://www.unixmen.com/category/linux-distributions/">Linux distributions</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-47226"><a href="https://www.unixmen.com/category/linux-tutorials/">Linux tutorials</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-47227"><a href="https://www.unixmen.com/category/news/">News</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-47230"><a href="https://www.unixmen.com/category/frequently-asked-questions/">Frequently Asked Questions</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-47231"><a href="https://www.unixmen.com/category/opensource/">Opensource</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-47232"><a href="https://www.unixmen.com/category/unix/">Unix</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-47625"><a href="http://ask.unixmen.com/">Ask/unixmen</a></li>
+</ul></div></div>
+
+
+<div class="td-search-wrapper">
+    <div id="td-top-search">
+        <!-- Search -->
+        <div class="header-search-wrap">
+            <div class="dropdown header-search">
+                <a id="td-header-search-button" href="#" role="button" class="dropdown-toggle " data-toggle="dropdown"><i class="td-icon-search"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-search-wrap">
+	<div class="dropdown header-search">
+		<div class="td-drop-down-search" aria-labelledby="td-header-search-button">
+			<form role="search" method="get" class="td-search-form" action="https://www.unixmen.com/">
+				<div class="td-head-form-search-wrap">
+					<input id="td-header-search" value="" name="s" autocomplete="off" type="text"><input class="wpb_button wpb_btn-inverse btn" id="td-header-search-top" value="Search" type="submit">
+				</div>
+			</form>
+			<div id="td-aj-search"></div>
+		</div>
+	</div>
+</div>            </div>
+        </div>
+    </div>
+
+</div><div class="td-main-content-wrap">
+
+    <div class="td-container td-post-template-default ">
+        <div class="td-crumb-container"><div class="entry-crumbs"><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a title="" class="entry-crumb" itemprop="url" href="https://www.unixmen.com/"><span itemprop="title">Home</span></a></span> <i class="td-icon-right td-bread-sep"></i> <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a title="View all posts in Linux distributions" class="entry-crumb" itemprop="url" href="https://www.unixmen.com/category/linux-distributions/"><span itemprop="title">Linux distributions</span></a></span> <i class="td-icon-right td-bread-sep td-bred-no-url-last"></i> <span class="td-bred-no-url-last" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><meta itemprop="title" content="How To Install OpenVPN On CentOS 7"><meta itemprop="url" content="https://www.unixmen.com/install-openvpn-centos-7/">How To Install OpenVPN On CentOS 7</span></div></div>
+
+        <div class="td-pb-row">
+                                    <div class="td-pb-span8 td-main-content" role="main">
+                            <div class="td-ss-main-content">
+                                
+    <article id="post-32089" class="post-32089 post type-post status-publish format-standard has-post-thumbnail hentry category-linux-distributions tag-centos-7 tag-openvpn" itemscope="" itemtype="https://schema.org/Article">
+        <div class="td-post-header">
+
+            
+            <header class="td-post-title">
+                <h1 class="entry-title">How To Install OpenVPN On CentOS 7</h1>
+
+                
+
+                <div class="td-module-meta-info">
+                    <div class="td-post-author-name">By <a href="https://www.unixmen.com/author/jijo/">Jijo</a></div>                                                                            </div>
+
+            </header>
+
+        </div>
+
+        <div class="td-post-sharing td-post-sharing-top td-with-like">
+				<div class="td-default-sharing">
+		            <a class="td-social-sharing-buttons td-social-facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.unixmen.com%2Finstall-openvpn-centos-7%2F"><i class="td-icon-facebook"></i><div class="td-social-but-text">Share on Facebook</div></a>
+		            <a class="td-social-sharing-buttons td-social-twitter" href="https://twitter.com/intent/tweet?text=How+To+Install+OpenVPN+On+CentOS+7&amp;url=https%3A%2F%2Fwww.unixmen.com%2Finstall-openvpn-centos-7%2F&amp;via=unixmen"><i class="td-icon-twitter"></i><div class="td-social-but-text">Tweet on Twitter</div></a>
+		            <a class="td-social-sharing-buttons td-social-google" href="http://plus.google.com/share?url=https://www.unixmen.com/install-openvpn-centos-7/"><i class="td-icon-googleplus"></i></a>
+		            <a class="td-social-sharing-buttons td-social-pinterest" href="http://pinterest.com/pin/create/button/?url=https://www.unixmen.com/install-openvpn-centos-7/&amp;media=https://www.unixmen.com/wp-content/uploads/2014/12/VPN.png&amp;description=How+To+Install+OpenVPN+On+CentOS+7"><i class="td-icon-pinterest"></i></a>
+		            <a class="td-social-sharing-buttons td-social-whatsapp" href="whatsapp://send?text=How+To+Install+OpenVPN+On+CentOS+7 - https%3A%2F%2Fwww.unixmen.com%2Finstall-openvpn-centos-7%2F"><i class="td-icon-whatsapp"></i></a>
+	            </div><div class="td-classic-sharing"><ul><li class="td-classic-facebook"><iframe src="index_25.html" style="border: medium none; overflow: hidden; width: 105px; height: 21px; background-color: transparent;" frameborder="0"></iframe></li><li class="td-classic-twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://www.unixmen.com/install-openvpn-centos-7/" data-text="How To Install OpenVPN On CentOS 7" data-via="" data-lang="en">tweet</a> <script>/* Code removed by ScrapBook */</script></li></ul></div></div>
+
+        <div class="td-post-content">
+
+        <div class="td-post-featured-image"><a href="https://www.unixmen.com/wp-content/uploads/2014/12/VPN.png" data-caption=""><img class="entry-thumb td-modal-image" src="VPN.png" alt="" title="VPN" height="275" width="425"></a></div>
+        <p style="text-align: justify;">Security is most important aspect in internet. Outsiders can monitor internet traffic between your computer and the web. Here the importance of <strong>VPN</strong> comes. VPN, or virtual private network, is a secure method of connecting remote internet resources together as if they were under the same LAN. <strong>OpenVPN</strong> is a popular open source application that implements a virtual private network. works on Linux, Windows, and Mac operating systems. It can be utilized to create a secure connection between physically distributed servers.</p>
+<p style="text-align: justify;">This Article explains How to install and configure OpenVPN in centOS 7 server.</p>
+<h3><strong>Prerequisites</strong></h3>
+<ul>
+<li>CentOS 7 server.</li>
+<li><strong>root</strong>&nbsp;access to the server.</li>
+<li>Domain or sub-domain that resolves to your server that you can use for the certificates</li>
+</ul>
+<p>OpenVpn isn’t available in the default CentOS repositories. So we need to install Enterprise Linux (EPEL) repository. Use the following command to install EPEL repository.</p>
+<pre>yum install epel-release</pre>
+<h2><strong>Step 1 — Installing OpenVPN</strong></h2>
+<p>First, We are going to install in the server by issuing the following command.</p>
+<pre>yum install openvpn -y</pre>
+<h2>Step&nbsp;2 —&nbsp; Install Easy RSA</h2>
+<p>For generating our SSL key pairs, which will secure our VPN connections. Execute the following command:</p>
+<pre>yum install easy-rsa -y</pre>
+<h2><strong>Step 3 — Configuring OpenVPN</strong></h2>
+<p>We can find an example configuration file in its documentation directory<strong>. </strong>We need to copy the <strong>sampleserver.conf</strong> by the following command.</p><div class="insert-post-ads" style="clear: both; float: left; width: 100%; margin: 0px 0px 20px;"></div>
+<pre>cp /usr/share/doc/openvpn-*/sample/sample-config-files/server.conf &nbsp;/etc/openvpn</pre>
+<p>Open the file in your favorite editor, I’m using&nbsp;editor,</p>
+<pre>vi /etc/openvpn/server.conf</pre>
+<p>Most of the lines just need to be uncommented (remove the&nbsp;😉 and some of there are to be changed.</p>
+<p>Do the following changes.</p>
+<p>We need to change the&nbsp;dh&nbsp;file name to&nbsp;<strong>dh2048.pem</strong>. Because the default Diffie-Hellman encryption length for Easy RSA will be 2048 bytes. We will do the key generation in next step.</p>
+<pre>dh dh2048.pem</pre>
+<p>Next, uncomment the&nbsp;<strong>push “redirect-gateway def1 bypass-dhcp”</strong>&nbsp;line, which tells the client to redirect all traffic through our OpenVPN.</p>
+<pre>push "redirect-gateway def1 bypass-dhcp"</pre>
+<p>Next we need to provide DNS servers to the client, as it will not be able to use the default DNS servers provided by your Internet service provider. We’re going to use Google’s public DNS servers,&nbsp;8.8.8.8&nbsp;and8.8.4.4.</p>
+<p>For this, uncomment the&nbsp;<strong>push “dhcp-option DNS</strong>&nbsp;lines and updating the IP addresses.</p>
+<pre>push "dhcp-option DNS 8.8.8.8"
+push "dhcp-option DNS 8.8.4.4"</pre>
+<p>Change user and group to nobody</p>
+<pre>user nobody
+group nobody</pre>
+<p>Save and exit the OpenVPN server configuration file.</p>
+<h2><strong>Step 4 — Generating Keys and Certificates</strong></h2>
+<p>Now<strong>, </strong>we’ll need to generate our keys and certificates. Easy RSA installs some scripts to generate these keys and certificates.</p>
+<p>Create a directory for the keys by the following command</p>
+<pre>mkdir -p /etc/openvpn/easy-rsa/keys</pre>
+<p>We also need to copy the key and certificate generation scripts into the directory.</p>
+<pre>cp -rf /usr/share/easy-rsa/2.0/* /etc/openvpn/easy-rsa</pre>
+<p>Now, we’re going to edit the default values in the script. So we don’t have to type our information in each time. Open the file in vi editor.</p>
+<pre>vi /etc/openvpn/easy-rsa/vars</pre>
+<p>Change values that start with&nbsp;<strong>KEY_</strong>. Update the following values to be accurate for your organization.</p>
+<p>Some of the important value that should be change carefully are,</p>
+<ul>
+<li>KEY_NAME: You should enter&nbsp;server&nbsp;here; you could enter something else, but then you would also have to update the configuration files that reference&nbsp;&nbsp;and</li>
+<li>KEY_CN: Enter the domain or subdomain that resolves to your server</li>
+</ul>
+<p>Refer the sample file below,</p>
+<pre>. . .
+# These are the default values for fields
+# which will be placed in the certificate.
+# Don't leave any of these fields blank.
+export KEY_COUNTRY="US"
+export KEY_PROVINCE="NY"
+export KEY_CITY="New York"
+export KEY_ORG="unixmen"
+export KEY_EMAIL="<a href="https://www.unixmen.com/cdn-cgi/l/email-protection#9cf6f5f6f3f6fdf1f9efe8f6dcfbf1fdf5f0b2fff3f1">jijojamestj@gmail.com</a>"
+export KEY_OU="Community"
+# X509 Subject Field
+export KEY_NAME="server"
+. . .
+export KEY_CN=openvpn.unixmen.com
+. . .</pre>
+<p>OpenSSL configuration may not load due to the version being undetectable. To avoid this remove the version number from the openSSl file name.</p>
+<pre>cp /etc/openvpn/easy-rsa/openssl-1.0.0.cnf /etc/openvpn/easy-rsa/openssl.cnf</pre>
+<p>Next, We are going to generate the keys and certificates. Move to easy-rsa&nbsp;directory and&nbsp;<em><strong>source</strong></em>&nbsp;in our new variables.</p>
+<pre>cd /etc/openvpn/easy-rsa</pre>
+<pre>source ./vars</pre>
+<p>Then, we will clean up any keys and certificates which may already be in this folder and generate our certificate authority.</p>
+<pre>./clean-all<strong>&nbsp;</strong></pre>
+<p>When you build the certificate authority, you will be asked to enter all the information we put into the vars&nbsp;file, but you will see that your options are already set as the defaults. So, you can just press ENTER for each one.</p>
+<pre>./build-ca</pre>
+<p>Next, We will generate the key and certificate for the server. Please press ENTER for each question as for the above step</p>
+<pre>./build-key-server server</pre>
+<p>Now we will generate Diffie-Hellman key exchange file. This command will take few to complete:</p>
+<pre>./build-dh<strong>&nbsp;</strong></pre>
+<p>So, we completed the server keys and certificates generation process. Copy them all into our OpenVPN directory.</p>
+<pre>cd /etc/openvpn/easy-rsa/keys</pre>
+<pre>cp dh2048.pem ca.crt server.crt server.key /etc/openvpn</pre>
+<p>For authenticate our clients will also need certificates. These keys and certificates will be shared with your clients, and it’s best to generate separate keys and certificates for each client you intend on connecting.</p>
+<p>Make sure that if you do this you give them descriptive names, but for now we’re going to have one client so we’ll just call it&nbsp;client.</p>
+<pre>cd /etc/openvpn/easy-rsa</pre>
+<pre>./build-key client</pre>
+<pre><strong>&nbsp;</strong>That's it for keys and certificates.</pre>
+<h2><strong>Step 5 — Routing</strong></h2>
+<p><strong>Install the iptables and disable</strong>firewalld by execute the following commands</p>
+<pre>yum install iptables-services -y</pre>
+<pre>systemctl mask firewalld</pre>
+<pre>systemctl enable iptables</pre>
+<pre>systemctl stop firewalld</pre>
+<pre>systemctl start iptables</pre>
+<pre>iptables --flush</pre>
+<p>Next, We need to add a rule to iptables to forward our routing to our OpenVPN subnet, and save this rule.</p>
+<pre>iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE</pre>
+<pre>iptables-save &gt; /etc/sysconfig/iptables</pre>
+<p>Next, enable &nbsp;IP forwarding in&nbsp;sysctl. Open&nbsp;sysctl.conf&nbsp;in vi editor.</p>
+<pre>vi /etc/sysctl.conf</pre>
+<p>Add the following line at the top of the file:</p>
+<pre>net.ipv4.ip_forward = 1</pre>
+<p>For the IP forwarding will take effect. We need to restart the network service. Issue the following command</p>
+<pre>systemctl restart network.service</pre>
+<h2><strong>Step 6 — Starting OpenVPN</strong></h2>
+<p>Now, we completed the installation and ready start the openVPN service. add it to&nbsp;systemctl using the command</p>
+<pre>systemctl -f enable&nbsp;<span id="cloak54270">openvpn@server.service</span></pre>
+<p>Start OpenVPN:</p>
+<pre>systemctl start&nbsp;openvpn@server.service</pre>
+<p>So we have successfully completed all the server-side configuration done for OpenVPN.</p>
+<p>Next Let’s see how to connect a client to the server.</p>
+<h2><strong>Step 6 — Configuring a Client</strong></h2>
+<p><strong>To connect </strong>you will definitely need a copy of the ca certificate from the server, along with the client key and certificate.</p>
+<p>Locate the following files on the&nbsp;<strong>server</strong>. In this article we used&nbsp;‘client’ as the descriptive name for the client keys.</p>
+<pre>/etc/openvpn/easy-rsa/keys/ca.crt</pre>
+<pre>/etc/openvpn/easy-rsa/keys/client.crt</pre>
+<pre>/etc/openvpn/easy-rsa/keys/client.key</pre>
+<p>Copy these three files to your&nbsp;client machine. For this, Open the file in the server and copy the content of the file into a new file in the client system an save, or use <strong>SFTP</strong>.</p>
+<p>We’re going to create a file called&nbsp;client.ovpn. This is a configuration file for an OpenVPN client, telling it how to connect to the server.</p>
+<ul>
+<li>You’ll need to change the first line to reflect the name you gave the client in your key and certificate; in our case, this is just&nbsp;client</li>
+<li>You also need to update the IP address from&nbsp;your_server_ip&nbsp;to the IP address of your server; port1194&nbsp;can stay the same</li>
+<li>Make sure the paths to your key and certificate files are correct</li>
+</ul>
+<pre>client
+dev tun
+proto udp
+remote your_server_ip 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+comp-lzo
+verb 3
+ca /path/to/ca.crt
+cert /path/to/client.crt
+key /path/to/client.key</pre>
+<p>This file can now be used by any OpenVPN client to connect to your server.</p>
+<p>Assume the client machine has Windows OS.</p>
+<p>You will need the official&nbsp;<a href="http://openvpn.net/index.php/open-source/downloads.html" target="_blank">OpenVPN Community Edition binaries</a>&nbsp;which come with a GUI. Then, place your&nbsp;.ovpn&nbsp;configuration file into the proper directory, <strong>ex. C:\Program Files\OpenVPN\config</strong>, and click&nbsp;<strong>Connect</strong>&nbsp;in the GUI. OpenVPN GUI on Windows must be executed with administrative privileges.</p>
+<p>That’s it!<br>
+Cheers..!</p>
+<script>/* Code removed by ScrapBook */</script><script src="about:blank" async="" type="text/javascript"></script><script tested-script-id="wRm77GlddKsQcD2d05bx0O1" class="yp6_inject_wRm77GlddKsQcD2d05bx0O" id="yp6_inject_wRm77GlddKsQcD2d05bx0O" type="text/javascript" src="about:blank" async="true" data-url="[PAGE_URL]" data-zone="[ZONE]" data-version="2"></script><p></p>        </div>
+
+
+        <footer>
+                        
+            <div class="td-post-source-tags">
+                                            </div>
+
+            <div class="td-post-sharing td-post-sharing-bottom td-with-like"><span class="td-post-share-title">SHARE</span>
+            <div class="td-default-sharing">
+	            <a class="td-social-sharing-buttons td-social-facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.unixmen.com%2Finstall-openvpn-centos-7%2F"><i class="td-icon-facebook"></i><div class="td-social-but-text">Facebook</div></a>
+	            <a class="td-social-sharing-buttons td-social-twitter" href="https://twitter.com/intent/tweet?text=How+To+Install+OpenVPN+On+CentOS+7&amp;url=https%3A%2F%2Fwww.unixmen.com%2Finstall-openvpn-centos-7%2F&amp;via=unixmen"><i class="td-icon-twitter"></i><div class="td-social-but-text">Twitter</div></a>
+	            <a class="td-social-sharing-buttons td-social-google" href="http://plus.google.com/share?url=https://www.unixmen.com/install-openvpn-centos-7/"><i class="td-icon-googleplus"></i></a>
+	            <a class="td-social-sharing-buttons td-social-pinterest" href="http://pinterest.com/pin/create/button/?url=https://www.unixmen.com/install-openvpn-centos-7/&amp;media=https://www.unixmen.com/wp-content/uploads/2014/12/VPN.png&amp;description=How+To+Install+OpenVPN+On+CentOS+7"><i class="td-icon-pinterest"></i></a>
+	            <a class="td-social-sharing-buttons td-social-whatsapp" href="whatsapp://send?text=How+To+Install+OpenVPN+On+CentOS+7 - https%3A%2F%2Fwww.unixmen.com%2Finstall-openvpn-centos-7%2F"><i class="td-icon-whatsapp"></i></a>
+            </div><div class="td-classic-sharing"><ul><li class="td-classic-facebook"><iframe src="index_26.html" style="border: medium none; overflow: hidden; width: 105px; height: 21px; background-color: transparent;" frameborder="0"></iframe></li><li class="td-classic-twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://www.unixmen.com/install-openvpn-centos-7/" data-text="How To Install OpenVPN On CentOS 7" data-via="" data-lang="en">tweet</a> <script>/* Code removed by ScrapBook */</script></li></ul></div></div>            <div class="td-block-row td-post-next-prev"><div class="td-block-span6 td-post-prev-post"><div class="td-post-next-prev-content"><span>Previous article</span><a href="https://www.unixmen.com/wickr-top-secret-messenger-app-linux-windows-android-ios/">Wickr – A Top Secret Messenger App For Linux, Windows, Android, And iOS</a></div></div><div class="td-next-prev-separator"></div><div class="td-block-span6 td-post-next-post"><div class="td-post-next-prev-content"><span>Next article</span><a href="https://www.unixmen.com/install-repoforge-rpmforge-repository-rhel-centos-scientific-linux-76-x5-x4-x/">Install RepoForge (RPMForge) Repository On RHEL, CentOS, Scientific Linux 7/6.x/5.x/4.x</a></div></div></div>            <div class="td-author-name vcard author" style="display: none;"><span class="fn"><a href="https://www.unixmen.com/author/jijo/">Jijo</a></span></div>	        <span style="display: none;" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><meta itemprop="name" content="Jijo"></span><meta itemprop="datePublished" content="2014-12-15T08:20:31+00:00"><meta itemprop="dateModified" content="2014-12-15T08:20:31+00:00"><meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="https://www.unixmen.com/install-openvpn-centos-7/"><span style="display: none;" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization"><span style="display: none;" itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="http://www.unixmen.com/wp-content/uploads/2016/02/unixmen-logo.png"></span><meta itemprop="name" content="Unixmen"></span><meta itemprop="headline " content="How To Install OpenVPN On CentOS 7"><span style="display: none;" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://www.unixmen.com/wp-content/uploads/2014/12/VPN.png"><meta itemprop="width" content="425"><meta itemprop="height" content="275"></span>        </footer>
+
+    </article> <!-- /.post -->
+
+    <script>/* Code removed by ScrapBook */</script><div class="td_block_wrap td_block_related_posts td_uid_1_5884e57d90af1_rand td_with_ajax_pagination td-pb-border-top"><h4 class="td-related-title"><a id="td_uid_2_5884e57d923cd" class="td-related-left td-cur-simple-item" data-td_filter_value="" data-td_block_id="td_uid_1_5884e57d90af1" href="#">RELATED ARTICLES</a><a id="td_uid_3_5884e57d92417" class="td-related-right" data-td_filter_value="td_related_more_from_author" data-td_block_id="td_uid_1_5884e57d90af1" href="#">MORE FROM AUTHOR</a></h4><div id="td_uid_1_5884e57d90af1" class="td_block_inner">
+
+	<div class="td-related-row">
+
+	<div class="td-related-span4">
+
+        <div class="td_module_related_posts td-animation-stack td_mod_related_posts">
+            <div class="td-module-image">
+                <div class="td-module-thumb"><a href="https://www.unixmen.com/upgrading-fedora-24-fedora-25/" rel="bookmark" title="Upgrading from Fedora 24 to Fedora 25"><img class="entry-thumb" src="fedora-logo-218x150.png" alt="" title="Upgrading from Fedora 24 to Fedora 25" height="150" width="218"></a></div>                <a href="https://www.unixmen.com/category/linux-distributions/" class="td-post-category">Linux distributions</a>            </div>
+            <div class="item-details">
+                <h3 class="entry-title td-module-title"><a href="https://www.unixmen.com/upgrading-fedora-24-fedora-25/" rel="bookmark" title="Upgrading from Fedora 24 to Fedora 25">Upgrading from Fedora 24 to Fedora 25</a></h3>            </div>
+        </div>
+        
+	</div> <!-- ./td-related-span4 -->
+
+	<div class="td-related-span4">
+
+        <div class="td_module_related_posts td-animation-stack td_mod_related_posts">
+            <div class="td-module-image">
+                <div class="td-module-thumb"><a href="https://www.unixmen.com/fedora-25-released/" rel="bookmark" title="Fedora 25 released!"><img class="entry-thumb" src="fedora-logo-218x150.png" alt="" title="Fedora 25 released!" height="150" width="218"></a></div>                <a href="https://www.unixmen.com/category/announcements/" class="td-post-category">Announcements</a>            </div>
+            <div class="item-details">
+                <h3 class="entry-title td-module-title"><a href="https://www.unixmen.com/fedora-25-released/" rel="bookmark" title="Fedora 25 released!">Fedora 25 released!</a></h3>            </div>
+        </div>
+        
+	</div> <!-- ./td-related-span4 -->
+
+	<div class="td-related-span4">
+
+        <div class="td_module_related_posts td-animation-stack td_mod_related_posts">
+            <div class="td-module-image">
+                <div class="td-module-thumb"><a href="https://www.unixmen.com/fedora-25-way-wayland/" rel="bookmark" title="Fedora 25: On the way of Wayland"><img class="entry-thumb" src="fedora-logo-218x150.png" alt="" title="Fedora 25: On the way of Wayland" height="150" width="218"></a></div>                <a href="https://www.unixmen.com/category/announcements/" class="td-post-category">Announcements</a>            </div>
+            <div class="item-details">
+                <h3 class="entry-title td-module-title"><a href="https://www.unixmen.com/fedora-25-way-wayland/" rel="bookmark" title="Fedora 25: On the way of Wayland">Fedora 25: On the way of Wayland</a></h3>            </div>
+        </div>
+        
+	</div> <!-- ./td-related-span4 --></div><!--./row-fluid--></div><div class="td-next-prev-wrap"><a href="#" class="td-ajax-prev-page ajax-page-disabled" id="prev-page-td_uid_1_5884e57d90af1" data-td_block_id="td_uid_1_5884e57d90af1"><i class="td-icon-font td-icon-menu-left"></i></a><a href="#" class="td-ajax-next-page" id="next-page-td_uid_1_5884e57d90af1" data-td_block_id="td_uid_1_5884e57d90af1"><i class="td-icon-font td-icon-menu-right"></i></a></div></div> <!-- ./block -->
+
+<div id="disqus_thread">
+    </div>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+                            </div>
+                        </div>
+                        <div class="td-pb-span4 td-main-sidebar" role="complementary">
+                            <div class="td-ss-main-sidebar">
+                                <aside class="widget widget_text">			<div class="textwidget"><script type="text/javascript">/* Code removed by ScrapBook */</script><script type="text/javascript" src="about:blank"></script></div>
+		</aside><aside class="widget widget_text">			<div class="textwidget"></div>
+		</aside><aside class="widget widget_text">			<div class="textwidget"><script type="text/javascript" src="about:blank" async=""></script>
+
+
+<div style="padding: 10px 0px;">
+<!--/*
+  *
+  * Revive Adserver Javascript Tag
+  * - Generated with Revive Adserver v3.2.4
+  *
+  */-->
+
+<!--/*
+  * The backup image section of this tag has been generated for use on a
+  * non-SSL page. If this tag is to be placed on an SSL page, change the
+  *   'http://delivery.amessagewithabottle.com/www/delivery/...'
+  * to
+  *   'https://delivery.amessagewithabottle.com/www/delivery/...'
+  *
+  * This noscript section of this tag only shows image banners. There
+  * is no width or height in these banners, so if you want these tags to
+  * allocate space for the ad before it shows, you will need to add this
+  * information to the <img> tag.
+  *
+  * If you do not want to deal with the intricities of the noscript
+  * section, delete the tag (from <noscript>... to </noscript>). On
+  * average, the noscript tag is called from less than 1% of internet
+  * users.
+  */-->
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script><script type="text/javascript" src="about:blank"></script><script src="about:blank" type="text/javascript"></script></div></div></aside></div></div></div></div></div></div></div><script async="" src="about:blank"></script></body>
+</html>

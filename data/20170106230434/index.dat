@@ -1,0 +1,10 @@
+id	20170106230434
+create	20170106230434
+modify	20170106230434
+type	
+title	解决nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)-码农场
+chars	UTF-8
+icon	favicon.ico
+source	http://www.hankcs.com/appos/linux/fix-nginx-bind-err.html
+comment	
+lock	

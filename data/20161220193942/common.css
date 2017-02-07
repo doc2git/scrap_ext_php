@@ -1,0 +1,4 @@
+/* Code tidied up by ScrapBook */
+.star-big-on, .star-big-half, .star-big-off { display: block; float: left; width: 16px; height: 16px; background: transparent url("star-big.gif") repeat scroll 0% 0%; font-size: 12px; margin: 0px; cursor: pointer; }
+.star-big-off { background-position: -2px -180px; }
+.rate-container { width: 90px; height: 20px; background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); padding: 1px; }

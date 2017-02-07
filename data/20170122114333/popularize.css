@@ -1,0 +1,3 @@
+/* Code tidied up by ScrapBook */
+.dm_ad_hover { display: inline-block; position: absolute; bottom: 0px; right: 0px; width: 24px; height: 18px; overflow: hidden; line-height: 999px; background: transparent url("short_001.png") no-repeat scroll right top; z-index: 100; }
+.dm_ad_hover:hover { width: 81px; background: transparent url("full_kaola_001.png") repeat scroll 0% 0%; }

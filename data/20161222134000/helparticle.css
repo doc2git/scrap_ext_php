@@ -1,0 +1,15 @@
+/* Code tidied up by ScrapBook */
+.art-wrap { position: relative; border: 1px solid rgb(226, 226, 226); background: rgb(249, 249, 249) none repeat scroll 0% 0%; width: 622px; padding: 15px 12px; height: auto; }
+.art-wrap .title, .art-wrap .title h1, .art-wrap .title .from, .art-wrap .desc { width: 100%; font-size: 14px; }
+.art-wrap .title { text-align: center; padding-bottom: 15px; border-bottom: 1px dashed rgb(221, 221, 221); margin-bottom: 6px; }
+.art-wrap .title h1 { font-size: 18px; line-height: 24px; color: rgb(12, 107, 201); }
+.art-wrap .title .from { color: rgb(153, 153, 153); font-size: 12px; }
+.art-wrap .desc p { margin-bottom: 20px; color: rgb(102, 102, 102); line-height: 22px; word-break: break-all; word-wrap: break-word; }
+.art-wrap .desc .other, .art-wrap .desc .reco-link { width: 100%; overflow: hidden; border-bottom: 1px dashed rgb(221, 221, 221); }
+.art-wrap .desc .other { height: 43px; padding-bottom: 5px; }
+.art-wrap .desc .reco-link { height: 38px; line-height: 38px; font-size: 12px; }
+.art-wrap .desc .reco-link a { color: rgb(51, 51, 51); }
+.art-wrap .desc .reco-link a:hover { color: rgb(25, 129, 224); }
+.art-wrap .desc .editor { line-height: 58px; font-size: 12px; color: rgb(153, 153, 153); }
+.recommendLink { width: 100%; }
+.recommendLink h2 { color: rgb(25, 129, 224); font-weight: bold; height: 44px; line-height: 44px; }

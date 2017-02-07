@@ -1,0 +1,80 @@
+/* Code tidied up by ScrapBook */
+.footer, .footer a:link, .footer a:visited { clear: both; text-align: center; color: rgb(119, 119, 204); font: 12px/1.5 Arial; white-space: nowrap; }
+.wgt-common-nav { background: rgb(101, 102, 109) none repeat scroll 0% 0%; height: 40px; margin: 13px auto 0px; font-family: "Microsoft Yahei","微软雅黑",arial,"宋体",sans-serif; }
+.wgt-common-nav .nav-wrap { width: 980px; margin: 0px auto; position: relative; }
+.wgt-common-nav .main-menu li { float: left; height: 40px; }
+.wgt-common-nav .main-menu a { position: relative; display: block; outline: 0px none; float: left; color: rgb(255, 255, 255); font-size: 16px; height: 40px; line-height: 42px; overflow: hidden; margin: 0px auto; z-index: 1000; padding: 0px 22px 0px 23px; text-decoration: none; background: transparent url("line_d6714b4.png") no-repeat scroll 0px 13px; }
+.wgt-common-nav .main-menu a:visited { color: rgb(255, 255, 255); }
+.wgt-common-nav .main-menu a:hover { background: rgb(85, 87, 92) none repeat scroll 0% 0%; border-left: 1px solid rgb(78, 81, 85); border-right: 1px solid rgb(78, 81, 85); padding: 0px 22px; margin-right: -1px; z-index: 1001; }
+.wgt-common-nav .main-menu li.last { background: transparent url("line_d6714b4.png") no-repeat scroll right 13px; }
+.wgt-common-nav .main-menu .all-category, .wgt-common-nav .main-menu .all-task { position: relative; }
+.wgt-common-nav .main-menu .all-category a, .wgt-common-nav .main-menu .all-task a { padding-right: 35px; }
+.wgt-common-nav .main-menu .all-category a:hover, .wgt-common-nav .main-menu .all-task a:hover { padding-right: 35px; }
+.wgt-common-nav .main-menu .dir-icon { background: transparent url("nav-share_0304ed8.png") no-repeat scroll -190px -134px; position: absolute; top: 18px; left: 62px; width: 7px; height: 4px; cursor: pointer; z-index: 1003; display: inline-block; }
+.wgt-common-nav .share-exp-e { display: block; height: 40px; width: 202px; float: right; background: transparent url("nav-share_0304ed8.png") no-repeat scroll 0px 0px; }
+.wgt-common-nav .share-exp-e:hover { background-position: 0px -40px; }
+.wgt-common-nav .share-exp-e:active { background-position: 0px -80px; }
+.wgt-common-nav .category-list { position: absolute; left: 77px; top: 40px; z-index: 800; width: 195px; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(153, 153, 153) rgb(153, 153, 153); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background: rgb(252, 252, 252) none repeat scroll 0% 0%; }
+.wgt-common-nav .category-list li { float: left; width: 59px; padding: 13px 0px 0px 25px; letter-spacing: 1px; }
+.wgt-common-nav .category-list li.first-line { padding-top: 17px; }
+.wgt-common-nav .category-list li.last-line { padding-bottom: 17px; }
+.wgt-common-nav .category-list li.even { padding-left: 27px; padding-right: 20px; }
+.wgt-common-nav .category-list a:link, .wgt-common-nav .category-list a:visited { color: rgb(45, 100, 179); }
+.wgt-common-nav .task-list { position: absolute; top: 40px; z-index: 800; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(153, 153, 153) rgb(153, 153, 153); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background: rgb(252, 252, 252) none repeat scroll 0% 0%; width: 90px; left: 242px; }
+.wgt-common-nav .task-list li { float: left; width: 59px; padding: 13px 0px 0px 25px; letter-spacing: 1px; }
+.wgt-common-nav .task-list li.first-line { padding-top: 17px; }
+.wgt-common-nav .task-list li.last-line { padding-bottom: 17px; }
+.wgt-common-nav .task-list a:link, .wgt-common-nav .task-list a:visited { color: rgb(45, 100, 179); }
+.wgt-common-nav .task-list li { float: left; padding: 10px 20px; letter-spacing: 1px; }
+.wgt-common-nav .task-list li.last-line { padding-bottom: 10px; padding-top: 0px; }
+.wgt-common-nav .task-list a:link, .wgt-common-nav .task-list a:visited { color: rgb(45, 100, 179); }
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, textarea, th, td { margin: 0px; padding: 0px; }
+body, button, select, textarea { font: 12px/1.5 arial,"宋体",sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+ul, ol { list-style: outside none none; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+fieldset, img { border: 0px none; }
+button, select, textarea { font-size: 100%; }
+.hide { display: none; }
+body { word-break: break-all; }
+header, section, aside, footer { margin: 0px; padding: 0px; }
+header, footer, article, section, hgroup, nav, figure { display: block; }
+body { background: rgb(255, 255, 255) url("about://blank/") repeat fixed 0px 0px; }
+.header, .body, .footer { width: 980px; margin-left: auto; margin-right: auto; }
+.body-wrapper { margin: 0px auto; }
+.footer { padding: 30px 0px; }
+.header { padding: 0px; }
+.right { float: right; }
+.left { float: left; }
+.f12 { font-size: 12px; }
+.tousu { margin: 15px; display: block; }
+.clearfix::after { clear: both; content: "."; display: block; font-size: 0px; line-height: 0; visibility: hidden; height: 0px; }
+.clearfix {  }
+.i-suc, .i-good-exp, .i-video, .i-insert-img, .i-insert-img-over, .i-insert-img-down, .i-excel-comment, .i-del-comment, .i-del-excel, .i-add-excel, .mark, .tick, .i-score, .i-ul, .i-new, .i-original, .i-msg-close { background: transparent url("bg_icon_e93eda4.png") no-repeat scroll 0px 0px; }
+.i-original { padding: 0px 0px 0px 3px; background-position: 0px -919px; display: inline-block; height: 16px; width: 15px; vertical-align: -2px; }
+.lazy-load-img { display: block; visibility: hidden; }
+.userbar { font: 12px arial; text-align: right; position: absolute; right: 0px; padding-right: 10px; top: 4px; z-index: 10; color: rgb(153, 153, 153); }
+.userbar a:link, .userbar a:visited { text-decoration: none; color: rgb(85, 85, 85); }
+.userbar a:hover { text-decoration: underline; }
+.top-search-box { font-family: arial,tahoma,"Microsoft YaHei","宋体"; position: relative; overflow: hidden; }
+.top-search-box .inner-warp { margin-left: 152px; height: 100%; }
+.top-search-box a.logo { position: absolute; left: 0px; bottom: 2px; }
+.top-search-box a.logo img { width: 137px; height: 46px; }
+.top-search-box ul.channel { line-height: 16px; padding: 19px 0px 0px; float: left; }
+.top-search-box ul.channel li { float: left; font-size: 14px; margin-right: 18px; }
+.top-search-box ul.channel li a, .top-search-box ul.channel li a:visited { text-decoration: none; color: rgb(85, 85, 85); }
+.top-search-box ul.channel li a:hover { text-decoration: underline; }
+.top-search-box .s-nav { height: 43px; }
+.top-search-box a, .top-search-box a:visited { text-decoration: underline; }
+.top-search-box input { padding: 0px; border: 0px none; }
+.top-search-form { margin: 0px; clear: both; position: relative; z-index: 1000; }
+.top-search-form .s-ipt-wr { width: 508px; height: 32px; float: left; display: inline-block; border-width: 1px; border-style: solid; border-color: rgb(184, 184, 184) rgb(184, 184, 184) rgb(204, 204, 204); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; vertical-align: top; margin-right: -1px; }
+.top-search-form .s-ipt-wr:hover { border-color: rgb(171, 171, 171); }
+.top-search-form .s-ipt-wr:focus { border-color: rgb(150, 150, 150); }
+.top-search-form .hdi { width: 492px; height: 22px; font: 16px/22px arial,tahoma,"Microsoft YaHei","宋体",sans-serif; margin: 5px 0px 0px 8px; outline: 0px none; color: rgb(0, 0, 0); }
+.top-search-form .s-btn-wr { float: left; width: 100px; height: 34px; display: inline-block; z-index: 0; vertical-align: top; }
+.top-search-form .s-btn { font-family: arial,tahoma,"Microsoft YaHei","宋体"; float: left; border: 1px solid rgb(204, 204, 204); width: 100px; height: 34px; line-height: 32px; font-size: 16px; color: rgb(51, 51, 51); outline: 0px none; cursor: pointer; background: transparent -moz-linear-gradient(center top , rgb(252, 252, 252), rgb(241, 241, 241)) repeat scroll 0% 0%; }
+.top-search-form .s-btn:hover { border-color: rgb(171, 171, 171); background: transparent -moz-linear-gradient(center top , rgb(248, 248, 248), rgb(233, 233, 233)) repeat scroll 0% 0%; }
+.top-search-form .s-tools { color: rgb(153, 153, 153); padding: 8px 0px 0px 15px; float: left; display: inline-block; }
+.top-search-form .s-tools a { color: rgb(60, 124, 224); }

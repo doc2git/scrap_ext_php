@@ -1,0 +1,72 @@
+/* Code tidied up by ScrapBook */
+html { background-image: url("moin-html-background.png"); background-color: rgb(255, 255, 255); font-family: "DejaVu Sans","Liberation Sans",sans-serif; font-size: 0.85em; line-height: 1.25em; margin: 0px 4%; }
+body { background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-width: 10px; border-style: solid; border-color: rgb(255, 255, 255); padding: 0px; }
+a:link { text-decoration: none; color: rgb(32, 76, 141); }
+a:hover { text-decoration: underline; color: green; }
+a:active { text-decoration: underline; color: green; }
+a:visited { text-decoration: none; color: rgb(32, 76, 141); }
+a:visited:hover { text-decoration: underline; color: green; }
+#username a:link { text-decoration: none; color: rgb(238, 238, 238); }
+#username a:hover { text-decoration: underline; color: rgb(255, 255, 255); }
+#username a:active { text-decoration: underline; color: rgb(255, 255, 255); }
+#username a:visited { text-decoration: none; color: rgb(238, 238, 238); }
+#username a:visited:hover { text-decoration: underline; color: rgb(255, 255, 255); }
+input {  }
+.disabled { color: gray; }
+#header { margin: 0px; padding: 0px; background-color: rgb(32, 76, 141); background-image: url("moin-header-background.png"); line-height: 1em; border: medium none; }
+#logo { float: left; margin: 10px; padding: 0px; font-size: 1.4em; line-height: 1em; font-weight: bold; }
+#logo img { vertical-align: middle; }
+#logo a { color: white; text-decoration: none; }
+#username { padding: 0px; margin: 0px 0.4em 0.4em; text-align: right; font-size: 0.82em; white-space: nowrap; }
+#username li { display: inline; padding: 0px 0.5em 0px 0px; }
+#searchform { color: rgb(255, 255, 255); float: right; margin-right: 0px; padding: 0px; white-space: nowrap; }
+#searchform input { font-size: 0.85em; padding: 1px 1px 1px 3px; }
+#searchinput { background: rgb(237, 244, 255) none repeat scroll 0% 0%; border-width: 2px; border-style: solid; border-color: rgb(32, 76, 141); color: rgb(32, 76, 141); display: inline; width: 130px; }
+#titlesearch, #fullsearch { border-width: 1px; border-style: solid; border-color: rgb(32, 76, 141); background: rgb(59, 113, 184) none repeat scroll 0% 0%; color: rgb(255, 255, 255); cursor: pointer; display: inline; font-weight: bold; text-decoration: none; }
+#searchform label { display: block; }
+#locationline { padding-left: 20px; padding-right: 20px; }
+#pagelocation { margin: 1em 0px 0.5em; padding: 0px; }
+#pagelocation li { display: inline; color: rgb(59, 99, 155); }
+#pagelocation li::after { content: " » "; }
+#pagelocation li:last-child::after { content: ""; }
+.navibar { clear: both; display: block; height: 20px; padding: 0px 0px 0px 20px; margin: 0px; font-size: 0.9em; }
+.navibar li { float: left; display: inline; white-space: nowrap; margin-left: 3px; padding-top: 5px; padding-bottom: 5px; border-width: 1px; border-style: solid; border-color: rgb(98, 142, 202); background-color: rgb(255, 255, 255); background-image: url("moin-navibartop-bg.png"); background-position: left top; background-repeat: repeat-x; }
+.navibar li.wikilink {  }
+.navibar li a { padding: 4px 8px 5px; }
+.navibar a, .navibar a:visited { color: rgb(32, 76, 141); text-decoration: none; }
+.navibar li.current a { color: rgb(255, 255, 255); text-decoration: none; font-weight: bold; }
+.navibar li:hover { background-color: rgb(98, 142, 202); background-image: url("moin-navibartop-hover-bg.png"); background-position: left top; background-repeat: repeat-x; }
+.navibar li:hover a { color: rgb(255, 255, 255); text-decoration: none; }
+.navibar li:hover a:active { color: rgb(255, 255, 255); text-decoration: none; }
+.navibar li a:active { color: rgb(32, 76, 141); text-decoration: none; }
+.navibar li.current, .navibar li.current:hover, .navibar li.current:hover a, .navibar li.current:active a { color: rgb(255, 255, 255); background-color: rgb(98, 142, 202); background-image: url("moin-navibartop-hover-bg.png"); background-position: left top; background-repeat: repeat-x; }
+.pageline { clear: both; margin: 0px; padding: 0px; width: 100%; height: 5px; line-height: 5px; background: rgb(98, 142, 202) none repeat scroll 0% 0%; }
+#page { padding: 0px 20px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#page h1 { font-size: 1.7em; font-weight: bold; line-height: 1.9em; margin: 0px 0px 0.9em; padding-left: 0.7em; color: rgb(255, 255, 255); border: medium none; background-color: rgb(32, 76, 141); background-image: url("moin-h1-background.png"); }
+#page h2 { font-size: 1.4em; line-height: 1.8em; margin: 1.6em 0px 0.8em; padding-left: 0.7em; background-image: url("moin-h2-background.png"); border: medium none; color: rgb(7, 43, 97); }
+#page .table-of-contents-heading { font-size: 1.3em; font-weight: bold; line-height: 1.8em; margin: 0px 0px 10px; padding-left: 0.7em; color: rgb(7, 43, 97); background-color: rgb(255, 255, 255); background-image: url("moin-h2-background.png"); }
+#page h3 { font-size: 1.25em; line-height: 1.6em; margin-top: 1em; margin-bottom: 0.5em; padding-left: 0.7em; color: rgb(7, 43, 97); border-bottom: 1px solid rgb(218, 218, 218); }
+#page pre { border-width: 1px 1px 1px 4px; border-style: solid; border-color: rgb(229, 229, 229); white-space: pre; background: rgb(255, 250, 233) none repeat scroll 0% 0%; }
+#page tt { font-family: "DejaVu Sans Mono","Liberation Mono",monospace; white-space: pre; }
+#page p, #page hr, #page pre, #page table, #page .table-of-contents { margin-left: 1.5em; }
+#page p { margin-bottom: 1.3em; line-height: 1.5em; padding-left: 0px; }
+#page td > p { margin: 0.5em ! important; }
+td { border-width: 1pt; border-style: solid; border-color: rgb(204, 204, 204); }
+#page ul, #page ol { padding-left: 0.5em; margin-left: 3em; margin-bottom: 0.3em; }
+#page ul { list-style: outside url("moin-ul.png") circle; }
+#page ol { list-style-image: none ! important; }
+#page ul li { padding-left: 0em; margin-bottom: 0.3em; }
+#page ol li { padding-left: 0em; margin-bottom: 0.3em; }
+#page ul ul, #page ul ol, #page ol ul, #page ol ol { margin-left: 1.5em; margin-top: 0.3em; }
+#page ul li p, #page ol li p { margin-bottom: 0.3em; line-height: 1.5em; margin-left: 0px ! important; }
+.lmimg { background-color: rgb(236, 236, 236); background-image: url("moin-msg-bg-gray.png"); width: 1%; border-width: 1px 0px 1px 4px; border-style: solid; border-color: rgb(207, 207, 207); padding: 1em 0px 1em 1em; }
+.lmtxt { background-color: rgb(236, 236, 236); background-image: url("moin-msg-bg-gray.png"); width: 99%; border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: rgb(207, 207, 207) rgb(207, 207, 207) rgb(207, 207, 207) -moz-use-text-color; padding: 1em 1em 1em 0.5em; }
+.lmimg.blue, .lmtxt.blue { border-color: rgb(210, 224, 246); background-color: rgb(236, 244, 255); background-image: url("moin-msg-bg-blue.png"); }
+#footer { clear: both; margin-top: 20px; padding-bottom: 1em; background-color: rgb(32, 76, 141); background-image: url("moin-header-background.png"); }
+#footer .navibar li { background-color: rgb(255, 255, 255); background-image: url("moin-navibarbottom-bg.png"); background-position: left bottom; background-repeat: repeat-x; }
+#footer .navibar li:hover { background-color: rgb(98, 142, 202); background-image: url("moin-navibarbottom-hover-bg.png"); background-position: left bottom; background-repeat: repeat-x; }
+#footer .navibar li.current, #footer .navibar li.current:hover, #footer .navibar li.current:hover a, #footer .navibar li.current:active a { color: rgb(255, 255, 255); background-color: rgb(98, 142, 202); background-image: url("moin-navibarbottom-hover-bg.png"); background-position: left top; background-repeat: repeat-x; }
+#credits, #version, #timings { text-align: center; font-size: 0.88em; padding: 0px; margin-top: 2.5em; color: rgb(238, 238, 238); }
+#credits a { color: rgb(238, 238, 238); }
+#credits a:hover { text-decoration: underline; }
+#credits img { vertical-align: middle; }

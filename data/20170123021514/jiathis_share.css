@@ -1,0 +1,10 @@
+/* Code tidied up by ScrapBook */
+#ckepop dl, #ckepop dt, #ckepop dd, #ckepop ol, #ckepop ul, #ckepop li, #ckepop fieldset, #ckepop form, #ckepop label, #ckepop legend, #ckepop table, #ckepop caption, #ckepop tbody, #ckepop tfoot, #ckepop thead, #ckepop tr, #ckepop th, #ckepop td, #ckepop span { vertical-align: middle; margin: 0px; padding: 0px; font-family: "Microsoft YaHei",arial,tahoma,宋体,sans-serif; }
+#ckepop .jtico { text-align: left; overflow: hidden; display: block ! important; height: 16px ! important; line-height: 16px ! important; padding-left: 20px ! important; background: transparent url("jiathis_ico.png") no-repeat scroll left center; cursor: pointer; }
+#ckepop .jtico:hover { opacity: 0.8; }
+#ckepop .jtico_qzone { background-position: 0px -64px; }
+#ckepop .jtico_tsina { background-position: 0px -96px; }
+#ckepop .jtico_renren { background-position: 0px -160px; }
+#ckepop .jtico_kaixin001 { background-position: 0px -176px; }
+#ckepop .jtico_more, #ckepop .jtico_jiathis { background-position: 0px -1408px; }
+#ckepop .button, #ckepop .jiathis_txt { float: left; font-size: 12px; text-decoration: none; line-height: 18px ! important; }

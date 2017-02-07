@@ -1,0 +1,11 @@
+/* Code tidied up by ScrapBook */
+@import url("manual.css");
+html { font-size: 100%; }
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.2em; }
+h3 { font-size: 1.1em; }
+div.example h3, div.note h3, div.warning h3 { font-size: 1em; }
+div#page-header p.menu, div#path, div#footer { font-size: smaller; }
+div#page-content { margin-right: 0px; padding-right: 0px; }
+div.example pre, div.example p > code { font-size: 0.9em; }
+div.note pre, div.warning pre { font-size: 0.9em; }

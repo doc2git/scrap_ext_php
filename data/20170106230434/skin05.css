@@ -1,0 +1,11 @@
+/* Code tidied up by ScrapBook */
+.weiboShow .S_title_bg, .weiboShow .weiboShow_title, .weiboShow .weiboShow_topborder { background-color: rgb(255, 255, 255); }
+.weiboShow * { border-color: rgb(229, 229, 229); }
+.weiboShow .S_border_c, .weiboShow .weiboShow_vline { color: rgb(229, 229, 229); }
+.weiboShow .S_border_bg { background: rgb(229, 229, 229) none repeat scroll 0% 0%; }
+.weiboShow { color: rgb(68, 68, 68); }
+.weiboShow .weiboShow_developerDetail_namedir { color: rgb(68, 68, 68); }
+.weiboShow .WB_linkA, .weiboShow .WB_linkA a, .weiboShow a { color: rgb(80, 147, 213); }
+.weiboShow .WB_linkB, .weiboShow .WB_linkB a { color: rgb(80, 147, 213); }
+.weiboShow .weiboShow_wrap { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.weiboShow .S_focus_bg, .weiboShow .weiboShow_mainFeed_list:hover, .weiboShow .weiboShow_mainFeed_list_focus { background-color: rgb(243, 243, 243); }

@@ -1,0 +1,97 @@
+/* Code tidied up by ScrapBook */
+* { font-family: Microsoft YaHei; padding: 0px; }
+body, html { background-color: rgb(255, 255, 255); font-size: 12px; color: rgb(63, 63, 63); text-decoration: none; height: 100%; margin: 0px auto; }
+table, td, div { font-size: 12px; color: rgb(63, 63, 63); text-decoration: none; }
+p { font-size: 12px; color: rgb(63, 63, 63); text-decoration: none; line-height: 25px; }
+A:link { text-decoration: none; }
+A:visited { text-decoration: none; }
+A:hover { text-decoration: none; }
+A:active { text-decoration: none; }
+a:hover { text-decoration: underline; }
+a { color: rgb(51, 51, 51); }
+a:hover { color: rgb(51, 51, 51); text-decoration: underline; }
+#logo { text-decoration: none; }
+.tb { height: 20px; padding: 3px 0px 0px; border: 1px solid rgb(218, 218, 218); border-radius: 5px; }
+.mbtn1 { padding: 3px 20px; font-size: 14px; border-radius: 5px; }
+.divfloatleft { float: left; }
+.divfloatright { float: right; }
+.divfloatclear { clear: both; }
+.divtextalignleft { text-align: left; }
+.divtextaligncenter { text-align: center; }
+.divtextalignright { text-align: right; }
+.colorhei { color: rgb(0, 0, 0); }
+.backgroundcolorbai { background-color: rgb(255, 255, 255); }
+.divbackgroundcolor1 { background-color: rgb(248, 248, 248); }
+.divmargin0auto { margin: 0px auto; }
+.divborderbottomsolid1 { border-bottom: 1px solid rgb(221, 221, 221); }
+.divbackgroundcolor { background-color: rgb(240, 240, 240); }
+.divborder { border: 1px solid rgb(225, 225, 225); border-radius: 5px; }
+.divborderbottomdotted { border-bottom: 1px dotted rgb(218, 218, 218); }
+.divtitle { margin: 10px 10px 0px; padding-bottom: 5px; border-bottom: 1px dotted rgb(218, 218, 218); }
+.divtitlefont { font-size: 14px; font-weight: bold; }
+.divullititle { list-style-type: decimal; margin-left: 28px; padding: 1px 10px 1px 0px; table-layout: fixed; word-break: break-all; word-wrap: break-word; }
+.divmain { width: 1000px; text-align: center; min-height: 300px; height: auto ! important; margin: 0px auto; }
+.divdaohang { width: 1000px; text-align: left; height: 25px; margin: 0px auto; padding-top: 10px; }
+.width5px { width: 5px; }
+.width120px { width: 120px; }
+.width300px { width: 300px; }
+.width500px { width: 500px; }
+.width880px { width: 880px; }
+.width1000px { width: 1000px; }
+.width100bi { width: 100%; }
+.width30bi { width: 30%; }
+.width70bi { width: 70%; }
+.width100bi { width: 100%; }
+.height23px { height: 23px; }
+.height30px { height: 30px; }
+.heightline25px { line-height: 25px; }
+.heightline30px { line-height: 30px; }
+.heightline25px { line-height: 25px; }
+.heightline30px { line-height: 30px; }
+.margintop5 { margin-top: 5px; }
+.margintop10 { margin-top: 10px; }
+.margintop20 { margin-top: 20px; }
+.margintop10bottom10 { margin-top: 10px; margin-bottom: 10px; }
+.marginright20 { margin-right: 20px; }
+.paddingtop3 { padding-top: 3px; }
+.paddingtop10 { padding-top: 10px; }
+.paddingtop20 { padding-top: 20px; }
+.paddingbottom20 { padding-bottom: 20px; }
+.paddingtop10bottom10 { padding-top: 10px; padding-bottom: 10px; }
+.paddingtop20bottom20 { padding-top: 20px; padding-bottom: 20px; }
+.paddingleft10right10 { padding-left: 10px; padding-right: 10px; }
+.bottomline { border-bottom: 1px solid rgb(230, 230, 230); border-top: 1px solid rgb(255, 255, 255); }
+.acursorpointer { cursor: pointer; }
+.colorboldCheng { font-weight: bold; color: rgb(255, 102, 0); }
+.colorCheng { color: rgb(255, 102, 0); }
+.colorboldlv { font-weight: bold; color: rgb(37, 146, 53); }
+.colorlv { color: rgb(37, 146, 53); }
+.bottomdiv { border-top: 1px solid rgb(225, 225, 225); background-color: rgb(250, 250, 250); }
+.menuDiv { width: 100%; margin-top: 40px; }
+.menuDiv ul { list-style: outside none none; margin: 0px; }
+.menuDiv ul li { float: left; padding: 6px 9px; font-size: 14px; }
+.title0 { background-color: rgb(248, 248, 248); border-width: 1px; border-style: solid; border-color: rgb(217, 217, 217); border-top-left-radius: 4px; border-top-right-radius: 4px; }
+.title1 { background-color: rgb(248, 248, 248); border-top: 1px solid rgb(217, 217, 217); border-right: 1px solid rgb(217, 217, 217); border-bottom: 1px solid rgb(217, 217, 217); border-top-left-radius: 4px; border-top-right-radius: 4px; }
+.menuDivt {  }
+.menuDivt ul { list-style: outside none none; margin: 0px; }
+.menuDivt ul li { float: left; padding: 3px 5px 0px; height: 24px; }
+.taga { color: rgb(255, 102, 0); font-size: 14px; padding: 1px 10px 1px 1px; word-wrap: break-word; }
+.detailtitle { padding: 15px 0px; color: rgb(7, 93, 179); font-size: 16px; font-weight: bold; }
+.detail1 { margin: 20px 0px; }
+.detailcontennt { text-align: left; margin: 20px 0px; font-size: 12px; line-height: 30px; word-wrap: break-word; }
+.detailcontennt p { font-size: 14px; line-height: 30px; }
+.detailcontennt img { max-width: 680px; overflow: hidden; }
+.detailpinglun1 { height: 30px; border-bottom: 1px solid rgb(225, 225, 225); }
+.detailpinglun2 { float: left; text-align: center; display: block; padding: 4px 20px 2px; border-left: 1px solid rgb(225, 225, 225); border-top: 1px solid rgb(225, 225, 225); border-right: 1px solid rgb(225, 225, 225); border-top-left-radius: 5px; border-top-right-radius: 5px; }
+.detailpinglun3 { float: left; text-align: center; display: block; padding: 10px 0px 2px 5px; }
+.detailcai { width: 60px; margin-left: 20px; float: right; cursor: pointer; border: 1px solid rgb(225, 225, 225); border-radius: 5px; }
+.detailcai1 { padding: 10px 0px 6px; font-size: 22px; }
+.detailcai2 { padding: 5px 0px; border-top: 1px solid rgb(225, 225, 225); }
+.detailzan { width: 60px; float: right; cursor: pointer; border: 1px solid rgb(225, 225, 225); border-radius: 5px; }
+.detailzan1 { padding: 10px 0px 6px; font-size: 22px; }
+.detailzan2 { padding: 5px 0px; border-top: 1px solid rgb(225, 225, 225); }
+.detailjubao { padding: 4px 8px; color: red; font-size: 14px; font-weight: bold; cursor: pointer; border: 1px solid rgb(225, 225, 225); border-radius: 5px; }
+.title6 { font-size: 18px; font-weight: bold; color: rgb(93, 93, 93); }
+.youqingtitle { margin: 10px 30px 10px 10px; padding: 0px 0px 5px; font-size: 14px; font-weight: bold; }
+.youqingcontent { margin: 10px 30px 10px 10px; line-height: 25px; }
+.pagecolorc { color: rgb(255, 102, 0); font-weight: bold; }

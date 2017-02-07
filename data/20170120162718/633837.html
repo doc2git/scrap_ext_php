@@ -1,0 +1,337 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8" /><meta http-equiv="content-language" content="zh-CN" /><meta http-equiv="x-dns-prefetch-control" content="on" /><link rel="dns-prefetch" href="http://eclick.baidu.com" /><link rel="dns-prefetch" href="http://cpro.baidu.com" /><link rel="dns-prefetch" href="http://cpro.baidustatic.com" /><link rel="dns-prefetch" href="http://inte.sogou.com" /><link rel="dns-prefetch" href="http://js.bkjia.com" /><meta http-equiv="Cache-Control" content="no-siteapp"  /><meta http-equiv="Cache-Control" content="no-transform"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"  /><meta name="format-detection" content="telephone=no" /><meta name="applicable-device" content="pc,mobile"><meta name="mobile-agent" content="format=html5; url=http://www.bkjia.com/Mysql/633837.html">
+<title>mysql字符集编码设置与查看命令_Mysql | 帮客之家</title>
+<meta name="keywords" content="mysql,字符集,编码,设置,与,查看,命令,在,mysql,对,字符,编码,的,查看,我们,使用,SHOW,VARIABLES,LIKE,character,即可,修改,需要,my.ini,中的,配置,方法,了,下面,我一,"/>
+<meta name="description" content="mysql字符集编码设置与查看命令。在mysql对字符编码的查看我们使用SHOW VARIABLES LIKE character即可，修改我们需要修改my.ini中的配置方法了，下面我一起来看看。 最近，在项目组"/>
+<link href="http://css.bkjia.com/bkjia/css/article.css" type="text/css" rel="stylesheet" media="all">
+<base target="_blank"/>
+<!--[if lt IE 9]><script src="http://js.bkjia.com/bkjia/js/html5.js"></script><![endif]-->
+<link rel="shortcut icon" type="image/x-icon" href="http://css.bkjia.com/bkjia/images/favicon.ico" />
+<link href="https://plus.google.com/115281975932467747980" rel="publisher" />
+</head>
+<body>
+<div class="div_body" id="body">
+<script language="javascript" src="http://js.bkjia.com/bkjia/js/head_top.js" type="text/javascript"></script>
+<div class="headnav"><div class="headnav_hmenu"><div class="hmenu"><ul class="clearfix"><li><a href="http://www.bkjia.com/" title="帮客之家首页">首页</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-76-1.html" title="软件编程">编程</a></li><li><a href="http://www.bkjia.com/fenlei/list-74-1.html" title="web前端">前端</a></li><li><a href="http://www.bkjia.com/fenlei/list-75-1.html" title="WEB编程">WEB</a></li><li><a href="http://www.bkjia.com/fenlei/list-82-1.html" title="移动开发">移动</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-79-1.html" title="安全攻防">安全</a></li><li><a href="http://www.bkjia.com/fenlei/list-80-1.html" title="网络技术">网络</a></li><li><a href="http://www.bkjia.com/fenlei/list-78-1.html" title="操作系统">系统</a></li><li><a href="http://www.bkjia.com/fenlei/list-83-1.html" title="脚本下载">脚本</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-84-1.html" title="建站cms">建站</a></li><li><a href="http://www.bkjia.com/fenlei/list-85-1.html" title="网页制作">网页</a></li><li><a href="http://www.bkjia.com/fenlei/list-77-1.html" title="数据库">数据库</a></li><li><a href="http://www.bkjia.com/fenlei/list-81-1.html" title="服务器">服务器</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-73-1.html" title="手机教程">手机</a></li> <li><a href="http://www.bkjia.com/fenlei/list-71-1.html" title="电脑教程">电脑</a></li><li><a href="http://tech.bkjia.com" title="技术库搜索">技术搜索</a></li><li><a href="http://kansha.bkjia.com" title="今天看啥">今天看啥</a></li>   </ul> </div>
+    <div class="subhmenu">  <ul class="clearfix"><li><a href="http://www.bkjia.com/fenlei/list-186-1.html">PHP</a></li> <li><a href="http://www.bkjia.com/fenlei/list-188-1.html">JSP</a></li><li><a href="http://www.bkjia.com/fenlei/list-98-1.html">JAVA</a></li><li><a href="http://www.bkjia.com/fenlei/list-190-1.html">.NET</a></li><li><a href="http://www.bkjia.com/fenlei/list-196-1.html">IOS</a></li>      	<li><a href="http://www.bkjia.com/fenlei/list-197-1.html">Android</a></li><li><a href="http://www.bkjia.com/fenlei/list-179-1.html">Html5</a></li><li><a href="http://www.bkjia.com/fenlei/list-178-1.html">CSS</a></li><li><a href="http://www.bkjia.com/fenlei/list-182-1.html">Ajax</a></li><li><a href="http://www.bkjia.com/fenlei/list-181-1.html">jQuery</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-117-1.html">Myslq</a></li><li><a href="http://www.bkjia.com/fenlei/list-118-1.html">Msslq</a></li><li><a href="http://www.bkjia.com/fenlei/list-107-1.html">Sybase</a></li><li><a href="http://www.bkjia.com/fenlei/list-116-1.html">DB2</a></li><li><a href="http://www.bkjia.com/fenlei/list-106-1.html">Oracle</a></li><li class="parting"></li><li><a href="http://www.bkjia.com/fenlei/list-131-1.html">CMS教程</a></li><li><a href="http://www.bkjia.com/fenlei/list-167-1.html">Linux</a></li><li><a href="http://www.bkjia.com/fenlei/list-166-1.html">IIS</a></li><li><a href="http://www.bkjia.com/fenlei/list-169-1.html">Apache</a></li><li><a href="http://www.bkjia.com/fenlei/list-174-1.html">Nginx</a></li> </ul></div>
+  </div></div>
+<div class="div_body head_box mt10"> <div class="clearfix">
+<div class="ad_1"><script src='http://js.bkjia.com/bkjia/js/banner.js' type="text/javascript"></script></div><div class="jrd"><span class="tit">今天看啥</span><ul class="dh_ul"><script src='http://kansha.bkjia.com/data/js/0.js' type="text/javascript"></script></ul></div></div><div class="hot_tj clearfix"> <span class="hot">热点：</span><ul class="tj_r"><script type="text/javascript" src='http://js.bkjia.com/bkjia/js/bannerhot.js' ></script></ul></div>	<div class="hot_tj brand_tj clearfix"><script type="text/javascript" src='http://js.bkjia.com/bkjia/js/bannerhot2.js'></script></div></div><div class="ad"><script src='http://js.bkjia.com/bkjia/js/subnavtop.js' type="text/javascript"></script></div>
+<header id="header" class="header clearfix"><nav class="step step_new" id="nav"><span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">页面导航：<a href='http://www.bkjia.com/' target='_self' itemprop='url'>IT教程</a> > <a href='http://www.bkjia.com/fenlei/list-77-1.html' target='_self' itemprop='url'>数据库</a> > <a href='http://www.bkjia.com/fenlei/list-117-1.html' target='_self' itemprop='url'>Mysql</a> > </span>正文
+<span>mysql&nbsp;&nbsp;字符集编码&nbsp;&nbsp;</span></nav>
+<div class="search"><a name="search"></a>
+			<form id="search" method="get" action="http://tech.bkjia.com/search.php">
+			<input class="skey" name="keyword" type="text">
+			<input type="hidden" name="sub" value="articlebanner" />
+			<input class="sbtn" value="搜索" type="submit"></input>
+			</form>
+</div></header>
+<div class="wrap clearfix" itemscope itemtype="http://schema.org/TechArticle">
+<div class="left" id="main_left">
+<article class="container">
+<div class="wrap_left wrap_left2">
+<header id="page-header" class="tit_t1 clearfix">
+<h1>mysql字符集编码设置与查看命令</h1><br />
+<div class="view" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"> 热度<span itemprop="ratingValue">1</span>    <a href="#comment" target="_self">评论 <span itemprop="reviewCount">77</span></a> </div>
+<em>www.BkJia.Com</em>  &nbsp;网友分享于：&nbsp;
+<span itemprop="datePublished" content="2014-01-01GMT02:01:39">2014-01-01 02:01:39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览数43337次
+</header>
+<div class="artitle"><script src='http://js.bkjia.com/bkjia/js/artitle.js' type="text/javascript"></script></div>
+<div class="content" id="cotent_idd" itemprop="articleBody">
+<p>在mysql对字符编码的查看我们使用SHOW VARIABLES LIKE character即可，修改我们需要修改my.ini中的配置方法了，下面我一起来看看。<p>最近，在项目组使用的mysql数据库中，插入数据出现乱码，关于这个问题做了下总结，我们从最基本的地方说起，到错误产生的深层次原因和解决办法。</p>
+<p><strong>基本概念：<br />
+</strong>&bull; 字符(Character)是指人类语言中最小的表义符号。例如&rsquo;A'、&rsquo;B'等；<br />
+&bull; 给定一系列字符，对每个字符赋予一个数值，用数值来代表对应的字符，这一数值就是字符的编码(Encoding)。例如，我们给字符&rsquo;A'赋予数值0，给字符&rsquo;B'赋予数值1，则0就是字符&rsquo;A'的编码；<br />
+&bull; 给定一系列字符并赋予对应的编码后，所有这些字符和编码对组成的集合就是字符集(Character Set)。例如，给定字符列表为{&rsquo;A',&rsquo;B'}时，{&rsquo;A'=&gt;0, &lsquo;B&rsquo;=&gt;1}就是一个字符集；<br />
+&bull; 字符序(Collation)是指在同一字符集内字符之间的比较规则；<br />
+&bull; 确定字符序后，才能在一个字符集上定义什么是等价的字符，以及字符之间的大小关系；<br />
+&bull; 每个字符序唯一对应一种字符集，但一个字符集可以对应多种字符序，其中有一个是默认字符序(Default Collation)；<br />
+&bull; MySQL中的字符序名称遵从命名惯例：以字符序对应的字符集名称开头；以_ci(表示大小写不敏感)、_cs(表示大小写敏感)或_bin(表示按编码值比较)结尾。例如：在字符序&ldquo;utf8_general_ci&rdquo;下，字符&ldquo;a&rdquo;和&ldquo;A&rdquo;是等价的；<br />
+&nbsp; <br />
+<strong>MySQL的字符集支持：<br />
+</strong>1、字符集(Character set)。<br />
+2、排序比较方式(Collation)。</p>
+<p>通过命令：show character set 和 show collation 可以分别查看Mysql支持的字符集和排序方式。<br />
+&ndash; mysql&gt; show character set;<br />
+&ndash; mysql&gt; show collation;<br />
+&nbsp; <br />
+<strong>Mysql对于字符集的支持细化到四个层次：<br />
+</strong>1、服务器(server)；<br />
+2、数据库(database)；<br />
+3、数据表(table)(字段column)；<br />
+4、连接(connection)；<br />
+&nbsp;&nbsp; <br />
+<strong>MySQL字符集变量：<br />
+</strong>&ndash; character_set_server：默认的内部操作字符集<br />
+&ndash; character_set_client：客户端来源数据使用的字符集<br />
+&ndash; character_set_connection：连接层字符集<br />
+&ndash; character_set_results：查询结果字符集<br />
+&ndash; character_set_database：当前选中数据库的默认字符集<br />
+&ndash; character_set_system：系统元数据(字段名等)字符集<br />
+&ndash; 还有以collation_开头的同上面对应的变量，用来描述字符序。</p>
+<p><strong>用introducer指定文本字符串的字符集：<br />
+</strong>格式为：[_charset] &rsquo;string&rsquo; [COLLATE collation]<br />
+例如：<br />
+&ndash; SELECT _latin1 &rsquo;string&rsquo;;<br />
+&ndash; SELECT _utf8 &lsquo;你好&rsquo; COLLATE utf8_general_ci;<br />
+由introducer修饰的文本字符串在请求过程中不经过多余的转码，直接转换为内部字符集处理。</p>
+<p><strong>1、查看默认字符集</strong>(默认情况下，Mysql的字符集是latin1(ISO_8859_1)<br />
+通常，查看系统的字符集和排序方式的设定可以通过下面的两条命令：<br />
+&nbsp;</p>
+<table width="620" align="center" border="0" cellpadding="1" cellspacing="1"  style="background:#FB7">
+	  <tr>
+		<td width="464" height="27" bgcolor="#FFE7CE">&nbsp;代码如下</td>
+		<td width="109" align="center" bgcolor="#FFE7CE" style="cursor:pointer;" onClick="doCopy('copy3064')">复制代码</td>
+	  </tr>
+	  <tr>
+		<td height="auto" colspan="2" valign="top" bgcolor="#FFFFFF" style="padding:10px;" class="copyclass" id=copy3064>
+<p>&ndash; mysql&gt; SHOW VARIABLES LIKE 'character%';</p>
+<p>+--------------------------+---------------------------------+<br />
+| Variable_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
++--------------------------+---------------------------------+<br />
+| character_set_client&nbsp;&nbsp;&nbsp;&nbsp; | utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+| character_set_connection | utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+| character_set_database&nbsp;&nbsp; | utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+| character_set_filesystem | binary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+| character_set_results&nbsp;&nbsp;&nbsp; | utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+| character_set_server&nbsp;&nbsp;&nbsp;&nbsp; | utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+| character_set_system&nbsp;&nbsp;&nbsp;&nbsp; | utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+| character_sets_dir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | D:Program FilesMySQLMySQL Server 5.1sharecharsets |<br />
++--------------------------+---------------------------------+<br />
+&nbsp; <br />
+&ndash; mysql&gt; SHOW VARIABLES LIKE 'collation_%';</p>
+<p>+----------------------+-----------------+</p>
+<p>| Variable_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</p>
+<p>+----------------------+-----------------+</p>
+<p>| collation_connection&nbsp;&nbsp; | utf8_general_ci&nbsp; |</p>
+<p>| collation_database&nbsp;&nbsp;&nbsp; | utf8_general_ci&nbsp; |</p>
+<p>| collation_server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | utf8_general_ci&nbsp; |</p>
+<p>+----------------------+-----------------+</p>
+</td>
+	  </tr>
+	</table>
+<p>&nbsp; <br />
+<strong>2、修改默认字符集<br />
+</strong>(1) 最简单的修改方法，就是修改mysql的my.ini文件中的字符集键值（共6个），如：<br />
+[client]</p>
+<table width="620" align="center" border="0" cellpadding="1" cellspacing="1"  style="background:#FB7">
+	  <tr>
+		<td width="464" height="27" bgcolor="#FFE7CE">&nbsp;代码如下</td>
+		<td width="109" align="center" bgcolor="#FFE7CE" style="cursor:pointer;" onClick="doCopy('copy5029')">复制代码</td>
+	  </tr>
+	  <tr>
+		<td height="auto" colspan="2" valign="top" bgcolor="#FFFFFF" style="padding:10px;" class="copyclass" id=copy5029>
+<p>default-character-set = utf8</p>
+<p>default-character-set = utf8<br />
+character-set-server = utf8<br />
+collation-server = utf8_general_ci <br />
+init_connect = 'SET collation_connection = utf8_general_ci '<br />
+init_connect = 'SET NAMES utf8'</p>
+</td>
+	  </tr>
+	</table>
+<p>修改完后，重启mysql的服务。</p>
+<p>(2) 还有一种修改字符集的方法，就是使用mysql的命令：</p>
+<table width="620" align="center" border="0" cellpadding="1" cellspacing="1"  style="background:#FB7">
+	  <tr>
+		<td width="464" height="27" bgcolor="#FFE7CE">&nbsp;代码如下</td>
+		<td width="109" align="center" bgcolor="#FFE7CE" style="cursor:pointer;" onClick="doCopy('copy9325')">复制代码</td>
+	  </tr>
+	  <tr>
+		<td height="auto" colspan="2" valign="top" bgcolor="#FFFFFF" style="padding:10px;" class="copyclass" id=copy9325>&ndash; mysql&gt; SET character_set_connection = utf8 ;<br />
+&ndash; mysql&gt; SET character_set_database = utf8 ; <br />
+&ndash; mysql&gt; SET character_set_server = utf8 ; <br />
+&ndash; mysql&gt; SET collation_server = utf8 ; <br />
+&ndash; mysql&gt; SET collation_database = utf8 ;<br />
+&ndash; mysql&gt; SET character_set_client = utf8 ; <br />
+&ndash; mysql&gt; SET character_set_results = utf8 ; <br />
+&ndash; mysql&gt; SET collation_connection = utf8 ; </td>
+	  </tr>
+	</table>
+<p>一般就算设置了表的默认字符集为utf8并且通过UTF-8编码发送查询，你会发现存入数据库的仍然是乱码。问题就出在这个connection连接层上。</p>
+<p>解决方法是在发送查询前执行一下下面这句：</p>
+<table width="620" align="center" border="0" cellpadding="1" cellspacing="1"  style="background:#FB7">
+	  <tr>
+		<td width="464" height="27" bgcolor="#FFE7CE">&nbsp;代码如下</td>
+		<td width="109" align="center" bgcolor="#FFE7CE" style="cursor:pointer;" onClick="doCopy('copy9728')">复制代码</td>
+	  </tr>
+	  <tr>
+		<td height="auto" colspan="2" valign="top" bgcolor="#FFFFFF" style="padding:10px;" class="copyclass" id=copy9728>SET NAMES 'utf8';<br />
+</td>
+	  </tr>
+	</table>
+<p>它相当于下面的三句指令：</p>
+<table width="620" align="center" border="0" cellpadding="1" cellspacing="1"  style="background:#FB7">
+	  <tr>
+		<td width="464" height="27" bgcolor="#FFE7CE">&nbsp;代码如下</td>
+		<td width="109" align="center" bgcolor="#FFE7CE" style="cursor:pointer;" onClick="doCopy('copy3438')">复制代码</td>
+	  </tr>
+	  <tr>
+		<td height="auto" colspan="2" valign="top" bgcolor="#FFFFFF" style="padding:10px;" class="copyclass" id=copy3438>SET character_set_client = utf8;<br />
+SET character_set_results = utf8;<br />
+SET character_set_connection = utf8;<br />
+</td>
+	  </tr>
+	</table>
+<p>&nbsp; <br />
+检测字符集问题的一些手段</p>
+<p>&nbsp;&bull; SHOW CHARACTER SET;&nbsp; #查看mysql支持的字符集<br />
+&nbsp;&bull; SHOW COLLATION;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #查看mysql的字符序列(排序方式)<br />
+&nbsp;&bull; SHOW VARIABLES LIKE &lsquo;character%&rsquo;;&nbsp; #查看mysql系统默认字符集设置值<br />
+&nbsp;&bull; SHOW VARIABLES LIKE &lsquo;collation%&rsquo;; #查看mysql系统默认的字符序列(排序方式) 设置值<br />
+&nbsp;&bull; SQL函数HEX、LENGTH、CHAR_LENGTH<br />
+&nbsp;&bull; SQL函数CHARSET、COLLATION<br />
+&nbsp; <br />
+<strong>MySQL中的字符集转换过程：</strong></p>
+<p><br />
+1. MySQL Server收到请求时将请求数据从character_set_client转换为character_set_connection；<br />
+2. 进行内部操作前将请求数据从character_set_connection转换为内部操作字符集，其确定方法如下：<br />
+&nbsp; - 使用每个数据字段的CHARACTER SET设定值；<br />
+&nbsp; - 若上述值不存在，则使用对应数据表的DEFAULT CHARACTER SET设定值(MySQL扩展，非SQL标准)；<br />
+&nbsp; - 若上述值不存在，则使用对应数据库的DEFAULT CHARACTER SET设定值；<br />
+&nbsp; - 若上述值不存在，则使用character_set_server设定值。<br />
+3. 将操作结果从内部操作字符集转换为character_set_results。<br />
+&nbsp;&nbsp; <br />
+我们产生的乱码问题：<br />
+a 我们的字段没有设置字符集，因此使用表的数据集；<br />
+b 我们的表没有指定字符集，默认使用数据库存的字符集；<br />
+c 我们的数据库在创建的时候没有指定字符集，因此使用character_set_server设定值；<br />
+d 我们没有特意去修改character_set_server的指定字符集，因此使用mysql默认；<br />
+e mysql默认的字符集是latin1，因此，我们使用了latin1字符集，而我们character_set_connection的字符集是UTF-8，插入中文乱码也再所难免了。<br />
+&nbsp; <br />
+<strong>MySQL默认字符集：</strong></p>
+<p>MySQL对于字符集的指定可以细化到一个数据库，一张表，一列，应该用什么字符集。但是传统的程序在创建数据库和数据表时并没有使用那么复杂的配置，它们用的是默认的配置，那么，默认的配置从何而来呢？<br />
+(1)编译MySQL 时，指定了一个默认的字符集，这个字符集是 latin1；<br />
+(2)安装MySQL 时，可以在配置文件 (my.ini) 中指定一个默认的的字符集，如果没指定，这个值继承自编译时指定的；<br />
+(3)启动mysqld 时，可以在命令行参数中指定一个默认的的字符集，如果没指定，这个值继承自配置文件中的配置,此时 character_set_server 被设定为这个默认的字符集；<br />
+(4)当创建一个新的数据库时，除非明确指定，这个数据库的字符集被缺省设定为character_set_server；<br />
+(5)当选定了一个数据库时，character_set_database 被设定为这个数据库默认的字符集；<br />
+(6)在这个数据库里创建一张表时，表默认的字符集被设定为 character_set_database，也就是这个数据库默认的字符集；<br />
+(7)当在表内设置一栏时，除非明确指定，否则此栏缺省的字符集就是表默认的字符集；<br />
+简单的总结一下，如果什么地方都不修改，那么所有的数据库的所有表的所有栏位的都用 latin1 存储，不过我们如果安装 MySQL，一般都会选择多语言支持，也就是说，安装程序会自动在配置文件中把default_character_set 设置为 UTF-8，这保证了缺省情况下，所有的数据库的所有表的所有栏位的都用 UTF-8 存储。<br />
+<strong>&nbsp; <br />
+常见问题解析</strong></p>
+<p><br />
+1)向默认字符集为utf8的数据表插入utf8编码的数据前没有设置连接字符集，查询时设置连接字符集为utf8<br />
+&nbsp;&ndash; 插入时根据MySQL服务器的默认设置，character_set_client、character_set_connection和character_set_results均为latin1；<br />
+&nbsp;&ndash; 插入操作的数据将经过latin1=&gt;latin1=&gt;utf8的字符集转换过程，这一过程中每个插入的汉字都会从原始的3个字节变成6个字节保存；<br />
+&nbsp;&ndash; 查询时的结果将经过utf8=&gt;utf8的字符集转换过程，将保存的6个字节原封不动返回，产生乱码。<br />
+&nbsp;&nbsp; <br />
+2)向默认字符集为latin1的数据表插入utf8编码的数据前设置了连接字符集为utf8（我们遇到的错误就是属于这一种）<br />
+&nbsp;&ndash; 插入时根据连接字符集设置，character_set_client、character_set_connection和character_set_results均为utf8；<br />
+&nbsp;-插入数据将经过utf8=&gt;utf8=&gt;latin1的字符集转换，若原始数据中含有u0000~u00ff范围以外的 Unicode字符，会因为无法在latin1字符集中表示而被转换为&ldquo;?&rdquo;(0&times;3F)符号，以后查询时不管连接字符集设置如何都无法恢复其内容了。 <br />
+&nbsp;&nbsp; <br />
+<strong>使用MySQL字符集时的建议</strong></p>
+<p>&bull; 建立数据库/表和进行数据库操作时尽量显式指出使用的字符集，而不是依赖于MySQL的默认设置，否则MySQL升级时可能带来很大困扰；<br />
+&bull; 数据库和连接字符集都使用latin1时，虽然大部分情况下都可以解决乱码问题，但缺点是无法以字符为单位来进行SQL操作，一般情况下将数据库和连接字符集都置为utf8是较好的选择；<br />
+&bull; 使用mysql CAPI（mysql提供C语言操作的API）时，初始化数据库句柄后马上用mysql_options设定 MYSQL_SET_CHARSET_NAME属性为utf8，这样就不用显式地用SET NAMES语句指定连接字符集，且用mysql_ping重连断开的长连接时也会把连接字符集重置为utf8；<br />
+&bull; 对于mysql PHP API，一般页面级的PHP程序总运行时间较短，在连接到数据库以后显式用SET NAMES语句设置一次连接字符集即可；但当使用长连接时，请注意保持连接通畅并在断开重连后用SET NAMES语句显式重置连接字&nbsp; 符集。 <br />
+&nbsp; <br />
+<strong>其他注意事项</strong></p>
+<p>&bull; my.cnf中的default_character_set设置只影响mysql命令连接服务器时的连接字符集，不会对使用libmysqlclient库的应用程序产生任何作用！<br />
+&bull; 对字段进行的SQL函数操作通常都是以内部操作字符集进行的，不受连接字符集设置的影响。<br />
+&bull; SQL语句中的裸字符串会受到连接字符集或introducer设置的影响，对于比较之类的操作可能产生完全不同的结果，需要小心！<br />
+&nbsp;&nbsp;&nbsp; <br />
+<strong>总结</strong></p>
+<p><br />
+根据上面的分析和建议，我们解决我们遇到问题应该使用什么方法大家心里应该比较清楚了。对，就是在创建database的时候指定字符集，不要去通过修改默 认配置来达到目的，当然你也可以采用指定表的字符集的形式，但很容易出现遗漏，特别是在很多人都参与设计的时候，更容易纰漏。</p>
+<p>因此，使用什么数据库版本，不管是3.x，还是4.0.x还是4.1.x，其实对我们来说不重要，重要的有两点</p>
+<p>1.正确的设定数据库编码。MySQL4.0以下版本的字符集总是默认ISO8859-1，MySQL4.1在安装的时候会让你选择。如果你准备使用UTF- 8，那么在创建数据库的时候就要指定好UTF-8(创建好以后也可以改，4.1以上版本还可以单独指定表的字符集) <br />
+2.正确的设定数据库connection编码。设置好数据库的编码后，在连接数据库时候，应该指定connection的编码，比如使用jdbc连接时，指定连接为utf8方式。</p></td>
+	  </tr>
+	</table></p>
+<p align="left"><div style="display:none;"><span id="url" itemprop="url">http://www.bkjia.com/Mysql/633837.html</span><span id="indexUrl" itemprop="indexUrl">www.bkjia.com</span><span id="isOriginal" itemprop="isOriginal">true</span><span id="isBasedOnUrl" itemprop="isBasedOnUrl">http://www.bkjia.com/Mysql/633837.html</span><span id="genre" itemprop="genre">TechArticle</span><span id="description" itemprop="description">在mysql对字符编码的查看我们使用SHOW VARIABLES LIKE character即可，修改我们需要修改my.ini中的配置方法了，下面我一起来看看。 最近，在项目组...</span></div></p></div>
+<div class="art_confoot"><script src='http://js.bkjia.com/bkjia/js/art_confoot.js' type="text/javascript"></script></div>
+<div class="page"></div>
+<div class="post-related"> <h3 class="tit_3">相关文章</h3><div class="clearfix m_5">
+<ul> <li><a href='http://www.bkjia.com/Mysql/1023234.html' title='MySQL操作汇总，mysql汇总' target='_blank'>MySQL操作汇总，mysql汇总</a></li><li><a href='http://www.bkjia.com/webzh/1023165.html' title='linux 下MySQL服务器的启动与停止，linuxmysql' target='_blank'>linux 下MySQL服务器的启动与停止，linuxmy</a></li><li><a href='http://www.bkjia.com/sjkqy/1023119.html' title='MySQL基本数据操作，MySQL数据操作' target='_blank'>MySQL基本数据操作，MySQL数据操作</a></li><li><a href='http://www.bkjia.com/sjkqy/1023112.html' title='Centos6 源码部署MySQL5.6，centos6mysql5.6' target='_blank'>Centos6 源码部署MySQL5.6，centos6mysql5.6</a></li><li><a href='http://www.bkjia.com/sjkqy/1022905.html' title='【Hibernate】Hibernate的多表查询，hibernate表查询' target='_blank'>【Hibernate】Hibernate的多表查询，hibernate表</a></li><li><a href='http://www.bkjia.com/sjkqy/1022899.html' title='MySQL技术内幕-InnoDB存储引擎-读书笔记（一），mysql-innodb' target='_blank'>MySQL技术内幕-InnoDB存储引擎-读书笔记（一</a></li></ul></div>
+<div class="hot_c"><span><b style="color:#000; ">相关搜索：</b>
+ <a href='http://tech.bkjia.com/search.php?keyword=mysql&sub=articlefoot' target=_blank >mysql</a> <a href='http://tech.bkjia.com/search.php?keyword=%E5%AD%97%E7%AC%A6%E9%9B%86%E7%BC%96%E7%A0%81&sub=articlefoot' target=_blank >字符集编码</a>
+ </span></div>
+</div>
+<div class="option-btns">
+<a href="http://kansha.bkjia.com/" title="简单休息，找找灵感"><div class="sharebox"><span class="btn">今天看啥</span></div></a>
+<a href="http://tech.bkjia.com/" title="在300万技术库中找思路"><div class="likebox"><span class="btn">搜索技术库</span></div></a>
+<a href="http://www.bkjia.com/" title="更多it教程"><div class="comment-btn"><span class="btn"><em id="article_comment_num_2013">返回首页</em></span></div></a>
+</div>
+		
+		<div  id="related_reading" class="haman-box">
+		<ul class="xgyd clearfix">
+ <div class="xgyd_new"><span class="fast-nav-bar"><a href="http://www.bkjia.com/fenlei/list-272-1.html">今日最新</a></span><strong>相关阅读：</strong></div>
+ <li><a href="http://www.bkjia.com/swjq/1023371.html">忘记win7旗舰版电脑中mysql的密码怎么办</a></li>
+<li><a href="http://www.bkjia.com/Mysql/1023353.html">MySQL在Linux系统中隐藏命令行中的密码的方法</a></li>
+<li><a href="http://www.bkjia.com/Mysql/1023352.html">在Linux系统的命令行中为MySQL创建用户的方法</a></li>
+<li><a href="http://www.bkjia.com/Javabc/1023268.html">JDBC学习小结，jdbc小结</a></li>
+<li><a href="http://www.bkjia.com/Javabc/1023266.html">【集成代码生成器】springmvc mybaits mysql oracl</a></li>
+<li><a href="http://www.bkjia.com/Mysql/1023235.html">MySQL查看数据库相关信息，mysql相关信息</a></li>
+
+ </ul></div>
+<footer><div class="hot_c"><span><b>相关频道：</b>
+<a href="http://www.bkjia.com/fenlei/list-106-1.html" >oracle</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-107-1.html" >sybase</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-108-1.html" >Sql Server</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-116-1.html" >DB2</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-117-1.html" >Mysql</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-118-1.html" >MsSql</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-119-1.html" >Access</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-113-1.html" >数据库开发</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-114-1.html" >数据库管理</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-115-1.html" >数据库前沿</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-109-1.html" >数据库教程</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-110-1.html" >数据库工具</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-111-1.html" >数据库安全</a>&nbsp;&nbsp;<a href="http://www.bkjia.com/fenlei/list-112-1.html" >数据库基础</a>&nbsp;&nbsp;</span></div> </footer> 
+</div>
+<div class="info_more" id="info_more"></div>
+<div class="fixed-share-bar">
+	<div id="bdshare" class="bdsharebuttonbox bdshare_t bds_tools get-codes-bdshare share-bar-btn">
+		<a class="bds_tsina" data-cmd="tsina"></a><a class="bds_qzone" data-cmd="qzone"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_weixin" data-cmd="weixin"></a><a class="bds_more share-more" data-cmd="more"></a></div>
+</div>
+<div class="clearfix mt10 art_commentstop" id="commentTopAd"><script src='http://js.bkjia.com/bkjia/js/art_commentstop.js' type="text/javascript"></script></div>
+<div id="hm_t_46468"></div>
+<a name="comment"></a><div class="comment"  id="commentTopAd" itemprop="comment"><h3>帮客评论</h3></div>
+ <div class="wb_comment_box"  id="commentsiframe"><script type="text/javascript" src='http://js.bkjia.com/bkjia/js/comments.js'></script></div>
+</article>
+<div class="syzp mt10" style="overflow:hidden;"><div class="tit_7">视觉看点</div><script type="text/javascript" src="http://js.bkjia.com/bkjia/js/left_foot_ad.js"></script></div>  
+</div>
+<aside class="right" id="main_right">
+<div class="art_rightad1"><script src='http://js.bkjia.com/bkjia/js/art_rightad1.js' type="text/javascript"></script></div>
+<div class="r_bd mt10 pb10">
+       <div class="tit_5 tit_6">Mysql最近更新</div>
+         <ul id="bbsRank_1" class="rank_ul2 rank_dot" style="border-top:1px solid #AAC5F2;margin-top: -1px;">
+	<li><a href="http://www.bkjia.com/Mysql/761072.html">mysql datestamp坑</a> </li>
+<li><a href="http://www.bkjia.com/Mysql/489879.html">5款最好的MySQL自由软件工具</a> </li>
+<li><a href="http://www.bkjia.com/Mysql/579488.html">通过索引优化MySQL语句的实例</a> </li>
+<li><a href="http://www.bkjia.com/Mysql/487454.html">[MySQL]日志文件概述</a> </li>
+<li><a href="http://www.bkjia.com/Mysql/580080.html">使用PHP+MySQL来对图书管理系统进行构建</a> </li>
+
+</ul></div>
+<div class="art_rightad2 mt10"><script src='http://js.bkjia.com/bkjia/js/art_rightad2.js' type="text/javascript"></script></div>
+<div class="r_bd mt10 pb10">
+       <div class="tit_5 tit_6">热点关注</div>
+	   <ul id="bbsRank_1" class="rank_ul2 rank_dot" style="border-top:1px solid #AAC5F2;margin-top: -1px;">
+	<li><a href="http://www.bkjia.com/headlines/431717.html">eclipse使用weblogic作为web服务器控制台中文</a></li>
+<li><a href="http://www.bkjia.com/headlines/437047.html">帮客头条：盘点十大界面精美优雅如艺术</a></li>
+<li><a href="http://www.bkjia.com/headlines/491736.html">http协议详解(二)http协议的基本认证问题</a></li>
+<li><a href="http://www.bkjia.com/headlines/491935.html">HTTP协议详解(七) Cookie的相关问题</a></li>
+<li><a href="http://www.bkjia.com/headlines/431552.html">DedeCms数据库还原后系统配置参数页面不显</a></li>
+	
+	</ul>
+        </div>
+<div class="r_bd mt10 pb10"><div style="margin-top: 0pt;" class="tit_5 tit_6">热点推荐</div>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/right_ad5.js"></script></div>
+<div class="art_rightad3"><script src='http://js.bkjia.com/bkjia/js/art_rightad3.js' type="text/javascript"></script></div>
+<div id="focus_look" class="instant-focus mt10"><div class="instant-focus-header clearfix"><h3>即时看点</h3><span>大家正在看什么</span></div>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/right_ad6.js"></script></div>
+<div class="art_rightad4 mt10"><script src='http://js.bkjia.com/bkjia/js/art_rightad4.js' type="text/javascript"></script></div>
+</aside></div></div>
+<footer id="footer" class="div_body">
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/arc_foot_ad.js"></script>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/arc_foot.js"></script>
+<div style="display:none;"><script src='http://js.bkjia.com/bkjia/js/bkjiatongji.js' type="text/javascript"></script></div>
+<div id="roll"></i><a title="回顶部" id="roll_top" href="#top" style="opacity: 0.7;" target="_self" rel="nofllow"></a></div>
+</footer>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/main.js"></script>
+<script type="text/javascript" src="http://js.bkjia.com/bkjia/js/maintop.js?131231"></script>
+<script>
+	window._bd_share_config = {
+		common : {
+            bdText : '在mysql对字符编码的查看我们使用SHOW VARIABLES LIKE character即可，修改我们需要修改my.ini中的配置方法了，下面我一起来看看。 最近，在项目组',	
+			bdDesc : '在mysql对字符编码的查看我们使用SHOW VARIABLES LIKE character即可，修改我们需要修改my.ini中的配置方法了，下面我一起来看看。 最近，在项目组',	
+			bdUrl : 'http://www.bkjia.com/Mysql/633837.html', 	
+			bdPic : 'http://www.bkjia.com/images/defaultpic.gif'		},
+		share : [{
+			"bdSize" : 16,
+		}]
+	}
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</body>
+</html>

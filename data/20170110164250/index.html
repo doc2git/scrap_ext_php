@@ -1,0 +1,1553 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="sixapart-standard" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Movable Type  5.2.2">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="start" href="http://www.ruanyifeng.com/blog/" title="Home">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://feeds.feedburner.com/ruanyifeng">
+<script src="about:blank" async=""></script><script type="text/javascript" src="about:blank"></script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://www.ruanyifeng.com/blog/2010/01/12_javascript_syntax_structures_you_should_not_use.html">
+<dc:title>12种不宜使用的Javascript语法</dc:title>
+<dc:description>这几天，我在读《Javascript语言精粹》。...</dc:description>
+<dc:creator>阮一峰</dc:creator>
+<dc:date>2010-01-03T15:14:19+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/3.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/3.0/">
+</License>
+</rdf:RDF>
+-->
+
+
+    
+    <link rel="prev" href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" title="Javascript继承机制的设计思想">
+    <link rel="next" href="http://www.ruanyifeng.com/blog/2011/06/sirleaf_s_speech_in_harvard_commencement_2011.html" title="瑟利夫夫人在哈佛大学毕业典礼上的演讲">
+    
+    <title>Bookmarklet编写指南 - 阮一峰的网络日志</title>
+<script charset="utf-8" type="text/javascript" src="about:blank"></script><script charset="utf-8" type="text/javascript" src="about:blank"></script><script charset="utf-8" type="text/javascript" src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+a.bshareDiv, #bsPanel, #bsMorePanel, #bshareF { border: medium none; background: transparent none repeat scroll 0% 0%; padding: 0px; margin: 0px; font: 12px/14px Helvetica,Calibri,Tahoma,Arial,宋体,sans-serif; }
+#bsPanel div, #bsMorePanel div, #bshareF div { display: block; }
+a.bshareDiv div, #bsFloatTab div { display: inline-block; }
+a.bshareDiv img, a.bshareDiv div, a.bshareDiv span, a.bshareDiv a, #bshareF table, #bshareF tr, #bshareF td { text-decoration: none; background: transparent none repeat scroll 0% 0%; margin: 0px; padding: 0px; border: medium none; line-height: 1.2; }
+div.buzzButton { cursor: pointer; font-weight: bold; }
+a.bshareDiv .bsPromo, div.bshare-custom .bsPromo { display: none; position: absolute; z-index: 100; }
+a.bshareDiv .bsPromo.bsPromo1, div.bshare-custom .bsPromo.bsPromo1 { width: 51px; height: 18px; top: -18px; left: 0px; line-height: 16px; font-size: 12px ! important; font-weight: normal ! important; color: rgb(255, 255, 255); text-align: center; background: transparent url("bshare_box_sprite2.gif") no-repeat scroll 0px -606px; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+.bsBox { display: none; z-index: 100000001; font-size: 12px; background: transparent url("background-opaque-dark.gif") repeat scroll 0% 0% ! important; padding: 6px ! important; border-radius: 5px; }
+.bsClose { cursor: pointer; position: absolute; z-index: 10000000; color: rgb(102, 102, 102); font-weight: bold; font-family: Helvetica,Arial; font-size: 14px; line-height: 20px; }
+.bsTop { color: rgb(102, 102, 102); background: rgb(242, 242, 242) none repeat scroll 0% 0%; height: 24px; line-height: 24px; border-bottom: 1px solid rgb(232, 232, 232); }
+.bsTop span { float: left; }
+.bsFrameDiv, #bsMorePanel { border: medium none; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.bsReturn { float: right; margin-right: 36px; text-align: right; cursor: pointer; line-height: 24px; color: rgb(102, 102, 102); opacity: 0.5; }
+</style><script charset="utf-8" type="text/javascript" src="about:blank"></script><script charset="utf-8" type="text/javascript" src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+div.bsClear { clear: both; height: 0px; line-height: 0; overflow: hidden; font-size: 0px; }
+.bsLogoLink:hover { text-decoration: underline; }
+</style><script charset="utf-8" type="text/javascript" src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+a.bsSiteLink { text-decoration: none; color: rgb(102, 102, 102); }
+a.bsSiteLink:hover { text-decoration: underline; }
+a.bshareDiv { overflow: hidden; height: 16px; line-height: 18px; font-size: 14px; color: rgb(51, 51, 51); padding-left: 0px; }
+a.bshareDiv:hover { text-decoration: none; }
+div.bsTitle { padding: 0px 8px; border-bottom: 1px solid rgb(232, 232, 232); color: rgb(102, 102, 102); background: rgb(242, 242, 242) none repeat scroll 0% 0%; text-align: left; }
+div.buzzButton { cursor: pointer; }
+div.bsRlogo, div.bsRlogoSel { width: 68px; float: left; margin: 0px; padding: 2px 0px; }
+div.bsRlogo a, div.bsRlogoSel a { float: left; }
+div.bsLogo, div.bsLogoSel { float: left; width: 111px; text-align: left; height: auto; padding: 2px 4px; margin: 2px 0px; white-space: nowrap; overflow: hidden; }
+div.bsLogo, div.bsRlogo { border: 1px solid rgb(255, 255, 255); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+div.bsLogo a, div.bsLogoSel a { display: block; height: 16px; line-height: 16px; padding: 0px 0px 0px 24px; text-decoration: none; float: left; overflow: hidden; }
+div.bsLogo a, div.bsRlogo a { color: rgb(102, 102, 102); border: medium none; }
+div.bsLogoLink { width: 121px; overflow: hidden; background: rgb(255, 255, 255) none repeat scroll 0% 0%; float: left; margin: 3px 0px; }
+#bsPanel { position: absolute; z-index: 100000000; font-size: 12px; width: 258px; background: transparent url("background-opaque-dark.png") repeat scroll 0% 0% ! important; padding: 6px ! important; border-radius: 5px; }
+div.bsClear { clear: both; height: 0px; line-height: 0; font-size: 0px; overflow: hidden; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+a.bsSiteLink { text-decoration: none; color: rgb(102, 102, 102); }
+a.bsSiteLink:hover { text-decoration: underline; }
+a.bshareDiv { overflow: hidden; height: 16px; line-height: 18px; font-size: 14px; color: rgb(51, 51, 51); padding-left: 0px; }
+a.bshareDiv:hover { text-decoration: none; }
+div.bsTitle { padding: 0px 8px; border-bottom: 1px solid rgb(232, 232, 232); color: rgb(102, 102, 102); background: rgb(242, 242, 242) none repeat scroll 0% 0%; text-align: left; }
+div.buzzButton { cursor: pointer; }
+div.bsRlogo, div.bsRlogoSel { width: 68px; float: left; margin: 0px; padding: 2px 0px; }
+div.bsRlogo a, div.bsRlogoSel a { float: left; }
+div.bsLogo, div.bsLogoSel { float: left; width: 111px; text-align: left; height: auto; padding: 2px 4px; margin: 2px 0px; white-space: nowrap; overflow: hidden; }
+div.bsLogo, div.bsRlogo { border: 1px solid rgb(255, 255, 255); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+div.bsLogo a, div.bsLogoSel a { display: block; height: 16px; line-height: 16px; padding: 0px 0px 0px 24px; text-decoration: none; float: left; overflow: hidden; }
+div.bsLogo a, div.bsRlogo a { color: rgb(102, 102, 102); border: medium none; }
+div.bsLogoLink { width: 121px; overflow: hidden; background: rgb(255, 255, 255) none repeat scroll 0% 0%; float: left; margin: 3px 0px; }
+#bsPanel { position: absolute; z-index: 100000000; font-size: 12px; width: 258px; background: transparent url("background-opaque-dark.png") repeat scroll 0% 0% ! important; padding: 6px ! important; border-radius: 5px; }
+div.bsClear { clear: both; height: 0px; line-height: 0; font-size: 0px; overflow: hidden; }
+</style></head>
+<body id="scrapbook" class="mt-entry-archive one-column">
+<script>/* Code removed by ScrapBook */</script>
+    <div id="container">
+        <div id="container-inner">
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name">阮一峰的网络日志 <span id="site_location"> » <a href="http://www.ruanyifeng.com/blog/" accesskey="1">首页</a></span><span id="site_archive"> » <a href="http://www.ruanyifeng.com/blog/archives.html">档案</a></span>
+</div>
+
+<div id="google_search">
+<!-- SiteSearch Google -->
+<form action="http://www.ruanyifeng.com/blog/search.html" id="cse-search-box">
+      <div>
+        <input name="cx" value="016304377626642577906:b_e9skaywzq" type="hidden">
+    <input name="cof" value="FORID:11" type="hidden">
+    <input name="ie" value="UTF-8" type="hidden">
+        <input name="q" size="20" class="searchbox" id="sbi" value="" type="text">
+        <input src="top_search_submit.gif" class="searchbox_submit" value="" alt="搜索" name="sa" type="image">
+      </div>
+    </form>
+<!-- SiteSearch Google -->
+</div>
+<div id="feed_icon">
+<a href="http://www.ruanyifeng.com/feed.html" title="订阅Feed">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAUzSURBVHjavFdbbFRVFF3nPjoz7dTWTittaW0jUDRAUqaNojyqREnEQKgfUj9MqqAmhqRt/OCD4CuY+Kckoh+aiGKC+gMJbdHoRysJ8dkhhmJLNdDKtJU+6GMK87j3Hs85d2Z6HzNtMYWb3Dn3NWftvfba+5xNYDl+e6Fkj6yqb/oDRbWq14vlPBLRKCITkxf0ROLt+hNjp1PPSRK4kA3vF1dXNRcWlyA2OQU9eos9opAkAiKxD+XkKO6t15aRWO7J/MgmAZU8MEgexgZHMX518Dh72sYMmVKShnxWuWHdHtxKIDIYTgMuDzgfmSOIQkYMpdUF8OY92Hytt4/jvkg47czzU16iQovM3QFwmNck+Yyduu7D6NA0Z6JR4THntFs9V4tWQg6Ui3s6MwKDncsFTnXKLJhDSeUK3AgPtyhccDzmVs999buRt/1Vm4i0od+hX7+MRG87jPGB/w1u8FPj9xEw7McVrnYuOCvtpjTth3J/nTg99c8LRhKhr6D3dTB5R24bXFwbMXBsyZzeoXaycEpJ95TB09AGX/NpqLVNtw8urnVzLvHjFNxiFqRy2OOHuqUVnue+ACkoWzo4O6lGzTmuHq6nPvY2m9rVqjrIK2rMEKxqyG5NPAKt+wjo0LklgfNxJkZMA3KJvqRUk3z5UFY3QH14P0h+WUY79HPvgv7VuSg4ZRGY1YgZgqXmORccF17sy2ehnf9AeO085K2HQFbtXBScj0LcpgF2cN+WV+DZ/LJQu6gD4R7oV7pBJwbSgtMvfiPoVp56DySwxm7EtkMs1WdAB7qzggsDJKQYsHucSkOudrkiCPWR/fA2nYCn8SNIK4NptSMyAu3sAdDRkIsJdfth0LzSrODUoPNZ4KI9SxJI5UHk7D4GdQfz2us31c7CoHMjRkKuDPHseCMrONVhNcDJwMJpKFVvg9L4OaTiNWm1x789KCqkrXhVBiEz0WYCT2nAzQAD1/vaETv1GrRfP4Vx5cfMNcDPwvP0h0DhanPym7OIf/+O67vcJ1/PCJ4KgdzaUP6Wz+dU+5yIL6fV+PsHGAOdwlPpvvUOyeeAVGyCdqkDNB6DPjsBSrnndfOGevOh3RhGItxvA+fX1CtbGFhgYUFkFMZPR6F1HnClHq8HyubWtJexX06CRmdt33hrd7nA7SFY4qoGpnYuOKcRykPPgDCBcsHx9Iv+fNL2PueBehCWUfYQIIMGLOCcOmXDXsh1+yCt35tUPfvzGFuSvzvoinXOxqa02qOhM6733nVP2MAdaej2XN11DPKjLZCD+yBvahGCo7JfTKAN9UD7s8Oe9zUNIhz8fWI8DG2k38WCFdxugANcXrvTVd1IEbuv3Jour7Hzn7jLMBNfKs7R3i67gRVrbeCOEDhinmWhAatsqdquM2XzHZINhK2cqTjHr/XZdVJUbgN3MWAVXKbSyg9jesRW2xP9di+lwrL5ojM3m2H/kG9hwcIA37c71W6wJdW2J2S5nrjYbq/t1AHAhJsKQeyfPvf6IMJgghPJhFZ4x0KlfLFvt22du45Au/A1SOlGc0P672XXwhLtOcM0kTTEMMd0qkVmMNXxMd/tsedUjInr4SQDgOfeXMSiN0FCL5WHah4L1qqYXPJOJlttd+a5M+YpcG5poLYKQ5f+6JJ4r8bbJYP47hq4r7QAs9PjYNhHJd4o8l5taiwuOpa7AS4XKqI/5NjJbTnaWK92nLdLuhQAJayRNMiygXPBeQN+Qbvu0zDc3y+aUzhbkGR73sI7ljvUnndx2q3t+X8CDAD66FtrIL864AAAAABJRU5ErkJggg==" alt="" style="border: 0pt none;">
+</a></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <div id="entry-1569" class="entry-asset asset hentry">
+                                <div class="asset-header">
+<div class="asset-nav entry-nav">
+
+<div class="entry-location">
+<ul>
+<li>上一篇：<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" title="Javascript继承机制的设计思想">Javascript继</a></li>
+<li>下一篇：<a href="http://www.ruanyifeng.com/blog/2011/06/sirleaf_s_speech_in_harvard_commencement_2011.html" title="瑟利夫夫人在哈佛大学毕业典礼上的演讲">瑟利夫夫人在哈佛大学毕</a></li>
+</ul>
+</div>
+
+
+    
+                                    <div class="entry-categories">
+                                        <p>分类<span class="delimiter">：</span></p>
+                                        <ul>
+                                            <li><a href="http://www.ruanyifeng.com/blog/javascript/" rel="tag">JavaScript</a></li>
+                                        </ul>
+                                    </div>
+    
+
+
+                                            
+</div>
+                                </div>
+<article class="hentry">
+                                    <h1 id="page-title" class="asset-name entry-title">Bookmarklet编写指南</h1>
+                                            <div id="share_button" style="float: right; padding-right: 2em; padding-top: 1em;">
+<a style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;" class="bshareDiv" href="http://www.bshare.cn/share"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height: 21px; color: rgb(51, 51, 51); background: transparent url(&quot;button_custom10-zh-Orange.gif&quot;) no-repeat scroll 0% 0%; text-align: center; width: 51px;"></div><div style="clear: both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="about:blank"></script>
+<script type="text/javascript" charset="utf-8">/* Code removed by ScrapBook */</script>
+</div>
+                                    <div class="asset-meta">
+                                        
+
+                                            <p class="vcard author">作者： <a class="fn url" href="http://www.ruanyifeng.com/">阮一峰</a></p>
+                                    <p>日期： <a href="http://www.ruanyifeng.com/blog/2011/06/"><abbr class="published" title="2011-06-11T00:44:02+08:00">2011年6月11日</abbr></a></p>
+
+
+                                    </div>
+                                
+                                <div class="asset-content entry-content" id="main-content">
+
+                                    <!-- div class="asset-body" -->
+                                        <p>前一段日子，我写了两个Bookmarklet----"<a target="_blank" href="http://www.ruanyifeng.com/blog/2011/01/api_for_google_s_url_shortener.html">短网址生成</a>"和"<a target="_blank" href="http://www.ruanyifeng.com/blog/2011/05/bookmarklet_of_unshortening_url.html">短网址还原</a>"。</p>
+                                    <!-- /div -->
+
+
+                                    <!-- div id="more" class="asset-more" -->
+                                        <p>它们用起来很方便，除了我本人之外，其他朋友也在用。第一次发布Bookmarklet，就能有用户，我挺满意的。</p>
+
+<p><a target="_blank" href="http://www.ruanyifeng.com/blog/2011/05/bookmarklet_of_unshortening_url.html"><img src="bg2011052704.png"></a></p>
+
+<p>下面就是我整理的《Bookmarklet编写指南》，供自己和需要的朋友参考。</p>
+
+<p>====================================================</p>
+
+<p><strong>Bookmarklet编写指南</strong></p>
+
+<p>阮一峰 编写</p>
+
+<p><br>
+<strong>一、什么是Bookmarklet？</strong></p>
+
+<p>Bookmarklet是一个复合词，由Bookmark（书签）和-let（小的）构成，中文可以译成"书签工具"。</p>
+
+<p>它在形式上与"书签"一样，都保存在浏览器收藏夹里。但是，它不是一个以"http://"开头的网址，而是一段Javascript代码，以"javascript:"开头。点击之后，会对当前页面执行某种操作。</p>
+
+<p>它通常在网页中以链接的形式出现，就像下面这样：</p>
+
+<blockquote>
+
+<p>　　<strong>&lt;a href="javascript:alert('hi');"&gt;xxx&lt;/a&gt;</strong></p>
+
+</blockquote>
+
+<p>用户直接把这个链接拖到地址栏或收藏夹就可以用了。</p>
+
+<p><img src="bg2011061001.png"></p>
+
+<p><strong>二、Bookmarklet的优点</strong></p>
+
+<p>它有几个很显著的优点，其他技术难以取代：</p>
+
+<p><strong>1. 安装快速</strong></p>
+
+<p>　　Bookmarklet的安装，就是在收藏夹中保存一段代码，一步就能完成。所有浏览器都原生支持。</p>
+
+<p><strong>2. 使用方便</strong></p>
+
+<p>　　用的时候，点一下这个链接就行了。</p>
+
+<p><strong>3. 开发容易</strong></p>
+
+<p>　　一段Javascript代码就是Bookmarklet的所有内容，不需要用到其他技术，比开发一个浏览器插件简单多了。</p>
+
+<p><strong>4. 跨浏览器</strong></p>
+
+<p>　　所有浏览器都支持Bookmarklet。如果写的正确，同样一个Bookmarklet在各种浏览器上都能正常使用。</p>
+
+<p><strong>三、Bookmarklet的编写规则</strong></p>
+
+<p><strong>1. 必须以"javascript:"开头</strong></p>
+
+<p>浏览器把"javascript:"当做协议看待。有了它，浏览器才知道要用javascript解释后面的代码。它的作用等同于将代码放在&lt;script&gt;&lt;/script&gt;之间运行。</p>
+
+<p><strong>2. 所有代码必须在同一行</strong></p>
+
+<p>因为浏览器把Bookmarklet当做网址保存，而网址是不能分行的，所以Bookmarklet也不能分行。</p>
+
+<p>另一方面，网址是有长度限制的。IE的最长网址不能超过2083个字符（IE6不能超过508个字符），这也就是Bookmarklet的最长长度。<a target="_blank" href="http://ted.mielczarek.org/code/mozilla/bookmarklet.html">压缩工具</a>可以帮忙减少长度，但是使用下面提到的连接外部代码的方法，可以避开这个限制。</p>
+
+<p><strong>3. 使用单引号</strong></p>
+
+<p>根据Javascript的语法，单引号（'xxx'）和双引号（"xxx"）都能使用。但是由于html语言主要使用双引号，所以Bookmarklet优先使用单引号。万一遇到必须使用双引号的情况，就采用它的URL编码形式"%22"。</p>
+
+<p><strong>4. 不要污染全局变量</strong></p>
+
+<p>Bookmarklet最好不要生成新的全局变量，可以采用直接运行匿名函数的方式：</p>
+
+<blockquote>
+
+<p>　　<strong>javascript: (function(){...})();</strong></p>
+
+</blockquote>
+
+<p>上面式子的第一个括号，定义了一个匿名函数；最后一个括号表示立即执行这个匿名函数。所有的变量都是匿名函数的内部变量，不会生成任何新的全局变量。</p>
+
+<p>如果必须设置全局变量，就取罕见的变量名（比如hd8ki2），防止与已经存在的全局变量同名。</p>
+
+<p><strong>5. 对文本和URL进行编码</strong></p>
+
+<p>为了防止出现非法字符，代码以外的文本都应该使用encodeURIComponent()函数进行编码，比如把空格变成%20。</p>
+
+<p><strong>四、Bookmarklet的编写技巧</strong></p>
+
+<p><strong>1.  获取网页信息</strong></p>
+
+<p>获取当前页面的标题：document.title。</p>
+
+<p>获取当前页面的URL： location.href。</p>
+
+<p>获取当前选中的文本：</p>
+
+<blockquote>
+
+<p>　　var t;</p>
+
+<p>　　t = (function(){</p>
+
+<p>　　　　if (window.getSelection){</p>
+
+<p>　　　　　　return window.getSelection().toString();</p>
+
+<p>　　　　}else if(document.getSelection){</p>
+
+<p>　　　　　　return document.getSelection();</p>
+
+<p>　　　　}else if (document.selection){</p>
+
+<p>　　　　　　return document.selection.createRange().text;</p>
+
+<p>　　　　}</p>
+
+<p>　　　　return '';</p>
+
+<p>　　})();</p>
+
+</blockquote>
+
+<p><strong>2. 防止刷新页面</strong></p>
+
+<p>如果代码对页面有改动（比如使用了document.write），浏览器就会用一个新页面替换原有页面。所以最好用void()命令，把语句放在里面。</p>
+
+<p>举例来说，下面这个Bookmarklet会导致原页面被一个新页面替代：</p>
+
+<blockquote>
+
+<p>　　javascript:document.links[0].href='http://www.ibm.com/';</p>
+
+</blockquote>
+
+<p>加上void以后，页面就不会跳转了：</p>
+
+<blockquote>
+
+<p>　　javascript:void(document.links[0].href='http://www.ibm.com/');</p>
+
+</blockquote>
+
+<p><strong>3. 框架（frameset）</strong></p>
+
+<p>对于使用"框架"（frameset）的网页，那些需要操作页面的Bookmarklet一般不起作用。所以，如果发现网页使用了框架，就告诉用户Bookmarklet无法使用。</p>
+
+<blockquote>
+
+<p>　　if(frames.length &gt; 0)</p>
+
+<p>　　　　alert('对不起，不适用于框架。');</p>
+
+<p>　　else{</p>
+
+<p>　　　　/* 正常情况的代码 */</p>
+
+<p>　　}</p>
+
+</blockquote>
+
+<p>但是，上面的代码有一个问题，那就是行内框架iframe也包含在frames.length之中，所以必须排除iframe的影响。</p>
+
+<blockquote>
+
+<p>　　if(frames.length &gt; <br>
+　　　document.getElementsByTagName('iframe').length)</p>
+
+<p>　　　　alert('对不起，不适用于框架。');</p>
+
+<p>　　else{</p>
+
+<p>　　　　/* 正常情况的代码 */</p>
+
+<p>　　}</p>
+
+</blockquote>
+
+<p><strong>4. 连接外部javascript代码</strong></p>
+
+<p>有时，Bookmarklet必须再引入外部的Javascript代码，这就需要为当前页面添加一个script标签。</p>
+
+<blockquote>
+
+<p>　　javascript:(function(){</p>
+
+<p>　　　　var script=document.createElement('script');</p>
+
+<p>　　　　script.setAttribute('src',<br>
+　　　　　　　　　　　　'http://path/to/external/file.js');  </p>
+
+<p>　　　　document.getElementsByTagName('head')[0]<br>
+　　　　　　　　.appendChild(script);</p>
+
+<p>　　})();</p>
+
+</blockquote>
+
+<p><strong>5. 添加外部函数库</strong></p>
+
+<p>如果Bookmarklet需要用到外部函数库，就必须把它也加进来。但是，前提是必须先检查一下，看看原页面是否已经加载了这个函数库。</p>
+
+<p>下面以加载jQuery为例：</p>
+
+<blockquote>
+
+<p>　　if (!window.jQuery) { </p>
+
+<p>　　　　script=document.createElement( 'script' );  </p>
+
+<p>　　　　script.src='http://ajax.googleapis.com/<br>
+　　　　　　　　　ajax/libs/jquery/1/jquery.min.js';  </p>
+
+<p>　　　　script.onload=foo;  </p>
+
+<p>　　　　document.body.appendChild(script);  </p>
+
+<p>　　} else {<br>
+  <br>
+　　　　foo();  </p>
+
+<p>　　} <br>
+  <br>
+　　function foo() {  </p>
+
+<p>　　　　/* ... */</p>
+
+<p>　　}</p>
+
+</blockquote>
+
+<p><strong>五、延伸阅读</strong></p>
+
+<p>　　* Kalid Azad, <a target="_blank" href="http://betterexplained.com/articles/how-to-make-a-bookmarklet-for-your-web-application/">How To Make a Bookmarklet For Your Web Application</a> </p>
+
+<p>　　* Troels Jakobsen, <a target="_blank" href="http://subsimple.com/bookmarklets/rules.asphttp://subsimple.com/bookmarklets/rules.asp">Rules for Bookmarklets</a> </p>
+
+<p>　　* Troels Jakobsen, <a target="_blank" href="http://subsimple.com/bookmarklets/tips.asp">Tips for Writing Bookmarklets</a></p>
+
+<p>　　* Siddharth, <a target="_blank" href="http://net.tutsplus.com/tutorials/javascript-ajax/create-bookmarklets-the-right-way/">Create Bookmarklets - The Right Way</a></p>
+
+<p>　　* 2ality, <a target="_blank" href="http://www.2ality.com/2011/06/implementing-bookmarklets.html">Implementing bookmarklets in JavaScript</a></p>
+
+<p>（完）<br>
+</p>
+                                    <!-- /div -->
+
+                                </div>
+    <script type="text/javascript" src="about:blank"></script>
+                                <div class="asset-footer">
+
+<h3>文档信息</h3>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+<li>发表日期： <abbr class="published" title="2011-06-11T00:44:02+08:00">2011年6月11日</abbr></li>
+<li>更多内容： <a href="http://www.ruanyifeng.com/blog/archives.html" target="_blank"> 档案</a>  » 
+<a href="http://www.ruanyifeng.com/blog/javascript/"> JavaScript</a> 
+</li>
+<li>购买文集：<a href="http://www.ruanyifeng.com/blog/2014/12/my-blog-book.html" target="_blank"><img src="data:image/png;base64,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" style="border: 0px none;"> 《如何变得有思想》</a></li>
+<li>社交媒体：<a href="https://twitter.com/ruanyf" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAk1JREFUeNqsVc9rE0EU/mZ3dhPNJl2bVIk/Km09aFBE8GLvnrwJXvwLxIsgCP4Fnit6E8Gb0IMHwUsL9SSNgiAoooJIpE1Joo1h82uT7IxvxmRN3Q32kAdvdrI773vfe+/bDTu9WioDcDAda3Ja8piepQ1avCkCeny0Y+R9KenKwOmHHLvPaKn7AtVOoO8dOWDCMpg+41gMQv5FNEJACgoE8MsPNLDBhgfoutMOsJDmWLmU037C4TApciljwQ/kHoohQxV06+wMXNvE7WINuaSpvdYVKLgWnl3O4zAxU3Z1IYVGT+B5qYWV9z2kbQaT/cOwTsxOUUYF+mB5Dkmi8HG3h2q9hxsFNwRTdvQgxxnXRrMvIdkEhllis/qtiWuLDm4WZnBlPoWnXz28LHdw0uGR7m9Wu3j0qYGEubfn4UlBfXO4gTZltRNMg9w9f0i7kNFxllsBlS0x75gYfxyWTBUjT2W5CSMSPBrQuG21+hiMDS8CeCzF8eSLp13uQ3Ab1IqMFZN8tFHPmgOBF99bYP8Be1Xp6t7OJszJgKpPSiZvaj7uf2hguz2IBQuozDvFH6RDBjuK9wdQDvt0nMpW+8efGyh5UcAeZb2+UcHbnz5Jx4wdlp4yJYU3kLiQtfBwOYeLc8nIwfXtNu69q2Oz4mMxbemYOOOjKarhvq51KUjg3GwiFPIuvcNF6pnSnWK0lOEabNLgQh1aJFAhlGB9rG110B2+oyRNPc0sZbRNFltmLKDKqj4Qrm1ojzOxDz2pyPQ0P7CK4c40/wJ+CzAAGYrXsvfFXR4AAAAASUVORK5CYII=" style="border: 0px none;"> twitter</a>，<a href="http://weibo.com/ruanyf" target="_blank"><img src="data:image/png;base64,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" style="border: 0px none;"> weibo</a></li>
+<li>Feed订阅： <a href="http://www.ruanyifeng.com/feed.html" target="_blank"><img src="data:image/gif;base64,R0lGODlhFAAUANU2APV1GfmrePZ8IeR5VPq2ieNkLf7p3NpFJveCJ/NoFfibVPR1IexiJfvdzuZrNfXGuOhUEueTevaFOfzIpNxDGeZZJNU6IOubifiVTfOnid1aLuZpLOFSJf/28vJtIvGcefaLSd5kNu9iFv/z6//48//t4uFfLfNkCeJNGuGNc/rCof/+/PVxEeldI/V5KeKMbu9nIvB2OvzQtNxMKfOPXP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAADYALAAAAAAUABQAAAb/QJstEjKZCsjCZsl0pIS2QWXaYsA8noVWIEAgFoNhhWNyMESi7Jbr/aZCFdRnZJAFJCwAt+vlOkwtEBk1hDUkExJ6bQJaGyYMLTQTDSOFHQF8jAseSFYiJwkuAQ2FE1xaHjBIMDAgARguJwABJIQTLJswDEgeIgSEJQQILAqVNQEiui1HHgkBhTUGCiwYtR0xLS0VJhtaEgoEBoQkGCfPNSoQY9xaCwAsCBPALgmkJA4cZN0CAAgY/PJqEIDwgVAECjM0bOAnwcAKGQJclKhRgoGDDjUeUDigkN8vQiBOfByAglSDAxw3IBCgYEU0FyJoEPpA4UGNDjMsaHDQR8EdPVYOMmQYQGHAhQgHLIRIsWAlgASsGMRBMWMGBQtYZ7yIsoBRKkhjOMxAiXJGGCEpHGxIYsSIhrcaQmy1EQQAOw==" style="border: 0px none;"></a></li>
+
+</ul>
+                                </div>
+</article>
+                            </div>
+
+                        <div id="sup-post-2" style="display: inline-block ! important; width: 100%;">
+   <p style="text-align: center;"><a href="http://www.zhufengpeixun.cn/jscourse/new/js/index.html?ref=ruanyifeng.com" target="_blank"><img alt="珠峰培训" src="sup_zhufeng_page.png" style="border: medium none;"></a></p>
+   <p style="text-align: center;"><a href="https://jianxun.io/?utm_source=ad&amp;utm_medium=site_ad&amp;utm_compaign=ruanyifeng&amp;utm_content=pos_body_bottom&amp;utm_term=jialezhang" target="_blank"><img alt="简寻" src="sub_jianxun_2016b.png" style="border: medium none;"></a></p>                         
+  </div>
+
+<div id="related_entries">
+<h2>相关文章</h2>
+<ul>
+
+<li><strong>2016.11.15: <a href="http://www.ruanyifeng.com/blog/2016/11/javascript.html">JavaScript 全栈工程师培训教程</a></strong>
+
+                           <div class="entry-body">
+                              我现在的技术方向，前端是 React，后端是 Node，时间都投入在这两方面。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.11.03: <a href="http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html">IntersectionObserver API 使用教程</a></strong>
+
+                           <div class="entry-body">
+                              网页开发时，常常需要了解某个元素是否进入了"视口"（viewport），即用户能不能看到它。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.10.11: <a href="http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html">npm scripts 使用指南</a></strong>
+
+                           <div class="entry-body">
+                              Node 开发离不开 npm，而脚本功能是 npm 最强大、最常用的功能之一。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.09.23: <a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html">React 技术栈系列教程</a></strong>
+
+                           <div class="entry-body">
+                              上周中秋节，我待在家里，写完了 Redux 教程。
+
+                           </div>
+
+</li>
+
+ 
+</ul>
+</div>
+
+
+<div id="gd1">
+<h2>广告<a href="http://www.ruanyifeng.com/support.html">（购买广告位）</a></h2>
+<div id="gd1-inner">
+<div id="gd1-left">
+<a href="http://www.miaov.com/index.php/video/vipvideolist.html?utm_source=ruanyifeng&amp;" alt="妙味课堂" target="_blank"><img alt="妙味课堂" src="sup_miaov.png" style="border: medium none;"></a>
+<br>
+<a href="http://www.zhinengshe.com/?utm_source=ruanyifeng&amp;utm_medium=cpm&amp;utm_campaign=extlink2016&amp;utm_term=qianduan&amp;utm_content=article" title="智能社" target="_blank"><img alt="智能社" src="sup_zhinengshe.jpg" style="border: medium none;"></a>
+</div>
+<div id="gd1-right">
+<a href="http://apeclass.cn/1212/index.html?utm_source=ruanyifeng" title="海棠学院" target="_blank"><img alt="海棠学院" src="sup_apeclass_300.png" style="border: medium none;"></a>
+<br>
+<a href="http://www.ruanyifeng.com/support.html" target="_blank"><img src="sup_sale_s.png" style="border: medium none;"></a>
+
+</div>
+</div>
+</div>
+                    
+
+                    <div id="comments" class="comments">
+
+
+    
+    
+        
+    <h2 class="comments-header">留言（24条）</h2>
+
+    <div id="comments-content" class="comments-content" style="clear: left;">
+        
+        <div id="comment-221309" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://sokoban.ws" href="http://sokoban.ws/" target="_blank" rel="nofollow">sokoban</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221309">
+            <p>大多数浏览器接受的最长网址，都在2000个字符左右，只有IE6是488字符或508字符。</p>
+
+<p>不赞成这个，好像除了IE，所有其他浏览器都支持至少8000个以上字符的URL，我是做过试验的。有的版本Apache服务器默认也只是支持8000长度的URL。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011  1:24 AM">2011年6月11日 01:24</abbr>
+ | <a href="#comment-221309">#</a>
+ | <a href="#comment-text" title="引用sokoban的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221310" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://sokoban.ws" href="http://sokoban.ws/" target="_blank" rel="nofollow">sokoban</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221310">
+            <p>给出一个链接 <a href="http://www.boutell.com/newfaq/misc/urllength.html" rel="nofollow">http://www.boutell.com/newfaq/misc/urllength.html</a><br>
+2000字符只是IE的限制。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011  1:39 AM">2011年6月11日 01:39</abbr>
+ | <a href="#comment-221310">#</a>
+ | <a href="#comment-text" title="引用sokoban的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221362" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.sunshaozong.com" href="http://www.sunshaozong.com/" target="_blank" rel="nofollow">牛二弟弟</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221362">
+            <p>昨天就在折腾如何在textarea中选中位置插入内容的js脚本。</p>
+
+<p>最后的做法是： <br>
+为textarea绑定一个focus事件；当想要往textarea插入内容时，<br>
+让textarea获得焦点；textarea获得焦点后执行我定义的事件，然后就可以在<br>
+textarea中光标处插入内容了。 </p>
+
+<p>这里面多了一个过渡： 先让textarea获得焦点，然后在里面计算它的位置，增加新内容。<br>
+（说的是大概，实际上ie和其他浏览器有不同的解释行为）</p>
+
+<p>要是昨天就来看阮先生的blog，我就少了些折腾。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011  9:33 AM">2011年6月11日 09:33</abbr>
+ | <a href="#comment-221362">#</a>
+ | <a href="#comment-text" title="引用牛二弟弟的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221363" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.sunshaozong.com" href="http://www.sunshaozong.com/" target="_blank" rel="nofollow">牛二弟弟</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221363">
+            <p>去年的时候，我就搞了个这样的东西：天涯帖子脱水。</p>
+
+<p>专门针对天涯，只看楼主。可惜东西搞了出来后，<br>
+因为担心bookmarklet到底有多少人会真的用。<br>
+就放弃了。（我自己很反感不断点击书签）</p>
+
+<p>当然，我的担心本身也是由于这个功能的特殊性。<br>
+它必须每次加载页面后都要点击一下，才能处理。</p>
+
+<p>这两天又搞了个雏形出来，换了个形式。采用了google<br>
+chrome的扩展。</p>
+
+<p>这样子话，就能在页面跳转时，不用用户点，就能自动记忆，<br>
+自动处理了。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011  9:40 AM">2011年6月11日 09:40</abbr>
+ | <a href="#comment-221363">#</a>
+ | <a href="#comment-text" title="引用牛二弟弟的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221370" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">hyh</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221370">
+            <p>以前就知道你的blog，最近重新阅读了不少。</p>
+
+<p>能否提个小建议：即翻译的文章，在旁边加个浮动的按钮，可以在中英对照和只看中文／只看英文之间切换。技术上应该很简单才对。</p>
+
+<p>间断的阅读体验让我感觉很奇怪。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011 11:41 AM">2011年6月11日 11:41</abbr>
+ | <a href="#comment-221370">#</a>
+ | <a href="#comment-text" title="引用hyh的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221373" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://lilydjwg.is-programmer.com/" href="http://lilydjwg.is-programmer.com/" target="_blank" rel="nofollow">依云</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221373">
+            <blockquote>
+<pre>引用牛二弟弟的发言：</pre>
+
+<p>去年的时候，我就搞了个这样的东西：天涯帖子脱水。</p>
+
+</blockquote>
+
+<p>GreaseMonkey 脚本比较适合。<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011 11:54 AM">2011年6月11日 11:54</abbr>
+ | <a href="#comment-221373">#</a>
+ | <a href="#comment-text" title="引用依云的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221375" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阮一峰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221375">
+            <blockquote>
+<pre>引用hyh的发言：</pre>
+
+<p>能否提个小建议：即翻译的文章，在旁边加个浮动的按钮，可以在中英对照和只看中文／只看英文之间切换。技术上应该很简单才对。</p>
+
+</blockquote>
+
+<p>所有页面有统一模板，实现中英文切换，技术上可能比较麻烦。</p>
+
+<p>我是每一段对着英文翻译中文的，所以才会是现在这种格式。<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011 12:13 PM">2011年6月11日 12:13</abbr>
+ | <a href="#comment-221375">#</a>
+ | <a href="#comment-text" title="引用阮一峰的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221378" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阮一峰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221378">
+            <blockquote>
+<pre>引用sokoban的发言：</pre>
+
+<p>好像除了IE，所有其他浏览器都支持至少8000个以上字符的URL，我是做过试验的。</p>
+
+</blockquote>
+
+<p>谢谢指出，已经修改原文了。确实只有IE规定URL最长2000个字符左右。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011 12:42 PM">2011年6月11日 12:42</abbr>
+ | <a href="#comment-221378">#</a>
+ | <a href="#comment-text" title="引用阮一峰的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221385" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">RedNax</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221385">
+            <p>纠正个小错误</p>
+
+<p>"2. 防止刷新页面"</p>
+
+<p>document.write 会替换掉原来的页面是这个函数本来的作用，不是因为这个函数会修改页面（对页面进行修改不会使浏览器擦掉旧页面）。浏览器用新页面替换原有页面仅当那段javascript的返回值不是undefined的时候才会发生，页面将会被替换为那段javascript运行的返回值。</p>
+
+<p>void()唯一作用是抛弃里面的返回值，返回undefined。如果用匿名函数的形式(function(){...})();一般不会放返回值，就没必要用void()了。另外直接在脚本最后加一个undefined; 也有同样的作用。</p>
+
+<p><br>
+"3. 使用单引号/5. 对文本和URL进行编码"</p>
+
+<p>现在的主流浏览器（包括IE8）对于URL里的符号和编码基本没有限制了，随便怎么用都可以。</p>
+
+<p><br>
+另外关于代码的长度，IE有较大的限制，但Chrome, Safari和FF几乎是无限的，我试过超过20K长度的bookmarklet.</p>
+
+<p>其实Bookmarklet在桌面浏览器用处不大，毕竟有UserScript和插件可以用。不过在移动浏览器（iPad的Safari、Android的浏览器）上不失为一个不错的增强/修改特定页面的好工具。<br>
+我就做了一个iPad看在线漫画的小工具：<br>
+<a href="http://yujianrong.bitbucket.org/JsTool/iPadMangaReader/index.html" rel="nofollow">http://yujianrong.bitbucket.org/JsTool/iPadMangaReader/index.html</a></p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011  3:26 PM">2011年6月11日 15:26</abbr>
+ | <a href="#comment-221385">#</a>
+ | <a href="#comment-text" title="引用RedNax的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221415" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">hyh</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221415">
+            <blockquote>
+<pre>引用牛二弟弟的发言：</pre>
+
+<p>去年的时候，我就搞了个这样的东西：天涯帖子脱水。</p>
+
+<p>专门针对天涯，只看楼主。可惜东西搞了出来后，<br>
+因为担心bookmarklet到底有多少人会真的用。<br>
+就放弃了。（我自己很反感不断点击书签）</p>
+
+<p>当然，我的担心本身也是由于这个功能的特殊性。<br>
+它必须每次加载页面后都要点击一下，才能处理。</p>
+
+<p>这两天又搞了个雏形出来，换了个形式。采用了google<br>
+chrome的扩展。</p>
+
+<p>这样子话，就能在页面跳转时，不用用户点，就能自动记忆，<br>
+自动处理了。</p>
+
+</blockquote>
+
+<p>如果“天涯帖子脱水”能和Safari的“阅读器”（fx有类似插件）结合起来就好了，翻页也免了。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 11, 2011 10:41 PM">2011年6月11日 22:41</abbr>
+ | <a href="#comment-221415">#</a>
+ | <a href="#comment-text" title="引用hyh的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221525" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">南拳</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221525">
+            <p>一直很欣赏阮先生的解构技术的能力。憧憬着android、ios平台的入门开发博文。 不知道阮先生是否有计划做系列的不同平台或语言的开发指南短篇。  或者征稿，让更多人能够通过这个平台参与进来？ 谢谢</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 13, 2011  2:59 PM">2011年6月13日 14:59</abbr>
+ | <a href="#comment-221525">#</a>
+ | <a href="#comment-text" title="引用南拳的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221533" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">k</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221533">
+            <blockquote>
+<pre>引用阮一峰的发言：</pre>
+
+<p>所有页面有统一模板，实现中英文切换，技术上可能比较麻烦。<br>
+我是每一段对着英文翻译中文的，所以才会是现在这种格式。<br>
+</p></blockquote>
+
+<p>翻译的文章在相应位置给出原文或链接即可</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 13, 2011  5:47 PM">2011年6月13日 17:47</abbr>
+ | <a href="#comment-221533">#</a>
+ | <a href="#comment-text" title="引用k的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221594" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://shinan.info" href="http://shinan.info/" target="_blank" rel="nofollow">呵呵</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221594">
+            <p>个人感觉类似功能用浏览器插件来做更为合适</p>
+
+<p>只是略显折腾了一些</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 14, 2011  3:11 PM">2011年6月14日 15:11</abbr>
+ | <a href="#comment-221594">#</a>
+ | <a href="#comment-text" title="引用呵呵的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221601" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">netwjx</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221601">
+            <p>void哪个 我以前的做法是结尾加一句undefined 就不会导致页面转向了</p>
+
+<p>因为比void使用的字符多 现在基本使用void 0</p>
+
+<p>如<br>
+href="javascript:alert('');void 0"</p>
+
+<p>0的占位是必须的,但不是必须是0(挺绕的),这样不用计算个很大的括号</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 14, 2011  3:48 PM">2011年6月14日 15:48</abbr>
+ | <a href="#comment-221601">#</a>
+ | <a href="#comment-text" title="引用netwjx的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221964" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">remember2015</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221964">
+            <blockquote>
+<pre>引用sokoban的发言：</pre>
+
+<p>好像除了IE，所有其他浏览器都支持至少8000个以上字符的URL，我是做过试验的。有的版本Apache服务器默认也只是支持8000长度的URL。</p>
+
+</blockquote>
+
+<p>IE6,7准确的说是2083个字吧，另外IE6也是2083，IE8略有不同长一些</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 20, 2011  3:57 PM">2011年6月20日 15:57</abbr>
+ | <a href="#comment-221964">#</a>
+ | <a href="#comment-text" title="引用remember2015的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-222224" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://bokeyy.com" href="http://bokeyy.com/" target="_blank" rel="nofollow">Yuan Yuan</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-222224">
+            <p>我没看懂 Bookmarklet 是做什么的，请问能举个例子描述么？谢谢</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 23, 2011  2:23 PM">2011年6月23日 14:23</abbr>
+ | <a href="#comment-222224">#</a>
+ | <a href="#comment-text" title="引用Yuan Yuan的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-223602" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://shellexy.info/" href="http://shellexy.info/" target="_blank" rel="nofollow">Shellexy</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-223602">
+            <p>bookmarklet 其实分行写没问题</p>
+
+<p>另外有些 webkit 浏览器不允许脚本修改 head 内容，所以document.getElementsByTagName('head')[0].appendChild(script);<br>
+要改为<br>
+document.body.appendChild(script);</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July 12, 2011 11:58 PM">2011年7月12日 23:58</abbr>
+ | <a href="#comment-223602">#</a>
+ | <a href="#comment-text" title="引用Shellexy的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-239305" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">行之</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-239305">
+            <p>以后可以写个chrome扩展应用的教程：）</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 10, 2011  7:30 PM">2011年11月10日 19:30</abbr>
+ | <a href="#comment-239305">#</a>
+ | <a href="#comment-text" title="引用行之的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-253200" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.52smap.com" href="http://www.52smap.com/" target="_blank" rel="nofollow">matthew</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-253200">
+            <p>阮哥如此强大.学习了.</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April 22, 2012  9:35 PM">2012年4月22日 21:35</abbr>
+ | <a href="#comment-253200">#</a>
+ | <a href="#comment-text" title="引用matthew的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-258659" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">jaxer</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-258659">
+            <p>一直想在kindle的浏览器里添加bookmarklet。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July 13, 2012 11:22 AM">2012年7月13日 11:22</abbr>
+ | <a href="#comment-258659">#</a>
+ | <a href="#comment-text" title="引用jaxer的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-262733" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">ericyi</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-262733">
+            <p>博主：bookmarklet 能访问 https website 吗,我在开发一个bookmarklet,但是在HTTPS站点下不能用，HTTP站点是可以的， <br>
+ <br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September  4, 2012  9:56 PM">2012年9月 4日 21:56</abbr>
+ | <a href="#comment-262733">#</a>
+ | <a href="#comment-text" title="引用ericyi的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-279938" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://fyscu.com/iwiki/index.php?title=User:test_32" href="http://fyscu.com/iwiki/index.php?title=User:test_32" target="_blank" rel="nofollow">test_32</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-279938">
+            <blockquote>
+<pre>引用牛二弟弟的发言：</pre>
+
+<p>昨天就在折腾如何在textarea中选中位置插入内容的js脚本。</p>
+
+</blockquote>
+
+<p>您这方法太麻烦了……</p>
+
+<p>看看我的实现 —— <a href="http://fyscu.com/forum.php?mod=viewthread&amp;tid=3677&amp;page=1#pid57685" rel="nofollow">http://fyscu.com/forum.php?mod=viewthread&amp;tid=3677&amp;page=1#pid57685</a></p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 24, 2013  3:25 AM">2013年10月24日 03:25</abbr>
+ | <a href="#comment-279938">#</a>
+ | <a href="#comment-text" title="引用test_32的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-279939" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://fyscu.com/iwiki/index.php?title=User:test_32" href="http://fyscu.com/iwiki/index.php?title=User:test_32" target="_blank" rel="nofollow">test_32</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-279939">
+            <p>用“递归 + try/catch”方法 可以<b>遍历网页框架</b>（页面中所有的 frame/iframe） ——</p>
+
+<p><a href="http://fyscu.com/forum.php?mod=viewthread&amp;tid=3677&amp;page=1#pid57685" rel="nofollow">http://fyscu.com/forum.php?mod=viewthread&amp;tid=3677&amp;page=1#pid57685</a></p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 24, 2013  3:27 AM">2013年10月24日 03:27</abbr>
+ | <a href="#comment-279939">#</a>
+ | <a href="#comment-text" title="引用test_32的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-351153" class="comment">
+    <div id="comment-last" class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">liqiang</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-351153">
+            <p>用动态映射可以记录各种属性 ，然后其它的有默认值处理兼容性</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August  6, 2015  9:53 AM">2015年8月 6日 09:53</abbr>
+ | <a href="#comment-351153">#</a>
+ | <a href="#comment-text" title="引用liqiang的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    </div>
+        
+    
+
+
+    
+    
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">我要发表看法</h2>
+        <div class="comments-open-content">
+
+        
+            <div id="comment-greeting"></div>
+
+            <form method="post" action="http://www.ruanyifeng.com/cgi-bin/mtos/mt-comments.cgi" name="comments_form" id="comments-form">
+                <input name="static" value="1" type="hidden">
+                <input name="entry_id" value="1569" type="hidden">
+                <input name="__lang" value="en" type="hidden">
+                <input name="parent_id" value="" id="comment-parent-id" type="hidden">
+                <input name="armor" value="1" type="hidden">
+                <input name="preview" value="" type="hidden">
+                <input name="sid" value="" type="hidden">
+                <div id="comments-open-data">
+            <div id="comments-open-text">
+                    <p><label for="comment-text">您的留言
+                    （HTML标签部分可用）</label></p>
+                    <p><textarea id="comment-text" name="text" rows="10" cols="50"></textarea></p>
+                </div>
+                    <div id="comment-form-name">
+                        <p><label for="comment-author">您的大名：</label></p>
+                        <p><input id="comment-author" name="author" size="30" value="">  <span class="hint"> «-必填</span></p>
+                    </div>
+                    <div id="comment-form-email">
+                        <p><label for="comment-email">电子邮件：</label></p>
+                        <p><input id="comment-email" name="email" size="30" value="">  <span class="hint"> «-必填，不公开</span></p>
+                    </div>
+                    <div id="comment-form-url">
+                        <p><label for="comment-url">个人网址：</label></p>
+                        <p><input id="comment-url" name="url" size="30" value="">  <span class="hint"> «-我信任你，不会填写广告链接</span></p>
+                    </div>
+                    <div id="comment-form-remember-me">
+                        <p>
+                        <label for="comment-bake-cookie">记住个人信息？</label><input id="comment-bake-cookie" name="bakecookie" value="1" accesskey="r" type="checkbox"></p>
+                    </div>
+                </div>
+                    <div id="comment-form-reply" style="display: none;">
+                    <input id="comment-reply" name="comment_reply" value="" type="checkbox">
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+<div id="wait" style="display: none;">
+<p><strong>正在发表您的评论，请稍候</strong></p>
+<p>
+<input name="percent" size="3" style="font-family: Arial; color: black; text-align: center; border-width: medium; border-style: none;" type="text">           
+<input name="chart" size="46" style="font-family: Arial; font-weight: bolder; color: black; padding: 0px; border-style: none;" type="text">
+</p>
+</div>
+
+                    <p><input accesskey="s" name="post" id="comment-submit" value="发表" type="submit">  <span class="hint"> «- 点击按钮</span></p>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <script type="text/javascript" src="about:blank"></script>
+
+            <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-content">
+<p><a href="http://www.ruanyifeng.com/contact.html">联系方式</a> | ruanyifeng.com 2003 - 2017
+
+<script>/* Code removed by ScrapBook */</script>
+
+
+
+<!-- Site Meter -->
+<a href="http://sm3.sitemeter.com/stats.asp?site=sm3bomoocom" target="_top">
+<img src="meter.asp" alt="Site Meter" border="0"></a>
+
+<!-- Copyright (c)2009 Site Meter -->
+
+</p>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="share_button_proto" style="display: none;">
+<a style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;" class="bshareDiv" href="http://www.bshare.cn/share"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height: 21px; color: rgb(51, 51, 51); background: transparent url(&quot;button_custom10-zh-Orange.gif&quot;) no-repeat scroll 0% 0%; text-align: center; width: 51px;"></div><div style="clear: both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="about:blank"></script>
+<script type="text/javascript" charset="utf-8">/* Code removed by ScrapBook */</script>
+</div>
+
+<script>/* Code removed by ScrapBook */</script>
+
+
+
+
+        </div>
+    </div>
+
+<div class="bsBox" id="bsBox"><div class="bsClose">X</div><div class="bsTop"><div class="bsReturn">选择其他平台 &gt;&gt;</div><span style="margin-left: 15px;">分享到</span><span class="bsPlatName"></span></div><div class="bsFrameDiv"><iframe src="index_11.html" class="bShareFrame" name="bsFrame275" scrolling="no" allowtransparency="true" frameborder="0"></iframe></div><div id="bsMorePanel" style="display: none;"></div></div><div id="ads"></div><div id="bsPanelHolder"><div id="bsPanel" style="display: none;"><div class="bsTitle"><a style="float: left; height: 20px; line-height: 20px; font-weight: bold;" class="bsSiteLink" target="_blank" href="http://www.bshare.cn/intro">分享到...</a><a class="bsSiteLink" style="cursor: pointer; float: right; height: 20px; line-height: 20px; font-weight: bold;">X</a><div class="bsClear"></div></div><div class="bsClear"></div><div style="padding-left: 8px; background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><div style="height: 47px; border-bottom: 1px solid rgb(204, 204, 204); padding: 4px 0px 4px 16px; margin-right: 8px;"><div class="bsRlogo"><a style="text-decoration: none; line-height: 120%;"><div style="cursor: pointer; width: 24px; height: 24px; margin: 0px 18px 2px; background: transparent url(&quot;facebook.gif&quot;) no-repeat scroll 0% 0%;"></div><div style="cursor: pointer; text-align: center; width: 60px; height: 16px ! important; overflow: hidden; color: inherit; white-space: nowrap; line-height: 120% ! important;">Facebook</div></a></div><div class="bsRlogo"><a style="text-decoration: none; line-height: 120%;"><div style="cursor: pointer; width: 24px; height: 24px; margin: 0px 18px 2px; background: transparent url(&quot;twitter.gif&quot;) no-repeat scroll 0% 0%;"></div><div style="cursor: pointer; text-align: center; width: 60px; height: 16px ! important; overflow: hidden; color: inherit; white-space: nowrap; line-height: 120% ! important;">Twitter</div></a></div><div class="bsRlogo"><a style="text-decoration: none; line-height: 120%;"><div style="cursor: pointer; width: 24px; height: 24px; margin: 0px 18px 2px; background: transparent url(&quot;sinaminiblog.gif&quot;) no-repeat scroll 0% 0%;"></div><div style="cursor: pointer; text-align: center; width: 60px; height: 16px ! important; overflow: hidden; color: inherit; white-space: nowrap; line-height: 120% ! important;">新浪微博</div></a></div></div><div class="bsLogoLink"><div class="bsLogo"><a title="微信" style="background: transparent url(&quot;weixin.png&quot;) no-repeat scroll 0% 0%;">微信</a></div><div class="bsLogo"><a title="腾讯微博" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -1512px;">腾讯微博</a></div><div class="bsLogo"><a title="豆瓣网" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -540px;">豆瓣网</a></div><div class="bsLogo"><a title="饭否" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -666px;">饭否</a></div><div class="bsLogo"><a title="雪球" style="background: transparent url(&quot;xueqiu.png&quot;) no-repeat scroll 0% 0%;">雪球</a></div><div class="bsLogo"><a title="电子邮件" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -612px;">电子邮件</a></div></div><div class="bsLogoLink"><div class="bsLogo"><a title="Google+" style="background: transparent url(&quot;gplus.png&quot;) no-repeat scroll 0% 0%;">Google+</a></div><div class="bsLogo"><a title="QQ空间" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -1566px;">QQ空间</a></div><div class="bsLogo"><a title="QQ好友" style="background: transparent url(&quot;qqim.png&quot;) no-repeat scroll 0% 0%;">QQ好友</a></div><div class="bsLogo"><a title="Instapaper" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -954px;">Instapaper</a></div><div class="bsLogo"><a title="美味书签" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -432px;">美味书签</a></div></div><div class="bsClear"></div></div><div style="height: 20px; line-height: 20px; padding: 0px 8px; border-top: 1px solid rgb(232, 232, 232); color: rgb(102, 102, 102); background: rgb(242, 242, 242) none repeat scroll 0% 0%;"><div class="buzzButton" style="float: left;">更多平台... <font style="font-weight: normal;">(133)</font></div><div id="bsPower" style="float: right; text-align: right; overflow: hidden; height: 100%;"><a class="bsSiteLink" style="font-size: 10px; vertical-align: text-bottom; line-height: 24px; cursor: pointer;" href="http://www.bshare.cn/" target="_blank"><span style="font-size: 10px; vertical-align: text-bottom;"><span style="color: rgb(255, 102, 0);">b</span>Share</span></a></div></div></div></div><iframe src="index_12.html" style="display: none;"></iframe></body>
+</html>

@@ -1,0 +1,22 @@
+/* Code tidied up by ScrapBook */
+.tbox { margin: 0px 0px 8px; border-bottom: 1px solid rgb(218, 218, 218); overflow: hidden; background: transparent url("green_skin.png") repeat-x scroll 0px -294px; }
+.tbox dt { height: 24px; border: 1px solid rgb(218, 218, 218); overflow: hidden; clear: both; }
+.tbox dd { border-left: 1px solid rgb(218, 218, 218); border-right: 1px solid rgb(218, 218, 218); overflow: hidden; }
+.tbox dt strong { height: 24px; line-height: 25px; padding-left: 8px; padding-right: 4px; display: block; float: left; color: rgb(49, 99, 1); letter-spacing: 1px; }
+.light { background: transparent none repeat scroll 0% 0%; }
+.light dt { height: 24px; border: 1px solid rgb(218, 218, 218); overflow: hidden; background: transparent url("green_skin.png") repeat-x scroll 0px -188px; clear: both; }
+.light dd { border-left: 1px solid rgb(218, 218, 218); border-right: 1px solid rgb(218, 218, 218); overflow: hidden; }
+dt.light strong { color: rgb(49, 99, 1); }
+.c1 { padding: 4px 0px; clear: right; }
+.c1 li { height: 27px; line-height: 27px; overflow: hidden; padding-left: 16px; background: transparent url("ico-2.gif") no-repeat scroll 7px 11px; }
+.c1 a { color: rgb(88, 88, 88); }
+.d4 { padding: 0px; }
+.d4 li { padding: 4px 8px; overflow: hidden; }
+.d4 li a { display: block; line-height: 23px; overflow: hidden; text-indent: 14px; background: transparent url("ico-3.gif") no-repeat scroll 4px 9px; }
+.d4 li p { color: rgb(136, 136, 136); line-height: 17px; height: 33px; overflow: hidden; }
+.d6 { width: 100%; overflow: hidden; padding-bottom: 6px; clear: both; display: inherit; }
+.d6 li { float: left; margin: 6px 0px 1px 8px; display: inline; }
+.d6 li a { width: 87px; padding-left: 20px; height: 26px; line-height: 26px; display: block; background: transparent url("green_skin.png") no-repeat scroll -42px -222px; color: rgb(49, 99, 1); }
+.d6 li a:hover { text-decoration: none; }
+.d6 li a.thisclass { background: transparent url("green_skin.png") no-repeat scroll -42px -249px; }
+.ico2 li { padding-left: 16px; background: transparent url("ico-2.gif") no-repeat scroll 6px 11px; }

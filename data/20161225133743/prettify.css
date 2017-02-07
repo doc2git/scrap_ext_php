@@ -1,0 +1,7 @@
+/* Code tidied up by ScrapBook */
+@media screen {
+  .tag { color: rgb(0, 0, 136); }
+}
+@media print, projection {
+  .tag { color: rgb(0, 0, 102); font-weight: bold; }
+}

@@ -1,0 +1,6 @@
+/* Code tidied up by ScrapBook */
+.sr-bdimgshare { position: absolute; overflow: hidden; z-index: 9990; color: white; }
+.sr-bdimgshare .bdimgshare-bg { position: absolute; width: 100%; height: 100%; overflow: hidden; opacity: 0.4; }
+.sr-bdimgshare .bdimgshare-content { position: relative; float: right; padding: 5px 8px 5px 0px; }
+.sr-bdimgshare-black .bdimgshare-bg { background: black none repeat scroll 0% 0%; }
+.sr-bdimgshare .bdimgshare-content .bdimgshare-lbl { padding-right: 5px; cursor: default; float: left; }

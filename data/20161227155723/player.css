@@ -1,0 +1,4 @@
+/* Code tidied up by ScrapBook */
+#_cm-css-reset { height: inherit; width: inherit; }
+#_cm-css-reset.vpaid-player-container { position: relative; z-index: 99; }
+#_cm-css-reset ._cmOptOut, textarea, button { font-weight: normal; font-family: Arial; font-size: 12px; color: rgb(102, 102, 102); }

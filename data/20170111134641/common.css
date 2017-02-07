@@ -1,0 +1,19 @@
+/* Code tidied up by ScrapBook */
+html { color: black; font-family: Arial,Lucida Grande,sans-serif; font-size: 14px; }
+body { padding: 0px; margin: 0px; }
+a.http::before { white-space: nowrap; content: url("moin-www.png"); margin: 0px 0.2em; }
+a.https::before { white-space: nowrap; content: url("moin-www.png"); margin: 0px 0.2em; }
+li p { margin: 0.25em 0px; }
+a, img, img.drawing { border: 0px none; }
+pre { border: 1pt dashed rgb(121, 121, 121); background-color: rgb(243, 243, 243); padding: 0.5em 1em; margin: 0.5em 0px; font-family: "DejaVu Sans Mono","Liberation Mono",monospace; white-space: pre-wrap; word-wrap: break-word; }
+div { margin: 0px; padding: 0px; }
+table { margin: 0.5em 0px; border-collapse: collapse; }
+td { border: 1pt solid rgb(173, 185, 204); padding: 0.25em 0.5em; }
+td p { margin: 0px; padding: 0px; }
+.table-of-contents { color: black; background: rgb(255, 255, 255) url("moin-toc-bg-blue.png") repeat-y scroll right center; border: 1px solid rgb(204, 204, 204); font-size: small; text-align: left; padding-bottom: 15px; margin: 0px; width: 70%; }
+.table-of-contents ol { margin: 0px 0px 0px 1em; list-style-type: decimal; }
+.table-of-contents-heading { font-weight: bold; padding: 0px; margin: 10px; }
+.info { float: right; font-size: 0.7em; color: gray; }
+#pageinfo { margin: 20px 0px 0px; }
+#pagebottom { clear: both; }
+hr { height: 1px; background-color: rgb(156, 156, 156); border: 0px none; }

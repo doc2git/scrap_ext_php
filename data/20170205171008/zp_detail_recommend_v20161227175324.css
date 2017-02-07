@@ -1,0 +1,7 @@
+/* Code tidied up by ScrapBook */
+#better_position, #nearby_position, .fit_you { font-family: "微软雅黑"; }
+#better_position { width: 216px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; font-size: 12px; border-bottom: 1px solid rgb(229, 229, 229); }
+#better_position > ul { display: none; }
+#nearby_position { width: 216px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; font-size: 12px; border-bottom: 1px solid rgb(184, 184, 184); }
+.fit_you { margin: 10px 0px; border: 1px solid rgb(224, 224, 224); font-size: 12px; }
+#better_position > ul a:nth-of-type(5) ul, #nearby_position > ul a:nth-of-type(5) ul { border: medium none; }

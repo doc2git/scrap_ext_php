@@ -1,0 +1,17 @@
+/* Code tidied up by ScrapBook */
+.bdselect_share_bg { position: absolute; display: none; z-index: 9997; }
+.bdselect_share_box { position: absolute; display: none; z-index: 9998; max-width: 300px; border: 1px solid rgb(246, 246, 246); box-shadow: 1px 4px 6px -2px rgb(246, 246, 246); }
+.bdselect_share_box .selectshare-mod-triangle { display: block; position: absolute; left: 14px; top: -10px; }
+.bdselect_share_box .selectshare-mod-triangle .triangle-border { border-color: transparent transparent rgb(217, 217, 217); left: 0px; }
+.bdselect_share_box .selectshare-mod-triangle .triangle-border, .bdselect_share_box .selectshare-mod-triangle .triangle-inset { left: 0px; top: 0px; width: 0px; height: 0px; font-size: 0px; overflow: hidden; position: absolute; border-width: 5px; border-style: dashed dashed solid; }
+.bdselect_share_box .selectshare-mod-triangle .triangle-inset { border-color: transparent transparent rgb(246, 246, 246); }
+.bdselect_share_list { margin: 0px; padding: 10px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; overflow: hidden; }
+.bdselect_share_head { width: 100%; background: rgb(244, 244, 244) none repeat scroll 0% 0%; height: 28px; }
+.bdselect_share_head span { color: rgb(98, 98, 98); line-height: 28px; margin-left: 5px; font-weight: bold; font-size: 12px; }
+.bdselect_share_content { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.bdselect_share_dialog_close { background: transparent url("selectshare_close.png") no-repeat scroll 0px 0px; width: 12px; height: 12px; position: absolute; top: 8px; right: 10px; display: block; text-decoration: none; cursor: pointer; }
+.bdselect_share_dialog_search { position: absolute; top: 0px; right: 30px; display: block; text-decoration: none; cursor: pointer; line-height: 28px; }
+.bdselect_share_dialog_search:hover { text-decoration: none; }
+.bdselect_share_dialog_search_i { background: transparent url("share-search-icon.png") no-repeat scroll 0px center; width: 12px; height: 28px; display: inline-block; vertical-align: top; }
+.bdselect_share_dialog_search_span { display: inline-block; vertical-align: top; }
+.bdselect_share_partners { float: left; }

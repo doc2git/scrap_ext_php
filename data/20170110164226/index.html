@@ -1,0 +1,791 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="sixapart-standard" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Movable Type  5.2.2">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="start" href="http://www.ruanyifeng.com/blog/" title="Home">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://feeds.feedburner.com/ruanyifeng">
+<script src="about:blank" async=""></script><script type="text/javascript" src="about:blank"></script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://www.ruanyifeng.com/blog/2010/01/12_javascript_syntax_structures_you_should_not_use.html">
+<dc:title>12种不宜使用的Javascript语法</dc:title>
+<dc:description>这几天，我在读《Javascript语言精粹》。...</dc:description>
+<dc:creator>阮一峰</dc:creator>
+<dc:date>2010-01-03T15:14:19+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/3.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/3.0/">
+</License>
+</rdf:RDF>
+-->
+
+
+    
+    <link rel="prev" href="http://www.ruanyifeng.com/blog/2011/05/final_ruling_of_the_case_of_gold-farming_bot.html" title="南京外挂代练案的二审判决">
+    <link rel="next" href="http://www.ruanyifeng.com/blog/2011/05/pang_xiaowei.html" title="庞小伟谈互联网创业">
+    
+    <title>短网址还原的Bookmarklet - 阮一峰的网络日志</title>
+<script charset="utf-8" type="text/javascript" src="about:blank"></script><script charset="utf-8" type="text/javascript" src="about:blank"></script><script charset="utf-8" type="text/javascript" src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+a.bshareDiv, #bsPanel, #bsMorePanel, #bshareF { border: medium none; background: transparent none repeat scroll 0% 0%; padding: 0px; margin: 0px; font: 12px/14px Helvetica,Calibri,Tahoma,Arial,宋体,sans-serif; }
+#bsPanel div, #bsMorePanel div, #bshareF div { display: block; }
+a.bshareDiv div, #bsFloatTab div { display: inline-block; }
+a.bshareDiv img, a.bshareDiv div, a.bshareDiv span, a.bshareDiv a, #bshareF table, #bshareF tr, #bshareF td { text-decoration: none; background: transparent none repeat scroll 0% 0%; margin: 0px; padding: 0px; border: medium none; line-height: 1.2; }
+div.buzzButton { cursor: pointer; font-weight: bold; }
+a.bshareDiv .bsPromo, div.bshare-custom .bsPromo { display: none; position: absolute; z-index: 100; }
+a.bshareDiv .bsPromo.bsPromo1, div.bshare-custom .bsPromo.bsPromo1 { width: 51px; height: 18px; top: -18px; left: 0px; line-height: 16px; font-size: 12px ! important; font-weight: normal ! important; color: rgb(255, 255, 255); text-align: center; background: transparent url("bshare_box_sprite2.gif") no-repeat scroll 0px -606px; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+.bsBox { display: none; z-index: 100000001; font-size: 12px; background: transparent url("background-opaque-dark.gif") repeat scroll 0% 0% ! important; padding: 6px ! important; border-radius: 5px; }
+.bsClose { cursor: pointer; position: absolute; z-index: 10000000; color: rgb(102, 102, 102); font-weight: bold; font-family: Helvetica,Arial; font-size: 14px; line-height: 20px; }
+.bsTop { color: rgb(102, 102, 102); background: rgb(242, 242, 242) none repeat scroll 0% 0%; height: 24px; line-height: 24px; border-bottom: 1px solid rgb(232, 232, 232); }
+.bsTop span { float: left; }
+.bsFrameDiv, #bsMorePanel { border: medium none; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.bsReturn { float: right; margin-right: 36px; text-align: right; cursor: pointer; line-height: 24px; color: rgb(102, 102, 102); opacity: 0.5; }
+</style><script charset="utf-8" type="text/javascript" src="about:blank"></script><script charset="utf-8" type="text/javascript" src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+div.bsClear { clear: both; height: 0px; line-height: 0; overflow: hidden; font-size: 0px; }
+.bsLogoLink:hover { text-decoration: underline; }
+</style><script charset="utf-8" type="text/javascript" src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+a.bsSiteLink { text-decoration: none; color: rgb(102, 102, 102); }
+a.bsSiteLink:hover { text-decoration: underline; }
+a.bshareDiv { overflow: hidden; height: 16px; line-height: 18px; font-size: 14px; color: rgb(51, 51, 51); padding-left: 0px; }
+a.bshareDiv:hover { text-decoration: none; }
+div.bsTitle { padding: 0px 8px; border-bottom: 1px solid rgb(232, 232, 232); color: rgb(102, 102, 102); background: rgb(242, 242, 242) none repeat scroll 0% 0%; text-align: left; }
+div.buzzButton { cursor: pointer; }
+div.bsRlogo, div.bsRlogoSel { width: 68px; float: left; margin: 0px; padding: 2px 0px; }
+div.bsRlogo a, div.bsRlogoSel a { float: left; }
+div.bsLogo, div.bsLogoSel { float: left; width: 111px; text-align: left; height: auto; padding: 2px 4px; margin: 2px 0px; white-space: nowrap; overflow: hidden; }
+div.bsLogo, div.bsRlogo { border: 1px solid rgb(255, 255, 255); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+div.bsLogo a, div.bsLogoSel a { display: block; height: 16px; line-height: 16px; padding: 0px 0px 0px 24px; text-decoration: none; float: left; overflow: hidden; }
+div.bsLogo a, div.bsRlogo a { color: rgb(102, 102, 102); border: medium none; }
+div.bsLogoLink { width: 121px; overflow: hidden; background: rgb(255, 255, 255) none repeat scroll 0% 0%; float: left; margin: 3px 0px; }
+#bsPanel { position: absolute; z-index: 100000000; font-size: 12px; width: 258px; background: transparent url("background-opaque-dark.png") repeat scroll 0% 0% ! important; padding: 6px ! important; border-radius: 5px; }
+div.bsClear { clear: both; height: 0px; line-height: 0; font-size: 0px; overflow: hidden; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+a.bsSiteLink { text-decoration: none; color: rgb(102, 102, 102); }
+a.bsSiteLink:hover { text-decoration: underline; }
+a.bshareDiv { overflow: hidden; height: 16px; line-height: 18px; font-size: 14px; color: rgb(51, 51, 51); padding-left: 0px; }
+a.bshareDiv:hover { text-decoration: none; }
+div.bsTitle { padding: 0px 8px; border-bottom: 1px solid rgb(232, 232, 232); color: rgb(102, 102, 102); background: rgb(242, 242, 242) none repeat scroll 0% 0%; text-align: left; }
+div.buzzButton { cursor: pointer; }
+div.bsRlogo, div.bsRlogoSel { width: 68px; float: left; margin: 0px; padding: 2px 0px; }
+div.bsRlogo a, div.bsRlogoSel a { float: left; }
+div.bsLogo, div.bsLogoSel { float: left; width: 111px; text-align: left; height: auto; padding: 2px 4px; margin: 2px 0px; white-space: nowrap; overflow: hidden; }
+div.bsLogo, div.bsRlogo { border: 1px solid rgb(255, 255, 255); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+div.bsLogo a, div.bsLogoSel a { display: block; height: 16px; line-height: 16px; padding: 0px 0px 0px 24px; text-decoration: none; float: left; overflow: hidden; }
+div.bsLogo a, div.bsRlogo a { color: rgb(102, 102, 102); border: medium none; }
+div.bsLogoLink { width: 121px; overflow: hidden; background: rgb(255, 255, 255) none repeat scroll 0% 0%; float: left; margin: 3px 0px; }
+#bsPanel { position: absolute; z-index: 100000000; font-size: 12px; width: 258px; background: transparent url("background-opaque-dark.png") repeat scroll 0% 0% ! important; padding: 6px ! important; border-radius: 5px; }
+div.bsClear { clear: both; height: 0px; line-height: 0; font-size: 0px; overflow: hidden; }
+</style><script charset="utf-8" type="text/javascript" src="about:blank"></script></head>
+<body id="scrapbook" class="mt-entry-archive one-column">
+<script>/* Code removed by ScrapBook */</script>
+    <div id="container">
+        <div id="container-inner">
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name">阮一峰的网络日志 <span id="site_location"> » <a href="http://www.ruanyifeng.com/blog/" accesskey="1">首页</a></span><span id="site_archive"> » <a href="http://www.ruanyifeng.com/blog/archives.html">档案</a></span>
+</div>
+
+<div id="google_search">
+<!-- SiteSearch Google -->
+<form action="http://www.ruanyifeng.com/blog/search.html" id="cse-search-box">
+      <div>
+        <input name="cx" value="016304377626642577906:b_e9skaywzq" type="hidden">
+    <input name="cof" value="FORID:11" type="hidden">
+    <input name="ie" value="UTF-8" type="hidden">
+        <input name="q" size="20" class="searchbox" id="sbi" value="" type="text">
+        <input src="top_search_submit.gif" class="searchbox_submit" value="" alt="搜索" name="sa" type="image">
+      </div>
+    </form>
+<!-- SiteSearch Google -->
+</div>
+<div id="feed_icon">
+<a href="http://www.ruanyifeng.com/feed.html" title="订阅Feed">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAUzSURBVHjavFdbbFRVFF3nPjoz7dTWTittaW0jUDRAUqaNojyqREnEQKgfUj9MqqAmhqRt/OCD4CuY+Kckoh+aiGKC+gMJbdHoRysJ8dkhhmJLNdDKtJU+6GMK87j3Hs85d2Z6HzNtMYWb3Dn3NWftvfba+5xNYDl+e6Fkj6yqb/oDRbWq14vlPBLRKCITkxf0ROLt+hNjp1PPSRK4kA3vF1dXNRcWlyA2OQU9eos9opAkAiKxD+XkKO6t15aRWO7J/MgmAZU8MEgexgZHMX518Dh72sYMmVKShnxWuWHdHtxKIDIYTgMuDzgfmSOIQkYMpdUF8OY92Hytt4/jvkg47czzU16iQovM3QFwmNck+Yyduu7D6NA0Z6JR4THntFs9V4tWQg6Ui3s6MwKDncsFTnXKLJhDSeUK3AgPtyhccDzmVs999buRt/1Vm4i0od+hX7+MRG87jPGB/w1u8FPj9xEw7McVrnYuOCvtpjTth3J/nTg99c8LRhKhr6D3dTB5R24bXFwbMXBsyZzeoXaycEpJ95TB09AGX/NpqLVNtw8urnVzLvHjFNxiFqRy2OOHuqUVnue+ACkoWzo4O6lGzTmuHq6nPvY2m9rVqjrIK2rMEKxqyG5NPAKt+wjo0LklgfNxJkZMA3KJvqRUk3z5UFY3QH14P0h+WUY79HPvgv7VuSg4ZRGY1YgZgqXmORccF17sy2ehnf9AeO085K2HQFbtXBScj0LcpgF2cN+WV+DZ/LJQu6gD4R7oV7pBJwbSgtMvfiPoVp56DySwxm7EtkMs1WdAB7qzggsDJKQYsHucSkOudrkiCPWR/fA2nYCn8SNIK4NptSMyAu3sAdDRkIsJdfth0LzSrODUoPNZ4KI9SxJI5UHk7D4GdQfz2us31c7CoHMjRkKuDPHseCMrONVhNcDJwMJpKFVvg9L4OaTiNWm1x789KCqkrXhVBiEz0WYCT2nAzQAD1/vaETv1GrRfP4Vx5cfMNcDPwvP0h0DhanPym7OIf/+O67vcJ1/PCJ4KgdzaUP6Wz+dU+5yIL6fV+PsHGAOdwlPpvvUOyeeAVGyCdqkDNB6DPjsBSrnndfOGevOh3RhGItxvA+fX1CtbGFhgYUFkFMZPR6F1HnClHq8HyubWtJexX06CRmdt33hrd7nA7SFY4qoGpnYuOKcRykPPgDCBcsHx9Iv+fNL2PueBehCWUfYQIIMGLOCcOmXDXsh1+yCt35tUPfvzGFuSvzvoinXOxqa02qOhM6733nVP2MAdaej2XN11DPKjLZCD+yBvahGCo7JfTKAN9UD7s8Oe9zUNIhz8fWI8DG2k38WCFdxugANcXrvTVd1IEbuv3Jour7Hzn7jLMBNfKs7R3i67gRVrbeCOEDhinmWhAatsqdquM2XzHZINhK2cqTjHr/XZdVJUbgN3MWAVXKbSyg9jesRW2xP9di+lwrL5ojM3m2H/kG9hwcIA37c71W6wJdW2J2S5nrjYbq/t1AHAhJsKQeyfPvf6IMJgghPJhFZ4x0KlfLFvt22du45Au/A1SOlGc0P672XXwhLtOcM0kTTEMMd0qkVmMNXxMd/tsedUjInr4SQDgOfeXMSiN0FCL5WHah4L1qqYXPJOJlttd+a5M+YpcG5poLYKQ5f+6JJ4r8bbJYP47hq4r7QAs9PjYNhHJd4o8l5taiwuOpa7AS4XKqI/5NjJbTnaWK92nLdLuhQAJayRNMiygXPBeQN+Qbvu0zDc3y+aUzhbkGR73sI7ljvUnndx2q3t+X8CDAD66FtrIL864AAAAABJRU5ErkJggg==" alt="" style="border: 0pt none;">
+</a></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <div id="entry-1562" class="entry-asset asset hentry">
+                                <div class="asset-header">
+<div class="asset-nav entry-nav">
+
+<div class="entry-location">
+<ul>
+<li>上一篇：<a href="http://www.ruanyifeng.com/blog/2011/05/final_ruling_of_the_case_of_gold-farming_bot.html" title="南京外挂代练案的二审判决">南京外挂代练案的二审判</a></li>
+<li>下一篇：<a href="http://www.ruanyifeng.com/blog/2011/05/pang_xiaowei.html" title="庞小伟谈互联网创业">庞小伟谈互联网创业&nbsp;&nbsp;</a></li>
+</ul>
+</div>
+
+
+    
+                                    <div class="entry-categories">
+                                        <p>分类<span class="delimiter">：</span></p>
+                                        <ul>
+                                            <li><a href="http://www.ruanyifeng.com/blog/developer/" rel="tag">开发者手册</a></li>
+                                        </ul>
+                                    </div>
+    
+
+
+                                            
+</div>
+                                </div>
+<article class="hentry">
+                                    <h1 id="page-title" class="asset-name entry-title">短网址还原的Bookmarklet</h1>
+                                            <div id="share_button" style="float: right; padding-right: 2em; padding-top: 1em;">
+<a style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;" class="bshareDiv" href="http://www.bshare.cn/share"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height: 21px; color: rgb(51, 51, 51); background: transparent url(&quot;button_custom10-zh-Orange.gif&quot;) no-repeat scroll 0% 0%; text-align: center; width: 51px;"></div><div style="clear: both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="about:blank"></script>
+<script type="text/javascript" charset="utf-8">/* Code removed by ScrapBook */</script>
+</div>
+                                    <div class="asset-meta">
+                                        
+
+                                            <p class="vcard author">作者： <a class="fn url" href="http://www.ruanyifeng.com/">阮一峰</a></p>
+                                    <p>日期： <a href="http://www.ruanyifeng.com/blog/2011/05/"><abbr class="published" title="2011-05-28T00:57:18+08:00">2011年5月28日</abbr></a></p>
+
+
+                                    </div>
+                                
+                                <div class="asset-content entry-content" id="main-content">
+
+                                    <!-- div class="asset-body" -->
+                                        <p>如今，很多网站提供<a target="_blank" href="http://www.ruanyifeng.com/blog/2011/01/api_for_google_s_url_shortener.html">短网址服务</a>。</p>
+                                    <!-- /div -->
+
+
+                                    <!-- div id="more" class="asset-more" -->
+                                        <p><img src="bg2011052701.jpg"></p>
+
+<p>但是有时候，我们需要知道真实网址是什么。</p>
+
+<p><img src="bg2011052702.jpg"></p>
+
+<p>一个个点击，实在太麻烦。何况在国内，很多网址是点不开的。</p>
+
+<p>我一直希望，有人做一个通用接口，提供所有短网址的还原服务。现在，这样的服务终于出现了，它就是<a target="_blank" href="http://unshort.me/">unshort.me</a>。</p>
+
+<p><a target="_blank" href="http://unshort.me/"><img src="bg2011052703.jpg"></a></p>
+
+<p>在该网站的首页，输入短网址，点击按钮后就会看到真实网址。更令人满意的是，它还慷慨地提供了调用接口<a target="_blank" href="http://unshort.me/api.html">API</a>。</p>
+
+<p>今天晚上，我就利用这个接口，写了一个Bookmarklet----"<a target="_blank" style="background-color: white; padding: 3px; border: 1px solid grey;">短网址还原</a>"。欢迎安装试用。</p>
+
+<p>它的使用方法很简单。只要在页面上选中短网址，然后点击这个Bookmarklet，就会显示真实网址。</p>
+
+<p><img src="bg2011052704.png"></p>
+
+<p>我在Chrome、Firefox 4、IE8下测试，都能正常运行。</p>
+
+<p>（完）<br>
+</p>
+                                    <!-- /div -->
+
+                                </div>
+    <script type="text/javascript" src="about:blank"></script>
+                                <div class="asset-footer">
+
+<h3>文档信息</h3>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+<li>发表日期： <abbr class="published" title="2011-05-28T00:57:18+08:00">2011年5月28日</abbr></li>
+<li>更多内容： <a href="http://www.ruanyifeng.com/blog/archives.html" target="_blank"> 档案</a>  » 
+<a href="http://www.ruanyifeng.com/blog/developer/"> 开发者手册</a> 
+</li>
+<li>购买文集：<a href="http://www.ruanyifeng.com/blog/2014/12/my-blog-book.html" target="_blank"><img src="data:image/png;base64,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" style="border: 0px none;"> 《如何变得有思想》</a></li>
+<li>社交媒体：<a href="https://twitter.com/ruanyf" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAk1JREFUeNqsVc9rE0EU/mZ3dhPNJl2bVIk/Km09aFBE8GLvnrwJXvwLxIsgCP4Fnit6E8Gb0IMHwUsL9SSNgiAoooJIpE1Joo1h82uT7IxvxmRN3Q32kAdvdrI773vfe+/bDTu9WioDcDAda3Ja8piepQ1avCkCeny0Y+R9KenKwOmHHLvPaKn7AtVOoO8dOWDCMpg+41gMQv5FNEJACgoE8MsPNLDBhgfoutMOsJDmWLmU037C4TApciljwQ/kHoohQxV06+wMXNvE7WINuaSpvdYVKLgWnl3O4zAxU3Z1IYVGT+B5qYWV9z2kbQaT/cOwTsxOUUYF+mB5Dkmi8HG3h2q9hxsFNwRTdvQgxxnXRrMvIdkEhllis/qtiWuLDm4WZnBlPoWnXz28LHdw0uGR7m9Wu3j0qYGEubfn4UlBfXO4gTZltRNMg9w9f0i7kNFxllsBlS0x75gYfxyWTBUjT2W5CSMSPBrQuG21+hiMDS8CeCzF8eSLp13uQ3Ab1IqMFZN8tFHPmgOBF99bYP8Be1Xp6t7OJszJgKpPSiZvaj7uf2hguz2IBQuozDvFH6RDBjuK9wdQDvt0nMpW+8efGyh5UcAeZb2+UcHbnz5Jx4wdlp4yJYU3kLiQtfBwOYeLc8nIwfXtNu69q2Oz4mMxbemYOOOjKarhvq51KUjg3GwiFPIuvcNF6pnSnWK0lOEabNLgQh1aJFAhlGB9rG110B2+oyRNPc0sZbRNFltmLKDKqj4Qrm1ojzOxDz2pyPQ0P7CK4c40/wJ+CzAAGYrXsvfFXR4AAAAASUVORK5CYII=" style="border: 0px none;"> twitter</a>，<a href="http://weibo.com/ruanyf" target="_blank"><img src="data:image/png;base64,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" style="border: 0px none;"> weibo</a></li>
+<li>Feed订阅： <a href="http://www.ruanyifeng.com/feed.html" target="_blank"><img src="data:image/gif;base64,R0lGODlhFAAUANU2APV1GfmrePZ8IeR5VPq2ieNkLf7p3NpFJveCJ/NoFfibVPR1IexiJfvdzuZrNfXGuOhUEueTevaFOfzIpNxDGeZZJNU6IOubifiVTfOnid1aLuZpLOFSJf/28vJtIvGcefaLSd5kNu9iFv/z6//48//t4uFfLfNkCeJNGuGNc/rCof/+/PVxEeldI/V5KeKMbu9nIvB2OvzQtNxMKfOPXP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAADYALAAAAAAUABQAAAb/QJstEjKZCsjCZsl0pIS2QWXaYsA8noVWIEAgFoNhhWNyMESi7Jbr/aZCFdRnZJAFJCwAt+vlOkwtEBk1hDUkExJ6bQJaGyYMLTQTDSOFHQF8jAseSFYiJwkuAQ2FE1xaHjBIMDAgARguJwABJIQTLJswDEgeIgSEJQQILAqVNQEiui1HHgkBhTUGCiwYtR0xLS0VJhtaEgoEBoQkGCfPNSoQY9xaCwAsCBPALgmkJA4cZN0CAAgY/PJqEIDwgVAECjM0bOAnwcAKGQJclKhRgoGDDjUeUDigkN8vQiBOfByAglSDAxw3IBCgYEU0FyJoEPpA4UGNDjMsaHDQR8EdPVYOMmQYQGHAhQgHLIRIsWAlgASsGMRBMWMGBQtYZ7yIsoBRKkhjOMxAiXJGGCEpHGxIYsSIhrcaQmy1EQQAOw==" style="border: 0px none;"></a></li>
+
+</ul>
+                                </div>
+</article>
+                            </div>
+
+                        <div id="sup-post-2" style="display: inline-block ! important; width: 100%;">
+   <p style="text-align: center;"><a href="http://www.zhufengpeixun.cn/jscourse/new/js/index.html?ref=ruanyifeng.com" target="_blank"><img alt="珠峰培训" src="sup_zhufeng_page.png" style="border: medium none;"></a></p>
+   <p style="text-align: center;"><a href="https://jianxun.io/?utm_source=ad&amp;utm_medium=site_ad&amp;utm_compaign=ruanyifeng&amp;utm_content=pos_body_bottom&amp;utm_term=jialezhang" target="_blank"><img alt="简寻" src="sub_jianxun_2016b.png" style="border: medium none;"></a></p>                         
+  </div>
+
+<div id="related_entries">
+<h2>相关文章</h2>
+<ul>
+
+<li><strong>2016.10.18: <a href="http://www.ruanyifeng.com/blog/2016/10/document_style_guide.html">中文技术文档的写作规范</a></strong>
+
+                           <div class="entry-body">
+                              很多人说，不知道怎么写文档，都是凭着感觉写。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.09.13: <a href="http://www.ruanyifeng.com/blog/2016/09/csp.html">Content Security Policy 入门教程</a></strong>
+
+                           <div class="entry-body">
+                              跨域脚本攻击 XSS 是最常见、危害最大的网页安全漏洞。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.09.10: <a href="http://www.ruanyifeng.com/blog/2016/09/how_amazon_take_soa.html">亚马逊如何变成 SOA（面向服务的架构）？</a></strong>
+
+                           <div class="entry-body">
+                              上一篇文章，我摘录了《程序员的呐喊》。这本书有趣的内容太多，今天再摘录一段。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2016.09.08: <a href="http://www.ruanyifeng.com/blog/2016/09/conservative_vs_liberal_programmer.html">程序员小测试：保守派 vs 自由派</a></strong>
+
+                           <div class="entry-body">
+                              最近，我在阅读 Steve Yegg 的文集《程序员的呐喊》。
+
+                           </div>
+
+</li>
+
+ 
+</ul>
+</div>
+
+
+<div id="gd1">
+<h2>广告<a href="http://www.ruanyifeng.com/support.html">（购买广告位）</a></h2>
+<div id="gd1-inner">
+<div id="gd1-left">
+<a href="http://www.miaov.com/index.php/video/vipvideolist.html?utm_source=ruanyifeng&amp;" alt="妙味课堂" target="_blank"><img alt="妙味课堂" src="sup_miaov.png" style="border: medium none;"></a>
+<br>
+<a href="http://www.zhinengshe.com/?utm_source=ruanyifeng&amp;utm_medium=cpm&amp;utm_campaign=extlink2016&amp;utm_term=qianduan&amp;utm_content=article" title="智能社" target="_blank"><img alt="智能社" src="sup_zhinengshe.jpg" style="border: medium none;"></a>
+</div>
+<div id="gd1-right">
+<a href="http://apeclass.cn/1212/index.html?utm_source=ruanyifeng" title="海棠学院" target="_blank"><img alt="海棠学院" src="sup_apeclass_300.png" style="border: medium none;"></a>
+<br>
+<a href="http://www.ruanyifeng.com/support.html" target="_blank"><img src="sup_sale_s.png" style="border: medium none;"></a>
+
+</div>
+</div>
+</div>
+                    
+
+                    <div id="comments" class="comments">
+
+
+    
+    
+        
+    <h2 class="comments-header">留言（11条）</h2>
+
+    <div id="comments-content" class="comments-content" style="clear: left;">
+        
+        <div id="comment-220344" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://kaix.in/daddy" href="http://kaix.in/daddy" target="_blank" rel="nofollow">dimlau</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-220344">
+            <p>好巧啊，剛好有這個需求！<br>
+很多短鏈接都在牆外，甚至想用proxy switchy臨時建立規則都要等很久等到瀏覽器返回頁面無法打開才行，這個不好解釋，只有用到的人能能理解。<br>
+總之，感謝。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 28, 2011  2:08 AM">2011年5月28日 02:08</abbr>
+ | <a href="#comment-220344">#</a>
+ | <a href="#comment-text" title="引用dimlau的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-220377" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">JTR</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-220377">
+            <p>在 Google Reader 里看 “短网址还原”的按钮是 javascript:void(0); ...</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 28, 2011  9:21 AM">2011年5月28日 09:21</abbr>
+ | <a href="#comment-220377">#</a>
+ | <a href="#comment-text" title="引用JTR的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-220380" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">D</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-220380">
+            <p>好用！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 28, 2011  9:55 AM">2011年5月28日 09:55</abbr>
+ | <a href="#comment-220380">#</a>
+ | <a href="#comment-text" title="引用D的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-220385" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">hs</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-220385">
+            <p>和dict.cn那个选词翻译原理一样，不过都有bug，如果页面里有frame就不行了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 28, 2011  2:06 PM">2011年5月28日 14:06</abbr>
+ | <a href="#comment-220385">#</a>
+ | <a href="#comment-text" title="引用hs的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-220393" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">alreadydone</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-220393">
+            <p>Firefox目前有扩展LongURL Mobile Expander和TheRealURL。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 28, 2011  8:06 PM">2011年5月28日 20:06</abbr>
+ | <a href="#comment-220393">#</a>
+ | <a href="#comment-text" title="引用alreadydone的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-220486" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">奔奔</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-220486">
+            <p>貌似已被墙？我打开一次，粘贴了一个j.mp，然后点Unshort，就挂了，而且怎么F5都出不来。但是挂代理后又可以打开，也能正常使用。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 30, 2011 10:44 PM">2011年5月30日 22:44</abbr>
+ | <a href="#comment-220486">#</a>
+ | <a href="#comment-text" title="引用奔奔的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-220649" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Taro</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-220649">
+            <p>嗯，感觉还OK。谢谢提供！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June  2, 2011 10:41 AM">2011年6月 2日 10:41</abbr>
+ | <a href="#comment-220649">#</a>
+ | <a href="#comment-text" title="引用Taro的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221223" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阿宏</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221223">
+            <p>阮老师，建议您修改一下代码，使得打开还原之后的网址都是在新窗口中。在原窗口中打开有点不方便，尤其是在浏览twitter的时候。感谢你的汗水！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June  9, 2011  6:39 PM">2011年6月 9日 18:39</abbr>
+ | <a href="#comment-221223">#</a>
+ | <a href="#comment-text" title="引用阿宏的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-221301" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阮一峰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-221301">
+            <p>@阿宏：</p>
+
+<p>你把代码中的&lt;a href="'+m+'"&gt;改成&lt;a href="'+m+'" target="_blank"&gt;就行了，一共有两处。</p>
+
+<p>不过，我的使用方法一直是右键菜单，点击“在新标签页打开”。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 10, 2011  8:30 PM">2011年6月10日 20:30</abbr>
+ | <a href="#comment-221301">#</a>
+ | <a href="#comment-text" title="引用阮一峰的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-226558" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">F.O.G</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-226558">
+            <p>我这里似乎因URL长度限制而无法执行完整代码……</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 31, 2011 10:00 AM">2011年8月31日 10:00</abbr>
+ | <a href="#comment-226558">#</a>
+ | <a href="#comment-text" title="引用F.O.G的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-262005" class="comment">
+    <div id="comment-last" class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Shylock5304</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-262005">
+            <p>在Firefox14和IE9里，那个“关闭”按钮的排版不正常，麻烦指引如何修改，谢谢。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="August 25, 2012  6:46 PM">2012年8月25日 18:46</abbr>
+ | <a href="#comment-262005">#</a>
+ | <a href="#comment-text" title="引用Shylock5304的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    </div>
+        
+    
+
+
+    
+    
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">我要发表看法</h2>
+        <div class="comments-open-content">
+
+        
+            <div id="comment-greeting"></div>
+
+            <form method="post" action="http://www.ruanyifeng.com/cgi-bin/mtos/mt-comments.cgi" name="comments_form" id="comments-form">
+                <input name="static" value="1" type="hidden">
+                <input name="entry_id" value="1562" type="hidden">
+                <input name="__lang" value="en" type="hidden">
+                <input name="parent_id" value="" id="comment-parent-id" type="hidden">
+                <input name="armor" value="1" type="hidden">
+                <input name="preview" value="" type="hidden">
+                <input name="sid" value="" type="hidden">
+                <div id="comments-open-data">
+            <div id="comments-open-text">
+                    <p><label for="comment-text">您的留言
+                    （HTML标签部分可用）</label></p>
+                    <p><textarea id="comment-text" name="text" rows="10" cols="50"></textarea></p>
+                </div>
+                    <div id="comment-form-name">
+                        <p><label for="comment-author">您的大名：</label></p>
+                        <p><input id="comment-author" name="author" size="30" value="">  <span class="hint"> «-必填</span></p>
+                    </div>
+                    <div id="comment-form-email">
+                        <p><label for="comment-email">电子邮件：</label></p>
+                        <p><input id="comment-email" name="email" size="30" value="">  <span class="hint"> «-必填，不公开</span></p>
+                    </div>
+                    <div id="comment-form-url">
+                        <p><label for="comment-url">个人网址：</label></p>
+                        <p><input id="comment-url" name="url" size="30" value="">  <span class="hint"> «-我信任你，不会填写广告链接</span></p>
+                    </div>
+                    <div id="comment-form-remember-me">
+                        <p>
+                        <label for="comment-bake-cookie">记住个人信息？</label><input id="comment-bake-cookie" name="bakecookie" value="1" accesskey="r" type="checkbox"></p>
+                    </div>
+                </div>
+                    <div id="comment-form-reply" style="display: none;">
+                    <input id="comment-reply" name="comment_reply" value="" type="checkbox">
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+<div id="wait" style="display: none;">
+<p><strong>正在发表您的评论，请稍候</strong></p>
+<p>
+<input name="percent" size="3" style="font-family: Arial; color: black; text-align: center; border-width: medium; border-style: none;" type="text">           
+<input name="chart" size="46" style="font-family: Arial; font-weight: bolder; color: black; padding: 0px; border-style: none;" type="text">
+</p>
+</div>
+
+                    <p><input accesskey="s" name="post" id="comment-submit" value="发表" type="submit">  <span class="hint"> «- 点击按钮</span></p>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <script type="text/javascript" src="about:blank"></script>
+
+            <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-content">
+<p><a href="http://www.ruanyifeng.com/contact.html">联系方式</a> | ruanyifeng.com 2003 - 2017
+
+<script>/* Code removed by ScrapBook */</script>
+
+
+
+<!-- Site Meter -->
+<a href="http://sm3.sitemeter.com/stats.asp?site=sm3bomoocom" target="_top">
+<img src="meter.asp" alt="Site Meter" border="0"></a>
+
+<!-- Copyright (c)2009 Site Meter -->
+
+</p>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="share_button_proto" style="display: none;">
+<a style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;" class="bshareDiv" href="http://www.bshare.cn/share"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height: 21px; color: rgb(51, 51, 51); background: transparent url(&quot;button_custom10-zh-Orange.gif&quot;) no-repeat scroll 0% 0%; text-align: center; width: 51px;"></div><div style="clear: both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="about:blank"></script>
+<script type="text/javascript" charset="utf-8">/* Code removed by ScrapBook */</script>
+</div>
+
+<script>/* Code removed by ScrapBook */</script>
+
+
+
+
+        </div>
+    </div>
+
+<div class="bsBox" id="bsBox"><div class="bsClose">X</div><div class="bsTop"><div class="bsReturn">选择其他平台 &gt;&gt;</div><span style="margin-left: 15px;">分享到</span><span class="bsPlatName"></span></div><div class="bsFrameDiv"><iframe src="index_11.html" class="bShareFrame" name="bsFrame729" scrolling="no" allowtransparency="true" frameborder="0"></iframe></div><div id="bsMorePanel" style="display: none;"></div></div><div id="ads"></div><div id="bsPanelHolder"><div id="bsPanel" style="left: 973px; top: 294px; display: none;"><div class="bsTitle"><a style="float: left; height: 20px; line-height: 20px; font-weight: bold;" class="bsSiteLink" target="_blank" href="http://www.bshare.cn/intro">分享到...</a><a class="bsSiteLink" style="cursor: pointer; float: right; height: 20px; line-height: 20px; font-weight: bold;">X</a><div class="bsClear"></div></div><div class="bsClear"></div><div style="padding-left: 8px; background: rgb(255, 255, 255) none repeat scroll 0% 0%;"><div style="height: 47px; border-bottom: 1px solid rgb(204, 204, 204); padding: 4px 0px 4px 16px; margin-right: 8px;"><div class="bsRlogo"><a style="text-decoration: none; line-height: 120%;"><div style="cursor: pointer; width: 24px; height: 24px; margin: 0px 18px 2px; background: transparent url(&quot;facebook.gif&quot;) no-repeat scroll 0% 0%;"></div><div style="cursor: pointer; text-align: center; width: 60px; height: 16px ! important; overflow: hidden; color: inherit; white-space: nowrap; line-height: 120% ! important;">Facebook</div></a></div><div class="bsRlogo"><a style="text-decoration: none; line-height: 120%;"><div style="cursor: pointer; width: 24px; height: 24px; margin: 0px 18px 2px; background: transparent url(&quot;twitter.gif&quot;) no-repeat scroll 0% 0%;"></div><div style="cursor: pointer; text-align: center; width: 60px; height: 16px ! important; overflow: hidden; color: inherit; white-space: nowrap; line-height: 120% ! important;">Twitter</div></a></div><div class="bsRlogo"><a style="text-decoration: none; line-height: 120%;"><div style="cursor: pointer; width: 24px; height: 24px; margin: 0px 18px 2px; background: transparent url(&quot;sinaminiblog.gif&quot;) no-repeat scroll 0% 0%;"></div><div style="cursor: pointer; text-align: center; width: 60px; height: 16px ! important; overflow: hidden; color: inherit; white-space: nowrap; line-height: 120% ! important;">新浪微博</div></a></div></div><div class="bsLogoLink"><div class="bsLogo"><a title="微信" style="background: transparent url(&quot;weixin.png&quot;) no-repeat scroll 0% 0%;">微信</a></div><div class="bsLogo"><a title="腾讯微博" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -1512px;">腾讯微博</a></div><div class="bsLogo"><a title="豆瓣网" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -540px;">豆瓣网</a></div><div class="bsLogo"><a title="饭否" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -666px;">饭否</a></div><div class="bsLogo"><a title="雪球" style="background: transparent url(&quot;xueqiu.png&quot;) no-repeat scroll 0% 0%;">雪球</a></div><div class="bsLogo"><a title="电子邮件" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -612px;">电子邮件</a></div></div><div class="bsLogoLink"><div class="bsLogo"><a title="Google+" style="background: transparent url(&quot;gplus.png&quot;) no-repeat scroll 0% 0%;">Google+</a></div><div class="bsLogo"><a title="QQ空间" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -1566px;">QQ空间</a></div><div class="bsLogo"><a title="QQ好友" style="background: transparent url(&quot;qqim.png&quot;) no-repeat scroll 0% 0%;">QQ好友</a></div><div class="bsLogo"><a title="Instapaper" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -954px;">Instapaper</a></div><div class="bsLogo"><a title="美味书签" style="background: transparent url(&quot;slogos_sprite8.png&quot;) no-repeat scroll 0px -432px;">美味书签</a></div></div><div class="bsClear"></div></div><div style="height: 20px; line-height: 20px; padding: 0px 8px; border-top: 1px solid rgb(232, 232, 232); color: rgb(102, 102, 102); background: rgb(242, 242, 242) none repeat scroll 0% 0%;"><div class="buzzButton" style="float: left;">更多平台... <font style="font-weight: normal;">(133)</font></div><div id="bsPower" style="float: right; text-align: right; overflow: hidden; height: 100%;"><a class="bsSiteLink" style="font-size: 10px; vertical-align: text-bottom; line-height: 24px; cursor: pointer;" href="http://www.bshare.cn/" target="_blank"><span style="font-size: 10px; vertical-align: text-bottom;"><span style="color: rgb(255, 102, 0);">b</span>Share</span></a></div></div></div></div></body>
+</html>

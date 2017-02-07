@@ -1,0 +1,20 @@
+/* Code tidied up by ScrapBook */
+.crayon-theme-github { margin-bottom: 25px ! important; border: 1px solid rgb(222, 222, 222) ! important; background-color: rgb(248, 248, 255) ! important; font-size: 100% ! important; line-height: 130% ! important; }
+.crayon-theme-github .crayon-toolbar { border-bottom: 1px solid rgb(222, 222, 222) ! important; background-color: rgb(238, 238, 238) ! important; }
+.crayon-theme-github .crayon-toolbar .crayon-language, .crayon-theme-github .crayon-toolbar .crayon-title { font-size: 80% ! important; color: rgb(102, 102, 102) ! important; }
+.crayon-theme-github .crayon-table .crayon-nums { background-color: rgb(238, 238, 238) ! important; }
+.crayon-theme-github .crayon-table .crayon-nums-content { padding-top: 5px ! important; padding-bottom: 3px ! important; }
+.crayon-theme-github .crayon-table .crayon-num { min-width: 1.2em ! important; border-right: 1px solid rgb(222, 222, 222) ! important; text-align: right ! important; color: rgb(170, 170, 170) ! important; }
+.crayon-theme-github .crayon-pre { padding-top: 5px ! important; padding-bottom: 3px ! important; }
+.crayon-theme-github .crayon-pre .crayon-c { color: rgb(153, 153, 153) ! important; font-style: italic ! important; }
+.crayon-theme-github .crayon-pre .crayon-s { color: rgb(221, 17, 68) ! important; }
+.crayon-theme-github .crayon-pre .crayon-p { color: rgb(184, 92, 0) ! important; }
+.crayon-theme-github .crayon-pre .crayon-st { color: rgb(0, 0, 0) ! important; font-weight: bold ! important; }
+.crayon-theme-github .crayon-pre .crayon-r { color: rgb(0, 0, 0) ! important; font-weight: bold ! important; }
+.crayon-theme-github .crayon-pre .crayon-i { color: rgb(0, 0, 0) ! important; }
+.crayon-theme-github .crayon-pre .crayon-e { color: teal ! important; }
+.crayon-theme-github .crayon-pre .crayon-v { color: rgb(0, 45, 122) ! important; }
+.crayon-theme-github .crayon-pre .crayon-cn { color: rgb(0, 153, 153) ! important; }
+.crayon-theme-github .crayon-pre .crayon-o { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-github .crayon-pre .crayon-sy { color: rgb(51, 51, 51) ! important; }
+.crayon-theme-github .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }

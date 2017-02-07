@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- #BeginTemplate "/Templates/module.dwt" --><!-- DW6 --><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- #BeginEditable "doctitle" --> 
+<title>CGI入门 - 解道Jdon</title>
+<!-- #EndEditable -->
+<link rel="dns-prefetch" href="http://pagead2.googlesyndication.com/">
+<link rel="dns-prefetch" href="http://googleads.g.doubleclick.net/">
+<link rel="dns-prefetch" href="http://gstatic.com/">
+<link rel="dns-prefetch" href="http://googleadservices.com/">
+<link rel="dns-prefetch" href="http://cm.g.doubleclick.net/">
+<link rel="dns-prefetch" href="http://static.googleadsserving.cn/">
+<link href="jdon2.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<script src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><link href="share_style0_16.css" rel="stylesheet"><link href="share_style0_32.css" rel="stylesheet"></head>
+<body>
+<input id="contextPath" name="contextPath" value="" type="hidden">
+<div class="userbox">
+<table width="1036" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tbody><tr>
+    <td><a href="http://www.jdon.com/"><img src="jdon100.png" height="45" width="100" border="0"></a></td>
+    <td valign="bottom" align="left"><div data-bd-bind="1484536199556" class="bdsharebuttonbox bdshare-button-style0-16" data-tag="share_1"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+
+ </td>
+   <td width="600" align="right">
+        <form method="GET" action="http://www.jdon.com/account/protected/loginhome.jsp">
+        <a href="http://www.jdon.com/forum/post.jsp" target="_blank">发帖</a> 
+          &nbsp;<a href="http://www.jdon.com/threads" target="_blank">主题</a> &nbsp;<a href="http://www.jdon.com/messages" target="_blank">评论</a> &nbsp;<a href="http://www.jdon.com/approval" target="_blank">推荐</a> &nbsp;<a href="http://www.jdon.com/tags" target="_blank">标签</a>&nbsp;<a href="http://www.jdon.com/authors" target="_blank">用户</a>&nbsp;<a href="http://www.jdon.com/query/threadViewQuery.shtml" target="_blank">查搜</a> &nbsp;<span id="loggedInfo"> 用户
+          <input name="j_username" size="5" tabindex="1" type="text">
+          密码
+          <input name="j_password" size="5" tabindex="2" type="password">
+          自动
+          <input name="rememberMe" checked="checked" type="checkbox">
+          <input value=" 登陆 " tabindex="3" class="logini" type="submit">
+          <a href="http://www.jdon.com/account/newAccountForm.shtml">注册</a> </span> &nbsp;
+        </form>
+      </td>
+  </tr></tbody></table>
+  </div>
+ <div class="jdon-space"> &nbsp;</div>
+  <table width="1036" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tbody><tr>
+    <td><table width="100%" cellpadding="0" cellspacing="1">
+        <tbody><tr>
+           <td height="26" width="100" bgcolor="#8CBF26" align="center"><a href="http://www.jdon.com/oo.html" target="_blank" class="a03">面向对象</a></td>
+          <td height="26" width="100" bgcolor="#339933" align="center"><a href="http://www.jdon.com/designpatterns/" target="_blank" class="a03">设计模式</a></td>
+          <td height="26" width="100" bgcolor="#00ABA9" align="center"><a href="http://www.jdon.com/ddd.html" target="_blank" class="a03">领域驱动设计</a></td>
+          <td height="26" width="100" bgcolor="#8CBF26" align="center"><a href="http://www.jdon.com/design.htm" target="_blank" class="a03">云架构</a></td>
+          <td height="26" width="100" bgcolor="#00ABA9" align="center"><a href="http://www.jdon.com/framework.html" target="_blank" class="a03">框架</a></td>
+          <td height="26" width="100" bgcolor="#339933" align="center"><a href="http://www.jdon.com/course.html" target="_blank" class="a03">开发教程</a></td>
+          <td height="26" width="100" bgcolor="#8CBF26" align="center"><a href="http://www.jdon.com/soa.html" target="_blank" class="a03">SOA</a></td>
+          <td height="26" width="100" bgcolor="#339933" align="center"><a href="http://www.jdon.com/bigdata.html" target="_blank" class="a03">大数据</a></td>
+          <td height="26" width="100" bgcolor="#8CBF26" align="center"><a href="http://www.jdon.com/scalable.html" target="_blank" class="a03">扩展性</a></td>
+          <td height="26" width="100" bgcolor="#00ABA9" align="center"><a href="http://www.jdon.com/concurrency.html" target="_blank" class="a03">并发编程</a></td>
+         <td height="26" width="100" bgcolor="#339933" align="center"><a href="http://www.jdon.com/eda.html" target="_blank" class="a03">EDA</a></td>
+         <td height="26" width="100" bgcolor="#8CBF26" align="center"><a href="http://www.jdon.com/DistributedSystems.html" target="_blank" class="a03">分布式</a></td>
+<td height="26" width="100" bgcolor="#339933" align="center"><a href="http://www.jdon.com/functional.html" target="_blank" class="a03">函数编程</a></td>             
+        </tr>
+      </tbody></table></td>
+  </tr>
+</tbody></table>
+<table height="2" width="1036" bgcolor="#F97D0D" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tbody><tr>
+    <td></td>
+  </tr>
+</tbody></table>
+<div class="post_warp">
+  <div class="post_sidebar">
+    <div class="article"> <!-- #BeginEditable "main" --> 
+     
+	  <center>
+        <font color="#0000FF">&nbsp;<font face="Arial"> <font size="+4">CGI</font></font><font face="楷体_GB2312"><font size="+3">跟我学</font></font></font> 
+      </center>
+      <hr size="1" width="80%" align="center">
+      <p align="center"><a href="http://www.jdon.com/aboutme.htm">板桥里人</a> http://www.jdon.com 2002年1月1日</p>
+      <div class="adsensf" id="vgad336x280">
+<script src="about:blank"></script><script async="" src="about:blank"></script>
+<!-- 页上左336 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-7573657117119544" data-ad-slot="6751585519"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><iframe src="index_13.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="280" width="336"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script>
+</div>
+      <p>　　CGI 意思为 Common Gateway Interface, 一种基于浏览器的输入、在Web服务器上运行的程序方法. CGI脚本 使你的浏览器与用户能交互，为了在数据库中寻找一个名词, 
+      提供你写入的评论，或者从一个表单中选择几个条目并且能得到一个明确的回答. 如果你曾经遇到过在web上填表或进行搜索, 你就是用的CGI脚本. 你那时也许没有意识到，因为大部分工作是在服务器上运行的，你看到的只是结果. </p>
+      <p>　　作为一个网页设计者, 你创建客户端的 CGI脚本, 服务器端的程序用来处理用户输入, 结果返回给用户. </p>
+      <p>　　在这里你将学习关于CGI脚本的一切： </p>
+      <ul>
+        <li> CGI脚本是什么？它是怎样工作的</li>
+        <li> 一个CGI脚本输出象什么？</li>
+        <li> 怎样用参数或无参数创建一个CGI脚本</li>
+        <li> 怎样创建一个返回规定响应的CGI脚本</li>
+        <li> 怎样创建一个输入表单的CGI脚本</li>
+        <li> 有关在使用CGI脚本中的问题</li>
+        <li> 你能在脚本中使用的CGI变量</li>
+      </ul>
+      <h3> 目 录		</h3>
+           
+      <ul>
+      <ul>
+          <li> <a href="#I3">CGI脚本是什么?</a></li>
+          <ul>
+            <li> <a href="#I4">CGI脚本 怎样工作的?</a></li>
+            <li> <a href="#I5">一个简单的例子</a></li>
+          </ul>
+          <li> <a href="#I6">我能用CGI脚本吗?</a></li>
+          <ul>
+            <li> <a href="#I7">你的服务器配置允许CGI脚本吗?</a></li>
+            <li> <a href="#I8">你能编程吗?</a></li>
+            <li> <a href="#I9">你应该用什么编程语言?</a></li>
+            <li> <a href="#I10">你的服务器设置正确吗?</a></li>
+            <li> <a href="#I11">如果你的服务器不是UNIX系统呢?</a></li>
+          </ul>
+          <li> <a href="#I12">解剖CGI脚本</a></li>
+          <ul>
+            <li> <a href="#I13">输出头部</a></li>
+            <li> <a href="#I14">输出数据部</a></li>
+            <li> <a href="#I16">带阐述的脚本</a></li>
+            <li> <a href="#I18">传递其他信息给脚本</a></li>
+          </ul>
+          <li> <a href="#I19">创建特殊的脚本输出</a></li>
+          <ul>
+            <li> <a href="#I20">以装载另一个文本响应</a></li>
+            <li> <a href="#I21">无响应</a></li>
+          </ul>
+          <li> <a href="#I22">处理表单的脚本</a></li>
+          <ul>
+            <li> <a href="#I23">表单格式和表单脚本</a></li>
+            <li> <a href="#I24">GET 和 POST</a></li>
+            <li> <a href="#I25">URL 编码</a></li>
+          </ul>
+          <li> <a href="#I27">问题</a></li>
+          <li> <a href="#I28">CGI 变量</a></li>
+          <li> <a href="#I29">解码程序</a></li>
+          <ul>
+            <li> <a href="#I30">uncgi</a></li>
+            <li> <a href="#I31">cgi-lib.pl</a></li>
+            <li> <a href="#I32">解码文件上传的输入</a></li>
+            <li> <a href="#I33">自己做</a></li>
+          </ul>
+          <li> <a href="#I34">非解剖的头部脚本</a></li>
+          <li> <a href="#I36">总结</a></li>
+      </ul>
+      </ul>
+      <center>
+      <h1><br>
+      </h1>
+      </center>
+      <note>
+      </note> <br>
+    
+        <h3> <a name="I3" id="I3"></a><b><font size="+1">CGI脚本是什么?</font></b></h3>
+   
+    		
+      　　CGI脚本简单地讲是个运行在Web服务器上的程序, 有浏览器的输入触发. 这个脚本通常象服务器和系统中其他程序如数据库的桥梁。 
+      <p>　　CGI 脚本难道不是一个真正的脚本?按照你的服务器的支持, 他们可能是一个编译好的程序或者批命令文件或者其他可执行的东西. 为了简单起见，我们统称他们为脚本scripts. 
+        <br>
+      </p>
+     
+      <note> 
+      <p>　　CGI 脚本是任何运行在web服务器上的程序. CGI意思是Common Gateway Interface。      </p>
+      </note>  <p>　　CGI脚本是用下列两种方法使用的: 作为一个表单的ACTION 或 作为一个页中的直接link。 </p>
+          <p>&nbsp;</p>
+      
+      <p></p>
+    
+        <h4> <a name="I4" id="I4"></a><b><font size="+0">CGI脚本是怎样工作的?</font></b></h4>
+     
+      　　CGI脚本由服务器调用, 基于浏览器的数据输入. 其工作原理如下：      
+      <ol>
+        <li> 一个URL指向一个CGI脚本. 一个CGI脚本的URL能如普通的URL一样出现，区别于.htm/.html静态UR,CGI的URL是动态URL。如http://xxxx.com/cgiurl</li>
+        <li> 服务器CGI接收浏览器的请求, 按照那个URL指向对应的脚本文件(注意文件的位置和扩展名),执行CGI脚本.</li>
+        <li> CGI脚本执行基于输入数据的操作，包括查询数据库、计算数值或调用系统中其他程序.</li>
+        <li> CGI脚本产生某种Web服务器能理解的输出结果.</li>
+        <li> 服务器接收来自脚本的输出并且把它传回浏览器，让用户了解处理结果。</li>
+      </ol>
+      
+     
+        <h4><a name="I5" id="I5"></a><b><font size="+0">一个简单的例子</font></b></h4>
+     
+      　　这里详细一步一步地解释所有有关发生的细节。 <br>
+      　　假设有一个Html页面有一个指向CGI脚本的链接：      
+      <pre>&lt;A HREF="http://www.jdon.com/cgi-bin/getdate"&gt;Display the Date&lt;/A&gt;</pre>
+      　　这个链接指向的是一个CGI脚本，因为其中有cgi-bin的路径. 在许多服务器cgi-bin是仅能够放置CGI脚本 的目录。
+      <p>　　当你选择这个链接时, 你的浏览器将向www.jdon.com服务器提出请求. 服务器接收这个请求计算出URL处的脚本文件名然后执行getdate这个脚本.      </p>
+      <p>　　这个getdate脚本, 在UNIX系统中执行是这样的：      </p>
+      <pre>#!/bin/sh
+echo Content-type: text/plain
+echo
+/bin/date</pre>
+      　　第一行是个特殊的命令，告诉UNIX系统这是个shell脚本; 真正逻辑是从这行开始的下一行，这个脚本做两件事：它输出行Content-type: 
+      text/plain, 接着开始一个空行；第二, 它调用UNIX系统时间date程序, 这样输出日期和时间. 脚本执行后输出应该这样： 
+      <pre>Content-type: text/plain
+Tue Oct 25 16:15:57 EDT 1994</pre>
+      　　这个Content-type是什么东东？它是个特殊的编码，Web服务器用来告诉浏览器输出这个文本是什么类型的. 这与HTML中Content-type含义是一样的。
+      <p>　　这是最基本的，实际情况要复杂得多，总之可以用来理解浏览器、服务器和脚本之间是怎样工作的。 
+        
+      </p>
+      <p>&nbsp;</p>
+    
+        <h3> <a name="I6" id="I6"></a><b><font size="+1">我能用CGI脚本吗?</font></b></h3>
+     
+      　　在你使用CGI脚本之前，有两件事你也许要解决：CGI脚本 是个高级的Web特性并且需要你拥有与Web 服务器管理者一样棒的知识。 
+      <p> 
+          　　肯定吗？就是做不到，学学也可以？好吧！让我们继续. 
+      </p>
+      <p>&nbsp;</p>
+     
+        <h4> <a name="I7" id="I7"></a><b><font size="+0">你的服务器配置允许CGI脚本吗?</font></b></h4>
+     
+      　　为了能编写和运行CGI脚本, 你需要一个Web服务器. 不象通常静态的HTML文件, 你不能在本地系统上编写或试验你的CGI脚本; 你得通过Web服务器来做这个. 
+      <p>　　但是即使你有一个Web服务器, 这个服务器必须特别地为运行CGI脚本配置一下. 那意味着你所有的脚本必须放置在一个叫做cgi-bin的目录下.      </p>
+      <p>　　在编写CGI脚本之前, 需要询问你的服务器管理者是否允许你安装和运行CGI脚本, 并且如果可以的话，他们必须放置在哪儿？还有，你必须有个真正的Web服务器，如果是FTP或Gopher服务器，那你就不能用CGI.      </p>
+      <p>　　如果你在自己的服务器上运行, 你必须特别地创造一个叫cgi-bin的目录，并配置你的服务器认可这个目录为一个脚本目录. 也必须记住下面有关CGI脚本特点:      </p>
+      <ul>
+        <li> 每个脚本是个程序, 它运行在浏览器可以请求的系统上, 执行时使用CPU时间和内存. 如果有成打上千的这些脚本同时运行，会怎样？你的系统将不忍负载直至崩溃。<br>
+          <br>
+        </li>
+        <li> 如果你不仔细地编写你的CGI脚本, 你将有可能让别人通过你的CGI脚本参数进入伤害你的系统.</li>
+      </ul>
+
+<!-- 广告位：336x280 -->
+<div id="PAGE_AD_1"></div>
+   
+        <h4> <a name="I8" id="I8"></a><b><font size="+0">你会编程吗?</font></b>　　
+        </h4>
+      <p>　　初学者注意! 一般地, 你必须具备一些基本编程概念与方法。你必须有类似系统工作的经验。如果你没有这些背景, 你必须去学习，好了，费话不多说. </p>
+        <p>&nbsp;</p>
+     
+        <h4> <a name="I9" id="I9"></a><b><font size="+0">你必须用什么编程语言?</font></b></h4>
+    
+      　　你可以用你熟悉的任何语言编写CGI脚本, 只要你的脚本遵守下一节所陈列的规则即可，只要那个语言能在你的Web服务器系统上运行. 
+      <p> 
+          　　在这本学习手册中，仅用两种语言编写CGI脚本: UNIX shell和 Perl语言. 这个shell是适合在任何相近的UNIX系统上运行并且容易学习, 
+          但是处理复杂的情况就困难了. Perl是免费的, 这个语言特点是稳定和强大的，类似C，但它也是较难学习的. 
+      </p>
+     
+        <h4> <a name="I10" id="I10"></a><b><font size="+0">你的服务器设置正确了吗?</font></b></h4>
+    
+      　　为了运行任何一个CGI脚本, 不管简单或复杂的，你的服务器必须设置成能够运行他们，必须放置在一个特定的目录，必须有一个依赖你服务器设定的文件扩展名. 
+      <p>　　如果你是租用服务器，就要是否允许运行CGI脚本.      </p>
+      <p>　　如果你拥有自己的服务器，检查你的服务器说明书是怎样处理CGI脚本的. 
+        
+      </p>
+      <p>&nbsp;</p>
+    
+        <h4> <a name="I11" id="I11"></a><b><font size="+0">如果你用的不是UNIX?</font></b></h4>
+   
+        <p>只好再找别的学习手册了。 </p>
+        <p>&nbsp;</p>
+      
+        <h3> <a name="I12" id="I12"></a><b><font size="+1">解剖一个CGI脚本</font></b>　　
+        </h3>
+      <p>　　如果你编写它很久，克服很多警告和配置，恭喜你，你已经会些CGI脚本，并且可以在你的网页使用了. 在这一章，将学习脚本是怎样执行，你的服务器又是怎样与他们对话产生回应的。 </p>
+        <p>&nbsp;</p>
+   
+        <h4> <a name="I13" id="I13"></a><b><font size="+0">输出头部</font></b></h4>
+    
+      　　虽然你的CGI脚本可以让你做任何事情，但是脚本的输出还是必须有一个规定形式. <br>
+
+      <p>　　这个 "脚本输出" 意思是指你的脚本发回服务器的数据. 在UNIX系统中, 输出是发向标准输出, 服务器从那儿检测它. 在其他系统和服务器, 
+        你的脚本输出也许不一样了. <br>
+      </p>
+      <p>　　首先，输出头部信息，头部是实际不是文本的一部分，是服务器与浏览器之间的信息协议，你实际看不到。      有三个类型的头部: Content-type, Location, 和Status. Content-type 是最普遍的。      </p>
+      <p>　　有关content-type解释可以见有关HTML的说明, 发出text/html特定编码如下：      </p>
+      <pre>Content-type: text/html</pre>
+      　　在这个例子中，输出数据的类型是text/html; 换句话说, 输出的是个HTML文件. 
+      <ul>
+
+        <p><b>表1. 通用格式和content-types.</b> <br>
+        </p>
+      </ul>
+      <table border="BORDER">
+        <tbody><tr> 
+          <td> 
+            <pre><b><i>Format</i></b></pre>          </td>
+          <td> 
+            <pre><b><i>Content-Type</i></b></pre>          </td>
+        </tr>
+        <tr> 
+          <td>HTML</td>
+          <td>text/html</td>
+        </tr>
+        <tr> 
+          <td>Text</td>
+          <td>text/plain</td>
+        </tr>
+        <tr> 
+          <td>GIF</td>
+          <td>image/gif</td>
+        </tr>
+        <tr> 
+          <td>JPEG</td>
+          <td>image/jpeg</td>
+        </tr>
+        <tr> 
+          <td>PostScript</td>
+          <td>application/postscript</td>
+        </tr>
+        <tr> 
+          <td>MPEG</td>
+          <td>video/mpeg</td>
+        </tr>
+      </tbody></table>
+      <p> 　　注意content-type 后面必须跟一个空行. 如果你没有空行，服务器将无法搞清这个头部在哪里结束。 
+
+      </p>
+  
+        <h4> <a name="I14" id="I14"></a><b><font size="+0">输出数据</font></b>　　
+        </h4>
+      <p>　　你输出的数据应该符合你所规定的content-type; 如果content-type是text/html, 输出安置应该是在HTML. 如果content-type是image/gif, 
+        输出应该是在一个二进制的GIF文件. </p>
+        <p>&nbsp;</p>
+  
+        <h5> <a name="I15" id="I15"></a><b><font size="+0">练习1: 小试试.</font></b></h5>
+      
+      　　这是个简单的输出日期的简单脚本，这个CGI脚本还检查看看是否已经登陆到Web服务器，并且报告发现了什么。
+      <p>　　调用代码这样: </p>
+      <pre>&lt;A HREF="http://www.jdon.com/cgi-bin/pinglaura"&gt;Is Laura Logged in?&lt;/A&gt;</pre>
+      　　这是没有输入的脚本，它只运行并且返回数据. 
+      <p>　　pinglaura脚本内容是这样：: </p>
+      <p><br>
+        #!/bin/sh <br>
+      </p>
+      <p>echo Content-type: text/html </p>
+      <p>echo "&lt;HTML&gt;&lt;HEAD&gt;" <br>
+      </p>
+      <p>echo "&lt;TITLE&gt;Is Laura There?&lt;/TITLE&gt;"&nbsp;      </p>
+      <p>echo "&lt;/HEAD&gt;&lt;BODY&gt;" <br>
+        　　为了测试是否已经登陆系统，用who命令(登陆名假设为lemay), 储存结果在变量ison中. 如果登陆, 变量ison将有些登录内容，否则是空的.      </p>
+      <pre>ison='who | grep lemay'</pre>
+      　　试验结果及返回相应提示的脚本是这样: 
+      <pre>if [ ! -z "$ison" ]; then
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;P&gt;Laura is logged in."&lt;/P&gt;
+else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;P&gt;Laura isn't logged in."&lt;/P&gt;
+fi</pre>
+      　　最后关闭HTML: 
+      <pre>　　echo "&lt;/BODY&gt;&lt;/HTML&gt;"</pre>
+      　　现在你通过从命令行运行这个脚本，测试一下，你将得到一个结果说XXX未登陆你的系统，输出是这样的： 
+      <pre>Content-type: text/html
+
+&lt;HTML&gt;&lt;HEAD&gt;
+
+&lt;TITLE&gt;Are You There?&lt;/TITLE&gt;
+
+&lt;/HEAD&gt;&lt;BODY&gt;
+
+&lt;P&gt;Laura is not logged in.
+
+&lt;/BODY&gt;&lt;/HTML&gt;</pre>
+      　　这是输出的一个HTML文本，这样你的浏览器能正常显示这内容，因为它是个HTML文件。 <br>
+&nbsp;      <note> 
+      <p>　　现在将它copy到你的服务器的cgi-bin目录下，就可以从浏览器调用执行了，如果你不能访问cgi-bin目录，你必须询问你的服务器管理者，你不能理所当然地自己建立个cgi-bin目录，那没用的。 
+        <br>
+      </p>
+      </note>
+<p>　　这个例子完整的脚本如下：      </p>
+      <pre>#!/bin/sh
+
+echo "Content-type: text/html"
+
+
+echo
+
+echo "&lt;HTML&gt;&lt;HEAD&gt;"
+
+echo "&lt;TITLE&gt;Is Laura There?&lt;/TITLE&gt;"
+
+echo "&lt;/HEAD&gt;&lt;BODY&gt;"
+
+ison='who | grep lemay'
+
+if [ ! -z "$ison" ]; then
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;P&gt;Laura is logged in"
+
+else
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;P&gt;Laura isn't logged in"
+
+fi
+
+echo "&lt;/BODY&gt;&lt;/HTML&gt;"
+</pre>
+    
+        <h4> <a name="I16" id="I16"></a><b><font size="+0">带有参数的脚本</font></b></h4>
+      
+      　　为了传递一个参数给脚本，可以在URL中使用 (?) 插入脚本名词和参数之间, 用加号(+) 表示每个单一的参数, 如: 
+      <pre>&lt;A HREF="/cgi-bin/myscript?arg1+arg2+arg3"&gt;run my script&lt;/A&gt;</pre>
+      　　当服务器接收到这个请求，它传递 arg1, arg2, 和 arg3 参数给脚本. 你然后能在脚本中使用这些参数. 这个方法有时叫查询, 因为早期它用在搜索功能中. 
+      <p>&nbsp;</p>
+    
+        <h5> <a name="I17" id="I17"></a><b><font size="+0">练习2: 检查是否有人登陆.</font></b></h5>
+    
+      　　既然你知道怎样使用参数，让我们继续上面的例子pinglaura，通过修改这个例子我们得到下面这个脚本pinggeneric. 
+      <p>　　我们取个不同标题:      </p>
+      <pre>#!/bin/sh
+
+echo "Content-type: text/html"
+echo
+echo "&lt;HTML&gt;&lt;HEAD&gt;"
+echo "&lt;TITLE&gt;Are You There?&lt;/TITLE&gt;"
+echo "&lt;/HEAD&gt;&lt;BODY&gt;"</pre>
+      　　在上面的例子中, 下一步应该是测试我是否登陆，在这里我们用参数${1}代替我的名字lemay,&nbsp; ${1}作为第一个参数, ${2}作为第二个, 
+      ${3}作为第三个. 
+      <pre>ison='who | grep "${1}"'</pre>
+      <p>　　剩下的所有修改如下:      </p>
+      <pre>if [ ! -z "$ison" ]; then
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;P&gt;$1 is logged in"
+
+else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;P&gt;$1 isn't logged in"
+
+fi</pre>
+      <pre>echo "&lt;/BODY&gt;&lt;/HTML&gt;"</pre>
+      　　好了，让我们修改HTML页中的连接吧！原来是这样: 
+      <pre>&lt;A HREF="http://www.lne.com/cgi-bin/pinglaura"&gt;Is Laura Logged in?&lt;/A&gt;</pre>
+      　　修改为通用查询功能后是这样，比如查询名字叫john的人是否登陆: 
+      <pre>&lt;A HREF="http://www.lne.com/cgi-bin/pinggeneric?john"&gt;Is John Logged in?&lt;/A&gt;</pre>
+
+        <p>　　在你的服务器上试试，看是否有结果。 </p>
+        <p>&nbsp;</p>
+     
+        <h4> <a name="I18" id="I18"></a><b><font size="+0">传递其他信息给脚本</font></b></h4>
+     
+      　　除了上面介绍的方法传递数据给脚本以外，还有第二种方法传递信息给CGI脚本. 它叫作路径信息path information， 在上面例子的问号后面的参数是因用户表单的输入而改变的. 路径信息Path info用作其他信息传递给脚本，实际上，你可以用它作任何事情. 
+      <br>
+      <note> 
+      <p>　　路径信息Path information是一种不象通常参数脚本那样频繁传递信息的方法. 路径Path information通常是指Web服务器上的那些比如配置文件、临时文件或者被脚本因问题调用的文件等等此类文件.      </p>
+      </note>
+      <p>　　看下面一个路径信息path information例子, :      </p>
+      <pre>http://myhost/cgi-bin/myscript/remaining_path_info?arg1+arg2</pre>
+      　　当脚本运行时，在路径中的信息"myscript"将被放置于环境参数PATH_INFO. 你能在你的脚本内容中使用这些信息. 
+      <p>　　比如说, 让我们假设你在多页上已有多个连接到同一个脚本. 你能用这个路径信息显示那个有链接的HTML文件名， 这样, 在你完成处理你的脚本之后, 
+        当你发回一个HTML文件时, 你能在这个文件里包含一个链接，发回给用户其刚开始访问的那个起始页。        </p>
+      <p>　　你会在下一章节学到更多路径信息：有用的表单和脚本. </p>
+          <p>
+            </p>
+      <p></p>
+    
+        <h3> <a name="I19" id="I19"></a><b><font size="+1">创建一个特殊的脚本输出</font></b></h3>
+    
+      　　现在你已经学习了诸如输出数据 如HTML数据 发给浏览器解释显示的数据. 但是如果你不想把脚本结果作为一个数据流形式发回浏览器，而是想把一个存在的页发回，怎么办? 
+        如果你只是要脚本做一些事而不让任何结果回答给浏览器，怎么办? 
+        不用担心, 这里开始解释这些情况.
+      <p>&nbsp;
+      </p>
+    
+        <h4> <a name="I20" id="I20"></a><b><font size="+0">用调用另一个文本作为响应</font></b></h4>
+    
+      　　CGI输出不是非得一个数据流，有时可以响应告诉浏览器的是在服务器上的一个页面文件，为了发出这个信息，看下面的例子: 
+      <pre>Location: ../docs/final.html</pre>
+      　　这个Location行用作通常的输出文件定位，也就是说，如果你用了Location, 你就不必再用象Content-type这样的数据输出(实际上，你也不能). 
+      正如Content-type, 你也必须在这一行后面跟一个空行. 
+      <p>　　指向这个文件的路径可以是一个URL或相对路径. 所有相对路径是指相对于脚本所在的位置. 例子中的final.html文本是在当前上一个目录下docs的目录下:      </p>
+      <pre>echo Location: ../docs/final.html
+
+echo</pre>
+    
+      <p>　　你不能同时使用Content-type 和 Location两个输出. 比如, 如果你想输出一个标准页，但是想在这个页尾加上客户的内容, 
+      你就得用Content-type自行组建这两个部分. 注意：你可以用脚本命令打开一个当地文件作为数据直接将之输出. <br>
+      </p>
+     
+    
+        <h4> <a name="I21" id="I21"></a><b><font size="+0">No Response</font></b></h4>
+    
+      　　有时对于一个CGI脚本也许一点没有输出. 有时你只是要从用户那儿收集点信息. 你就不用再调用一个新文本, 也不用输出结果或打开一个存在的文件. 
+      在浏览器上的屏幕还是那个样子. 
+      <p>　　很幸运, 这一切很容易. 你只要输出下面这个命令即可(后面跟一个空行):      </p>
+      <pre>echo Status: 204 No Response
+echo</pre>
+      　这个Status头部提供状态码给服务器(并且也给浏览器). 特别的204将传递给浏览器，如果能识别它，它将什么也不做. <br>
+      <p>　　尽管无响应是一个官方HTTP规定的一部分，但也并不是适合所有的浏览器，也许会产生奇怪的结果，那你要多试验试试看啦. </p>
+      <p><br>
+      </p>
+    
+        <h3> <a name="I22" id="I22"></a><b><font size="+1">处理表单的脚本</font></b></h3>
+    
+      　　今天，大多数CGI脚本是用来处理表单输入的. 这个过程大致象上面说阐述的一样，但还是有些不同，比如CGI脚本只要被调用；数据怎样从服务器被发向浏览器. 
+      <p>　　记住, 大多数表单有两个部分: HTML的表单格式；处理表单数据的CGI脚本。 这个CGI脚本是使用Html标签&lt;FORM action=..&gt;属性调用的. 
+      </p>
+      <p>&nbsp;
+      </p>
+    
+        <h4> <a name="I23" id="I23"></a><b><font size="+0">表单形式和表单脚本</font></b></h4>
+     
+      　　正如上面所说，由于表单有两个部分. Action属性包含着处理表单的脚本:      
+      <pre>&lt;FORM ACTION="http://www.popchina.com/cgi-bin/processorscript"&gt;</pre>
+        　在这个表单中, 每个输入区都有一个NAME的属性, 用来称呼表单元素. 当这个表单数据被递交，你在ACTION中定义的CGI脚本, 这样这些name和输入内容被作为一个数字或字符传递给脚本.        
+        <p>&nbsp;</p>
+     
+        <h4> <a name="I24" id="I24"></a><b><font size="+0">GET 和 POST</font></b></h4>
+    
+      　　表单从浏览器发给服务器有两种方法.&nbsp; GET 和 POST. 
+      <p>　　我们上面谈论的方法，实际是GET，它将数据打包放置在环境变量QUERY_STRING中作为URL整体的一部分传递给服务器。      </p>
+      <p>　　POST做很多类似GET同样的事情, 不同的地方就是它是分离地传递数据给脚本. 你的脚本通过标准输入获取这些数据. (有些Web服务器是存储在临时文件中.) 
+        这个QUERY_STRING环境变量将不再设置.      </p>
+      <p>　　那你用那个方法呢? POST是个安全的方法, 尤其如果你的表单中有很多数据的话. 当你用GET, 这个服务器就分配变量QUERY_STRING给所有的表单数据, 
+        但是这个变量可存储量是有限的. 换句话说，如果你有很多数据但是你又用GET，你会丢失很多数据.        </p>
+      <center>
+        <p>如果你用POST, 你可以尽可能多地使用数据, 因为这些数据从来也不分配到一个变量里. </p>
+          <p>&nbsp;</p>
+        </center>
+      <p></p>
+    
+        <h4> <a name="I25" id="I25"></a><b><font size="+0">URL 编码</font></b></h4>
+     
+      　　URL 编码是一种浏览器用来打包表单输入的格式. 浏览器从表单中获取所有的name和其中的值 ，将他们作为name/value参数编码, 移去那些不能传送的字符, 
+      将数据排行等等，这些还取决于你用GET还是POST?是作为URL的一部分或者分离地发给服务器？ 不管哪种情况, 在服务器端的表单输入格式样子象这样: 
+      <pre>theName=Ichabod+Crane&amp;gender=male&amp;status=missing&amp;headless=yes</pre>
+      　　URL编码遵循下列规则: 
+      <ul>
+        <li> 每对name/value由&amp;符分开.</li>
+        <li> 每对来自表单的name/value由=符分开. 如果用户没有输入值给这个name,那么这个name还是出现，只是无值(象这样 "name=").</li>
+        <li> 任何特殊的字符(就是那些不是简单的七位ASCII，如汉字) 将以百分符%用十六进制编码. 当然也包括象 =, &amp;, 和 % 
+          这些特殊的字符.</li>
+        <li> 在输入区中的空格将以加号+显示.</li>
+      </ul>
+      　　因为表单输入是用这个URL编码传递给你的脚本的，在你用这些参数之前必须解码，因为解码是个很普遍的工作，可以有很多工具做这个工作 . 你没有必要自己写这个解码程序. 
+      <p> 
+     
+          　　这里介绍一个叫uncgi的解码程序, 你可以从<a href="http://www.hyperion.com/~koreth/uncgi.html">http://www.hyperion.com/~koreth/uncgi.html</a>. 
+          得到原码，安装在你自己的cgi-bin目录下. 
+       
+      </p>
+      <center>
+        <h5>&nbsp;</h5>
+      </center>
+    
+        <h3> <a name="I28" id="I28"></a><b><font size="+1">CGI变量</font></b></h3>
+     
+      　　表2 总结了环境变量. 如下
+     
+      <table border="BORDER">
+        <tbody><tr> 
+          <td> 
+            <pre><b><i>环境变量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></b></pre>          </td>
+          <td> 
+            <pre><b><i>意义</i></b></pre>          </td>
+        </tr>
+        <tr> 
+          <td>SERVER_NAME</td>
+          <td>CGI脚本运行时的主机名和IP地址.</td>
+        </tr>
+        <tr> 
+          <td>SERVER_SOFTWARE</td>
+          <td>你的服务器的类型如： CERN/3.0 或 NCSA/1.3.</td>
+        </tr>
+        <tr> 
+          <td>GATEWAY_INTERFACE</td>
+          <td>运行的CGI版本. 对于UNIX服务器, 这是CGI/1.1.</td>
+        </tr>
+        <tr> 
+          <td>SERVER_PROTOCOL</td>
+          <td>服务器运行的HTTP协议. 这里当是HTTP/1.0.</td>
+        </tr>
+        <tr> 
+          <td>SERVER_PORT</td>
+          <td>服务器运行的TCP口，通常Web服务器是80.</td>
+        </tr>
+        <tr> 
+          <td>REQUEST_METHOD</td>
+          <td>POST 或 GET, 取决于你的表单是怎样递交的.</td>
+        </tr>
+        <tr> 
+          <td>HTTP_ACCEPT&nbsp;</td>
+          <td>浏览器能直接接收的Content-types, 可以有HTTP Accept header定义.</td>
+        </tr>
+        <tr> 
+          <td>HTTP_USER_AGENT</td>
+          <td>递交表单的浏览器的名称、版本 和其他平台性的附加信息。</td>
+        </tr>
+        <tr> 
+          <td>HTTP_REFERER</td>
+          <td>递交表单的文本的 URL，不是所有的浏览器都发出这个信息，不要依赖它</td>
+        </tr>
+        <tr> 
+          <td>PATH_INFO</td>
+          <td>附加的路径信息, 由浏览器通过GET方法发出.</td>
+        </tr>
+        <tr> 
+          <td>PATH_TRANSLATED</td>
+          <td>在PATH_INFO中系统规定的路径信息.</td>
+        </tr>
+        <tr> 
+          <td>SCRIPT_NAME</td>
+          <td>指向这个CGI脚本的路径, 是在URL中显示的(如, /cgi-bin/thescript).</td>
+        </tr>
+        <tr> 
+          <td>QUERY_STRING</td>
+          <td>脚本参数或者表单输入项(如果是用GET递交). QUERY_STRING 包含URL中问号后面的参数.</td>
+        </tr>
+        <tr> 
+          <td>REMOTE_HOST</td>
+          <td>递交脚本的主机名，这个值不能被设置.</td>
+        </tr>
+        <tr> 
+          <td>REMOTE_ADDR</td>
+          <td>递交脚本的主机IP地址.</td>
+        </tr>
+        <tr> 
+          <td>REMOTE_USER</td>
+          <td>递交脚本的用户名. 如果服务器的authentication被激活，这个值可以设置。</td>
+        </tr>
+        <tr> 
+          <td>REMOTE_IDENT</td>
+          <td>如果Web服务器是在ident (一种确认用户连接你的协议)运行, 递交表单的系统也在运行ident, 这个变量就含有ident返回值.</td>
+        </tr>
+        <tr> 
+          <td>CONTENT_TYPE</td>
+          <td>如果表单是用POST递交, 这个值将是 application/x-www-form-urlencoded. 在上载文件的表单中, 
+            content-type 是个 multipart/form-data.</td>
+        </tr>
+        <tr> 
+          <td>CONTENT_LENGTH</td>
+          <td>对于用POST递交的表单, 标准输入口的字节数.</td>
+        </tr>
+      </tbody></table>
+     
+        <h3><a name="I29" id="I29"></a><b><font size="+1">表单输入的解码程序</font></b></h3>
+     
+      　　目前有两个程序: 通用目的的uncgi, 和cgi-lib.pl, 这是个Perl库，用于perl编写的CGI脚本.当然也有表单上载时可以解码的程序，不过很少。 
+      <p>&nbsp;</p>
+     
+        <h4> <a name="I30" id="I30"></a><b><font size="+0">uncgi</font></b></h4>
+    
+        <p>　　说明原码可以从 <a href="http://www.hyperion.com/~koreth/uncgi.html">http://www.hyperion.com/~koreth/uncgi.html</a>获得。 
+        </p>
+        <p>&nbsp;</p>
+      
+    
+        <h4> <a name="I31" id="I31"></a><b><font size="+0">cgi-lib.pl</font></b></h4>
+     
+      　　这是由Steve Brenner编写的, 帮助你管理输入. 他能从GET和POST获取输入并且放置在一个Perl列表或阵列中. 更新的版本也能处理来自表单的文件上传. 
+      从这儿可以得到信息与原码 <a href="http://www.bio.cam.ac.uk/cgi-lib">http://www.bio.cam.ac.uk/cgi-lib</a>. 
+      如果你决定用Perl语言处理你的表单输入，cgi-lib是个很好的库. 
+      <p>　　为了使用cgi-lib.pl，你通常要这样写: <br>
+        ＃！/usr/lib/perl      </p>
+      <pre>require 'cgi-lib.pl';</pre>
+      　　cgi-lib中尽管有很多子程序, 最重要的是ReadParse子程. ReadParse 读取输入方便地将name/value储存在一个Perl阵列中. 
+      在你的Perl脚本中通常是这样调用的: 
+      <pre>&amp;ReadParse(*in);</pre>
+      　　此例中，阵列名是in, 可以随便取名的. 在表单输入解码后, 你能读取和处理这个name/value，方法是象下面这样:      
+      <pre>print $in{'theName'};</pre>
+      　　这个将显示名字name是theName的值value. 
+      <p> 
+        
+          　　如果你有多个用同样名字的name对, cgi-lib.pl用(\0)分隔多个名字. 这样可以正常处理你的脚本. 
+        
+      </p>
+      <p>&nbsp;</p>
+    
+        <h4> <a name="I32" id="I32"></a><b><font size="+0">解码上传的文件输入</font></b></h4>
+     
+      　　基于表单的文件上传需要不同的表单输入，有一些程序可以对其进行解码。cgi-lib.pl 后来版本可以很好支持这个功能.
+        <p>&nbsp;</p>
+   
+        <h4> <a name="I33" id="I33"></a><b><font size="+0">自己做</font></b></h4>
+  
+     
+        　　找专门书籍学习吧： <a href="ftp://ds.internic.net/rfc/rfc1867.txt">ftp://ds.internic.net/rfc/rfc1867.txt</a>. 
+    
+        <h3> <a name="I34" id="I34"></a><b><font size="+1">非解剖的脚本头部</font></b></h3>
+    
+        　　按照本书阐述，大多数情况可以正常操作，在一些情况下不是这样的，你可以翻阅说明书了解。 
+   
+        <h3> <a name="I35" id="I35"></a><b><font size="+1">&lt;ISINDEX&gt; 脚本</font></b></h3>
+   
+        　　为了在CGI中完成讨论组, 我们看看叫&lt;ISINDEX&gt;的搜索. 这是早期在浏览器中用来向服务器发出搜索关键字的办法，参看以前的资料。 
+ 
+        <h3> <a name="I36" id="I36"></a><b><font size="+1">总结</font></b></h3>
+    
+      　　CGI脚本, 有时叫服务器端脚本或网关脚本。 在internet上有很多免费资源，你可以搜索下载读懂他们，当然都是英文的，如果你下决心翻译他们（可能更加强理解). 
+      这样一举两得啊. 
+      <p>　　注意：上述程序可以用ultra edit来编辑，注意转换UNIX格式 ，必须采用UNIX格式存盘，再上载，用telnet登陆，在命令行键入perl 
+        sample.pl，看有无bug,再 在浏览器中调用。CGI程序包括放置CGI的目录一定要改属性为777, 要写入的HTML文件也要改属性为777.      </p>
+      <p>&nbsp;</p>
+      <h3><a href="http://www.jdon.com/45396" target="_blank">服务器后端性能大比拼</a>      </h3>
+      <h3><a href="http://www.jdon.com/concurrent/nio%E5%8E%9F%E7%90%86%E5%BA%94%E7%94%A8.htm" target="_blank">Java NIO原理和使用</a></h3>
+      <h3><a href="http://www.jdon.com/concurrent/netty.html" target="_blank">Netty原理和使用</a>      </h3>
+      <h3><a href="http://www.jdon.com/mybook/" target="_blank">Java实用系统开发指南</a> </h3>
+      <h3><a href="http://www.jdon.com/tags/222">语言平台专题</a></h3>
+      <h3> <a href="http://www.jdon.com/performance.html" target="_blank">后端性能专题</a></h3>
+      <h3><a href="http://www.jdon.com/idea.html" target="_blank">JavaEE教程</a></h3>
+      <h3><a href="http://www.jdon.com/js.html" target="_blank">Node.js教程</a></h3>
+	   <!-- 广告位：336x280 -->
+  <div id="PAGE_AD_1"></div>
+      <div align="right"> 
+        <p><i>-－【<a href="http://www.jdon.com/aboutme.htm">板桥里人</a> 】于98年4月在板桥斋翻译</i>      </p>
+      </div>
+      <!-- #EndEditable -->  
+      <p></p><div class="gen-2"></div><p></p>
+    </div>
+    <div class="gen-2"></div>
+    <div class="article">
+<div data-bd-bind="1484536199571" class="bdsharebuttonbox bdshare-button-style0-32" data-tag="share_2"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a title="累计分享14次" class="bds_count" data-cmd="count">14</a>
+<script async="" src="about:blank"></script>
+            <!-- 页面文章结束处 -->
+            <ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-7573657117119544" data-ad-slot="0310358561"><ins id="aswift_1_expand" style="display: inline-table; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><iframe src="index_14.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_1" name="aswift_1" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="280" width="336"></iframe></ins></ins></ins>
+            <script>/* Code removed by ScrapBook */</script>
+ </div>     <p></p><div class="gen-2"></div><p></p>
+    </div>
+    <div class="gen-2"></div>
+    <div class="article">
+          <div>
+        <div id="approved" class="approved">
+
+
+
+
+
+<style>
+/* Code tidied up by ScrapBook */
+.row { margin-left: -10px; margin-right: -10px; }
+.col-md-13 { position: relative; min-height: 1px; padding-left: 10px; padding-right: 10px; }
+.cols-container {  }
+.col-third { width: 33.3333%; float: left; position: relative; background-color: rgb(255, 255, 255); overflow: hidden; cursor: pointer; }
+</style>
+
+
+<div class="row">
+<div class="col-md-13 cols-container">
+ 
+
+<div class="col-third " style="height: inherit;">
+<div class="linkblock">	
+	
+<div style="width: 150px; margin: 0px auto; height: 300px;">
+        
+    <h3> <a href="http://www.jdon.com/48631" target="_blank">扎克伯格是如何建立家庭人工智能Jarvis贾维斯?</a> </h3>  
+      <br>          
+      <p class="smallgray"> 这是一篇来自Facebook扎克伯格自己的博文，讲解他是如何建立Jarvis的：  我在2016年的....
+</p></div>    			  
+</div>        
+</div>        
+
+
+<div class="col-third " style="height: inherit;">
+<div class="linkblock">	
+	
+<div style="width: 150px; margin: 0px auto; height: 300px;">
+        
+    <h3> <a href="http://www.jdon.com/48605" target="_blank">微服务Spring Cloud与Kubernetes比较</a> </h3>  
+      <br>          
+      <p class="smallgray"> Spring Cloud或Kubernetes都宣称它们是开发运行微服务的最好环境，哪个更好？答案是....
+</p></div>    			  
+</div>        
+</div>        
+
+
+<div class="col-third " style="height: inherit;">
+<div class="linkblock">	
+	
+<div style="width: 150px; margin: 0px auto; height: 300px;">
+        
+    <h3> <a href="http://www.jdon.com/48601" target="_blank">为什么快递商qwintry选择Vue.js而不是React</a> </h3>  
+      <br>          
+      <p class="smallgray"> 海购快递商Qwintry团队最近开始积极地迁移到前端框架Vue.js，有关所有的旧项目和新项目情况如....
+</p></div>    			  
+</div>        
+</div>        
+
+
+<div class="col-third " style="height: inherit;">
+<div class="linkblock">	
+	
+<div style="width: 150px; margin: 0px auto; height: 300px;">
+        
+    <h3> <a href="http://www.jdon.com/48581" target="_blank">微服务边界</a> </h3>  
+      <br>          
+      <p class="smallgray"> 在这篇文章中，作者讨论了他最近学到的关于从不同的角度识别微服务边界的一个教训。   微服务架构是当今....
+</p></div>    			  
+</div>        
+</div>        
+
+
+<div class="col-third " style="height: inherit;">
+<div class="linkblock">	
+	
+<div style="width: 150px; margin: 0px auto; height: 300px;">
+        
+    <h3> <a href="http://www.jdon.com/48579" target="_blank">为什么麻省理工停止了SICP计算机程序的构造和解释教学</a> </h3>  
+      <br>          
+      <p class="smallgray"> 在纽约Lisp聚会的这次演讲中，Gerry Sussman被问及为什么麻省理工学院停止教授传奇的6.....
+</p></div>    			  
+</div>        
+</div>        
+
+
+<div class="col-third " style="height: inherit;">
+<div class="linkblock">	
+	
+<div style="width: 150px; margin: 0px auto; height: 300px;">
+        
+    <h3> <a href="http://www.jdon.com/48577" target="_blank">以并行思维方式思考</a> </h3>  
+      <br>          
+      <p class="smallgray"> 许多软件开发人员试图建立可扩展系统时往往会遇到困难。也许这是因为，最简单和最明显的解决方案往往无法扩....
+</p></div>    			  
+</div>        
+</div>        
+
+
+
+</div>        
+</div>              	
+</div>
+      </div>
+      <div class="gen-2"></div>
+
+    </div>
+  </div>
+  <div class="right_sider">
+    <form action="http://www.jdon.com/query/searchAction.shtml" method="post">
+      <input name="query" size="33" id="queryId" type="text">
+      <input name="..." src="search.gif" height="16" type="image" width="16" align="absmiddle">
+    </form>
+    <!-- #BeginEditable "Menu" --> <!-- #EndEditable -->    <p></p><div class="gen-2"></div><p></p>
+  <iframe src="index_16.xhtml" id="iframepage" name="iframepage" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" height="200px" width="300"></iframe>
+   <p></p><div class="gen-2"></div><p></p>
+    <div class="tag-cloud">
+      <li class="somewhat-popular"><a href="http://www.jdon.com/colorUML.html" target="_blank">四色原型</a> </li>
+      <li class="not-popular"><a href="http://www.jdon.com/dci.html" target="_blank">DCI</a> </li>
+      <li class="not-very-popular"><a href="http://www.jdon.com/transaction.html" target="_blank">事务</a> </li>      
+      <li class="popular"><a href="http://www.jdon.com/microservice.html" target="_blank">微服务</a> </li>      
+      <li class="not-very-popular"><a href="http://www.jdon.com/cloudcompute.html" target="_blank">云计算</a>
+      </li><li class="somewhat-popular"><a href="http://www.jdon.com/event.html" target="_blank">领域事件</a> </li>
+      <li class="not-popular"><a href="http://www.jdon.com/idea.html" target="_blank">JavaEE教程</a> </li>
+      <li class="popular"><a href="http://www.jdon.com/functional.html" target="_blank">函数编程</a> </li>
+      <li class="somewhat-popular"><a href="http://www.jdon.com/idea/nodejs/" target="_blank">Node.js</a> </li>
+      <li class="popular"><a href="http://www.jdon.com/js.html" target="_blank">javascript</a> </li>
+      <li class="not-very-popular"><a href="http://www.jdon.com/performance.html" target="_blank">性能</a></li>
+      <li class="not-popular"><a href="http://www.jdon.com/rest.html" target="_blank">REST</a> </li>
+      <p></p>
+    </div>
+    <p></p><div class="gen-2"></div><p></p>        
+<div class="frame-yy">   
+<script async="" src="about:blank"></script>
+<!-- 推荐贴右侧300x600 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 600px;" data-ad-client="ca-pub-7573657117119544" data-ad-slot="3352261515"><ins id="aswift_2_expand" style="display: inline-table; border: medium none; height: 600px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_2_anchor" style="display: block; border: medium none; height: 600px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_17.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_2" name="aswift_2" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="600" width="300"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script>
+</div>    
+    <p></p><div class="gen-2"></div><p></p>            
+   <div class="frame-yy">    
+    <script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script><script src="about:blank"></script><div style="display: none;">-</div> <div id="starIframe_wrapper_1" style="height: 250px; position: relative;"><iframe style="" id="starIframe1" src="index_18.html" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" frameborder="0" height="250" width="300" align="center,center"></iframe></div>
+    </div>
+   <p></p><div class="gen-2"></div><p></p>          
+   <div class="frame-yy">
+    <script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script><script src="about:blank"></script><div style="display: none;">-</div> <div id="starIframe_wrapper_2" style="height: 250px; position: relative;"><iframe style="" id="starIframe2" src="index_19.html" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" frameborder="0" height="250" width="300" align="center,center"></iframe></div>
+    </div>   
+    <p></p><div class="gen-2"></div><p></p>    
+ <div class="tag-cloud">
+      <li class="not-very-popular"><a href="http://www.jdon.com/soa.html" target="_blank">SOA</a> </li>
+      <li class="popular"> <a href="http://www.jdon.com/oo.html" target="_blank">面向对象</a></li>
+      <li class="not-very-popular"><a href="http://www.jdon.com/cloudcompute.html" target="_blank">云计算</a></li>
+      <li class="somewhat-popular"><a href="http://www.jdon.com/cqrs.html" target="_blank">CQRS</a></li>
+      <li class="not-very-popular"><a href="http://www.jdon.com/DistributedSystems.html" target="_blank">分布式系统</a></li>
+      <li class="not-popular"><a href="http://www.jdon.com/cache.html" target="_blank">缓存</a></li>
+      <li class="not-popular"><a href="http://www.jdon.com/dl/best/spring.htm" target="_blank">Spring</a></li>
+      <li class="not-very-popular"><a href="http://www.jdon.com/scalable.html" target="_blank">可扩展性</a></li>
+      <li class="popular"><a href="http://www.jdon.com/bigdata.html" target="_blank">大数据 </a></li>
+      <li class="somewhat-popular"><a href="http://www.jdon.com/nosql.html" target="_blank">NoSQL</a> </li>
+      <li class="not-very-popular"><a href="http://www.jdon.com/concurrency.html" target="_blank">并发</a> </li>
+      <li class="not-popular"><a href="http://www.jdon.com/android.html" target="_blank">安卓</a> </li>
+      <li class="not-very-popular"><a href="http://www.jdon.com/aop.html" target="_blank">AOP编程</a> </li>
+      <li class="popular"><a href="http://www.jdon.com/reactive.html" target="_blank">Reactive编程</a>  </li>
+      <li class="not-very-popular"><a href="http://www.jdon.com/asynchronous.html" target="_blank">异步编程</a> </li>
+     <p></p>
+    </div>
+    <p></p><div class="gen-2"></div><p></p>            
+     <ul id="social-link" class="link">
+      <li id="sina"></li>
+      <li id="rss"> <a href="http://www.jdon.com/followus.html#jdonrss">RSS订阅</a> </li>
+      <li id="o"> <a href="http://www.jdon.com/followus.html"> 微博关注</a></li>
+    </ul>
+    <p>
+  </p></div>
+  <div class="gen-2"></div>
+</div>
+<center>
+<center>
+<table width="1036" border="0" cellpadding="0" cellspacing="0" align="center">
+<tbody><tr><td>
+<script async="" src="about:blank"></script>
+<!-- 内容匹配 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: block; height: 518px;" data-ad-client="ca-pub-7573657117119544" data-ad-slot="7669317912" data-ad-format="autorelaxed"><ins id="aswift_3_expand" style="display: inline-table; border: medium none; height: 518px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 1036px; background-color: transparent;"><ins id="aswift_3_anchor" style="display: block; border: medium none; height: 518px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 1036px; background-color: transparent;"><iframe src="index_20.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_3" name="aswift_3" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="518" width="1036"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script>
+</td></tr></tbody></table>
+</center>
+<div style="width: 1036px; height: 1px; margin: 0px auto; padding: 0px; background-color: rgb(221, 221, 221); overflow: hidden;"></div>
+<center>
+  <table width="778" border="0" cellpadding="5" cellspacing="0">
+    <tbody>
+      <tr>
+        <td align="center"></td>
+      </tr>
+      <tr>
+        <td align="center"><span class="white"> <a href="http://www.jdon.com/mobile/new" target="_blank">解道移动版 </a> | <a href="http://www.jdon.com/followus.html" target="_blank">关注解道 </a> | <a href="http://www.jdon.com/forum/feed/feedback.jsp" target="_blank">联系解道 </a> | <a href="http://www.jdon.com/aboutsite.htm" target="_blank">关于解道 </a>| <a href="http://www.jdon.com/advert.htm" target="_blank">广告联系</a> | <a href="http://www.jdon.com/sitemap.html" target="_blank">网站地图</a> | <a href="#">设为首页</a></span><br>
+          <span class="nava"><br>
+          <a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP证12033263</a> <a href="http://www.jdon.com/forum/feed/feedback.jsp" target="_blank">如有意见请与我们联系</a> <a href="http://www.jdon.com/jdonframework/index.htm">Powered by JdonFramework </a></span></td>
+      </tr>
+    </tbody>
+  </table>
+</center>
+
+<script type="text/javascript" src="about:blank"></script>
+
+<!-- #BeginEditable "EditRegion3" --><!-- #EndEditable -->
+<div id="to_top" style="display: block; width: 20px; height: 20px; position: fixed; bottom: 50px; right: 40px; border-radius: 10px; text-decoration: none;"><a href="#"><img src="gotop.png" alt="返回顶部" title="返回顶部" height="20" width="20" border="0"></a></div>
+<script>/* Code removed by ScrapBook */</script>
+
+  <!-- Baidu Button BEGIN -->
+<script>/* Code removed by ScrapBook */</script>
+      <!-- Baidu Button END -->            
+
+	  
+
+
+</center></body><!-- #EndTemplate -->
+</html>

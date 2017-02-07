@@ -1,0 +1,33 @@
+/* Code tidied up by ScrapBook */
+#line_1_1 { position: absolute; background-position: -1px -166px; width: 113px; height: 31px; left: 0px; top: 59px; }
+#line_1_2 { position: absolute; background-position: -1px -202px; width: 114px; height: 31px; left: 0px; top: 95px; }
+#graphic_1_1 { position: absolute; background-position: -3px -394px; width: 300px; height: 187px; left: 0px; top: 0px; }
+#line_2_1 { position: absolute; background-position: -1px -243px; width: 136px; height: 31px; left: 0px; top: 96px; }
+#line_2_2 { position: absolute; background-position: -1px -279px; width: 135px; height: 31px; left: 0px; top: 132px; }
+#graphic_2_1 { position: absolute; background-position: -3px -587px; width: 299px; height: 187px; left: 0px; top: 0px; }
+#line_3_1 { position: absolute; background-position: -160px -166px; width: 154px; height: 44px; left: 0px; top: 0px; }
+#line_3_2 { position: absolute; background-position: -160px -214px; width: 154px; height: 28px; left: 0px; top: 44px; }
+#line_3_3 { position: absolute; background-position: -160px -246px; width: 154px; height: 33px; left: 0px; top: 72px; }
+#graphic_3_1 { position: absolute; background-position: -1px -318px; width: 111px; height: 49px; left: 0px; top: 110px; }
+#graphic_3_2 { position: absolute; background-position: -115px -318px; width: 85px; height: 42px; left: 111px; top: 110px; }
+#graphic_3_3 { position: absolute; background-position: -204px -319px; width: 104px; height: 37px; left: 196px; top: 111px; }
+#graphic_3_4 { position: absolute; background-position: -204px -360px; width: 104px; height: 27px; left: 196px; top: 148px; }
+#bg_3 { background-color: black; }
+#gradient { position: absolute; background-position: -12px -140px; width: 300px; height: 17px; left: 0px; top: 174px; }
+.textOnPanel { border-left: 50px solid rgb(0, 0, 0); left: -50px ! important; }
+.bg { position: absolute; width: 300px; height: 250px; }
+.sprite { display: inline-block; overflow: hidden; background-repeat: no-repeat; background-image: url("300x250_sprites_crushed.png"); }
+.logo { position: absolute; background-position: -1px -1px; width: 120px; height: 64px; border-bottom: 50px solid black; }
+.cta { position: absolute; background-position: -132px -1px; width: 180px; height: 64px; }
+.cta_over { position: absolute; background-position: -132px -71px; width: 180px; height: 64px; }
+#loading, #text_shell, #cta, #cta_default, #cta_default_shell, #cta_over, #logo { position: absolute; }
+#loading { z-index: 1000; }
+#text_shell { width: 100%; height: 100%; z-index: 10; }
+#loading, #text_shell, #cta, #cta_default, #cta_default_shell, #cta_over, #logo { position: absolute; }
+#loading { z-index: 1000; }
+#text_shell { width: 100%; height: 100%; z-index: 10; }
+#logo { top: 187px; }
+#cta { width: 380px; height: 90px; left: 120px; top: 187px; overflow: hidden; border-bottom: 50px solid rgb(20, 171, 224); }
+#cta_default, #cta_over, #cta_default_shell { width: 100%; height: 100%; }
+#cta_default_shell { height: 63px; z-index: 20; overflow: hidden; border-bottom: 50px solid rgb(20, 171, 224); }
+#cta_default { height: 63px; }

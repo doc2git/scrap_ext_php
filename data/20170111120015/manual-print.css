@@ -1,0 +1,27 @@
+/* Code tidied up by ScrapBook */
+html { font-size: 11pt; }
+body { background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); padding: 0px; margin: 0px; font-family: "Times New Roman",serif; font-weight: normal; }
+table, code { font-size: 1em; }
+a:link, a:visited, a:hover, a:active { color: rgb(0, 0, 0); background-color: inherit; text-decoration: none; }
+#page-content p > a[href]::after { content: " (↗ " attr(href) ") "; color: rgb(0, 51, 102); }
+h1 { padding: 0px 0px 0.2em; margin: 1em 0px 0.5em; border-style: none none solid; border-bottom: 1px solid rgb(64, 88, 113); background-color: inherit; color: rgb(0, 0, 0); text-decoration: none; font-size: 17pt; font-weight: bold; text-align: center; }
+h2 { padding: 0.2em 0px 0.2em 0.2em; margin: 0px 0px 0.5em; width: 80%; text-decoration: none; font-size: 15pt; font-weight: bold; border-bottom: 1px solid rgb(0, 0, 0); text-align: left; }
+.section h2, .directive-section h2, .category h2 { background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); }
+h2 a, h2 a:hover, h2 a:active { color: inherit; background-color: inherit; text-decoration: none; }
+ul, .section table, .directive-section table { margin-bottom: 1em; }
+div.up, div.top { display: none; }
+table { border: 1px solid rgb(0, 0, 0); border-collapse: collapse; padding: 2px; margin-top: 0.5em; margin-bottom: 0px; margin-left: 1px; }
+td, th { empty-cells: show; padding: 0.1em 0.2em; vertical-align: top; text-align: left; line-height: 1.1em; }
+ul { list-style-type: disc; }
+li, dt, dd { line-height: 1.1em; }
+div#page-header { margin-left: 0px; }
+div#page-header img { display: none; }
+div#page-header p.apache { background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); padding: 0px; margin: 0px; text-align: center; vertical-align: middle; font-size: 20pt; font-weight: bold; line-height: 20pt; }
+div#page-header p.menu { display: none; }
+div#path { display: none; }
+div#page-content { padding-top: 0px; margin-right: 0px; padding-right: 0px; }
+p { line-height: 1.1em; }
+div#footer { margin-left: 0px; font-size: 11pt; border-top: 1px solid rgb(0, 0, 0); padding-top: 0.2em; }
+div#footer p.apache { float: none; text-align: center; padding: 0px 0px 1em; margin-top: 0px; font-weight: bold; }
+div.toplang, div.bottomlang, div#footer p.menu { display: none; }
+#index-page form { display: none; }

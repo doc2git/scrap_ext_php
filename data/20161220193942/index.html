@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+	<title> 使用git做知识整理的建议  - OPEN 开发经验库</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Git,Git">
+	<meta name="description" content="我大概的整理情况：虽然挺多，但是这里只是公开的部分。https://github.com/lijianying10/FixLinux那么为什么推荐使用Git作为自己知识索引与整理的工具呢？ 
+
+">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="copyright" href="http://www.open-open.com/">
+
+	<link href="idea.min.css" rel="stylesheet">
+	<link href="jquery-ui.min.css" rel="stylesheet">
+	
+	<link href="bootstrap.min.css" rel="stylesheet">
+	<link href="font-awesome.min.css" rel="stylesheet">
+	<link href="jquery-confirm.css" rel="stylesheet">
+	<link href="styles.css" rel="stylesheet">
+
+	<style type="text/css" media="screen, projection">
+/* Code tidied up by ScrapBook */
+@import url("common.css");
+@import url("main.css");
+@import url("jGrowl.css");
+.articleIndex li.active a { color: rgb(0, 153, 255); }
+</style>
+	<style type="text/css">
+/* Code tidied up by ScrapBook */
+.topheader h1 { font-size: 24px; margin: 0px; }
+.crumbs { padding-bottom: 5px; font-size: 11px; }
+.crumbs, .crumbs a, .meta { color: rgb(187, 187, 187); }
+#tag-list { margin-top: 10px; }
+#tag-list a { background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding: 2px 10px; text-decoration: none; }
+#tag-list a:hover { background: rgb(197, 226, 255) none repeat scroll 0% 0%; color: rgb(0, 153, 255); }
+.crumbs a:hover { color: rgb(0, 153, 255); }
+#readercontainer { background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding: 40px 89px; }
+.post-nav ul { margin: 0px; }
+.post-nav > ul > li a { padding-left: 10px; }
+.post-nav > ul > li > ul > li a { padding-left: 30px; }
+.post-nav ul li.active a { border-left: 2px solid rgb(0, 153, 255); }
+.aside-fixed { left: 50%; margin-left: 310px; position: fixed; top: 65px; width: 260px; }
+.bdsharebuttonbox { background: rgb(238, 238, 238) none repeat scroll 0px 0px; margin-top: 10px; padding: 10px; width: 100%; }
+</style>
+
+	<script src="about:blank"></script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+	<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+
+
+<script src="about:blank"></script><link href="share_style0_16.css" rel="stylesheet"></head>
+<body id="view"><div style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;" id="BAIDU_DUP_fp_wrapper"><iframe style="width: 0px; height: 0px; visibility: hidden; display: none;" src="index_12.html" id="BAIDU_DUP_fp_iframe"></iframe></div>
+
+
+<style>
+/* Code tidied up by ScrapBook */
+.global-tags { background: rgb(51, 51, 51) none repeat scroll 0% 0%; color: rgb(171, 171, 171); height: 30px; line-height: 30px; width: 100%; }
+.global-tags .container { position: relative; }
+.global-tags ul { height: 30px; margin: 0px; overflow: hidden; }
+.global-tags a { color: rgb(171, 171, 171); padding: 5px; }
+.global-tags a:hover { color: rgb(224, 224, 224); }
+.global-tags li { display: inline-block; padding: 0px; }
+.global-tags .more { background-color: rgb(51, 51, 51); height: 30px; position: absolute; right: 0px; top: 0px; width: 30px; }
+.global-tags .more::before { background-image: linear-gradient(90deg, rgba(0, 95, 60, 0), rgb(51, 51, 51)); background-size: 100% auto; content: ""; height: 100%; left: -20px; position: absolute; top: 0px; width: 20px; }
+.all-sort { z-index: 100; position: absolute; left: 15px; top: 30px; display: none; }
+.all-sort-head { background: rgb(255, 60, 0) none repeat scroll 0% 0%; color: rgb(255, 255, 255); margin-right: 20px; text-align: center; width: 160px; float: left; }
+.all-sort-head a { color: rgb(255, 255, 255); }
+.item-list .subitem { float: left; padding: 20px; }
+.all-sort-list { position: relative; width: 160px; border-width: medium 2px 2px; border-style: none solid solid; border-color: -moz-use-text-color rgb(57, 57, 57) rgb(57, 57, 57); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background: rgb(57, 57, 57) none repeat scroll 0% 0%; float: left; z-index: 100; }
+.all-sort-list .item .parent { font-weight: 700; border: medium none; width: 120px; text-align: right; margin-right: 2px; }
+.all-sort-list .item .parent i { font: 400 9px/14px consolas; height: 14px; margin-left: 10px; width: 4px; }
+.all-sort-list .item.bo { border-top: medium none; }
+.all-sort-list .item h3 { height: 40px; line-height: 40px; font-size: 14px; font-weight: normal; width: 158px; overflow: hidden; color: rgb(255, 255, 255); margin: 0px; }
+.all-sort-list .item h3 a { color: rgb(255, 255, 255); }
+.all-sort-list .item:hover h3, .all-sort-list .item:hover span, .all-sort-list .item:hover h3 a, .all-sort-list .item .active, .all-sort-list .item .active a, .all-sort-list .item .active span { color: rgb(228, 57, 60); }
+.all-sort-list .item span { padding: 0px 5px; color: rgb(255, 255, 255); font-family: "宋体"; }
+.all-sort-list .item a { text-decoration: none; }
+.all-sort-list .subitem a { float: left; margin: 5px 20px 5px 0px; border-left: 1px solid rgb(238, 238, 238); line-height: 14px; height: 20px; }
+.all-sort-list .item a:hover { color: rgb(228, 57, 60); }
+.all-sort-list .item:hover h3, .all-sort-list .item .active { position: relative; z-index: 13; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-color: rgb(221, 221, 221); border-width: 1px 0px; border-style: solid; }
+.all-sort-list .item-list { display: none; position: absolute; width: 705px; min-height: 360px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; left: 157px; border: 1px solid rgb(221, 221, 221); top: 0px; z-index: 10; }
+</style>
+
+
+<header class="site-header">
+	<div class="header-top ">
+		<div class="header-top-inner">
+			<div class="" style="margin: 0px 30px;">
+				<div class="row">
+					
+						<div class="header-talet pull-left">
+							<a href="http://www.open-open.com/">首页</a> &nbsp;
+							<a class="" href="http://www.open-open.com/code/">代码</a> &nbsp;
+							<a class="" href="http://www.open-open.com/doc/">文档</a> &nbsp;
+							<a title="OPEN论坛频道" href="http://www.open-open.com/solution/">问答</a> &nbsp;
+							<a title="OPEN资讯" class="" href="http://www.open-open.com/news/">资讯</a> &nbsp;
+							<a title="OPEN经验库" class="active" href="http://www.open-open.com/lib/">经验</a> &nbsp;
+							<a title="GitHub日报" class="" href="http://www.open-open.com/github/">GitHub日报</a>
+							&nbsp;|&nbsp;
+							<a class="active" title=" 安卓开发专栏" target="_blank" href="http://www.open-open.com/lib/list/177">安卓开发专栏</a>
+							&nbsp;|&nbsp;
+							<a class="active" href="http://www.open-open.com/lib/tag/%E5%BC%80%E5%8F%91%E8%80%85%E5%91%A8%E5%88%8A" target="_blank" rel="tag">开发者周刊</a>&nbsp;|&nbsp;
+							<a class="active" href="http://www.open-open.com/lib/view/open1475497562965.html" target="_blank" rel="tag">Android Studio 使用推荐</a>&nbsp;|&nbsp;
+							<a class="active" href="http://www.open-open.com/lib/view/open1475497355674.html" target="_blank" rel="tag">Android开发推荐</a>
+							
+						</div>
+					
+						<div class="user-info pull-right" id="Personal">
+							
+								<a href="#" title="登录OPEN经验库" class="login">登录</a>&nbsp;&nbsp;
+								<a href="#" title="注册新的账号" class="register">注册</a>
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<nav class="navbar ">
+		<div class="container">
+			<div class="navbar-header" style="margin-right: 30px;">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span aria-hidden="true" class="glyphicon glyphicon-menu-hamburger"></span>
+					<span aria-hidden="true" class="glyphicon glyphicon-menu-up"></span>
+				</button>
+				<a class="top-logo" href="http://www.open-open.com/lib"><span>www.open-open.com/lib</span></a>
+				<span style="font-size: 26px; color: rgb(219, 109, 76);">OPEN经验</span>
+				<span style="font-size: 12px; color: rgb(181, 181, 181);"></span>
+			</div>
+
+			<div class="pull-right" style="padding: 20px;">
+				<button class="btn btn-info br40" id="upload" type="button">投稿</button>
+			</div>
+			<div id="search">
+				<form accept-charset="utf-8" method="post" action="http://www.open-open.com/lib/query" name="sf">
+					<input value="all" name="site" type="hidden">
+					<div class="input-group">
+						<input x-webkit-speech="" placeholder="经验搜索" class="form-control" name="q" id="kw" type="text">
+                      <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                      </span>
+
+					</div>
+				</form>
+
+				<!-- /input-group -->
+
+			</div>
+
+		</div>
+	</nav>
+	<div class="global-tags">
+		<div class="container">
+			<div class="all-sort-head"><a href="http://www.open-open.com/lib/list/all">全部经验分类</a>&nbsp;<i aria-hidden="true" class="fa fa-toggle-down"></i></div><div class="all-sort"><div class="all-sort-list"><div data-submenu-id="submenu1" class="item bo"><h3><span>·</span><a href="http://www.open-open.com/lib/list/1">软件开发</a></h3><div id="submenu1" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/405">VR</a><a href="http://www.open-open.com/lib/list/2">Web框架</a><a href="http://www.open-open.com/lib/list/3">GUI开发框架</a><a href="http://www.open-open.com/lib/list/4">图表/报表制作</a><a href="http://www.open-open.com/lib/list/5">搜索引擎</a><a href="http://www.open-open.com/lib/list/6">模板引擎</a><a href="http://www.open-open.com/lib/list/7">缓存组件</a><a href="http://www.open-open.com/lib/list/8">Ajax框架</a><a href="http://www.open-open.com/lib/list/9">XML操作类库</a><a href="http://www.open-open.com/lib/list/10">HTML操作类库</a><a href="http://www.open-open.com/lib/list/12">文件上传</a><a href="http://www.open-open.com/lib/list/347">3D图形处理库</a><a href="http://www.open-open.com/lib/list/14">图形/图像处理</a><a href="http://www.open-open.com/lib/list/15">常用工具包</a><a href="http://www.open-open.com/lib/list/16">JSON开发包</a><a href="http://www.open-open.com/lib/list/353">OAuth开发包</a><a href="http://www.open-open.com/lib/list/17">PDF工具包</a><a href="http://www.open-open.com/lib/list/18">Flex开发</a><a href="http://www.open-open.com/lib/list/19">Office文档处理</a><a href="http://www.open-open.com/lib/list/20">日志处理</a><a href="http://www.open-open.com/lib/list/21">网络工具包</a><a href="http://www.open-open.com/lib/list/22">多媒体处理</a><a href="http://www.open-open.com/lib/list/23">WEB服务/RPC/SOA</a><a href="http://www.open-open.com/lib/list/24">RSS/ATOM相关</a><a href="http://www.open-open.com/lib/list/25">持久层框架</a><a href="http://www.open-open.com/lib/list/26">作业调度框架</a><a href="http://www.open-open.com/lib/list/27">工作流引擎</a><a href="http://www.open-open.com/lib/list/28">业务规则引擎</a><a href="http://www.open-open.com/lib/list/29">面向方面AOP/IoC</a><a href="http://www.open-open.com/lib/list/30">JEE框架</a><a href="http://www.open-open.com/lib/list/31">安全相关</a><a href="http://www.open-open.com/lib/list/32">OpenID/单点登录SSO</a><a href="http://www.open-open.com/lib/list/34">条形码/二维码开发包</a><a href="http://www.open-open.com/lib/list/35">验证码(Captcha)</a><a href="http://www.open-open.com/lib/list/96">网络爬虫</a><a href="http://www.open-open.com/lib/list/214">OSGi</a><a href="http://www.open-open.com/lib/list/237">网络技术</a><a href="http://www.open-open.com/lib/list/324">Google相关API</a><a href="http://www.open-open.com/lib/list/328">Swing开发包</a><a href="http://www.open-open.com/lib/list/332">HTML编辑器</a><a href="http://www.open-open.com/lib/list/337" style="color: rgb(255, 60, 0);">JavaScript开发工具包</a><a href="http://www.open-open.com/lib/list/352">TTS/语音合成和处理</a><a href="http://www.open-open.com/lib/list/367">游戏开发</a><a href="http://www.open-open.com/lib/list/370">加密/解密软件包</a><a href="http://www.open-open.com/lib/list/374">源代码语法着色</a><a href="http://www.open-open.com/lib/list/376">WebSocket 开发</a><a href="http://www.open-open.com/lib/list/381">MathML显示与编辑</a><a href="http://www.open-open.com/lib/list/383">计算机视觉库/人脸识别</a><a href="http://www.open-open.com/lib/list/385">XML-RPC 开发</a><a href="http://www.open-open.com/lib/list/386">Markdown处理库</a><a href="http://www.open-open.com/lib/list/387">神经网络</a><a href="http://www.open-open.com/lib/list/389">多媒体播放器</a><a href="http://www.open-open.com/lib/list/391">推荐引擎</a><a href="http://www.open-open.com/lib/list/394">机器学习</a><a href="http://www.open-open.com/lib/list/401">算法</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu2" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/36">开发语言与工具</a></h3><div id="submenu2" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/406">R语言</a><a href="http://www.open-open.com/lib/list/37" style="color: rgb(255, 60, 0);">Java开发</a><a href="http://www.open-open.com/lib/list/38">.NET开发</a><a href="http://www.open-open.com/lib/list/39">PHP开发</a><a href="http://www.open-open.com/lib/list/40">C/C++开发</a><a href="http://www.open-open.com/lib/list/42">Ruby开发</a><a href="http://www.open-open.com/lib/list/43">Python开发</a><a href="http://www.open-open.com/lib/list/148">ActionScript开发</a><a href="http://www.open-open.com/lib/list/145" style="color: rgb(255, 60, 0);">JavaScript开发</a><a href="http://www.open-open.com/lib/list/44">Perl开发</a><a href="http://www.open-open.com/lib/list/263">Delphi开发</a><a href="http://www.open-open.com/lib/list/243">Erlang开发</a><a href="http://www.open-open.com/lib/list/211">Google Go/Golang开发</a><a href="http://www.open-open.com/lib/list/201">Scala开发</a><a href="http://www.open-open.com/lib/list/240">Lua开发</a><a href="http://www.open-open.com/lib/list/392">Apple Swift开发</a><a href="http://www.open-open.com/lib/list/301">Objective-C开发</a><a href="http://www.open-open.com/lib/list/45">BUG跟踪管理</a><a href="http://www.open-open.com/lib/list/294">Lisp开发</a><a href="http://www.open-open.com/lib/list/46">项目构建</a><a href="http://www.open-open.com/lib/list/41">移动开发</a><a href="http://www.open-open.com/lib/list/47">单元测试</a><a href="http://www.open-open.com/lib/list/48">测试工具</a><a href="http://www.open-open.com/lib/list/49">性能测试和优化</a><a href="http://www.open-open.com/lib/list/50">程序调试</a><a href="http://www.open-open.com/lib/list/51">代码混淆和加密</a><a href="http://www.open-open.com/lib/list/52">UML/模型工具</a><a href="http://www.open-open.com/lib/list/53">安装制作</a><a href="http://www.open-open.com/lib/list/54">代码分析/审查/优化</a><a href="http://www.open-open.com/lib/list/55">前端技术</a><a href="http://www.open-open.com/lib/list/179">Eclipse开发工具</a><a href="http://www.open-open.com/lib/list/205">IntelliJ IDEA</a><a href="http://www.open-open.com/lib/list/281">NetBeans</a><a href="http://www.open-open.com/lib/list/349">程序文档工具</a><a href="http://www.open-open.com/lib/list/361">语法/词法分析器</a><a href="http://www.open-open.com/lib/list/362">脚本/动态语言</a><a href="http://www.open-open.com/lib/list/364">持续集成系统</a><a href="http://www.open-open.com/lib/list/375">Web开发工具</a><a href="http://www.open-open.com/lib/list/388">Node.js 开发</a><a href="http://www.open-open.com/lib/list/395">中文分词</a><a href="http://www.open-open.com/lib/list/399" style="color: rgb(255, 60, 0);">Android Studio开发工具</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu3" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/57">网站系统</a></h3><div id="submenu3" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/58">论坛系统BBS</a><a href="http://www.open-open.com/lib/list/59">建站系统CMS</a><a href="http://www.open-open.com/lib/list/60">电子商务/商城</a><a href="http://www.open-open.com/lib/list/61">SNS社交网络/交友平台</a><a href="http://www.open-open.com/lib/list/62">百科系统Wiki</a><a href="http://www.open-open.com/lib/list/63">门户平台Portal</a><a href="http://www.open-open.com/lib/list/64">网络会议/视频会议</a><a href="http://www.open-open.com/lib/list/65">相册/照片/多媒体系统</a><a href="http://www.open-open.com/lib/list/66">微博工具/系统</a><a href="http://www.open-open.com/lib/list/363">博客系统</a><a href="http://www.open-open.com/lib/list/379">开源问答系统</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu4" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/67">企业应用</a></h3><div id="submenu4" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/68">ERP/CRM</a><a href="http://www.open-open.com/lib/list/69">OA办公/协作平台</a><a href="http://www.open-open.com/lib/list/70">WebMail系统</a><a href="http://www.open-open.com/lib/list/71">地理信息系统GIS</a><a href="http://www.open-open.com/lib/list/72">数据挖掘</a><a href="http://www.open-open.com/lib/list/73">文档管理</a><a href="http://www.open-open.com/lib/list/74">项目/任务管理</a><a href="http://www.open-open.com/lib/list/333">教学科研相关</a><a href="http://www.open-open.com/lib/list/357">开源SIP项目</a><a href="http://www.open-open.com/lib/list/368">计算机辅助设计CAD/CAM</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu5" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/75">服务器软件</a></h3><div id="submenu5" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/76">应用服务器</a><a href="http://www.open-open.com/lib/list/77">Web服务器</a><a href="http://www.open-open.com/lib/list/78">FTP服务器</a><a href="http://www.open-open.com/lib/list/79">邮件服务器</a><a href="http://www.open-open.com/lib/list/80">缓存服务器</a><a href="http://www.open-open.com/lib/list/81">版本控制系统</a><a href="http://www.open-open.com/lib/list/82">路由器/防火墙</a><a href="http://www.open-open.com/lib/list/83">电话/通讯/IM聊天</a><a href="http://www.open-open.com/lib/list/84">集群/负载均衡</a><a href="http://www.open-open.com/lib/list/85">流媒体服务器</a><a href="http://www.open-open.com/lib/list/86">消息系统</a><a href="http://www.open-open.com/lib/list/220">分布式/云计算/大数据</a><a href="http://www.open-open.com/lib/list/298">企业服务总线ESB</a><a href="http://www.open-open.com/lib/list/321">建站服务器套件</a><a href="http://www.open-open.com/lib/list/348">虚拟化</a><a href="http://www.open-open.com/lib/list/355">目录服务LDAP</a><a href="http://www.open-open.com/lib/list/393">容器系统</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu6" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/87">插件和扩展</a></h3><div id="submenu6" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/88">Eclipse插件</a><a href="http://www.open-open.com/lib/list/89">jQuery插件</a><a href="http://www.open-open.com/lib/list/331">Node.js扩展</a><a href="http://www.open-open.com/lib/list/338">jQuery分页插件</a><a href="http://www.open-open.com/lib/list/346">Prototype扩展</a><a href="http://www.open-open.com/lib/list/356">Chrome插件/扩展</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu7" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/90">数据库相关</a></h3><div id="submenu7" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/91">数据库服务器</a><a href="http://www.open-open.com/lib/list/92">数据库管理工具</a><a href="http://www.open-open.com/lib/list/93">数据库驱动程序</a><a href="http://www.open-open.com/lib/list/94">数据库建模</a><a href="http://www.open-open.com/lib/list/122">数据库连接池</a><a href="http://www.open-open.com/lib/list/154">SQL</a><a href="http://www.open-open.com/lib/list/307">NoSQL数据库</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu8" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/155">操作系统</a></h3><div id="submenu8" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/156">Linux</a><a href="http://www.open-open.com/lib/list/182">CentOS</a><a href="http://www.open-open.com/lib/list/183">Ubuntu</a><a href="http://www.open-open.com/lib/list/224">UNIX</a><a href="http://www.open-open.com/lib/list/251">Fedora</a><a href="http://www.open-open.com/lib/list/274">FreeBSD</a><a href="http://www.open-open.com/lib/list/310">Solaris</a><a href="http://www.open-open.com/lib/list/311">openSUSE</a><a href="http://www.open-open.com/lib/list/312">Debian</a><a href="http://www.open-open.com/lib/list/313">OpenBSD</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu9" class="item "><h3><span>·</span>其他分类</h3><div id="submenu9" class="item-list clearfix"><div class=" subitem"><p class="clearfix"><a href="http://www.open-open.com/lib/list/159" class="parent">软件开发管理<i>&gt;</i></a><a href="http://www.open-open.com/lib/list/174">敏捷开发</a><a href="http://www.open-open.com/lib/list/178">项目管理</a><a href="http://www.open-open.com/lib/list/196">软件架构</a><a href="http://www.open-open.com/lib/list/296">软件测试</a></p><p class="clearfix"><a href="http://www.open-open.com/lib/list/319" class="parent">管理和监控<i>&gt;</i></a><a href="http://www.open-open.com/lib/list/320">系统监控</a><a href="http://www.open-open.com/lib/list/360">日志分析和统计</a><a href="http://www.open-open.com/lib/list/366">备份工具</a></p><p class="clearfix"><a href="http://www.open-open.com/lib/list/322" class="parent">应用工具<i>&gt;</i></a><a href="http://www.open-open.com/lib/list/323">磁盘/光驱工具</a><a href="http://www.open-open.com/lib/list/359">文档/文本编辑</a><a href="http://www.open-open.com/lib/list/384">终端/远程登录</a></p><p class="clearfix"><a href="http://www.open-open.com/lib/list/329" class="parent">游戏相关<i>&gt;</i></a><a href="http://www.open-open.com/lib/list/330">网页游戏</a></p></div><div class="cat-right"></div></div></div></div></div>
+			<ul class="nav__list">
+				<li class="nav__item ">
+
+				</li>
+				<li class="nav__item"><i class="fa fa-tags"></i></li>
+
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Android" rel="tag">Android</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/IOS" rel="tag">IOS</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/JavaScript" rel="tag">JavaScript</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/HTML5" rel="tag">HTML5</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/CSS" rel="tag">CSS</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/jQuery" rel="tag">jQuery</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Python" rel="tag">Python</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/PHP" rel="tag">PHP</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/NodeJS" rel="tag">NodeJS</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Java" rel="tag">Java</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Spring" rel="tag">Spring</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/MySQL" rel="tag">MySQL</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/MongoDB" rel="tag">MongoDB</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Redis" rel="tag">Redis</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/NOSQL" rel="tag">NOSQL</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Vim" rel="tag">Vim</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/C++" rel="tag">C++</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/C#" rel="tag">C#</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/JSON" rel="tag">JSON</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Ruby" rel="tag">Ruby</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Linux" rel="tag">Linux</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Nginx" rel="tag">Nginx</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Docker" rel="tag">Docker</a></li>
+				<li class="more"></li>
+
+			</ul>
+
+		</div>
+	</div>
+</header>
+
+
+
+<div class="topheader" style="background: rgb(238, 238, 238) none repeat scroll 0% 0%; padding: 10px 0px 30px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="crumbs">
+					<a href="http://www.open-open.com/lib/list/all">所有分类</a>
+					
+						&nbsp;&gt;&nbsp;
+						<a href="http://www.open-open.com/lib/list/75">服务器软件</a>
+					
+						&nbsp;&gt;&nbsp;
+						<a href="http://www.open-open.com/lib/list/81">版本控制系统</a>
+					
+						&nbsp;&gt;&nbsp;
+						<a href="http://www.open-open.com/lib/list/282">Git</a>
+					
+				</div>
+				<h1 id="articleTitle"> 使用git做知识整理的建议 </h1>
+				<div class="meta" style="margin-top: 10px;">
+					<span id="tag-list">
+					
+						<a href="http://www.open-open.com/lib/tag/Git">Git</a>
+					
+					</span>&nbsp;
+
+					<span class="item">2015-07-20 10:13:50 发布</span>
+				</div>
+
+
+			</div>
+			<div class="col-md-3">
+				<table>
+					<tbody>
+					<tr>
+						<td><strong>您的评价</strong>:</td>
+						<td>
+							<div id="rate" class="rate-container"><span id="star1" class="star-big-off" title="很差">&nbsp;</span><span id="star2" class="star-big-off" title="较差">&nbsp;</span><span id="star3" class="star-big-off" title="还行">&nbsp;</span><span id="star4" class="star-big-off" title="不错">&nbsp;</span><span id="star5" class="star-big-off" title="力荐">&nbsp;</span></div>
+						</td>
+						<td width="30">
+							<span id="score-num">3.5</span>
+						</td>
+						<td width="30">
+							<div id="rate-tip"></div>
+						</td>
+
+					</tr>
+					</tbody>
+				</table>
+				<div id="favorite-container"><a id="favorite" class="btn btn-default">收藏</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<span class="item">2收藏</span>
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="container">
+<div class="row">
+
+		<div id="readercontainer" class="col-md-9">
+				<article>
+					<div>
+<p><img alt=" 使用git做知识整理的建议 " src="20150720101145_272.png" height="92" width="220"> </p>
+<h2 id="articleHeader0">核心工具：git </h2>
+<p>我大概的整理情况：虽然挺多，但是这里只是公开的部分。<a href="https://github.com/lijianying10/FixLinux" target="_blank">https://github.com/lijianying10/FixLinux</a>那么为什么推荐使用Git作为自己知识索引与整理的工具呢？ </p>
+<p>对于个人wiki来说有很多选择，比如说马克飞象，为知笔记，有道云笔记等等，他们都是非常非常优秀的，只是他们对于我来说开发上的wiki不适合在上面整理。在这里我们来分析一下为啥对于开发人员来说他们不太合适。 </p>
+<h3 id="articleHeader1">版本管理 </h3>
+<p>很多软件都提供了版本管理功能，但是版本追踪次数还是非常有限的。即使有貌似没有提供diff。然而对于git来说一大堆工具提供此类功能。 </p>
+<h3 id="articleHeader2">协作 </h3>
+<p>对于public REPO来说很简单，加上对方账号即可。还可以解决冲突，彼此商量好合作方式等等信息，有分支支持，最后手动或者自动合并即可。<br>
+虽然很多网站目前已经有了免费的private repo类似OSChina等等大厂家提供的。但是我们依然可以使用git --bare init通过ssh的方式来提供方便的自主可控的private repo。这种方法在我们团队内部使用还是比较方便的，只要有内网服务器即可。都使用ssh账号即可。 </p>
+<h3 id="articleHeader3">周边工具 </h3>
+<p>刚刚说了本质上的不同，除了对版本管理已经数据的安全可控上有一定高度好处之外git的好处还得益于它丰富的周边工具。 </p>
+<p>Markdown是文档的首要工具，他可以通过自由的方式进行使用您想要的方式进行渲染，甚至我们可以自己创造出自己需要的语法来进行渲染，比如说加上MathJax支持公式，甚至化学方程式等等。如果一般的软件，你只能等待版本升级或者人家压根没有这方面的开发计划。 </p>
+<p>LaTeX虽然这个有点远，但是这个工具加上编译器编译出的PDF质量无可挑剔。非常适合正式场合的材料准备。 </p>
+<p>Mind 推荐网站<a href="http://my-mind.github.io/" target="_blank">http://my-mind.github.io/</a>支持本地化。免费，只需要一个浏览器就够了。思维导图当然可以有！ </p>
+<p>这些都只是一些建议，当然您按照您的想象使用任何根据情况需要的工具。完全没有限制完全自由。 </p>
+<h3 id="articleHeader4">搜索 </h3>
+<p>对于整理完的知识，能有一个简洁搜索方法并且给出合理的搜索结果建议。最好的工具：<br>
+grep加上各种shell参数快速hit到您需要的位置。<br>
+它比一般提供的搜索框强大不知道多少倍。 </p>
+<h3 id="articleHeader5">关于网页引用 </h3>
+<p>之前我在用为知笔记的时候痴迷于把网页“扒下来”急于放到自己的wiki中等以后有时间了再看，或者我看完之后做个备份，这样做最后结果很不好： </p>
+<ol>
+<li>文章不是我写的，我无法有效的回忆关键词无法快速索引到目标我想找到的地方。 </li>
+<li>格式上真心不是很好看，对于工作上遇到比较着急的事索引效率有一定影响。 </li>
+<li>如果我们自己写一遍我们自己的理解并且有一定的实践，跟单纯的保存网页有个印象有很大的不同。 </li>
+<li>如果采集多篇文章换成写自己的小段理解从长远的角度来讲会节约更多时间。 </li>
+</ol>
+<h3 id="articleHeader6">Review </h3>
+<p>Review也是一种wiki的最关键使用方法。 </p>
+<ol>
+<li>它是短时间内提升自己最省时间的一种手段。 </li>
+<li>可以让你更快的检索到需要的位置。 </li>
+<li>可以组合各种零碎时间让时间利用率提升很多。 </li>
+<li>更新自己的wiki提升自己的理解凝练更多的东西，收获更多。 </li>
+</ol>
+<p>本文虽然提到的是知识整理，但是不得不说的是知识与技能的关系。虽然我念书比较少我不懂概念，但是我知道考完试忘了的东西叫做知识，几乎没什么用， 我小时候学骑自行车但是5年不碰自行车拿来一辆我仍然能骑走这叫技能，知识是可以通过Review来达到成为技能的可能性，而且根据我的亲身经 历，Review往往比通过经验学习技能的方式来的轻松省时间。 </p>
+<h3 id="articleHeader7">依然是浮躁 </h3>
+<p>就像很多技术人员都止步在学会做操作系统的层面上一样，很多人都只会研究工具并不展开更加深入 的使用。因为我是从这个阶段过来的，刚开始研究技术都是研究怎么安装操作系统了，并且过完那段快乐的时光之后我觉得还是自己太浮躁了。能够找到适合自己的 工具并且深信不疑的继续使用它这是一种专注。 </p>
+<p>感谢HUSTDr.易曾经传给我的那份他写的Fortran 92写的分子模拟程序，连编译器都找不到的代码，让我用C重新算一次，这份专注我收下了。 </p>
+<h2 id="articleHeader8">总结 </h2>
+<p>使用git做核心工具来做自己的wiki整理能够获得更强大的版本管理，更好的协作体验，能让自己更加专注，更快的索引到自己想要的东西。<br>
+其周边工具的限制仅仅是您自己的想象力。唯一的缺点是门槛比较高，同时我们也能获得一份专注。<br>
+<br>
+来自：http://www.philo.top/2015/07/18/GitAsWiki/ </p>
+</div>
+				</article>
+
+
+
+
+		
+
+
+
+		</div>
+
+
+
+	<div class="col-md-3">
+		<div data-bd-bind="1482233919998" class="bdsharebuttonbox bdshare-button-style0-16">
+			<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+			<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+			<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+			<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+			<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+
+		</div>
+
+		<div class=" side-box" style="margin-top: 20px;">
+				<div class="title"><h3>同类热门经验</h3></div>
+				<ol class="hot">
+					
+						<li>
+							<a title="Git详解之三" git分支="" href="http://www.open-open.com/lib/view/open1328069889514.html"><span class="title">Git详解之三 Git分支 </span></a>
+						</li>
+					
+						<li>
+							<a title="Git详解之一" git起步="" href="http://www.open-open.com/lib/view/open1328069609436.html"><span class="title">Git详解之一 Git起步 </span></a>
+						</li>
+					
+						<li>
+							<a title="Git详解之二" git基础="" href="http://www.open-open.com/lib/view/open1328069733264.html"><span class="title">Git详解之二 Git基础 </span></a>
+						</li>
+					
+						<li>
+							<a title="Git使用基础篇" href="http://www.open-open.com/lib/view/open1332904495999.html"><span class="title">Git使用基础篇 </span></a>
+						</li>
+					
+						<li>
+							<a title="Git详解之四" 服务器上的git="" href="http://www.open-open.com/lib/view/open1328069988843.html"><span class="title">Git详解之四 服务器上的Git </span></a>
+						</li>
+					
+						<li>
+							<a title="Git详解之五" 分布式git="" href="http://www.open-open.com/lib/view/open1328070090108.html"><span class="title">Git详解之五 分布式Git </span></a>
+						</li>
+					
+
+				</ol>
+			</div>
+		<p class="aiBar"></p>
+		<div class="side-box post-nav aside-fixed" style="margin-top: 20px;">
+			<div class="title"><h3>阅读目录</h3></div>
+			<ul class="articleIndex"><li class=""><a href="#articleHeader0">核心工具：git</a></li><li style="list-style: outside none none;"><ul><li class=""><a href="#articleHeader1">版本管理</a></li><li class="active"><a href="#articleHeader2">协作</a></li><li><a href="#articleHeader3">周边工具</a></li><li><a href="#articleHeader4">搜索</a></li><li><a href="#articleHeader5">关于网页引用</a></li><li><a href="#articleHeader6">Review</a></li><li><a href="#articleHeader7">依然是浮躁</a></li></ul></li><li class=""><a href="#articleHeader8">总结</a></li></ul>
+		</div>
+	</div>
+
+
+
+</div>
+	</div>
+
+<div class="container">
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script><div id="BAIDU_SSP__wrapper_u2690846_0"><iframe id="iframeu2690846_0" src="index_14.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" frameborder="0" height="120" width="846" align="center,center"></iframe></div>
+
+	<div class="row">
+		<div class="col-md-9">
+			<table width="100%"><tbody><tr>
+				<td class="Relatedb" valign="top" width="33%">
+					<div style="border-bottom: 1px solid rgb(204, 204, 204); margin-top: 5px;"><strong>相关文档</strong> 　—　<a href="http://www.open-open.com/doc" rel="nofollow" target="_blank">更多</a></div>
+					<ul>
+						
+							<li><a href="http://www.open-open.com/doc/view/2cf4ffd26ab249dc9c5fc9da43b0ecc1" rel="nofollow" target="_blank" title="Git 用户手册.docx">Git 用户手册.docx</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/aaa8f057213446ebbbe3669d80367102" rel="nofollow" target="_blank" title="Git 的配置与使用.doc">Git 的配置与使用.doc</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/4ad27d7b386e4b3795be65f03e8a622a" rel="nofollow" target="_blank" title="《Git版本控制管理（第2版）》迷你书.pdf">《Git版本控制管理（第2版）》迷你书.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/7df86a3bad894c5fa3d29a093fe021d0" rel="nofollow" target="_blank" title="Git实践性的指导.pdf">Git实践性的指导.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/6835d437b53147998644f70b07292b81" rel="nofollow" target="_blank" title="Git版本控制管理(第2版).pdf">Git版本控制管理(第2版).pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/1619e41d8eee4ddc8a2b8cc44c74bae6" rel="nofollow" target="_blank" title="Git客户端Tortoisegit软件的安装与使用说明.pdf">Git客户端Tortoisegit软件的安装与使用说明.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/995ffcef1e164696beabffc669ab89f1" rel="nofollow" target="_blank" title="Git基本使用总结.docx">Git基本使用总结.docx</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/a38fc67e70db4ece9f851dc0f531c543" rel="nofollow" target="_blank" title="《看日记学git》最好的Git中文教程.pdf">《看日记学git》最好的Git中文教程.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/ed28df982b33430796a919485259d748" rel="nofollow" target="_blank" title="git 使用简介.pdf">git 使用简介.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/6581f247c57540a8857387b02239d24b" rel="nofollow" target="_blank" title="git 使用简介.pdf">git 使用简介.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/949da0289a164076804599b17ed771cb" rel="nofollow" target="_blank" title="Pro Git 中文版本.pdf">Pro Git 中文版本.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/982033189f134ddd892546a08b927d40" rel="nofollow" target="_blank" title="Git Community Book中文版.pdf">Git Community Book中文版.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/292e03eae7084a18aa1e5140af7757a8" rel="nofollow" target="_blank" title="Git Community Book 中文版帮助手册.pdf">Git Community Book 中文版帮助手册.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/b303d0f7c735440dbd80787e7298bb59" rel="nofollow" target="_blank" title="GIT 使用经验.ppt">GIT 使用经验.ppt</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/d53f762f1abb4a31b3c1e13393c8ae09" rel="nofollow" target="_blank" title="Pro Git 简体中文版.pdf">Pro Git 简体中文版.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/970fa09a54304e8fbcea259604b2c1a2" rel="nofollow" target="_blank" title="GIT使用体会.pdf">GIT使用体会.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/48c8d6995ef940a28f83b16541aa91d0" rel="nofollow" target="_blank" title="Git使用培训1.pdf">Git使用培训1.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/9523c417f6b445ba9cef5944e866d96a" rel="nofollow" target="_blank" title="Git使用培训2.pdf">Git使用培训2.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/cd022cf0ebb14ea9aae8a24cb0f2f84c" rel="nofollow" target="_blank" title="Git使用培训3.pdf">Git使用培训3.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/664e8cdb26bd412c9268e948b8e12944" rel="nofollow" target="_blank" title="Git CMD 中文指南.pdf">Git CMD 中文指南.pdf</a></li>
+						
+					</ul>
+				</td>
+				<td class="Relatedb" valign="top" width="33%">
+					<div style="border-bottom: 1px solid rgb(204, 204, 204); margin-top: 5px;"><strong>相关经验</strong> 　—　<a href="http://www.open-open.com/lib" rel="nofollow" target="_blank">更多</a></div>
+					<ul>
+						
+							<li>
+								<a title="我们是怎么做Code" review的="" href="http://www.open-open.com/lib/view/open1468240346535.html" target="_blank"><span class="title">我们是怎么做Code Review的</span></a>
+
+							</li>
+						
+							<li>
+								<a title="结合个人经历总结的前端入门方法" href="http://www.open-open.com/lib/view/open1449542023941.html" target="_blank"><span class="title"> 结合个人经历总结的前端入门方法 </span></a>
+
+							</li>
+						
+							<li>
+								<a title="使用git和github管理自己的项目---真实开发环境的策略" href="http://www.open-open.com/lib/view/open1442147493986.html" target="_blank"><span class="title">使用git和github管理自己的项目---真实开发环境的策略</span></a>
+
+							</li>
+						
+							<li>
+								<a title="JavaScript开发者的工具箱" 非常实用="" href="http://www.open-open.com/lib/view/open1432088003505.html" target="_blank"><span class="title">JavaScript开发者的工具箱 非常实用</span></a>
+
+							</li>
+						
+							<li>
+								<a title="git简单使用入门总结" href="http://www.open-open.com/lib/view/open1431932685208.html" target="_blank"><span class="title">git简单使用入门总结 </span></a>
+
+							</li>
+						
+							<li>
+								<a title="码农周刊分类整理" href="http://www.open-open.com/lib/view/open1416282051852.html" target="_blank"><span class="title">码农周刊分类整理</span></a>
+
+							</li>
+						
+							<li>
+								<a title="使用Eclipse-Maven-git做Java开发(14)--开发中对git的使用" href="http://www.open-open.com/lib/view/open1453019844355.html" target="_blank"><span class="title">使用Eclipse-Maven-git做Java开发(14)--开发中对git的使用</span></a>
+
+							</li>
+						
+							<li>
+								<a title="使用Eclipse-Maven-git做Java开发(15)--git分支和标签的使用" href="http://www.open-open.com/lib/view/open1453626642526.html" target="_blank"><span class="title">使用Eclipse-Maven-git做Java开发(15)--git分支和标签的使用</span></a>
+
+							</li>
+						
+							<li>
+								<a title="以开发者的视角整理编排的前端开发所使用语言的主流学习资源" href="http://www.open-open.com/lib/view/open1456802317250.html" target="_blank"><span class="title">以开发者的视角整理编排的前端开发所使用语言的主流学习资源</span></a>
+
+							</li>
+						
+							<li>
+								<a title="Git代码管理学习教程" href="http://www.open-open.com/lib/view/open1426060814248.html" target="_blank"><span class="title">Git代码管理学习教程</span></a>
+
+							</li>
+						
+							<li>
+								<a title="一份旨在帮助" android="" 初学者快速入门以及找到适合自己学习的资料="" href="http://www.open-open.com/lib/view/open1456127481464.html" target="_blank"><span class="title">一份旨在帮助 Android 初学者快速入门以及找到适合自己学习的资料</span></a>
+
+							</li>
+						
+							<li>
+								<a title="很少有人会告诉你的Android开发基本常识" href="http://www.open-open.com/lib/view/open1445672342413.html" target="_blank"><span class="title">很少有人会告诉你的Android开发基本常识</span></a>
+
+							</li>
+						
+							<li>
+								<a title="一年成为Emacs高手(像神一样使用编辑器)" href="http://www.open-open.com/lib/view/open1425259604181.html" target="_blank"><span class="title"> 一年成为Emacs高手(像神一样使用编辑器)</span></a>
+
+							</li>
+						
+							<li>
+								<a title="Git" 中文教程="" href="http://www.open-open.com/lib/view/open1328928294702.html" target="_blank"><span class="title">Git 中文教程 </span></a>
+
+							</li>
+						
+					</ul>
+				</td>
+				<td class="Relatedb" valign="top" width="33%">
+					<div style="border-bottom: 1px solid rgb(204, 204, 204); margin-top: 5px;"><strong>相关讨论</strong> 　—　<a href="http://www.open-open.com/solution" rel="nofollow" target="_blank">更多</a></div>
+					<ul>
+						
+							<li>
+								<a title="成为高级程序员的" 10="" 个步骤="" href="http://www.open-open.com/solution/view/1421200011781" rel="nofollow" target="_blank"><span class="title">成为高级程序员的 10 个步骤</span></a>
+							</li>
+						
+							<li>
+								<a title="有关git的几个问题，求助高手" href="http://www.open-open.com/solution/view/1342172064948" rel="nofollow" target="_blank"><span class="title">有关git的几个问题，求助高手</span></a>
+							</li>
+						
+							<li>
+								<a title="程序员到高级程序员，只需要10个步骤！" href="http://www.open-open.com/solution/view/1434611323661" rel="nofollow" target="_blank"><span class="title"> 程序员到高级程序员，只需要10个步骤！ </span></a>
+							</li>
+						
+							<li>
+								<a title="基于linux和虚拟化的禅道管理操作系统1.0发布！" href="http://www.open-open.com/solution/view/1374030416732" rel="nofollow" target="_blank"><span class="title">基于linux和虚拟化的禅道管理操作系统1.0发布！</span></a>
+							</li>
+						
+							<li>
+								<a title="10个步骤让你成为高效的Web开发者" href="http://www.open-open.com/solution/view/1320713162249" rel="nofollow" target="_blank"><span class="title">10个步骤让你成为高效的Web开发者</span></a>
+							</li>
+						
+							<li>
+								<a title="招聘[上海" 外滩]云视链="" video++="" 不论风吹雨打，依旧向前，人生路何尝不是这样="" href="http://www.open-open.com/solution/view/1439373571614" rel="nofollow" target="_blank"><span class="title">招聘[上海 外滩]云视链 Video++ 不论风吹雨打，依旧向前，人生路何尝不是这样</span></a>
+							</li>
+						
+							<li>
+								<a title="程序员技术练级攻略" href="http://www.open-open.com/solution/view/1319276210452" rel="nofollow" target="_blank"><span class="title">程序员技术练级攻略</span></a>
+							</li>
+						
+					</ul>
+				</td>
+			</tr></tbody></table>
+		</div>
+
+	</div>
+
+</div>
+
+
+
+
+
+<style>
+/* Code tidied up by ScrapBook */
+footer { background-color: rgb(255, 255, 255); border-top: 1px solid rgba(230, 230, 230, 0.75); margin-top: 20px; padding: 20px 0px; }
+</style>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-4" style="line-height: 60px;">
+				<span>©2006-2016 深度开源 </span>
+			</div>
+			<div class="col-md-4 col-xs-4 text-center"><span>
+				<a rel="nofollow" href="http://www.open-open.com/" class="brightbox-logo"><img src="logo-icon.png"></a>
+			</span></div>
+			<div class="col-md-4 col-xs-4" style="line-height: 60px;">
+				 <a target="_blank" href="http://www.miibeian.gov.cn/">浙ICP备09019653号-31</a>
+				<script type="text/javascript">/* Code removed by ScrapBook */</script><span id="cnzz_stat_icon_1257892335"><a href="http://www.cnzz.com/stat/website.php?web_id=1257892335" target="_blank" title="站长统计">站长统计</a></span><script src="about:blank" type="text/javascript"></script><script src="about:blank" charset="utf-8" type="text/javascript"></script>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<!-- the jScrollPane script -->
+<script type="text/javascript" src="about:blank"></script>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<script src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+
+<script type="text/javascript" src="about:blank"></script>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank"></script>
+<script>/* Code removed by ScrapBook */</script>
+<script>/* Code removed by ScrapBook */</script>
+
+<script>/* Code removed by ScrapBook */</script>
+
+
+
+<div aria-labelledby="ui-id-1" aria-describedby="favorite-box" role="dialog" tabindex="-1" style="display: none;" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix ui-draggable-handle"><span class="ui-dialog-title" id="ui-id-1">收藏提示</span><button title="Close" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" type="button"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">Close</span></button></div><div class="ui-dialog-content ui-widget-content" style="display: block;" id="favorite-box">
+						<table>
+							<tbody>
+							<tr>
+								<td width="70" align="right">文件夹</td>
+								<td><select id="fav_folderlist" name="folder">
+									<option selected="" value="0">请选择...</option>
+									<option id="newfolder-sp" disabled="" value="">-------------</option>
+									<option value="-1">新增文件夹...</option>
+								</select></td>
+							</tr>
+							<tr style="display: none;" id="newfolder-input">
+								<td align="right">新增文件夹</td>
+								<td><input id="fav_newfolder" maxlength="50" name="newfolder" type="text"></td>
+							</tr>
+							<tr>
+								<td align="right">标签</td>
+								<td><input id="fav_tags" maxlength="135" size="20" name="tags" type="text"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td colspan="2">(多个标签用逗号分隔)</td>
+							</tr>
+							</tbody>
+						</table>
+					</div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span class="ui-button-text">取消</span></button><button role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span class="ui-button-text">确认</span></button></div></div></div><div title="回到顶部" style="position: fixed; bottom: 165px; right: 95px; cursor: pointer;" id="topcontrol"><img src="gotop.gif" style="width: 35px; height: 35px;"></div></body>
+</html>

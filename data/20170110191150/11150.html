@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>编译libiconv-1.14错误解决 - Linux系统教程</title>
+<meta name="keywords" content="编译libiconv-1.14错误解决" />
+<meta name="description" content="ubuntukylin 13.04上编译libiconv-1.14 lenky@robert-T430S:~/下载/libiconv-1.14$ ./configure ... lenky@robert-T430S:~/下载/libiconv-1.14$ make -j4 ... gcc -DHAVE_CONFIG_H -DEXEEXT=\\ -I. -I.. -I../lib -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPEN" />
+<link href="http://www.linuxdiyf.com/linux/templets/default/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="http://www.linuxdiyf.com/linux/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("http://www.linuxdiyf.com/linux/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("http://www.linuxdiyf.com/linux/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过本文了喔 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "http://www.linuxdiyf.com/linux/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("http://www.linuxdiyf.com/linux/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
+</head>
+<body class="articleview">
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">学Linux，上红联！</span>
+     <div class="toplinks"><a href="http://www.linuxdiyf.com/" target="_blank">红联Linux门户</a>|<a href="http://www.linuxdiyf.com/articlelist.php?id=2" target="_blank">Linux通用技术</a>|<a href="http://www.linuxdiyf.com/articlelist.php?id=47" target="_blank">Linux发行版技术</a>|<a href="http://www.linuxdiyf.com/articlelist.php?id=15" target="_blank">Linux企业应用</a>|<a href="http://www.linuxdiyf.com/articlelist.php?id=12" target="_blank">Linux实验室</a>|<a href="http://www.linuxdiyf.com/bbs/" target="_blank">红联Linux论坛</a></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <a href="http://www.linuxdiyf.com/linux/"><img src="http://www.linuxdiyf.com/linux/templets/default/images/logo.gif" height="54" width="216" alt="Linux系统教程"/></a>
+      </div>
+      <div class="banner"> <script type="text/javascript">document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E%3Cscript charset="utf-8" src="http://znsv.baidu.com/customer_search/api/js?sid=575025306707584696') + '&plate_url=' + (encodeURIComponent(window.location.href)) + '&t=' + (Math.ceil(new Date()/3600000)) + unescape('"%3E%3C/script%3E'));</script> </div>
+      <div class="banner2"> <a href="http://www.linuxdiyf.com/bbs/forum-57-1.html" target="_blank"><img src="http://www.linuxdiyf.com/linux/images/linuxtc.gif"  border="0" /></a> </div>
+       
+	</div><!-- //top -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    <div id="navMenu">
+    	<ul>
+      	<li><a href="http://www.linuxdiyf.com/linux/"><span>Linux系统教程</span></a></li>
+      	
+      	<li><a href='http://www.linuxdiyf.com/linux/rm/' ><span>Linux入门</span></a></li>
+      	
+      	<li><a href='http://www.linuxdiyf.com/linux/gl/' ><span>Linux管理</span></a></li>
+      	<li class='hover'><a href='http://www.linuxdiyf.com/linux/jq/' ><span>Linux技巧</span></a></li>
+      	<li><a href='http://www.linuxdiyf.com/linux/shell/' ><span>Linux命令</span></a></li>
+      	
+      	<li><a href='http://www.linuxdiyf.com/linux/ubuntu/' ><span>Ubuntu系统</span></a></li>
+      	
+      	<li><a href='http://www.linuxdiyf.com/linux/ffq/' ><span>Linux服务器</span></a></li>
+      	
+      	<li><a href='http://www.linuxdiyf.com/linux/sjk/' ><span>Linux数据库</span></a></li>
+      	
+      	<li><a href='http://www.linuxdiyf.com/linux/kf/' ><span>Linux开发</span></a></li>
+      	
+    	</ul>
+    </div>
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+<script type="text/javascript">BAIDU_CLB_fillSlot("1041302");</script>
+<div class="pleft">
+ <div class="place"> <strong>您的位置:</strong> <a href='http://www.linuxdiyf.com/linux/'>Linux系统教程</a> > <a href='http://www.linuxdiyf.com/linux/jq/'>Linux技巧</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h1>编译libiconv-1.14错误解决</h1>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2015-04-15<small>来源:</small>ubuntukylin <small>作者:</small>lenky0401</div><!-- /info -->
+<script type="text/javascript">BAIDU_CLB_fillSlot("1041839");</script>
+			<div class="content">
+			<table width='100%'>
+    <tr>
+     <td>
+      <p>
+	ubuntukylin 13.04上编译libiconv-1.14</p>
+<p>
+	lenky@robert-T430S:~/下载/libiconv-1.14$ ./configure<br />
+	...<br />
+	lenky@robert-T430S:~/下载/libiconv-1.14$ make -j4<br />
+	...<br />
+	gcc -DHAVE_CONFIG_H -DEXEEXT=\&quot;\&quot; -I. -I.. -I../lib&nbsp; -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1&nbsp;&nbsp; -g -O2 -c -o width.o `test -f &#39;uniwidth/width.c&#39; || echo &#39;./&#39;`uniwidth/width.c<br />
+	In file included from progname.c:26:0:<br />
+	./stdio.h:1010:1: 错误： &lsquo;gets&rsquo;未声明(不在函数内)<br />
+	gcc -DHAVE_CONFIG_H -DEXEEXT=\&quot;\&quot; -I. -I.. -I../lib&nbsp; -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1&nbsp;&nbsp; -g -O2 -c xmalloc.c<br />
+	make[2]: *** [progname.o] 错误 1<br />
+	make[2]: *** 正在等待未完成的任务....<br />
+	make[2]:正在离开目录 `/home/lenky/下载/libiconv-1.14/srclib&#39;<br />
+	make[1]: *** [all] 错误 2<br />
+	make[1]:正在离开目录 `/home/lenky/下载/libiconv-1.14/srclib&#39;<br />
+	make: *** [all] 错误 2</p>
+<p>
+	<br />
+	解决方法：<br />
+	lenky@robert-T430S:~/下载/libiconv-1.14$ vi srclib/stdio.h</p>
+<p>
+	到1010行，注释掉该行即可：<br />
+	_GL_CXXALIASWARN (gets);<br />
+	/* It is very rare that the developer ever has full control of stdin,<br />
+	so any use of gets warrants an unconditional warning.&nbsp; Assume it is<br />
+	always declared, since it is required by C89.&nbsp; */<br />
+	//_GL_WARN_ON_USE (gets, &quot;gets is a security hole - use fgets instead&quot;);<br />
+	#endif</p>
+<p>
+	重新make，OK。</p>
+
+      </td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+<script type="text/javascript">BAIDU_CLB_fillSlot("1041840");</script>
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',11150)">
+    <div class="digg_act">顶上去</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',11150)">
+    <div class="digg_act">踩下去</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(11150);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href='http://www.linuxdiyf.com/linux/11148.html'>解决：How to fix E: Internal Error, No file name for libc6</a> </li>
+     <li>下一篇：<a href='http://www.linuxdiyf.com/linux/11168.html'>Fedora进不去X Window</a> </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+     <div class="bdsharebuttonbox"><a class="bds_more" href="#" data-cmd="more"></a><a class="bds_qzone" title="分享到QQ空间" href="#" data-cmd="qzone"></a><a class="bds_tsina" title="分享到新浪微博" href="#" data-cmd="tsina"></a><a class="bds_tqq" title="分享到腾讯微博" href="#" data-cmd="tqq"></a><a class="bds_sqq" title="分享到QQ好友" href="#" data-cmd="sqq"></a><a class="bds_bdhome" title="分享到百度新首页" href="#" data-cmd="bdhome"></a><a class="bds_renren" title="分享到人人网" href="#" data-cmd="renren"></a><a class="bds_weixin" title="分享到微信" href="#" data-cmd="weixin"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+<div id="baidutuijian">
+<div id="hm_t_52741"></div>
+</div>
+ <!-- //评论区 -->
+ <div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrhArLMn',
+    conf = 'prod_61d20a832d09629dfc055f3f7a2fe538';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+  })()
+</script>
+</div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright">
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐教程</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      <li><a href="http://www.linuxdiyf.com/linux/7885.html" target="_blank">利用system函数窃取Linux系统超</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/2693.html" target="_blank">Linux下更改ssh端口和禁止root远</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/2648.html" target="_blank">删除Linux的乱码文件</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/1653.html" target="_blank">轻松解决Linux系统下安装软件包</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/1171.html" target="_blank">Linux修改系统时间的简洁方法</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/912.html" target="_blank">Ubuntu技巧之在命令行进行数学计</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/910.html" target="_blank">10个你也许不知道的Ubuntu技巧</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/840.html" target="_blank">九个小技巧能加强Linux桌面安全</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/816.html" target="_blank">解决Linux系统磁盘空间满的＂软</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/749.html" target="_blank">推荐：Linux学习推荐阅读目录</a>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>热点推荐</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="http://www.linuxdiyf.com/linux/2270.html" target="_blank">CentOS英文环境下使用中文输入法</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/3463.html" target="_blank">自动批量解决本地安装rpm包的dep</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/4385.html" target="_blank">Linux去除fstab文件只读属性</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/9105.html" target="_blank">Fedora 14无法正常使用xampp之解</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/22.html" target="_blank">Linux修改分辨率小技巧</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/1590.html" target="_blank">Linux主机与路由器建立隧道的方</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/1725.html" target="_blank">Python版本低引发Python脚本运行</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/3560.html" target="_blank">KDE下打字时禁用触控板</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/3627.html" target="_blank">CentOS 5不支持SATA硬盘安装的解</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/4034.html" target="_blank">Linux系统入门学习：在Linux如何</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <!-- /pright -->
+</div>
+<div class="footer w960 center mt1 clear">
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	我的Linux网站，我的Linux之家！学Linux，从这里开始！ | <a href="http://www.linuxdiyf.com/about/" target="_blank"><font color="#808080">关于我们</font></a> | <a href="http://www.linuxdiyf.com/about/contact.htm" target="_blank"><font color="#808080">联系我们</font></a>  <br /><div class="copyright"><p class="powered">Linux系统教程 版权所有 Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统" target="_blank"><strong>DedeCMSV57_GBK</strong></a> <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fdf25116b76fb7bf2cb3cd1bf68f5518a' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

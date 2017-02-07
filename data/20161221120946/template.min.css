@@ -1,0 +1,9 @@
+/* Code tidied up by ScrapBook */
+html { color: rgb(0, 0, 0); background-color: transparent; }
+blockquote, body, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, td, textarea, th, ul { margin: 0px; padding: 0px; }
+fieldset, img { border: 0px none; }
+body { margin: 0px; padding: 0px; }
+.bd-logo, .bd-logo2, .bd-logo3, .bd-logo4, .bd-logo5 { text-decoration: none; cursor: pointer; display: block; overflow: hidden; position: absolute; bottom: 0px; right: 0px; z-index: 2147483647; }
+.bd-logo5 { top: 0px; right: 0px; width: 24px; height: 20px; background: transparent url("bd-logo5.png") no-repeat scroll left top; cursor: default; }
+.bd-logo5:hover { width: 90px; height: 20px; background: transparent url("bd-logo5-hover.png") no-repeat scroll left top; }
+.bd-adIcon { position: absolute; left: 0px; bottom: 0px; width: 42px; height: 20px; overflow: hidden; z-index: 2147483647; text-decoration: none; background: transparent url("advertisement.png") no-repeat scroll left top; }

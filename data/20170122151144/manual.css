@@ -1,0 +1,63 @@
+/* Code tidied up by ScrapBook */
+html { font-size: 14px; }
+body { background-color: rgb(255, 255, 255); color: rgb(0, 51, 102); padding: 0px 1em 0px 0px; margin: 0px; font-family: Arial,Helvetica,sans-serif; font-weight: normal; }
+pre, code { font-family: "Courier New",Courier,monospace; }
+strong { font-weight: bold; }
+q, em, var { font-style: italic; }
+table, code { font-size: 1em; }
+a:link { color: rgb(0, 115, 199); background-color: inherit; }
+a:visited { color: rgb(90, 136, 181); background-color: inherit; }
+a:link:hover, a:link:active, a:visited:hover, a:visited:active { color: rgb(0, 115, 199); background-color: rgb(240, 240, 240); }
+tr.odd a:hover, tr.odd a:active, tr.header a:hover, tr.header a:active, div.note a:hover, div.note a:active, div.example a:hover, div.example a:active, div.warning a:hover, div.warning a:active, div#quickview a:hover, div#quickview a:active { background-color: rgb(255, 255, 255); color: rgb(0, 115, 199); }
+code.module, code.module a:link { color: rgb(139, 69, 19); background-color: inherit; }
+code.module a:visited { color: rgb(188, 143, 143); background-color: inherit; }
+code.module a:hover, code.module a:active { color: rgb(139, 69, 19); background-color: rgb(240, 240, 240); }
+tr.odd code.module a:hover, tr.odd code.module a:active, tr.header code.module a:hover, tr.header code.module a:active, div.note code.module a:hover, div.note code.module a:active, div.example code.module a:hover, div.example code.module a:active, div.warning code.module a:hover, div.warning code.module a:active, div#quickview code.module a:hover, div#quickview code.module a:active { background-color: rgb(255, 255, 255); color: rgb(139, 69, 19); }
+code.directive, code.directive a:link { color: rgb(40, 127, 0); background-color: inherit; }
+code.directive a:visited { color: rgb(53, 165, 0); background-color: inherit; }
+code.directive a:hover, code.directive a:active { color: rgb(40, 127, 0); background-color: rgb(240, 240, 240); }
+tr.odd code.directive a:hover, tr.odd code.directive a:active, tr.header code.directive a:hover, tr.header code.directive a:active, div.note code.directive a:hover, div.note code.directive a:active, div.example code.directive a:hover, div.example code.directive a:active, div.warning code.directive a:hover, div.warning code.directive a:active, div#quickview code.directive a:hover, div#quickview code.directive a:active { background-color: rgb(255, 255, 255); color: rgb(40, 127, 0); }
+.glossarylink { cursor: help; border-bottom: 1px dashed rgb(0, 115, 199); text-decoration: none; }
+h1 { padding: 0.2em; margin: 0px; border: 1px solid rgb(64, 88, 113); background-color: inherit; color: rgb(0, 51, 102); text-decoration: none; font-size: 22px; font-weight: bold; }
+h2 { padding: 0.2em 0px 0.2em 0.7em; margin: 0px 0px 0.5em; text-decoration: none; font-size: 18px; font-weight: bold; }
+.section h2 { background-color: rgb(64, 88, 113); color: rgb(255, 255, 255); }
+.directive-section h2 { background-color: rgb(85, 118, 151); color: rgb(255, 255, 255); }
+h2 a, h2 a:hover, h2 a:active { color: inherit; background-color: inherit; text-decoration: none; }
+h3 { background-color: inherit; color: rgb(0, 51, 102); text-decoration: none; font-weight: bold; font-size: 16px; margin: 1.3em 0px 0.4em; padding: 0px; }
+h3 + *, h4 + * { margin-top: 0px; }
+ul, .section table, .directive-section table { margin-bottom: 1em; }
+div.example h3, div.note h3, div.warning h3 { margin: 0px 0px 0.5em; text-align: left; font-size: 14px; }
+div.up { width: 30px; height: 20px; padding: 0px; margin: -20px 0px 1px; text-align: center; vertical-align: top; }
+div.up img { vertical-align: top; width: 11px; height: 11px; border-style: none; }
+div.top { width: 30px; padding: 0px 0px 0px 30px; margin: 0px; }
+div.top img { margin-top: 0.5em; vertical-align: bottom; width: 11px; height: 11px; border-style: none; }
+table { border: 1px solid rgb(170, 170, 170); border-collapse: collapse; padding: 2px; margin-top: 0.5em; margin-bottom: 0px; }
+td, th { empty-cells: show; padding: 0.1em 0.2em; vertical-align: top; text-align: left; line-height: 1.3em; }
+th { font-weight: bold; }
+table.module th, table.directive th { white-space: nowrap; }
+ul { list-style-type: disc; }
+ul ul { list-style-type: square; }
+li, dt, dd { line-height: 1.3em; }
+dt { margin-top: 0.5em; font-weight: bold; }
+ol li { margin-top: 0.5em; }
+div#page-header { margin-left: 30px; }
+div#page-header img { padding: 0px; display: block; margin: -70px 0px 1px 2em; width: 248px; height: 70px; }
+div#page-header p.apache { background-color: rgb(64, 88, 113); color: rgb(255, 255, 255); padding: 0px 0px 0px 248px; margin: 0px; text-align: center; vertical-align: middle; font-size: 16px; font-weight: bold; line-height: 29px; }
+div#page-header p.menu { text-align: right; font-size: 13px; margin: 30px 0px 0.5em; padding: 0px; }
+div#path { margin: 0.2em 0px 1.2em 30px; padding: 0px; font-size: 13px; }
+div#preamble { padding-bottom: 1em; margin-left: 30px; }
+div.section, div.directive-section { margin: -1.2em 0px 0px 60px; padding: 0px; }
+.section p, .directive-section p { margin: 0px 0px 1em; padding: 0px; }
+div#page-content { padding-top: 0px; padding-right: 30px; }
+p { line-height: 1.3em; }
+div#footer { margin-left: 30px; font-size: 13px; border-top: 1px solid rgb(64, 88, 113); padding-top: 0.2em; }
+div#footer p.apache { float: left; text-align: left; padding: 0px 0px 1em; margin-top: 0px; }
+div#footer p.menu { float: right; text-align: right; margin-top: 0px; padding: 0px 0px 1em; }
+div.example { background-color: rgb(229, 236, 243); color: rgb(0, 0, 0); padding: 0.5em; margin: 1em 2em 1em 1em; }
+div.example p, div.example pre, div.example table { padding: 0px; margin: 0px; }
+div.example p { line-height: 1em; }
+div.example pre, div.example p > code { font-size: 13px; }
+div.note, div.warning { background-color: rgb(238, 238, 238); color: rgb(0, 51, 102); padding: 0.5em; margin: 1em 2em 1em 1em; }
+div.note p, div.warning p { margin: 0.5em 0px 0px; padding: 0px; }
+div.note pre, div.warning pre { font-size: 13px; }
+p.indent { margin-left: 2em; margin-top: 1em; }

@@ -1,0 +1,4 @@
+/* Code tidied up by ScrapBook */
+.userbar { position: absolute; z-index: 1003; top: 4px; right: 0px; padding-right: 10px; font: 12px arial; text-align: right; color: rgb(153, 153, 153); }
+.userbar a:link, .userbar a:visited { text-decoration: none; color: rgb(85, 85, 85); }
+.userbar a:hover { text-decoration: underline; }

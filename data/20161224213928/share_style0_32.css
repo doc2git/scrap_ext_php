@@ -1,0 +1,11 @@
+/* Code tidied up by ScrapBook */
+.bdshare-button-style0-32 .bds_qzone { background-position: 0px -52px; }
+.bdshare-button-style0-32 .bds_tsina { background-position: 0px -104px; }
+.bdshare-button-style0-32 .bds_renren { background-position: 0px -208px; }
+.bdshare-button-style0-32 .bds_tqq { background-position: 0px -260px; }
+.bdshare-button-style0-32 .bds_weixin { background-position: 0px -1612px; }
+.bdshare-button-style0-32 {  }
+.bdshare-button-style0-32::after { content: "."; visibility: hidden; display: block; height: 0px; clear: both; }
+.bdshare-button-style0-32 a { float: left; width: 32px; line-height: 32px; height: 32px; background-image: url("icons_0_32.png"); background-repeat: no-repeat; cursor: pointer; margin: 6px 6px 6px 0px; text-indent: -100em; overflow: hidden; color: rgb(58, 140, 235); }
+.bdshare-button-style0-32 a:hover { color: rgb(51, 51, 51); opacity: 0.8; }
+.bdshare-button-style0-32 .bds_more { color: rgb(51, 51, 51); }

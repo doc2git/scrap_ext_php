@@ -1,0 +1,38 @@
+/* Code tidied up by ScrapBook */
+* { margin: 0px; padding: 0px; list-style-type: none; }
+img { border: medium none; }
+a { text-decoration: none; color: rgb(102, 102, 102); }
+a:hover { color: rgb(34, 163, 56); }
+em { font-style: normal; }
+input, textarea { border: 0px none; outline: medium none; }
+body { font-size: 12px; color: rgb(102, 102, 102); }
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin: 0px; padding: 0px; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+ul, ol { list-style: outside none none; }
+.left { float: left; display: inline; }
+.right { float: right; }
+.header { width: 100%; height: 69px; border-bottom: 1px solid rgb(33, 162, 54); background: rgb(250, 250, 250) none repeat scroll 0% 0%; z-index: 9999; position: fixed; }
+.header {  }
+.head { width: 1000px; margin: 0px auto; height: 69px; }
+.head .logo1 { margin-left: 5px; background: transparent url("new-bgie6.png") no-repeat scroll 1px 1px; margin-top: 8px; height: 58px; width: 165px; }
+.head .nav1 { margin-left: 45px; }
+.head .nav1 li { float: left; width: 75px; height: 55px; line-height: 55px; margin-top: 10px; text-align: center; font-size: 14px; color: rgb(51, 51, 51); margin-right: 25px; }
+.head .nav1 li a { display: block; color: rgb(51, 51, 51); }
+.head .nav1 li.sel { border-bottom: 4px solid rgb(34, 163, 56); font-weight: bold; }
+.head .nav1 li.sel a { color: rgb(34, 163, 56); }
+.search { height: 36px; margin-top: 16px; }
+.search .searchTxt { width: 212px; border: 1px solid rgb(86, 212, 101); color: rgb(107, 107, 107); height: 34px; line-height: 34px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; padding-left: 10px; float: left; }
+.search .searchBtn { background: transparent url("search_03.png") no-repeat scroll 0% 0%; height: 36px; width: 53px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; cursor: pointer; float: left; }
+.containt { position: absolute; top: 70px; width: 100%; }
+.title { font-family: "微软雅黑"; font-size: 20px; color: rgb(86, 212, 101); margin-top: 10px; margin-bottom: 5px; font-weight: bold; }
+.footer { border-top: 2px solid rgb(86, 212, 101); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.footer .ft1 { width: 1000px; margin: 0px auto; height: 1%; overflow: hidden; padding-bottom: 30px; padding-top: 0px; }
+.footer .txt { width: 312px; line-height: 22px; margin-top: 20px; }
+.footer .lianxi { margin-top: 20px; }
+.footer .lianxi h2 { font-size: 14px; margin-bottom: 10px; font-weight: bold; }
+.footer .lianxi p { margin-bottom: 10px; }
+.footer .lianxi .qq { line-height: 24px; background: transparent url("udxbg_32.png") no-repeat scroll 0% 0%; padding-left: 28px; }
+.footer .lianxi .left { margin-left: 20px; }
+.footer .lianxi .one { width: 310px; }
+.footer .lianxi .three { width: 70px; }
+html { background: transparent url("about://black/") repeat scroll 0% 0%; }

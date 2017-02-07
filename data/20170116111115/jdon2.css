@@ -1,0 +1,45 @@
+/* Code tidied up by ScrapBook */
+body, div, form, input, select, table, td { color: rgb(68, 68, 68); font: 400 15px/1.8em "Microsoft YaHei",Rajdhani,Play,Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif; text-rendering: optimizelegibility; }
+body { margin-top: 0px; background: rgb(255, 255, 255) url("body_bg_verlauf.png") repeat-x scroll 0% 0%; }
+pre { white-space: pre-wrap; word-wrap: break-word; }
+a img { border: 0px none; }
+form, textarea { font-size: 12px; color: rgb(0, 0, 0); }
+input { border-width: 1px; border-style: solid; border-color: rgb(102, 130, 53); background-color: rgb(250, 251, 245); font-size: 12px; }
+ul { color: rgb(0, 0, 0); list-style-type: square; }
+li { color: rgb(0, 0, 0); }
+ol { color: rgb(0, 0, 0); list-style-type: decimal; line-height: 150%; font-style: normal; font-weight: 400; }
+.jdon-space { line-height: 5px; }
+.smallgray { font-size: 12px; color: rgb(0, 0, 0); font-family: Tahoma,Verdana; }
+h4 { font-size: 14px; }
+h3 { font-size: 15px; }
+.white { color: rgb(255, 255, 255); }
+A.a03 { text-decoration: none; color: rgb(255, 255, 255); font-size: 12px; font-weight: 400; }
+.article { overflow: hidden; word-wrap: break-word; word-break: break-all; float: left; width: 650px; background-color: rgb(250, 250, 250); margin: 5px; padding: 15px; color: rgb(68, 68, 68); font: 400 15px/1.8em "Microsoft YaHei",Rajdhani,Play,Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif; text-rendering: optimizelegibility; }
+form { margin: 0px; }
+.tag-cloud { width: 300px; }
+.tag-cloud li { display: inline; float: left; margin: 1px; width: auto; }
+.tag-cloud a { color: rgb(255, 255, 255); text-decoration: none; white-space: nowrap; }
+.tag-cloud .not-popular { width: 90px; font-size: 0.8em; background: rgb(113, 204, 14) none repeat scroll 0% 0%; padding: 4px; height: 20px; text-align: center; }
+.tag-cloud .not-very-popular { width: 90px; font-size: 1em; float: left; background: rgb(0, 192, 255) none repeat scroll 0% 0%; padding: 4px; height: 20px; text-align: center; }
+.tag-cloud .somewhat-popular { width: 90px; font-size: 1.2em; float: left; background: rgb(246, 122, 186) none repeat scroll 0% 0%; height: 20px; padding: 4px; text-align: center; }
+.tag-cloud .popular { width: 90px; font-size: 1.3em; float: left; background: rgb(255, 162, 0) none repeat scroll 0% 0%; height: 20px; padding: 4px; text-align: center; }
+.gen-2 { clear: both; }
+.approved { text-align: left; width: 630px; display: inline; float: left; }
+.post_warp { width: 1036px; margin: 0px auto; }
+.post_sidebar { left: 1px; padding: 10px; top: 1px; width: 700px; float: left; }
+.right_sider { background-color: rgb(255, 255, 255); clear: right; float: right; width: 300px; text-align: left; padding: 5px; }
+.adsensf { display: block; float: right; margin: 15px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#social-link { list-style: outside none none; margin: 0px; padding: 0px; }
+ul.link li a { background: transparent url("guanzhu.png") no-repeat scroll 0% 0%; display: block; font-size: 14px; letter-spacing: -0.04em; padding: 1px 15px 2px 30px; text-decoration: none; line-height: 100%; }
+ul.link li#rss a { background-position: 0px -30px; }
+ul.link li#o a { background-position: 0px -60px; }
+.userbox { margin: 0px auto; height: 45px; overflow: hidden; border-bottom: 1px solid rgb(213, 213, 213); background: rgb(245, 245, 245) none repeat scroll 0% 0%; width: 100%; }
+.userbox a { color: rgb(136, 136, 136); padding: 3px 2px; }
+.userbox form { color: rgb(136, 136, 136); padding: 3px 2px; }
+.frame-yy { width: auto; float: left; padding: 1px; background-color: rgb(255, 255, 255); }
+.linkblock { padding: 10px 24px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 1px solid rgb(221, 221, 221); border-radius: 3px; box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, 0.4); }
+.userbox A { text-decoration: none; color: rgb(119, 119, 119); font-weight: 400; }
+A { text-decoration: none; color: rgb(0, 51, 102); font-weight: 700; }
+@media (max-width: 960px) {
+  .adsensf, .right_sider { display: none; }
+}

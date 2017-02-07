@@ -1,0 +1,20 @@
+/* Code tidied up by ScrapBook */
+@keyframes anim1 {
+0% { opacity: 0; }
+29% { opacity: 0; }
+30% { opacity: 1; }
+100% { opacity: 1; }
+}
+@keyframes anim2 {
+0% { opacity: 0; }
+69% { opacity: 0; }
+70% { opacity: 1; }
+100% { opacity: 1; }
+}
+.audio-wp { display: none; margin-left: 4px; text-indent: 0px; color: rgb(81, 154, 242); cursor: pointer; font-size: 14px; font-weight: 400; line-height: 1; vertical-align: middle; }
+.audio-wp .audio-inner { display: inline-block; height: 20px; }
+.audio-wp .audio-icon { display: inline-block; width: 15px; height: 20px; background: transparent url("audio_5b24a3c.png") repeat scroll 0% 0%; }
+.audio-wp .audio-icon-2, .audio-wp .audio-icon-3 { position: relative; display: inline-block; width: 6px; height: 20px; }
+.audio-wp .audio-icon-2 { margin-left: 3px; background-image: url("a1_c12da1b.png"); }
+.audio-wp .audio-icon-3 { margin-left: -2px; background-image: url("a2_0c36615.png"); }
+.audio-wp .desc { position: relative; top: -5px; margin-left: 2px; }

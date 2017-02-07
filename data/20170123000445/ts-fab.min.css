@@ -1,0 +1,25 @@
+/* Code tidied up by ScrapBook */
+.ts-fab-wrapper { margin: 2em 0px; clear: both; }
+.ts-fab-wrapper a { text-decoration: none ! important; }
+.ts-fab-wrapper img { border: medium none ! important; }
+.ts-fab-list { overflow: hidden; margin: 0px ! important; padding: 0px ! important; }
+.ts-fab-list li { display: block; float: left; clear: none; list-style: outside none none ! important; margin: 0px 5px 0px 0px ! important; padding: 0px ! important; background: transparent none repeat scroll 0px 0px ! important; }
+.ts-fab-list li::before { display: none ! important; }
+.ts-fab-list li a { display: block; line-height: 16px; height: 16px; padding: 8px 12px; background-color: rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-left: 1px solid rgb(233, 233, 233); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-bottom: medium none ! important; text-decoration: none; font-size: 13px; color: rgb(51, 51, 51); font-weight: 700; box-sizing: content-box; background-image: url("tab_icons.png"); }
+.ts-fab-list li a:hover { color: rgb(51, 51, 51); }
+.ts-fab-list li.ts-fab-bio-link a { background-position: 8px 8px; background-repeat: no-repeat; padding-left: 27px; }
+.ts-fab-list li.ts-fab-latest-posts-link a { background-position: 8px -192px; background-repeat: no-repeat; padding-left: 27px; }
+.ts-fab-tab { display: none; border: 2px solid rgb(51, 51, 51); padding: 12px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; min-height: 80px; overflow: hidden; }
+.ts-fab-avatar { display: block; float: left; width: 80px; }
+.ts-fab-text { margin-left: 96px; line-height: 1.5; }
+.ts-fab-avatar > img { width: 80px; max-width: 100% ! important; }
+.ts-fab-header { margin-bottom: 10px; }
+.ts-fab-text h4 { clear: none ! important; font-size: 18px; line-height: 1 ! important; font-weight: 700; margin: 0px 0px 0.2em ! important; padding: 0px; }
+.ts-fab-description, .ts-fab-latest li span, .ts-fab-twitter-time { font-size: 12px; }
+.ts-fab-social-links { margin: 5px 0px 0px; text-align: center; }
+.ts-fab-social-links a { display: inline-block; margin: 0px 1px; opacity: 0.5; transition: opacity 0.2s ease 0s; }
+.ts-fab-social-links a:hover { opacity: 1; }
+.ts-fab-latest { margin: 0px ! important; padding: 0px ! important; }
+.ts-fab-latest li { list-style: outside none none ! important; line-height: 1.2; margin: 0px 0px 0.6em ! important; clear: none ! important; }
+.latest-see-all { font-weight: 400; }
+.screen-reader-text { clip: rect(1px, 1px, 1px, 1px); position: absolute ! important; left: -9999px; }

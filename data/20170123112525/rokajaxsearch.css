@@ -1,0 +1,3 @@
+/* Code tidied up by ScrapBook */
+#roksearch_search_str { padding: 4px 0px 4px 6px; font-size: 100%; margin: 0px; border: 0px none; }
+#roksearch_results { z-index: 10000; position: absolute; width: 400px; float: right; margin-top: -1px; text-align: left; visibility: hidden; }

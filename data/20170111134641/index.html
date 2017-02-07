@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index,nofollow">
+
+<title>zh/HowTos/SELinux - CentOS Wiki</title>
+<script type="text/javascript" src="about:blank"></script>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="projection.css">
+
+<!-- css only for MSIE browsers -->
+<!--[if IE]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/wiki/modern-CentOS/css/msie.css">
+<![endif]-->
+
+
+
+<link rel="Start" href="https://wiki.centos.org/FrontPage">
+<link rel="Alternate" title="Wiki Markup" href="https://wiki.centos.org/zh/HowTos/SELinux?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="https://wiki.centos.org/zh/HowTos/SELinux?action=print">
+<link rel="Up" href="https://wiki.centos.org/zh/HowTos">
+<link rel="Search" href="https://wiki.centos.org/FindPage">
+<link rel="Index" href="https://wiki.centos.org/TitleIndex">
+<link rel="Glossary" href="https://wiki.centos.org/WordIndex">
+<link rel="Help" href="https://wiki.centos.org/HelpOnFormatting">
+</head>
+
+<body dir="ltr" lang="en">
+
+
+<div id="header">
+<div id="logo"><a href="https://wiki.centos.org/FrontPage"><img src="modern-CentOS-logo.png" alt="CentOS"></a></div>
+<ul id="username"><li><a href="https://wiki.centos.org/zh/HowTos/SELinux?action=login" id="login">Login</a></li></ul>
+
+
+<ul class="navibar">
+<li class="wikilink"><a href="https://wiki.centos.org/FrontPage">FrontPage</a></li><li class="wikilink"><a href="https://wiki.centos.org/Documentation">Help</a></li><li class="wikilink"><a href="https://wiki.centos.org/TipsAndTricks">Tips and Tricks</a></li><li class="wikilink"><a href="https://wiki.centos.org/HowTos">How To</a></li><li class="wikilink"><a href="https://wiki.centos.org/FAQ">FAQs</a></li><li class="wikilink"><a href="https://wiki.centos.org/Events">Events</a></li><li class="wikilink"><a href="https://wiki.centos.org/Contribute">Contribute</a></li><li class="wikilink"><a href="https://wiki.centos.org/RecentChanges">Changelog</a></li><li class="current"><a href="#">zh/HowTos/SELinux</a></li>
+</ul>
+
+<div class="pageline"><hr style="display: none;"></div>
+
+</div>
+<div id="locationline">
+
+<form id="searchform" method="get" action="">
+<div>
+<input name="action" value="fullsearch" type="hidden">
+<input name="context" value="180" type="hidden">
+<label style="display: none;" for="searchinput">Search:</label>
+<input class="disabled" id="searchinput" name="value" value="" size="20" alt="Search" type="text">
+<input disabled="" id="fullsearch" name="fullsearch" value="Text" alt="Search Full Text" type="submit">
+<input disabled="" id="titlesearch" name="titlesearch" value="Titles" alt="Search Titles" type="submit">
+</div>
+</form>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+
+
+<ul id="pagelocation">
+<li><a href="https://wiki.centos.org/zh">zh</a></li><li><a href="https://wiki.centos.org/zh/HowTos">HowTos</a></li><li><a class="backlink" title="Click to do a full-text search for this title" href="https://wiki.centos.org/zh/HowTos/SELinux?action=fullsearch&amp;value=linkto%3A%22zh/HowTos/SELinux%22&amp;context=180">SELinux</a></li>
+</ul>
+
+</div>
+
+<div id="page" dir="ltr" lang="zh">
+<div dir="ltr" id="content" lang="zh"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-3"></span><p class="line867">
+</p><h1 id="head-af9d42b560d58b65d127e34762c82d2dbfb215bd">SELinux</h1>
+<span class="anchor" id="line-4"></span><p class="line867"></p><div class="table-of-contents"><p class="table-of-contents-heading">Contents</p><ol><li><a href="#head-91254a1d8b64f45d087df37b4d62ea35ac632a1b">引言</a><ol><li><a href="#head-2c3b6731592632a3657bfb57b10adb2aa6d3d96a">部份问题所在</a></li><li><a href="#head-51672a00815e178be8a85350b0cb364371002207">解决方案</a></li></ol></li><li><a href="#head-23b32edada724aa8a29ab04685b53de6455e08a0">SELinux 模式</a></li><li><a href="#head-5cc85b2b9e97be2c7ebc82d6786e5f9f3a5e5f33">SELinux 政策</a></li><li><a href="#head-67231e7db66e5a5a76c564decb4159d869a054c0">SELinux 访问控制</a></li><li><a href="#head-bc6890392689310d4bbc8a822f59053a61e716f7">排除 SELinux 疑难</a><ol><li><a href="#head-1a163ad4f6e9da405bfc454a3073d4894357f4f2">重新标签文件</a></li><li><a href="#head-5029032f379e4e6b671ee04d29891aa9b5f7ff29">撤消缺省的安全性脉络</a></li><li><a href="#head-ce3494f2658aca1ae8f5df770a2c8b7c20a3e985">重新标签整个文件系统</a></li><li><a href="#head-9d56fccf0546a896947f21c95e6717b5734ad237">允许访问某个端口</a></li></ol></li><li><a href="#head-06b7e3fd1ccf2a1c4e99e4ffd6c549b40afd39df">自定 SELinux 政策</a></li><li><a href="#head-2a1e83efeb6fa84e74f4529181b1b426e39e65a8">利用 audit2allow 创建自定 SELinux 政策模块</a><ol><li><a href="#head-78955e9087ff13596fabbc0fbce41706b86ec047">手动式自定政策模块</a></li></ol></li><li><a href="#head-eaf515a1632d1a2a08b01663e326df09ed6dff60">总结</a></li><li><a href="#head-c7c693c16d81a8585cdd6af0beddff651dbcac4e">额外资源</a></li><li><a href="#head-e7822071501ef2940c66789357cb0aa6d50207bc">用户备注及陷阱</a></li></ol></div> <span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span><p class="line867">
+</p><h2 id="head-91254a1d8b64f45d087df37b4d62ea35ac632a1b">1. 引言</h2>
+<span class="anchor" id="line-7"></span><p class="line874">安全增强式 Security-Enhanced Linux（SELinux）是一个在内核中实践的强制访问控制（MAC）安全性机制。SELinux 首先在 CentOS 4 出现，并在后续的CentOS发行版中获得重大改善。这些改善代表用 SELinux 解决问题的方法亦随着时间而改变。 <span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span></p><p class="line867">
+</p><h3 id="head-2c3b6731592632a3657bfb57b10adb2aa6d3d96a">1.1. 部份问题所在</h3>
+<span class="anchor" id="line-10"></span><p class="line874">要更了解 SELinux 为何是重要、及能够为你做什么，最简单的方法就是参考一些例子。在未启用 SELinux 的情况下，要控制用户的文件访问权，唯有通过酌情访问控制（DAC）方法如文件权限或访问控制清单（ACL）。不论用户或程序都可以将不安全的文件权限赋予其它人，或反过来访问系统在正常运作下无须访问的部份。举个例说： <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span></p><ul><li><p class="line862">管理员不能控制用户：用户可以把谁都可读入的权限赋予敏感文件，例如 ssh 金钥及惯常用来放置这些金钥的目录，<tt>~/.ssh/</tt>。 <span class="anchor" id="line-13"></span></p></li><li>进程可以更改安全性属性：每位用户的邮件文件应该只供该用户读入，但邮件客户端软件有能力将它们改为谁都可读入。 <span class="anchor" id="line-14"></span></li><li><p class="line862">进程继承用户的权限：假若 Firefox 被<strong>木马程序</strong>所占用，它可能会阅读用户的私人 ssh 金钥，尽管它没有理由如此做。 <span class="anchor" id="line-15"></span></p></li></ul><p class="line874">基本上在传统 DAC 模式只在两个权限级别，root 及用户，而当中不能简易地实施最小权限的理念。很多由 root 引导1的进程在后期会撇除它们的权限并以受限制的用户身份来运行，有些则会在 chroot 的情况下执行，但这些安全措施都是酌情的。 <span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span></p><p class="line867">
+</p><h3 id="head-51672a00815e178be8a85350b0cb364371002207">1.2. 解决方案</h3>
+<span class="anchor" id="line-18"></span><p class="line862">SELinux 更能遵从最小权限的理念。在缺省的 <strong>enforcing</strong> 情况下，一切均被拒绝，接着有一系列例外的政策来允许系统的每个元素（服务、程序、用户）运作时所需的访问权。当一项服务、程序或用户尝试访问或修改一个它不须用的文件或资源时，它的请求会遭拒绝，而这个行动会被记录下来。 <span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span></p><p class="line874">由于 SELinux 是在内核中实践的，应用程序无须被特别编写或重写便可以采用 SELinux。当然，如果一个程序特别留意稍后所提及的 SELinux 错误码，它的运作可能会更畅顺。假若 SELinux 拦阻了一个行动，它会以一个标准的（至少是常规的）「拒绝访问」类错误来汇报给该应用程序。然而，很多应用程序不会测试系统函数所返回的错误码，因此它们也许不会输出消息解释问题所在，或者输出错误消息。 <span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span></p><p class="line874">理论上，下列样例方案可提供更高安全度： <span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span></p><ul><li><p class="line862">局限只有某些获授权的程序可读入用户的 <tt>~/.ssh/</tt> 目录 <span class="anchor" id="line-25"></span></p></li><li>防止派发邮件程序（Mail Delivery Agent）更改拥有群组、群组设置或其它读档权限 <span class="anchor" id="line-26"></span></li><li>阻止浏覧器读入用户的主目录 <span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span></li></ul><p class="line862">不过截至第 6 版的 CentOS，这些方案都<strong>不包含在</strong>SELinux 规则内。这是一个发展中的领域，事实上亦不会在短期内落实。这是由于上游发行者的系统管理员客户群难以接受上述的做法，势必会「啼哭」一番，并增加上游的支持工作量。 <span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span></p><p class="line867">
+</p><h2 id="head-23b32edada724aa8a29ab04685b53de6455e08a0">2. SELinux 模式</h2>
+<span class="anchor" id="line-31"></span><p class="line862">SELinux 拥有三个基本的操作模式，当中 <strong>Enforcing</strong> 是缺省的模式。此外，它还有一个 <strong>targeted</strong> 或 <strong>mls</strong> 的修饰语。这管制 SELinux 规则的应用有多广泛，当中 <strong>targeted</strong> 是较宽松的级别。 <span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span></p><ul><li><p class="line891"><strong>Enforcing：</strong> 这个缺省模式会在系统上启用并实施 SELinux 的安全性政策，拒绝访问及记录行动 <span class="anchor" id="line-34"></span></p></li><li><p class="line891"><strong>Permissive：</strong> 在 Permissive 模式下，SELinux 会被启用但不会实施安全性政策，而只会发出警告及记录行动。Permissive 模式在排除 SELinux 的问题时很有用 <span class="anchor" id="line-35"></span></p></li><li><p class="line891"><strong>Disabled：</strong> SELinux 已被停用 <span class="anchor" id="line-36"></span></p></li></ul><p class="line862">SELinux 的模式可以通过 Adminstration 选单里的 SELinux 图像管理界面、或者在命令行执行 system-config-selinux 来查看及更改（SELinux 图像管理界面是 <strong>policycoreutils-gui</strong> 组件的一部份，缺省是不会被安装的）。 <span class="anchor" id="line-37"></span><span class="anchor" id="line-38"></span></p><p class="line874">较喜欢命令行的用户可使用 sestatus 这个指令来查看现时的 SELinux 状况： <span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span></p><p class="line867"><span class="anchor" id="line-41"></span></p><pre># sestatus
+<span class="anchor" id="line-42"></span>SELinux status:                 enabled
+<span class="anchor" id="line-43"></span>SELinuxfs mount:                /selinux
+<span class="anchor" id="line-44"></span>Current mode:                   enforcing
+<span class="anchor" id="line-45"></span>Mode from config file:          enforcing
+<span class="anchor" id="line-46"></span>Policy version:                 21
+<span class="anchor" id="line-47"></span>Policy from config file:        targeted</pre><span class="anchor" id="line-48"></span><p class="line862">setenforce 这个指令可以即时切换 <strong>Enforcing</strong> 及 <strong>Permissive</strong> 这两个模式，但请注意这些改动在系统重新开机时不会被保留。 <span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span></p><p class="line862">要令改动过渡系统开机，请在 <tt>/etc/selinux/config</tt> 内修改 SELINUX= 这一行为 enforcing、permissive 或 disabled。例如：SELINUX=permissive。 <span class="anchor" id="line-51"></span></p><div><table><tbody><tr>  <td class="lmimg blue" style="text-align: center;"><p class="line862"> <img class="attachment" src="info.png" title="attachment:ArtWork/WikiDesign/info.png"> </p></td>
+  <td class="lmtxt blue" colspan="2" style="text-align: left; vertical-align: top;"><p class="line862"> <big><strong>注：</strong></big> 当你由 <strong>Diabled</strong> 切换至 <strong>Permissive</strong> 或 <strong>Enforcing</strong> 模式时，我们强烈推荐你重新引导系统并重新标签文件系统。 </p></td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><p class="line867">
+</p><h2 id="head-5cc85b2b9e97be2c7ebc82d6786e5f9f3a5e5f33">3. SELinux 政策</h2>
+<span class="anchor" id="line-55"></span><p class="line862">正如我们所说，SELinux 遵从最小权限这个理念；在缺省情况下一切均被拒绝，而系统的每部份有一个政策来允许它访问所需的功能。这个描述用来形容<strong>严格型</strong>政策最为贴切。不过要令这类政策适用于企业级 Linux 可能会应用到的各个环境，编写方面是困难的。后果可能是 SELinux 会为系统管理员及用户产生很多问题，而系统管理员索性停用 SELinux 而不解决这些问题，最后还是违背了内置的保护。 <span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span></p><p class="line862">SELinux 的设计允许调配不同类型的政策。CentOS 内的缺省政策是<strong>针对型</strong>政策，专门「针对」和规限选定的系统进程。CentOS 4 只定义了 15 个目标（包括 http、named、dhcpd、mysqld）。随后在 CentOS 5 这个数字已升超过 200 个目标。 <span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span></p><p class="line862">系统内其它一切系统进程、用户程序和所有自制应用程序都在<strong>不受规限</strong>的本地下运行，并且不纳入 SELinux 的保护范围内。 <span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span></p><p class="line862">这样做的目标之一，是要令每个已安装及在开机时执行的进程，都缺省在一个受规限的本地下运行。<strong>针对型</strong>政策在设计时尽量保护最多的主要进程而不会对用户的经验产生不利影响，所以多数用户甚至乎不应察觉 SELinux 正在运行中。 <span class="anchor" id="line-62"></span><span class="anchor" id="line-63"></span></p><p class="line867">
+</p><h2 id="head-67231e7db66e5a5a76c564decb4159d869a054c0">4. SELinux 访问控制</h2>
+<span class="anchor" id="line-64"></span><p class="line874">SELinux 拥有三种访问控制方法： <span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span></p><ul><li><p class="line891"><strong>强制类型（TE）：</strong>TE 是<strong>针对型</strong>政策所采用的主要访问控制机制 <span class="anchor" id="line-67"></span></p></li><li><p class="line891"><strong>基于⻆色的访问控制（RBAC）：</strong>它以 SELinux 用户（未必等同 Linux 用户）为基础，但缺省的<strong>针对型</strong>政策并未采用它 <span class="anchor" id="line-68"></span></p></li><li><p class="line891"><strong>多层保障（MLS）：</strong>普遍不获采用，而且经常隐藏在缺省的<strong>针对型</strong>政策内。 <span class="anchor" id="line-69"></span></p></li></ul><p class="line874">所有进程及文件都拥有一个 SELinux 的安全性脉络。让我们查看 Apache 的主页，/var/www/html/index.html 的 SELinux 安全性脉络来看看它们如何运作： <span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span></p><p class="line867"><span class="anchor" id="line-72"></span></p><pre>$ ls -Z /var/www/html/index.html -rw-r--r--  username username system_u:object_r:httpd_sys_content_t /var/www/html/index.html </pre><span class="anchor" id="line-73"></span><div><table><tbody><tr>  <td class="lmimg blue" style="text-align: center;"><p class="line862"> <img class="attachment" src="info.png" title="attachment:ArtWork/WikiDesign/info.png"> </p></td>
+  <td class="lmtxt blue" colspan="2" style="text-align: left; vertical-align: top;"><p class="line862"> <big><strong>注：</strong></big> -Z 这个标旗在多数工具内都可用来显示 SELinux 安全性脉络（例如：ls -Z、 ps axZ 等）。 </p></td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-74"></span><p class="line874">除了标准的文件权限及拥有权，我们更可以看到 SELinux 脉络栏：system_u:object_r:httpd_sys_content_t。 <span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span></p><p class="line862">这是建基于「用户：角色：类型：多层保障」。在上述例子里，「用户：角色：类型」栏都有显示，而「多层保障」是隐藏的。在缺省的<strong>针对型</strong>政策里，<strong>类型</strong>是用来实施「强制类型」的重要字段，在这里它是 httpd_sys_content_t。 <span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span></p><p class="line874">现在让我们看看 Apache 网页服务器，httpd，这个进程的 SELinux 安全性脉络： <span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span></p><p class="line867"><span class="anchor" id="line-81"></span></p><pre>$ ps axZ | grep httpd
+<span class="anchor" id="line-82"></span>system_u:system_r:httpd_t        3234 ?        Ss     0:00 /usr/sbin/httpd</pre><span class="anchor" id="line-83"></span><p class="line874">从类型栏我们看出 Apache 在 httpd_t 这个类型本地内运行。 <span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span></p><p class="line874">最后，让我们看看位于我们的主目录内的一个文件的安全性脉络： <span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span></p><p class="line867"><span class="anchor" id="line-88"></span></p><pre>$ ls -Z /home/username/myfile.txt
+<span class="anchor" id="line-89"></span>-rw-r--r--  username username user_u:object_r:user_home_t      /home/username/myfile.txt</pre><span class="anchor" id="line-90"></span><p class="line874">它的类型是 user_home_t，这是位于每个户主目录内的文件的缺省类型。 <span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span></p><p class="line862">唯有相似的类型才可互相访问，因此以 httpd_t 运行的 Apache 可以读入拥有 httpd_sys_content_t 类型的 /var/www/html/index.html。由于 Apache 在 httpd_t 这个本地内运行但不属 username 这个用户，纵使 /home/username/myfile.txt 可供任何人读入，Apache 却不能访问该文件，因为它的 SELinux 安全性脉络并不是 httpd_t 类型。倘若 Apache 被人占用，又假设它仍未取得更改 SELinux 标签至另一个脉络的 <strong>root</strong> 权限，它将会不能引导 httpd_t 本地外的进程（藉此防止权限升级），或访问与 httpd_t 本地不相关的文件。 <span class="anchor" id="line-93"></span><span class="anchor" id="line-94"></span></p><p class="line867">
+</p><h2 id="head-bc6890392689310d4bbc8a822f59053a61e716f7">5. 排除 SELinux 疑难</h2>
+<span class="anchor" id="line-95"></span><p class="line874">你终有一天会被 SELinux 阻止你访问所需的东西，而且要解决这个问题。SELinux 拒绝某个文件、进程或资源被访问的基要原因有数个： <span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span></p><ul><li>一个被错误标签的文件。 <span class="anchor" id="line-98"></span></li><li>一个进程在错误的 SELinux 安全性脉络下运行。 <span class="anchor" id="line-99"></span></li><li>政策出错。某个进程要访问一个在编写政策时意料不到的文件，并产生错误信息。 <span class="anchor" id="line-100"></span></li><li>一个入侵的企图。 <span class="anchor" id="line-101"></span></li></ul><p class="line874">头三个情况我们可以处理，而发出警报及通告正正是第四个情况的预期表现。 <span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span></p><p class="line862">日志档是排除任何疑难的关键，而 SELinux 亦不例外。SELinux 缺省会通过 Linux 审计系统 <tt>auditd</tt> 将日志写在 <strong>/var/log/audit/audit.log</strong> 内，而该务服缺省为启用的。假若 <tt>auditd</tt> 长驻程序并未运行，信息将会被写进 <tt>/var/log/messages</tt>。SELinux 的日志都以 AVC 这个关键字作标签，让 <strong>grep</strong> 等程序可轻易地把它们从其它信息中过滤出来。 <span class="anchor" id="line-104"></span><span class="anchor" id="line-105"></span></p><p class="line862">由 CentOS 5 起，你可以用 SELinux 排除疑难工具协助你分析日志档，将它们转换为供人阅读的格式。这个工具包含一个以可读格式显示信息及解决方案的图像界面、一个桌面通报图示、与及一个长驻进程，<tt>setroubleshootd</tt>，它负责查阅新的 SELinux AVC 警告并传送至通报图示。不运行 X 服务器的用户可设置以电邮通报。SELinux 排除疑难工具是由 <strong>setroubleshoot</strong> 组件所提供的。这个工具可以从 X 窗口图像管理员的「系统」选单或从命令行引导： <span class="anchor" id="line-106"></span><span class="anchor" id="line-107"></span></p><p class="line867"><span class="anchor" id="line-108"></span></p><pre>sealert -b </pre><span class="anchor" id="line-109"></span><p class="line874">不运行 X 服务器的人可以通过命令行产生供人阅读的报告： <span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span></p><p class="line867"><span class="anchor" id="line-112"></span></p><pre>sealert -a /var/log/audit/audit.log &gt; /path/to/mylogfile.txt </pre><span class="anchor" id="line-113"></span><p class="line867">
+</p><h3 id="head-1a163ad4f6e9da405bfc454a3073d4894357f4f2">5.1. 重新标签文件</h3>
+<span class="anchor" id="line-114"></span><p class="line874">chcon 这个指令可以用来更改一个或多个文件与目录的 SELinux 安全性脉络，正如 'chown' 或 'chmod' 可以用来更改一个文件的拥有者或标准权限。 <span class="anchor" id="line-115"></span><span class="anchor" id="line-116"></span></p><p class="line874">让我们看一些例子。 <span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span></p><p class="line862">就以 Apache 为例，假设你想修改 DocumentRoot 以另一个位置来伺服网页，替换缺省的 <strong>/var/www/html</strong> 目录。譬如说我们在 <strong>/html</strong> 创建了一个目录（又或者挂载点），然后在那里创建一个 <strong>index.html</strong> 档： <span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span></p><p class="line867"><span class="anchor" id="line-121"></span></p><pre># mkdir /html
+<span class="anchor" id="line-122"></span># touch /html/index.html
+<span class="anchor" id="line-123"></span># ls -Z /html/index.html
+<span class="anchor" id="line-124"></span>-rw-r--r--  root root user_u:object_r:default_t        /html/index.html
+<span class="anchor" id="line-125"></span># ls -Z | grep html
+<span class="anchor" id="line-126"></span>drwxr-xr-x  root root user_u:object_r:default_t        html </pre><span class="anchor" id="line-127"></span><p class="line862">我们可以见到 <strong>/html</strong> 这个目录以及 <strong>/html/index.html</strong> 这个文件都拥有缺省的 default_t 安全性脉络类型。如果我们打开浏览器并尝试查看该页，SELinux 将会正确地拒绝它们被访问并记录错误，因为该目录与文件拥有不正确的安全性脉络。我们须要设置供 Apache 使用的 httpd_sys_content_t 正确安全性脉络。 <span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span></p><p class="line867"><span class="anchor" id="line-130"></span></p><pre># chcon -v --type=httpd_sys_content_t /html
+<span class="anchor" id="line-131"></span>context of /html changed to user_u:object_r:httpd_sys_content_t
+<span class="anchor" id="line-132"></span># chcon -v --type=httpd_sys_content_t /html/index.html
+<span class="anchor" id="line-133"></span>context of /html/index.html changed to user_u:object_r:httpd_sys_content_t
+<span class="anchor" id="line-134"></span># ls -Z /html/index.html
+<span class="anchor" id="line-135"></span>-rw-r--r--  root root user_u:object_r:httpd_sys_content_t    /html/index.html
+<span class="anchor" id="line-136"></span># ls -Z | grep html
+<span class="anchor" id="line-137"></span>drwxr-xr-x  root root user_u:object_r:httpd_sys_content_t    html </pre><span class="anchor" id="line-138"></span><p class="line874">我们同样也可以利用 -R 这个回递标旗同时将它们的脉络设置： <span class="anchor" id="line-139"></span><span class="anchor" id="line-140"></span></p><p class="line867"><span class="anchor" id="line-141"></span></p><pre># chcon -Rv --type=httpd_sys_content_t /html </pre><span class="anchor" id="line-142"></span><p class="line874">以这个方式更改安全性脉络在系统重新开机后仍会获保留，直至该部份文件系统被重新标签。这个动作也算颇常，因此正确的解决方法，就是于测试后编写一条自定的规则（所谓的政策模块），并把它与本地的规则进行合并。它将会是原有的 200 多条规则外的一条规则。要作出永久性、能过渡文件系统重新标签的安全性脉络改动，我们可以采用 SELinux 管理工具，或者在命令行执行 semanage 这个指令： <span class="anchor" id="line-143"></span><span class="anchor" id="line-144"></span></p><p class="line867"><span class="anchor" id="line-145"></span></p><pre>semanage fcontext -a -t httpd_sys_content_t "/html(/.*)?" </pre><span class="anchor" id="line-146"></span><p class="line874">如此便会将 /html 以下的一切加入 httpd_sys_content_t 这个文件脉络类型。 <span class="anchor" id="line-147"></span><span class="anchor" id="line-148"></span></p><p class="line867">
+</p><h3 id="head-5029032f379e4e6b671ee04d29891aa9b5f7ff29">5.2. 撤消缺省的安全性脉络</h3>
+<span class="anchor" id="line-149"></span><p class="line874">restorecon 这个指令可以用来撤消为文件缺省的安全性脉络。 <span class="anchor" id="line-150"></span><span class="anchor" id="line-151"></span></p><p class="line862">让我们再次以 Apache 作为样例。设假有位用户在他的主目录内编辑了一个 index.html 档并将该文件迁移（mv）至 DocumentRoot 的 /var/www/html 内。纵使复制（cp）这个指令普遍会沿用目标目录或文件的安全性脉络，迁移（mv）指令则会保留源文件的安全性脉络。我们可以利用 chcon 这个指令来更改问题文件的安全性脉络，但由于这些文件已经位于 Apache 缺省的 DocumentRoot（/var/www/html）内，我们只须撤消这个目录或文件的安全性脉络便成了。要单单撤消 index.html 档的脉络，我们可以利用： <span class="anchor" id="line-152"></span><span class="anchor" id="line-153"></span></p><p class="line867"><span class="anchor" id="line-154"></span></p><pre># restorecon -v /var/www/html/index.html </pre><span class="anchor" id="line-155"></span><p class="line874">如果要以回递的方式撤消整个目录的缺省安全性脉络： <span class="anchor" id="line-156"></span><span class="anchor" id="line-157"></span></p><p class="line867"><span class="anchor" id="line-158"></span></p><pre># restorecon -Rv /var/www/html </pre><span class="anchor" id="line-159"></span><p class="line874">除此之外，如果我们只想检查 /var/www/html 目录内有哪些文件的安全性脉络需要被撤消，我们在采用 restorecon 时可以应用 -n 这个标旗来防止重新标签的行动： <span class="anchor" id="line-160"></span><span class="anchor" id="line-161"></span></p><p class="line867"><span class="anchor" id="line-162"></span></p><pre># restorecon -Rv -n /var/www/html </pre><span class="anchor" id="line-163"></span><p class="line867">
+</p><h3 id="head-ce3494f2658aca1ae8f5df770a2c8b7c20a3e985">5.3. 重新标签整个文件系统</h3>
+<span class="anchor" id="line-164"></span><p class="line862">有时我们也许会需要将整个文件系统重新标签，虽然这是在启用已停用的 SELinux 时，或在 SELinux 政策由缺省的<strong>针对型</strong>改为<strong>严格型</strong>时才有真正需要。要在重新开机后自动将整个文件系统重新标签，请执行： <span class="anchor" id="line-165"></span><span class="anchor" id="line-166"></span></p><p class="line867"><span class="anchor" id="line-167"></span></p><pre># touch /.autorelabel
+<span class="anchor" id="line-168"></span># reboot </pre><span class="anchor" id="line-169"></span><span class="anchor" id="line-170"></span><p class="line874">假若一个系统在升级至 CentOS-5.2 时停用了 SELinux，然后 SELinux 被启用，重新标签整个文件系统时或许会失败。如果以上的步骤不能正确地将整个文件系统重新标签，请尝试先执行 genhomedircon 这个指令： <span class="anchor" id="line-171"></span><span class="anchor" id="line-172"></span></p><p class="line867"><span class="anchor" id="line-173"></span></p><pre># genhomedircon
+<span class="anchor" id="line-174"></span># touch /.autorelabel
+<span class="anchor" id="line-175"></span># reboot </pre><span class="anchor" id="line-176"></span><p class="line867">
+</p><h3 id="head-9d56fccf0546a896947f21c95e6717b5734ad237">5.4. 允许访问某个端口</h3>
+<span class="anchor" id="line-177"></span><p class="line874">我们或许会想容让 Apache 连结至某个非标准的端口并聆听对内的连接。SELinux 的政策缺省只允许每个服务访问被公认与该服务有关的端口。如果我们想容让 Apache 在 tcp 端口 81 上聆听，我们可以利用 semanage 这个指令来新增一条规则批准此事： <span class="anchor" id="line-178"></span><span class="anchor" id="line-179"></span></p><p class="line867"><span class="anchor" id="line-180"></span></p><pre># semanage port -a -t http_port_t -p tcp 81 </pre><span class="anchor" id="line-181"></span><p class="line874">你可以这样令 SELinux 完整地列出每个服务可访问的端口： <span class="anchor" id="line-182"></span><span class="anchor" id="line-183"></span></p><p class="line867"><span class="anchor" id="line-184"></span></p><pre># semanage port -l </pre><span class="anchor" id="line-185"></span><p class="line867">
+</p><h2 id="head-06b7e3fd1ccf2a1c4e99e4ffd6c549b40afd39df">6. 自定 SELinux 政策</h2>
+<span class="anchor" id="line-186"></span><p class="line874">通过设置选项的二元值，你可以微调 SELinux 政策而不必重新编译政策的源代码。这些选项包括允许用户在 Samba 下分享他们的主目录，或者允许 Apache 从用户的主目录伺服文件。否则这些都会被 SELinux 政策所拒绝。 <span class="anchor" id="line-187"></span><span class="anchor" id="line-188"></span></p><p class="line862">有另一版 <a href="https://wiki.centos.org/zh/TipsAndTricks/SelinuxBooleans">Wiki 页</a>是关于二元值的。 <span class="anchor" id="line-189"></span><span class="anchor" id="line-190"></span></p><p class="line867">
+</p><h2 id="head-2a1e83efeb6fa84e74f4529181b1b426e39e65a8">7. 利用 audit2allow 创建自定 SELinux 政策模块</h2>
+<span class="anchor" id="line-191"></span><p class="line862">在某些情形下，上述方法都不能解决问题，而我们必须通过创建自定的政策模块来扩展 SELinux 政策，允许一组特定的状态出理。其中一个例子就是在 smtp 邮件服务器上增加 <a href="https://wiki.centos.org/zh/HowTos/postgrey">postgrey</a> 服务。我们的 smtp 服务器须要通过一个 Unix 通讯端与 postgrey 沟通，但缺省的 SELinux 政策却禁止我们的 smtp 服务器如此做。结果该服务会被 SELinux 所封锁。这个问题不能通过更改或撤消文件的安全性脉络来解决，也没有可供切换二元值。我们可以通过一个二元值来停止 SELinux 保护 smtp 服务器，这样总比完全停用 SELinux 好，但不太理想。 <span class="anchor" id="line-192"></span><span class="anchor" id="line-193"></span></p><p class="line874">如果我们将 SELinux 切换至 Permissive 模式并让邮件服务器运行一段时间，我们便可以在允许访问的情况下记录 SELinux 的问题。查看日志时，我们会看见以下 SELinux AVC 信息： <span class="anchor" id="line-194"></span><span class="anchor" id="line-195"></span></p><p class="line867"><span class="anchor" id="line-196"></span></p><pre>type=AVC msg=audit(1218128130.653:334): avc:  denied  { connectto } for  pid=9111 comm="smtpd" path="/var/spool/postfix/postgrey/socket"
+<span class="anchor" id="line-197"></span>scontext=system_u:system_r:postfix_smtpd_t:s0 tcontext=system_u:system_r:initrc_t:s0 tclass=unix_stream_socket
+<span class="anchor" id="line-198"></span>type=AVC msg=audit(1218128130.653:334): avc:  denied  { write } for  pid=9111 comm="smtpd" name="socket" dev=sda6 ino=39977017
+<span class="anchor" id="line-199"></span>scontext=system_u:system_r:postfix_smtpd_t:s0 tcontext=system_u:object_r:postfix_spool_t:s0 tclass=sock_file </pre><span class="anchor" id="line-200"></span><p class="line874">接着我们可以用 audit2allow 来产生一组允许所需行动的政策规则。我们我可创建一个本地的 postgrey 强制类型政策档（postgreylocal.te）： <span class="anchor" id="line-201"></span><span class="anchor" id="line-202"></span></p><p class="line867"><span class="anchor" id="line-203"></span></p><pre># grep smtpd_t /var/log/audit/audit.log | audit2allow -m postgreylocal &gt; postgreylocal.te
+<span class="anchor" id="line-204"></span># cat postgreylocal.te
+<span class="anchor" id="line-205"></span>module postgreylocal 1.0;
+<span class="anchor" id="line-206"></span>require {
+<span class="anchor" id="line-207"></span>        type postfix_smtpd_t;
+<span class="anchor" id="line-208"></span>        type postfix_spool_t;
+<span class="anchor" id="line-209"></span>        type initrc_t;
+<span class="anchor" id="line-210"></span>        class sock_file write;
+<span class="anchor" id="line-211"></span>        class unix_stream_socket connectto;
+<span class="anchor" id="line-212"></span>}
+<span class="anchor" id="line-213"></span>#============= postfix_smtpd_t ==============
+<span class="anchor" id="line-214"></span>allow postfix_smtpd_t initrc_t:unix_stream_socket connectto;
+<span class="anchor" id="line-215"></span>allow postfix_smtpd_t postfix_spool_t:sock_file write; </pre><span class="anchor" id="line-216"></span><p class="line874">在上面我们看见如何从 audit.log 筛选有关 smtp 服务器的问题，并将这些问题导向 audit2allow，让它产生一组规则，是它认为可用来允许被 SELinux 政策所封锁的行动。查阅这些规则时，我们可发现该 smtp 服务器想连接及写进一个 Unix 通讯端，而从日志里我们看见这个 Unix 通讯端正正是 postgrey 服务所聆听的那个。既然这一些都合情合理，我们可以续继用 audit2allow 创建一个自定的政策模块，允许这些行动： <span class="anchor" id="line-217"></span><span class="anchor" id="line-218"></span></p><p class="line867"><span class="anchor" id="line-219"></span></p><pre># grep smtpd_t /var/log/audit/audit.log | audit2allow -M postgreylocal </pre><span class="anchor" id="line-220"></span><p class="line874">接着我们利用 semodule 这个指令将我们的 postgrey 政策模块装入现有的 SELinux 政策内： <span class="anchor" id="line-221"></span><span class="anchor" id="line-222"></span></p><p class="line867"><span class="anchor" id="line-223"></span></p><pre>semodule -i postgreylocal.pp </pre><span class="anchor" id="line-224"></span><p class="line874">如此便会将我们的 postgrey 政策模块新增到 /etc/selinux/targeted/modules/active/modules/postgreylocal.pp。我们可以通过 semodule -l 来检查该政策模块已被正确地装入。 <span class="anchor" id="line-225"></span><span class="anchor" id="line-226"></span></p><p class="line874">然后我们可以继续监视 SELinux 的日志来确定自定的政策模块有效用。满意时，我们便可以重新启用 SELinux 的 Enforcing 模式，让功能已全备的 smtp 服务器再次享有 SELinux 的保障。 <span class="anchor" id="line-227"></span><span class="anchor" id="line-228"></span></p><p class="line867">
+</p><h3 id="head-78955e9087ff13596fabbc0fbce41706b86ec047">7.1. 手动式自定政策模块</h3>
+<span class="anchor" id="line-229"></span><p class="line874">audit2allow 在大多数情况下都可以自动创建一个自定政策模块来解决某个特定问题，但有时它未能完全正确，而我们也许会想以人手编辑并编译该政策模块。就以下列的 AVC 审计日志为例： <span class="anchor" id="line-230"></span><span class="anchor" id="line-231"></span></p><p class="line867"><span class="anchor" id="line-232"></span></p><pre>Summary:
+<span class="anchor" id="line-233"></span>SELinux is preventing postdrop (postfix_postdrop_t) "getattr" to
+<span class="anchor" id="line-234"></span>/var/log/httpd/error_log (httpd_log_t).
+<span class="anchor" id="line-235"></span>Detailed Description:
+<span class="anchor" id="line-236"></span>SELinux denied access requested by postdrop. It is not expected that this access
+<span class="anchor" id="line-237"></span>is required by postdrop and this access may signal an intrusion attempt. It is
+<span class="anchor" id="line-238"></span>also possible that the specific version or configuration of the application is
+<span class="anchor" id="line-239"></span>causing it to require additional access.
+<span class="anchor" id="line-240"></span>Allowing Access:
+<span class="anchor" id="line-241"></span>Sometimes labeling problems can cause SELinux denials. You could try to restore
+<span class="anchor" id="line-242"></span>the default system file context for /var/log/httpd/error_log,
+<span class="anchor" id="line-243"></span>restorecon -v '/var/log/httpd/error_log'
+<span class="anchor" id="line-244"></span>If this does not work, there is currently no automatic way to allow this access.
+<span class="anchor" id="line-245"></span>Instead, you can generate a local policy module to allow this access - see FAQ
+<span class="anchor" id="line-246"></span>(http://fedora.redhat.com/docs/selinux-faq-fc5/#id2961385) Or you can disable
+<span class="anchor" id="line-247"></span>SELinux protection altogether. Disabling SELinux protection is not recommended.
+<span class="anchor" id="line-248"></span>Please file a bug report (http://bugzilla.redhat.com/bugzilla/enter_bug.cgi)
+<span class="anchor" id="line-249"></span>against this package.
+<span class="anchor" id="line-250"></span>Additional Information:
+<span class="anchor" id="line-251"></span>Source Context                system_u:system_r:postfix_postdrop_t
+<span class="anchor" id="line-252"></span>Target Context                root:object_r:httpd_log_t
+<span class="anchor" id="line-253"></span>Target Objects                /var/log/httpd/error_log [ file ]
+<span class="anchor" id="line-254"></span>Source                        postdrop
+<span class="anchor" id="line-255"></span>Source Path                   /usr/sbin/postdrop
+<span class="anchor" id="line-256"></span>Port                          &lt;Unknown&gt;
+<span class="anchor" id="line-257"></span>Host                          sanitized
+<span class="anchor" id="line-258"></span>Source RPM Packages           postfix-2.3.3-2
+<span class="anchor" id="line-259"></span>Target RPM Packages
+<span class="anchor" id="line-260"></span>Policy RPM                    selinux-policy-2.4.6-137.1.el5
+<span class="anchor" id="line-261"></span>Selinux Enabled               True
+<span class="anchor" id="line-262"></span>Policy Type                   targeted
+<span class="anchor" id="line-263"></span>MLS Enabled                   True
+<span class="anchor" id="line-264"></span>Enforcing Mode                Enforcing
+<span class="anchor" id="line-265"></span>Plugin Name                   catchall_file
+<span class="anchor" id="line-266"></span>Host Name                     sanitized
+<span class="anchor" id="line-267"></span>Platform                      Linux sanitized 2.6.18-53.1.21.el5 #1 SMP Tue
+<span class="anchor" id="line-268"></span>                              May 20 09:35:07 EDT 2008 x86_64 x86_64
+<span class="anchor" id="line-269"></span>Alert Count                   599
+<span class="anchor" id="line-270"></span>First Seen                    Wed Jul  2 08:27:15 2008
+<span class="anchor" id="line-271"></span>Last Seen                     Sun Aug 10 22:47:52 2008
+<span class="anchor" id="line-272"></span>Local ID                      c303a4ea-8e7a-4acc-9118-9cc61c6a2ec8
+<span class="anchor" id="line-273"></span>Line Numbers
+<span class="anchor" id="line-274"></span>Raw Audit Messages
+<span class="anchor" id="line-275"></span>host=sanitized type=AVC msg=audit(1218397672.372:352): avc:  denied  { getattr } for  pid=4262 comm="postdrop"
+<span class="anchor" id="line-276"></span>path="/var/log/httpd/error_log" dev=md2 ino=117005 scontext=system_u:system_r:postfix_postdrop_t:s0
+<span class="anchor" id="line-277"></span>tcontext=root:object_r:httpd_log_t:s0 tclass=file
+<span class="anchor" id="line-278"></span>host=sanitized type=SYSCALL msg=audit(1218397672.372:352): arch=c000003e syscall=5 success=no exit=-13 a0=2
+<span class="anchor" id="line-279"></span>a1=7fffd6febca0 a2=7fffd6febca0 a3=0 items=0 ppid=4261 pid=4262 auid=4294967295 uid=48 gid=48 euid=48 suid=48
+<span class="anchor" id="line-280"></span>fsuid=48 egid=90 sgid=90 fsgid=90 tty=(none) comm="postdrop" exe="/usr/sbin/postdrop"
+<span class="anchor" id="line-281"></span>subj=system_u:system_r:postfix_postdrop_t:s0 key=(null) </pre><span class="anchor" id="line-282"></span><p class="line874">就上述错误执行 audit2allow 并查阅所得的 postfixlocal.te 政策档时，我们会看见： <span class="anchor" id="line-283"></span><span class="anchor" id="line-284"></span></p><p class="line867"><span class="anchor" id="line-285"></span></p><pre># grep postdrop /var/log/audit/audit.log | audit2allow -M postfixlocal
+<span class="anchor" id="line-286"></span># cat postfixlocal.te
+<span class="anchor" id="line-287"></span>    module postfixlocal 1.0;
+<span class="anchor" id="line-288"></span>    require {
+<span class="anchor" id="line-289"></span>            type httpd_log_t;
+<span class="anchor" id="line-290"></span>            type postfix_postdrop_t;
+<span class="anchor" id="line-291"></span>            class dir getattr;
+<span class="anchor" id="line-292"></span>            class file { read getattr };
+<span class="anchor" id="line-293"></span>    }
+<span class="anchor" id="line-294"></span>    #============= postfix_postdrop_t ==============
+<span class="anchor" id="line-295"></span>    allow postfix_postdrop_t httpd_log_t:file getattr; </pre><span class="anchor" id="line-296"></span><p class="line862">我希望第一件引起你关注的事，就是 postdrop 为何须要访问 /var/log/httpd/error_log？这应该在我们预料之外，因此我们便要评估应否允许这个行动。我们有数个选择：我们可以忽略这个错误并容让 SELinux 继续封锁及记录这些访问的行动，又或者我们可以允许这些行动并创建 audit2allow 所推荐的自定政策模块。我们也可以选择编辑这个自定政策模块的 .te 档并防止审计这个特定错误，并让 SELinux 继续封锁该访问权。我们可以编辑 <strong>allow</strong> 这一行，并改为 <strong>dontaudit</strong>： <span class="anchor" id="line-297"></span><span class="anchor" id="line-298"></span></p><p class="line867"><span class="anchor" id="line-299"></span></p><pre>    #============= postfix_postdrop_t ==============
+<span class="anchor" id="line-300"></span>    dontaudit postfix_postdrop_t httpd_log_t:file getattr; </pre><span class="anchor" id="line-301"></span><p class="line874">现在我们可以手动地编译及装入已修改的自定政策模块： <span class="anchor" id="line-302"></span><span class="anchor" id="line-303"></span></p><p class="line867"><span class="anchor" id="line-304"></span></p><pre># checkmodule -M -m -o postfixlocal.mod postfixlocal.te
+<span class="anchor" id="line-305"></span># semodule_package -o postfixlocal.pp -m postfixlocal.mod
+<span class="anchor" id="line-306"></span># semodule -i postfixlocal.pp </pre><span class="anchor" id="line-307"></span><p class="line874">postdrop 访问 /var/log/httpd/error_log 时仍然会被 SELinux 封锁，但我们再不会在发生封锁时接收到警报，或在日志内填满错误信息。 <span class="anchor" id="line-308"></span><span class="anchor" id="line-309"></span></p><p class="line867">
+</p><h2 id="head-eaf515a1632d1a2a08b01663e326df09ed6dff60">8. 总结</h2>
+<span class="anchor" id="line-310"></span><p class="line874">这篇文章尝试向 SELinux 的新用户概述如何应用它。SELinux 缺省会被安装及启用，对多数用户来说，它会默默地提高系统的安全性。SELinux 适用于各类型的安装，包括：服务器、工作台、桌面计算机、及笔记本。 <span class="anchor" id="line-311"></span><span class="anchor" id="line-312"></span></p><p class="line874">虽然 SELinux 对不熟识它的用户来说似乎很复杂及令人生畏，但这不是在安装时停用它的一个理由。若果 SELinux 确实带来问题，你可以简单地将它切换至 Permissive 模式，到时它便会将问题记录下来，而不会进行封锁。当问题出现时，这篇文章所示范的技巧可以用来排除疑难及解决它们。 <span class="anchor" id="line-313"></span><span class="anchor" id="line-314"></span></p><p class="line867">
+</p><h2 id="head-c7c693c16d81a8585cdd6af0beddff651dbcac4e">9. 额外资源</h2>
+<span class="anchor" id="line-315"></span><span class="anchor" id="line-316"></span><p class="line867"><a class="https" href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/</a> <span class="anchor" id="line-317"></span><span class="anchor" id="line-318"></span></p><p class="line867"><a class="http" href="http://fedoraproject.org/wiki/SELinux">http://fedoraproject.org/wiki/SELinux</a> <span class="anchor" id="line-319"></span><span class="anchor" id="line-320"></span></p><p class="line867"><a class="http" href="http://docs.fedoraproject.org/en-US/Fedora/13/html-single/Security-Enhanced_Linux/">http://docs.fedoraproject.org/en-US/Fedora/13/html-single/Security-Enhanced_Linux/</a> <span class="anchor" id="line-321"></span><span class="anchor" id="line-322"></span></p><p class="line867"><a class="http" href="http://danwalsh.livejournal.com/">http://danwalsh.livejournal.com/</a> <span class="anchor" id="line-323"></span><span class="anchor" id="line-324"></span></p><p class="line867">
+</p><h2 id="head-e7822071501ef2940c66789357cb0aa6d50207bc">10. 用户备注及陷阱</h2>
+<span class="anchor" id="line-325"></span><span class="anchor" id="line-326"></span><p class="line874">此部份由一位靠此页学懂 SELinux 的用户所提供。此文档是一个优越及详尽的资源。不过，它有点枯燥。它违漏了数个实际的重点，令我尝试正式做事时感到很沮丧。留意这里针对 CentOS 6。 <span class="anchor" id="line-327"></span><span class="anchor" id="line-328"></span></p><ol type="1"><li><p class="line891"><em>semanage</em> 收录在 <em>policycoreutils-python</em> 这个组件内，它缺省是不被安装的。留意 <em>policycoreutils</em> 是另一个组件。CentOS 7 似乎已经缺省安装 <em>semanage</em>。它依然位于 <em>policycoreutils-python</em> 组件内。 <span class="anchor" id="line-329"></span></p></li><li><p class="line862">在管理系统时，寻找适用的脉络是困难的。其中一个初始化点是 <em>ls -Z</em>。查看一个组件所安装的目录及数据，然后复制所采用的脉络。下一个工具是 <em>seinfo -t</em>，它会列出系统现正应用的所有脉络。grep 你的应用程序的名称。 <span class="anchor" id="line-330"></span></p></li><li><p class="line862">某些情况可通过运用 <em>public_content_rw_t</em> 脉络来解决。一位用户有个目录要由 NFS、Samba 及 Apache 共享。此脉络允许这样做。它也可构成一个安全性漏洞，因此在重视安全的系统上请特别留意。 <span class="anchor" id="line-331"></span></p></li><li><p class="line862">不要忘记 <strong>chcon</strong> 的 -t 参变。它单单设置脉络种类，这也是你普要做的事情，而且较指定 <em>ls -Z</em> 所汇报的整句符串更为容易。 <span class="anchor" id="line-332"></span></p></li><li><p class="line862">应用 <em>audit2allow</em> 比这里的介绍来得简单。当两个脉络出现冲突时，请从 <em>audit.log</em> 找出错误信息并将它们放入独立的文本内。然后这样把错误传给 <em>audit2allow</em>： <span class="anchor" id="line-333"></span></p></li></ol><p class="line867"><span class="anchor" id="line-334"></span></p><pre>audit2allow -M mynewpolicyname &lt;errors.txt</pre><span class="anchor" id="line-335"></span><ul><li style="list-style-type: none;"><p class="line862">这样会产生 <em>mynewpolicyname.te</em> 及 <em>mynewpolicyname.pp</em>，和有用的指引关于如何输入这个新的政策。该政策会批准先前导致冲突的行动。 <span class="anchor" id="line-336"></span><span class="anchor" id="line-337"></span></p><p class="line862">我是尝试令 postfix 执行一个原先安装在非 SELinux 系统上的脚本时，才发现这个程序。在 SELinux 下，该脚本需要在 <em>postfix_pipe_exec_t</em> 脉络下执行，它的后台目录需要有 <em>postfix_pipe_tmp_t</em> 脉络。然而该脚本亦会呼唤 <em>spamassassin</em> 的 <em>spamc</em> 程序进行处埋。很可惜，该程序在 <em>spamc_t</em> 下运行，因此不能读入或写入后台目录。 <span class="anchor" id="line-338"></span><span class="anchor" id="line-339"></span></p><p class="line862">我在 <em>audit.log</em> 内找到两则错误信息：一个是 spamc_t 尝试读入 spool 目录；另一个是写进该目录。针对这些错误信息执行上述步骤后，我们取得如下的 <em>.te</em> 档： <span class="anchor" id="line-340"></span></p></li></ul><p class="line867"><span class="anchor" id="line-341"></span></p><pre>module mynewpolicy 1.0;
+<span class="anchor" id="line-342"></span>
+<span class="anchor" id="line-343"></span>require {
+<span class="anchor" id="line-344"></span>        type spamc_t;
+<span class="anchor" id="line-345"></span>        type postfix_pipe_tmp_t;
+<span class="anchor" id="line-346"></span>        class file { read write };
+<span class="anchor" id="line-347"></span>}
+<span class="anchor" id="line-348"></span>
+<span class="anchor" id="line-349"></span>#============= spamc_t ==============
+<span class="anchor" id="line-350"></span>allow spamc_t postfix_pipe_tmp_t:file { read write };
+<span class="anchor" id="line-351"></span></pre><span class="anchor" id="line-352"></span><ul><li style="list-style-type: none;"><p class="line862">如果你查看最后一行，这个政策容许 <em>spamc_t</em> 脉络读入及写入拥有 <em>postfix_pipe_tmp_t</em> 脉络的文件。<em>spamassassin</em> 便可一如既往般运作。 <span class="anchor" id="line-353"></span><span class="anchor" id="line-354"></span></p></li></ul><p class="line867"><small>Translation of revision 36</small> <span class="anchor" id="line-355"></span><span class="anchor" id="bottom"></span></p></div><p id="pageinfo" class="info" dir="ltr" lang="en">zh/HowTos/SELinux  (last edited 2015-06-27 02:36:43 by <span title="Timothy Lee"><a href="https://wiki.centos.org/TimothyLee" title="Timothy Lee">TimothyLee</a></span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+<div id="footer">
+
+<div class="pageline"><hr style="display: none;"></div>
+
+<ul class="navibar">
+<li class="wikilink"><a href="https://wiki.centos.org/FrontPage">FrontPage</a></li><li class="wikilink"><a href="https://wiki.centos.org/Documentation">Help</a></li><li class="wikilink"><a href="https://wiki.centos.org/TipsAndTricks">Tips and Tricks</a></li><li class="wikilink"><a href="https://wiki.centos.org/HowTos">How To</a></li><li class="wikilink"><a href="https://wiki.centos.org/FAQ">FAQs</a></li><li class="wikilink"><a href="https://wiki.centos.org/Events">Events</a></li><li class="wikilink"><a href="https://wiki.centos.org/Contribute">Contribute</a></li><li class="wikilink"><a href="https://wiki.centos.org/RecentChanges">Changelog</a></li><li class="current"><a href="#">zh/HowTos/SELinux</a></li>
+</ul>
+
+
+<div id="credits">
+<strong><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width: 0px;" src="cc-somerights20.png">
+</a></strong>
+<br>This wiki is licensed under a <em> 
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 Unported License</a></em>.
+</div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><script src="about:blank" async=""></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>linux下GBK-&gt;UTF-8文件编码批量转换脚本 - lexus - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-BlackSun.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="bundle-BlackSun-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/lexus/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/lexus/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/lexus/wlwmanifest.xml">
+<script src="about:blank" type="text/javascript"></script>  
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="top">
+	
+<div>
+	<table class="HeaderTitles">
+		<tbody><tr>
+			<td>
+				<h1 class="HeaderTitle"><a id="Header1_HeaderTitle" class="HeaderMainTitle" href="http://www.cnblogs.com/lexus/">朗志工作室(Langzhi Studio)</a></h1>
+				<p id="tagline">关注爬虫、DSP/DMP</p>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+<div>
+	<table id="HeaderBar" class="HeaderBar">
+		<tbody><tr>
+			<td class="HeaderBarTab" nowrap="">
+				
+&nbsp;
+<a id="blog_nav_sitehome" href="http://www.cnblogs.com/">博客园</a>&nbsp;::
+<a id="blog_nav_myhome" href="http://www.cnblogs.com/lexus/">首页</a>&nbsp;::
+<a id="blog_nav_newpost" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp;::
+<a id="blog_nav_contact" accesskey="9" rel="nofollow" href="https://msg.cnblogs.com/send/lexus">联系</a>&nbsp;::
+<a id="blog_nav_rss" href="http://www.cnblogs.com/lexus/rss">订阅</a>
+<a id="blog_nav_rss_image" class="XMLLink" href="http://www.cnblogs.com/lexus/rss"><img src="xml.gif" alt="订阅"></a>&nbsp;::
+<a id="blog_nav_admin" rel="nofollow" href="https://i.cnblogs.com/">管理</a>
+
+			</td>
+			
+			<td class="HeaderBarTabBack" nowrap="" width="100%">
+				<div id="blog_stats">
+
+	<table class="BlogStatsBar">
+		<tbody><tr>
+			<td width="100%">
+			</td>
+			<td class="BlogStatsBar" nowrap="">
+				&nbsp;
+				12296 
+				Posts&nbsp;::
+				2 Stories
+				::
+				595 Comments
+				::
+				7 Trackbacks
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+
+</div>
+<table id="maintable">
+	<tbody><tr><td id="leftmenu">
+	
+		
+<h3>公告</h3>
+<div class="News">
+	<div id="blog-news">本站大量内容为转载，一般都保留原链接，如果侵犯了你的权益，请以各种方式联系我，我会第一时间修正。<br>
+<!--<br />
+
+将我自己会忘记的内容，觉得好的，想法备在此处，
+所以比较凌乱，莫怪<br />
+
+本人使用scribefire client发博客
+使用如下软件
+komodo edit/vi
+terminator/screen/tmux
+gnome-do/search everything/
+sticky note
+wall-proxy go-agent
+麦库/有道云笔记
+极点五笔
+virtualbox
+SecureCRT/xmanager shell
+ubuntu lucid
+-->
+<!--
+&nbsp;<br />
+<br />
+
+<br />
+<a href="http://www.15-1688.com/" title="15-1688.com(义乌小额批发搜索引擎)-揪出最便宜的货源！" style="display:none"><img src="http://www.15-1688.com/imagesNew/logo-link.gif"></a>
+-->
+<!--
+QQ:1036130199(技术问题交流请直接邮件，别加QQ了，谢谢)
+<br />
+<img height="21" alt="" src="http://images.cnblogs.com/cnblogs_com/lexus/165696916.gif" width="132" border="0" style="display:none"  /><br />
+<br />
+msn/GTalk:
+Frederick.mao&#64;gmail.com
+<br />
+新浪微博:<a href="http://t.sina.com/mlzboy">http://t.sina.com/mlzboy</a>
+<br />
+twitter:<a href="http://twitter.com/mlzboy">http://twitter.com/mlzboy</a>
+<br />
+<img height="22" alt="" src="http://images.cnblogs.com/cnblogs_com/lexus/gmail.gif" width="210" border="0" /><br />
+<br />
+<img alt="" src="http://images.cnblogs.com/cnblogs_com/lexus/116124/r_mine.jpg" width="167" height="122" border="0" />
+<br />
+-->
+<a href="http://www.cnblogs.com/lexus/archive/2011/07/30/2122009.html" style="display: none;">profile 2011</a>
+<!--
+<a href="http://images.cnblogs.com/cnblogs_com/lexus/201109/20110915170558764.gif" target="_blank" title="技能云"><img src="http://images.cnblogs.com/cnblogs_com/lexus/201109/20110915170558764.gif" width="200" height="138"></a>
+-->
+
+
+<!--
+<a href="http://www.chonghuafei.com/chf/index.do?paytype=3&mpartnerid=d27578d062a8cfbba708fdb2b4a56e13" style="display:none;">移动充话费</a>
+
+<b><a href="http://files.cnblogs.com/lexus/%E6%AF%9B%E5%87%8C%E5%BF%97_%E4%BA%AC%E4%B8%9C_%E7%88%AC%E8%99%AB20120509.pdf"><font size="2">简历2012.5</font></a></b>
+<br/>
+<a href="http://files.cnblogs.com/lexus/%E6%AF%9B%E5%87%8C%E5%BF%97_%E5%BA%94%E8%81%98IT%E7%B1%BB%E8%81%8C%E4%BD%8D%E7%AE%80%E5%8E%8620110916.pdf"><font size="2">简历2011.9</font></a>
+<br/>
+<a href="http://files.cnblogs.com/lexus/%E6%AF%9B%E5%87%8C%E5%BF%97-%E5%BA%94%E8%81%98%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E7%B1%BB%E8%81%8C%E4%BD%8D.pdf"><font size="2">简历2010.7</font></a>
+<br/>
+<a href="http://www.flickr.com/photos/mlzboy/archives/date-posted/2011/09/22/">项目截图</a>
+<br/>
+
+
+
+
+
+<a href="http://auction1.taobao.com/auction/0/item_detail-0db1-2e8ffe1c63e2d640e1db56d551c5c0e7.jhtml" target="_blank" style="display:none"><img style="width: 167px; height: 241px" height="241" alt="" src="http://images.cnblogs.com/cnblogs_com/lexus/student.jpg" width="167" border="0" /></a> 
+
+
+<a href="http://www.vancl.com?source=mlzboy" target="_blank">凡客诚品</a>
+<a href="http://union.dangdang.com/transfer.php?from=P-302745&ad_type=10&sys_id=1&backurl=http%3A%2F%2Fsearch.dangdang.com%2Fsearch.php%3Fkey%3Dpython" target="_blank">当当网</a>
+<a target="_blank" href="http://www.amazon.cn/b?_encoding=UTF8&node=658414051&tag=savedaddy-23&linkCode=ur2&camp=536&creative=3200">亚马逊</a><img src="http://www.assoc-amazon.cn/e/ir?t=savedaddy-23&l=ur2&o=28" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<br/>
+
+
+<br>
+<img src="http://images.cnblogs.com/cnblogs_com/lexus/443049/r_qr_name_card.png" />
+<br><br>
+
+-->
+<!-- SHIBABANG SHARE BEGIN -->
+
+<!--
+<a href="http://www.shibabang.com/addthis/bookmark.html" onmouseOver="javascript:sbb_addthis_open(this,'[URL]','[TITLE]');" onmouseOut="javascript:sbb_addthis_close();" onclick="javascript:return sbb_addthis_sendto();"><img src="http://www.shibabang.com/media/images/bookmark-btn/1.gif" border=0 alt="分享"></a>
+-->
+<div style="display: none;" id="__document_write_ajax_div-2"></div>
+<!-- SHIBABANG SHARE END -->
+
+<div style="display: none;" id="__document_write_ajax_div-3"></div>
+<div style="display: none;" id="__document_write_ajax_div-4"></div>
+<br>
+<br>
+<!-- Feedsky FEED发布代码开始 -->
+<!-- FEED自动发现标记开始 -->
+<link title="RSS 2.0" type="application/rss+xml" href="http://feed.feedsky.com/lexus" rel="alternate">
+<!-- FEED自动发现标记结束 -->
+<!--
+<a href="http://www.zhuaxia.com/add_channel.php?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_zhuaxia.gif" alt="&#25235;&#34430;" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.pageflakes.com/subscribe.aspx?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_pageflakes.gif" alt="pageflakes" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.rojo.com/add-subscription?resource=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_rojo.gif" alt="Rojo" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://fusion.google.com/add?feedurl=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_google.gif" alt="google reader" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.netvibes.com/subscribe.php?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_netvibes.gif" alt="netvibes" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://add.my.yahoo.com/rss?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_yahoo.gif" alt="my yahoo" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.newsgator.com/ngs/subscriber/subfext.aspx?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_newsgator.gif" alt="newsgator" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.bloglines.com/sub/http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_bloglines.gif" alt="bloglines" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.xianguo.com/subscribe.php?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_xianguo.gif" alt="&#40092;&#26524;" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://inezha.com/add?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_nazha.gif" alt="&#21738;&#21522;" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://reader.youdao.com/b.do?keyfrom=feedsky&url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_youdao.gif" alt="&#26377;&#36947;" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://mail.qq.com/cgi-bin/feed?u=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot01_qq.gif" alt="QQ&#37038;&#31665;" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.zhuaxia.com/add_channel.php?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_zhuaxia.gif" alt="&#25235;&#34430;" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.pageflakes.com/subscribe.aspx?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_pageflakes.gif" alt="pageflakes" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.rojo.com/add-subscription?resource=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_rojo.gif" alt="Rojo" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://fusion.google.com/add?feedurl=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_google.gif" alt="google reader" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.netvibes.com/subscribe.php?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_netvibes.gif" alt="netvibes" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://add.my.yahoo.com/rss?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_yahoo.gif" alt="my yahoo" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.newsgator.com/ngs/subscriber/subfext.aspx?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_newsgator.gif" alt="newsgator" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.bloglines.com/sub/http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_bloglines.gif" alt="bloglines" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://www.xianguo.com/subscribe.php?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_xianguo.gif" alt="&#40092;&#26524;" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://inezha.com/add?url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_nazha.gif" alt="&#21738;&#21522;" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://reader.youdao.com/b.do?keyfrom=feedsky&url=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_youdao.gif" alt="&#26377;&#36947;" vspace="2" style="margin-bottom:3px" ></a><br />
+<a href="http://mail.qq.com/cgi-bin/feed?u=http://feed.feedsky.com/lexus"><img border="0" src="http://img.feedsky.com/images/icon_subshot02_qq.gif" alt="QQ&#37038;&#31665;" vspace="2" style="margin-bottom:3px" ></a><br />
+-->
+<!-- Feedsky FEED发布代码结束 --><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/lexus/">lexus</a><br>园龄：<a href="http://home.cnblogs.com/u/lexus/" title="入园时间：2007-03-20">9年9个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/lexus/followers/">172</a><br>关注：<a href="http://home.cnblogs.com/u/lexus/followees/">5</a><div id="p_b_follow"></div><div style="display: none;" id="__document_write_ajax_div-5"></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+		<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" class="input_my_zzk" type="text">&nbsp;<input value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/lexus/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/lexus/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/lexus/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/lexus/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/lexus/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/lexus/tag/ajax/">ajax</a>(2)</li><li><a href="http://www.cnblogs.com/lexus/tag/ajaxpro/">ajaxpro</a>(2)</li><li><a href="http://www.cnblogs.com/lexus/tag/tips/">tips</a>(2)</li><li><a href="http://www.cnblogs.com/lexus/tag/%E7%AE%80%E5%8E%86/">简历</a>(2)</li><li><a href="http://www.cnblogs.com/lexus/tag/%E6%AD%A3%E5%88%99/">正则</a>(2)</li><li><a href="http://www.cnblogs.com/lexus/tag/%E8%87%AA%E5%AE%9A%E4%B9%89%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%20threadpool/">自定义 线程池 threadpool</a>(1)</li><li><a href="http://www.cnblogs.com/lexus/tag/%E8%87%AA%E5%AE%9A%E5%88%B6%E3%80%80%E7%BA%BF%E7%A8%8B%E6%B1%A0%E3%80%80thread%20pool%20custom%20pool/">自定制　线程池　thread pool custom pool</a>(1)</li><li><a href="http://www.cnblogs.com/lexus/tag/%E8%87%AA%E5%88%B6%E3%80%80%E7%BA%BF%E5%92%8C%E6%B1%A0%E3%80%80threadpool/">自制　线和池　threadpool</a>(1)</li><li><a href="http://www.cnblogs.com/lexus/tag/2007/">2007</a>(1)</li><li><a href="http://www.cnblogs.com/lexus/tag/%E7%AE%80%E5%8E%86%E3%80%80resume%20cv/">简历　resume cv</a>(1)</li><li><a href="http://www.cnblogs.com/lexus/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="mainMenuBackground">
+
+		<h3>随笔分类<span style="font-size: 11px; font-weight: normal;">(139)</span></h3>
+		
+				<ul>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/lexus/category/257494.html">AjaxPro教程(2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/lexus/category/114267.html">AOP(4)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/lexus/category/114271.html">ASP</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/lexus/category/114269.html">ASP.NET(18)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/lexus/category/114270.html">C#(49)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/lexus/category/223979.html">db4o</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/lexus/category/114262.html">FAQ(13)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/lexus/category/223978.html">ibatis</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/lexus/category/223973.html">iphone</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/lexus/category/114272.html">JSP</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/lexus/category/223972.html">Linux(2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/lexus/category/223992.html">mac(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/lexus/category/114275.html">ORM(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/lexus/category/223982.html">php(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/lexus/category/114287.html">python(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/lexus/category/150880.html">remoting</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/lexus/category/114286.html">RoR</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/lexus/category/223977.html">subsonic(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/lexus/category/223987.html">tdd</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/lexus/category/114278.html">WEB2.0</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/lexus/category/124492.html">安装部署(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/lexus/category/114266.html">版本控制(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/lexus/category/223981.html">创业(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/lexus/category/150878.html">单元测试(2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/lexus/category/116119.html">分布式</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/lexus/category/150879.html">分布式信息采集基础开发平台</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/lexus/category/114281.html">工作流&amp;Petri</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/lexus/category/223988.html">计划(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/lexus/category/223976.html">技术聚会(2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/lexus/category/114276.html">架构&amp;分层(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/lexus/category/124773.html">简历(3)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/lexus/category/114274.html">建模</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/lexus/category/114273.html">开发人员工具(2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/lexus/category/223983.html">开源</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/lexus/category/114264.html">控件</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/lexus/category/112110.html">朗志轻量级项目管理解决方案(5)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/lexus/category/223985.html">牢骚话</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/lexus/category/114285.html">灵异想法(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/lexus/category/223993.html">面试</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/lexus/category/116120.html">爬虫</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/lexus/category/116122.html">其它(2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/lexus/category/223980.html">奇技淫巧(4)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/lexus/category/114265.html">软件工程</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/lexus/category/114248.html">软件控件使用说明指南</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/lexus/category/114277.html">设计模式</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/lexus/category/114284.html">生活感悟(16)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/lexus/category/116118.html">书籍阅读</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/lexus/category/124490.html">数据库(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/lexus/category/223996.html">图书比价&amp;购物搜索</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/lexus/category/114279.html">文本挖掘</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/lexus/category/223994.html">我的不成气的作品(1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/lexus/category/150877.html">线程池</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/lexus/category/114280.html">信息抽取</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/lexus/category/114283.html">业界信息</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/lexus/category/114263.html">源码</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/lexus/category/114282.html">在线作业系统</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/lexus/category/223975.html">整合行销(2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/lexus/category/116121.html">作业调度</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				</ul>
+			
+	
+		<h3>随笔档案<span style="font-size: 11px; font-weight: normal;">(12286)</span></h3>
+		
+				<ul>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/lexus/archive/2017/01.html">2017年1月 (32)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/lexus/archive/2016/12.html">2016年12月 (21)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/lexus/archive/2016/11.html">2016年11月 (55)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/lexus/archive/2016/10.html">2016年10月 (20)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/lexus/archive/2016/09.html">2016年9月 (32)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/lexus/archive/2016/08.html">2016年8月 (92)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/lexus/archive/2016/07.html">2016年7月 (86)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/lexus/archive/2016/06.html">2016年6月 (74)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/lexus/archive/2016/05.html">2016年5月 (65)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/lexus/archive/2016/04.html">2016年4月 (50)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/lexus/archive/2016/03.html">2016年3月 (103)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/lexus/archive/2016/02.html">2016年2月 (5)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/lexus/archive/2016/01.html">2016年1月 (30)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/lexus/archive/2015/12.html">2015年12月 (1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/lexus/archive/2015/11.html">2015年11月 (2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/lexus/archive/2015/10.html">2015年10月 (5)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/lexus/archive/2015/09.html">2015年9月 (75)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/lexus/archive/2015/08.html">2015年8月 (21)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/lexus/archive/2015/07.html">2015年7月 (70)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/lexus/archive/2015/06.html">2015年6月 (25)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/lexus/archive/2015/05.html">2015年5月 (32)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/lexus/archive/2015/04.html">2015年4月 (1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/lexus/archive/2015/03.html">2015年3月 (4)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/lexus/archive/2015/02.html">2015年2月 (15)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/lexus/archive/2015/01.html">2015年1月 (28)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/lexus/archive/2014/12.html">2014年12月 (43)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/lexus/archive/2014/11.html">2014年11月 (14)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/lexus/archive/2014/10.html">2014年10月 (12)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/lexus/archive/2014/09.html">2014年9月 (41)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/lexus/archive/2014/08.html">2014年8月 (71)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/lexus/archive/2014/07.html">2014年7月 (41)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/lexus/archive/2014/06.html">2014年6月 (101)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/lexus/archive/2014/05.html">2014年5月 (172)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/lexus/archive/2014/04.html">2014年4月 (119)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_34" href="http://www.cnblogs.com/lexus/archive/2014/03.html">2014年3月 (236)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_35" href="http://www.cnblogs.com/lexus/archive/2014/02.html">2014年2月 (104)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_36" href="http://www.cnblogs.com/lexus/archive/2014/01.html">2014年1月 (103)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_37" href="http://www.cnblogs.com/lexus/archive/2013/12.html">2013年12月 (129)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_38" href="http://www.cnblogs.com/lexus/archive/2013/11.html">2013年11月 (84)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_39" href="http://www.cnblogs.com/lexus/archive/2013/10.html">2013年10月 (184)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_40" href="http://www.cnblogs.com/lexus/archive/2013/09.html">2013年9月 (145)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_41" href="http://www.cnblogs.com/lexus/archive/2013/08.html">2013年8月 (151)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_42" href="http://www.cnblogs.com/lexus/archive/2013/07.html">2013年7月 (78)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_43" href="http://www.cnblogs.com/lexus/archive/2013/06.html">2013年6月 (36)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_44" href="http://www.cnblogs.com/lexus/archive/2013/05.html">2013年5月 (43)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_45" href="http://www.cnblogs.com/lexus/archive/2013/04.html">2013年4月 (177)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_46" href="http://www.cnblogs.com/lexus/archive/2013/03.html">2013年3月 (503)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_47" href="http://www.cnblogs.com/lexus/archive/2013/02.html">2013年2月 (212)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_48" href="http://www.cnblogs.com/lexus/archive/2013/01.html">2013年1月 (765)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_49" href="http://www.cnblogs.com/lexus/archive/2012/12.html">2012年12月 (657)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_50" href="http://www.cnblogs.com/lexus/archive/2012/11.html">2012年11月 (304)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_51" href="http://www.cnblogs.com/lexus/archive/2012/10.html">2012年10月 (146)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_52" href="http://www.cnblogs.com/lexus/archive/2012/09.html">2012年9月 (190)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_53" href="http://www.cnblogs.com/lexus/archive/2012/08.html">2012年8月 (168)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_54" href="http://www.cnblogs.com/lexus/archive/2012/07.html">2012年7月 (353)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_55" href="http://www.cnblogs.com/lexus/archive/2012/06.html">2012年6月 (329)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_56" href="http://www.cnblogs.com/lexus/archive/2012/05.html">2012年5月 (538)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_57" href="http://www.cnblogs.com/lexus/archive/2012/04.html">2012年4月 (569)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_58" href="http://www.cnblogs.com/lexus/archive/2012/03.html">2012年3月 (642)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_59" href="http://www.cnblogs.com/lexus/archive/2012/02.html">2012年2月 (594)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_60" href="http://www.cnblogs.com/lexus/archive/2012/01.html">2012年1月 (165)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_61" href="http://www.cnblogs.com/lexus/archive/2011/12.html">2011年12月 (223)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_62" href="http://www.cnblogs.com/lexus/archive/2011/11.html">2011年11月 (252)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_63" href="http://www.cnblogs.com/lexus/archive/2011/10.html">2011年10月 (345)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_64" href="http://www.cnblogs.com/lexus/archive/2011/09.html">2011年9月 (198)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_65" href="http://www.cnblogs.com/lexus/archive/2011/08.html">2011年8月 (158)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_66" href="http://www.cnblogs.com/lexus/archive/2011/07.html">2011年7月 (38)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_67" href="http://www.cnblogs.com/lexus/archive/2011/06.html">2011年6月 (14)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_68" href="http://www.cnblogs.com/lexus/archive/2011/05.html">2011年5月 (51)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_69" href="http://www.cnblogs.com/lexus/archive/2011/04.html">2011年4月 (16)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_70" href="http://www.cnblogs.com/lexus/archive/2011/03.html">2011年3月 (28)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_71" href="http://www.cnblogs.com/lexus/archive/2011/02.html">2011年2月 (83)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_72" href="http://www.cnblogs.com/lexus/archive/2011/01.html">2011年1月 (122)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_73" href="http://www.cnblogs.com/lexus/archive/2010/12.html">2010年12月 (174)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_74" href="http://www.cnblogs.com/lexus/archive/2010/11.html">2010年11月 (161)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_75" href="http://www.cnblogs.com/lexus/archive/2010/10.html">2010年10月 (148)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_76" href="http://www.cnblogs.com/lexus/archive/2010/09.html">2010年9月 (228)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_77" href="http://www.cnblogs.com/lexus/archive/2010/08.html">2010年8月 (175)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_78" href="http://www.cnblogs.com/lexus/archive/2010/07.html">2010年7月 (61)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_79" href="http://www.cnblogs.com/lexus/archive/2010/06.html">2010年6月 (40)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_80" href="http://www.cnblogs.com/lexus/archive/2010/05.html">2010年5月 (121)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_81" href="http://www.cnblogs.com/lexus/archive/2010/04.html">2010年4月 (102)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_82" href="http://www.cnblogs.com/lexus/archive/2010/03.html">2010年3月 (70)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_83" href="http://www.cnblogs.com/lexus/archive/2010/02.html">2010年2月 (26)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_84" href="http://www.cnblogs.com/lexus/archive/2010/01.html">2010年1月 (16)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_85" href="http://www.cnblogs.com/lexus/archive/2009/12.html">2009年12月 (15)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_86" href="http://www.cnblogs.com/lexus/archive/2009/11.html">2009年11月 (1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_87" href="http://www.cnblogs.com/lexus/archive/2009/10.html">2009年10月 (3)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_88" href="http://www.cnblogs.com/lexus/archive/2009/09.html">2009年9月 (3)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_89" href="http://www.cnblogs.com/lexus/archive/2009/08.html">2009年8月 (3)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_90" href="http://www.cnblogs.com/lexus/archive/2009/07.html">2009年7月 (11)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_91" href="http://www.cnblogs.com/lexus/archive/2009/06.html">2009年6月 (1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_92" href="http://www.cnblogs.com/lexus/archive/2009/05.html">2009年5月 (6)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_93" href="http://www.cnblogs.com/lexus/archive/2009/04.html">2009年4月 (4)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_94" href="http://www.cnblogs.com/lexus/archive/2009/03.html">2009年3月 (9)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_95" href="http://www.cnblogs.com/lexus/archive/2009/02.html">2009年2月 (9)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_96" href="http://www.cnblogs.com/lexus/archive/2009/01.html">2009年1月 (14)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_97" href="http://www.cnblogs.com/lexus/archive/2008/12.html">2008年12月 (16)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_98" href="http://www.cnblogs.com/lexus/archive/2008/11.html">2008年11月 (17)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_99" href="http://www.cnblogs.com/lexus/archive/2008/10.html">2008年10月 (13)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_100" href="http://www.cnblogs.com/lexus/archive/2008/09.html">2008年9月 (14)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_101" href="http://www.cnblogs.com/lexus/archive/2008/08.html">2008年8月 (38)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_102" href="http://www.cnblogs.com/lexus/archive/2008/07.html">2008年7月 (4)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_103" href="http://www.cnblogs.com/lexus/archive/2008/06.html">2008年6月 (4)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_104" href="http://www.cnblogs.com/lexus/archive/2008/04.html">2008年4月 (2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_105" href="http://www.cnblogs.com/lexus/archive/2008/03.html">2008年3月 (8)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_106" href="http://www.cnblogs.com/lexus/archive/2008/02.html">2008年2月 (5)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_107" href="http://www.cnblogs.com/lexus/archive/2008/01.html">2008年1月 (2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_108" href="http://www.cnblogs.com/lexus/archive/2007/12.html">2007年12月 (4)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_109" href="http://www.cnblogs.com/lexus/archive/2007/11.html">2007年11月 (47)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_110" href="http://www.cnblogs.com/lexus/archive/2007/10.html">2007年10月 (2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_111" href="http://www.cnblogs.com/lexus/archive/2007/09.html">2007年9月 (1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_112" href="http://www.cnblogs.com/lexus/archive/2007/08.html">2007年8月 (2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_113" href="http://www.cnblogs.com/lexus/archive/2007/07.html">2007年7月 (11)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_114" href="http://www.cnblogs.com/lexus/archive/2007/05.html">2007年5月 (3)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_115" href="http://www.cnblogs.com/lexus/archive/2007/03.html">2007年3月 (1)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				</ul>
+			
+	
+		<h3>相册<span style="font-size: 11px; font-weight: normal;">(5)</span></h3>
+		
+				<ul>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_2_Link_0" href="http://www.cnblogs.com/lexus/gallery/116124.html" rel="nofollow">My Photo(2)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_2_Link_1" href="http://www.cnblogs.com/lexus/gallery/443049.html" rel="nofollow">qr_name_card(3)</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				</ul>
+			
+	
+		<h3>北京</h3>
+		
+				<ul>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_3_Link_0" href="http://mlzboy.jahee.com/" rel="nofollow" target="_blank">朗志工作室</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_3_Link_1" href="http://mlzboy.jahee.com/bbs/dispbbs.asp?boardID=16&amp;ID=354" rel="nofollow">我的不成气的作品</a>
+					<span style="width: 10px;">
+						
+					</span> 
+				</li>
+			
+				</ul>
+			
+	
+</div></div><div id="sidebar_scorerank" class="sidebar-block">
+<h3>积分与排名</h3>
+<ul>
+	<li>
+		积分 -
+		1228939
+	</li><li>
+		排名 -
+		40
+	</li>
+</ul>
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lexus/archive/2012/04/07/2435647.html#3569998">1. Re:django 的 ORM 单独使用 - vkill'blog - “技术本身没有太多价值，掌握了新的思考方式才是真的收获”</a></li>
+        <li class="recent_comment_body">这个方法在最新的版本中已经不行了</li>
+        <li class="recent_comment_author">--想不到</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lexus/archive/2012/07/15/2592330.html#3521952">2. Re:Linux Socket编程（不限Linux） - 吴秦 - 博客园</a></li>
+        <li class="recent_comment_body">吴大哥，你好。 正在学习你的博客。 你的博客给我带来很多收获，我有幸有一台服务器，我将你的源代码复制到服务器编译运行， 而且我将 客户端程序代码运行在虚拟机上， 我发现，这俩程序并没有发生啥联系，......</li>
+        <li class="recent_comment_author">--会的</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lexus/archive/2012/07/08/2581131.html#3510045">3. Re:免费下载百度文库文档、免注册、免登录、免财富值 - 帮手网-云下载</a></li>
+        <li class="recent_comment_body">博主给个提示吧！</li>
+        <li class="recent_comment_author">--或与非123</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lexus/archive/2012/07/08/2581131.html#3510044">4. Re:免费下载百度文库文档、免注册、免登录、免财富值 - 帮手网-云下载</a></li>
+        <li class="recent_comment_body">123456 怎么不可以用？</li>
+        <li class="recent_comment_author">--或与非123</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/lexus/p/3350022.html#3442386">5. Re:王垠：Lisp 已死，Lisp 万岁！</a></li>
+        <li class="recent_comment_body">vvv</li>
+        <li class="recent_comment_author">--杨宪</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/lexus/archive/2012/02/20/2358861.html">1. JDK1.6官方下载_JDK6官方下载地址:http://www.java.net/download(199665)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/11/29/1891378.html">2. jquery数组(46459)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/08/28/1810689.html">3. 如何清除本地DNS缓存 windows(44453)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2007/11/29/977281.html">4. AjaxPro使用说明(35552)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2012/02/21/2360944.html">5. HTTP Request header(29097)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2012/02/24/2365999.html">6. linux设置开机服务自动启动/关闭自动启动命令_我断了思念的空间_百度空间(17087)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2012/05/25/2518421.html">7.  想问一下：“哟哟切克闹”是什么意思啊？！哪里出来的？(10941)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2012/01/26/2329544.html">8. maven常用命令介绍(9727)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2012/02/28/2372646.html">9. Video &amp; Slides From TorqueBox at ATL JBUG(9216)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2012/06/25/2561577.html">10. 北京个人ADSL和企业ADSL有什么区别啊？(9159)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/11/15/2249238.html">11. 怎么建立socket长连接？？？(8566)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/09/14/1826381.html">12. 163data.com.cn是什么？终于搞清楚了... (7848)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/09/04/1818273.html">13. Ubuntu 修改IP地址(7385)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/11/30/2268896.html">14. apt-get update;apt-get upgrade;apt-get dist-upgrade各自的作用(6812)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/04/09/2010709.html">15. 义乌江东货运市场托运指南(6787)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/10/03/1841651.html">16. Python中的SET集合操作(6572)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/12/08/1899978.html">17. javascript:void(0)(6479)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/09/22/2185581.html">18. MyEclipse 9.1 下载 注册 破解 激活 注册码(6075)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/10/12/1848429.html">19. OTOH a.k.a on the other hand(5708)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/09/04/1818232.html">20. CSS控制ul缩进间距和去掉li点的方法(5413)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/lexus/archive/2007/11/29/977281.html">1. AjaxPro使用说明(32)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2008/09/11/1289415.html">2. 北京互联网创业团队诚邀英才加盟(26)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2009/05/06/1451063.html">3. 我用自己做的图书比价搜索买了一本书(24)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/02/10/1950943.html">4. 网站更新部署20110210,新站部署全过程记录(22)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2008/06/03/1212580.html">5. 自己用的个人展示网站，刚出炉（含源码）(20)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/04/16/1713188.html">6. 小毛thinking:why c# sucks and python rocks(17)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2007/07/03/803751.html">7. 北京地区求职 个人中文简历20070703 v0.1(13)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2007/11/10/955160.html">8. 朗志轻量级项目管理解决方案－RBAC角色权限模块介绍(11)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2008/08/03/1259446.html">9. 自制小工具　StringBuilder生成器(10)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2007/08/03/840916.html">10. 关于业务规则层、业务实体层、业务外观层、模型层的作用很不清楚，殷切期望解答(10)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/08/28/1810689.html">11. 如何清除本地DNS缓存 windows(10)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2009/01/15/1376696.html">12. 抛砖引玉,说平台概念(9)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/07/27/1785685.html">13. nginx最新部署(9)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2012/02/21/2360944.html">14. HTTP Request header(9)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2008/04/18/1159900.html">15. .net 3.0给我的思考(8)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2008/08/08/1263718.html">16. 关于ThreadPool.RegisterWaitForSingleObject和WaitHandle的应用介绍(7)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/08/17/1801923.html">17. *qian翻(7)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/09/17/1829474.html">18. http://www.seowhy.com/bbs/thread-38114-1-1.html(7)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2007/09/19/899207.html">19. 静态织入和动态织入是什么意思？(6)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2008/03/20/1115338.html">20. 北京爱酷T恤部落B2C电子商务网站改版　案例分析(6)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/lexus/archive/2012/02/21/2360944.html">1. HTTP Request header(25)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2007/11/29/977281.html">2. AjaxPro使用说明(11)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/01/11/1643985.html">3. iBatis.net入门指南(3)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/10/07/2200433.html">4. neo4j使用指南(2)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/11/29/1891378.html">5. jquery数组(2)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/11/28/1890245.html">6. ubuntu下安装php环境(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/09/18/1830145.html">7. Python中静态方法的实现 (1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/08/28/1810689.html">8. 如何清除本地DNS缓存 windows(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/11/30/2268549.html">9. 推荐系统之协同过滤概述 (1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/11/28/2265849.html">10. RStudio(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/11/19/2254804.html">11. servicestack Redis Admin UI &amp; redis data virsualization(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/11/19/2254798.html">12. How to use epoll? A complete example in C(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/11/15/2249238.html">13. 怎么建立socket长连接？？？(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/10/19/2217345.html">14. linux socket网络编程进阶推荐阅读开源项目--转(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/10/15/2212913.html">15. 山东电视，闯关上梁山(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/10/13/2210805.html">16. WebDAV介绍(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/10/10/2205403.html">17. vpn business(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2011/10/07/2200437.html">18. neo4j简单学习(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2008/08/17/1269895.html">19. Mock介绍(1)</a></li><li><a href="http://www.cnblogs.com/lexus/archive/2010/02/12/1667966.html">20. 春晚架构＆Ylmf OS&amp;Chrom OS(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+	
+</td><td id="main">
+	
+<div id="post_detail">
+<div class="post">
+			<div class="postTitle">
+				<a id="cb_post_title_url" href="#">linux下GBK-&gt;UTF-8文件编码批量转换脚本</a>
+			</div>
+	
+	<div class="postText">
+		<div id="cnblogs_post_body"><p>&nbsp;</p><blockquote><table style="border-collapse: collapse; width: 95%;" bgcolor="#f1f1f1" border="1" bordercolor="#999999" cellpadding="0" cellspacing="0"><tbody><tr><td>inux下GBK-&gt;UTF-8_fly123456789-ChinaUnix博客<br><br>&nbsp;&nbsp;&nbsp; linux下GBK-&gt;UTF-8文件编码批量转换脚本<br><br>&nbsp;&nbsp;&nbsp; find default -type d -exec mkdir -p utf/{} ;<br>&nbsp;&nbsp;&nbsp; find default -type f -exec iconv -f GBK -t UTF-8 {} -o utf/{} ;<br>&nbsp;&nbsp;&nbsp; 这两行命令将default目录下的文件由GBK编码转换为UTF-8编码，目录结构不变，转码后的文件保存在utf/default目录下。<br><br><br>&nbsp;&nbsp;&nbsp; linux C gbk utf 8编码转换<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // --&gt;<br>&nbsp;&nbsp;&nbsp; 用linux C 下的函数调用创建中文目录、文件等，字符串的编码格式要求是utf-8格式的。<br>&nbsp;&nbsp;&nbsp; 比如想要使用 int mkdir(const char *pathname, mode_t mode); 创建一个中文的目录。那么pathname的编码格式要求是utf-8的，而不能是gb3212/gbk的，否则就是乱码。<br>&nbsp;&nbsp;&nbsp; 那么如果linux C下如何进行gbk&lt;----&gt;utf-8编码转换的编码装换的？使用的是iconv函数簇。<br>&nbsp;&nbsp;&nbsp; #include &lt;iconv.h&gt;<br>&nbsp;&nbsp;&nbsp; int code_convert(char *from_charset,char *to_charset,char *inbuf,int inlen,char *outbuf,int outlen)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp; iconv_t cd;<br>&nbsp;&nbsp;&nbsp; int rc;<br>&nbsp;&nbsp;&nbsp; char **pin = &amp;inbuf;<br>&nbsp;&nbsp;&nbsp; char **pout = &amp;outbuf;<br>&nbsp;&nbsp;&nbsp; cd = iconv_open(to_charset,from_charset);<br>&nbsp;&nbsp;&nbsp; if (cd==0)<br>&nbsp;&nbsp;&nbsp; return -1;<br>&nbsp;&nbsp;&nbsp; memset(outbuf,0,outlen);<br>&nbsp;&nbsp;&nbsp; if (iconv(cd,pin,&amp;inlen,pout,&amp;outlen) == -1)<br>&nbsp;&nbsp;&nbsp; return -1;<br>&nbsp;&nbsp;&nbsp; iconv_close(cd);<br>&nbsp;&nbsp;&nbsp; return 0;<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; int u2g(char *inbuf,int inlen,char *outbuf,int outlen)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp; return code_convert("utf-8","gb2312",inbuf,inlen,outbuf,outlen);<br>&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; int g2u(char *inbuf,size_t inlen,char *outbuf,size_t outlen)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp; return code_convert("gb2312","utf-8",inbuf,inlen,outbuf,outlen);<br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; 其中<br>&nbsp;&nbsp;&nbsp; iconv函数族的头文件是iconv.h,使用前需包含之。<br>&nbsp;&nbsp;&nbsp; #include &lt;iconv.h&gt;<br>&nbsp;&nbsp;&nbsp; iconv函数族有三个函数,原型如下:<br>&nbsp;&nbsp;&nbsp; (1) iconv_t iconv_open(const char *tocode, const char *fromcode);<br>&nbsp;&nbsp;&nbsp; 此函数说明将要进行哪两种编码的转换,tocode是目标编码,fromcode是原编码,该函数返回一个转换句柄,供以下两个函数使用。<br>&nbsp;&nbsp;&nbsp; (2) size_t iconv(iconv_t cd,char **inbuf,size_t *inbytesleft,char **outbuf,size_t *outbytesleft);<br>&nbsp;&nbsp;&nbsp; 此函数从inbuf中读取字符,转换后输出到outbuf中,inbytesleft用以记录还未转换的字符数,outbytesleft用以记录输出缓冲的剩余空间。<br>&nbsp;&nbsp;&nbsp; (3) int iconv_close(iconv_t cd);<br>&nbsp;&nbsp;&nbsp; 此函数用于关闭转换句柄,释放资源。 ......<br><br><br><br>&nbsp;&nbsp;&nbsp; C编程：使用iconv把GB2312编码转换为UTF-8编码<br><br>&nbsp;&nbsp;&nbsp; C编程：使用iconv把GB2312编码转换为UTF-8编码<br><br>&nbsp;&nbsp;&nbsp; #include &lt;stdio.h&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #include &lt;string.h&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #include &lt;iconv.h&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int gb2312_to_utf8(char *in, char *out, size_t size);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int main(int argc, char *argv[]) {<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char *wc = "我";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char *str = "Beijing北京";<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char out[100];<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (gb2312_to_utf8(wc, out, 100) != 0) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%s\n", out);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (gb2312_to_utf8(str, out, 100) != 0) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%s\n", out);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int gb2312_to_utf8(char *in, char *out, size_t size) {<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //使用iconv转换GB2312为UTF-8编码<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iconv_t cd;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cd = iconv_open("UTF-8", "GB2312");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( cd == (iconv_t)(-1) ) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; perror("iconv_open failed");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; size_t in_left = strlen(in) + 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char *out_ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; size_t res;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out_ptr = out;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; res = iconv(cd, &amp;in, &amp;in_left, &amp;out_ptr, &amp;size);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( res == (size_t) (-1) ) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; perror("iconv failed");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iconv_close(cd);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</td></tr></tbody></table></blockquote></div><div style="display: block;" id="MySignature">发上等愿
+结中等缘
+谋下等福</div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a id="green_channel_digg">好文要顶</a>
+            <a id="green_channel_follow">关注我</a>
+    <a id="green_channel_favorite">收藏该文</a>
+    <a id="green_channel_weibo" title="分享至新浪微博"><img src="icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" title="分享至微信"><img src="wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lexus/" target="_blank"><img src="20160907075405.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lexus/">lexus</a><br>
+            <a href="http://home.cnblogs.com/u/lexus/followees">关注 - 5</a><br>
+            <a href="http://home.cnblogs.com/u/lexus/followers">粉丝 - 172</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a>+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/lexus/archive/2012/12/19/2824769.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/lexus/archive/2012/12/19/2824769.html" title="发布于2012-12-19 13:13"> iconv字符编码转换 UTF-8 UCS-2(LE/BE) GBK</a><br><a href="http://www.cnblogs.com/lexus/archive/2012/12/19/2825114.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/lexus/archive/2012/12/19/2825114.html" title="发布于2012-12-19 16:11"> linux zip,linux下打包zip文件</a><br></div>
+</div>
+
+
+	</div>
+	
+	<div class="postfoot">
+		posted on <span id="post-date">2012-12-19 13:14</span> <a href="http://www.cnblogs.com/lexus/">lexus</a> 阅读(<span id="post_view_count">234</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=2824770" rel="nofollow">编辑</a> <a href="#">收藏</a>
+	</div>
+</div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" class="underline">登录</a> 或 <a rel="nofollow" class="underline">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://arcapp.anruichina.com/arctrac/trac?tid=smb_azure_1212_CNBlog" target="_blank">【活动】一元专享1500元微软智能云Azure</a><br><a href="http://rongcloud.cn/reports/journal2" target="_blank">【推荐】融云发布 App 社交化白皮书 IM 提升活跃超 8 倍</a><br><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank">【推荐】自开发 零实施的BPM</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/560771/" target="_blank">Snapchat凭什么估值250亿美元？</a><br> ·  <a href="http://news.cnblogs.com/n/560769/" target="_blank">如何找到创业的启动资金？</a><br> ·  <a href="http://news.cnblogs.com/n/560768/" target="_blank">又一波宅男福利来了，找这个AR萌妹纸做女朋友怎么样？</a><br> ·  <a href="http://news.cnblogs.com/n/560767/" target="_blank">丰田认怂，宣布在美投资100亿美元</a><br> ·  <a href="http://news.cnblogs.com/n/560766/" target="_blank">Google告诉你，在博物馆还能用AR这么玩</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank"><img src="35695-20161213142353073-1602158633.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/554260/" target="_blank">「代码家」的学习过程和学习经验分享</a><br> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+
+</td></tr>
+</tbody></table>
+
+<p id="footer">
+	Copyright @
+	lexus<br>
+	Powered by:
+	<a href="http://scottwater.com/blog" target="_blank">.Text</a> and 
+	<a href="http://asp.net/" target="_blank">ASP.NET</a>
+	<br>
+	Theme by: <a href="http://www.dotnetmonster.com/" target="_blank">.NET Monster</a>
+</p>
+
+
+<!--PageEndHtml Block Begin-->
+<script language="javascript" type="text/javascript" src="about:blank"></script><a href="http://www.51.la/?4072831" target="_blank" title="51.La 网站流量统计系统"><img alt="51.La 网站流量统计系统" src="icon_8.gif" style="border: medium none;"></a>
+
+<script type="text/javascript" language="JavaScript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!--PageEndHtml Block End-->
+
+
+</body>
+</html>

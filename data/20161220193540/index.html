@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="js no-auth  is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile" dropeffect="none" style="">
+<head><script src="about:blank" async=""></script>
+<meta charset="UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-ZA-Response-Id" content="001044b365ea2983">
+<meta http-equiv="X-ZA-Experiment" content="default:None">
+
+<title>
+
+
+git push 的 -u 参数具体适合含义？ - Git - 知乎
+
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/20019419">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="mobile-agent" content="format=html5;url=https://www.zhihu.com/question/20019419">
+<meta id="znonce" name="znonce" content="7f3032a9dfed4bb99a52d5a2e2f38590">
+
+
+
+<link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-152.87c020b9.png" sizes="152x152">
+<link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-120.496c913b.png" sizes="120x120">
+<link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-76.dcf79352.png" sizes="76x76">
+<link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-60.9911cffb.png" sizes="60x60">
+
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="https://static.zhihu.com/static/search.xml" title="知乎">
+<link rel="stylesheet" href="z.ff107350.css">
+
+
+
+<meta name="google-site-verification" content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg">
+
+
+
+<!--[if lt IE 9]>
+<script src="https://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="https://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+<script src="about:blank"></script>
+
+
+
+
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+@keyframes animations-fadeIn-1aFv {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+@keyframes animations-fadeOut-3XSQ {
+0% { opacity: 1; }
+100% { opacity: 0; }
+}
+@keyframes animations-fadeInUp-3KKK {
+0% { opacity: 0; transform: translateY(20px); }
+100% { opacity: 1; transform: translateY(0px); }
+}
+@keyframes animations-fadeOutDown-r_A_ {
+0% { transform: translateY(0px); }
+100% { opacity: 0; transform: translateY(20px); }
+}
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+.FeedbackButton-button-3waL { position: fixed; z-index: 10000; bottom: 40px; right: 40px; width: 40px; height: 40px; cursor: pointer; border-radius: 50%; background-color: rgb(255, 255, 255); border: medium none; outline: medium none; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); font-weight: 700; line-height: normal; }
+.FeedbackButton-icon-1Rgw { display: inline-block; vertical-align: middle; width: 18px; height: 18px; background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNSAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R3JvdXAgNjwvdGl0bGU+PGcgZmlsbD0iIzAwOEZFQiIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTMgMTguM2MwLS40IDAtLjcuNC0xIC4yLS4yLjUtLjMuOC0uMy40IDAgLjcgMCAxIC40LjIuMi4zLjUuMyAxIDAgLjIgMCAuNS0uNC43IDAgLjQtLjQuNS0uOC41LS4zIDAtLjYgMC0uOC0uNC0uMyAwLS40LS40LS40LS43ek0xMCAxMC43di0xYy40LTEgMS41LTIuNyA0LjItMi43IDIgMCAzLjggMS40IDMuOCAzcy0xLjQgMi43LTIgMy4zYy0uOC42LTEgMS0xLjIgMS43LS4yLjYtLjYgMS0xLjMgMS0uMy0uMi0uNi0uMy0uNy0uNXYtLjhjMC0uMiAwLS43LjMtMS4ybDEuNC0xLjVjMS40LTEuMiAxLjYtMiAuOC0yLjgtLjUtLjQtMS42LS41LTIuMiAwLS44LjQtMSAxLTEuMiAxLjMtLjIuNS0uMyAxLTEuMyAxLS4zLS4yLS40LS40LS41LS44eiIvPjxwYXRoIGQ9Ik0yOS44IDEwLjJ2M2MxLjQgMS44IDIuMyA0IDIuMyA2LjMgMCAzLjgtMi4yIDctNS41IDl2My44bC0zLjctMi41LTMgLjNjLTIuOCAwLTQuMy0uOC02LjQtMi4yaC0zLjFDMTMgMzAuNCAxNS42IDMyIDIwIDMyYy44IDAgMS43IDAgMi42LS4ybDYgNHYtNi40YzMuNS0yLjQgNS43LTYgNS43LTEwIDAtMy42LTEuNy03LTQuNS05LjJ6TTE0LjQgMjUuNmM4IDAgMTMuMi02IDEzLjItMTNTMjEgMCAxNC40IDBDNi40IDAgMCA1LjcgMCAxMi43YzAgNCAxLjUgNy41IDQuNCAxMFYyOWw2LjMtMy42IDMuNy4yek0xNC4yIDJjNi41IDAgMTEuNSA1LjMgMTEuNSAxMUMyNS43IDE5IDIxIDI0IDE0LjQgMjRjLTEgMC0zLjYtLjMtNC41LS41TDYgMjUuN3YtNGMtMi43LTIuMi00LTUtNC04LjZDMiA3IDcgMiAxNCAyeiIvPjwvZz48L3N2Zz4="); background-repeat: no-repeat; background-size: contain; }
+.FeedbackButton-button-3waL:hover .FeedbackButton-icon-1Rgw { background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNSAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R3JvdXAgMTE8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTI5LjQgMTNjMCAyLS4zIDguMi01IDExLjQtNC4zIDMtOSAzLjMtMTEuMyAzLjNoLTNjMi44IDIuNyA2LjYgNC44IDEyLjIgNCAxIDAgNi4zIDQgNi4zIDRWMjljMy41LTIuMyA1LjMtNS4yIDUuNi05LjUuMy0zLjctMS42LTctNC41LTkuNXYzem0tMTUgMTIuNmM4IDAgMTMuMi02IDEzLjItMTNTMjEgMCAxNC40IDBDNi40IDAgMCA1LjcgMCAxMi43YzAgNCAxLjUgNy41IDQuNCAxMFYyOWw2LjMtMy42IDMuNy4zeiIgZmlsbD0iIzAwOEZFQiIvPjxwYXRoIGQ9Ik0xMyAxOC4zYzAtLjQgMC0uNy40LTFzLjUtLjMuOC0uM2MuNCAwIC43IDAgMSAuNC4yLjIuMy41LjMgMSAwIC4yIDAgLjUtLjQuNyAwIC40LS40LjUtLjguNS0uMyAwLS42IDAtLjgtLjQtLjMgMC0uNC0uNC0uNC0uN3ptLTMtNy42di0xYy40LTEgMS40LTIuNyA0LjItMi43IDIgMCAzLjggMS40IDMuOCAzcy0xLjQgMi43LTIgMy4zYy0uOC42LTEgMS0xLjIgMS43LS4yLjYtLjYgMS0xLjMgMS0uMy0uMi0uNi0uMy0uNy0uNXYtLjhjMC0uMiAwLS43LjMtMS4ybDEuNC0xLjVjMS40LTEuMiAxLjYtMiAuOC0yLjgtLjUtLjQtMS42LS41LTIuMiAwLS44LjQtMSAxLTEuMiAxLjMtLjIuNS0uMyAxLTEuMyAxLS4zLS4yLS40LS40LS41LS44eiIgZmlsbD0iI0ZGRiIvPjwvZz48L3N2Zz4="); }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+@keyframes DrawingExample-drawingExample-3Bm3 {
+0% { stroke-dashoffset: 520; }
+50% { stroke-dashoffset: 1000; opacity: 1; }
+100% { stroke-dashoffset: 1000; opacity: 0; }
+}
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+@keyframes Spinner-rotate-RMMJ {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(1turn); }
+}
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+@media (min-height: 900px) {
+}
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+@media screen and (max-width: 420px) {
+}
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+@media not all, (min-resolution: 192dpi) {
+}
+</style></head>
+
+<body class="zhi  no-auth">
+
+
+
+
+<div role="navigation" class="zu-top" data-za-module="TopNavBar">
+<div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
+<a href="https://www.zhihu.com/" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">知乎</a>
+
+
+
+<ul class="topnav-noauth clearfix">
+<li>
+<a class="js-signup-noauth"><i class="zg-icon zg-icon-dd-home"></i>注册知乎</a>
+</li>
+<li>
+<a class="js-signin-noauth">登录</a>
+</li>
+</ul>
+
+
+
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="https://www.zhihu.com/search" id="zh-top-search-form" class="zu-top-search-form">
+
+
+
+<input name="type" value="content" type="hidden">
+<label for="q" class="hide-text">知乎搜索</label><input aria-autocomplete="list" role="combobox" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" maxlength="100" placeholder="搜索你感兴趣的内容..." type="text">
+<button type="submit" class="zu-top-search-button"><span class="hide-text">搜索</span><span class="sprite-global-icon-magnifier-dark"></span></button>
+</form>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-nav-home">
+<a class="zu-top-nav-link" href="https://www.zhihu.com/" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
+</li>
+
+
+
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-topic">
+<a class="zu-top-nav-link" href="https://www.zhihu.com/topic" id="top-nav-dd-topic">话题</a>
+</li>
+
+<li class="zu-top-nav-li " id="zh-top-nav-explore">
+<a class="zu-top-nav-link" href="https://www.zhihu.com/explore">发现</a>
+</li>
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content message">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<span class="noti-spinner-loading"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content user" style="display: none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<span class="noti-spinner-loading"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content thanks" style="display: none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<span class="noti-spinner-loading"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="https://www.zhihu.com/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 »</a>
+<a href="https://www.zhihu.com/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置"><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="zu-global-notify" id="zh-global-message" style="display: none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display: none;"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display: none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="zg-wrap zu-main clearfix with-indention-votebar" itemscope="" itemtype="http://schema.org/Question" id="zh-single-question-page" data-urltoken="20019419" role="main">
+<div class="zu-main-content">
+<div class="zu-main-content-inner">
+
+
+<meta itemprop="isTopQuestion" content="false">
+<meta itemprop="visitsCount" content="25421">
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag" href="https://www.zhihu.com/topic/19557710" data-hovercard="t$b$19557710" data-token="19557710" data-topicid="2517" data-za-element-name="Title">
+Git
+</a>
+
+<a class="zm-item-tag" href="https://www.zhihu.com/topic/19574511" data-hovercard="t$b$19574511" data-token="19574511" data-topicid="8109" data-za-element-name="Title">
+RTFM
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="false">
+<h2 class="zm-item-title">
+
+<span class="zm-editable-content">git push 的 -u 参数具体适合含义？</span>
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="187723" data-action="/question/detail">
+
+<div class="zm-editable-content">我很少用 -u 参数, 看文档的时候觉得古怪, 却又没像出问题过<br>help 里面是这样的, 具体怎样的含义呢?<br>"""<br>-u, --set-upstream<br>           For every branch that is up to date or successfully pushed, add upstream (tracking) reference, used by argument-less git-pull(1) and other commands.<br>"""</div>
+
+
+</div>
+<div data-za-module="QuestionItem" class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel goog-scrollfloater">
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>添加评论
+</a>
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" name="share" class="share meta-item goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+</div>
+<div class="panel-container">
+
+<div class="question-invite-panel"></div><div style="display: none;" class="zm-comment-box"></div></div>
+</div>
+
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="Sorter">
+
+<span class="lbl">默认排序</span>
+<a class="lbl" href="https://www.zhihu.com/question/20019419?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="7" id="zh-question-answer-num">7 个回答</h3>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="10" class="zh-question-answer-wrapper navigable" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;>.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 20019419, &quot;pagesize&quot;: 10, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}"><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemprop="topAnswer" itemscope="" itemtype="http://schema.org/Answer" data-aid="594895" data-atoken="13687935" data-collapsed="0" data-created="1326383532" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="https://www.zhihu.com/question/20019419/answer/13687935">
+<meta itemprop="answer-id" content="594895">
+<meta itemprop="answer-url-token" content="13687935">
+<a class="zg-anchor-hidden" name="answer-594895"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">7</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="https://www.zhihu.com/people/li-yao-64" target="_blank" data-hovercard="p$t$li-yao-64"><img src="71c827efa_s.jpg" class="zm-list-avatar avatar"></a>
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link" data-hovercard="p$t$li-yao-64" target="_blank" href="https://www.zhihu.com/people/li-yao-64">李垚</a></span><span title="Ph.D. student" class="bio">
+Ph.D. student
+</span>
+</span>
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="7">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">7</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="187723" data-action="/answer/content" data-author-name="李垚" data-entry-url="/question/20019419/answer/13687935">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+简单来说使用git push -u origin master以后就可以直接使用不带别的参数的git pull从之前push到的分支来pull。更详细的解说请参看StackOverflow：<a href="https://link.zhihu.com/?target=http%3A//stackoverflow.com/questions/5697750/what-exactly-does-the-u-do-git-push-u-origin-master-vs-git-push-origin-ma" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">stackoverflow.com/quest</span><span class="invisible">ions/5697750/what-exactly-does-the-u-do-git-push-u-origin-master-vs-git-push-origin-ma</span><span class="ellipsis"></span><i class="icon-external"></i></a>
+
+<a href="https://www.zhihu.com/question/20019419/answer/13687935" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+简单来说使用git push -u origin master以后就可以直接使用不带别的参数的git pull从之前push到的分支来pull。更详细的解说请参看StackOverflow：<a href="https://link.zhihu.com/?target=http%3A//stackoverflow.com/questions/5697750/what-exactly-does-the-u-do-git-push-u-origin-master-vs-git-push-origin-ma" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">stackoverflow.com/quest</span><span class="invisible">ions/5697750/what-exactly-does-the-u-do-git-push-u-origin-master-vs-git-push-origin-ma</span><span class="ellipsis"></span><i class="icon-external"></i></a>
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="594895-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="https://www.zhihu.com/question/20019419/answer/13687935">发布于 2012-01-12</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="https://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="594912" data-atoken="13687984" data-collapsed="0" data-created="1326383976" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="https://www.zhihu.com/question/20019419/answer/13687984">
+<meta itemprop="answer-id" content="594912">
+<meta itemprop="answer-url-token" content="13687984">
+<a class="zg-anchor-hidden" name="answer-594912"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">35</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="https://www.zhihu.com/people/fuchen.me" target="_blank" data-hovercard="p$t$fuchen.me"><img src="42707d8bb_s.jpg" class="zm-list-avatar avatar"></a>
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link" data-hovercard="p$t$fuchen.me" target="_blank" href="https://www.zhihu.com/people/fuchen.me">付晨</a></span>
+</span>
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="35">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">35</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="187723" data-action="/answer/content" data-author-name="付晨" data-entry-url="/question/20019419/answer/13687984">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+一般只有同时存在多个远程仓库时才会用到--set-upstream。每个git branch可以有个对应的upstream。假设你有两个upstream，分别叫server1和server2，本地master branch的upstream是server1上的master，那么当你不带参数直接输入git pull或者git push时，默认…
+
+<a href="https://www.zhihu.com/question/20019419/answer/13687984" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+一般只有同时存在多个远程仓库时才会用到--set-upstream。每个git branch可以有个对应的upstream。假设你有两个upstream，分别叫server1和server2，本地master branch的upstream是server1上的master，那么当你不带参数直接输入git pull或者git push时，默认是对server1进行pull/push。如果你成功运行"git push -u server2 master"，那么除了本地branch会被push到server2之外，还会把server2设置成upstream。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="594912-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="https://www.zhihu.com/question/20019419/answer/13687984">发布于 2012-01-12</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="https://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="14772223" data-atoken="48434769" data-collapsed="0" data-created="1432125186" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="https://www.zhihu.com/question/20019419/answer/48434769">
+<meta itemprop="answer-id" content="14772223">
+<meta itemprop="answer-url-token" content="48434769">
+<a class="zg-anchor-hidden" name="answer-14772223"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar goog-scrollfloater">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">17</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="https://www.zhihu.com/people/wang-xuan-98-41" target="_blank" data-hovercard="p$t$wang-xuan-98-41"><img src="774ae8286c11537b9595a2e00403cb9c_s.jpg" class="zm-list-avatar avatar"></a>
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link" data-hovercard="p$t$wang-xuan-98-41" target="_blank" href="https://www.zhihu.com/people/wang-xuan-98-41">王轩</a></span>
+</span>
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="17">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">17</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="187723" data-action="/answer/content" data-author-name="王轩" data-entry-url="/question/20019419/answer/48434769">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+我不太赞同“脑子需要洗洗了”那位童鞋的说法。以我的记忆来看，upstream不是针对远程仓库的，而是针对branch的，这一点应了那位童鞋所说的第二句话。但是upstream和有几个远程库没有必然联系。比如远程库A上有3个分支branch1、branch2、branch3。远程库B上…
+
+<a href="https://www.zhihu.com/question/20019419/answer/48434769" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+我不太赞同“脑子需要洗洗了”那位童鞋的说法。以我的记忆来看，upstream不是针对远程仓库的，而是针对branch的，这一点应了那位童鞋所说的第二句话。但是upstream和有几个远程库没有必然联系。比如远程库A上有3个分支branch1、branch2、branch3。远程库B上有3个分支branchx、branchy、branchz。本地仓库有2个分支local1和local2。那么当初始状态时，local1和local2和任何一个分支都没有关联，也就是没有upstream。当通过git branch --set-upstream-to A/branch1 local1命令执行后，会给local1和branch1两个分支建立关联，也就是说local1的upstream指向的是branch1。这样的好处就是在local1分支上执行git push（git pull同理）操作时不用附加其它参数，Git就会自动将local1分支上的内容push到branch1上去。同样，local2分支也可以和远程库A和远程库B上的任何一个分支建立关联，只要给local2分支设置了upstream，就可以在local2分支上用git push（git pull同理）方便地与目标分支推拉数据。<br>综上所述，upstream与有几个远程库没有关系，它是分支与分支之间的流通道。<br>再来说说git push -u和git branch --set-upstream-to指令之间的区别。<br>举个例子：我要把本地分支master与远程仓库origin里的分支gaga建立关联。<br>（如果使用下列途径1的话，首先，你要切换到master分支上（git checkout master））<br>两个途径：1. git push -u origin gaga  2. git branch --set-upstream-to=origin/gaga master<br>这两种方式都可以达到目的。但是1方法更通用，因为你的远程库有可能并没有gaga分支，这种情况下你用2方法就不可行，连目标分支都不存在，怎么进行关联呢？所以可以总结一下：git push -u origin gaga 相当于 git push origin gaga + git branch --set-upstream-to=origin/gaga master
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="14772223-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" data-tooltip="s$t$发布于 2015-05-20" target="_blank" href="https://www.zhihu.com/question/20019419/answer/48434769">编辑于 2015-05-20</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="https://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="28666510" data-atoken="83091592" data-collapsed="0" data-created="1453616001" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="https://www.zhihu.com/question/20019419/answer/83091592">
+<meta itemprop="answer-id" content="28666510">
+<meta itemprop="answer-url-token" content="83091592">
+<a class="zg-anchor-hidden" name="answer-28666510"></a>
+
+
+<div style="visibility: hidden; position: static; top: auto; left: auto; display: block; float: left; margin: 0px 0px 0px -48px; width: 38px; height: 73px;"></div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="https://www.zhihu.com/people/junjie77" target="_blank" data-hovercard="p$t$junjie77"><img src="5e001e6a5e65e409af499a4028386fc3_s.jpg" class="zm-list-avatar avatar"></a>
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link" data-hovercard="p$t$junjie77" target="_blank" href="https://www.zhihu.com/people/junjie77">俊杰</a></span><span title="开发工程师" class="bio">
+开发工程师
+</span>
+</span>
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="9">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">9</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="187723" data-action="/answer/content" data-author-name="俊杰" data-entry-url="/question/20019419/answer/83091592">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+让我们来做一个实验就知道了： andy@AndyMacBookPro:/usr/local/github/andy/php-examples$ git checkout -b test
+Switched to a new branch 'test'
+andy@AndyMacBookPro:/usr/local/github/andy/php-examples$ git status
+On branch test
+nothing to commi…
+
+<a href="https://www.zhihu.com/question/20019419/answer/83091592" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+让我们来做一个实验就知道了：<br><br><div class="highlight"><pre><code class="language-bash">andy@AndyMacBookPro:/usr/local/github/andy/php-examples<span class="nv">$ </span>git checkout -b <span class="nb">test</span>
+Switched to a new branch <span class="s1">'test'</span>
+andy@AndyMacBookPro:/usr/local/github/andy/php-examples<span class="nv">$ </span>git status
+On branch <span class="nb">test</span>
+nothing to commit, working directory clean
+andy@AndyMacBookPro:/usr/local/github/andy/php-examples<span class="nv">$ </span>git push origin <span class="nb">test</span>
+Username <span class="k">for</span> <span class="s1">'GitHub · Where software is built'</span>: linjunjie0707@gmail.com
+Password <span class="k">for</span> <span class="s1">'https://andy@gmail.com@github.com'</span>:
+Total <span class="m">0</span> <span class="o">(</span>delta 0<span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta 0<span class="o">)</span>
+To linjunjie/php-examples: php examples
+ * <span class="o">[</span>new branch<span class="o">]</span>      <span class="nb">test</span> -&gt; <span class="nb">test</span>
+andy@AndyMacBookPro:/usr/local/github/andy/php-examples<span class="nv">$ </span>git pull
+There is no tracking information <span class="k">for</span> the current branch.
+Please specify which branch you want to merge with.
+See git-pull<span class="o">(</span>1<span class="o">)</span> <span class="k">for</span> details.
+
+    git pull &lt;remote&gt; &lt;branch&gt;
+
+If you wish to <span class="nb">set </span>tracking information <span class="k">for</span> this branch you can <span class="k">do</span> so with:
+
+    git branch --set-upstream-to<span class="o">=</span>origin/&lt;branch&gt; <span class="nb">test</span>
+
+andy@AndyMacBookPro:/usr/local/github/andy/php-examples<span class="err">$</span>
+</code></pre></div><br>这个就是如果你不使用 -u 参数的话的后果，pull 因为没有track for the current branch. 所以他不知道你要从哪里pull，所以这也就是 -u 参数的意义，指定trach branch。<br><br>其实你可以在指定完-u之后，去到根目录的 .git/ 目录下，找到config，可以看到下面有了branch "test"的分支的记录：<br><br><div class="highlight"><pre><code class="language-bash"><span class="o">[</span>branch <span class="s2">"master"</span><span class="o">]</span>
+	<span class="nv">remote</span> <span class="o">=</span> origin
+	<span class="nv">merge</span> <span class="o">=</span> refs/heads/master
+<span class="o">[</span>branch <span class="s2">"test"</span><span class="o">]</span>
+	<span class="nv">remote</span> <span class="o">=</span> origin
+	<span class="nv">merge</span> <span class="o">=</span> refs/heads/test
+</code></pre></div><br><br>这样git才能知道当前test下的remote和merge的信息，如果你在git push的时候没有带入-u参数，那么config中就不会有branch "test"这一项。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="28666510-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" data-tooltip="s$t$发布于 2016-01-24" target="_blank" href="https://www.zhihu.com/question/20019419/answer/83091592">编辑于 2016-02-03</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="https://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+<button class="item-collapse js-collapse"><i class="sprite-global-icon-fold-white"></i>收起</button></div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="46028860" data-atoken="126305746" data-collapsed="0" data-created="1476314697" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="https://www.zhihu.com/question/20019419/answer/126305746">
+<meta itemprop="answer-id" content="46028860">
+<meta itemprop="answer-url-token" content="126305746">
+<a class="zg-anchor-hidden" name="answer-46028860"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">2</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="https://www.zhihu.com/people/da-bin-zi-44" target="_blank" data-hovercard="p$t$da-bin-zi-44"><img src="d23d6b8703b18ae0f6df4f27c3aa4704_s.jpg" class="zm-list-avatar avatar"></a>
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link" data-hovercard="p$t$da-bin-zi-44" target="_blank" href="https://www.zhihu.com/people/da-bin-zi-44">大斌子</a></span>
+</span>
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="2">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">2</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="187723" data-action="/answer/content" data-author-name="大斌子" data-entry-url="/question/20019419/answer/126305746">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+题主看看这篇文章，或许有些帮助。 <a href="https://link.zhihu.com/?target=https%3A//segmentfault.com/a/1190000002783245" class=" wrap external" target="_blank" rel="nofollow noreferrer">Git push与pull的默认行为<i class="icon-external"></i></a>
+
+<a href="https://www.zhihu.com/question/20019419/answer/126305746" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+题主看看这篇文章，或许有些帮助。<br><a href="https://link.zhihu.com/?target=https%3A//segmentfault.com/a/1190000002783245" class=" wrap external" target="_blank" rel="nofollow noreferrer">Git push与pull的默认行为<i class="icon-external"></i></a>
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="46028860-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="https://www.zhihu.com/question/20019419/answer/126305746">发布于 2016-10-13</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="https://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="27664310" data-atoken="80590142" data-collapsed="0" data-created="1452243588" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="https://www.zhihu.com/question/20019419/answer/80590142">
+<meta itemprop="answer-id" content="27664310">
+<meta itemprop="answer-url-token" content="80590142">
+<a class="zg-anchor-hidden" name="answer-27664310"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">0</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="https://www.zhihu.com/people/ze-ze-ze-97" target="_blank" data-hovercard="p$t$ze-ze-ze-97"><img src="75744d0e15df6dc84bcc9f79f65b0dbf_s.jpg" class="zm-list-avatar avatar"></a>
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link" data-hovercard="p$t$ze-ze-ze-97" target="_blank" href="https://www.zhihu.com/people/ze-ze-ze-97">啧啧啧</a></span><span title="做梦都想要女朋友的Android程序猿" class="bio">
+做梦都想要女朋友的Android程序猿
+</span>
+</span>
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="187723" data-action="/answer/content" data-author-name="啧啧啧" data-entry-url="/question/20019419/answer/80590142">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+The -u tells Git to remember the parameters, so that next time we can simply run git push and Git will know what to do. 相当于第一次串门的时候你登了个记办了个vip。。以后再来就知道是你来了。不用脱裤子搜身了
+
+<a href="https://www.zhihu.com/question/20019419/answer/80590142" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+The -u tells Git to remember the parameters, so that next time we can simply run git push and Git will know what to do.<br>相当于第一次串门的时候你登了个记办了个vip。。以后再来就知道是你来了。不用脱裤子搜身了
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="27664310-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="https://www.zhihu.com/question/20019419/answer/80590142">发布于 2016-01-08</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="https://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="15979071" data-atoken="51440087" data-collapsed="0" data-created="1434360310" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="https://www.zhihu.com/question/20019419/answer/51440087">
+<meta itemprop="answer-id" content="15979071">
+<meta itemprop="answer-url-token" content="51440087">
+<a class="zg-anchor-hidden" name="answer-15979071"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">0</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="https://www.zhihu.com/people/xiao-mu-14" target="_blank" data-hovercard="p$t$xiao-mu-14"><img src="6d0a1489f_s.jpg" class="zm-list-avatar avatar"></a>
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link" data-hovercard="p$t$xiao-mu-14" target="_blank" href="https://www.zhihu.com/people/xiao-mu-14">萧木</a></span><span title="还没想好写点啥" class="bio">
+还没想好写点啥
+</span>
+</span>
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="187723" data-action="/answer/content" data-author-name="萧木" data-entry-url="/question/20019419/answer/51440087">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+参考链接： <a href="https://link.zhihu.com/?target=http%3A//stackoverflow.com/questions/5561295/what-does-git-push-u-mean" class=" wrap external" target="_blank" rel="nofollow noreferrer">What does git push -u mean?<i class="icon-external"></i></a> <a href="https://link.zhihu.com/?target=http%3A//stackoverflow.com/questions/5697750/what-exactly-does-the-u-do-git-push-u-origin-master-vs-git-push-origin-ma" class=" wrap external" target="_blank" rel="nofollow noreferrer">What exactly does the "u" do? "git push -u origin master" vs "git push origin master"<i class="icon-external"></i></a>
+
+<a href="https://www.zhihu.com/question/20019419/answer/51440087" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+参考链接：<br><ol><li><a href="https://link.zhihu.com/?target=http%3A//stackoverflow.com/questions/5561295/what-does-git-push-u-mean" class=" wrap external" target="_blank" rel="nofollow noreferrer">What does git push -u mean?<i class="icon-external"></i></a><br></li><li><a href="https://link.zhihu.com/?target=http%3A//stackoverflow.com/questions/5697750/what-exactly-does-the-u-do-git-push-u-origin-master-vs-git-push-origin-ma" class=" wrap external" target="_blank" rel="nofollow noreferrer">What exactly does the "u" do? "git push -u origin master" vs "git push origin master"<i class="icon-external"></i></a></li></ol>
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="15979071-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="https://www.zhihu.com/question/20019419/answer/51440087">发布于 2015-06-15</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="https://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display: none;">
+<a name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">0</span> 个回答被折叠
+</a>
+（<a target="_blank" href="https://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display: none;"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div style="display: none;" class="zm-editable-tip zu-answer-form-disabled-wrap"></div>
+<div style="display: none;" class="zm-editable-content"><p></p><a class="zu-edit-button" name="edit"><i class="zu-edit-button-icon"></i>修改</a></div><div style="" class="zm-editable-editor-wrap"><div class="zh-answer-form clearfix"><div><div class="zu-answer-form-title">我来回答这个问题<span></span></div></div></div><div class="zm-editable-editor-outer"><div class="zm-editable-toolbar-container goog-scrollfloater"><div tabindex="-1" role="toolbar" style="-moz-user-select: none;" class="goog-toolbar goog-toolbar-horizontal"><div id="toggleFullScreen" style="-moz-user-select: none;" role="button" title="写作模式" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-max"></div></div></div></div><div id="+bold" aria-pressed="false" style="-moz-user-select: none;" role="button" title="粗体 (ctrl+b)" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-bold"></div></div></div></div><div id="+italic" aria-pressed="false" style="-moz-user-select: none;" role="button" title="斜体 (ctrl+i)" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-italic"></div></div></div></div><div id="+underline" aria-pressed="false" style="-moz-user-select: none;" role="button" title="下划线 (ctrl+u)" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-underline"></div></div></div></div><div id=":1o" role="separator" aria-disabled="true" style="-moz-user-select: none;" class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block">&nbsp;</div><div id="+blockquote" aria-pressed="false" style="-moz-user-select: none;" role="button" title="引用内容" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-blockquote"></div></div></div></div><div id="+code" aria-pressed="false" style="-moz-user-select: none;" role="button" title="插入代码" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-code"></div></div></div></div><div id="+insertOrderedList" aria-pressed="false" style="-moz-user-select: none;" role="button" title="有序列表" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-insertOrderedList"></div></div></div></div><div id="+insertUnorderedList" aria-pressed="false" style="-moz-user-select: none;" role="button" title="无序列表" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-insertUnorderedList"></div></div></div></div><div id="+equation" style="-moz-user-select: none;" role="button" title="插入公式" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-equation"></div></div></div></div><div id=":1p" role="separator" aria-disabled="true" style="-moz-user-select: none;" class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block">&nbsp;</div><div id="image" style="-moz-user-select: none;" role="button" title="插入图片" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-image"></div></div></div></div><div id="video" style="-moz-user-select: none;" role="button" title="插入视频" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-video"></div></div></div></div><div id=":1q" role="separator" aria-disabled="true" style="-moz-user-select: none;" class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block">&nbsp;</div><div id="+removeFormat" style="-moz-user-select: none;" role="button" title="清除格式" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-removeFormat"></div></div></div></div><div class="tr-spinner spinner-gray" style="display: none;"></div></div></div><div class="zm-editable-editor-field-wrap"><div style="font-style: italic;" role="textbox" g_editable="true" class="zm-editable-editor-field-element editable" id="mock:u" contenteditable="true"><p><span style="font-style: normal; color: rgb(153, 153, 153);">写回答…</span></p></div><div class="editable-dropzone"><div class="row"><div class="cell"><div>拖拽至此处上传</div></div></div></div></div><div class="signin-mask-tip-answer"></div><div style="display: none;" class="mention-popup"><div class="writing-bg"><input autocomplete="off" aria-autocomplete="list" role="combobox"></div><div class="tip">想用 @ 提到谁？</div></div></div><div class="zm-command"><a class="zg-r3px zg-btn-blue">我要回答</a></div><div style="display: none;" class="zm-command clearfix"><label style="-moz-user-select: none;" class="zg-left anno-box"><input style="-moz-user-select: none;" name="anno-checkbox" type="checkbox"> 匿名 <span style="-moz-user-select: none;">&nbsp;</span></label> <label class="zg-left copyright-box"><select name="copyright"><option value="1">允许规范转载</option><option value="2">允许付费转载</option><option value="0">禁止转载</option></select><a href="https://www.zhihu.com/terms#sec-licence-6" class="demo-trigger" target="_blank" hidden="hidden"><i class="zg-icon zg-icon-question-mark" style="margin-left: 5px;" id="copyright_question_mark" data-copyright-demo="true"></i></a></label> <span class=" zg-right"><a class="submit-button zg-btn-blue" name="save">发布回答</a></span><div class="draft-controls zg-right "><span style="display: none;" class="draft-saved-info"><a class="draft-clear-button goog-inline-block" href="#" data-tooltip="s$b$删除草稿"><i class="zg-icon zg-icon-bin"></i><span class="hide-text">清除草稿</span></a><span class="draft-saved-time"></span></span></div></div></div>
+</div>
+<!-- 版权演示 -->
+
+<script type="text/x-template" id="copyright-demo-template">/* Code removed by ScrapBook */</script>
+
+
+<script type="text/template" class="oauth-success-template--wechat">/* Code removed by ScrapBook */</script>
+
+
+</div>
+</div>
+
+
+<div class="zu-main-sidebar" data-za-module="RightSideBar">
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div class="SignFlow SignFlow--bordered" id="SidebarSignFlow">
+<div class="SignFlow-panel">
+<div class="title register">
+<h1>加入知乎</h1>
+<h2>与世界分享你的知识、经验和见解</h2>
+</div>
+<div class="view register SignupForm" data-za-module="SignUpForm">
+<form novalidate="novalidate" action="https://www.zhihu.com/register/email" method="POST">
+<div class="input-wrapper">
+<input placeholder="姓名" name="fullname" aria-label="姓名" data-placeholder="姓名" required="" type="text">
+</div>
+<div class="input-wrapper">
+
+<input placeholder="手机号（仅支持中国大陆）" name="phone_num" class="account" aria-label="手机号（仅支持中国大陆）" data-placeholder="手机号（仅支持中国大陆）" required="" type="text">
+
+</div>
+<div class="input-wrapper toggle-password">
+<input hidden="" type="password"> 
+<input placeholder="密码（不少于 6 位）" name="password" aria-label="密码" data-placeholder="密码（不少于 6 位）" required="" type="password">
+<span class="z-ico-show-password"></span>
+</div>
+<div style="display: block;" class="input-wrapper captcha-module" data-type="en">
+<input id="captcha" name="captcha" placeholder="验证码" required="" data-rule-required="true" data-msg-required="请填写验证码">
+<div class="captcha-container">
+
+<img src="captcha.gif" style="display: inline;" class="js-refreshCaptcha captcha" data-tooltip="s$t$看不清楚？换一张" alt="验证码" height="30" width="120">
+</div>
+</div>
+<div class="actions">
+
+<input value="注册" class="submit zg-btn-blue" type="submit">
+
+</div>
+<div class="sns clearfix">
+<span>已有帐号？<a href="#" class="switch-to-login">登录</a></span>
+</div>
+</form>
+</div>
+</div>
+<div class="SignFlow-panel" hidden="">
+<div class="LoginForm">
+<div class="title login">
+<h1>登录知乎</h1>
+<h2>与世界分享你的知识、经验和见解</h2>
+</div>
+<div class="view login" data-za-module="SignInForm">
+<form novalidate="novalidate" method="POST">
+<div class="input-wrapper">
+<input name="account" class="account" aria-label="手机号或邮箱" placeholder="手机号或邮箱" required="" type="text">
+</div>
+<div class="input-wrapper toggle-password">
+<input name="password" aria-label="密码" placeholder="密码" required="" type="password">
+<span class="z-ico-show-password"></span>
+</div>
+<div class="input-wrapper captcha-module" data-type="en">
+<input class="is-ignoreValidation" id="captcha" name="" placeholder="验证码" required="" data-rule-required="true" data-msg-required="请填写验证码">
+<div class="captcha-container">
+
+<img class="js-refreshCaptcha captcha" data-tooltip="s$t$看不清楚？换一张" alt="验证码" height="30" width="120">
+</div>
+</div>
+<div class="actions">
+
+<input value="登录" class="submit zg-btn-blue" type="submit">
+
+</div>
+<div class="sns clearfix">
+<label class="remember-me"><input name="remember_me" checked="" value="true" type="checkbox">记住我</label>
+<span class="middot">·</span>
+<button class="unable-login" type="button">无法登录？</button>
+<button type="button" class="js-show-sns-buttons is-visible">社交帐号登录</button>
+<div class="sns-buttons">
+<button type="button" class="wechat"><span class="ico sprite-global-icon-wechat-gray"></span>微信</button>
+<button type="button" class="weibo"><span class="ico sprite-global-icon-weibo-gray"></span>微博</button>
+<button type="button" class="qq"><span class="ico sprite-global-icon-qq-gray"></span>QQ</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-side-section">
+<div class="DownloadApp">
+<button class="DownloadApp-button">
+<span class="sprite-global-icon-qrcode"></span>
+下载知乎 App
+</button>
+</div>
+</div>
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner zg-gray-normal" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="187723">关注问题</button>
+
+77
+人关注该问题
+
+</div>
+</div>
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix" data-za-module="RelatedQuestions">
+
+<a class="zg-right next">换一换</a>
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope="" itemtype="http://schema.org/ItemList">
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="https://www.zhihu.com/question/19601997" data-id="20755" data-za-element-name="Title">
+Git 相比 svn 和其他版本管理工具的核心优势有哪些？
+</a> <span class="num">24 个回答</span><meta itemprop="followerCount" content="438">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="https://www.zhihu.com/question/20295926" data-id="298643" data-za-element-name="Title">
+GitCafe 这样的代码托管网站在国内的前景如何？
+</a> <span class="num">56 个回答</span><meta itemprop="followerCount" content="570">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="https://www.zhihu.com/question/19931404" data-id="152608" data-za-element-name="Title">
+GitHub 是怎么火起来的？
+</a> <span class="num">18 个回答</span><meta itemprop="followerCount" content="2146">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="https://www.zhihu.com/question/22438484" data-id="1156261" data-za-element-name="Title">
+百度、阿里、腾讯之类的大公司用 Git 吗？他们如何管理源代码？
+</a> <span class="num">91 个回答</span><meta itemprop="followerCount" content="2485">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="https://www.zhihu.com/question/20070065" data-id="208084" data-za-element-name="Title">
+怎样使用 GitHub？
+</a> <span class="num">106 个回答</span><meta itemprop="followerCount" content="24016">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="https://www.zhihu.com/question/21218703" data-id="668180" data-za-element-name="Title">
+如何让公司从 SVN 改到 Git？
+</a> <span class="num">64 个回答</span><meta itemprop="followerCount" content="450">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="https://www.zhihu.com/question/25491925" data-id="2379405" data-za-element-name="Title">
+代码版本控制用SVN还是Git好？
+</a> <span class="num">39 个回答</span><meta itemprop="followerCount" content="466">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="https://www.zhihu.com/question/21209619" data-id="664602" data-za-element-name="Title">
+如何写好 Git commit log?
+</a> <span class="num">31 个回答</span><meta itemprop="followerCount" content="755">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="https://www.zhihu.com/question/19946553" data-id="158624" data-za-element-name="Title">
+为什么要先 git add 才能 git commit ？
+</a> <span class="num">32 个回答</span><meta itemprop="followerCount" content="631">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="https://www.zhihu.com/question/30037841" data-id="4197584" data-za-element-name="Title">
+一个人写程序，版本控制用svn还是git？
+</a> <span class="num">25 个回答</span><meta itemprop="followerCount" content="363">
+</li>
+
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+<div id="zh-footer" class="zh-footer">
+<div class="content zg-wrap clearfix">
+<ul>
+
+<li><a href="https://liukanshan.zhihu.com/" target="_blank">刘看山</a></li>
+
+<li><a href="https://www.zhihu.com/app" target="_blank">移动应用</a></li>
+<li><a href="https://www.zhihu.com/careers">加入知乎</a></li>
+<li><a href="https://www.zhihu.com/terms" target="_blank">知乎协议</a></li>
+<li><a href="https://www.zhihu.com/contact">联系我们</a></li>
+
+</ul>
+
+<span class="copy">© 2016 知乎</span>
+
+</div>
+</div>
+
+<script type="text/json" class="json-inline" data-name="guiders2">/* Code removed by ScrapBook */</script>
+<script type="text/json" class="json-inline" data-name="current_user">/* Code removed by ScrapBook */</script>
+<script type="text/json" class="json-inline" data-name="user_status">/* Code removed by ScrapBook */</script>
+<script type="text/json" class="json-inline" data-name="env">/* Code removed by ScrapBook */</script>
+<script type="text/json" class="json-inline" data-name="permissions">/* Code removed by ScrapBook */</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">/* Code removed by ScrapBook */</script>
+
+<script type="text/json" class="json-inline" data-name="ra-urls">/* Code removed by ScrapBook */</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">/* Code removed by ScrapBook */</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">/* Code removed by ScrapBook */</script>
+<script type="text/json" class="json-inline" data-name="draft">/* Code removed by ScrapBook */</script>
+<script type="text/json" class="json-inline" data-name="my_answer">/* Code removed by ScrapBook */</script>
+<script type="text/json" class="json-inline" data-name="current_question_bio">/* Code removed by ScrapBook */</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">/* Code removed by ScrapBook */</script>
+
+
+<script src="about:blank"></script>
+<script src="about:blank"></script>
+
+<script src="about:blank"></script>
+
+
+<script src="about:blank" async=""></script>
+<script src="about:blank"></script>
+<meta name="entry" content="ZH.entrySQ" data-module-id="page-main">
+
+<script type="text/zscript" znonce="7f3032a9dfed4bb99a52d5a2e2f38590"></script>
+
+<input name="_xsrf" value="67d787477e416a101930364611228fb8" type="hidden">
+
+<div class="zh-backtotop" style="opacity: 1;"><a data-action="backtotop" data-tooltip="s$r$回到顶部" class="btn-backtotop btn-action"><div class="arrow"></div><div class="stick"></div></a></div><div id="zh-hovercard"></div><div id="copyright-demo-helper" style="display: none; position: absolute;"><p class="copyright-demo-helper-intro"> 勾选后，我们将限制其他用户的复制操作，并给予提醒 </p><p class="copyright-demo-helper-btn"> 查看演示 </p></div><div id="zh-tooltip"></div><div style="display: none;"><div class="lang-select collapsed"><div style="-moz-user-select: none;" class="title-button">选择语言</div><i class="zg-icon zg-icon-double-arrow"></i><div class="input-wrapper"><input aria-autocomplete="list" role="combobox" class="filter-input zg-form-text-input" placeholder="搜索语言"></div></div></div><div></div><script type="text/template" class="register-template">/* Code removed by ScrapBook */</script>
+<script type="text/template" class="phone-verification-template">/* Code removed by ScrapBook */</script>
+<script type="text/template" class="login-template">/* Code removed by ScrapBook */</script>
+<script type="text/template" class="login-sms-verification-template">/* Code removed by ScrapBook */</script>
+<script type="text/template" class="unable-login-template">/* Code removed by ScrapBook */</script>
+<script type="text/template" class="oauth-register-template">/* Code removed by ScrapBook */</script><span><div><button title="建议反馈" class="FeedbackButton-button-3waL" data-zfeedback-ignore="true"><span class="FeedbackButton-icon-1Rgw"></span></button></div></span><div style="left: 196.5px; width: 38px; float: none; position: fixed; top: 44px;" data-za-module="VoteBar" class="zm-votebar goog-scrollfloater goog-scrollfloater-floating">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">9</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div></body>
+</html>

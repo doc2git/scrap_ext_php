@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns="http://www.w3.org/1999/xhtml" class=" js flexbox flexboxlegacy datauri">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <title>PHP: $_REQUEST - Manual </title>
+
+ <link rel="shortcut icon" href="favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="http://php.net/manual/zh/reserved.variables.request.php">
+ <link rel="shorturl" href="http://php.net/manual/zh/reserved.variables.request.php">
+ <link rel="alternate" href="http://php.net/manual/zh/reserved.variables.request.php" hreflang="x-default">
+
+ <link rel="contents" href="http://php.net/manual/zh/index.php">
+ <link rel="index" href="http://php.net/manual/zh/reserved.variables.php">
+ <link rel="prev" href="http://php.net/manual/zh/reserved.variables.files.php">
+ <link rel="next" href="http://php.net/manual/zh/reserved.variables.session.php">
+
+ <link rel="alternate" href="http://php.net/manual/en/reserved.variables.request.php" hreflang="en">
+ <link rel="alternate" href="http://php.net/manual/pt_BR/reserved.variables.request.php" hreflang="pt_BR">
+ <link rel="alternate" href="http://php.net/manual/zh/reserved.variables.request.php" hreflang="zh">
+ <link rel="alternate" href="http://php.net/manual/fr/reserved.variables.request.php" hreflang="fr">
+ <link rel="alternate" href="http://php.net/manual/de/reserved.variables.request.php" hreflang="de">
+ <link rel="alternate" href="http://php.net/manual/ja/reserved.variables.request.php" hreflang="ja">
+ <link rel="alternate" href="http://php.net/manual/kr/reserved.variables.request.php" hreflang="kr">
+ <link rel="alternate" href="http://php.net/manual/ro/reserved.variables.request.php" hreflang="ro">
+ <link rel="alternate" href="http://php.net/manual/ru/reserved.variables.request.php" hreflang="ru">
+ <link rel="alternate" href="http://php.net/manual/es/reserved.variables.request.php" hreflang="es">
+ <link rel="alternate" href="http://php.net/manual/tr/reserved.variables.request.php" hreflang="tr">
+
+<link rel="stylesheet" type="text/css" href="cached.php" media="screen">
+<link rel="stylesheet" type="text/css" href="cached_001.php" media="screen">
+<link rel="stylesheet" type="text/css" href="cached_002.php" media="screen">
+<link rel="stylesheet" type="text/css" href="cached_003.php" media="screen">
+
+ <!--[if lte IE 7]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie7.css" media="screen">
+ <![endif]-->
+
+ <!--[if lte IE 8]>
+ <script type="text/javascript">
+  window.brokenIE = true;
+ </script>
+ <![endif]-->
+
+ <!--[if lte IE 9]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie9.css" media="screen">
+ <![endif]-->
+
+ <!--[if IE]>
+ <script type="text/javascript" src="http://php.net/js/ext/html5.js"></script>
+ <![endif]-->
+
+ <base href="">
+
+</head>
+<body class="docs ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="http://php.net/" class="brand"><img src="php-logo.svg" alt="php" height="24" width="48"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input id="mainmenu-toggle" type="checkbox">
+    <ul class="nav">
+      <li class=""><a href="http://php.net/downloads">Downloads</a></li>
+      <li class="active"><a href="http://php.net/docs.php">Documentation</a></li>
+      <li class=""><a href="http://php.net/get-involved">Get Involved</a></li>
+      <li class=""><a href="http://php.net/support">Help</a></li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="http://php.net/search.php">
+      <input name="show" value="quickref" type="hidden">
+      <span style="position: relative; display: inline-block;" class="twitter-typeahead"><input style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: rgb(255, 255, 255) none repeat scroll 0% 0%;" class="tt-hint search-query" autocomplete="off" spellcheck="off" disabled="" type="text"><input dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" spellcheck="false" autocomplete="off" name="pattern" class="search-query tt-query" placeholder="Search" accesskey="s" type="search"><input style="visibility: hidden; position: fixed;" type="submit"><span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: &quot;Fira Sans&quot;,&quot;Source Sans Pro&quot;,Helvetica,Arial,sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: optimizelegibility; text-transform: none;"></span><span style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;" class="tt-dropdown-menu"></span></span>
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href="http://php.net/conferences/index.php#id2017-01-23-1">php[tek] 2017: Atlanta</a></div>
+<nav id="trick"><div><dl>
+<dt><a href="http://php.net/manual/en/getting-started.php">Getting Started</a></dt>
+	<dd><a href="http://php.net/manual/en/introduction.php">Introduction</a></dd>
+	<dd><a href="http://php.net/manual/en/tutorial.php">A simple tutorial</a></dd>
+<dt><a href="http://php.net/manual/en/langref.php">Language Reference</a></dt>
+	<dd><a href="http://php.net/manual/en/language.basic-syntax.php">Basic syntax</a></dd>
+	<dd><a href="http://php.net/manual/en/language.types.php">Types</a></dd>
+	<dd><a href="http://php.net/manual/en/language.variables.php">Variables</a></dd>
+	<dd><a href="http://php.net/manual/en/language.constants.php">Constants</a></dd>
+	<dd><a href="http://php.net/manual/en/language.expressions.php">Expressions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.operators.php">Operators</a></dd>
+	<dd><a href="http://php.net/manual/en/language.control-structures.php">Control Structures</a></dd>
+	<dd><a href="http://php.net/manual/en/language.functions.php">Functions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.oop5.php">Classes and Objects</a></dd>
+	<dd><a href="http://php.net/manual/en/language.namespaces.php">Namespaces</a></dd>
+	<dd><a href="http://php.net/manual/en/language.errors.php">Errors</a></dd>
+	<dd><a href="http://php.net/manual/en/language.exceptions.php">Exceptions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.generators.php">Generators</a></dd>
+	<dd><a href="http://php.net/manual/en/language.references.php">References Explained</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.variables.php">Predefined Variables</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.exceptions.php">Predefined Exceptions</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.interfaces.php">Predefined Interfaces and Classes</a></dd>
+	<dd><a href="http://php.net/manual/en/context.php">Context options and parameters</a></dd>
+	<dd><a href="http://php.net/manual/en/wrappers.php">Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href="http://php.net/manual/en/security.php">Security</a></dt>
+	<dd><a href="http://php.net/manual/en/security.intro.php">Introduction</a></dd>
+	<dd><a href="http://php.net/manual/en/security.general.php">General considerations</a></dd>
+	<dd><a href="http://php.net/manual/en/security.cgi-bin.php">Installed as CGI binary</a></dd>
+	<dd><a href="http://php.net/manual/en/security.apache.php">Installed as an Apache module</a></dd>
+	<dd><a href="http://php.net/manual/en/security.sessions.php">Session Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.filesystem.php">Filesystem Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.database.php">Database Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.errors.php">Error Reporting</a></dd>
+	<dd><a href="http://php.net/manual/en/security.globals.php">Using Register Globals</a></dd>
+	<dd><a href="http://php.net/manual/en/security.variables.php">User Submitted Data</a></dd>
+	<dd><a href="http://php.net/manual/en/security.magicquotes.php">Magic Quotes</a></dd>
+	<dd><a href="http://php.net/manual/en/security.hiding.php">Hiding PHP</a></dd>
+	<dd><a href="http://php.net/manual/en/security.current.php">Keeping Current</a></dd>
+<dt><a href="http://php.net/manual/en/features.php">Features</a></dt>
+	<dd><a href="http://php.net/manual/en/features.http-auth.php">HTTP authentication with PHP</a></dd>
+	<dd><a href="http://php.net/manual/en/features.cookies.php">Cookies</a></dd>
+	<dd><a href="http://php.net/manual/en/features.sessions.php">Sessions</a></dd>
+	<dd><a href="http://php.net/manual/en/features.xforms.php">Dealing with XForms</a></dd>
+	<dd><a href="http://php.net/manual/en/features.file-upload.php">Handling file uploads</a></dd>
+	<dd><a href="http://php.net/manual/en/features.remote-files.php">Using remote files</a></dd>
+	<dd><a href="http://php.net/manual/en/features.connection-handling.php">Connection handling</a></dd>
+	<dd><a href="http://php.net/manual/en/features.persistent-connections.php">Persistent Database Connections</a></dd>
+	<dd><a href="http://php.net/manual/en/features.safe-mode.php">Safe Mode</a></dd>
+	<dd><a href="http://php.net/manual/en/features.commandline.php">Command line usage</a></dd>
+	<dd><a href="http://php.net/manual/en/features.gc.php">Garbage Collection</a></dd>
+	<dd><a href="http://php.net/manual/en/features.dtrace.php">DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href="http://php.net/manual/en/funcref.php">Function Reference</a></dt>
+	<dd><a href="http://php.net/manual/en/refs.basic.php.php">Affecting PHP's Behaviour</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.audio.php">Audio Formats Manipulation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.auth.php">Authentication Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.cmdline.php">Command Line Specific Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.compression.php">Compression and Archive Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.creditcard.php">Credit Card Processing</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.crypto.php">Cryptography Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.database.php">Database Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.calendar.php">Date and Time Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.fileprocess.file.php">File System Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.international.php">Human Language and Character Encoding Support</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.image.php">Image Processing and Generation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.mail.php">Mail Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.math.php">Mathematical Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.nontext.php">Non-Text MIME Output</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.fileprocess.process.php">Process Control Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.other.php">Other Basic Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.other.php">Other Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.search.php">Search Engine Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.server.php">Server Specific Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.session.php">Session Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.text.php">Text Processing</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.vartype.php">Variable and Type Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.webservice.php">Web Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.windows.php">Windows Only Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.xml.php">XML Manipulation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.ui.php">GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="http://php.net/manual/zh/reserved.variables.session.php">
+          $_SESSION »
+        </a>
+      </div>
+              <div class="prev">
+        <a href="http://php.net/manual/zh/reserved.variables.files.php">
+          « $_FILES        </a>
+      </div>
+          <ul>
+            <li><a href="http://php.net/manual/zh/index.php">PHP 手册</a></li>      <li><a href="http://php.net/manual/zh/langref.php">语言参考</a></li>      <li><a href="http://php.net/manual/zh/reserved.variables.php">预定义变量</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="http://php.net/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select name="page" id="changelang-langs">
+            <option value="en/reserved.variables.request.php">English</option>
+            <option value="pt_BR/reserved.variables.request.php">Brazilian Portuguese</option>
+            <option value="zh/reserved.variables.request.php" selected="selected">Chinese (Simplified)</option>
+            <option value="fr/reserved.variables.request.php">French</option>
+            <option value="de/reserved.variables.request.php">German</option>
+            <option value="ja/reserved.variables.request.php">Japanese</option>
+            <option value="kr/reserved.variables.request.php">Korean</option>
+            <option value="ro/reserved.variables.request.php">Romanian</option>
+            <option value="ru/reserved.variables.request.php">Russian</option>
+            <option value="es/reserved.variables.request.php">Spanish</option>
+            <option value="tr/reserved.variables.request.php">Turkish</option>
+            <option value="help-translate.php">Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="edit-bug">
+      <a href="https://edit.php.net/?project=PHP&amp;perm=zh/reserved.variables.request.php">Edit</a>
+      <a href="https://bugs.php.net/report.php?bug_type=Documentation+problem&amp;manpage=reserved.variables.request">Report a Bug</a>
+    </div>
+  </div><div id="reserved.variables.request" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">$_REQUEST</h1>
+  <p class="refpurpose"><span class="refname">$_REQUEST</span> — <span class="dc-title">HTTP Request 变量</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-reserved.variables.request-description">
+  <h3 class="title">说明<a class="genanchor" href="#refsect1-reserved.variables.request-description"> ¶</a></h3>
+  <p class="para">
+   默认情况下包含了 <var class="varname"><var class="varname"><a href="http://php.net/manual/zh/reserved.variables.get.php" class="classname">$_GET</a></var></var>，<var class="varname"><var class="varname"><a href="http://php.net/manual/zh/reserved.variables.post.php" class="classname">$_POST</a></var></var>  和  <var class="varname"><var class="varname"><a href="http://php.net/manual/zh/reserved.variables.cookies.php" class="classname">$_COOKIE</a></var></var> 的<span class="type"><span class="type 数组">数组</span></span>。
+  </p>
+ </div>
+
+ 
+
+ <div class="refsect1 changelog" id="refsect1-reserved.variables.request-changelog">
+  <h3 class="title">更新日志<a class="genanchor" href="#refsect1-reserved.variables.request-changelog"> ¶</a></h3>
+  <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.3.0</td>
+       <td>
+        引入 <a href="http://php.net/manual/zh/ini.core.php#ini.request-order" class="link">request_order</a>。该指令会影响 <var class="varname"><var class="varname">$_REQUEST</var></var> 的内容。
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.3.0</td>
+       <td>
+        <var class="varname"><var class="varname"><a href="http://php.net/manual/zh/reserved.variables.files.php" class="classname">$_FILES</a></var></var> 信息被从 <var class="varname"><var class="varname">$_REQUEST</var></var> 中移除。
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.1.0</td>
+       <td>
+        引入 <var class="varname"><var class="varname">$_REQUEST</var></var>。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-reserved.variables.request-notes">
+  <h3 class="title">注释<a class="genanchor" href="#refsect1-reserved.variables.request-notes"> ¶</a></h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: </p><p class="para">“Superglobal”也称为自动化的全局变量。这就表示其在脚本的所有作用域中都是可用的。不需要在函数或方法中用
+<strong class="command">global $variable;</strong> 来访问它。</p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   </p><p class="para">
+    以<a href="http://php.net/manual/zh/features.commandline.php" class="link">命令行</a>方式运行时，将<em class="emphasis">不</em>包含 <a href="http://php.net/manual/zh/reserved.variables.argv.php" class="link">argv</a> 和 <a href="http://php.net/manual/zh/reserved.variables.argc.php" class="link">argc</a> 信息；它们将存在于 <var class="varname"><var class="varname"><a href="http://php.net/manual/zh/reserved.variables.server.php" class="classname">$_SERVER</a></var></var> <span class="type"><span class="type 数组">数组</span></span>。
+   </p>
+  </blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   </p><p class="para">
+    由于 <var class="varname"><var class="varname">$_REQUEST</var></var> 中的变量通过 GET，POST 和 COOKIE 输入机制传递给脚本文件，因此可以被远程用户篡改而并不可信。这个数组的项目及其顺序依赖于 PHP 的 <a href="http://php.net/manual/zh/ini.core.php#ini.variables-order" class="link">variables_order</a> 指令的配置。
+   </p>
+  </blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reserved.variables.request-seealso">
+  <h3 class="title">参见<a class="genanchor" href="#refsect1-reserved.variables.request-seealso"> ¶</a></h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="http://php.net/manual/zh/function.import-request-variables.php" class="function" rel="rdfs-seeAlso">import_request_variables()</a> - 将 GET／POST／Cookie 变量导入到全局作用域中</span></li>
+   <li class="member"><a href="http://php.net/manual/zh/language.variables.external.php" class="link">处理外部变量</a></li>
+   <li class="member"><a href="http://php.net/manual/zh/book.filter.php" class="link">过滤器扩展</a></li>
+  </ul>
+ </div>
+
+ 
+</div>
+<section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="http://php.net/manual/add-note.php?sect=reserved.variables.request&amp;redirect=http://php.net/manual/zh/reserved.variables.request.php"><img src="notes-add@2x.png" alt="add a note" height="12" width="12"> <small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">5 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="84527">  <div class="votes">
+    <div id="Vu84527">
+    <a href="http://php.net/manual/vote-note.php?id=84527&amp;page=reserved.variables.request&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd84527">
+    <a href="http://php.net/manual/vote-note.php?id=84527&amp;page=reserved.variables.request&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V84527" title="65% like this...">
+    84
+    </div>
+  </div>
+  <a href="#84527" class="name">
+  <strong class="user"><em>strata_ranger at hotmail dot com</em></strong></a><a class="genanchor" href="#84527"> ¶</a><div class="date" title="2008-07-17 08:04"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom84527">
+<div class="phpcode"><code><span class="html">
+Don't forget, because $_REQUEST is a different variable than $_GET and $_POST, it is treated as such in PHP -- modifying $_GET or $_POST elements at runtime will not affect the ellements in $_REQUEST, nor vice versa.<br><br>e.g:<br><br><span class="default">&lt;?php<br><br>$_GET</span><span class="keyword">[</span><span class="string">'foo'</span><span class="keyword">] = </span><span class="string">'a'</span><span class="keyword">;<br></span><span class="default">$_POST</span><span class="keyword">[</span><span class="string">'bar'</span><span class="keyword">] = </span><span class="string">'b'</span><span class="keyword">;<br></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$_GET</span><span class="keyword">); </span><span class="comment">// Element 'foo' is string(1) "a"<br></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$_POST</span><span class="keyword">); </span><span class="comment">// Element 'bar' is string(1) "b"<br></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$_REQUEST</span><span class="keyword">); </span><span class="comment">// Does not contain elements 'foo' or 'bar'<br><br></span><span class="default">?&gt;<br></span><br>If you want to evaluate $_GET and $_POST variables by a single token without including $_COOKIE in the mix, use&nbsp; $_SERVER['REQUEST_METHOD'] to identify the method used and set up a switch block accordingly, e.g:<br><br><span class="default">&lt;?php<br><br></span><span class="keyword">switch(</span><span class="default">$_SERVER</span><span class="keyword">[</span><span class="string">'REQUEST_METHOD'</span><span class="keyword">])<br>{<br>case </span><span class="string">'GET'</span><span class="keyword">: </span><span class="default">$the_request </span><span class="keyword">= &amp;</span><span class="default">$_GET</span><span class="keyword">; break;<br>case </span><span class="string">'POST'</span><span class="keyword">: </span><span class="default">$the_request </span><span class="keyword">= &amp;</span><span class="default">$_POST</span><span class="keyword">; break;<br>.<br>. </span><span class="comment">// Etc.<br></span><span class="keyword">.<br>default:<br>}<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="119368">  <div class="votes">
+    <div id="Vu119368">
+    <a href="http://php.net/manual/vote-note.php?id=119368&amp;page=reserved.variables.request&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd119368">
+    <a href="http://php.net/manual/vote-note.php?id=119368&amp;page=reserved.variables.request&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V119368" title="65% like this...">
+    7
+    </div>
+  </div>
+  <a href="#119368" class="name">
+  <strong class="user"><em>Luke Madhanga</em></strong></a><a class="genanchor" href="#119368"> ¶</a><div class="date" title="2016-05-22 08:45"><strong>8 months ago</strong></div>
+  <div class="text" id="Hcom119368">
+<div class="phpcode"><code><span class="html">
+To access $_POST, $_GET, etc, use the function filter_input(TYPE, varname, filter) to ensure that your data is clean. <br><br>Also, I was brought up to believe that modifying superglobals is a BAD idea. I stand by this belief and would recommend you do too</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="96696">  <div class="votes">
+    <div id="Vu96696">
+    <a href="http://php.net/manual/vote-note.php?id=96696&amp;page=reserved.variables.request&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd96696">
+    <a href="http://php.net/manual/vote-note.php?id=96696&amp;page=reserved.variables.request&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V96696" title="52% like this...">
+    5
+    </div>
+  </div>
+  <a href="#96696" class="name">
+  <strong class="user"><em>mike o.</em></strong></a><a class="genanchor" href="#96696"> ¶</a><div class="date" title="2010-03-11 04:31"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom96696">
+<div class="phpcode"><code><span class="html">
+The default php.ini on your system as of in PHP 5.3.0 may exclude cookies from $_REQUEST.&nbsp; The request_order ini directive specifies what goes in the $_REQUEST array; if that does not exist, then the variables_order directive does.&nbsp; Your distribution's php.ini may exclude cookies by default, so beware.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="94985">  <div class="votes">
+    <div id="Vu94985">
+    <a href="http://php.net/manual/vote-note.php?id=94985&amp;page=reserved.variables.request&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd94985">
+    <a href="http://php.net/manual/vote-note.php?id=94985&amp;page=reserved.variables.request&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V94985" title="51% like this...">
+    4
+    </div>
+  </div>
+  <a href="#94985" class="name">
+  <strong class="user"><em>John Galt</em></strong></a><a class="genanchor" href="#94985"> ¶</a><div class="date" title="2009-12-06 05:36"><strong>7 years ago</strong></div>
+  <div class="text" id="Hcom94985">
+<div class="phpcode"><code><span class="html">
+I wrote a function because I found it inconvenient if I needed to change a particular parameter (get) while preserving the others. For example, I want to make a hyperlink on a web page with the URL <a href="http://www.example.com/script.php?id=1&amp;blah=blah+blah&amp;page=1" rel="nofollow" target="_blank">http://www.example.com/script.php?id=1&amp;blah=blah+blah&amp;page=1</a> and change the value of "page" to 2 without getting rid of the other parameters.
+<br>
+<br><span class="default">&lt;?php
+<br> </span><span class="keyword">function </span><span class="default">add_or_change_parameter</span><span class="keyword">(</span><span class="default">$parameter</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">)
+<br> {
+<br>&nbsp; </span><span class="default">$params </span><span class="keyword">= array();
+<br>&nbsp; </span><span class="default">$output </span><span class="keyword">= </span><span class="string">"?"</span><span class="keyword">;
+<br>&nbsp; </span><span class="default">$firstRun </span><span class="keyword">= </span><span class="default">true</span><span class="keyword">;
+<br>&nbsp; foreach(</span><span class="default">$_GET </span><span class="keyword">as </span><span class="default">$key</span><span class="keyword">=&gt;</span><span class="default">$val</span><span class="keyword">)
+<br>&nbsp; {
+<br>&nbsp;&nbsp; if(</span><span class="default">$key </span><span class="keyword">!= </span><span class="default">$parameter</span><span class="keyword">)
+<br>&nbsp;&nbsp; {
+<br>&nbsp; &nbsp; if(!</span><span class="default">$firstRun</span><span class="keyword">)
+<br>&nbsp; &nbsp; {
+<br>&nbsp; &nbsp;&nbsp; </span><span class="default">$output </span><span class="keyword">.= </span><span class="string">"&amp;"</span><span class="keyword">;
+<br>&nbsp; &nbsp; }
+<br>&nbsp; &nbsp; else
+<br>&nbsp; &nbsp; {
+<br>&nbsp; &nbsp;&nbsp; </span><span class="default">$firstRun </span><span class="keyword">= </span><span class="default">false</span><span class="keyword">;
+<br>&nbsp; &nbsp; }
+<br>&nbsp; &nbsp; </span><span class="default">$output </span><span class="keyword">.= </span><span class="default">$key</span><span class="keyword">.</span><span class="string">"="</span><span class="keyword">.</span><span class="default">urlencode</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">);
+<br>&nbsp;&nbsp; }
+<br>&nbsp; }
+<br>&nbsp; if(!</span><span class="default">$firstRun</span><span class="keyword">)
+<br>&nbsp;&nbsp; </span><span class="default">$output </span><span class="keyword">.= </span><span class="string">"&amp;"</span><span class="keyword">;
+<br>&nbsp; </span><span class="default">$output </span><span class="keyword">.= </span><span class="default">$parameter</span><span class="keyword">.</span><span class="string">"="</span><span class="keyword">.</span><span class="default">urlencode</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">);
+<br>&nbsp; return </span><span class="default">htmlentities</span><span class="keyword">(</span><span class="default">$output</span><span class="keyword">);
+<br> }
+<br></span><span class="default">?&gt;
+<br></span>
+<br>Now, I can add a hyperlink to the page (<a href="http://www.example.com/script.php?id=1&amp;blah=blah+blah&amp;page=1" rel="nofollow" target="_blank">http://www.example.com/script.php?id=1&amp;blah=blah+blah&amp;page=1</a>) like this:
+<br>&lt;a href="<span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">add_or_change_parameter</span><span class="keyword">(</span><span class="string">"page"</span><span class="keyword">, </span><span class="string">"2"</span><span class="keyword">); </span><span class="default">?&gt;</span>"&gt;Click to go to page 2&lt;/a&gt;
+<br>
+<br>The above code will output
+<br>&lt;a href="?id=1&amp;amp;blah=blah+blah&amp;amp;page=2"&gt;Click to go to page 2&lt;/a&gt;
+<br>
+<br>Also, if I was setting "page" to a string rather than just "2", the value would be urlencode()'d.
+<br>&lt;a href="<span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">add_or_change_parameter</span><span class="keyword">(</span><span class="string">"page"</span><span class="keyword">, </span><span class="string">"banana+split!"</span><span class="keyword">); </span><span class="default">?&gt;</span>"&gt;Click to go to page banana split!&lt;/a&gt;
+<br>would become
+<br>&lt;a href="?id=1&amp;amp;blah=blah+blah&amp;amp;page=banana+split%21"&gt;Click to go to page banana split!&lt;/a&gt;
+<br>
+<br>[EDIT BY danbrown AT php DOT net: Contains a bugfix provided by (theogony AT gmail DOT com), which adds missing `echo` instructions to the HREF tags.]</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="118585">  <div class="votes">
+    <div id="Vu118585">
+    <a href="http://php.net/manual/vote-note.php?id=118585&amp;page=reserved.variables.request&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118585">
+    <a href="http://php.net/manual/vote-note.php?id=118585&amp;page=reserved.variables.request&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118585" title="22% like this...">
+    -57
+    </div>
+  </div>
+  <a href="#118585" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#118585"> ¶</a><div class="date" title="2016-01-03 08:54"><strong>1 year ago</strong></div>
+  <div style="opacity: 0.35;" class="text" id="Hcom118585">
+<div class="phpcode"><code><span class="html">
+Note you should use $_GET, $_POST and $_COOKIE seperately if you use same name or your not sure.<br>Because there are "overwrite" problems with $_REQUEST :<br><br>Example:<br>$_GET['foo'] is a 'hello' string&nbsp;&nbsp; //from user input<br>$_POST['foo'] is a 'world' string&nbsp;&nbsp; //from user input<br><br>Then the $_REQUEST['foo'] would be a 'world' string. The value 'hello' is overwritten.<br><br>So don't use $_REQUEST to monitor user inputs.</span>
+</code></div>
+  </div>
+ </div></div>
+
+ <div class="foot"><a href="http://php.net/manual/add-note.php?sect=reserved.variables.request&amp;redirect=http://php.net/manual/zh/reserved.variables.request.php"><img src="notes-add@2x.png" alt="add a note" height="12" width="12"> <small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class="layout-menu">
+    
+        <ul class="parent-menu-list">
+                                    <li>
+                <a href="http://php.net/manual/zh/reserved.variables.php">预定义变量</a>
+    
+                                    <ul class="child-menu-list">
+    
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/language.variables.superglobals.php" title="超全局变量">超全局变量</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.globals.php" title="$GLOBALS">$GLOBALS</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.server.php" title="$_​SERVER">$_​SERVER</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.get.php" title="$_​GET">$_​GET</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.post.php" title="$_​POST">$_​POST</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.files.php" title="$_​FILES">$_​FILES</a>
+                        </li>
+                          
+                        <li class="current">
+                            <a href="#" title="$_​REQUEST">$_​REQUEST</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.session.php" title="$_​SESSION">$_​SESSION</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.environment.php" title="$_​ENV">$_​ENV</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.cookies.php" title="$_​COOKIE">$_​COOKIE</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.phperrormsg.php" title="$php_​errormsg">$php_​errormsg</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.httprawpostdata.php" title="$HTTP_​RAW_​POST_​DATA">$HTTP_​RAW_​POST_​DATA</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.httpresponseheader.php" title="$http_​response_​header">$http_​response_​header</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.argc.php" title="$argc">$argc</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/zh/reserved.variables.argv.php" title="$argv">$argv</a>
+                        </li>
+                            
+                    </ul>
+                    
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+         
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="http://php.net/copyright.php">Copyright © 2001-2017 The PHP Group</a></li>
+        <li><a href="http://php.net/my.php">My PHP.net</a></li>
+        <li><a href="http://php.net/contact.php">Contact</a></li>
+        <li><a href="http://php.net/sites.php">Other PHP.net sites</a></li>
+        <li><a href="http://php.net/mirrors.php">Mirror sites</a></li>
+        <li><a href="http://php.net/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+ <!-- External and third party libraries. -->
+ <script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+
+<a id="toTop"><span id="toTopHover"></span><img alt="To Top" src="to-top@2x.png" height="40" width="40"></a>
+
+
+
+
+</body>
+</html>

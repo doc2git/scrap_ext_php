@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gitlab 社区版安装部署和维护指南 - restran - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-LessIsMoreRight.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="bundle-LessIsMoreRight-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/restran/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/restran/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/restran/wlwmanifest.xml">
+<script src="about:blank" async=""></script><script src="about:blank" type="text/javascript"></script>  
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script>
+<script type="text/x-mathjax-config;executed=true">/* Code removed by ScrapBook */</script><script src="about:blank" type="text/javascript"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+#MathJax_Message { position: fixed; left: 1px; bottom: 2px; background-color: rgb(230, 230, 230); border: 1px solid rgb(149, 149, 149); margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style></head>
+<body><div style="display: none;" id="MathJax_Message"></div>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+
+
+<link href="bootstrap.min.css" rel="stylesheet">
+<link href="stackedit_base.css" rel="stylesheet">
+<link href="main_2015.01.29.min.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="http://files.cnblogs.com/restran/html5shiv.min.js"></script>
+<script src="http://files.cnblogs.com/restran/respond.min.js"></script>
+<![endif]-->
+<!--PageBeginHtml Block End-->
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/restran/">淡水的天空</a></div>
+<div class="subtitle">涓涓细流，汇成江海；头脑虽慢，水滴石穿。</div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/restran/">首页</a></li>
+<li id="nav_newpost"><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/restran">联系</a></li>
+<li id="nav_rss"><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/restran/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/restran/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<!--done-->
+随笔-44&nbsp;
+文章-0&nbsp;
+评论-38&nbsp;
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="#">Gitlab 社区版安装部署和维护指南</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="cnblogs-markdown"><p>用源代码的方式安装 Gitlab 7.5 的过程中，遇到了不少问题，现把笔记整理出来。</p>
+<pre><code class="hljs groovy"><span class="hljs-string">Distribution      :</span> CentOS <span class="hljs-number">6.5</span> Minimal
+GitLab <span class="hljs-string">version    :</span> <span class="hljs-number">7.0</span> - <span class="hljs-number">7.4</span>
+Web <span class="hljs-string">Server        :</span> Apache, Nginx
+Init <span class="hljs-string">system       :</span> sysvinit
+<span class="hljs-string">Database          :</span> MySQL, PostgreSQL
+<span class="hljs-string">Contributors      :</span> <span class="hljs-meta">@nielsbasjes</span>, <span class="hljs-meta">@axilleas</span>, <span class="hljs-meta">@mairin</span>, <span class="hljs-meta">@ponsjuh</span>, <span class="hljs-meta">@yorn</span>, <span class="hljs-meta">@psftw</span>, <span class="hljs-meta">@etcet</span>, <span class="hljs-meta">@mdirkse</span>, <span class="hljs-meta">@nszceta</span>, <span class="hljs-meta">@herkalurk</span>
+Additional <span class="hljs-string">Notes  :</span> In order to get a proper Ruby setup we build it from source</code></pre>
+<h2 id="overview">Overview</h2>
+<p>Please read <a href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/requirements.md">requirements.md</a> for hardware and platform requirements.</p>
+<h3 id="important-notes">Important Notes</h3>
+<p>The following steps have been known to work and should be followed from up to bottom.<br>
+If you deviate from this guide, do it with caution and make sure you don't violate<br>
+any assumptions GitLab makes about its environment. We have also tried this on<br>
+RHEL 6.3 and found that there are subtle differences which are documented in part.<br>
+Look for the <strong>RHEL Notes</strong> note.</p>
+<p><strong>This guide assumes that you run every command as root.</strong></p>
+<h4 id="if-you-find-a-bug">If you find a bug</h4>
+<p>If you find a bug/error in this guide please submit an issue or a Merge Request<br>
+following the contribution guide (see <a href="https://gitlab.com/gitlab-org/gitlab-recipes/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a>).</p>
+<h4 id="security">Security</h4>
+<p>Many setup guides of Linux software simply state: "disable selinux and firewall".<br>
+This guide does not disable any of them, we simply configure them as they were intended.<br>
+<a href="http://stopdisablingselinux.com/">Stop disabling SELinux</a>.</p>
+<hr>
+<p>The GitLab installation consists of setting up the following components:</p>
+<ol>
+<li>Install the base operating system (CentOS 6.5 Minimal) and Packages / Dependencies</li>
+<li>Ruby</li>
+<li>System Users</li>
+<li>Database</li>
+<li>Redis</li>
+<li>GitLab</li>
+<li>Web server</li>
+<li>Firewall</li>
+</ol>
+<hr>
+<h2 id="installing-the-operating-system-centos-6.5-minimal">1. Installing the operating system (CentOS 6.5 Minimal)</h2>
+<p>We start with a completely clean CentOS 6.5 "minimal" installation which can be<br>
+accomplished by downloading the appropriate installation iso file. Just boot the<br>
+system of the iso file and install the system.</p>
+<p><strong>配置网络</strong></p>
+<p>Note that during the installation you use the <em>"Configure Network"</em> option (it's a<br>
+button in the same screen where you specify the hostname) to enable the <em>"Connect automatically"</em><br>
+option for the network interface and hand (usually eth0).</p>
+<p><strong>If you forget this option the network will NOT start at boot.</strong></p>
+<p>The end result is a bare minimum CentOS installation that effectively only has<br>
+network connectivity and (almost) no services at all.</p>
+<h2 id="updating-and-adding-basic-software-and-services">Updating and adding basic software and services</h2>
+<h3 id="add-epel-repository">Add EPEL repository</h3>
+<p><strong>安装 wget</strong></p>
+<pre><code class="hljs cmake">yum -y <span class="hljs-keyword">install</span> wget</code></pre>
+<p><a href="https://fedoraproject.org/wiki/EPEL">EPEL</a> is a volunteer-based community effort from the Fedora project to create<br>
+a repository of high-quality add-on packages that complement the Fedora-based<br>
+Red Hat Enterprise Linux (RHEL) and its compatible spinoffs, such as CentOS and Scientific Linux.</p>
+<p>As part of the Fedora packaging community, EPEL packages are 100% free/libre open source software (FLOSS).</p>
+<p>Download the GPG key for EPEL repository from <a href="https://fedoraproject.org/keys">fedoraproject</a> and install it on your system:</p>
+<pre><code class="hljs groovy">wget -O <span class="hljs-regexp">/etc/</span>pki<span class="hljs-regexp">/rpm-gpg/</span>RPM-GPG-KEY-EPEL<span class="hljs-number">-6</span> <span class="hljs-string">https:</span><span class="hljs-comment">//www.fedoraproject.org/static/0608B895.txt --no-check-certificate</span>
+rpm --<span class="hljs-keyword">import</span> <span class="hljs-regexp">/etc/</span>pki<span class="hljs-regexp">/rpm-gpg/</span>RPM-GPG-KEY-EPEL<span class="hljs-number">-6</span></code></pre>
+<p>Verify that the key got installed successfully:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">rpm</span> -qa gpg*
+结果应显示
+gpg-pubkey-0608b895-4bd22942</code></pre>
+<p>Now install the <code>epel-release-6-8.noarch</code> package, which will enable EPEL repository on your system:</p>
+<pre><code class="hljs groovy">rpm -Uvh <span class="hljs-string">http:</span><span class="hljs-comment">//dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</span></code></pre>
+<p><strong>Note:</strong> Don't mind the <code>x86_64</code>, if you install on a i686 system you can use the same commands.</p>
+<h3 id="add-puias-computational-repository">Add PUIAS Computational repository</h3>
+<p>The <a href="https://puias.math.ias.edu/wiki/YumRepositories6#Computational">PUIAS Computational</a> repository is a part of <a href="https://puias.math.ias.edu/">PUIAS/Springdale Linux</a>,<br>
+a custom Red Hat® distribution maintained by <a href="http://www.princeton.edu/">Princeton University</a> and the<br>
+<a href="http://www.ias.edu/">Institute for Advanced Study</a>. We take advantage of the PUIAS<br>
+Computational repository to obtain a git v1.8.x package since the base CentOS<br>
+repositories only provide v1.7.1 which is not compatible with GitLab.<br>
+Although the PUIAS offers an RPM to install the repo, it requires the<br>
+other PUIAS repos as a dependency, so you'll have to add it manually.<br>
+Otherwise you can install git from source (instructions below).</p>
+<p>Download PUIAS repo:</p>
+<pre><code class="hljs groovy">wget -O <span class="hljs-regexp">/etc/</span>yum.repos.d<span class="hljs-regexp">/PUIAS_6_computational.repo https:/</span><span class="hljs-regexp">/gitlab.com/</span>gitlab-org<span class="hljs-regexp">/gitlab-recipes/</span>raw<span class="hljs-regexp">/master/</span>install<span class="hljs-regexp">/centos/</span>PUIAS_6_computational.repo --no-check-certificate</code></pre>
+<p>Next download and install the gpg key:</p>
+<pre><code class="hljs groovy">wget -O <span class="hljs-regexp">/etc/</span>pki<span class="hljs-regexp">/rpm-gpg/</span>RPM-GPG-KEY-puias <span class="hljs-string">http:</span><span class="hljs-comment">//springdale.math.ias.edu/data/puias/6/x86_64/os/RPM-GPG-KEY-puias</span>
+rpm --<span class="hljs-keyword">import</span> <span class="hljs-regexp">/etc/</span>pki<span class="hljs-regexp">/rpm-gpg/</span>RPM-GPG-KEY-puias</code></pre>
+<p>Verify that the key got installed successfully:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">rpm</span> -qa gpg*
+结果应显示
+gpg-pubkey-41a40948-4ce19266</code></pre>
+<p>Verify that the EPEL and PUIAS Computational repositories are enabled as shown below:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">yum</span> repolist</code></pre>
+<p>如果出现错误 Error: Cannot retrieve metalink for repository: epel. Please verify its path and try again</p>
+<pre><code class="hljs dts">vim <span class="hljs-meta-keyword">/etc/</span>yum.repos.d/epel.repo，把基础的恢复，镜像的地址注释掉
+
+<span class="hljs-meta">#baseurl</span>
+mirrorlist</code></pre>
+<p>改成</p>
+<pre><code class="hljs objectivec">baseurl
+<span class="hljs-meta">#mirrorlist</span>
+
+repo <span class="hljs-keyword">id</span>                 repo name                                                status
+P<span class="hljs-built_in">UIAS_6_computational</span>   P<span class="hljs-built_in">UIAS</span> computational Base <span class="hljs-number">6</span> - x86_64                      <span class="hljs-number">2</span>,<span class="hljs-number">018</span>
+base                    CentOS<span class="hljs-number">-6</span> - Base                                          <span class="hljs-number">4</span>,<span class="hljs-number">802</span>
+epel                    Extra Packages <span class="hljs-keyword">for</span> Enterprise Linux <span class="hljs-number">6</span> - x86_64           <span class="hljs-number">7</span>,<span class="hljs-number">879</span>
+extras                  CentOS<span class="hljs-number">-6</span> - Extras                                           <span class="hljs-number">12</span>
+updates                 CentOS<span class="hljs-number">-6</span> - Updates                                         <span class="hljs-number">814</span>
+repolist: <span class="hljs-number">15</span>,<span class="hljs-number">525</span></code></pre>
+<p>If you can't see them listed, use the folowing command (from <code>yum-utils</code> package) to enable them:</p>
+<pre><code class="hljs lua">先安装yum-utils，才能使用yum-config-manager，否则会出现commond <span class="hljs-keyword">not</span> found
+yum -y install yum-utils
+
+yum-config-manager <span class="hljs-comment">--enable epel --enable PUIAS_6_computational</span></code></pre>
+<h3 id="install-the-required-tools-for-gitlab">Install the required tools for GitLab</h3>
+<pre><code class="hljs sql">yum -y <span class="hljs-keyword">update</span>
+yum -y groupinstall <span class="hljs-string">'Development Tools'</span>
+yum -y <span class="hljs-keyword">install</span> readline readline-devel ncurses-devel gdbm-devel glibc-devel tcl-devel openssl-devel curl-devel expat-devel db4-devel byacc sqlite-devel libyaml libyaml-devel libffi libffi-devel libxml2 libxml2-devel libxslt libxslt-devel libicu libicu-devel <span class="hljs-keyword">system</span>-config-firewall-tui redis sudo wget crontabs logwatch logrotate perl-<span class="hljs-keyword">Time</span>-HiRes git cmake libcom_err-devel.i686 libcom_err-devel.x86_64</code></pre>
+<p><strong>RHEL Notes</strong></p>
+<p>If some packages (eg. gdbm-devel, libffi-devel and libicu-devel) are NOT installed,<br>
+add the rhel6 optional packages repo to your server to get those packages:</p>
+<pre><code class="hljs swift">yum-config-manager --enable rhel-<span class="hljs-number">6</span>-server-<span class="hljs-keyword">optional</span>-rpms</code></pre>
+<p>Tip taken from <a href="https://github.com/gitlabhq/gitlab-recipes/issues/62">here</a>.</p>
+<p><strong>Note:</strong><br>
+During this installation some files will need to be edited manually.<br>
+If you are familiar with vim set it as default editor with the commands below.<br>
+If you are not familiar with vim please skip this and keep using the default editor.</p>
+<pre><code class="hljs sql"># <span class="hljs-keyword">Install</span> vim <span class="hljs-keyword">and</span> <span class="hljs-keyword">set</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span> editor
+yum -y <span class="hljs-keyword">install</span> vim-enhanced
+<span class="hljs-keyword">update</span>-alternatives <span class="hljs-comment">--set editor /usr/bin/vim.basic</span>
+
+# <span class="hljs-keyword">For</span> reStructuredText markup <span class="hljs-keyword">language</span> support, <span class="hljs-keyword">install</span> <span class="hljs-keyword">required</span> <span class="hljs-keyword">package</span>:
+yum -y <span class="hljs-keyword">install</span> python-docutils</code></pre>
+<h3 id="install-mail-server">Install mail server</h3>
+<p>In order to receive mail notifications, make sure to install a<br>
+mail server. The recommended one is postfix and you can install it with:</p>
+<pre><code class="hljs swift">yum -y install <span class="hljs-keyword">postfix</span></code></pre>
+<p>To use and configure sendmail instead of postfix see <a href="http://www.cnblogs.com/restran/p/e-mail/configure_email.md">Advanced Email Configurations</a>.</p>
+<h3 id="configure-the-default-editor">Configure the default editor</h3>
+<p>You can choose between editors such as nano, vi, vim, etc.<br>
+In this case we will use vim as the default editor for consistency.</p>
+<pre><code class="hljs groovy">ln -s <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/vim /</span>usr<span class="hljs-regexp">/bin/</span>editor</code></pre>
+<p>To remove this alias in the future:<br>
+以后删除别名的时候用这条命令</p>
+<pre><code class="hljs dts">rm -i <span class="hljs-meta-keyword">/usr/</span>bin/editor</code></pre>
+<h3 id="install-git-from-source-optional">Install Git from Source (optional)</h3>
+<p>Make sure Git is version 1.7.10 or higher, for example 1.7.12 or 1.8.4</p>
+<pre><code class="hljs lua">git <span class="hljs-comment">--version</span></code></pre>
+<p>如果有安装git，这一步就可以跳过，直接跳到Ruby</p>
+<p>If not, install it from source. First remove the system Git:</p>
+<pre><code class="hljs cmake">yum -y <span class="hljs-keyword">remove</span> git</code></pre>
+<p>Install the pre-requisite files for Git compilation:</p>
+<pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> zlib-devel perl-CPAN gettext curl-devel expat-devel gettext-devel openssl-devel</code></pre>
+<p>Download and extract it:</p>
+<pre><code class="hljs groovy">mkdir <span class="hljs-regexp">/tmp/</span>git &amp;&amp; cd <span class="hljs-regexp">/tmp/</span>git
+curl --progress <span class="hljs-string">https:</span><span class="hljs-comment">//www.kernel.org/pub/software/scm/git/git-2.1.3.tar.gz | tar xz</span>
+cd git<span class="hljs-number">-2.1</span><span class="hljs-number">.3</span>/
+./configure
+make
+make prefix=<span class="hljs-regexp">/usr/</span>local install</code></pre>
+<p>Make sure Git is in your <code>$PATH</code>:</p>
+<pre><code class="hljs bash"><span class="hljs-built_in">which</span> git</code></pre>
+<p>You might have to logout and login again for the <code>$PATH</code> to take effect.<br>
+<strong>Note:</strong> When editing <code>config/gitlab.yml</code> (step 6), change the git <code>bin_path</code> to <code>/usr/local/bin/git</code>.</p>
+<hr>
+<h2 id="ruby">2. Ruby</h2>
+<p>The use of ruby version managers such as <a href="http://rvm.io/">RVM</a>, <a href="https://github.com/sstephenson/rbenv">rbenv</a> or <a href="https://github.com/postmodern/chruby">chruby</a> with GitLab in production frequently leads to hard to diagnose problems. Version managers are not supported and we strongly advise everyone to follow the instructions below to use a system ruby.</p>
+<p>Remove the old Ruby 1.8 package if present. GitLab only supports the Ruby 2.0+ release series:</p>
+<pre><code class="hljs cmake">yum <span class="hljs-keyword">remove</span> ruby</code></pre>
+<p>Remove any other Ruby build if it is still present:</p>
+<pre><code class="hljs dos"><span class="hljs-built_in">cd</span> &lt;your-ruby-source-<span class="hljs-built_in">path</span>&gt;
+make uninstall</code></pre>
+<p>如果没有安装ruby，上述删除的步骤可以跳过</p>
+<p>Download Ruby and compile it:</p>
+<pre><code class="hljs groovy">mkdir <span class="hljs-regexp">/tmp/</span>ruby &amp;&amp; cd <span class="hljs-regexp">/tmp/</span>ruby
+curl --progress <span class="hljs-string">ftp:</span><span class="hljs-comment">//ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz | tar xz</span>
+
+cd ruby<span class="hljs-number">-2.1</span><span class="hljs-number">.2</span>
+./configure --disable-install-rdoc</code></pre>
+<p>如果出现错误<br>
+make: Warning: File 'common.mk' has modification time 1386501635 s in the future<br>
+是由于系统的时间错误导致</p>
+<p>一、修正时区</p>
+<pre><code class="hljs dts">rm -rf <span class="hljs-meta-keyword">/etc/</span>localtime    <span class="hljs-meta"># 删除当前默认时区www.kwx.gd</span>
+ln -s <span class="hljs-meta-keyword">/usr/</span>share<span class="hljs-meta-keyword">/zoneinfo/</span>Asia/Shanghai <span class="hljs-meta-keyword">/etc/</span>localtime 
+<span class="hljs-meta"># 复制替换默认时区为上海</span>
+SSH执行以上命令，将时区修改为中国上海的时区，当然，也可以设置中国香港或北京的时间。</code></pre>
+<p>二、手动修正时间</p>
+<pre><code class="hljs bash">date <span class="hljs-_">-s</span> <span class="hljs-string">'09:16:00 2013-01-21'</span> </code></pre>
+<p>使用“date”命令，修改时间和日期为2013年1月21日，时间是上午9点16分0秒。</p>
+<p>三、时间自动同步和校正</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">yum</span> <span class="hljs-selector-tag">install</span> <span class="hljs-selector-tag">-y</span> <span class="hljs-selector-tag">ntp</span>        #安装时间同步服务（组件）
+<span class="hljs-selector-tag">ntpdate</span> <span class="hljs-selector-tag">us</span><span class="hljs-selector-class">.pool</span><span class="hljs-selector-class">.ntp</span><span class="hljs-selector-class">.org</span>   #设置同步服务器
+<span class="hljs-selector-tag">date</span>                      #查看当前时间<span class="hljs-selector-tag">www</span><span class="hljs-selector-class">.kwx</span><span class="hljs-selector-class">.gd</span></code></pre>
+<p>部分系统已经安装了NTP服务，系统会根据当前记录的时区（第一步操作）自动连接ntp服务器校正时间。</p>
+<pre><code class="hljs go"><span class="hljs-built_in">make</span>
+<span class="hljs-built_in">make</span> prefix=/usr/local install</code></pre>
+<p>Install the Bundler Gem:</p>
+<p>由于AWS被墙无法使用，修改ruby的源</p>
+<pre><code class="hljs groovy">gem sources --remove <span class="hljs-string">https:</span><span class="hljs-comment">//rubygems.org/</span>
+gem sources -a <span class="hljs-string">https:</span><span class="hljs-comment">//ruby.taobao.org/</span>
+gem sources -l
+
+gem install bundler --no-doc</code></pre>
+<p>Logout and login again for the <code>$PATH</code> to take effect. Check that ruby is properly<br>
+installed with:</p>
+<pre><code class="hljs bash"><span class="hljs-built_in">which</span> ruby
+<span class="hljs-comment"># /usr/local/bin/ruby</span>
+ruby -v
+<span class="hljs-comment"># ruby 2.1.2p95 (2014-05-08 revision 45877) [x86_64-linux]</span></code></pre>
+<hr>
+<h2 id="system-users">3. System Users</h2>
+<p>Create a <code>git</code> user for Gitlab:</p>
+<pre><code class="hljs groovy">adduser --system --shell <span class="hljs-regexp">/bin/</span>bash --comment <span class="hljs-string">'GitLab'</span> --create-home --home-dir <span class="hljs-regexp">/home/</span>git/ git</code></pre>
+<p><strong>Important:</strong> In order to include <code>/usr/local/bin</code> to git user's PATH, one way is to edit the sudoers file. As root run:</p>
+<pre><code class="hljs">visudo</code></pre>
+<p>Then search for this line:</p>
+<pre><code class="hljs ruby">Defaults    secure_path = <span class="hljs-regexp">/sbin:/bin</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/bin</span></code></pre>
+<p>and append <code>/usr/local/bin</code> like so:</p>
+<pre><code class="hljs ruby">Defaults    secure_path = <span class="hljs-regexp">/sbin:/bin</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/bin</span><span class="hljs-symbol">:/usr/local/bin</span></code></pre>
+<p>Save and exit.</p>
+<hr>
+<h2 id="database">4. Database</h2>
+<h3 id="mysql">4.2 MySQL</h3>
+<p>Install <code>mysql</code> and enable the <code>mysqld</code> service to start on boot:</p>
+<pre><code class="hljs sql">使用这条命令默认安装的是5.1.37版本
+yum <span class="hljs-keyword">install</span> -y mysql-<span class="hljs-keyword">server</span> mysql-devel
+
+使用这些命令安装<span class="hljs-number">5.5</span><span class="hljs-number">.41</span>版本
+rpm -Uvh <span class="hljs-keyword">http</span>://dl.fedoraproject.org/pub/epel/<span class="hljs-number">6</span>/i386/epel-<span class="hljs-keyword">release</span><span class="hljs-number">-6</span><span class="hljs-number">-8.</span>noarch.rpm
+rpm -Uvh <span class="hljs-keyword">http</span>://rpms.famillecollet.com/<span class="hljs-keyword">enterprise</span>/remi-<span class="hljs-keyword">release</span><span class="hljs-number">-6.</span>rpm
+yum <span class="hljs-comment">--enablerepo=remi,remi-test install mysql mysql-server mysql-devel</span>
+
+
+
+chkconfig mysqld <span class="hljs-keyword">on</span>
+service mysqld <span class="hljs-keyword">start</span></code></pre>
+<p>Ensure you have MySQL version 5.5.14 or later:</p>
+<pre><code class="hljs lua">mysql <span class="hljs-comment">--version</span></code></pre>
+<p>Secure your installation:</p>
+<pre><code class="hljs">mysql_secure_installation</code></pre>
+<p>Login to MySQL (type the database root password):</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">mysql</span> -u root -p</code></pre>
+<p>Create a user for GitLab (change $password in the command below to a real password you pick):</p>
+<p><strong>修改$password为自己的密码</strong></p>
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">'git'</span>@<span class="hljs-string">'localhost'</span> <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> <span class="hljs-string">'$password'</span>;</code></pre>
+<p>Ensure you can use the InnoDB engine which is necessary to support long indexes.<br>
+If this fails, check your MySQL config files (e.g. <code>/etc/mysql/*.cnf</code>, <code>/etc/mysql/conf.d/*</code>) for the setting "innodb = off".</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SET</span> storage_engine=<span class="hljs-keyword">INNODB</span>;</code></pre>
+<p>Create the GitLab production database:</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> <span class="hljs-keyword">IF</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> <span class="hljs-string">`gitlabhq_production`</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-built_in">CHARACTER</span> <span class="hljs-keyword">SET</span> <span class="hljs-string">`utf8`</span> <span class="hljs-keyword">COLLATE</span> <span class="hljs-string">`utf8_unicode_ci`</span>;</code></pre>
+<p>Grant the GitLab user necessary permissions on the table:</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span>, <span class="hljs-keyword">LOCK</span> <span class="hljs-keyword">TABLES</span>, <span class="hljs-keyword">INSERT</span>, <span class="hljs-keyword">UPDATE</span>, <span class="hljs-keyword">DELETE</span>, <span class="hljs-keyword">CREATE</span>, <span class="hljs-keyword">DROP</span>, <span class="hljs-keyword">INDEX</span>, <span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">ON</span> <span class="hljs-string">`gitlabhq_production`</span>.* <span class="hljs-keyword">TO</span> <span class="hljs-string">'git'</span>@<span class="hljs-string">'localhost'</span>;</code></pre>
+<p>Quit the database session:</p>
+<pre><code class="hljs">\q</code></pre>
+<p>Try connecting to the new database with the new user:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">sudo</span> -u git -H mysql -u git -p -D gitlabhq_production
+
+使用上面在MySQL中创建的git用户的密码</code></pre>
+<p>Type the password you replaced $password with earlier.<br>
+Quit the database session:</p>
+<pre><code class="hljs">\q</code></pre>
+<p>配置MySQL max_allowed_packet的大小，避免POST太大的内容导致出现500错误，例如GitLab 发出MergeRequest的时候返回500错误。</p>
+<pre><code class="hljs perl">vim /etc/<span class="hljs-keyword">my</span>.cnf</code></pre>
+<p>在mysqld中添加max_allowed_packet，调整值，加大为一个合适的数字即可。</p>
+<pre><code class="hljs ini"><span class="hljs-section">[mysqld]</span>
+<span class="hljs-attr">max_allowed_packet</span>=<span class="hljs-number">512</span>M</code></pre>
+<p>然后reload下mysql的服务即可。</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">service</span> mysqld restart</code></pre>
+<hr>
+<h2 id="redis">5. Redis</h2>
+<p>Make sure redis is started on boot:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">chkconfig</span> redis <span class="hljs-literal">on</span></code></pre>
+<p>Configure redis to use sockets:</p>
+<pre><code class="hljs dts">cp <span class="hljs-meta-keyword">/etc/</span>redis.conf <span class="hljs-meta-keyword">/etc/</span>redis.conf.orig</code></pre>
+<p>Disable Redis listening on TCP by setting 'port' to 0:</p>
+<pre><code class="hljs groovy">sed <span class="hljs-string">'s/^port .*/port 0/'</span> <span class="hljs-regexp">/etc/</span>redis.conf.orig | sudo tee <span class="hljs-regexp">/etc/</span>redis.conf</code></pre>
+<p>Enable Redis socket for default CentOS path:</p>
+<pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">'unixsocket /var/run/redis/redis.sock'</span> | sudo tee <span class="hljs-_">-a</span> /etc/redis.conf
+<span class="hljs-built_in">echo</span> <span class="hljs-_">-e</span> <span class="hljs-string">'unixsocketperm 0775'</span> | sudo tee <span class="hljs-_">-a</span> /etc/redis.conf</code></pre>
+<p>Activate the changes to redis.conf:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">service</span> redis restart</code></pre>
+<p>Add git to the redis group:</p>
+<pre><code class="hljs bash">usermod <span class="hljs-_">-a</span>G redis git</code></pre>
+<hr>
+<h2 id="gitlab">6. GitLab</h2>
+<pre><code class="hljs sql"># We'll <span class="hljs-keyword">install</span> GitLab <span class="hljs-keyword">into</span> home <span class="hljs-keyword">directory</span> <span class="hljs-keyword">of</span> the <span class="hljs-keyword">user</span> <span class="hljs-string">"git"</span>
+cd /home/git</code></pre>
+<h3 id="clone-the-source">Clone the Source</h3>
+<p>// vi /home/git/.bash_profile<br>
+// 添加如下，不验证SSL<br>
+// export GIT_SSL_NO_VERIFY=1</p>
+<pre><code class="hljs php">否则 git <span class="hljs-keyword">clone</span> 时会出现错误 Peer certificate cannot be authenticated with known CA certificates
+
+<span class="hljs-comment"># Clone GitLab repository</span>
+sudo -u git -H git <span class="hljs-keyword">clone</span> https:<span class="hljs-comment">//gitlab.com/gitlab-org/gitlab-ce.git -b 7-4-stable gitlab</span></code></pre>
+<p>** Gitlab 中文翻译版**<br>
+不知道为什么，使用sudo -u git -H git clone..还会出现证书错误，但是使用下面的就可以<br>
+su - git<br>
+先进入git用户，然后git config，才可以，不然还是会出现证书问题<br>
+git config --global http.sslverify "false"</p>
+<pre><code class="hljs php">git <span class="hljs-keyword">clone</span> https:<span class="hljs-comment">//gitlab.com/larryli/gitlab.git -b 7-5-zh gitlab</span>
+
+<span class="hljs-comment"># 自己的修改版，修改部分翻译</span>
+git <span class="hljs-keyword">clone</span> https:<span class="hljs-comment">//github.com/restran/gitlabhq.git -b 7-5-zh gitlab</span>
+
+退出git用户操作命令，使用root用户操作
+logout</code></pre>
+<p><strong>Note:</strong> You can change <code>7-4-stable</code> to <code>master</code> if you want the <em>bleeding edge</em> version, but do so with caution!</p>
+<h3 id="configure-it">Configure it</h3>
+<pre><code class="hljs bash"><span class="hljs-comment"># Go to GitLab installation folder</span>
+<span class="hljs-built_in">cd</span> /home/git/gitlab</code></pre>
+<p>为了方便添加git用户拥有root权限 [sudoers文件默认没有写权限需要强制保存:wq!]<br>
+使用root用户执行下述命令</p>
+<pre><code class="hljs perl">[root@Git ruby-<span class="hljs-number">2.1</span>.<span class="hljs-number">1</span>]<span class="hljs-comment"># vi /etc/sudoers</span></code></pre>
+<p>最后添加</p>
+<pre><code class="hljs apache"><span class="hljs-attribute">git</span>     <span class="hljs-literal">ALL</span>=(<span class="hljs-literal">ALL</span>)       <span class="hljs-literal">ALL</span>
+
+<span class="hljs-comment"># Copy the example GitLab config</span>
+<span class="hljs-attribute">sudo</span> -u git -H cp config/gitlab.yml.example config/gitlab.yml
+
+<span class="hljs-comment"># Update GitLab config file, follow the directions at top of file</span>
+<span class="hljs-attribute">sudo</span> -u git -H editor config/gitlab.yml</code></pre>
+<p>配置</p>
+<pre><code class="hljs http"><span class="hljs-attribute">host</span>: 192.168.137.142
+<span class="hljs-attribute">port</span>: 8008
+<span class="hljs-attribute">email_from</span>: gitlab@example.com
+<span class="hljs-attribute">email_enabled</span>: false
+<span class="hljs-attribute">default_theme</span>: 1
+
+<span class="sql">
+# Make sure GitLab can write to the log/ and tmp/ directories
+chown -R git log/
+chown -R git tmp/
+chmod -R u+rwX log/
+chmod -R u+rwX tmp/
+
+# <span class="hljs-keyword">Create</span> <span class="hljs-keyword">directory</span> <span class="hljs-keyword">for</span> satellites
+sudo -u git -H mkdir /home/git/gitlab-satellites
+chmod u+rwx,<span class="hljs-keyword">g</span>=rx,o-rwx /home/git/gitlab-satellites
+
+# Make sure GitLab can write <span class="hljs-keyword">to</span> the tmp/pids/ <span class="hljs-keyword">and</span> tmp/sockets/ directories
+chmod -R u+rwX tmp/pids/
+chmod -R u+rwX tmp/sockets/
+
+# Make sure GitLab can write <span class="hljs-keyword">to</span> the <span class="hljs-keyword">public</span>/uploads/ <span class="hljs-keyword">directory</span>
+chmod -R u+rwX  <span class="hljs-keyword">public</span>/uploads
+
+# Copy the example Unicorn config
+sudo -u git -H cp config/unicorn.rb.example config/unicorn.rb
+
+# Find <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> cores
+nproc
+
+# <span class="hljs-keyword">Enable</span> cluster <span class="hljs-keyword">mode</span> <span class="hljs-keyword">if</span> you expect <span class="hljs-keyword">to</span> have a <span class="hljs-keyword">high</span> <span class="hljs-keyword">load</span> <span class="hljs-keyword">instance</span>
+# Ex. <span class="hljs-keyword">change</span> amount <span class="hljs-keyword">of</span> workers <span class="hljs-keyword">to</span> <span class="hljs-number">3</span> <span class="hljs-keyword">for</span> <span class="hljs-number">2</span>GB RAM <span class="hljs-keyword">server</span>
+# <span class="hljs-keyword">Set</span> the <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> workers <span class="hljs-keyword">to</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">least</span> the <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> cores
+sudo -u git -H editor config/unicorn.rb</span></code></pre>
+<p><strong>特别注意：比较差配置的机器，注意将unicorn.rb中的timeout设置大一点，因为第一次启动的时候Gitlab需要初始化，如果timeout太小，由于需要执行较长时间，导致无法正常启动，出现502错误</strong></p>
+<pre><code class="hljs python"><span class="hljs-comment"># Copy the example Rack attack config</span>
+sudo -u git -H cp config/initializers/rack_attack.rb.example config/initializers/rack_attack.rb
+
+<span class="hljs-comment"># Configure Git global settings for git user, useful when editing via web</span>
+<span class="hljs-comment"># Edit user.email according to what is set in gitlab.yml</span>
+sudo -u git -H git config --<span class="hljs-keyword">global</span> user.name <span class="hljs-string">"GitLab"</span>
+sudo -u git -H git config --<span class="hljs-keyword">global</span> user.email <span class="hljs-string">"gitlab@example.com"</span>
+sudo -u git -H git config --<span class="hljs-keyword">global</span> core.autocrlf input
+
+<span class="hljs-comment"># Configure Redis connection settings</span>
+sudo -u git -H cp config/resque.yml.example config/resque.yml
+
+<span class="hljs-comment"># Change the Redis socket path if you are not using the default CentOS configuration</span>
+sudo -u git -H editor config/resque.yml
+
+如果不使用默认的端口，则需要配置</code></pre>
+<p><strong>Important Note:</strong> Make sure to edit both <code>gitlab.yml</code> and <code>unicorn.rb</code> to match your setup.</p>
+<p><strong>Note:</strong> If you want to use HTTPS, see <a href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md#using-https">Using HTTPS</a> for the additional steps.</p>
+<h3 id="configure-gitlab-db-settings">Configure GitLab DB settings</h3>
+<pre><code class="hljs sql"># MySQL only:
+sudo -u git cp config/database.yml.mysql config/database.yml
+
+# MySQL and remote PostgreSQL only:
+# <span class="hljs-keyword">Update</span> username/<span class="hljs-keyword">password</span> <span class="hljs-keyword">in</span> config/<span class="hljs-keyword">database</span>.yml.
+# You <span class="hljs-keyword">only</span> need <span class="hljs-keyword">to</span> adapt the production <span class="hljs-keyword">settings</span> (<span class="hljs-keyword">first</span> part).
+# <span class="hljs-keyword">If</span> you followed the <span class="hljs-keyword">database</span> guide <span class="hljs-keyword">then</span> please <span class="hljs-keyword">do</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">follows</span>:
+# <span class="hljs-keyword">Change</span> <span class="hljs-string">'secure password'</span> <span class="hljs-keyword">with</span> the <span class="hljs-keyword">value</span> you have given <span class="hljs-keyword">to</span> $<span class="hljs-keyword">password</span>
+# You can <span class="hljs-keyword">keep</span> the <span class="hljs-keyword">double</span> quotes around the <span class="hljs-keyword">password</span>
+sudo -u git -H editor config/<span class="hljs-keyword">database</span>.yml
+修改为正确的用户名和密码
+分别修改git用户和root用户
+
+# PostgreSQL <span class="hljs-keyword">and</span> MySQL:
+# Make config/<span class="hljs-keyword">database</span>.yml readable <span class="hljs-keyword">to</span> git <span class="hljs-keyword">only</span>
+sudo -u git -H chmod o-rwx config/<span class="hljs-keyword">database</span>.yml</code></pre>
+<h3 id="install-gems">Install Gems</h3>
+<p><strong>Note:</strong> As of bundler 1.5.2, you can invoke <code>bundle install -jN</code><br>
+(where <code>N</code> the number of your processor cores) and enjoy the parallel gems installation with measurable<br>
+difference in completion time (~60% faster). Check the number of your cores with <code>nproc</code>.<br>
+For more information check this <a href="http://robots.thoughtbot.com/parallel-gem-installing-using-bundler">post</a>.<br>
+First make sure you have bundler &gt;= 1.5.2 (run <code>bundle -v</code>) as it addresses some <a href="https://devcenter.heroku.com/changelog-items/411">issues</a><br>
+that were <a href="https://github.com/bundler/bundler/pull/2817">fixed</a> in 1.5.2.</p>
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /home/git/gitlab
+
+<span class="hljs-comment"># Or for MySQL (note, the option says "without ... postgres")</span>
+修改为淘宝的ruby源
+vi Gemfile
+修改为
+<span class="hljs-built_in">source</span> <span class="hljs-string">'https://ruby.taobao.org/'</span>
+
+sudo -u git -H bundle install --deployment --without development <span class="hljs-built_in">test</span> postgres aws
+这一步的时间会等很久</code></pre>
+<h3 id="install-gitlab-shell">Install GitLab shell</h3>
+<p>GitLab Shell is an SSH access and repository management software developed specially for GitLab.</p>
+<pre><code class="hljs sql"># Run the installation task for gitlab-shell (<span class="hljs-keyword">replace</span> <span class="hljs-string">`REDIS_URL`</span> <span class="hljs-keyword">if</span> needed):
+sudo -u git -H bundle exec rake gitlab:shell:<span class="hljs-keyword">install</span>[v2<span class="hljs-number">.2</span><span class="hljs-number">.0</span>] REDIS_URL=unix:/<span class="hljs-keyword">var</span>/run/redis/redis.sock RAILS_ENV=production</code></pre>
+<p>执行上述命令有SSL证书问题，改用下述命令</p>
+<pre><code class="hljs sql">su - git
+cd /home/git/gitlab
+bundle exec rake gitlab:shell:<span class="hljs-keyword">install</span>[v2<span class="hljs-number">.2</span><span class="hljs-number">.0</span>] REDIS_URL=unix:/<span class="hljs-keyword">var</span>/run/redis/redis.sock RAILS_ENV=production
+
+logout
+
+
+# <span class="hljs-keyword">By</span> <span class="hljs-keyword">default</span>, the gitlab-shell config <span class="hljs-keyword">is</span> <span class="hljs-keyword">generated</span> <span class="hljs-keyword">from</span> your <span class="hljs-keyword">main</span> GitLab config.
+# You can review (<span class="hljs-keyword">and</span> <span class="hljs-keyword">modify</span>) the gitlab-shell config <span class="hljs-keyword">as</span> <span class="hljs-keyword">follows</span>:
+sudo -u git -H editor /home/git/gitlab-shell/config.yml
+
+# Ensure the correct SELinux contexts <span class="hljs-keyword">are</span> <span class="hljs-keyword">set</span>
+# <span class="hljs-keyword">Read</span> <span class="hljs-keyword">http</span>://wiki.centos.org/HowTos/Network/SecuringSSH
+restorecon -Rv /home/git/.ssh</code></pre>
+<p><strong>Note:</strong> If you want to use HTTPS, see <a href="#using-https">Using HTTPS</a> for the additional steps.</p>
+<h3 id="initialize-database-and-activate-advanced-features">Initialize Database and Activate Advanced Features</h3>
+<p>初始化数据库</p>
+<pre><code class="hljs groovy">cd <span class="hljs-regexp">/home/</span>git<span class="hljs-regexp">/gitlab/</span>
+sudo -u git -H bundle exec rake <span class="hljs-string">gitlab:</span>setup RAILS_ENV=production</code></pre>
+<p>Type <strong>yes</strong> to create the database.<br>
+When done you see <strong>Administrator account created:</strong>.</p>
+<p><strong>Note:</strong> You can set the Administrator password by supplying it in environmental variable <code>GITLAB_ROOT_PASSWORD</code>, eg.:</p>
+<p>如果要修改gitlab管理员的密码，则执行这一句，否则执行上一句</p>
+<pre><code class="hljs python">sudo -u git -H bundle <span class="hljs-keyword">exec</span> rake gitlab:setup RAILS_ENV=production GITLAB_ROOT_PASSWORD=newpassword</code></pre>
+<h3 id="install-init-script">Install Init Script</h3>
+<p>Download the init script (will be /etc/init.d/gitlab):</p>
+<pre><code class="hljs groovy">wget -O <span class="hljs-regexp">/etc/</span>init.d<span class="hljs-regexp">/gitlab https:/</span><span class="hljs-regexp">/gitlab.com/</span>gitlab-org<span class="hljs-regexp">/gitlab-recipes/</span>raw<span class="hljs-regexp">/master/</span>init<span class="hljs-regexp">/sysvinit/</span>centos/gitlab-unicorn --no-check-certificate
+chmod +x <span class="hljs-regexp">/etc/</span>init.d/gitlab
+chkconfig --add gitlab</code></pre>
+<p>Make GitLab start on boot:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">chkconfig</span> gitlab <span class="hljs-literal">on</span></code></pre>
+<h3 id="set-up-logrotate">Set up logrotate</h3>
+<pre><code class="hljs groovy">cp lib<span class="hljs-regexp">/support/</span>logrotate<span class="hljs-regexp">/gitlab /</span>etc<span class="hljs-regexp">/logrotate.d/</span>gitlab</code></pre>
+<h3 id="check-application-status">Check Application Status</h3>
+<p>Check if GitLab and its environment are configured correctly:</p>
+<pre><code class="hljs groovy">sudo -u git -H bundle exec rake <span class="hljs-string">gitlab:</span><span class="hljs-string">env:</span>info RAILS_ENV=production</code></pre>
+<h3 id="compile-assets">Compile assets</h3>
+<pre><code class="hljs python">sudo -u git -H bundle <span class="hljs-keyword">exec</span> rake assets:precompile RAILS_ENV=production</code></pre>
+<h3 id="start-your-gitlab-instance">Start your GitLab instance</h3>
+<pre><code class="hljs dos">service gitlab <span class="hljs-built_in">start</span></code></pre>
+<h2 id="configure-the-web-server">7. Configure the web server</h2>
+<p>Use either Nginx or Apache, not both. Official installation guide recommends nginx.</p>
+<h3 id="nginx">Nginx</h3>
+<p>You will need a new version of nginx otherwise you might encounter an issue like <a href="https://github.com/gitlabhq/gitlabhq/issues/5774">this</a>.<br>
+To do so, follow the instructions provided by the <a href="http://wiki.nginx.org/Install#Official_Red_Hat.2FCentOS_packages">nginx wiki</a> and then install nginx with:</p>
+<pre><code class="hljs sql">yum <span class="hljs-keyword">update</span>
+yum -y <span class="hljs-keyword">install</span> nginx16
+chkconfig nginx <span class="hljs-keyword">on</span>
+
+使用SSl
+wget -O /etc/nginx/conf.<span class="hljs-keyword">d</span>/gitlab.conf https://gitlab.com/gitlab-org/gitlab-ce/<span class="hljs-keyword">raw</span>/<span class="hljs-keyword">master</span>/lib/support/nginx/gitlab-ssl <span class="hljs-comment">--no-check-certificate</span>
+
+不使用SSL
+wget -O /etc/nginx/conf.<span class="hljs-keyword">d</span>/gitlab.conf https://gitlab.com/gitlab-org/gitlab-ce/<span class="hljs-keyword">raw</span>/<span class="hljs-keyword">master</span>/lib/support/nginx/gitlab <span class="hljs-comment">--no-check-certificate</span></code></pre>
+<p>最后加上--no-check-certificate不检查证书</p>
+<p>Edit <code>/etc/nginx/conf.d/gitlab.conf</code> and replace <code>git.example.com</code> with your FQDN. Make sure to read the comments in order to properly set up SSL.</p>
+<pre><code class="hljs groovy">vi <span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span>gitlab.conf
+去掉listen后面的default_server，修改为正确的端口号
+去掉 listen [::]:
+修改server_name 为本机的IP地址
+
+修改client_max_body_size <span class="hljs-number">256</span>m;
+否则当推送较多数据到 gitlab 上时，会由于数据过大，而出现错误
+<span class="hljs-string">fatal:</span> The remote end hung up unexpectedly <span class="hljs-string">fatal:</span> The remote end hung up unexpectedly <span class="hljs-string">error:</span> RPC failed; result=<span class="hljs-number">22</span>, HTTP code = <span class="hljs-number">413</span></code></pre>
+<p>Add <code>nginx</code> user to <code>git</code> group:</p>
+<pre><code class="hljs dts">usermod -a -G git nginx
+chmod g+rx <span class="hljs-meta-keyword">/home/</span>git/
+
+
+<span class="hljs-comment">//chmod -R g+rx /home/git/gitlab/</span>
+
+<span class="hljs-meta"># 修改权限</span>
+<span class="hljs-comment">//chmod o+x /home/git</span></code></pre>
+<p>将selinux关闭，否则会出现 nginx 访问错误 (13: Permission denied)，HTTP显示502</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">setenforce</span> <span class="hljs-number">0</span> <span class="hljs-comment"># 只是临时关闭，重启后问题仍然出现</span></code></pre>
+<p>Finally start nginx with:</p>
+<pre><code class="hljs dos">service nginx <span class="hljs-built_in">start</span></code></pre>
+<p>出现错误<br>
+nginx: [emerg] bind() to 0.0.0.0:8080 failed (13: Permission denied)</p>
+<p><a href="http://www.tlanyan.me/nginx-open-failed-permission-denied/">将selinux关闭就可以</a></p>
+<p><strong>注意：开启selinux情况下正常使用nginx，需要修改selinux的策略</strong></p>
+<p>将selinux关闭就可以</p>
+<p>查看SELinux状态：<br>
+1、/usr/sbin/sestatus -v ##如果SELinux status参数为enabled即为开启状态</p>
+<pre><code class="hljs fortran">SELinux <span class="hljs-keyword">status</span>:                 enabled</code></pre>
+<p>2、getenforce ##也可以用这个命令检查</p>
+<p>关闭SELinux：<br>
+1、临时关闭（不用重启机器）：</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">setenforce</span> <span class="hljs-number">0</span>    <span class="hljs-comment">##设置SELinux 成为permissive模式</span>
+<span class="hljs-comment">##setenforce 1 设置SELinux 成为enforcing模式</span></code></pre>
+<p>2、修改配置文件需要重启机器：<br>
+修改/etc/selinux/config 文件</p>
+<pre><code class="hljs dts">vi <span class="hljs-meta-keyword">/etc/</span>selinux/config</code></pre>
+<p>将<code>SELINUX=enforcing</code> 改为 <code>SELINUX=disabled</code>,重启机器即可</p>
+<pre><code class="hljs perl"><span class="hljs-keyword">shutdown</span> -r now
+service gitlab restart</code></pre>
+<h4 id="test-configuration">Test Configuration</h4>
+<p>Validate your <code>gitlab</code> or <code>gitlab-ssl</code> Nginx config file with the following command:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">nginx</span> -t</code></pre>
+<p>You should receive <code>syntax is okay</code> and <code>test is successful</code> messages. If you receive errors check your <code>gitlab</code> or <code>gitlab-ssl</code> Nginx config file for typos, etc. as indiciated in the error message given.</p>
+<pre><code class="hljs cpp"><span class="hljs-comment">//vi /home/git/gitlab-shell/config.yml</span>
+<span class="hljs-comment">//修改gitlab_url为nginx中配置的相应端口</span>
+<span class="hljs-comment">//gitlab_url: http://192.168.137.142:8083/</span></code></pre>
+<h2 id="configure-the-firewall">8. Configure the firewall</h2>
+<p>Poke an iptables hole so users can access the web server (http and https ports) and ssh.</p>
+<pre><code class="hljs bash">lokkit <span class="hljs-_">-s</span> http <span class="hljs-_">-s</span> https <span class="hljs-_">-s</span> ssh</code></pre>
+<p>添加防火墙允许的端口</p>
+<pre><code class="hljs dts">vi <span class="hljs-meta-keyword">/etc/</span>sysconfig/iptables</code></pre>
+<p>添加，端口为nginx中为gitlab设置的端口</p>
+<pre><code class="hljs perl">-A INPUT -<span class="hljs-keyword">m</span> <span class="hljs-keyword">state</span> --<span class="hljs-keyword">state</span> NEW -<span class="hljs-keyword">m</span> tcp -p tcp --dport <span class="hljs-number">8083</span> -j ACCEPT</code></pre>
+<p>Restart the service for the changes to take effect:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">service</span> iptables restart</code></pre>
+<h2 id="done">Done!</h2>
+<h3 id="double-check-application-status">Double-check Application Status</h3>
+<p>To make sure you didn't miss anything run a more thorough check with:</p>
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /home/git/gitlab
+sudo -u git -H bundle <span class="hljs-built_in">exec</span> rake gitlab:check RAILS_ENV=production</code></pre>
+<p>Now, the output will complain that your init script is not up-to-date as follows:</p>
+<pre><code class="hljs vbnet">Init script up-<span class="hljs-keyword">to</span>-<span class="hljs-built_in">date</span>? ... no
+  <span class="hljs-keyword">Try</span> fixing it:
+  Redownload the init script
+  <span class="hljs-keyword">For</span> more information see:
+  doc/install/installation.md <span class="hljs-keyword">in</span> section <span class="hljs-string">"Install Init Script"</span>
+  Please fix the <span class="hljs-keyword">error</span> above <span class="hljs-keyword">and</span> rerun the checks.</code></pre>
+<p>Do not mind about that error if you are sure that you have downloaded the up-to-date file from <a href="https://gitlab.com/gitlab-org/gitlab-recipes/raw/master/init/sysvinit/centos/gitlab-unicorn" class="uri">https://gitlab.com/gitlab-org/gitlab-recipes/raw/master/init/sysvinit/centos/gitlab-unicorn</a> and saved it to <code>/etc/init.d/gitlab</code>.</p>
+<pre><code class="hljs groovy">wget <span class="hljs-string">https:</span><span class="hljs-comment">//gitlab.com/gitlab-org/gitlab-recipes/raw/master/init/sysvinit/centos/gitlab-unicorn</span>
+mv gitlab-unicorn gitlab
+cp -f gitlab <span class="hljs-regexp">/etc/</span>init.d/gitlab
+rm gitlab</code></pre>
+<p>复制完后，要删除/etc/init.d/gitlab.swap文件</p>
+<p>If all other items are green, then congratulations on successfully installing GitLab!</p>
+<p><strong>NOTE:</strong> Supply <code>SANITIZE=true</code> environment variable to <code>gitlab:check</code> to omit project names from the output of the check command.</p>
+<p>升级Gitlab Shell，安装的时候版本是2.1.0，需要升级到2.2.0才可以使用，否则会出现502错误</p>
+<p>Upgrade GitLab Shell<br>
+GitLab Shell might be outdated, running the commands below ensures you're using a compatible version:</p>
+<pre><code class="hljs dts">su - git
+cd <span class="hljs-meta-keyword">/home/</span>git/gitlab-shell
+git fetch
+git checkout v`cat <span class="hljs-meta-keyword">/home/</span>git<span class="hljs-meta-keyword">/gitlab/</span>GITLAB_SHELL_VERSION`</code></pre>
+<p>One line upgrade command<br>
+You've read through the entire guide and probably already did all the steps one by one.</p>
+<p>Here is a one line command with step 1 to 5 for the next time you upgrade:</p>
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /home/git/gitlab; \
+sudo -u git -H bundle <span class="hljs-built_in">exec</span> rake gitlab:backup:create RAILS_ENV=production; \
+sudo service gitlab stop; \
+<span class="hljs-keyword">if</span> [ <span class="hljs-_">-f</span> bin/upgrade.rb ]; <span class="hljs-keyword">then</span> sudo -u git -H ruby bin/upgrade.rb -y; <span class="hljs-keyword">else</span> sudo -u git -H ruby script/upgrade.rb -y; <span class="hljs-keyword">fi</span>; \
+<span class="hljs-built_in">cd</span> /home/git/gitlab-shell; \
+sudo -u git -H git fetch; \
+sudo -u git -H git checkout v`cat /home/git/gitlab/GITLAB_SHELL_VERSION`; \
+<span class="hljs-built_in">cd</span> /home/git/gitlab; \
+<span class="hljs-built_in">exit</span>; \
+sudo service gitlab start; \
+sudo service nginx restart; sudo -u git -H bundle <span class="hljs-built_in">exec</span> rake gitlab:check RAILS_ENV=production</code></pre>
+<h2 id="initial-login">Initial Login</h2>
+<p>Visit YOUR_SERVER in your web browser for your first GitLab login.<br>
+The setup has created an admin account for you. You can use it to log in:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">root</span>
+5iveL!fe</code></pre>
+<p><strong>Important Note:</strong><br>
+Please go over to your profile page and immediately change the password, so<br>
+nobody can access your GitLab by using this login information later on.</p>
+<p><strong>Enjoy!</strong></p>
+<p>You can also check some <a href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md#advanced-setup-tips">Advanced Setup Tips</a>.</p>
+<h2 id="links-used-in-this-guide">Links used in this guide</h2>
+<ul>
+<li><a href="http://www.thegeekstuff.com/2012/06/enable-epel-repository/">EPEL information</a></li>
+<li><a href="http://wiki.centos.org/TipsAndTricks/SelinuxBooleans">SELinux booleans</a></li>
+</ul>
+<h2 id="代码更新">代码更新</h2>
+<p><strong>修改Github上的代码，然后更新到服务器上</strong></p>
+<pre><code class="hljs dts">cd <span class="hljs-meta-keyword">/home/</span>git<span class="hljs-meta-keyword">/gitlab/</span>
+
+git fetch origin
+git merge origin/<span class="hljs-number">7</span><span class="hljs-number">-5</span>-zh
+
+重启 gitlab
+service gitlab restart</code></pre>
+<h2 id="gitlab-备份">Gitlab 备份</h2>
+<p>官网的备份说明</p>
+<p><a href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/raketasks/backup_restore.md" class="uri">https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/raketasks/backup_restore.md</a></p>
+<h3 id="查看备份设置">查看备份设置</h3>
+<pre><code class="hljs dts">vim <span class="hljs-meta-keyword">/home/</span>git<span class="hljs-meta-keyword">/gitlab/</span>config/gitlab.yml</code></pre>
+<p>检查Backup Settings设置项<br>
+默认情况下，备份文件是存放在/home/git/gitlab/tmp/backups/</p>
+<h3 id="执行备份">执行备份</h3>
+<pre><code class="hljs bash">sudo service gitlab stop <span class="hljs-comment"># 先停止Gitlab，可以不暂停</span>
+<span class="hljs-built_in">cd</span> /home/git/gitlab/
+sudo -u git -H bundle <span class="hljs-built_in">exec</span> rake gitlab:backup:create RAILS_ENV=production</code></pre>
+<p>执行完成后，会在/home/git/gitlab/tmp/backups/目录下创建一个备份俄文件，以时间戳_gitlab_backup命名如 1417040627_gitlab_backup.tar</p>
+<h3 id="重新启动">重新启动</h3>
+<pre><code class="hljs dos">sudo service gitlab <span class="hljs-built_in">start</span>
+sudo service nginx restart</code></pre>
+<h3 id="还原">还原</h3>
+<p>需要给其他用户配置读写执行的权限</p>
+<pre><code class="hljs groovy">chmod o+wrx <span class="hljs-regexp">/home/</span>git<span class="hljs-regexp">/.ssh/</span>authorized_keys.lock</code></pre>
+<p>否则会出现如下错误，是由于没有权限<br>
+/home/git/gitlab-shell/lib/gitlab_keys.rb:101:in `initialize': Permission denied @ rb_sysopen - /home/git/.ssh/authorized_keys.lock (Errno::EACCES)</p>
+<p>需要使用 git 用户来执行，否则会没有权限操作 git 目录下的文件，<code>timestamp_of_backup</code>为时间戳如 1417040627</p>
+<pre><code class="hljs sql">sudo service gitlab <span class="hljs-keyword">stop</span>
+cd /home/git/gitlab/ 
+sudo -u git -H bundle exec rake gitlab:<span class="hljs-keyword">backup</span>:<span class="hljs-keyword">restore</span> <span class="hljs-keyword">BACKUP</span>=timestamp_of_backup RAILS_ENV=production
+sudo service gitlab <span class="hljs-keyword">start</span>
+sudo service nginx restart
+sudo -u git -H bundle exec rake gitlab:<span class="hljs-keyword">check</span> RAILS_ENV=production</code></pre>
+<h3 id="设置自动备份">设置自动备份</h3>
+<pre><code class="hljs sql">sudo service gitlab <span class="hljs-keyword">stop</span>;
+cd /home/git/gitlab;
+sudo -u git -H editor config/gitlab.yml; # Enable keep_time in the <span class="hljs-keyword">backup</span> <span class="hljs-keyword">section</span> <span class="hljs-keyword">to</span> automatically <span class="hljs-keyword">delete</span> <span class="hljs-keyword">old</span> backups</code></pre>
+<p>keep_time参数默认是604800（单位是秒），因此会保留最近7天内的备份</p>
+<pre><code class="hljs bash">sudo -u git crontab <span class="hljs-_">-e</span> <span class="hljs-comment"># Edit the crontab for the git user</span></code></pre>
+<p>将如下内容添加到文件末尾</p>
+<pre><code class="hljs sql"># <span class="hljs-keyword">Create</span> a <span class="hljs-keyword">full</span> <span class="hljs-keyword">backup</span> <span class="hljs-keyword">of</span> the GitLab repositories <span class="hljs-keyword">and</span> <span class="hljs-keyword">SQL</span> <span class="hljs-keyword">database</span> every <span class="hljs-keyword">day</span> <span class="hljs-keyword">at</span> <span class="hljs-number">2</span>am
+<span class="hljs-number">0</span> <span class="hljs-number">2</span> * * * cd /home/git/gitlab &amp;&amp; <span class="hljs-keyword">PATH</span>=/usr/<span class="hljs-keyword">local</span>/<span class="hljs-keyword">bin</span>:/usr/<span class="hljs-keyword">bin</span>:/<span class="hljs-keyword">bin</span> bundle exec rake gitlab:<span class="hljs-keyword">backup</span>:<span class="hljs-keyword">create</span> RAILS_ENV=production CRON=<span class="hljs-number">1</span></code></pre>
+<p>每天凌晨2点自动备份</p>
+<p>The CRON=1 environment setting tells the backup script to suppress all progress output if there are no errors. This is recommended to reduce cron spam.</p>
+<p><strong>重新启动</strong></p>
+<pre><code class="hljs sql">sudo service gitlab <span class="hljs-keyword">start</span>;
+sudo service nginx restart;
+sudo -u git -H bundle exec rake gitlab:<span class="hljs-keyword">check</span> RAILS_ENV=production;</code></pre>
+<p></p>
+</div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/restran/category/346041.html" target="_blank">Linux</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/restran/tag/GitLab/">GitLab</a>, <a href="http://www.cnblogs.com/restran/tag/CentOS/">CentOS</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a id="green_channel_digg">好文要顶</a>
+            <a id="green_channel_follow">关注我</a>
+    <a id="green_channel_favorite">收藏该文</a>
+    <a id="green_channel_weibo" title="分享至新浪微博"><img src="icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" title="分享至微信"><img src="wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/restran/" target="_blank"><img src="u343468.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/restran/">restran</a><br>
+            <a href="http://home.cnblogs.com/u/restran/followees">关注 - 5</a><br>
+            <a href="http://home.cnblogs.com/u/restran/followers">粉丝 - 30</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a>+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/restran/p/4295184.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/restran/p/4295184.html" title="发布于2015-02-17 13:20">一次使用 Redis 优化查询性能的实践</a><br><a href="http://www.cnblogs.com/restran/p/4412708.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/restran/p/4412708.html" title="发布于2015-04-09 22:32">CentOS 环境下基于 Nginx uwsgi 搭建 Django 站点</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2015-04-09 19:33</span> <a href="http://www.cnblogs.com/restran/">restran</a> 阅读(<span id="post_view_count">2830</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4411133" rel="nofollow">编辑</a> <a href="#">收藏</a></div>
+	</div>
+	<script src="about:blank"></script><script>/* Code removed by ScrapBook */</script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" class="underline">登录</a> 或 <a rel="nofollow" class="underline">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://arcapp.anruichina.com/arctrac/trac?tid=smb_azure_1212_CNBlog" target="_blank">【福利】微软Azure给博客园的你专属双重好礼</a><br><a href="http://rongcloud.cn/reports/journal2" target="_blank">【推荐】融云发布 App 社交化白皮书 IM 提升活跃超 8 倍</a><br><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg" target="_blank">【推荐】BPM免费下载</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/activereports_overview.htm?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=AR&amp;utm_campaign=community" target="_blank"><img src="24442-20161115165230123-1587531896.png" alt="" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/560123/" target="_blank">比尔·盖茨：未来10年可能爆发致命性流行病</a><br> ·  <a href="http://news.cnblogs.com/n/560122/" target="_blank">微软将推出照片和视频分享服务Belize</a><br> ·  <a href="http://news.cnblogs.com/n/560121/" target="_blank">2017年1月1日起 同行异地存取现/转账全免费</a><br> ·  <a href="http://news.cnblogs.com/n/560120/" target="_blank">正式回归！微软Lumia官方微博改名@诺基亚手机</a><br> ·  <a href="http://news.cnblogs.com/n/560119/" target="_blank">东芝再次遭遇重创 危机“病根”在哪？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg" target="_blank"><img src="35695-20161213142353073-1602158633.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br> ·  <a href="http://kb.cnblogs.com/page/553682/" target="_blank">陈皓：什么是工程师文化？</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><a href="http://info.flagcounter.com/L6wc"><img style="margin: 5px 0px 15px;" src=".png" alt="Flag Counter" border="0"></a><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/restran/">restran</a><br>园龄：<a href="http://home.cnblogs.com/u/restran/" title="入园时间：2011-10-22">5年2个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/restran/followers/">30</a><br>关注：<a href="http://home.cnblogs.com/u/restran/followees/">5</a><div id="p_b_follow"><a>+加关注</a></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a>&lt;</a></td><td align="center">2016年12月</td><td class="CalNextPrev" align="right"><a>&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td class="CalWeekendDay" align="center">3</td></tr><tr><td class="CalWeekendDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td class="CalWeekendDay" align="center">10</td></tr><tr><td class="CalWeekendDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td class="CalWeekendDay" align="center">17</td></tr><tr><td class="CalWeekendDay" align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td class="CalWeekendDay" align="center">24</td></tr><tr><td class="CalWeekendDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalTodayDay" align="center">31</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">/* Code removed by ScrapBook */</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" class="input_my_zzk" type="text">&nbsp;<input value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" class="input_my_zzk" type="text">&nbsp;<input value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/restran/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/restran/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/restran/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/restran/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/restran/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/restran/tag/Python/">Python</a>(9)</li><li><a href="http://www.cnblogs.com/restran/tag/C%23/">C#</a>(3)</li><li><a href="http://www.cnblogs.com/restran/tag/%E5%89%8D%E7%AB%AF/">前端</a>(2)</li><li><a href="http://www.cnblogs.com/restran/tag/timesten/">timesten</a>(2)</li><li><a href="http://www.cnblogs.com/restran/tag/Tornado/">Tornado</a>(2)</li><li><a href="http://www.cnblogs.com/restran/tag/Django/">Django</a>(2)</li><li><a href="http://www.cnblogs.com/restran/tag/Git/">Git</a>(2)</li><li><a href="http://www.cnblogs.com/restran/tag/GitLab/">GitLab</a>(2)</li><li><a href="http://www.cnblogs.com/restran/tag/HTML5/">HTML5</a>(1)</li><li><a href="http://www.cnblogs.com/restran/tag/IIS/">IIS</a>(1)</li><li><a href="http://www.cnblogs.com/restran/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size: 11px; font-weight: normal;">(53)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/restran/category/696037.html">C#(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/restran/category/441257.html">Database(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/restran/category/358826.html">HTML5(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/restran/category/346041.html">Linux(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/restran/category/331095.html">Python(24)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/restran/category/599871.html">Web(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/restran/category/339041.html">Windows(6)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size: 11px; font-weight: normal;">(44)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/restran/archive/2016/02.html">2016年2月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/restran/archive/2016/01.html">2016年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/restran/archive/2015/11.html">2015年11月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/restran/archive/2015/10.html">2015年10月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/restran/archive/2015/09.html">2015年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/restran/archive/2015/08.html">2015年8月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/restran/archive/2015/05.html">2015年5月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/restran/archive/2015/04.html">2015年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/restran/archive/2015/02.html">2015年2月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/restran/archive/2015/01.html">2015年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/restran/archive/2014/10.html">2014年10月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/restran/archive/2014/08.html">2014年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/restran/archive/2014/05.html">2014年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/restran/archive/2014/04.html">2014年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/restran/archive/2013/06.html">2013年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/restran/archive/2013/04.html">2013年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/restran/archive/2013/01.html">2013年1月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/restran/archive/2012/12.html">2012年12月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/restran/archive/2012/11.html">2012年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/restran/archive/2012/04.html">2012年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/restran/archive/2012/02.html">2012年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/restran/archive/2011/12.html">2011年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/restran/archive/2011/11.html">2011年11月 (9)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">链接</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://www.restran.net/" rel="nofollow" target="_blank">restran</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	50047
+	</li>
+	<li class="liRank">
+		排名 -	5071
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/restran/p/4937673.html#3353089">1. Re:Tornado 中 PyMongo Motor MongoEngine 的性能测试</a></li>
+        <li class="recent_comment_body">@PegasusWang能否把 benchmark 数据的链接也发一份给我 ^_^...</li>
+        <li class="recent_comment_author">--restran</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/restran/p/4937673.html#3353064">2. Re:Tornado 中 PyMongo Motor MongoEngine 的性能测试</a></li>
+        <li class="recent_comment_body">@restran嗯，我看了一下motor里自带的benchmark数据，确实速度上慢一些。可能是因为motor也是基于pymongo的封装，异步IO可以处理更高的并发，但是未必保证低延时...</li>
+        <li class="recent_comment_author">--PegasusWang</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/restran/p/4937673.html#3353052">3. Re:Tornado 中 PyMongo Motor MongoEngine 的性能测试</a></li>
+        <li class="recent_comment_body">@PegasusWang看了一下，结果确实不太一样，可能跟数据的多少也有关系，毕竟我这个测试跟实际的场景还是有差距，仅供参考。...</li>
+        <li class="recent_comment_author">--restran</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/restran/p/4063880.html">1. 在自己的服务器上部署 GitLab 社区版(14385)</a></li><li><a href="http://www.cnblogs.com/restran/archive/2013/04/02/2996686.html">2. Python 中的 is 和 ==(8258)</a></li><li><a href="http://www.cnblogs.com/restran/p/3692051.html">3. 七牛云存储的 Javascript Web 前端文件上传(5796)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/restran/p/4257168.html">1. C# 中带有中国农历的日期选择控件(6)</a></li><li><a href="http://www.cnblogs.com/restran/p/4295184.html">2. 一次使用 Redis 优化查询性能的实践(5)</a></li><li><a href="http://www.cnblogs.com/restran/p/3889479.html">3. C# 使用 NPOI 库读写 Excel 文件(4)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 restran
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<script>/* Code removed by ScrapBook */</script>
+<!--PageEndHtml Block End-->
+
+
+</body>
+</html>

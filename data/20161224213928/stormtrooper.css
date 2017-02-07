@@ -1,0 +1,51 @@
+/* Code tidied up by ScrapBook */
+.jw-icon { font-family: "jw-icons"; font-style: normal; font-weight: normal; text-transform: none; background-color: transparent; font-variant: normal; font-feature-settings: "liga"; }
+.jw-skin-stormtrooper .jw-controlbar { height: 2em; }
+.jw-skin-stormtrooper .jw-time-tip { bottom: 1em; }
+.jw-skin-stormtrooper .jw-controlbar .jw-overlay { bottom: 2em; }
+.jw-skin-stormtrooper .jw-captions { max-height: calc(84.5%); }
+.jw-skin-stormtrooper .jw-controls .jw-controls-right { bottom: 2em; }
+.jw-skin-stormtrooper .jw-icon-inline, .jw-skin-stormtrooper .jw-icon-tooltip, .jw-skin-stormtrooper .jw-text-elapsed, .jw-skin-stormtrooper .jw-text-duration { height: 2em; line-height: 2em; }
+.jw-skin-stormtrooper .jw-icon-inline, .jw-skin-stormtrooper .jw-icon-tooltip { min-width: 1.25em; }
+.jw-skin-stormtrooper .jw-background-color { background: rgb(43, 48, 54) none repeat scroll 0% 0%; }
+.jw-skin-stormtrooper .jw-controlbar { background: rgb(43, 48, 54) none repeat scroll 0% 0%; }
+.jw-skin-stormtrooper .jw-text { color: rgb(109, 122, 139); }
+.jw-skin-stormtrooper .jw-knob { color: rgb(109, 122, 139); }
+.jw-skin-stormtrooper .jw-button-color { color: rgb(109, 122, 139); }
+.jw-skin-stormtrooper .jw-button-color:hover { color: rgb(53, 229, 252); }
+.jw-skin-stormtrooper .jw-button-color:focus { outline: 0px none; color: rgb(53, 229, 252); }
+.jw-skin-stormtrooper .jw-toggle { color: rgb(53, 229, 252); }
+.jw-skin-stormtrooper .jw-toggle.jw-off { color: rgb(109, 122, 139); }
+.jw-skin-stormtrooper .jw-toggle:focus { outline: 0px none; }
+.jw-skin-stormtrooper .jw-icon-display { color: rgb(109, 122, 139); }
+.jw-skin-stormtrooper .jw-display-icon-container { border-radius: 0.05em; }
+.jw-skin-stormtrooper .jw-display-icon-container:hover { background: rgb(43, 48, 54) none repeat scroll 0% 0%; }
+.jw-skin-stormtrooper .jw-display-icon-container:hover .jw-icon-display { color: rgb(53, 229, 252); }
+.jw-skin-stormtrooper .jw-rail { background: rgb(43, 48, 54) none repeat scroll 0% 0%; }
+.jw-skin-stormtrooper .jw-buffer { background: rgb(0, 0, 0) none repeat scroll 0% 0%; }
+.jw-skin-stormtrooper .jw-progress { background: rgb(53, 229, 252) none repeat scroll 0% 0%; }
+.jw-skin-stormtrooper .jw-slider-horizontal { background: rgb(43, 48, 54) none repeat scroll 0% 0%; height: 0.3em; }
+.jw-skin-stormtrooper .jw-slider-horizontal .jw-rail, .jw-skin-stormtrooper .jw-slider-horizontal .jw-buffer, .jw-skin-stormtrooper .jw-slider-horizontal .jw-progress { height: 0.3em; }
+.jw-skin-stormtrooper .jw-slider-horizontal .jw-knob { margin-left: -0.05em; }
+.jw-skin-stormtrooper .jw-slider-vertical .jw-knob { margin-bottom: -0.05em; }
+.jw-skin-stormtrooper .jw-slider-vertical .jw-slider-container, .jw-skin-stormtrooper .jw-slider-vertical .jw-rail, .jw-skin-stormtrooper .jw-slider-vertical .jw-progress { width: 0.3em; }
+.jw-skin-stormtrooper .jw-time-tip, .jw-skin-stormtrooper .jw-volume-tip, .jw-skin-stormtrooper .jw-menu { background: rgb(51, 51, 51) none repeat scroll 0% 0%; border: 0px none; padding: 1em; }
+.jw-skin-stormtrooper .jw-time-tip .jw-text, .jw-skin-stormtrooper .jw-dock-button .jw-text { color: rgb(187, 187, 187); }
+.jw-skin-stormtrooper .jw-nextup-container { bottom: 2.5em; right: 0.5em; }
+.jw-skin-stormtrooper .jw-nextup { border-radius: 2px; }
+.jw-skin-stormtrooper .jw-nextup-header { background: rgba(43, 48, 54, 0.9) none repeat scroll 0% 0%; color: rgb(53, 229, 252); }
+.jw-skin-stormtrooper .jw-nextup-body { background: rgba(0, 0, 0, 0.9) none repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+.jw-skin-stormtrooper .jw-nextup-close { color: rgb(109, 122, 139); }
+.jw-skin-stormtrooper .jw-nextup-close:active { color: rgb(53, 229, 252); }
+.jw-skin-stormtrooper .jw-nextup-close:hover { color: rgb(53, 229, 252); }
+.jw-skin-stormtrooper .jw-icon-inline, .jw-skin-stormtrooper .jw-icon-tooltip, .jw-skin-stormtrooper .jw-text-elapsed, .jw-skin-stormtrooper .jw-text-duration { padding: 0px 0.5em; }
+.jw-skin-stormtrooper .jw-time-tip, .jw-skin-stormtrooper .jw-volume-tip, .jw-skin-stormtrooper .jw-menu, .jw-skin-stormtrooper .jw-skip { border-radius: 0.5em; }
+.jw-skin-stormtrooper .jw-volume-tip, .jw-skin-stormtrooper .jw-menu { bottom: 0.3em; }
+.jw-skin-stormtrooper .jw-rail, .jw-skin-stormtrooper .jw-buffer, .jw-skin-stormtrooper .jw-progress, .jw-skin-stormtrooper .jw-knob { box-sizing: border-box; border: 1.5px solid rgb(0, 0, 0); border-radius: 2px; }
+.jw-skin-stormtrooper .jw-progress, .jw-skin-stormtrooper .jw-knob { background: rgb(43, 48, 54) none repeat scroll 0% 0%; }
+.jw-skin-stormtrooper .jw-slider-horizontal .jw-progress { background: transparent linear-gradient(to bottom, rgb(19, 137, 175) 0px, rgb(54, 228, 252) 50%, rgb(19, 137, 175) 100%) repeat scroll 0% 0%; }
+.jw-skin-stormtrooper .jw-slider-horizontal .jw-knob { top: -0.1em; background: transparent linear-gradient(to right, rgb(19, 137, 175) 0px, rgb(54, 228, 252) 50%, rgb(19, 137, 175) 100%) repeat scroll 0% 0%; width: 0.3em; height: 0.5em; border-width: 1px; border-radius: 0px; }
+.jw-skin-stormtrooper .jw-slider-vertical .jw-rail, .jw-skin-stormtrooper .jw-slider-vertical .jw-progress { width: 0.3em; }
+.jw-skin-stormtrooper .jw-slider-vertical .jw-progress { background: transparent linear-gradient(to right, rgb(19, 137, 175) 0px, rgb(54, 228, 252) 50%, rgb(19, 137, 175) 100%) repeat scroll 0% 0%; }
+.jw-skin-stormtrooper .jw-slider-vertical .jw-knob { width: 0.5em; height: 0.2em; background: transparent linear-gradient(to bottom, rgb(19, 137, 175) 0px, rgb(54, 228, 252) 50%, rgb(19, 137, 175) 100%) repeat scroll 0% 0%; border-width: 1px; left: -0.1em; }
+.jw-skin-stormtrooper .jw-icon-cc.jw-off::before { content: ""; }

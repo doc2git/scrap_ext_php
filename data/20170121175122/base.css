@@ -1,0 +1,11 @@
+/* Code tidied up by ScrapBook */
+html { color: rgb(0, 0, 0); background-color: transparent; }
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td { margin: 0px; padding: 0px; }
+fieldset, img { border: 0px none; }
+ol, ul { list-style: outside none none; }
+input, textarea, select { font-family: inherit; font-size: inherit; font-weight: inherit; }
+input, textarea, select {  }
+body { margin: 0px; padding: 0px; }
+.bd-logo, .bd-logo2, .bd-logo3, .bd-logo4 { text-decoration: none; cursor: pointer; display: block; overflow: hidden; position: absolute; bottom: 0px; right: 0px; z-index: 2147483647; }
+.bd-logo2 { margin: 0px 2px 2px 0px; height: 14px; width: 13px; background: transparent url("bg.png") no-repeat scroll 0px -20px; }
+.bd-logo2:hover { background-position: 0px -35px; }

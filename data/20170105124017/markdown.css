@@ -1,0 +1,9 @@
+/* Code tidied up by ScrapBook */
+@charset "utf-8";
+h1 { font-size: 32px; margin-left: 0px; }
+h2, #content h2 { font-size: 24px; margin-left: 0px; }
+h3, #content h3 { font-size: 18px; margin-left: 0px; }
+li { list-style: outside none decimal; }
+ul li { list-style: outside none circle; }
+ol, ul { margin-left: 20px; }
+pre[class*="lang-"] { border-radius: 3px; border: 1px dashed rgb(204, 204, 204); word-wrap: normal; color: rgb(255, 255, 255); text-shadow: none; font-family: Consolas,Monaco,"Andale Mono",monospace; direction: ltr; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; -moz-tab-size: 4; -moz-hyphens: none; background: rgb(78, 78, 78) none repeat scroll 0% 0%; padding: 1em; overflow: auto; margin: 1.2em 0px ! important; }

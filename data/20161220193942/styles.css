@@ -1,0 +1,24 @@
+/* Code tidied up by ScrapBook */
+body { background: rgb(249, 250, 252) none repeat scroll 0% 0%; }
+a { color: rgb(136, 136, 136); }
+a:hover { color: rgb(219, 109, 76); }
+ul, ol { margin: 0px; padding: 0px; }
+.site-header .header-top { width: 100%; background-color: rgb(249, 249, 249); color: rgb(102, 102, 102); line-height: 30px; height: 30px; border-bottom: 1px solid rgb(245, 245, 245); overflow: hidden; }
+.site-header .navbar { margin: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; border-radius: 0px; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); overflow: hidden; }
+.site-header .top-logo span { background-image: url("logo.gif"); background-position: 5px center; background-repeat: no-repeat; display: block; height: 68px; overflow: hidden; text-indent: -9999px; width: 190px; float: left; }
+.navbar-header { line-height: 68px; }
+.site-header .header-top .active { color: rgb(219, 109, 76); }
+.navbar-toggle { margin: 0px; }
+#search { width: 400px; font-size: 20px; padding: 20px 0px; margin-left: 200px; }
+.input-group .form-control { border-radius: 0px; width: 100%; }
+.side-box { margin-bottom: 30px; clear: both; background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding: 20px; }
+.side-box > .title { border-bottom: 2px solid rgb(203, 203, 203); color: rgb(51, 51, 51); font-size: 20px; line-height: 20px; padding-bottom: 7px; position: relative; }
+.side-box .title h3 { margin: 0px; font-size: 20px; }
+.side-box ul { list-style: outside none none; }
+.side-box li { margin: 10px 0px; }
+.side-box .hot { font-size: 14px; list-style: outside none decimal ! important; margin-left: 20px; }
+.br40 { border-radius: 40px; padding: 6px 40px; }
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}

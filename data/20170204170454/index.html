@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no">
+<meta name="description" content="好久没折腾VPN了，今天同事要在他的iPhone上搞下这玩意儿，还真是手生了，被证书折腾了好久。还要证书？为啥不用简单的PPTP搞定？还不是因为电信ADSL坑爹啊，表示我这里的电信ADSL已经大面积沦陷了，都分配不到公网IP，PPTP隧道根本穿透不了。那好吧，既然这样就用OpenVPN来折腾。其实配置OpenVPN挺简单的，之前刚刚开始搞这玩意儿的时候也发过相关的博客以备以后使用。不过对于证书这一块，一直有点模模糊糊的，好吧，我承认没好好读读相关文档。于是再学习一下，以下内容来自官方文档：首先生成服务端证书和私钥，在Linux/BSD/Unix中执行：./build-key-server...">
+<meta name="keywords" content="OpenVPN,证书,私钥">
+<title>OpenVPN证书的生成与使用 - Welcome to DannySite</title>
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for the latest blogs to dannysite.com" href="http://www.dannysite.com/blog/rss/">
+<link rel="stylesheet" href="stylesheet.css">
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+html { height: 100%; margin: 0px; padding: 0px; }
+body { font-family: DengXian,"Microsoft Yahei",Tahoma,Arial,Helvetica,Simsun,STHeiti; font-size: 14px; background-color: rgb(40, 40, 40); margin: 0px; padding: 0px; color: rgb(28, 28, 28); position: relative; min-height: 100%; height: auto ! important; }
+h1, h2, h3, h4, h5, h6, p { margin-top: 0px; padding-right: 0px; padding-left: 0px; }
+input { outline: medium none; }
+textarea { outline: medium none; }
+a { color: rgb(0, 80, 89); text-decoration: none; }
+a img { border: medium none; }
+a:link { color: rgb(0, 80, 89); text-decoration: none; }
+a:visited { color: rgb(0, 80, 89); text-decoration: none; }
+a:hover, a:active, a:focus { color: rgb(255, 143, 33) ! important; text-decoration: underline; }
+.text-highlight { color: rgb(255, 143, 33) ! important; }
+.container { background-color: rgb(255, 255, 255); max-width: 1275px; min-width: 320px; margin: 0px auto; }
+.header { position: relative; font-family: "country_gothic",Arial,Helvetica,Simsun,STHeiti; background-color: rgb(0, 80, 89); }
+.header .header-nav { position: absolute; top: 0px; left: 0px; width: 100%; z-index: 100; margin-top: 20px; }
+.header .header-nav .header-nav-content { width: 98%; margin: 0px auto; padding: 10px 0px; border-top: 2px solid rgb(0, 80, 89); border-bottom: 2px solid rgb(0, 80, 89); }
+.header .header-nav .header-nav-content .logo-click { text-decoration: none; }
+.header .header-nav .header-nav-content .logo { width: 120px; height: 76px; padding-left: 30px; text-align: right; font-size: 2.4em; }
+.header .header-nav .header-nav-content .logo span { text-decoration: none; }
+.header .header-nav .header-nav-content .logo .logo-top { height: 35px; }
+.header .header-nav .header-nav-content .menu-btn { display: none; height: 50px; line-height: 76px; padding-right: 30px; cursor: pointer; }
+.header .header-nav .header-nav-content .menu-btn img { vertical-align: middle; }
+.header .header-nav .header-nav-content .nav-bar { position: relative; display: block; }
+.header .header-nav .header-nav-content .nav-bar a { height: 76px; line-height: 76px; font-size: 1.6em; display: inline-block; text-align: center; margin-right: 30px; }
+.header .header-nav .header-nav-content .nav-bar .focus { color: rgb(255, 143, 33) ! important; }
+.header .header-nav .header-nav-content .nav-bar .focus:hover { text-decoration: none; }
+.header .header-page-title { position: absolute; bottom: 60px; width: 100%; color: rgb(255, 255, 255); text-align: center; }
+.header .header-page-title .page-title { font-size: 3.2em; color: rgb(255, 255, 255); }
+.header .header-page-title .page-desc { font-size: 1.2em; padding-top: 20px; color: rgb(255, 255, 255); }
+.header .header-bg { overflow: hidden; z-index: 10; }
+.header .header-bg img { display: block; border: 0px none; }
+.content { width: 95%; margin: 0px auto; padding: 80px 0px; }
+.content .content-generic-title { color: rgb(28, 28, 28); }
+.content .content-generic-body { color: rgb(85, 84, 84); }
+.footer { padding: 0px 0px 40px; background-color: rgb(0, 80, 89); color: rgb(255, 255, 255); }
+.footer .ft-item-box { width: 49%; min-width: 300px; padding-top: 60px; }
+.footer .ft-item-box .ft-box-title { font-size: 1.4em; font-family: "country_gothic",Arial,Helvetica,Simsun,STHeiti; padding-left: 30px; }
+.footer .ft-item-box .ft-box-content { padding: 40px 0px 0px 30px; }
+.footer .ft-item-box .ft-box-content #sc_items .sc-item { display: inline-block; padding: 0px 20px 20px 0px; }
+.footer .ft-item-box .ft-box-content #sc_items .sc-item:hover { opacity: 0.7; }
+.footer .ft-item-box .ft-box-content #sc_sep { width: 150px; margin-top: 10px; font-size: 1px; line-height: 0; height: 2px; background-color: rgb(255, 255, 255); }
+.footer .ft-item-box #link_content .link-item:first-child { padding: 0px 0px 20px ! important; }
+.footer .ft-item-box #link_content .link-item { color: rgb(255, 255, 255) ! important; display: block; padding: 20px 0px; width: 150px; border-bottom: 2px solid rgb(255, 255, 255); }
+.footer .copyright { font-family: "country_gothic",Arial,Helvetica,Simsun,STHeiti; padding-top: 80px; text-align: center; }
+.fltrt { float: right; }
+.fltlft { float: left; }
+.clearfloat { clear: both; height: 0px; font-size: 1px; line-height: 0px; }
+@media screen and (max-width: 680px) {
+  .header { font-size: 10px; }
+  .header .header-nav .header-nav-content .logo { width: 100px; height: 59px; padding-left: 0px; text-align: right; font-size: 2.4em; }
+  .header .header-nav .header-nav-content .logo .logo-top { height: 29px; }
+  .header .header-nav .header-nav-content .menu-btn { line-height: 59px; display: block; padding-right: 20px; }
+  .header .header-nav .header-nav-content .nav-bar { display: none; width: 320px; background-color: rgb(0, 80, 89); position: absolute; top: 81px; right: 0px; }
+  .header .header-nav .header-nav-content .nav-bar a { color: rgb(255, 255, 255); display: block; text-align: right; }
+  .footer .ft-item-box { width: 95%; }
+  .footer .copyright span { display: block; }
+  .footer .copyright { text-align: left; font-size: 0.8em; padding-left: 30px; }
+}
+</style>
+
+	<link rel="stylesheet" href="blog.css">
+    <link href="shCore.css" type="text/css" rel="stylesheet">
+    <link href="shThemeDefault.css" type="text/css" rel="stylesheet">
+
+<script src="about:blank"></script>
+<script>/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank" charset="UTF-8"></script>
+
+    <script src="about:blank"></script>
+    <script>/* Code removed by ScrapBook */</script>
+    <script>/* Code removed by ScrapBook */</script>
+	<script>/* Code removed by ScrapBook */</script>
+    <script src="about:blank"></script>
+    <script src="about:blank" type="text/javascript"></script>
+    <script src="about:blank" type="text/javascript"></script>
+    <script src="about:blank" type="text/javascript"></script>
+    <script src="about:blank" type="text/javascript"></script>
+    
+	<script>/* Code removed by ScrapBook */</script>
+
+
+</head>
+	
+<body>
+
+<div class="container">
+	<div class="header">
+    	<div class="header-nav">
+        	<div class="header-nav-content">
+            	<a class="logo-click" href="http://www.dannysite.com/">
+                    <div class="logo fltlft">
+                        <div class="logo-top">
+                            <span>DANNY</span>
+                        </div>
+                        <div class="logo-buttom">
+                            <span>SITE</span>
+                        </div>
+                    </div>
+                </a>
+                <a class="menu-btn fltrt" id="menu_btn">
+                	<img src="6bf43b39-6cb1-41c7-9303-943d65d52d92.png" width="40">
+                </a>
+                <div class="nav-bar fltrt" id="nav_bar">
+                	<a class="nav-item " href="http://www.dannysite.com/">HOME</a>
+                    <a class="nav-item focus" href="http://www.dannysite.com/blog/">BLOG</a>
+                    <a class="nav-item " href="http://www.dannysite.com/box/">BOX</a>
+                    <a class="nav-item " href="http://www.dannysite.com/contact/">CONTACT</a>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+        <!-- end .header-nav --></div>
+        <div class="header-page-title">
+        	<div class="page-title">
+            	<span>BLOG</span>
+            </div>
+            <div class="page-desc">
+            	<span>Enjoy when you can, and endure when you must.</span>
+            </div>
+        <!-- end .header-bg --></div>
+    	<div class="header-bg">
+       		<img style="margin-left: -326px;" id="header_bg_image" src="00b85b0a-91c0-4b26-8c5d-299a043d511d.jpg" height="560">
+        <!-- end .header-bg --></div>
+    <!-- end .header --></div>
+ 
+ 	<div class="content">
+		
+	<div class="side-bar fltrt">
+		<div class="side-bar-box self-introduction">
+			<div class="sbar-title content-generic-title">
+				<span>ABOUT</span>
+			</div>
+			<div class="sbar-content">
+				<div class="avatar">
+					<img id="avatar" src="avatar.jpg" width="60%">
+				</div>
+				<div class="nickname">
+					<span>Danny Man</span>
+				</div>
+				<div class="intro">
+					<p>I’m Danny, and let me give you a warm welcome to visit my blog site. I hope you’ll enjoy it. Also, you can visit my <b><a href="http://www.dannysite.com/">HOME PAGE</a></b> to learn more about me.</p>
+				</div>
+			</div>
+		</div>
+		<div class="side-bar-box search">
+			<div class="sbar-title content-generic-title" id="search_title">
+				<span>SEARCH</span>
+			</div>
+			<div class="sbar-content" id="search_box">
+				<img id="search_icon" src="search.png" width="40">
+				<div id="search_form_box">
+					<form id="search_form" action="http://www.dannysite.com/blog/" method="get">
+						<input id="search_content" name="search" placeholder="FIND WHAT YOU WANT ..." type="text">
+					</form>
+				</div>
+			</div>
+		</div>
+	<!-- end .side-bar --></div>
+
+	
+	<div style="height: auto;" class="blog fltlft">
+		
+<div class="blog-box">
+    <div class="blog-info">
+		<span class="blog-date text-highlight">JAN 07, 2014</span><span class="dc-sep">/</span><a class="blog-category" href="http://www.dannysite.com/blog/?cat=8">平台与系统运维</a>
+	</div>
+	<a href="#">
+		<div class="blog-title">
+			<span>OpenVPN证书的生成与使用</span>
+		</div>
+	</a>
+	<div class="blog-content content-generic-body">
+        <p>好久没折腾VPN了，今天同事要在他的iPhone上搞下这玩意儿，还真是手生了，被证书折腾了好久。</p><p>还要证书？为啥不用简单的PPTP搞定？还不是因为电信ADSL坑爹啊，表示我这里的电信ADSL已经大面积沦陷了，都分配不到公网IP，PPTP隧道根本穿透不了。那好吧，既然这样就用OpenVPN来折腾。</p><p>其实配置OpenVPN挺简单的，之前刚刚开始搞这玩意儿的时候也发过相关的博客以备以后使用。不过对于证书这一块，一直有点模模糊糊的，好吧，我承认没好好读读相关文档。于是再学习一下，以下内容来自官方文档：</p><p>首先生成服务端证书和私钥，在Linux/BSD/Unix中执行：<br></p><div><div id="highlighter_716832" class="syntaxhighlighter  bash"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">.</code><code class="bash plain">/build-key-server</code>&nbsp;<code class="bash plain">server</code></div></div></td></tr></tbody></table></div></div><p>在Windows下则是执行：<br></p><div><div id="highlighter_444454" class="syntaxhighlighter  bash"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">build-key-server&nbsp;server</code></div></div></td></tr></tbody></table></div></div><p>接下来的步骤就不说了，一步步来。<br>然后生成客户端证书和私钥，在Linux/BSD/Unix中执行：</p><div><div id="highlighter_700915" class="syntaxhighlighter  bash"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">.</code><code class="bash plain">/build-key</code>&nbsp;<code class="bash plain">client1</code></div><div class="line number2 index1 alt1"><code class="bash plain">.</code><code class="bash plain">/build-key</code>&nbsp;<code class="bash plain">client2</code></div><div class="line number3 index2 alt2"><code class="bash plain">.</code><code class="bash plain">/build-key</code>&nbsp;<code class="bash plain">client3</code></div></div></td></tr></tbody></table></div></div><p>在Windows中则执行：</p><div><div id="highlighter_994934" class="syntaxhighlighter  bash"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">build-key&nbsp;client1</code></div><div class="line number2 index1 alt1"><code class="bash plain">build-key&nbsp;client2</code></div><div class="line number3 index2 alt2"><code class="bash plain">build-key&nbsp;client3</code></div></div></td></tr></tbody></table></div></div><p>这里为三个用户分别生成了证书和密钥，总是注意为每个用户生成不同的Common Name。</p><p>经过以上的步骤，我们已经生成了所需的证书和私钥并保存在名为keys的子目录下，以下罗列了相关文件的说明：</p><table><tbody><tr><td style="-ms-word-break: break-all;" valign="top" width="226"><strong>Filename</strong></td><td style="-ms-word-break: break-all;" valign="top" width="226"><strong>Needed By</strong></td><td style="-ms-word-break: break-all;" valign="top" width="226"><strong>Purpose</strong></td><td style="-ms-word-break: break-all;" valign="top" width="226"><strong>Secret</strong></td></tr><tr><td style="-ms-word-break: break-all;" valign="top" width="226">ca.crt</td><td style="-ms-word-break: break-all;" valign="top" width="226">server + all clients</td><td style="-ms-word-break: break-all;" valign="top" width="226">Root CA certificate</td><td style="-ms-word-break: break-all;" valign="top" width="226">NO<br></td></tr><tr><td style="-ms-word-break: break-all;" valign="top" width="226">ca.key</td><td style="-ms-word-break: break-all;" valign="top" width="226">key signing machine only</td><td style="-ms-word-break: break-all;" valign="top" width="226">Root CA key</td><td style="-ms-word-break: break-all;" valign="top" width="226">YES<br></td></tr><tr><td style="-ms-word-break: break-all;" valign="top" width="226">dh{n}.pem</td><td style="-ms-word-break: break-all;" valign="top" width="226">server only</td><td style="-ms-word-break: break-all;" valign="top" width="226">Diffie Hellman parameters</td><td style="-ms-word-break: break-all;" valign="top" width="226">NO<br></td></tr><tr><td style="-ms-word-break: break-all;" valign="top" width="226">server.crt</td><td style="-ms-word-break: break-all;" valign="top" width="226">server only</td><td style="-ms-word-break: break-all;" valign="top" width="226">Server Certificate</td><td style="-ms-word-break: break-all;" valign="top" width="226">NO<br></td></tr><tr><td style="-ms-word-break: break-all;" valign="top" width="226">server.key</td><td style="-ms-word-break: break-all;" valign="top" width="226">server only</td><td style="-ms-word-break: break-all;" valign="top" width="226">Server Key</td><td style="-ms-word-break: break-all;" valign="top" width="226">YES<br></td></tr><tr><td style="-ms-word-break: break-all;" valign="top" width="226">client1.crt</td><td style="-ms-word-break: break-all;" valign="top" width="226">client1 only</td><td style="-ms-word-break: break-all;" valign="top" width="226">Client1 Certificate</td><td style="-ms-word-break: break-all;" valign="top" width="226">NO<br></td></tr><tr><td style="-ms-word-break: break-all;" valign="top" width="226">client1.key</td><td style="-ms-word-break: break-all;" valign="top" width="226">client1 only</td><td style="-ms-word-break: break-all;" valign="top" width="226">Client1 Key</td><td style="-ms-word-break: break-all;" valign="top" width="226">YES<br></td></tr><tr><td style="-ms-word-break: break-all;" valign="top" width="226">client2.crt</td><td style="-ms-word-break: break-all;" valign="top" width="226">client2 only</td><td style="-ms-word-break: break-all;" valign="top" width="226">Client2 Certificate</td><td style="-ms-word-break: break-all;" valign="top" width="226">NO<br></td></tr><tr><td style="-ms-word-break: break-all;" valign="top" width="226"><span id="_baidu_bookmark_start_24" style="line-height: 0px; display: none;">‍</span><span id="_baidu_bookmark_start_25" style="line-height: 0px; display: none;">‍</span><span id="_baidu_bookmark_start_26" style="line-height: 0px; display: none;">‍</span><span id="_baidu_bookmark_start_27" style="line-height: 0px; display: none;">‍</span><span id="_baidu_bookmark_start_28" style="line-height: 0px; display: none;">‍</span><span id="_baidu_bookmark_start_29" style="line-height: 0px; display: none;">‍</span><span id="_baidu_bookmark_start_30" style="line-height: 0px; display: none;">‍</span><span id="_baidu_bookmark_start_31" style="line-height: 0px; display: none;">‍</span>...<br></td><td style="-ms-word-break: break-all;" valign="top" width="226">...<br></td><td style="-ms-word-break: break-all;" valign="top" width="226">...<br></td><td style="-ms-word-break: break-all;" valign="top" width="226">...<br></td></tr></tbody></table><p>那么接下来就是为客户端创建配置文件并提供必要的证书和私钥。这里的配置文件也就是所谓的xxx.ovpn。对于证书这一块，例如ca配置段，对于Windows PC来说只需并将其值指向crt文件即可。但针对iphone客户端貌似并不吃这一套，必须显示的将内容直接放进来并放置在&lt;ca&gt;&lt;/ca&gt;之间。而对于cert和key也是一样的。</p><p>最后将写好的配置文件传到手机中即可开始操作了。<br></p>
+	</div>
+	<div class="blog-sep"></div>
+    <div class="blog-tag">
+        
+            <a class="tag-item" href="http://www.dannysite.com/blog/?tag=88">OpenVPN</a>
+        
+            <a class="tag-item" href="http://www.dannysite.com/blog/?tag=174">证书</a>
+        
+            <a class="tag-item" href="http://www.dannysite.com/blog/?tag=175">私钥</a>
+        
+    </div>
+    <div class="blog-sep"></div>
+    
+    <div class="comments">
+        <div class="title">
+            <span>COMMENTS</span>
+        </div>
+        <div class="comment-items">
+            
+        </div>
+        <div class="blog-sep"></div>
+        <div class="comment-post-box">
+            <div class="title">
+                <span>LEAVE COMMNT</span>
+            </div>
+            <div class="comment-post-form-box">
+                <form id="comment_form" action="" method="post">
+                    <input name="csrfmiddlewaretoken" value="wmeqpuhoQP2vdK1fJootcoXMPrX6lDoX" type="hidden">
+                    <div class="input-box-r1">
+                        <img class="comment-form-icon" id="name_icon" src="person.png" width="30">
+                        <div id="comment_name_input_box">
+                            <input id="name" name="username" placeholder="Name" type="text">
+                        </div>
+                    </div>
+                    <div class="input-box-r1">
+                        <img class="comment-form-icon" id="email_icon" src="at.png" width="30">
+                        <div id="comment_email_input_box">
+                            <input id="email" name="email" placeholder="Email" type="text">
+                        </div>
+                    </div>
+                    <div class="input-box-r2 contact-content-box">
+                        <img class="comment-form-icon" id="content_icon" src="pencil.png" width="30">
+                        <div id="comment_content_input_box">
+                            <textarea id="content" name="content" placeholder="Comment here ..." rows="1"></textarea>
+                        </div>
+                    </div>
+                    <div class="error" style="display: none;">
+                        <span id="error_msg"></span>
+                    </div>
+                    <div class="input-box-r3">
+                        <a id="submit_btn">SEND NOW</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="blog-sep"></div>
+<!-- end .blog-box --></div>
+	</div>
+
+
+	<div class="side-bar fltrt">
+		<div class="side-bar-box category">
+			<div class="sbar-title content-generic-title">
+				<span>CATEGORIES</span>
+			</div>
+			<div class="sbar-content">
+                
+                    <a href="http://www.dannysite.com/blog/?cat=8">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>平台与系统运维</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(47)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+                    <a href="http://www.dannysite.com/blog/?cat=1">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>Python</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(44)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+                    <a href="http://www.dannysite.com/blog/?cat=3">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>Django</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(35)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+                    <a href="http://www.dannysite.com/blog/?cat=16">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>后端开发与架构</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(25)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+                    <a href="http://www.dannysite.com/blog/?cat=14">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>前端开发</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(24)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+                    <a href="http://www.dannysite.com/blog/?cat=2">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>心得与分享</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(20)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+                    <a href="http://www.dannysite.com/blog/?cat=10">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>数据库</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(19)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+                    <a href="http://www.dannysite.com/blog/?cat=9">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>关注生活</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(16)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+                    <a href="http://www.dannysite.com/blog/?cat=12">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>编程工具与网络技术</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(10)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+                    <a href="http://www.dannysite.com/blog/?cat=15">
+                        <div class="cate-item">
+                            <div class="cate-name fltlft">
+                                <span>数据结构</span>
+                            </div>
+                            <div class="cate-rank fltrt">
+                                <span>(7)</span>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                    </a>
+                
+			</div>
+		</div>
+		<div class="side-bar-box extra">
+			<img id="extra_info" title="阿里云ECS推荐码：t6i3qi。购买时使用即可享受9折优惠。" alt="阿里云ECS推荐码：t6i3qi。购买时使用即可享受9折优惠。" src="info.jpg" height="250" width="250">
+		</div>
+	</div>
+	<div class="clearfloat"></div>
+
+    <!-- end .content --></div>
+    <div class="back-to-top" style="position: fixed; right: 30px; bottom: 30px; cursor: pointer; z-index: 10000;">
+    	<img src="top.png" width="40">
+    </div>
+    
+    <div class="footer">
+    	<div class="ft-item-box fltlft" id="subscribe_contact">
+        	<div class="ft-box-title" id="sc_title">
+            	<span>SUBSCRIBE &amp; CONTACT</span>
+            </div>
+            <div class="ft-box-content" id="sc_content">
+            	<div id="sc_items">
+                    <a title="contact me by qq" target="_blank" class="sc-item" id="qq" href="http://www.dannysite.com/site/contact/?type=qq"><img src="qq.png" height="25"></a>
+                    <a title="visit my sina weibo" target="_blank" class="sc-item" id="weibo" href="http://www.dannysite.com/site/contact/?type=weibo"><img src="weibo.png" height="25"></a>
+                    <a title="contact me by email" target="_blank" class="sc-item" id="mail" href="http://www.dannysite.com/site/contact/?type=email"><img src="mail.png" height="25"></a>
+                    <a title="visit my github page" target="_blank" class="sc-item" id="github" href="http://www.dannysite.com/site/contact/?type=github"><img src="github.png" height="25"></a>
+                    <a title="subscribe my blog" target="_blank" class="sc-item" id="rss" href="http://www.dannysite.com/blog/rss/"><img src="rss.png" height="25"></a>
+                </div>
+                <div id="sc_sep"></div>
+            </div>
+        </div>
+        <div class="ft-item-box link fltlft">
+        	<div class="ft-box-title" id="link_title">
+            	<span>LINKS</span>
+            </div>
+            <div class="ft-box-content" id="link_content">
+                
+                    <a class="link-item" href="http://www.felixglow.com/" target="_blank">Felix</a>
+                
+                    <a class="link-item" href="http://jhat.pw/" target="_blank">JHat</a>
+                
+                    <a class="link-item" href="http://www.pmxmind.com/" target="_blank">周记茶馆</a>
+                
+                    <a class="link-item" href="http://irory.me/" target="_blank">IRory</a>
+                
+                    <a class="link-item" href="http://maniac.wiki/" target="_blank">色魔科技</a>
+                
+            </div>
+        </div>
+        <div class="clearfloat"></div>
+        <div class="copyright">
+        	<span><i>Designed by <b>Danny</b>.</i></span><span><i>Copyright 2012 - 2016 <b>DannyWork Project</b>.</i></span>
+        </div>
+    <!-- end .footer --></div>
+<!-- end .container --></div>
+
+
+</body>
+</html>

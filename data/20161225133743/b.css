@@ -1,0 +1,46 @@
+/* Code tidied up by ScrapBook */
+body, a { color: rgb(36, 19, 12); }
+.fc01 { color: rgb(108, 58, 37); }
+.fc02, .fc02 a { color: rgb(255, 255, 254); font-size: 14px; }
+.fc03, .fc03 a, .fc04, .fc04 a, .fc11 a { color: rgb(108, 58, 37); }
+.fc05 { color: rgb(36, 19, 12); }
+.fc06, .fc07 { color: rgb(224, 184, 167); }
+.fc08 { color: rgb(108, 58, 37); }
+.fc10 { color: rgb(229, 196, 181); }
+.bdc0 { border-color: rgb(229, 196, 181); }
+.bgc0, .bgc9:hover, .bgc9.js-bgc9-hover { background-color: rgb(229, 196, 181); }
+.nb-body { background: rgb(255, 255, 255) none repeat scroll left top; }
+.nb-top { background: transparent url("2849934139196030349.jpg") no-repeat scroll center top; }
+.nb-top .h { height: 378px; }
+.nb-top .t { top: 102px; left: 66px; font-family: Arial; color: rgb(255, 255, 255); }
+.nb-top .n { font-size: 25px; }
+.nb-top .d { font-size: 14px; }
+.nb-nav .wkg { background: transparent url("2849934139196030347.jpg") repeat-y scroll center top; }
+.nb-nav .h { height: 32px; line-height: 32px; }
+.nb-nav .c { margin-left: 8px; }
+.nb-nav .i { width: 63px; font-weight: normal; font-size: 14px; }
+.nb-nav .i:hover { font-weight: bold; font-size: 14px; color: rgb(108, 58, 37); background: transparent none no-repeat scroll center top; }
+.nb-nav .selected { background: transparent none no-repeat scroll center top; }
+.nb-nav .selected .i, .nb-nav .selected .i:hover { font-weight: bold; font-size: 14px; color: rgb(108, 58, 37); background: transparent none repeat scroll 0% 0%; }
+.nb-cnt .wkg { background: transparent url("2849934139196030347.jpg") repeat scroll center top; }
+.nb-cnt .wl { width: 50px; }
+.nb-cnt .lg { display: block; background: transparent none repeat scroll left top; }
+.nb-cnt .wr { width: 50px; }
+.nb-cnt .rg { display: block; background: transparent none repeat scroll right top; }
+.nb-cnt .wc { margin: 0px 5px; min-height: 560px; }
+.nb-fot { background: transparent url("2849934139196030348.jpg") no-repeat scroll center top; }
+.nb-fot .h { height: 129px; }
+.nb-fot .k { padding-top: 57px; }
+.nb-mdl { margin: 10px 5px; border: 1px none rgb(170, 170, 170); }
+.nb-mdl .th { height: 25px; }
+.nb-mdl .bh { height: 0px; }
+.nb-mt .tm { top: 0px; right: 10px; line-height: 25px; }
+.nb-mt .tc { margin: 0px 4px 0px 10px; height: 25px; line-height: 25px; font-size: 14px; font-weight: bold; background: rgb(108, 58, 37) none repeat-x scroll center top; }
+.nb-mt .tc .thide { font-size: 14px; }
+.nb-mt .tl { width: 10px; background: transparent none no-repeat scroll left top; }
+.nb-mt .tr { width: 4px; background: transparent none no-repeat scroll right top; }
+.nb-mc .cc { margin: 0px 10px; background: transparent none repeat scroll center top; }
+.nb-mc .cl { width: 10px; background: transparent none repeat-y scroll left top; }
+.nb-mc .cr { width: 10px; background: transparent none repeat-y scroll right top; }
+.wsy, .wkg { width: 1004px; margin: 0px auto; }
+.nb-top .d { text-align: left; text-indent: 2em; padding-left: 0px; }

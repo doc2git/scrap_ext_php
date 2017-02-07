@@ -1,0 +1,6 @@
+/* Code tidied up by ScrapBook */
+.series-exp-foot-banner { margin: 40px 0px; border-top: 1px solid rgb(241, 241, 241); padding-top: 25px; }
+.series-exp-foot-banner .main-title { font-size: 14px; }
+.series-exp-foot-banner .total { color: rgb(153, 153, 153); }
+.series-exp-foot-banner .series { font-family: "宋体",sans-serif; padding-top: 2px; }
+.series-exp-foot-banner .series-ico { background: transparent url("article-sprite-v1.png") no-repeat scroll -234px -364px; width: 27px; height: 16px; display: inline-block; margin-right: 10px; vertical-align: middle; margin-top: -3px; }

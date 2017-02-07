@@ -1,0 +1,94 @@
+/* Code tidied up by ScrapBook */
+body, .commonTopbar dd, .commonTopbar dl, .commonTopbar dt, .commonTopbar h2, .commonTopbar h3, .commonTopbar h4, .commonTopbar h6, .commonTopbar li, .commonTopbar ol, .commonTopbar p, .commonTopbar ul { margin: 0px; padding: 0px; list-style: outside none none; }
+.commonTopbar img { border: 0px none; }
+.commonTopbar em, .commonTopbar i, .commonTopbar h2, .commonTopbar h3, .commonTopbar h4, .commonTopbar h6 { font-style: normal; }
+.commonTopbar { font: 12px/35px "Hiragino Sans GB","Microsoft YaHei","微软雅黑",arial,Tahoma,SimSun,sans-serif; text-rendering: geometricprecision; position: relative; z-index: 9999; width: 100%; height: 35px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(85, 85, 85); border-bottom: 1px solid rgb(221, 221, 221); }
+.commonTopbar a, .commonTopbar div, .commonTopbar h1, .commonTopbar h2, .commonTopbar h3, .commonTopbar h4, .commonTopbar h5, .commonTopbar h6, .commonTopbar span, .commonTopbar p, .commonTopbar ul, .commonTopbar li { font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑",arial,Tahoma,SimSun,sans-serif ! important; font-size: 12px; }
+.commonTopbar a { text-decoration: none; cursor: pointer; color: rgb(85, 85, 85); }
+.commonTopbar a:visited { color: rgb(102, 102, 102); }
+:focus { outline: 0px none; }
+.commonTopbar input, .commonTopbar p, .commonTopbar ul { margin: 0px; padding: 0px; }
+.commonTopbar li { list-style: outside none none; }
+.commonTopbar .hc { display: none; }
+.commonTopbar .w, .commonTopbar .n, .commonTopbar .warp { clear: both; line-height: 27px; }
+.commonTopbar .vip-con a, .commonTopbar .help-con a { color: rgb(102, 102, 102); }
+.commonTopbar a:hover { color: rgb(255, 85, 46); }
+.commonTopbar .bar_left { float: left; word-spacing: 1px; height: 35px; line-height: 35px; }
+.commonTopbar .bar_right { float: right; }
+.commonTopbar .bar_left h2 { display: inline; font-size: 12px; color: rgb(255, 85, 46); float: left; line-height: 35px; font-weight: 700; }
+.commonTopbar #commonTopbar_login, .commonTopbar .haschild { float: left; }
+.commonTopbar .arrow { margin-left: 8px; background: transparent url("topbar_icons.png") no-repeat scroll -10px -470px; display: block; position: absolute; width: 7px; height: 4px; overflow: hidden; right: 10px; top: 16px; }
+.commonTopbar .n .arrow { right: 6px; }
+.commonTopbar .haschild { z-index: 999; position: relative; padding: 0px 24px 0px 14px; border-width: medium 1px; border-style: none solid; border-color: -moz-use-text-color rgb(255, 255, 255); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+.commonTopbar .n .haschild { padding: 0px 19px 0px 8px; }
+.commonTopbar .bar_right { z-index: 999; position: relative; }
+.commonTopbar #commonTopbar_my58menu, .commonTopbar #commonTopbar_shopCenter, .commonTopbar #commonTopbar_myfeet, .commonTopbar #commonTopbar_sitemap { height: 35px; line-height: 35px; cursor: pointer; }
+.commonTopbar #commonTopbar_login, .commonTopbar .help-con, .commonTopbar .vip-con { padding: 0px 10px; height: 35px; line-height: 35px; float: left; }
+.commonTopbar .n #commonTopbar_login, .commonTopbar .n .help-con, .commonTopbar .n .vip-con { padding: 0px 8px; }
+.commonTopbar #commonTopbar_login a { color: rgb(102, 102, 102); margin: 0px 4px; }
+.commonTopbar #commonTopbar_login a:hover { color: rgb(255, 85, 46); }
+.commonTopbar .pos { z-index: 999; }
+.commonTopbar #commonTopbar_loginbox { right: -1px; width: 86px; top: 35px; }
+.commonTopbar .n #commonTopbar_loginbox { width: 75px; }
+.commonTopbar #commonTopbar_loginbox a { font-size: 12px; display: block; height: 30px; line-height: 30px; text-align: center; }
+.commonTopbar #commonTopbar_loginbox a:hover { color: rgb(255, 85, 46); background-color: rgb(248, 248, 248); text-decoration: none; }
+.commonTopbar #commonTopbar_ipconfig { float: left; margin: 0px 10px 0px 8px; }
+.commonTopbar .n #commonTopbar_ipconfig { margin: 0px 5px; }
+.commonTopbar #commonTopbar_myfeet h4.category { font-size: 12px; margin-left: 10px; color: rgb(85, 85, 85); font-weight: 700; line-height: 35px; }
+.commonTopbar #commonTopbar_myfeet h4.topLine { border-top: 1px solid rgb(238, 238, 238); }
+.commonTopbar #commonTopbar_myfeetBox { right: -1px; width: 215px; top: 35px; padding-top: 8px; }
+.commonTopbar #commonTopbar_myfeetBox li { padding-left: 18px; height: 27px; background-position: 10px -427px; }
+.commonTopbar #commonTopbar_myfeetBox li a { height: 27px; line-height: 27px; width: 100%; display: block; }
+.commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li { color: rgb(85, 85, 85); height: 27px; line-height: 27px; }
+.commonTopbar #commonTopbar_myfeetBox li { background: transparent url("topbar_icons.png") no-repeat scroll -2px -343px; }
+.commonTopbar #commonTopbar_myfeetBox li:hover, .commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li:hover { background-color: rgb(248, 248, 248); color: rgb(85, 85, 85); background-position: -2px -285px; }
+.commonTopbar.hd_icons #commonTopbar_myfeetBox li:hover, .commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li:hover { background-position: 2px -137px; }
+.commonTopbar #commonTopbar_myfeetBox li:hover a { color: rgb(255, 85, 46); }
+.commonTopbar #commonTopbar_clearInfo { height: 35px; background-color: rgb(248, 248, 248); line-height: 35px; text-align: center; color: rgb(85, 85, 85); }
+.commonTopbar #commonTopbar_myfeetBox .bangbang_pr { padding-left: 20px; height: 30px; display: block; }
+.commonTopbar .n { width: 1000px; margin: 0px auto; }
+.commonTopbar #commonTopbar_ipconfig a, .commonTopbar .haschild a { color: rgb(102, 102, 102); }
+.commonTopbar #commonTopbar_ipconfig a:hover, .commonTopbar .haschild a:hover { color: rgb(255, 85, 46); }
+.commonTopbar .mark { position: absolute; right: 0px; top: 34px; height: 4px; z-index: 1001; font-size: 0px; overflow: hidden; display: none; background-color: rgb(255, 255, 255); width: 100%; }
+.commonTopbar .n #commonTopbar_appQR .mark {  }
+.commonTopbar .n #commonTopbar_my58menu .mark {  }
+.commonTopbar .n #commonTopbar_myfeet .mark {  }
+.commonTopbar .n #commonTopbar_sitemap .mark {  }
+.commonTopbar #commonTopbar_sitemapBox { width: 1188px; right: -1px; border: 1px solid rgb(238, 238, 238); top: 35px; padding: 20px 0px; cursor: default; }
+.commonTopbar .n #commonTopbar_sitemapBox { width: 998px; }
+.commonTopbar #commonTopbar_sitemapBox .maplist { width: 1188px; overflow: hidden; }
+.commonTopbar .n #commonTopbar_sitemapBox .maplist { width: 998px; }
+.commonTopbar #commonTopbar_sitemapBox p { height: 18px; color: rgb(238, 238, 238); line-height: 18px; margin-top: 6px; }
+.commonTopbar #commonTopbar_sitemapBox .appicons p { color: rgb(153, 153, 153); height: 12px; line-height: 12px; margin-top: 8px; text-align: center; }
+.commonTopbar #commonTopbar_sitemapBox .appicons a:hover p { color: rgb(255, 85, 46); }
+.commonTopbar #commonTopbar_sitemapBox .maplist li { height: 320px; border-right: 1px solid rgb(238, 238, 238); float: left; }
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0 { padding-left: 6px; }
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0.huangye { width: 130px; }
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list2 { padding-right: 8px; }
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0 p { width: 150px; }
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0.huangye p { width: 130px; }
+.commonTopbar #commonTopbar_sitemapBox .maplist li a:hover { text-decoration: none; color: rgb(255, 85, 46); }
+.commonTopbar #commonTopbar_sitemapBox .maplist h3 { font-size: 14px; color: rgb(255, 85, 46); line-height: 16px; height: 16px; cursor: default; font-weight: 700; }
+.commonTopbar #commonTopbar_sitemapBox .maplist h3 a { color: rgb(255, 85, 46); font-size: 14px; line-height: 16px; height: 16px; font-weight: 700; }
+.commonTopbar #commonTopbar_sitemapBox .maplist a { font-size: 12px; color: rgb(51, 51, 51); line-height: 30px; display: inline-block; }
+.commonTopbar #commonTopbar_sitemapBox .subtitle { margin-top: 20px; }
+.commonTopbar #commonTopbar_sitemapBox .subtitle a { color: rgb(153, 153, 153); }
+.commonTopbar #commonTopbar_sitemapBox .list0 a { padding: 0px 7px; height: 14px; line-height: 14px; }
+.commonTopbar .n #commonTopbar_sitemapBox .list0 a { padding: 0px 5px; }
+.commonTopbar #commonTopbar_sitemapBox .maplist .list2 { border-right: medium none; float: right; }
+.commonTopbar #commonTopbar_sitemapBox .huangye .subtitle a { color: rgb(51, 51, 51); }
+.commonTopbar #commonTopbar_sitemapBox .maplist .appicons { line-height: 12px; }
+.commonTopbar #commonTopbar_sitemapBox .maplist .appicons a { width: 50px; text-align: center; margin: 18px 13px 0px -4px; line-height: 16px; color: rgb(153, 153, 153); }
+.commonTopbar .n #commonTopbar_sitemapBox .maplist .appicons a { margin: 18px 10px 0px -4px; }
+.commonTopbar #commonTopbar_sitemapBox .appicons img { width: 40px; height: 40px; }
+.commonTopbar #commonTopbar_sitemapBox .appqr { width: 100px; text-align: center; float: left; margin-top: 20px; line-height: 16px; margin-right: 20px; }
+.commonTopbar .n #commonTopbar_sitemapBox .appqr { margin-right: 10px; }
+.commonTopbar #commonTopbar_sitemapBox .appqr img { width: 100px; height: 100px; }
+.commonTopbar #commonTopbar_sitemapBox .appqr p { margin-top: 0px; color: rgb(153, 153, 153); text-align: center; }
+.commonTopbar #commonTopbar_appQR { background: transparent url("topbar_icons.png") no-repeat scroll 0% 0%; line-height: 35px; }
+.commonTopbar .n #commonTopbar_appQR { padding-left: 20px; background-position: -3px -48px; }
+.commonTopbar .appQRbox { border: 1px solid rgb(228, 225, 225); position: absolute; right: -1px; top: 35px; z-index: 1000; background: rgb(255, 255, 255) none repeat scroll 0% 0%; line-height: 20px; display: none; cursor: default; padding: 20px; }
+.commonTopbar .appQRbox img { width: 100px; height: 100px; }
+.commonTopbar .appQRbox p { text-align: center; line-height: 12px; word-break: keep-all; margin-top: 6px; }
+.commonTopbar #commonTopbar_homepageLink { float: left; padding: 0px 10px 0px 28px; background: transparent url("topbar_icons.png") no-repeat scroll 0px -164px; line-height: 35px; }
+.commonTopbar .n #commonTopbar_homepageLink { padding: 0px 5px 0px 25px; }

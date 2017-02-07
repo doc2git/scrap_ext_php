@@ -1,0 +1,37 @@
+/* Code tidied up by ScrapBook */
+.markdown-body pre { overflow: auto; }
+.markdown-body code, .markdown-body kbd, .markdown-body pre { font-family: "Meiryo UI","YaHei Consolas Hybrid",Consolas,"Malgun Gothic","Segoe UI","Trebuchet MS",Helvetica,monospace,monospace; font-size: 1em; }
+.markdown-body code { font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace; font-size: 12px; }
+.markdown-body pre { margin-top: 0px; margin-bottom: 0px; font: 12px Consolas,"Liberation Mono",Menlo,Courier,monospace; }
+.markdown-body pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-body code { padding: 0.2em 0px; margin: 0px; font-size: 85%; background-color: rgba(0, 0, 0, 0.04); border-radius: 3px; }
+.markdown-body code::before, .markdown-body code::after { letter-spacing: -0.2em; content: " "; }
+.markdown-body .highlight pre, .markdown-body pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; background-color: rgb(247, 247, 247); border-radius: 3px; }
+.markdown-body pre { word-wrap: normal; }
+.markdown-body pre code { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; background-color: transparent; border: 0px none; }
+.markdown-body pre code::before, .markdown-body pre code::after { content: normal; }
+.markdown-body hr, .editormd-html-preview hr { height: 1px; border-width: 1px medium medium; border-style: solid none none; border-color: rgb(221, 221, 221) -moz-use-text-color -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background: transparent none repeat scroll 0% 0%; }
+.markdown-body code, .editormd-html-preview code { border: 1px solid rgb(221, 221, 221); background: rgb(246, 246, 246) none repeat scroll 0% 0%; padding: 3px; border-radius: 3px; font-size: 14px; }
+.markdown-body pre, .editormd-html-preview pre { border: 1px solid rgb(221, 221, 221); background: rgb(246, 246, 246) none repeat scroll 0% 0%; padding: 10px; border-radius: 3px; }
+.markdown-body pre code, .editormd-html-preview pre code { padding: 0px; }
+.markdown-body pre, .markdown-body code, .markdown-body kbd, .editormd-html-preview pre, .editormd-html-preview code, .editormd-html-preview kbd { font-family: "YaHei Consolas Hybrid",Consolas,"Meiryo UI","Malgun Gothic","Segoe UI","Trebuchet MS",Helvetica,monospace,monospace; }
+.markdown-body .pln { color: rgb(0, 0, 0); }
+@media screen {
+  .markdown-body .com { color: rgb(136, 0, 0); }
+  .markdown-body .pun, .markdown-body .opn, .markdown-body .clo { color: rgb(102, 102, 0); }
+}
+@media print, projection {
+  .markdown-body .com { color: rgb(102, 0, 0); font-style: italic; }
+  .markdown-body .pun, .markdown-body .opn, .markdown-body .clo { color: rgb(68, 68, 0); }
+}
+.markdown-body pre.prettyprint { padding: 2px; border: 1px solid rgb(136, 136, 136); }
+.markdown-body ol.linenums { margin-top: 0px; margin-bottom: 0px; }
+.markdown-body li.L0, .markdown-body li.L1, .markdown-body li.L2, .markdown-body li.L3, .markdown-body li.L5, .markdown-body li.L6, .markdown-body li.L7, .markdown-body li.L8 { list-style-type: none; }
+.markdown-body li.L1, .markdown-body li.L3, .markdown-body li.L5, .markdown-body li.L7, .markdown-body li.L9 { background: rgb(238, 238, 238) none repeat scroll 0% 0%; }
+.markdown-body pre.prettyprint, .editormd-html-preview pre.prettyprint { padding: 10px; border: 1px solid rgb(221, 221, 221); white-space: pre-wrap; word-wrap: break-word; }
+.markdown-body ol.linenums, .editormd-html-preview ol.linenums { color: rgb(153, 153, 153); padding-left: 2.5em; }
+.markdown-body ol.linenums li, .editormd-html-preview ol.linenums li { list-style-type: decimal; }
+.markdown-body ol.linenums li code, .editormd-html-preview ol.linenums li code { border: medium none; background: transparent none repeat scroll 0% 0%; padding: 0px; }
+.markdown-body .highlight pre, .markdown-body pre { line-height: 1.6; }
+.markdown-body ul li { list-style: outside none disc; }
+.markdown-body ol li { list-style: outside none decimal; }

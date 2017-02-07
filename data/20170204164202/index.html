@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+
+<base href="">
+<title>OpenVPN 连接老出错 - 服务器应用 - ChinaUnix.net -  Powered by Discuz! Archiver</title>
+<link href="http://bbs.chinaunix.net/thread-1354667-1-1.html" rel="canonical">
+<meta name="keywords" content="OpenVPN 连接老出错">
+<meta name="description" content=" OpenVPN 连接老出错 ,ChinaUnix.net">
+<meta name="generator" content="Discuz! X3.2">
+<meta name="author" content="Discuz! Team and Comsenz UI Team">
+<meta name="copyright" content="2001-2013 Comsenz Inc.">
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+body { font-family: Verdana; font-size: 12px; margin: 0px; color: rgb(0, 0, 0); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.page { padding: 4px; border-top: 1px solid rgb(238, 238, 238); }
+.author { background-color: rgb(238, 238, 255); padding: 6px; border-top: 1px solid rgb(221, 221, 238); }
+#nav, #content, #end { padding: 8px; border: 1px solid rgb(238, 238, 238); clear: both; width: 95%; margin: 10px auto auto; }
+#header, #footer { margin-top: 20px; }
+</style>
+</head>
+<body link="#333333" vlink="#333333">
+<center id="header">
+<div><iframe src="index_3.html" scrolling="no" frameborder="0" height="80" width="760"></iframe></div><h2>ChinaUnix.net's Archiver </h2>
+</center><div id="nav">
+	<a href="http://bbs.chinaunix.net/archiver/">论坛</a> › <a href="http://bbs.chinaunix.net/archiver/fid-232.html">服务器应用</a> › OpenVPN 连接老出错</div>
+
+<div id="content">
+			<p class="author">
+					<strong>lovesaka</strong>
+				发表于 2009-01-14 18:26	</p>
+			<h3>OpenVPN 连接老出错</h3>
+		版本都为:2.0.9<br>
+linux做配成服务端,win为客户端<br>
+客户端输出<br>
+<br>
+tun,link-mtu 1542,tun-mtu 1500,proto UDPv4,comp-lzo,keydir 0,cipher BF-CBC,auth<br>
+SHA1,keysize 128,tls-auth,key-method 2,tls-server'<br>
+Wed Jan 14 18:10:06 2009 us=345172 Local Options hash (VER=V4): '504e774e'<br>
+Wed Jan 14 18:10:06 2009 us=345206 Expected Remote Options hash (VER=V4): '14168<br>
+603'<br>
+Wed Jan 14 18:10:06 2009 us=345253 Socket Buffers: R= S=<br>
+<br>
+Wed Jan 14 18:10:06 2009 us=345291 UDPv4 link local: <br>
+Wed Jan 14 18:10:06 2009 us=345321 UDPv4 link remote: 192.168.255.251:1194<br>
+Wed Jan 14 18:10:06 2009 us=355138 TLS: Initial packet from 192.168.255.251:1194<br>
+, sid=b89bb5a9 9251c03f<br>
+Wed Jan 14 18:10:09 2009 us=913530 VERIFY ERROR: depth=1, error=certificate has<br>
+expired: /C=CN/ST=BJ/L=BEIJING/O=OpenVPN_ORG/OU=OpenVPN_Service/CN=VPN_ROOT_CA/e<br>
+mailAddress=XXXXX@163.com<br>
+Wed Jan 14 18:10:42 2009 us=497142 TLS_ERROR: BIO read tls_read_plaintext error:<br>
+ error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify fail<br>
+ed<br>
+Wed Jan 14 18:10:42 2009 us=497216 TLS Error: TLS object -&gt; incoming plaintext r<br>
+ead error<br>
+Wed Jan 14 18:10:42 2009 us=497259 TLS Error: TLS handshake failed<br>
+Wed Jan 14 18:10:42 2009 us=497356 TCP/UDP: Closing socket<br>
+Wed Jan 14 18:10:42 2009 us=497437 SIGUSR1 received, process res<br>
+tarting<br>
+Wed Jan 14 18:10:42 2009 us=497486 Restart pause, 2 second(s)<br>
+<br>
+服务器这边log<br>
+<br>
+Thu Jan1 03:00:22 1970 MULTI: multi_create_instance called<br>
+Thu Jan1 03:00:22 1970 192.168.255.250:3478 Re-using SSL/TLS context<br>
+Thu Jan1 03:00:22 1970 192.168.255.250:3478 LZO compression initialized<br>
+Thu Jan1 03:00:22 1970 192.168.255.250:3478 Control Channel MTU parms [ L:1542 D:166 EF:66 EB:0 ET:0 EL:0 ]<br>
+Thu Jan1 03:00:22 1970 192.168.255.250:3478 Data Channel MTU parms [ L:1542 D:1450 EF:42 EB:135 ET:0 EL:0 AF:3/1 ]<br>
+Thu Jan1 03:00:22 1970 192.168.255.250:3478 Local Options hash (VER=V4): '14168603'<br>
+Thu Jan1 03:00:22 1970 192.168.255.250:3478 Expected Remote Options hash (VER=V4): '504e774e'<br>
+Thu Jan1 03:00:22 1970 192.168.255.250:3478 TLS: Initial packet from 192.168.255.250:3478, sid=5f2c2027 cfaf5280<br>
+Thu Jan1 03:00:25 1970 read UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 read UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 read UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3419 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3419 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3418 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3418 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3449 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3449 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3415 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3415 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3416 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3416 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3414 TLS Error: TLS key negotiation failed to occur within 60 seconds (check your network connectivity)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3414 TLS Error: TLS handshake failed<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3414 SIGUSR1 received, client-instance restarting<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3477 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3477 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3417 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3417 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3420 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3420 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3476 write UDPv4 : Connection refused (code=111)<br>
+Thu Jan1 03:00:25 1970 192.168.255.250:3476 write UDPv4 : Connection refused (code=111)<br>
+<br>
+老出现VERIFY ERROR和 TLS_ERROR错误<br>
+服务器和客户端配置按照本论坛的配置方法<br>
+http://bbs.chinaunix.net/thread-503434-1-2.html				<p class="author">
+					<strong>wenzk</strong>
+				发表于 2009-01-14 18:43	</p>
+			<h3></h3>
+		服务器端和客户端用的证书必须是同一个根证书签发的				<p class="author">
+					<strong>lovesaka</strong>
+				发表于 2009-01-14 18:45	</p>
+			<h3>回复 #2 wenzk 的帖子</h3>
+		是啊我用的是同一个ca的证书				<p class="author">
+					<strong>lovesaka</strong>
+				发表于 2009-01-14 18:58	</p>
+			<h3></h3>
+		<br>
+# grep "^[^#;]" server.conf<br>
+port 1194<br>
+proto udp<br>
+dev tun<br>
+ca&nbsp; &nbsp;/etc/openvpn/keys/ca.crt<br>
+cert /etc/openvpn/keys/server.crt<br>
+key/etc/openvpn/keys/server.key# This file should be kept secret<br>
+crl-verify /etc/openvpn/keys/vpncrl.pem<br>
+dh&nbsp; &nbsp;/etc/openvpn/keys/dh1024.pem<br>
+server 10.8.0.0 255.255.255.0<br>
+client-to-client<br>
+keepalive 10 120<br>
+tls-auth /etc/openvpn/keys/ta.key 0 # This file is secret<br>
+comp-lzo<br>
+persist-key<br>
+persist-tun<br>
+status /var/log/openvpn-status.log<br>
+log&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;/var/log/openvpn.log<br>
+verb 3<br>
+# grep "^[^#;]" client.ovpn<br>
+<br>
+client<br>
+<br>
+dev tun<br>
+<br>
+<br>
+proto udp<br>
+<br>
+remote 192.168.255.251 1194<br>
+<br>
+<br>
+resolv-retry infinite<br>
+<br>
+nobind<br>
+<br>
+<br>
+persist-key<br>
+persist-tun<br>
+<br>
+<br>
+<br>
+ca&nbsp; &nbsp;ca.crt<br>
+cert client.crt<br>
+keyclient.key<br>
+<br>
+ns-cert-type server<br>
+<br>
+tls-auth ta.key 1<br>
+<br>
+<br>
+comp-lzo<br>
+<br>
+verb 4<br>
+<br>
+#<br>
+<br>
+<br>
+上面是配置文件				<p class="author">
+					<strong>lovesaka</strong>
+				发表于 2009-01-14 19:06	</p>
+			<h3></h3>
+		配置也和您差不多啊,就是平台不一样,我服务器工作在arm平台上				<p class="author">
+					<strong>smartlinux</strong>
+				发表于 2009-01-14 21:30	</p>
+			<h3></h3>
+		从日志看，是证书验证失败了。如果ca配置正确的话，检查证书的有效期，看看时间对不				<p class="author">
+					<strong>wenzk</strong>
+				发表于 2009-01-14 23:41	</p>
+			<h3></h3>
+		楼上说的对<br>
+<br>
+certificate has expired<br>
+<br>
+把客户机的时间调整正确后再试试				<p class="author">
+					<strong>lovesaka</strong>
+				发表于 2009-01-15 15:56	</p>
+			<h3>回复 #6 smartlinux 的帖子</h3>
+		您观察还真细致,开发板上的时间我是没有改过,生成的CA也是在开发板上做的<br>
+听这么一说还真有可能是这个问题<br>
+我先试试再说				<p class="author">
+					<strong>lovesaka</strong>
+				发表于 2009-01-15 21:40	</p>
+			<h3></h3>
+		刚试了果然是这个问题<br>
+非常感谢两位帮助<br>
+老犯这种低级错误啊,早把rtc驱动装上不就没事了,呵呵				<p class="author">
+					<strong>smartlinux</strong>
+				发表于 2009-01-16 09:57	</p>
+			<h3></h3>
+		不必客气了。			<div class="page">
+		页: 
+<strong>[1]</strong> 
+	</div>
+</div>
+
+<div id="end">
+	查看完整版本:
+	<a href="http://bbs.chinaunix.net/thread-1354667-1-1.html" target="_blank"><strong>OpenVPN 连接老出错</strong></a>
+</div>
+<br>
+<center>
+		<div id="footer">
+		Powered by <strong><a target="_blank" href="http://www.discuz.net/">Discuz! X3.2 Archiver</a></strong> &nbsp; © 2001-2013 <a target="_blank" href="http://www.comsenz.com/">Comsenz Inc.</a>
+		<br>
+		<br>
+	</div>
+</center>
+
+
+</body>
+</html>

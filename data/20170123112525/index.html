@@ -1,0 +1,1880 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-gb" xml:lang="en-gb" xmlns="http://www.w3.org/1999/xhtml" slick-uniqueid="3">
+<head>
+	  <base href="">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="vpn, openvpn, enterprise vpn, open source vpn, vpn client, vpn server, virtual private network">
+  <meta name="description" content="OpenVPN - The Open Source VPN">
+  <meta name="generator" content="Joomla! - Open Source Content Management">
+  <title>OpenVpn-official-HOWTO</title>
+  <link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="fusion.css" type="text/css">
+  <link rel="stylesheet" href="rokajaxsearch.css" type="text/css">
+  <link rel="stylesheet" href="rokajaxsearch-theme.css" type="text/css">
+  <style type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+  <script src="about:blank" async=""></script><script src="about:blank" type="text/javascript"></script>
+  <script src="about:blank" type="text/javascript"></script>
+  <script src="about:blank" type="text/javascript"></script>
+  <script src="about:blank" type="text/javascript"></script>
+  <script src="about:blank" type="text/javascript"></script>
+  <script src="about:blank" type="text/javascript"></script>
+  <script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+	<link rel="stylesheet" href="template.css" type="text/css">
+	<link rel="stylesheet" href="suckerfish.css" type="text/css">
+
+<!--[if IE 6]>
+<style type="text/css">
+#header {
+
+	background:url(/templates/telethra/img/ovpntech_logo-s.gif) no-repeat 0 10px;
+}
+</style>
+<![endif]-->
+<style>
+/* Code tidied up by ScrapBook */
+</style>	
+
+<script>/* Code removed by ScrapBook */</script>
+<script src="about:blank"></script>
+<script>/* Code removed by ScrapBook */</script>
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style></head>
+
+<body>
+<div id="top">
+
+	<div id="header">
+
+		<div id="h-els">
+			<a class="mainlevel-supernav" style="float: right; margin-right: 5px;" href="https://openvpn.net/index.php/login.html">Sign in</a><!---->
+
+<div id="OP-Twitter">
+      <div id="OP-Twitter-Left"><a href="https://www.facebook.com/OpenVPN" title="Follow us on Facebook" target="_blank"><img alt="Follow us on Facebook" src="fbfollow.png" style="padding-top: 4px;"></a>&nbsp;</div>
+      <div id="OP-Twitter-Right"><a target="_blank" title="Follow us on Twitter" href="https://www.twitter.com/#openvpn"><img alt="Follow us on Twitter" src="OP-twitter.png"></a></div>
+    </div>	
+</div>	
+					<div class="moduletable-search">
+					<form name="rokajaxsearch" id="rokajaxsearch" class="blue" action="https://openvpn.net/" method="get">
+<div class="rokajaxsearch -search">
+	<div class="roksearch-wrapper">
+		<input autocomplete="off" id="roksearch_search_str" name="searchword" class="inputbox" value="Search..." type="text">
+	</div>
+	<input name="searchphrase" value="any" type="hidden">
+	<input name="limit" value="100" type="hidden">
+	<input name="ordering" value="newest" type="hidden">
+	<input name="view" value="search" type="hidden">
+	<input name="option" value="com_search" type="hidden">
+
+	
+	
+</div>
+<div id="rokajaxsearch_tmp" style="visibility: hidden; display: none;"></div>
+</form>		</div>
+	
+
+		<div id="h-nav">
+					<div class="moduletable">
+					<div id="horizmenu-surround">
+        <ul class="menutop level1">
+                            <li class="item855 root">
+                        <a class="item" href="https://openvpn.net/">
+                    <span>Home</span>
+                </a>
+                                </li>
+                                <li class="item595 parent root">
+                        <a class="daddy item" href="https://openvpn.net/privatetunnel?referral=OPENVPN" target="_blank">
+                    <span>VPN Service</span>
+                </a>
+                                <ul class="level2">
+                                    <li class="item601">
+                        <a class="item" href="https://openvpn.net/privatetunnel?referral=OPENVPN" target="_blank">
+                    <span>Your Private Tunnel to the Internet</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                <li class="item311 parent root">
+                        <a class="daddy item" href="https://openvpn.net/index.php/access-server/overview.html">
+                    <span>VPN Solution</span>
+                </a>
+                                <ul class="level2">
+                                    <li class="item467">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/overview.html">
+                    <span>Overview</span>
+                </a>
+                                </li>
+                                        <li class="item318">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/download-openvpn-as-sw.html">
+                    <span>Software Packages</span>
+                </a>
+                                </li>
+                                        <li class="item431">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/download-openvpn-as-vm.html">
+                    <span>Virtual Appliances</span>
+                </a>
+                                </li>
+                                        <li class="item599">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/cloudmachines.html">
+                    <span>Cloud Machines</span>
+                </a>
+                                </li>
+                                        <li class="item461">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/on-amazon-cloud.html">
+                    <span>On Amazon Cloud</span>
+                </a>
+                                </li>
+                                        <li class="item337">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/license-key.html?paynow=SALE">
+                    <span>Purchase License</span>
+                </a>
+                                </li>
+                                        <li class="item314">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/license-key.html">
+                    <span>My Licenses</span>
+                </a>
+                                </li>
+                                        <li class="item344">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/pricing.html">
+                    <span>Pricing</span>
+                </a>
+                                </li>
+                                        <li class="item343 parent">
+                        <a class="daddy item" href="https://openvpn.net/index.php/access-server/docs.html">
+                    <span>Documentation</span>
+                </a>
+                                <ul class="level3">
+                                    <li class="item359">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/docs/quick-start-guide.html">
+                    <span>Quick Start Guide</span>
+                </a>
+                                </li>
+                                        <li class="item746 parent">
+                        <a class="daddy item" href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150.html">
+                    <span>HOWTO</span>
+                </a>
+                                <ul class="level4">
+                                    <li class="item897">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-general.html">
+                    <span>General</span>
+                </a>
+                                </li>
+                                        <li class="item898">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-installation.html">
+                    <span>Installation</span>
+                </a>
+                                </li>
+                                        <li class="item899">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-virtual-platforms.html">
+                    <span>Virtual Platforms</span>
+                </a>
+                                </li>
+                                        <li class="item900">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-administration.html">
+                    <span>Administration</span>
+                </a>
+                                </li>
+                                        <li class="item901">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-connect-client-configuration.html">
+                    <span>Connect Client Configuration</span>
+                </a>
+                                </li>
+                                        <li class="item902">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-authentication.html">
+                    <span>Authentication</span>
+                </a>
+                                </li>
+                                        <li class="item903">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-commands.html">
+                    <span>Commands</span>
+                </a>
+                                </li>
+                                        <li class="item904">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/docs/admin-guides-sp-859543150/howto-desktop-client-configuration.html">
+                    <span>Desktop Client Configuration</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                        <li class="item587">
+                        <a class="item" href="https://openvpn.net/images/OpenVPNAccessServerDataSheet.pdf" target="_blank">
+                    <span>Data Sheet</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                        <li class="item321 parent">
+                        <a class="daddy item" href="https://openvpn.net/index.php/access-server/section-faq-openvpn-as.html">
+                    <span>FAQ</span>
+                </a>
+                                <ul class="level3">
+                                    <li class="item881">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/section-faq-openvpn-as/server-configuration.html">
+                    <span>Server Configuration</span>
+                </a>
+                                </li>
+                                        <li class="item882">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/section-faq-openvpn-as/client-configuration.html">
+                    <span>Client Configuration</span>
+                </a>
+                                </li>
+                                        <li class="item883">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/section-faq-openvpn-as/general.html">
+                    <span>General</span>
+                </a>
+                                </li>
+                                        <li class="item884">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/section-faq-openvpn-as/licensing.html">
+                    <span>Licensing</span>
+                </a>
+                                </li>
+                                        <li class="item885">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/section-faq-openvpn-as/pricing.html">
+                    <span>Pricing</span>
+                </a>
+                                </li>
+                                        <li class="item886">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/section-faq-openvpn-as/virtual-appliance.html">
+                    <span>Virtual Appliance</span>
+                </a>
+                                </li>
+                                        <li class="item924">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/section-faq-openvpn-as/amazon-web-services.html">
+                    <span>Amazon Web Services</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                        <li class="item313">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/support-center.html">
+                    <span>Support</span>
+                </a>
+                                </li>
+                                        <li class="item604">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/as-advantages.html">
+                    <span>Advantages</span>
+                </a>
+                                </li>
+                                        <li class="item921">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/security-advisories.html">
+                    <span>Security Advisories</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                <li class="item212 parent active root ">
+                        <a class="daddy item active daddy-item daddy-active daddy-item-active " href="https://openvpn.net/index.php/open-source.html">
+                    <span>Community</span>
+                </a>
+                                <ul class="level2">
+                                    <li class="item365 ">
+                        <a class="item " href="https://openvpn.net/index.php/open-source/overview.html">
+                    <span>Overview</span>
+                </a>
+                                </li>
+                                        <li class="item138 ">
+                        <a class="item " href="https://openvpn.net/index.php/open-source/downloads.html">
+                    <span>Downloads</span>
+                </a>
+                                </li>
+                                        <li class="item591 ">
+                        <a class="item " href="https://community.openvpn.net/openvpn/wiki/TesterDocumentation">
+                    <span>Source Code</span>
+                </a>
+                                </li>
+                                        <li class="item79 parent active ">
+                        <a class="daddy item active daddy-item daddy-active daddy-item-active " href="https://openvpn.net/index.php/open-source/documentation.html">
+                    <span>Documentation</span>
+                </a>
+                                <ul class="level3">
+                                    <li class="item95 active">
+                        <a class="item active item-active" href="#">
+                    <span>HOWTO</span>
+                </a>
+                                </li>
+                                        <li class="item96">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/security-overview.html">
+                    <span>Security Overview</span>
+                </a>
+                                </li>
+                                        <li class="item97">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/examples.html">
+                    <span>Examples</span>
+                </a>
+                                </li>
+                                        <li class="item98">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/graphical-user-interface.html">
+                    <span>Graphical User Interface</span>
+                </a>
+                                </li>
+                                        <li class="item92 parent">
+                        <a class="daddy item" href="https://openvpn.net/index.php/open-source/documentation/manuals.html">
+                    <span>Manuals</span>
+                </a>
+                                <ul class="level4">
+                                    <li class="item926">
+                        <a class="item" href="https://community.openvpn.net/openvpn/wiki/Openvpn24ManPage">
+                    <span>OpenVPN 2.4</span>
+                </a>
+                                </li>
+                                        <li class="item916">
+                        <a class="item" href="https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage">
+                    <span>OpenVPN 2.3</span>
+                </a>
+                                </li>
+                                        <li class="item917">
+                        <a class="item" href="https://community.openvpn.net/openvpn/wiki/Openvpn22ManPage">
+                    <span>OpenVPN 2.2</span>
+                </a>
+                                </li>
+                                        <li class="item99">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/manuals/openvpn-21.html">
+                    <span>OpenVPN 2.1</span>
+                </a>
+                                </li>
+                                        <li class="item93">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/manuals/openvpn-20x-manpage.html">
+                    <span>OpenVPN 2.0.x</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                        <li class="item100 parent">
+                        <a class="daddy item" href="https://openvpn.net/index.php/open-source/documentation/change-log.html">
+                    <span>Change Log</span>
+                </a>
+                                <ul class="level4">
+                                    <li class="item927">
+                        <a class="item" href="https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24">
+                    <span>OpenVPN 2.4</span>
+                </a>
+                                </li>
+                                        <li class="item923">
+                        <a class="item" href="https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23">
+                    <span>OpenVPN 2.3</span>
+                </a>
+                                </li>
+                                        <li class="item922">
+                        <a class="item" href="https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn22">
+                    <span>OpenVPN 2.2</span>
+                </a>
+                                </li>
+                                        <li class="item102">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/change-log/changelog-21.html">
+                    <span>OpenVPN 2.1</span>
+                </a>
+                                </li>
+                                        <li class="item101">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/change-log/changelog-20x.html">
+                    <span>OpenVPN 2.0.x</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                        <li class="item94">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/install.html">
+                    <span>Installation Notes</span>
+                </a>
+                                </li>
+                                        <li class="item103">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/release-notes.html">
+                    <span>Release Notes</span>
+                </a>
+                                </li>
+                                        <li class="item104 parent">
+                        <a class="daddy item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous.html">
+                    <span>Miscellaneous</span>
+                </a>
+                                <ul class="level4">
+                                    <li class="item105">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/ethernet-bridging.html">
+                    <span>Ethernet Bridging</span>
+                </a>
+                                </li>
+                                        <li class="item106">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/rsa-key-management.html">
+                    <span>RSA Key Management</span>
+                </a>
+                                </li>
+                                        <li class="item84">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/mailing-lists.html">
+                    <span>Mailing Lists</span>
+                </a>
+                                </li>
+                                        <li class="item85">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/subversion-repository.html">
+                    <span>Subversion Repository</span>
+                </a>
+                                </li>
+                                        <li class="item107">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/static-key-mini-howto.html">
+                    <span>Static Key Mini-HOWTO</span>
+                </a>
+                                </li>
+                                        <li class="item108">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/management-interface.html">
+                    <span>Management Interface</span>
+                </a>
+                                </li>
+                                        <li class="item109">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/porting-notes.html">
+                    <span>Porting Notes</span>
+                </a>
+                                </li>
+                                        <li class="item110">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/protocol-compatibility.html">
+                    <span>Protocol Compatibility</span>
+                </a>
+                                </li>
+                                        <li class="item116">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/1xhowto.html">
+                    <span>1xHOWTO</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                        <li class="item111">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/non-english.html">
+                    <span>Non-English</span>
+                </a>
+                                </li>
+                                        <li class="item125">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/documentation/sig.html">
+                    <span>File Signatures</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                        <li class="item218">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/articles.html">
+                    <span>Articles</span>
+                </a>
+                                </li>
+                                        <li class="item363 parent">
+                        <a class="daddy item" href="https://openvpn.net/index.php/open-source/faq.html">
+                    <span>FAQ</span>
+                </a>
+                                <ul class="level3">
+                                    <li class="item893">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/faq/community-software-general.html">
+                    <span>General</span>
+                </a>
+                                </li>
+                                        <li class="item894">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/faq/community-software-client.html">
+                    <span>Client</span>
+                </a>
+                                </li>
+                                        <li class="item895">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/faq/community-software-server.html">
+                    <span>Server</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                        <li class="item91">
+                        <a class="item" href="https://openvpn.net/index.php/open-source/books.html">
+                    <span>Books</span>
+                </a>
+                                </li>
+                                        <li class="item421">
+                        <a class="item" href="https://community.openvpn.net/openvpn" target="_blank">
+                    <span>Wiki/Tracker</span>
+                </a>
+                                </li>
+                                        <li class="item419">
+                        <a class="item" href="https://forums.openvpn.net/" target="_blank">
+                    <span>Forums</span>
+                </a>
+                                </li>
+                                        <li class="item593">
+                        <a class="item" href="https://community.openvpn.net/openvpn/wiki/Contributing">
+                    <span>Contributing</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                                <li class="item739 parent root">
+                        <a class="daddy item" href="https://openvpn.net/index.php/access-server/overview.html">
+                    <span>Downloads</span>
+                </a>
+                                <ul class="level2">
+                                    <li class="item744">
+                        <a class="item" href="https://openvpn.net/index.php/access-server/overview.html">
+                    <span>Access Server Downloads</span>
+                </a>
+                                </li>
+                                        <li class="item743">
+                        <a class="item" href="https://openvpn.net/index.php/download/community-downloads.html">
+                    <span>Community Downloads</span>
+                </a>
+                                </li>
+                                    </ul>
+                    </li>
+                        </ul>
+    </div>		</div>
+	
+		</div>
+
+
+	</div>
+	
+</div>
+
+<div id="page">
+	<div id="main">
+
+				<div class="moduletable-exnav">
+					
+<ul class="menu">
+<li class="item-365"><a href="https://openvpn.net/index.php/open-source/overview.html">Overview</a></li><li class="item-138"><a href="https://openvpn.net/index.php/open-source/downloads.html">Downloads</a></li><li class="item-591"><a href="https://community.openvpn.net/openvpn/wiki/TesterDocumentation">Source Code</a></li><li class="item-79 active deeper parent"><a href="https://openvpn.net/index.php/open-source/documentation.html">Documentation</a><ul><li class="item-95 current active"><a href="#">HOWTO</a></li><li class="item-96"><a href="https://openvpn.net/index.php/open-source/documentation/security-overview.html">Security Overview</a></li><li class="item-97"><a href="https://openvpn.net/index.php/open-source/documentation/examples.html">Examples</a></li><li class="item-98"><a href="https://openvpn.net/index.php/open-source/documentation/graphical-user-interface.html">Graphical User Interface</a></li><li class="item-92 parent"><a href="https://openvpn.net/index.php/open-source/documentation/manuals.html">Manuals</a></li><li class="item-100 parent"><a href="https://openvpn.net/index.php/open-source/documentation/change-log.html">Change Log</a></li><li class="item-94"><a href="https://openvpn.net/index.php/open-source/documentation/install.html">Installation Notes</a></li><li class="item-103"><a href="https://openvpn.net/index.php/open-source/documentation/release-notes.html">Release Notes</a></li><li class="item-104 parent"><a href="https://openvpn.net/index.php/open-source/documentation/miscellaneous.html">Miscellaneous</a></li><li class="item-111"><a href="https://openvpn.net/index.php/open-source/documentation/non-english.html">Non-English</a></li><li class="item-125"><a href="https://openvpn.net/index.php/open-source/documentation/sig.html">File Signatures</a></li></ul></li><li class="item-218"><a href="https://openvpn.net/index.php/open-source/articles.html">Articles</a></li><li class="item-363 deeper parent"><a href="https://openvpn.net/index.php/open-source/faq.html">FAQ</a><ul><li class="item-893"><a href="https://openvpn.net/index.php/open-source/faq/community-software-general.html">General</a></li><li class="item-894"><a href="https://openvpn.net/index.php/open-source/faq/community-software-client.html">Client</a></li><li class="item-895"><a href="https://openvpn.net/index.php/open-source/faq/community-software-server.html">Server</a></li></ul></li><li class="item-91"><a href="https://openvpn.net/index.php/open-source/books.html">Books</a></li><li class="item-421"><a href="https://community.openvpn.net/openvpn" target="_blank">Wiki/Tracker</a></li><li class="item-419"><a href="https://forums.openvpn.net/" target="_blank">Forums</a></li><li class="item-593"><a href="https://community.openvpn.net/openvpn/wiki/Contributing">Contributing</a></li></ul>
+		</div>
+	
+			
+
+		<div id="middle">
+			<div class="item-page">
+	<h1>
+	HOWTO	</h1>
+
+
+
+
+
+
+
+
+
+<h2>Introduction</h2>
+<p>OpenVPN is a full-featured SSL VPN which implements OSI layer 2 or 3 secure network extension using the industry standard SSL/TLS protocol, supports flexible client authentication methods based on certificates, smart cards, and/or username/password credentials, and allows user or group-specific access control policies using firewall rules applied to the VPN virtual interface. OpenVPN is not a web application proxy and does not operate through a web browser.</p>
+<p>OpenVPN 2.0 expands on the capabilities of <a href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/88-1xhowto.html">OpenVPN 1.x</a> by offering a scalable client/server mode, allowing multiple clients to connect to a single OpenVPN server process over a single TCP or UDP port. OpenVPN 2.3 includes <a href="https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23">a large number of improvements</a>, including full IPv6 support and PolarSSL support.</p>
+<p>This document provides step-by-step instructions for configuring an OpenVPN 2.x client/server VPN, including:</p>
+<ul>
+<li><a href="#quick">OpenVPN Quickstart</a>.</li>
+<li><a href="#install">Installing OpenVPN</a>.</li>
+<li><a href="#vpntype">Determining whether to use a routed or bridged VPN</a>.</li>
+<li><a href="#numbering">Numbering private subnets</a>.</li>
+<li><a href="#pki">Setting up your own Certificate Authority (CA) and generating certificates and keys for an OpenVPN server and multiple clients</a>.</li>
+<li><a href="#config">Creating configuration files for server and clients</a>.</li>
+<li><a href="#start">Starting up the VPN and testing for initial connectivity</a>.</li>
+<li><a href="#startup">Configuring OpenVPN to run automatically on system startup</a>.</li>
+<li><a href="#control">Controlling a running OpenVPN process</a>.</li>
+<li><a href="#scope">Expanding the scope of the VPN to include additional machines on either the client or server subnet</a>.</li>
+<li><a href="#dhcp">Pushing DHCP options to clients</a>.</li>
+<li><a href="#policy">Configuring client-specific rules and access policies</a>.</li>
+<li><a href="#auth">Using alternative authentication methods</a>.</li>
+<li><a href="#pkcs11">How to add dual-factor authentication to an OpenVPN configuration using client-side smart cards</a>.</li>
+<li><a href="#redirect">Routing all client traffic (including web-traffic) through the VPN</a>.</li>
+<li><a href="#dynamic">Running an OpenVPN server on a dynamic IP address</a>.</li>
+<li><a href="#http">Connecting to an OpenVPN server via an HTTP proxy</a>.</li>
+<li><a href="#samba">Connecting to a Samba share over OpenVPN</a>.</li>
+<li><a href="#loadbalance">Implementing a load-balancing/failover configuration</a>.</li>
+<li><a href="#security">Hardening OpenVPN Security</a>.</li>
+<li><a href="#revoke">Revoking Certificates</a>.</li>
+<li><a href="#secnotes">Additional Security Notes</a>.</li>
+</ul>
+<p>The impatient may wish to jump straight to the sample configuration files:</p>
+<ul>
+<li><a href="#server">Server configuration file</a>.</li>
+<li><a href="#client">Client configuration file</a>.</li>
+</ul>
+<h2>Intended Audience</h2>
+<p>This HOWTO assumes that readers possess a prior understanding of basic networking concepts such as IP addresses, DNS names, netmasks, subnets, IP routing, routers, network interfaces, LANs, gateways, and firewall rules.</p>
+<h2>Additional Documentation</h2>
+<h3>OpenVPN Books</h3>
+<p>Please take a look at the <a href="https://openvpn.net/index.php/open-source/books.html">OpenVPN books page.</a></p>
+<h3>OpenVPN 1.x HOWTO</h3>
+<p>The original <a href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/88-1xhowto.html">OpenVPN 1.x HOWTO</a> is still available, and remains relevant for point-to-point or static-key configurations.</p>
+<h3>OpenVPN Articles</h3>
+<p>For additional documentation, see the <a href="https://openvpn.net/index.php/open-source/articles.html">articles page</a> and the <a href="https://community.openvpn.net/openvpn">OpenVPN wiki</a>.</p>
+<h3><a name="quick"></a>OpenVPN Quickstart</h3>
+<p>While this HOWTO will guide you in setting up a scalable client/server VPN using an X509 PKI (public key infrastruction using certificates and private keys), this might be overkill if you are only looking for a simple VPN setup with a server that can handle a single client.</p>
+<p>If you would like to get a VPN running quickly with minimal configuration, you might check out the <a href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/78-static-key-mini-howto.html">Static Key Mini-HOWTO</a>.</p>
+<h3>Static Key advantages</h3>
+<ul>
+<li>Simple Setup</li>
+<li>No X509 PKI (Public Key Infrastructure) to maintain</li>
+</ul>
+<h3>Static Key disadvantages</h3>
+<ul>
+<li>Limited scalability -- one client, one server</li>
+<li>Lack of <em>perfect forward secrecy</em> -- key compromise results in total disclosure of previous sessions</li>
+<li>Secret key must exist in plaintext form on each VPN peer</li>
+<li>Secret key must be exchanged using a pre-existing secure channel</li>
+</ul>
+<hr>
+<p><a name="install"></a></p>
+<h2>Installing OpenVPN</h2>
+<p>OpenVPN source code and Windows installers can be <a href="https://openvpn.net/index.php/open-source/downloads.html">downloaded here</a>. Recent releases (2.2 and later) are also available as Debian and RPM packages; see the <a href="https://community.openvpn.net/openvpn">OpenVPN wiki</a> for details.</p>
+<p>For security, it's a good idea to check the <a href="https://openvpn.net/index.php/open-source/documentation/sig.html">file release signature</a> after downloading.</p>
+<p>The OpenVPN executable should be installed on both server and client machines, since the single executable provides both client and server functions.</p>
+<h3>Linux Notes (using RPM package)</h3>
+<p>If you are using a Linux distribution which supports RPM packages (SuSE, Fedora, Redhat, etc.), it's best to install using this mechanism. The easiest method is to find an existing binary RPM file for your distribution. You can also build your own binary RPM file:</p>
+<blockquote>
+<pre><strong>rpmbuild -tb openvpn-[version].tar.gz</strong></pre>
+</blockquote>
+<p>Once you have the .rpm file, you can install it with the usual</p>
+<blockquote>
+<pre><strong>rpm -ivh openvpn-[details].rpm</strong></pre>
+</blockquote>
+<p>or upgrade an existing installation with</p>
+<blockquote>
+<pre><strong>rpm -Uvh openvpn-[details].rpm</strong></pre>
+</blockquote>
+<p>Installing OpenVPN from a binary RPM package has these dependencies:</p>
+<ul>
+<li>openssl</li>
+<li>lzo</li>
+<li>pam</li>
+</ul>
+<p>Furthermore, if you are building your own binary RPM package, there are several additional dependencies:</p>
+<ul>
+<li>openssl-devel</li>
+<li>lzo-devel</li>
+<li>pam-devel</li>
+</ul>
+<p>See the <a href="https://openvpn.net/index.php/open-source/documentation/install.html#rpm">openvpn.spec</a> file for additional notes on building an RPM package for Red Hat Linux 9 or building with reduced dependencies.</p>
+<h3>Linux Notes (without RPM)</h3>
+<p>If you are using Debian, Gentoo, or a non-RPM-based Linux distribution, use your distro-specific packaging mechanism such as <strong>apt-get</strong> on Debian or <strong>emerge</strong> on Gentoo.</p>
+<p>It is also possible to install OpenVPN on Linux using the universal <strong>./configure</strong> method. First expand the .tar.gz file:</p>
+<blockquote>
+<pre><strong>tar xfz openvpn-[version].tar.gz</strong></pre>
+</blockquote>
+<p>Then cd to the top-level directory and type:</p>
+<blockquote>
+<pre><strong>./configure<br>make<br>make install</strong></pre>
+</blockquote>
+<p><a name="windows"></a></p>
+<h3>Windows Notes</h3>
+<p>OpenVPN for Windows can be installed from the self-installing exe file on the <a href="https://openvpn.net/index.php/open-source/downloads.html">OpenVPN download page</a>. Remember that OpenVPN will only run on Windows XP or later. Also note that OpenVPN must be installed and run by a user who has administrative privileges (this restriction is imposed by Windows, not OpenVPN). The restriction can be sidestepped by running OpenVPN in the background as a service, in which case even non-admin users will be able to access the VPN, once it is installed. <a href="http://openvpn.se/files/howto/openvpn-howto_run_openvpn_as_nonadmin.html">More discussion on OpenVPN + Windows privilege issues</a>.</p>
+<p>Official OpenVPN Windows installers include <a href="https://community.openvpn.net/openvpn/wiki/OpenVPN-GUI">OpenVPN-GUI</a>, which allows managing OpenVPN connections from a system tray applet. Other <a href="https://openvpn.net/index.php/open-source/documentation/graphical-user-interface.html">GUI</a> applications are also available.</p>
+<p>After you've run the Windows installer, OpenVPN is ready for use and will associate itself with files having the <strong>.ovpn</strong> extension. To run OpenVPN, you can:</p>
+<ul>
+<li>Right click on an OpenVPN configuration file (.ovpn) and select <strong>Start OpenVPN on this configuration file</strong>. Once running, you can use the <strong>F4</strong>key to exit.
+<p>&nbsp;</p>
+</li>
+<li>Run OpenVPN from a command prompt Window with a command such as:
+<p>&nbsp;</p>
+<blockquote>
+<pre><strong>openvpn myconfig.ovpn</strong></pre>
+</blockquote>
+<p>Once running in a command prompt window, OpenVPN can be stopped by the <strong>F4</strong> key.</p>
+</li>
+<li>Run OpenVPN as a service by putting one or more .ovpn configuration files in <strong>\Program Files\OpenVPN\config</strong> and starting the OpenVPN Service, which can be controlled from Start Menu -&gt; Control Panel -&gt; Administrative Tools -&gt; Services.</li>
+</ul>
+<p><a href="https://openvpn.net/index.php/open-source/documentation/install.html?start=1">Additional Windows install notes.</a></p>
+<h3>Mac OS X Notes</h3>
+<p>Angelo Laub and Dirk Theisen have developed an <a href="http://code.google.com/p/tunnelblick/">OpenVPN GUI for OS X</a>.</p>
+<h3>Other OSes</h3>
+<p>Some notes are available in the <a href="https://openvpn.net/index.php/open-source/documentation/install.html?start=1">INSTALL</a> file for specific OSes. In general, the</p>
+<blockquote>
+<pre><strong>./configure<br>make<br>make install</strong></pre>
+</blockquote>
+<p>method can be used, or you can search for an OpenVPN port or package which is specific to your OS/distribution.</p>
+<hr>
+<p><a name="vpntype"></a></p>
+<h2>Determining whether to use a routed or bridged VPN</h2>
+<p>See <a href="https://openvpn.net/index.php/open-source/faq.html#bridge1">FAQ</a> for an overview of Routing vs. Ethernet Bridging. See also the OpenVPN <a href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/76-ethernet-bridging.html">Ethernet Bridging</a> page for more notes and details on bridging.</p>
+<p>Overall, routing is probably a better choice for most people, as it is more efficient and easier to set up (as far as the OpenVPN configuration itself) than bridging. Routing also provides a greater ability to selectively control access rights on a client-specific basis.</p>
+<p>I would recommend using routing unless you need a specific feature which requires bridging, such as:</p>
+<ul>
+<li>the VPN needs to be able to handle non-IP protocols such as IPX,</li>
+<li>you are running applications over the VPN which rely on network broadcasts (such as LAN games), or</li>
+<li>you would like to allow browsing of Windows file shares across the VPN without setting up a Samba or WINS server.</li>
+</ul>
+<hr>
+<p><a name="numbering"></a></p>
+<h2>Numbering private subnets</h2>
+<p>Setting up a VPN often entails linking together private subnets from different locations.</p>
+<p>The Internet Assigned Numbers Authority (IANA) has reserved the following three blocks of the IP address space for private internets (codified in RFC 1918):</p>
+<table border="1" cellpadding="8" cellspacing="0">
+<tbody>
+<tr>
+<td>10.0.0.0</td>
+<td>10.255.255.255</td>
+<td>(10/8 prefix)</td>
+</tr>
+<tr>
+<td>172.16.0.0</td>
+<td>172.31.255.255</td>
+<td>(172.16/12 prefix)</td>
+</tr>
+<tr>
+<td>192.168.0.0</td>
+<td>192.168.255.255</td>
+<td>(192.168/16 prefix)</td>
+</tr>
+</tbody>
+</table>
+<p>While addresses from these netblocks should normally be used in VPN configurations, it's important to select addresses that minimize the probability of IP address or subnet conflicts. The types of conflicts that need to be avoided are:</p>
+<ul>
+<li>conflicts from different sites on the VPN using the same LAN subnet numbering, or</li>
+<li>remote access connections from sites which are using private subnets which conflict with your VPN subnets.</li>
+</ul>
+<p>For example, suppose you use the popular 192.168.0.0/24 subnet as your private LAN subnet. Now you are trying to connect to the VPN from an internet cafe which is using the same subnet for its WiFi LAN. You will have a routing conflict because your machine won't know if 192.168.0.1 refers to the local WiFi gateway or to the same address on the VPN.</p>
+<p>As another example, suppose you want to link together multiple sites by VPN, but each site is using 192.168.0.0/24 as its LAN subnet. This won't work without adding a complexifying layer of NAT translation, because the VPN won't know how to route packets between multiple sites if those sites don't use a subnet which uniquely identifies them.</p>
+<p>The best solution is to avoid using 10.0.0.0/24 or 192.168.0.0/24 as private LAN network addresses. Instead, use something that has a lower probability of being used in a WiFi cafe, airport, or hotel where you might expect to connect from remotely. The best candidates are subnets in the middle of the vast 10.0.0.0/8 netblock (for example 10.66.77.0/24).</p>
+<p>And to avoid cross-site IP numbering conflicts, always use unique numbering for your LAN subnets.</p>
+<hr>
+<p><a name="pki"></a></p>
+<h2>Setting up your own Certificate Authority (CA) and generating certificates and keys for an OpenVPN server and multiple clients</h2>
+<h3>Overview</h3>
+<p>The first step in building an OpenVPN 2.x configuration is to establish a PKI (public key infrastructure). The PKI consists of:</p>
+<ul>
+<li>a separate certificate (also known as a public key) and private key for the server and each client, and</li>
+<li>a master Certificate Authority (CA) certificate and key which is used to sign each of the server and client certificates.</li>
+</ul>
+<p>OpenVPN supports bidirectional authentication based on certificates, meaning that the client must authenticate the server certificate and the server must authenticate the client certificate before mutual trust is established.</p>
+<p>Both server and client will authenticate the other by first verifying that the presented certificate was signed by the master certificate authority (CA), and then by testing information in the now-authenticated certificate header, such as the certificate common name or certificate type (client or server).</p>
+<p>This security model has a number of desirable features from the VPN perspective:</p>
+<ul>
+<li>The server only needs its own certificate/key -- it doesn't need to know the individual certificates of every client which might possibly connect to it.</li>
+<li>The server will only accept clients whose certificates were signed by the master CA certificate (which we will generate below). And because the server can perform this signature verification without needing access to the CA private key itself, it is possible for the CA key (the most sensitive key in the entire PKI) to reside on a completely different machine, even one without a network connection.</li>
+<li>If a private key is compromised, it can be disabled by adding its certificate to a CRL (certificate revocation list). The CRL allows compromised certificates to be selectively rejected without requiring that the entire PKI be rebuilt.</li>
+<li>The server can enforce client-specific access rights based on embedded certificate fields, such as the Common Name.</li>
+</ul>
+<p>Note that the server and client clocks need to be roughly in sync or certificates might not work properly.</p>
+<h3>Generate the master Certificate Authority (CA) certificate &amp; key</h3>
+<p>In this section we will generate a master CA certificate/key, a server certificate/key, and certificates/keys for 3 separate clients.</p>
+<p>For PKI management, we will use <em>easy-rsa</em>, a set of scripts which is bundled with OpenVPN 2.2.x and earlier. If you're using OpenVPN 2.3.x, you need to download easy-rsa separately from <a href="https://github.com/OpenVPN/easy-rsa">here</a>.</p>
+<p>If you are using Linux, BSD, or a unix-like OS, open a shell and cd to the <strong>easy-rsa</strong> subdirectory. If you installed OpenVPN from an RPM or DEB file, the easy-rsa directory can usually be found in <strong>/usr/share/doc/packages/openvpn</strong> or <strong>/usr/share/doc/openvpn</strong> (it's best to copy this directory to another location such as <strong>/etc/openvpn</strong>, before any edits, so that future OpenVPN package upgrades won't overwrite your modifications). If you installed from a .tar.gz file, the easy-rsa directory will be in the top level directory of the expanded source tree.</p>
+<p>If you are using Windows, open up a Command Prompt window and cd to <strong>\Program Files\OpenVPN\easy-rsa</strong>. Run the following batch file to copy configuration files into place (this will overwrite any preexisting vars.bat and openssl.cnf files):</p>
+<blockquote>
+<pre><strong>init-config</strong></pre>
+</blockquote>
+<p>Now edit the <strong>vars</strong> file (called <strong>vars.bat</strong> on Windows) and set the KEY_COUNTRY, KEY_PROVINCE, KEY_CITY, KEY_ORG, and KEY_EMAIL parameters. Don't leave any of these parameters blank.</p>
+<p>Next, initialize the PKI. On Linux/BSD/Unix:</p>
+<blockquote>
+<pre><strong>. ./vars<br>./clean-all<br>./build-ca<br></strong></pre>
+</blockquote>
+<p>On Windows:</p>
+<blockquote>
+<pre><strong>vars<br>clean-all<br>build-ca<br></strong></pre>
+</blockquote>
+<p>The final command (<strong>build-ca</strong>) will build the certificate authority (CA) certificate and key by invoking the interactive <strong>openssl</strong> command:</p>
+<blockquote>
+<pre>ai:easy-rsa # ./build-ca<br>Generating a 1024 bit RSA private key<br>............++++++<br>...........++++++<br>writing new private key to 'ca.key'<br>-----<br>You are about to be asked to enter information that will be incorporated<br>into your certificate request.<br>What you are about to enter is what is called a Distinguished Name or a DN.<br>There are quite a few fields but you can leave some blank<br>For some fields there will be a default value,<br>If you enter '.', the field will be left blank.<br>-----<br>Country Name (2 letter code) [KG]:<br>State or Province Name (full name) [NA]:<br>Locality Name (eg, city) [BISHKEK]:<br>Organization Name (eg, company) [OpenVPN-TEST]:<br>Organizational Unit Name (eg, section) []:<br>Common Name (eg, your name or your server's hostname) []:OpenVPN-CA<br>Email Address [me@myhost.mydomain]:</pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<p>Note that in the above sequence, most queried parameters were defaulted to the values set in the <strong>vars</strong> or <strong>vars.bat</strong> files. The only parameter which must be explicitly entered is the <strong>Common Name</strong>. In the example above, I used "OpenVPN-CA".</p>
+<h3>Generate certificate &amp; key for server</h3>
+<p>Next, we will generate a certificate and private key for the server. On Linux/BSD/Unix:</p>
+<blockquote>
+<pre><strong>./build-key-server server</strong></pre>
+</blockquote>
+<p>On Windows:</p>
+<blockquote>
+<pre><strong>build-key-server server</strong></pre>
+</blockquote>
+<p>As in the previous step, most parameters can be defaulted. When the <strong>Common Name</strong> is queried, enter "server". Two other queries require positive responses, "Sign the certificate? [y/n]" and "1 out of 1 certificate requests certified, commit? [y/n]".</p>
+<h3>Generate certificates &amp; keys for 3 clients</h3>
+<p>Generating client certificates is very similar to the previous step. On Linux/BSD/Unix:</p>
+<blockquote>
+<pre><strong>./build-key client1<br>./build-key client2<br>./build-key client3</strong></pre>
+</blockquote>
+<p>On Windows:</p>
+<blockquote>
+<pre><strong>build-key client1<br>build-key client2<br>build-key client3</strong></pre>
+</blockquote>
+<p>If you would like to password-protect your client keys, substitute the <strong>build-key-pass</strong> script.</p>
+<p>Remember that for each client, make sure to type the appropriate <strong>Common Name</strong> when prompted, i.e. "client1", "client2", or "client3". Always use a unique common name for each client.</p>
+<h3>Generate Diffie Hellman parameters</h3>
+<p><a href="http://www.rsasecurity.com/rsalabs/node.asp?id=2248">Diffie Hellman</a> parameters must be generated for the OpenVPN server. On Linux/BSD/Unix:</p>
+<blockquote>
+<pre><strong>./build-dh</strong></pre>
+</blockquote>
+<p>On Windows:</p>
+<blockquote>
+<pre><strong>build-dh</strong></pre>
+</blockquote>
+<p>Output:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre>ai:easy-rsa # ./build-dh<br>Generating DH parameters, 1024 bit long safe prime, generator 2<br>This is going to take a long time<br>.................+...........................................<br>...................+.............+.................+.........<br>......................................</pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<h3>Key Files</h3>
+<p>Now we will find our newly-generated keys and certificates in the <strong>keys</strong> subdirectory. Here is an explanation of the relevant files:</p>
+<table border="1" cellpadding="8" cellspacing="0">
+<tbody>
+<tr>
+<td><strong>Filename</strong></td>
+<td><strong>Needed By</strong></td>
+<td><strong>Purpose</strong></td>
+<td><strong>Secret</strong></td>
+</tr>
+<tr>
+<td>ca.crt</td>
+<td>server + all clients</td>
+<td>Root CA certificate</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>ca.key</td>
+<td>key signing machine only</td>
+<td>Root CA key</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>dh{n}.pem</td>
+<td>server only</td>
+<td>Diffie Hellman parameters</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>server.crt</td>
+<td>server only</td>
+<td>Server Certificate</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>server.key</td>
+<td>server only</td>
+<td>Server Key</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>client1.crt</td>
+<td>client1 only</td>
+<td>Client1 Certificate</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>client1.key</td>
+<td>client1 only</td>
+<td>Client1 Key</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>client2.crt</td>
+<td>client2 only</td>
+<td>Client2 Certificate</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>client2.key</td>
+<td>client2 only</td>
+<td>Client2 Key</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>client3.crt</td>
+<td>client3 only</td>
+<td>Client3 Certificate</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>client3.key</td>
+<td>client3 only</td>
+<td>Client3 Key</td>
+<td>YES</td>
+</tr>
+</tbody>
+</table>
+<p>The final step in the key generation process is to copy all files to the machines which need them, taking care to copy secret files over a secure channel.</p>
+<p>Now wait, you may say. Shouldn't it be possible to set up the PKI without a pre-existing secure channel?</p>
+<p>&nbsp;</p>
+<p>The answer is ostensibly yes. In the example above, for the sake of brevity, we generated all private keys in the same place. With a bit more effort, we could have done this differently. For example, instead of generating the client certificate and keys on the server, we could have had the client generate its own private key locally, and then submit a Certificate Signing Request (CSR) to the key-signing machine. In turn, the key-signing machine could have processed the CSR and returned a signed certificate to the client. This could have been done without ever requiring that a secret <strong>.key</strong> file leave the hard drive of the machine on which it was generated.</p>
+<hr><a name="config"></a>
+<h2>Creating configuration files for server and clients</h2>
+<h3>Getting the sample config files</h3>
+<p>It's best to use the OpenVPN <a href="#examples">sample configuration files</a> as a starting point for your own configuration. These files can also be found in</p>
+<ul>
+<li>the <strong>sample-config-files</strong> directory of the OpenVPN source distribution</li>
+<li>the <strong>sample-config-files</strong> directory in <strong>/usr/share/doc/packages/openvpn</strong> or <strong>/usr/share/doc/openvpn</strong> if you installed from an RPM or DEB package</li>
+<li><strong>Start Menu -&gt; All Programs -&gt; OpenVPN -&gt; OpenVPN Sample Configuration Files</strong> on Windows</li>
+</ul>
+<p>Note that on Linux, BSD, or unix-like OSes, the sample configuration files are named <strong>server.conf</strong> and <strong>client.conf</strong>. On Windows they are named <strong>server.ovpn</strong> and <strong>client.ovpn</strong>.</p>
+<h3>Editing the server configuration file</h3>
+<p>The sample server configuration file is an ideal starting point for an OpenVPN server configuration. It will create a VPN using a virtual <strong>TUN</strong> network interface (for routing), will listen for client connections on <strong>UDP port 1194</strong> (OpenVPN's official port number), and distribute virtual addresses to connecting clients from the <strong>10.8.0.0/24</strong> subnet.</p>
+<p>Before you use the sample configuration file, you should first edit the <strong>ca</strong>, <strong>cert</strong>, <strong>key</strong>, and <strong>dh</strong> parameters to point to the files you generated in the <a href="#pki">PKI</a> section above.</p>
+<p>At this point, the server configuration file is usable, however you still might want to customize it further:</p>
+<ul>
+<li>If you are using <a href="https://openvpn.net/index.php/open-source/documentation/miscellaneous/76-ethernet-bridging.html">Ethernet bridging</a>, you must use <strong>server-bridge</strong> and <strong>dev tap</strong> instead of <strong>server</strong> and <strong>dev tun</strong>.</li>
+<li>If you want your OpenVPN server to listen on a TCP port instead of a UDP port, use <strong>proto tcp</strong> instead of <strong>proto udp</strong> (If you want OpenVPN to listen on both a UDP and TCP port, you must run two separate OpenVPN instances).</li>
+<li>If you want to use a virtual IP address range other than <strong>10.8.0.0/24</strong>, you should modify the <strong>server</strong> directive. Remember that this virtual IP address range should be a private range which is currently unused on your network.</li>
+<li>Uncomment out the <strong>client-to-client</strong> directive if you would like connecting clients to be able to reach each other over the VPN. By default, clients will only be able to reach the server.</li>
+<li>If you are using Linux, BSD, or a Unix-like OS, you can improve security by uncommenting out the <strong>user nobody</strong> and <strong>group nobody</strong> directives.</li>
+</ul>
+<p>If you want to run multiple OpenVPN instances on the same machine, each using a different configuration file, it is possible if you:</p>
+<ul>
+<li>Use a different <strong>port</strong> number for each instance (the UDP and TCP protocols use different port spaces so you can run one daemon listening on UDP-1194 and another on TCP-1194).</li>
+<li>If you are using Windows, each OpenVPN configuration taneeds to have its own TAP-Windows adapter. You can add additional adapters by going to <strong>Start Menu -&gt; All Programs -&gt; TAP-Windows -&gt; Add a new TAP-Windows virtual ethernet adapter</strong>.</li>
+<li>If you are running multiple OpenVPN instances out of the same directory, make sure to edit directives which create output files so that multiple instances do not overwrite each other's output files. These directives include <strong>log</strong>, <strong>log-append</strong>, <strong>status</strong>, and <strong>ifconfig-pool-persist</strong>.</li>
+</ul>
+<h3>Editing the client configuration files</h3>
+<p>The sample client configuration file (<strong>client.conf</strong> on Linux/BSD/Unix or <strong>client.ovpn</strong> on Windows) mirrors the default directives set in the sample server configuration file.</p>
+<ul>
+<li>Like the server configuration file, first edit the <strong>ca</strong>, <strong>cert</strong>, and <strong>key</strong> parameters to point to the files you generated in the <a href="https://openvpn.net/howto.html#pki">PKI</a> section above. Note that each client should have its own <strong>cert</strong>/<strong>key</strong> pair. Only the <strong>ca</strong>file is universal across the OpenVPN server and all clients.
+<p>&nbsp;</p>
+</li>
+<li>Next, edit the <strong>remote</strong>directive to point to the hostname/IP address and port number of the OpenVPN server (if your OpenVPN server will be running on a single-NIC machine behind a firewall/NAT-gateway, use the public IP address of the gateway, and a port number which you have configured the gateway to forward to the OpenVPN server).
+<p>&nbsp;</p>
+</li>
+<li>Finally, ensure that the client configuration file is consistent with the directives used in the server configuration. The major thing to check for is that the <strong>dev</strong> (tun or tap) and <strong>proto</strong> (udp or tcp) directives are consistent. Also make sure that <strong>comp-lzo</strong> and <strong>fragment</strong>, if used, are present in both client and server config files.
+<p>&nbsp;</p>
+</li>
+</ul>
+<hr><a name="start"></a>
+<h2>Starting up the VPN and testing for initial connectivity</h2>
+<h3>Starting the server</h3>
+<p>First, make sure the OpenVPN server will be accessible from the internet. That means:</p>
+<ul>
+<li>opening up UDP port 1194 on the firewall (or whatever TCP/UDP port you've configured), or</li>
+<li>setting up a port forward rule to forward UDP port 1194 from the firewall/gateway to the machine running the OpenVPN server.</li>
+</ul>
+<p>Next, <a href="https://openvpn.net/faq.html#firewall">make sure that the TUN/TAP interface is not firewalled</a>.</p>
+<p>To simplify troubleshooting, it's best to initially start the OpenVPN server from the command line (or right-click on the <strong>.ovpn</strong> file on Windows), rather than start it as a daemon or service:</p>
+<blockquote>
+<pre><strong>openvpn [server config file] </strong></pre>
+</blockquote>
+<p>A normal server startup should look like this (output will vary across platforms):</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre>Sun Feb  6 20:46:38 2005 OpenVPN 2.0_rc12 i686-suse-linux [SSL] [LZO] [EPOLL] built on Feb  5 2005<br>Sun Feb  6 20:46:38 2005 Diffie-Hellman initialized with 1024 bit key<br>Sun Feb  6 20:46:38 2005 TLS-Auth MTU parms [ L:1542 D:138 EF:38 EB:0 ET:0 EL:0 ]<br>Sun Feb  6 20:46:38 2005 TUN/TAP device tun1 opened<br>Sun Feb  6 20:46:38 2005 /sbin/ifconfig tun1 10.8.0.1 pointopoint 10.8.0.2 mtu 1500<br>Sun Feb  6 20:46:38 2005 /sbin/route add -net 10.8.0.0 netmask 255.255.255.0 gw 10.8.0.2<br>Sun Feb  6 20:46:38 2005 Data Channel MTU parms [ L:1542 D:1450 EF:42 EB:23 ET:0 EL:0 AF:3/1 ]<br>Sun Feb  6 20:46:38 2005 UDPv4 link local (bound): [undef]:1194<br>Sun Feb  6 20:46:38 2005 UDPv4 link remote: [undef]<br>Sun Feb  6 20:46:38 2005 MULTI: multi_init called, r=256 v=256<br>Sun Feb  6 20:46:38 2005 IFCONFIG POOL: base=10.8.0.4 size=62<br>Sun Feb  6 20:46:38 2005 IFCONFIG POOL LIST<br>Sun Feb  6 20:46:38 2005 Initialization Sequence Completed</pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<h3>Starting the client</h3>
+<p>As in the server configuration, it's best to initially start the OpenVPN server from the command line (or on Windows, by right-clicking on the <strong>client.ovpn</strong> file), rather than start it as a daemon or service:</p>
+<blockquote>
+<pre><strong>openvpn [client config file] </strong></pre>
+</blockquote>
+<p>A normal client startup on Windows will look similar to the server output above, and should end with the <strong>Initialization Sequence Completed</strong> message.</p>
+<p>Now, try a ping across the VPN from the client. If you are using routing (i.e. <strong>dev tun</strong> in the server config file), try:</p>
+<blockquote>
+<pre><strong>ping 10.8.0.1</strong></pre>
+</blockquote>
+<p>If you are using bridging (i.e. <strong>dev tap</strong> in the server config file), try to ping the IP address of a machine on the server's ethernet subnet.</p>
+<p>If the ping succeeds, congratulations! You now have a functioning VPN.</p>
+<a name="trouble"></a>
+<h3>Troubleshooting</h3>
+<p>If the ping failed or the OpenVPN client initialization failed to complete, here is a checklist of common symptoms and their solutions:</p>
+<ul>
+<li>You get the error message: <strong>TLS Error: TLS key negotiation failed to occur within 60 seconds (check your network connectivity)</strong>. This error indicates that the client was unable to establish a network connection with the server.
+<p>&nbsp;</p>
+<p><strong>Solutions</strong>:</p>
+<ul>
+<li>Make sure the client is using the correct hostname/IP address and port number which will allow it to reach the OpenVPN server.</li>
+<li>If the OpenVPN server machine is a single-NIC box inside a protected LAN, make sure you are using a correct port forward rule on the server's gateway firewall. For example, suppose your OpenVPN box is at 192.168.4.4 inside the firewall, listening for client connections on UDP port 1194. The NAT gateway servicing the 192.168.4.x subnet should have a port forward rule that says <strong>forward UDP port 1194 from my public IP address to 192.168.4.4</strong>.</li>
+<li>Open up the server's firewall to allow incoming connections to UDP port 1194 (or whatever TCP/UDP port you have configured in the server config file).</li>
+</ul>
+</li>
+<li>You get the error message: <strong>Initialization Sequence Completed with errors</strong>-- This error can occur on Windows if (a) You don't have the DHCP client service running, or (b) You are using certain third-party personal firewalls on XP SP2.
+<p>&nbsp;</p>
+<p><strong>Solution</strong>: Start the DHCP client server and make sure that you are using a personal firewall which is known to work correctly on XP SP2.</p>
+</li>
+<li>You get the <strong>Initialization Sequence Completed</strong>message but the ping test fails -- This usually indicates that a firewall on either server or client is blocking VPN network traffic by filtering on the TUN/TAP interface.
+<p>&nbsp;</p>
+<p><strong>Solution</strong>: Disable the client firewall (if one exists) from filtering the TUN/TAP interface on the client. For example on Windows XP SP2, you can do this by going to <strong>Windows Security Center -&gt; Windows Firewall -&gt; Advanced</strong> and unchecking the box which corresponds to the TAP-Windows adapter (disabling the client firewall from filtering the TUN/TAP adapter is generally reasonable from a security perspective, as you are essentially telling the firewall not to block authenticated VPN traffic). Also make sure that the TUN/TAP interface on the server is not being filtered by a firewall (having said that, note that selective firewalling of the TUN/TAP interface on the server side can confer certain security benefits. See the <a href="https://openvpn.net/howto.html#policy">access policies</a> section below).</p>
+</li>
+<li>The connection stalls on startup when using a <strong>proto udp</strong>configuration, the server log file shows this line:
+<p>&nbsp;</p>
+<blockquote>
+<pre>TLS: Initial packet from x.x.x.x:x, sid=xxxxxxxx xxxxxxxx</pre>
+</blockquote>
+<p>however the client log does not show an equivalent line.</p>
+<p><strong>Solution</strong>: You have a one-way connection from client to server. The server to client direction is blocked by a firewall, usually on the client side. The firewall can either be (a) a personal software firewall running on the client, or (b) the NAT router gateway for the client. Modify the firewall to allow returning UDP packets from the server to reach the client.</p>
+</li>
+</ul>
+<p>See the <a href="https://openvpn.net/index.php/open-source/faq.html">FAQ</a> for additional troubleshooting information.</p>
+<hr><a name="startup"></a>
+<h2>Configuring OpenVPN to run automatically on system startup</h2>
+<p>The lack of standards in this area means that most OSes have a different way of configuring daemons/services for autostart on boot. The best way to have this functionality configured by default is to install OpenVPN as a package, such as via RPM on Linux or using the Windows installer.</p>
+<h3>Linux</h3>
+<p>If you install OpenVPN via an RPM or DEB package on Linux, the installer will set up an <strong>initscript</strong>. When executed, the initscript will scan for <strong>.conf</strong> configuration files in <strong>/etc/openvpn</strong>, and if found, will start up a separate OpenVPN daemon for each file.</p>
+<h3>Windows</h3>
+<p>The Windows installer will set up a Service Wrapper, but leave it turned off by default. To activate it, go to Control Panel / Administrative Tools / Services, select the OpenVPN service, right-click on properties, and set the Startup Type to Automatic. This will configure the service for automatic start on the next reboot.</p>
+<p>When started, the OpenVPN Service Wrapper will scan the <strong>\Program Files\OpenVPN\config</strong> folder for <strong>.ovpn</strong> configuration files, starting a separate OpenVPN process on each file.</p>
+<hr><a name="control"></a>
+<h2>Controlling a running OpenVPN process</h2>
+<h3>Running on Linux/BSD/Unix</h3>
+<p>OpenVPN accepts several signals:</p>
+<ul>
+<li><strong>SIGUSR1</strong> -- Conditional restart, designed to restart without root privileges</li>
+<li><strong>SIGHUP</strong> -- Hard restart</li>
+<li><strong>SIGUSR2</strong> -- Output connection statistics to log file or syslog</li>
+<li><strong>SIGTERM</strong>, <strong>SIGINT</strong> -- Exit</li>
+</ul>
+<p>Use the <strong>writepid</strong> directive to write the OpenVPN daemon's PID to a file, so that you know where to send the signal (if you are starting openvpn with an <strong>initscript</strong>, the script may already be passing a <strong>--writepid</strong> directive on the <strong>openvpn</strong> command line).</p>
+<h3>Running on Windows as a GUI</h3>
+<p>See the <a href="https://openvpn.net/index.php/open-source/documentation/graphical-user-interface.html">OpenVPN GUI page</a>.</p>
+<h3>Running in a Windows command prompt window</h3>
+<p>On Windows, you can start OpenVPN by right clicking on an OpenVPN configuration file (<strong>.ovpn</strong> file) and selecting "Start OpenVPN on this config file".</p>
+<p>Once running in this fashion, several keyboard commands are available:</p>
+<ul>
+<li><strong>F1</strong> -- Conditional restart (doesn't close/reopen TAP adapter)</li>
+<li><strong>F2</strong> -- Show connection statistics</li>
+<li><strong>F3</strong> -- Hard restart</li>
+<li><strong>F4</strong> -- Exit</li>
+</ul>
+<h3>Running as a Windows Service</h3>
+<p>When OpenVPN is started as a service on Windows, the only way to control it is:</p>
+<ul>
+<li>Via the service control manager (Control Panel / Administrative Tools / Services) which gives start/stop control.</li>
+<li>Via the management interface (see below).</li>
+</ul>
+<h3>Modifying a live server configuration</h3>
+<p>While most configuration changes require you to restart the server, there are two directives in particular which refer to files which can be dynamically updated on-the-fly, and which will take immediate effect on the server without needing to restart the server process.</p>
+<p><strong>client-config-dir</strong> -- This directive sets a client configuration directory, which the OpenVPN server will scan on every incoming connection, searching for a client-specific configuration file (see the <a href="https://openvpn.net/man.html">the manual page</a> for more information). Files in this directory can be updated on-the-fly, without restarting the server. Note that changes in this directory will only take effect for new connections, not existing connections. If you would like a client-specific configuration file change to take immediate effect on a currently connected client (or one which has disconnected, but where the server has not timed-out its instance object), kill the client instance object by using the management interface (described below). This will cause the client to reconnect and use the new <strong>client-config-dir</strong> file.</p>
+<p><strong>crl-verify</strong> -- This directive names a <em>Certificate Revocation List</em> file, described below in the <a href="https://openvpn.net/howto.html#revoke">Revoking Certificates</a> section. The CRL file can be modified on the fly, and changes will take effect immediately for new connections, or existing connections which are renegotiating their SSL/TLS channel (occurs once per hour by default). If you would like to kill a currently connected client whose certificate has just been added to the CRL, use the management interface (described below).</p>
+<h3>Status File</h3>
+<p>The default <a href="https://openvpn.net/howto.html#server">server.conf</a> file has a line</p>
+<blockquote>
+<pre><strong>status openvpn-status.log</strong></pre>
+</blockquote>
+<p>which will output a list of current client connections to the file <strong>openvpn-status.log</strong> once per minute.</p>
+<h3>Using the management interface</h3>
+<p>The <a href="https://openvpn.net/management.html">OpenVPN management interface</a> allows a great deal of control over a running OpenVPN process. You can use the management interface directly, by telneting to the management interface port, or indirectly by using an <a href="https://openvpn.net/index.php/open-source/documentation/graphical-user-interface.html">OpenVPN GUI</a> which itself connects to the management interface.</p>
+<p>To enable the management interface on either an OpenVPN server or client, add this to the configuration file:</p>
+<blockquote>
+<pre><strong>management localhost 7505</strong></pre>
+</blockquote>
+<p>This tells OpenVPN to listen on TCP port 7505 for management interface clients (port 7505 is an arbitrary choice -- you can use any free port).</p>
+<p>Once OpenVPN is running, you can connect to the management interface using a <strong>telnet</strong> client. For example:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre>ai:~ # telnet localhost 7505<br>Trying 127.0.0.1...<br>Connected to localhost.<br>Escape character is '^]'.<br>&gt;INFO:OpenVPN Management Interface Version 1 -- type 'help' for more info<br>help<br>Management Interface for OpenVPN 2.0_rc14 i686-suse-linux [SSL] [LZO] [EPOLL] built on Feb 15 2005<br>Commands:<br>echo [on|off] [N|all]  : Like log, but only show messages in echo buffer.<br>exit|quit              : Close management session.<br>help                   : Print this message.<br>hold [on|off|release]  : Set/show hold flag to on/off state, or<br>                         release current hold and start tunnel.<br>kill cn                : Kill the client instance(s) having common name cn.<br>kill IP:port           : Kill the client instance connecting from IP:port.<br>log [on|off] [N|all]   : Turn on/off realtime log display<br>                         + show last N lines or 'all' for entire history.<br>mute [n]               : Set log mute level to n, or show level if n is absent.<br>net                    : (Windows only) Show network info and routing table.<br>password type p        : Enter password p for a queried OpenVPN password.<br>signal s               : Send signal s to daemon,<br>                         s = SIGHUP|SIGTERM|SIGUSR1|SIGUSR2.<br>state [on|off] [N|all] : Like log, but show state history.<br>status [n]             : Show current daemon status info using format #n.<br>test n                 : Produce n lines of output for testing/debugging.<br>username type u        : Enter username u for a queried OpenVPN username.<br>verb [n]               : Set log verbosity level to n, or show if n is absent.<br>version                : Show current version number.<br>END<br>exit<br>Connection closed by foreign host.<br>ai:~ #</pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<p>For more information, see the <a href="https://openvpn.net/management.html">OpenVPN Management Interface Documentation</a>.</p>
+<hr><a name="scope"></a>
+<h2>Expanding the scope of the VPN to include additional machines on either the client or server subnet.</h2>
+<h3>Including multiple machines on the server side when using a routed VPN (dev tun)</h3>
+<p>Once the VPN is operational in a point-to-point capacity between client and server, it may be desirable to expand the scope of the VPN so that clients can reach multiple machines on the server network, rather than only the server machine itself.</p>
+<p>For the purpose of this example, we will assume that the server-side LAN uses a subnet of <strong>10.66.0.0/24</strong> and the VPN IP address pool uses <strong>10.8.0.0/24</strong> as cited in the <strong>server</strong> directive in the OpenVPN server configuration file.</p>
+<p>First, you must <em>advertise</em> the <strong>10.66.0.0/24</strong> subnet to VPN clients as being accessible through the VPN. This can easily be done with the following server-side config file directive:</p>
+<blockquote>
+<pre><strong>push "route 10.66.0.0 255.255.255.0"</strong></pre>
+</blockquote>
+<p>Next, you must set up a route on the server-side LAN gateway to route the VPN client subnet (<strong>10.8.0.0/24</strong>) to the OpenVPN server (this is only necessary if the OpenVPN server and the LAN gateway are different machines).</p>
+<p>Make sure that you've enabled <a href="https://openvpn.net/faq.html#ip-forward">IP</a> and <a href="https://openvpn.net/faq.html#firewall">TUN/TAP</a> forwarding on the OpenVPN server machine.</p>
+<h3>Including multiple machines on the server side when using a bridged VPN (dev tap)</h3>
+<p>One of the benefits of using <a href="https://openvpn.net/bridge.html">ethernet bridging</a> is that you get this for free without needing any additional configuration.</p>
+<h3>Including multiple machines on the client side when using a routed VPN (dev tun)</h3>
+<p>In a typical road-warrior or remote access scenario, the client machine connects to the VPN as a single machine. But suppose the client machine is a gateway for a local LAN (such as a home office), and you would like each machine on the client LAN to be able to route through the VPN.</p>
+<p>For this example, we will assume that the client LAN is using the <strong>192.168.4.0/24</strong> subnet, and that the VPN client is using a certificate with a common name of <strong>client2</strong>. Our goal is to set up the VPN so that any machine on the client LAN can communicate with any machine on the server LAN through the VPN.</p>
+<p>Before setup, there are some basic prerequisites which must be followed:</p>
+<ul>
+<li>The client LAN subnet (192.168.4.0/24 in our example) must not be exported to the VPN by the server or any other client sites which are using the same subnet. Every subnet which is joined to the VPN via routing must be unique.</li>
+<li>The client must have a unique Common Name in its certificate ("client2" in our example), and the <strong>duplicate-cn</strong> flag must not be used in the OpenVPN server configuration file.</li>
+</ul>
+<p>First, make sure that <a href="https://openvpn.net/faq.html#ip-forward">IP</a> and <a href="https://openvpn.net/faq.html#firewall">TUN/TAP</a> forwarding is enabled on the client machine.</p>
+<p>Next, we will deal with the necessary configuration changes on the server side. If the server configuration file does not currently reference a client configuration directory, add one now:</p>
+<blockquote>
+<pre><strong>client-config-dir ccd</strong></pre>
+</blockquote>
+<p>In the above directive, <strong>ccd</strong> should be the name of a directory which has been pre-created in the default directory where the OpenVPN server daemon runs. On Linux this tends to be <strong>/etc/openvpn</strong> and on Windows it is usually <strong>\Program Files\OpenVPN\config</strong>. When a new client connects to the OpenVPN server, the daemon will check this directory for a file which matches the common name of the connecting client. If a matching file is found, it will be read and processed for additional configuration file directives to be applied to the named client.</p>
+<p>The next step is to create a file called <strong>client2</strong> in the <strong>ccd</strong> directory. This file should contain the line:</p>
+<blockquote>
+<pre><strong>iroute 192.168.4.0 255.255.255.0</strong></pre>
+</blockquote>
+<p>This will tell the OpenVPN server that the 192.168.4.0/24 subnet should be routed to <strong>client2</strong>.</p>
+<p>Next, add the following line to the main server config file (not the <strong>ccd/client2</strong> file):</p>
+<blockquote>
+<pre><strong>route 192.168.4.0 255.255.255.0</strong></pre>
+</blockquote>
+<p>Why the redundant <strong>route</strong> and <strong>iroute</strong> statements, you might ask? The reason is that <strong>route</strong> controls the routing from the kernel to the OpenVPN server (via the TUN interface) while <strong>iroute</strong> controls the routing from the OpenVPN server to the remote clients. Both are necessary.</p>
+<p>Next, ask yourself if you would like to allow network traffic between client2's subnet (192.168.4.0/24) and other clients of the OpenVPN server. If so, add the following to the server config file.</p>
+<blockquote>
+<pre><strong>client-to-client<br>push "route 192.168.4.0 255.255.255.0"</strong></pre>
+</blockquote>
+<p>This will cause the OpenVPN server to <em>advertise</em> client2's subnet to other connecting clients.</p>
+<p>The last step, and one that is often forgotten, is to add a route to the server's LAN gateway which directs 192.168.4.0/24 to the OpenVPN server box (you won't need this if the OpenVPN server box <em>is</em> the gateway for the server LAN). Suppose you were missing this step and you tried to ping a machine (not the OpenVPN server itself) on the server LAN from 192.168.4.8? The outgoing ping would probably reach the machine, but then it wouldn't know how to route the ping reply, because it would have no idea how to reach 192.168.4.0/24. The rule of thumb to use is that when routing entire LANs through the VPN (when the VPN server is not the same machine as the LAN gateway), make sure that the gateway for the LAN routes all VPN subnets to the VPN server machine.</p>
+<p>Similarly, if the client machine running OpenVPN is not also the gateway for the client LAN, then the gateway for the client LAN must have a route which directs all subnets which should be reachable through the VPN to the OpenVPN client machine.</p>
+<h3>Including multiple machines on the client side when using a bridged VPN (dev tap)</h3>
+<p>This requires a more complex setup (maybe not more complex in practice, but more complicated to explain in detail):</p>
+<ul>
+<li>You must bridge the client TAP interface with the LAN-connected NIC on the client.</li>
+<li>You must manually set the IP/netmask of the TAP interface on the client.</li>
+<li>You must configure client-side machines to use an IP/netmask that is inside of the bridged subnet, possibly by <a href="https://openvpn.net/INSTALL-win32.html#dhcp">querying a DHCP server on the OpenVPN server side of the VPN</a>.</li>
+</ul>
+<hr><a name="dhcp"></a>
+<h2>Pushing DHCP options to clients</h2>
+<p>The OpenVPN server can push DHCP options such as DNS and WINS server addresses to clients (some <a href="https://openvpn.net/faq.html#dhcpcaveats">caveats</a> to be aware of). Windows clients can accept pushed DHCP options natively, while non-Windows clients can accept them by using a client-side <strong>up</strong> script which parses the <strong>foreign_option_<em>n</em></strong> environmental variable list. See the <a href="https://openvpn.net/man.html">man page</a> or <a href="https://openvpn.net/mail.html">openvpn-users mailing list archive</a> for non-Windows <strong>foreign_option_<em>n</em></strong> documentation and script examples.</p>
+<p>For example, suppose you would like connecting clients to use an internal DNS server at 10.66.0.4 or 10.66.0.5 and a WINS server at 10.66.0.8. Add this to the OpenVPN server configuration:</p>
+<blockquote>
+<pre><strong>push "dhcp-option DNS 10.66.0.4"<br>push "dhcp-option DNS 10.66.0.5"<br>push "dhcp-option WINS 10.66.0.8"</strong></pre>
+</blockquote>
+<p>To test this feature on Windows, run the following from a command prompt window after the machine has connected to an OpenVPN server:</p>
+<blockquote>
+<pre><strong>ipconfig /all</strong></pre>
+</blockquote>
+<p>The entry for the TAP-Windows adapter should show the DHCP options which were pushed by the server.</p>
+<hr><a name="policy"></a>
+<h2>Configuring client-specific rules and access policies</h2>
+<p>Suppose we are setting up a company VPN, and we would like to establish separate access policies for 3 different classes of users:</p>
+<ul>
+<li><strong>System administrators</strong> -- full access to all machines on the network</li>
+<li><strong>Employees</strong> -- access only to Samba/email server</li>
+<li><strong>Contractors</strong> -- access to a special server only</li>
+</ul>
+<p>The basic approach we will take is (a) segregate each user class into its own virtual IP address range, and (b) control access to machines by setting up firewall rules which key off the client's virtual IP address.</p>
+<p>In our example, suppose that we have a variable number of employees, but only one system administrator, and two contractors. Our IP allocation approach will be to put all employees into an IP address pool, and then allocate fixed IP addresses for the system administrator and contractors.</p>
+<p>Note that one of the prerequisites of this example is that you have a software firewall running on the OpenVPN server machine which gives you the ability to define specific firewall rules. For our example, we will assume the firewall is Linux <strong>iptables</strong>.</p>
+<p>First, let's create a virtual IP address map according to user class:</p>
+<table border="1" cellpadding="8" cellspacing="0">
+<tbody>
+<tr>
+<td><strong>Class</strong></td>
+<td><strong>Virtual IP Range</strong></td>
+<td><strong>Allowed LAN Access</strong></td>
+<td><strong>Common Names</strong></td>
+</tr>
+<tr>
+<td>Employees</td>
+<td>10.8.0.0/24</td>
+<td>Samba/email server at 10.66.4.4</td>
+<td>[variable]</td>
+</tr>
+<tr>
+<td>System Administrators</td>
+<td>10.8.1.0/24</td>
+<td>Entire 10.66.4.0/24 subnet</td>
+<td>sysadmin1</td>
+</tr>
+<tr>
+<td>Contractors</td>
+<td>10.8.2.0/24</td>
+<td>Contractor server at 10.66.4.12</td>
+<td>contractor1, contracter2</td>
+</tr>
+</tbody>
+</table>
+<p>Next, let's translate this map into an OpenVPN server configuration. First of all, make sure you've followed the steps <a href="https://openvpn.net/howto.html#scope">above</a> for making the 10.66.4.0/24 subnet available to all clients (while we will configure routing to allow client access to the entire 10.66.4.0/24 subnet, we will then impose access restrictions using firewall rules to implement the above policy table).</p>
+<p>First, define a static unit number for our <strong>tun</strong> interface, so that we will be able to refer to it later in our firewall rules:</p>
+<blockquote>
+<pre><strong>dev tun0</strong></pre>
+</blockquote>
+<p>In the server configuration file, define the Employee IP address pool:</p>
+<blockquote>
+<pre><strong>server 10.8.0.0 255.255.255.0</strong></pre>
+</blockquote>
+<p>Add routes for the System Administrator and Contractor IP ranges:</p>
+<blockquote>
+<pre><strong>route 10.8.1.0 255.255.255.0<br>route 10.8.2.0 255.255.255.0</strong></pre>
+</blockquote>
+<p>Because we will be assigning fixed IP addresses for specific System Administrators and Contractors, we will use a client configuration directory:</p>
+<blockquote>
+<pre><strong>client-config-dir ccd</strong></pre>
+</blockquote>
+<p>Now place special configuration files in the <strong>ccd</strong> subdirectory to define the fixed IP address for each non-Employee VPN client.</p>
+<h3>ccd/sysadmin1</h3>
+<blockquote>
+<pre><strong>ifconfig-push 10.8.1.1 10.8.1.2</strong></pre>
+</blockquote>
+<h3>ccd/contractor1</h3>
+<blockquote>
+<pre><strong>ifconfig-push 10.8.2.1 10.8.2.2</strong></pre>
+</blockquote>
+<h3>ccd/contractor2</h3>
+<blockquote>
+<pre><strong>ifconfig-push 10.8.2.5 10.8.2.6</strong></pre>
+</blockquote>
+<p>Each pair of <strong>ifconfig-push</strong> addresses represent the virtual client and server IP endpoints. They must be taken from successive /30 subnets in order to be compatible with Windows clients and the TAP-Windows driver. Specifically, the last octet in the IP address of each endpoint pair must be taken from this set:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre>[  1,  2] [  5,  6] [  9, 10] [ 13, 14] [ 17, 18]<br>[ 21, 22] [ 25, 26] [ 29, 30] [ 33, 34] [ 37, 38]<br>[ 41, 42] [ 45, 46] [ 49, 50] [ 53, 54] [ 57, 58]<br>[ 61, 62] [ 65, 66] [ 69, 70] [ 73, 74] [ 77, 78]<br>[ 81, 82] [ 85, 86] [ 89, 90] [ 93, 94] [ 97, 98]<br>[101,102] [105,106] [109,110] [113,114] [117,118]<br>[121,122] [125,126] [129,130] [133,134] [137,138]<br>[141,142] [145,146] [149,150] [153,154] [157,158]<br>[161,162] [165,166] [169,170] [173,174] [177,178]<br>[181,182] [185,186] [189,190] [193,194] [197,198]<br>[201,202] [205,206] [209,210] [213,214] [217,218]<br>[221,222] [225,226] [229,230] [233,234] [237,238]<br>[241,242] [245,246] [249,250] [253,254]</pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<p>This completes the OpenVPN configuration. The final step is to add firewall rules to finalize the access policy. For this example, we will use firewall rules in the Linux <strong>iptables</strong> syntax:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre><strong># Employee rule<br>iptables -A FORWARD -i tun0 -s 10.8.0.0/24 -d 10.66.4.4 -j ACCEPT<br><br># Sysadmin rule<br>iptables -A FORWARD -i tun0 -s 10.8.1.0/24 -d 10.66.4.0/24 -j ACCEPT<br><br># Contractor rule<br>iptables -A FORWARD -i tun0 -s 10.8.2.0/24 -d 10.66.4.12 -j ACCEPT</strong></pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600"><hr><a name="auth"></a>
+<h2>Using alternative authentication methods</h2>
+<p>OpenVPN 2.0 and later include a feature that allows the OpenVPN server to securely obtain a username and password from a connecting client, and to use that information as a basis for authenticating the client.</p>
+<p>To use this authentication method, first add the <strong>auth-user-pass</strong> directive to the client configuration. It will direct the OpenVPN client to query the user for a username/password, passing it on to the server over the secure TLS channel.</p>
+<p>Next, configure the server to use an authentication plugin, which may be a script, shared object, or DLL. The OpenVPN server will call the plugin every time a VPN client tries to connect, passing it the username/password entered on the client. The authentication plugin can control whether or not the OpenVPN server allows the client to connect by returning a failure (1) or success (0) value.</p>
+<h3>Using Script Plugins</h3>
+<p>Script plugins can be used by adding the <strong>auth-user-pass-verify</strong> directive to the server-side configuration file. For example:</p>
+<blockquote>
+<pre><strong>auth-user-pass-verify auth-pam.pl via-file</strong></pre>
+</blockquote>
+<p>will use the <strong>auth-pam.pl</strong> perl script to authenticate the username/password of connecting clients. See the description of <strong>auth-user-pass-verify</strong> in the <a href="https://openvpn.net/man.html">manual page</a> for more information.</p>
+<p>The <strong>auth-pam.pl</strong> script is included in the OpenVPN source file distribution in the <strong>sample-scripts</strong> subdirectory. It will authenticate users on a Linux server using a PAM authentication module, which could in turn implement shadow password, RADIUS, or LDAP authentication. <strong>auth-pam.pl</strong> is primarily intended for demonstration purposes. For real-world PAM authentication, use the <strong>openvpn-auth-pam</strong> shared object plugin described below.</p>
+<h3>Using Shared Object or DLL Plugins</h3>
+<p>Shared object or DLL plugins are usually compiled C modules which are loaded by the OpenVPN server at run time. For example if you are using an RPM-based OpenVPN package on Linux, the <strong>openvpn-auth-pam</strong> plugin should be already built. To use it, add this to the server-side config file:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre><strong>plugin /usr/share/openvpn/plugin/lib/openvpn-auth-pam.so login</strong></pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<p>This will tell the OpenVPN server to validate the username/password entered by clients using the <strong>login</strong> PAM module.</p>
+<p>For real-world production use, it's better to use the <strong>openvpn-auth-pam</strong> plugin, because it has several advantages over the <strong>auth-pam.pl</strong> script:</p>
+<ul>
+<li>The shared object <strong>openvpn-auth-pam</strong> plugin uses a split-privilege execution model for better security. This means that the OpenVPN server can run with reduced privileges by using the directives <strong>user nobody</strong>, <strong>group nobody</strong>, and <strong>chroot</strong>, and will still be able to authenticate against the root-readable-only shadow password file.</li>
+<li>OpenVPN can pass the username/password to a plugin via virtual memory, rather than via a file or the environment, which is better for local security on the server machine.</li>
+<li>C-compiled plugin modules generally run faster than scripts.</li>
+</ul>
+<p>If you would like more information on developing your own plugins for use with OpenVPN, see the <strong>README</strong> files in the <strong>plugin</strong> subdirectory of the OpenVPN source distribution.</p>
+<p>To build the <strong>openvpn-auth-pam</strong> plugin on Linux, cd to the <strong>plugin/auth-pam</strong> directory in the OpenVPN source distribution and run <strong>make</strong>.</p>
+<h3>Using username/password authentication as the only form of client authentication</h3>
+<p>By default, using <strong>auth-user-pass-verify</strong> or a username/password-checking <strong>plugin</strong> on the server will enable dual authentication, requiring that both client-certificate and username/password authentication succeed in order for the client to be authenticated.</p>
+<p>While it is discouraged from a security perspective, it is also possible to disable the use of client certificates, and force username/password authentication only. On the server:</p>
+<blockquote>
+<pre><strong>client-cert-not-required</strong></pre>
+</blockquote>
+<p>Such configurations should usually also set:</p>
+<blockquote>
+<pre><strong>username-as-common-name</strong></pre>
+</blockquote>
+<p>which will tell the server to use the username for indexing purposes as it would use the Common Name of a client which was authenticating via a client certificate.</p>
+<p>Note that <strong>client-cert-not-required</strong> will not obviate the need for a server certificate, so a client connecting to a server which uses <strong>client-cert-not-required</strong> may remove the <strong>cert</strong> and <strong>key</strong> directives from the client configuration file, but not the <strong>ca</strong> directive, because it is necessary for the client to verify the server certificate.</p>
+<hr><a name="pkcs11"></a>
+<h2>How to add dual-factor authentication to an OpenVPN configuration using client-side smart cards</h2>
+<p>Also see Article: <a href="http://michele.pupazzo.org/docs/smart-cards-openvpn.html">The OpenVPN Smartcard HOWTO</a></p>
+<ul>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_about_dual_factor">About dual-factor authentication</a></li>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_about">What is PKCS#11?</a></li>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_determine_provider">Finding PKCS#11 provider library</a>.</li>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_pkcs11_token_config">How to configure a cryptographic token</a></li>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_openvpn_config">How to modify an OpenVPN configuration to make use of cryptographic tokens</a>
+<ul>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_determine_object">Determine the correct object</a>.</li>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_using_openvpn">Using OpenVPN with PKCS#11</a>.</li>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_considerations">PKCS#11 implementation considerations</a>.</li>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_opensc">OpenSC PKCS#11 provider</a>.</li>
+</ul>
+</li>
+<li><a href="https://openvpn.net/howto.html?forward=no#pkcs11_vs_cryptoapi">Difference between PKCS#11 and Microsoft Cryptographic API (CryptoAPI)</a>.</li>
+</ul>
+<a name="pkcs11_about_dual_factor"></a>
+<h3>About dual-factor authentication</h3>
+<p>Dual-factor authentication is a method of authentication that combines two elements: something you have and something you know.</p>
+<p>Something you have should be a device that cannot be duplicated; such a device can be a cryptographic token that contains a private secret key. This private key is generated inside the device and never leaves it. If a user possessing this token attempts to access protected services on a remote network, the authorization process which grants or denies network access can establish, with a high degree of certainty, that the user seeking access is in physical possession of a known, certified token.</p>
+<p>Something you know can be a password presented to the cryptographic device. Without presenting the proper password you cannot access the private secret key. Another feature of cryptographic devices is to prohibit the use of the private secret key if the wrong password had been presented more than an allowed number of times. This behavior ensures that if a user lost his device, it would be infeasible for another person to use it.</p>
+<p>Cryptographic devices are commonly called "smart cards" or "tokens", and are used in conjunction with a PKI (Public Key Infrastructure). The VPN server can examine a X.509 certificate and verify that the user holds the corresponding private secret key. Since the device cannot be duplicated and requires a valid password, the server is able to authenticate the user with a high degree of confidence.</p>
+<p>Dual-factor authentication is much stronger than password-based authentication, because in the worst-case scenario, only one person at a time can use the cryptographic token. Passwords can be guessed and can be exposed to other users, so in the worst-case scenario an infinite number of people could attempt to gain unauthorized access when resources are protected using password-only authentication.</p>
+<p>If you store the secret private key in a file, the key is usually encrypted by a password. The problem with this approach is that the encrypted key is exposed to decryption attacks or spyware/malware running on the client machine. Unlike when using a cryptographic device, the file cannot erase itself automatically after several failed decryption attempts.</p>
+<a name="pkcs11_about"></a>
+<h3>What is PKCS#11?</h3>
+<p><em>This standard specifies an API, called Cryptoki, to devices which hold cryptographic information and perform cryptographic functions. Cryptoki, pronounced "crypto-key" and short for cryptographic token interface, follows a simple object-based approach, addressing the goals of technology independence (any kind of device) and resource sharing (multiple applications accessing multiple devices), presenting to applications a common, logical view of the device called a cryptographic token.</em></p>
+<p>Source: RSA Security Inc. <a href="http://www.rsasecurity.com/rsalabs/pkcs/pkcs-11">http://www.rsasecurity.com/rsalabs/pkcs/pkcs-11</a>.</p>
+<p>To summarize, PKCS#11 is a standard that can be used by application software to access cryptographic tokens such as smart cards and other devices. Most device vendors provide a library that implements the PKCS#11 provider interface -- this library can be used by applications in order to access these devices. PKCS#11 is a cross-platform, vendor-independent free standard.</p>
+<a name="pkcs11_determine_provider"></a>
+<h3>Finding PKCS#11 provider library</h3>
+<p>The first thing you need to do is to find the provider library, it should be installed with the device drivers. Each vendor has its own library. For example, the OpenSC PKCS#11 provider is located at /usr/lib/pkcs11/opensc-pkcs11.so on Unix or at opensc-pkcs11.dll on Windows.</p>
+<a name="pkcs11_pkcs11_token_config"></a>
+<h3>How to configure cryptographic token</h3>
+<p>You should follow an enrollment procedure:</p>
+<ul>
+<li>Initialize the PKCS#11 token.</li>
+<li>Generate RSA key pair on the PKCS#11 token.</li>
+<li>Create a certificate request based on the key pair, you can use <a href="http://www.opensc.org/files/doc/opensc.html#opensc.using.openssl">OpenSC and OpenSSL</a> in order to do that.</li>
+<li>Submit the certificate request to a certificate authority, and receive a certificate.</li>
+<li>Load the certificate onto the token, while noting that the id and label attributes of the certificate must match those of the private key.</li>
+</ul>
+<p>A configured token is a token that has a private key object and a certificate object, where both share the same id and label attributes.</p>
+<p>A simple enrollment utility is Easy-RSA 2.0 which is part of OpenVPN 2.1 series. Follow the instructions specified in the README file, and then use the pkitool in order to enroll.</p>
+<p>Initialize a token using the following command:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre>$ ./pkitool --pkcs11-slots /usr/lib/pkcs11/<br>$ ./pkitool --pkcs11-init /usr/lib/pkcs11/  <label><br></label></pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<p>Enroll a certificate using the following command:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre>$ ./pkitool --pkcs11 /usr/lib/pkcs11/  <label> client1<br></label></pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600"><a name="pkcs11_openvpn_config"></a>
+<h3>How to modify an OpenVPN configuration to make use of cryptographic tokens</h3>
+<p>You should have OpenVPN 2.1 or above in order to use the PKCS#11 features.</p>
+<a name="pkcs11_determine_object"></a>
+<h4>Determine the correct object</h4>
+<p>Each PKCS#11 provider can support multiple devices. In order to view the available object list you can use the following command:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre>$ openvpn --show-pkcs11-ids /usr/lib/pkcs11/<br><br>The following objects are available for use.<br>Each object shown below may be used as parameter to<br>--pkcs11-id option please remember to use single quote mark.<br><br>Certificate<br>       DN:             /CN=User1<br>       Serial:         490B82C4000000000075<br>       Serialized id:  aaaa/bbb/41545F5349474E415455524581D2A1A1B23C4AA4CB17FAF7A4600</pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<p>Each certificate/private key pair have unique "Serialized id" string. The serialized id string of the requested certificate should be specified to the <strong>pkcs11-id</strong> option using single quote marks.</p>
+<blockquote>
+<pre><strong>pkcs11-id 'aaaa/bbb/41545F5349474E415455524581D2A1A1B23C4AA4CB17FAF7A4600'<br></strong></pre>
+</blockquote>
+<a name="pkcs11_using_openvpn"></a>
+<h4>Using OpenVPN with PKCS#11</h4>
+<h5>A typical set of OpenVPN options for PKCS#11</h5>
+<blockquote>
+<pre><strong>pkcs11-providers /usr/lib/pkcs11/<br>pkcs11-id 'aaaa/bbb/41545F5349474E415455524581D2A1A1B23C4AA4CB17FAF7A4600'<br></strong></pre>
+</blockquote>
+<p>This will select the object which matches the pkcs11-id string.</p>
+<h5>Advanced OpenVPN options for PKCS#11</h5>
+<blockquote>
+<pre><strong>pkcs11-providers /usr/lib/pkcs11/provider1.so /usr/lib/pkcs11/provider2.so<br>pkcs11-id 'aaaa/bbb/41545F5349474E415455524581D2A1A1B23C4AA4CB17FAF7A4600'<br>pkcs11-pin-cache 300<br>daemon<br>auth-retry nointeract<br>management-hold<br>management-signal<br>management 127.0.0.1 8888<br>management-query-passwords<br></strong></pre>
+</blockquote>
+<p>This will load two providers into OpenVPN, use the certificate specified on <strong>pkcs11-id</strong> option, and use the management interface in order to query passwords. The daemon will resume into hold state on the event when token cannot be accessed. The token will be used for 300 seconds after which the password will be re-queried, session will disconnect if management session disconnects.</p>
+<a name="pkcs11_considerations"></a>
+<h4>PKCS#11 implementation considerations</h4>
+<p>Many PKCS#11 providers make use of threads, in order to avoid problems caused by implementation of LinuxThreads (setuid, chroot), it is highly recommend to upgrade to Native POSIX Thread Library (NPTL) enabled glibc if you intend to use PKCS#11.</p>
+<a name="pkcs11_opensc"></a>
+<h4>OpenSC PKCS#11 provider</h4>
+<p>OpenSC PKCS#11 provider is located at /usr/lib/pkcs11/opensc-pkcs11.so on Unix or at opensc-pkcs11.dll on Windows.</p>
+<a name="pkcs11_vs_cryptoapi"></a>
+<h3>Difference between PKCS#11 and Microsoft Cryptographic API (CryptoAPI)</h3>
+<p>PKCS#11 is a free, cross-platform vendor independent standard. CryptoAPI is a Microsoft specific API. Most smart card vendors provide support for both interfaces. In the Windows environment, the user should select which interface to use.</p>
+<p>The current implementation of OpenVPN that uses the MS CryptoAPI (<strong>cryptoapicert</strong> option) works well as long as you don't run OpenVPN as a service. If you wish to run OpenVPN in an administrative environment using a service, the implementation will not work with most smart cards because of the following reasons:</p>
+<ul>
+<li>Most smart card providers do not load certificates into the local machine store, so the implementation will be unable to access the user certificate.</li>
+<li>If the OpenVPN client is running as a service without direct interaction with the end-user, the service cannot query the user to provide a password for the smart card, causing the password-verification process on the smart card to fail.</li>
+</ul>
+<p>Using the PKCS#11 interface, you can use smart cards with OpenVPN in any implementation, since PKCS#11 does not access Microsoft stores and does not necessarily require direct interaction with the end-user.</p>
+<hr><a name="redirect"></a>
+<h2>Routing all client traffic (including web-traffic) through the VPN</h2>
+<h3>Overview</h3>
+<p>By default, when an OpenVPN client is active, only network traffic to and from the OpenVPN server site will pass over the VPN. General web browsing, for example, will be accomplished with direct connections that bypass the VPN.</p>
+<p>In certain cases this behavior might not be desirable -- you might want a VPN client to tunnel all network traffic through the VPN, including general internet web browsing. While this type of VPN configuration will exact a performance penalty on the client, it gives the VPN administrator more control over security policies when a client is simultaneously connected to both the public internet and the VPN at the same time.</p>
+<h3>Implementation</h3>
+<p>Add the following directive to the server configuration file:</p>
+<blockquote>
+<pre><strong>push "redirect-gateway def1"</strong></pre>
+</blockquote>
+<p>If your VPN setup is over a wireless network, where all clients and the server are on the same wireless subnet, add the <strong>local</strong> flag:</p>
+<blockquote>
+<pre><strong>push "redirect-gateway local def1"</strong></pre>
+</blockquote>
+<p>Pushing the <strong>redirect-gateway</strong> option to clients will cause all IP network traffic originating on client machines to pass through the OpenVPN server. The server will need to be configured to deal with this traffic somehow, such as by NATing it to the internet, or routing it through the server site's HTTP proxy.</p>
+<p>On Linux, you could use a command such as this to NAT the VPN client traffic to the internet:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre><strong>iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE</strong></pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<p>This command assumes that the VPN subnet is <strong>10.8.0.0/24</strong> (taken from the <strong>server</strong> directive in the OpenVPN server configuration) and that the local ethernet interface is <strong>eth0</strong>.</p>
+<p>When <strong>redirect-gateway</strong> is used, OpenVPN clients will route DNS queries through the VPN, and the VPN server will need handle them. This can be accomplished by pushing a DNS server address to connecting clients which will replace their normal DNS server settings during the time that the VPN is active. For example:</p>
+<blockquote>
+<pre><strong>push "dhcp-option DNS 10.8.0.1"</strong></pre>
+</blockquote>
+<p>will configure Windows clients (or non-Windows clients with some extra server-side scripting) to use 10.8.0.1 as their DNS server. Any address which is reachable from clients may be used as the DNS server address.</p>
+<h3>Caveats</h3>
+<p>Redirecting all network traffic through the VPN is not entirely a problem-free proposition. Here are some typical gotchas to be aware of:</p>
+<ul>
+<li>Many OpenVPN client machines connecting to the internet will periodically interact with a DHCP server to renew their IP address leases. The <strong>redirect-gateway</strong> option might prevent the client from reaching the local DHCP server (because DHCP messages would be routed over the VPN), causing it to lose its IP address lease.</li>
+<li><a href="https://openvpn.net/faq.html#dhcpcaveats">Issues exist</a> with respect to pushing DNS addresses to Windows clients.</li>
+<li>Web browsing performance on the client will be noticably slower.</li>
+</ul>
+<p>For more information on the mechanics of the <strong>redirect-gateway</strong> directive, see the <a href="https://openvpn.net/man.html">manual page</a>.</p>
+<hr><a name="dynamic"></a>
+<h2>Running an OpenVPN server on a dynamic IP address</h2>
+<p>While OpenVPN clients can easily access the server via a dynamic IP address without any special configuration, things get more interesting when the server itself is on a dynamic address. While OpenVPN has no trouble handling the situation of a dynamic server, some extra configuration is required.</p>
+<p>The first step is to get a dynamic DNS address which can be configured to "follow" the server every time the server's IP address changes. There are several dynamic DNS service providers available, such as <a href="http://www.dyndns.org/">dyndns.org</a>.</p>
+<p>The next step is to set up a mechanism so that every time the server's IP address changes, the dynamic DNS name will be quickly updated with the new IP address, allowing clients to find the server at its new IP address. There are two basic ways to accomplish this:</p>
+<ul>
+<li>Use a NAT router appliance with dynamic DNS support (such as the <strong>Linksys BEFSR41</strong>). Most of the inexpensive NAT router appliances that are widely available have the capability to update a dynamic DNS name every time a new DHCP lease is obtained from the ISP. This setup is ideal when the OpenVPN server box is a single-NIC machine inside the firewall.
+<p>&nbsp;</p>
+</li>
+<li>Use a dynamic DNS client application such as <a href="http://sourceforge.net/apps/trac/ddclient">ddclient</a> to update the dynamic DNS address whenever the server IP address changes. This setup is ideal when the machine running OpenVPN has multiple NICs and is acting as a site-wide firewall/gateway. To implement this setup, you need to set up a script to be run by your DHCP client software every time an IP address change occurs. This script should (a) run <strong>ddclient</strong>to notify your dynamic DNS provider of your new IP address and (b) restart the OpenVPN server daemon.
+<p>&nbsp;</p>
+</li>
+</ul>
+<p>The OpenVPN client by default will sense when the server's IP address has changed, if the client configuration is using a <strong>remote</strong> directive which references a dynamic DNS name. The usual chain of events is that (a) the OpenVPN client fails to receive timely keepalive messages from the server's old IP address, triggering a restart, and (b) the restart causes the DNS name in the <strong>remote</strong> directive to be re-resolved, allowing the client to reconnect to the server at its new IP address.</p>
+<p>More information can be found in the <a href="https://openvpn.net/faq.html#dynamic-address">FAQ</a>.</p>
+<hr><a name="http"></a>
+<h2>Connecting to an OpenVPN server via an HTTP proxy.</h2>
+<p>OpenVPN supports connections through an HTTP proxy, with the following authentication modes:</p>
+<ul>
+<li>No proxy authentication</li>
+<li>Basic proxy authentication</li>
+<li>NTLM proxy authentication</li>
+</ul>
+<p>First of all, HTTP proxy usage requires that you use TCP as the tunnel carrier protocol. So add the following to both client and server configurations:</p>
+<blockquote>
+<pre><strong>proto tcp</strong></pre>
+</blockquote>
+<p>Make sure that any <strong>proto udp</strong> lines in the config files are deleted.</p>
+<p>Next, add the <strong>http-proxy</strong> directive to the client configuration file (see the <a href="https://openvpn.net/man.html">manual page</a> for a full description of this directive).</p>
+<p>For example, suppose you have an HTTP proxy server on the client LAN at <strong>192.168.4.1</strong>, which is listening for connections on port <strong>1080</strong>. Add this to the client config:</p>
+<blockquote>
+<pre><strong>http-proxy 192.168.4.1 1080</strong></pre>
+</blockquote>
+<p>Suppose the HTTP proxy requires Basic authentication:</p>
+<blockquote>
+<pre><strong>http-proxy 192.168.4.1 1080 stdin basic</strong></pre>
+</blockquote>
+<p>Suppose the HTTP proxy requires NTLM authentication:</p>
+<blockquote>
+<pre><strong>http-proxy 192.168.4.1 1080 stdin ntlm</strong></pre>
+</blockquote>
+<p>The two authentication examples above will cause OpenVPN to prompt for a username/password from standard input. If you would instead like to place these credentials in a file, replace <strong>stdin</strong> with a filename, and place the username on line 1 of this file and the password on line 2.</p>
+<hr><a name="samba"></a>
+<h2>Connecting to a Samba share over OpenVPN</h2>
+<p>This example is intended show how OpenVPN clients can connect to a Samba share over a routed <strong>dev tun</strong> tunnel. If you are ethernet bridging (<strong>dev tap</strong>), you probably don't need to follow these instructions, as OpenVPN clients should see server-side machines in their network neighborhood.</p>
+<p>For this example, we will assume that:</p>
+<ul>
+<li>the server-side LAN uses a subnet of <strong>10.66.0.0/24</strong>,</li>
+<li>the VPN IP address pool uses <strong>10.8.0.0/24</strong> (as cited in the <strong>server</strong> directive in the OpenVPN server configuration file),</li>
+<li>the Samba server has an IP address of <strong>10.66.0.4</strong>, and</li>
+<li>the Samba server has already been configured and is reachable from the local LAN.</li>
+</ul>
+<p>If the Samba and OpenVPN servers are running on different machines, make sure you've followed the section on <a href="https://openvpn.net/howto.html#scope">expanding the scope of the VPN to include additional machines</a>.</p>
+<p>Next, edit your Samba configuration file (<strong>smb.conf</strong>). Make sure the <strong>hosts allow</strong> directive will permit OpenVPN clients coming from the <strong>10.8.0.0/24</strong> subnet to connect. For example:</p>
+<blockquote>
+<pre><strong>hosts allow = 10.66.0.0/24 10.8.0.0/24 127.0.0.1</strong></pre>
+</blockquote>
+<p>If you are running the Samba and OpenVPN servers on the same machine, you may want to edit the <strong>interfaces</strong> directive in the <strong>smb.conf</strong> file to also listen on the TUN interface subnet of <strong>10.8.0.0/24</strong>:</p>
+<blockquote>
+<pre><strong>interfaces  = 10.66.0.0/24 10.8.0.0/24</strong></pre>
+</blockquote>
+<p>If you are running the Samba and OpenVPN servers on the same machine, connect from an OpenVPN client to a Samba share using the folder name:</p>
+<blockquote>
+<pre><strong>\\10.8.0.1\\sharename</strong></pre>
+</blockquote>
+<p>If the Samba and OpenVPN servers are on different machines, use folder name:</p>
+<blockquote>
+<pre><strong>\\10.66.0.4\sharename</strong></pre>
+</blockquote>
+<p>For example, from a command prompt window:</p>
+<blockquote>
+<pre><strong>net use z: \\10.66.0.4\sharename /USER:myusername</strong></pre>
+</blockquote>
+<hr><a name="loadbalance"></a>
+<h2>Implementing a load-balancing/failover configuration</h2>
+<h3>Client</h3>
+<p>The OpenVPN client configuration can refer to multiple servers for load balancing and failover. For example:</p>
+<blockquote>
+<pre><strong>remote server1.mydomain<br>remote server2.mydomain<br>remote server3.mydomain</strong></pre>
+</blockquote>
+<p>will direct the OpenVPN client to attempt a connection with server1, server2, and server3 in that order. If an existing connection is broken, the OpenVPN client will retry the most recently connected server, and if that fails, will move on to the next server in the list. You can also direct the OpenVPN client to randomize its server list on startup, so that the client load will be probabilistically spread across the server pool.</p>
+<blockquote>
+<pre><strong>remote-random</strong></pre>
+</blockquote>
+<p>If you would also like DNS resolution failures to cause the OpenVPN client to move to the next server in the list, add the following:</p>
+<blockquote>
+<pre><strong>resolv-retry 60</strong></pre>
+</blockquote>
+<p>The <strong>60</strong> parameter tells the OpenVPN client to try resolving each <strong>remote</strong> DNS name for 60 seconds before moving on to the next server in the list.</p>
+<p>The server list can also refer to multiple OpenVPN server daemons running on the same machine, each listening for connections on a different port, for example:</p>
+<blockquote>
+<pre><strong>remote smp-server1.mydomain 8000<br>remote smp-server1.mydomain 8001<br>remote smp-server2.mydomain 8000<br>remote smp-server2.mydomain 8001</strong></pre>
+</blockquote>
+<p>If your servers are multi-processor machines, running multiple OpenVPN daemons on each server can be advantageous from a performance standpoint.</p>
+<p>OpenVPN also supports the <strong>remote</strong> directive referring to a DNS name which has multiple <strong>A</strong> records in the zone configuration for the domain. In this case, the OpenVPN client will randomly choose one of the <strong>A</strong> records every time the domain is resolved.</p>
+<h3>Server</h3>
+<p>The simplest approach to a load-balanced/failover configuration on the server is to use equivalent configuration files on each server in the cluster, except use a different virtual IP address pool for each server. For example:</p>
+<p><strong>server1</strong></p>
+<blockquote>
+<pre><strong>server 10.8.0.0 255.255.255.0</strong></pre>
+</blockquote>
+<p><strong>server2</strong></p>
+<blockquote>
+<pre><strong>server 10.8.1.0 255.255.255.0</strong></pre>
+</blockquote>
+<p><strong>server3</strong></p>
+<blockquote>
+<pre><strong>server 10.8.2.0 255.255.255.0</strong></pre>
+</blockquote>
+<hr><a name="security"></a>
+<h2>Hardening OpenVPN Security</h2>
+<p>One of the often-repeated maxims of network security is that one should never place so much trust in a single security component that its failure causes a catastrophic security breach. OpenVPN provides several mechanisms to add additional security layers to hedge against such an outcome.</p>
+<h3>tls-auth</h3>
+<p>The <strong>tls-auth</strong> directive adds an additional HMAC signature to all SSL/TLS handshake packets for integrity verification. Any UDP packet not bearing the correct HMAC signature can be dropped without further processing. The <strong>tls-auth</strong> HMAC signature provides an additional level of security above and beyond that provided by SSL/TLS. It can protect against:</p>
+<ul>
+<li>DoS attacks or port flooding on the OpenVPN UDP port.</li>
+<li>Port scanning to determine which server UDP ports are in a listening state.</li>
+<li>Buffer overflow vulnerabilities in the SSL/TLS implementation.</li>
+<li>SSL/TLS handshake initiations from unauthorized machines (while such handshakes would ultimately fail to authenticate, <strong>tls-auth</strong> can cut them off at a much earlier point).</li>
+</ul>
+<p>Using <strong>tls-auth</strong> requires that you generate a shared-secret key that is used in addition to the standard RSA certificate/key:</p>
+<blockquote>
+<pre><strong>openvpn --genkey --secret ta.key</strong></pre>
+</blockquote>
+<p>This command will generate an OpenVPN static key and write it to the file <strong>ta.key</strong>. This key should be copied over a pre-existing secure channel to the server and all client machines. It can be placed in the same directory as the RSA <strong>.key</strong> and <strong>.crt</strong> files.</p>
+<p>In the server configuration, add:</p>
+<blockquote>
+<pre><strong>tls-auth ta.key 0</strong></pre>
+</blockquote>
+<p>In the client configuration, add:</p>
+<blockquote>
+<pre><strong>tls-auth ta.key 1</strong></pre>
+</blockquote>
+<h3>proto udp</h3>
+<p>While OpenVPN allows either the TCP or UDP protocol to be used as the VPN carrier connection, the UDP protocol will provide better protection against DoS attacks and port scanning than TCP:</p>
+<blockquote>
+<pre><strong>proto udp</strong></pre>
+</blockquote>
+<h3>user/group (non-Windows only)</h3>
+<p>OpenVPN has been very carefully designed to allow root privileges to be dropped after initialization, and this feature should always be used on Linux/BSD/Solaris. Without root privileges, a running OpenVPN server daemon provides a far less enticing target to an attacker.</p>
+<blockquote>
+<pre><strong>user nobody<br>group nobody</strong></pre>
+</blockquote>
+<h3>Unprivileged mode (Linux only)</h3>
+<p>On Linux OpenVPN can be run completely unprivileged. This configuration is a little more complex, but provides best security.</p>
+<p>In order to work with this configuration, OpenVPN must be configured to use iproute interface, this is done by specifying --enable-iproute2 to configure script. sudo package should also be available on your system.</p>
+<p>This configuration uses the Linux ability to change the permission of a tun device, so that unprivileged user may access it. It also uses sudo in order to execute iproute so that interface properties and routing table may be modified.</p>
+<p>OpenVPN configuration:</p>
+<ul>
+<ul>
+<li>Write the following script and place it at: /usr/local/sbin/unpriv-ip:</li>
+</ul>
+</ul>
+<blockquote>
+<pre><strong>#!/bin/sh<br>sudo /sbin/ip $*<br></strong></pre>
+</blockquote>
+<ul>
+<ul>
+<li>Execute visudo, and add the followings to allow user 'user1' to execute /sbin/ip:</li>
+</ul>
+</ul>
+<blockquote>
+<pre><strong>user1 ALL=(ALL)  NOPASSWD: /sbin/ip</strong></pre>
+</blockquote>
+<ul>
+<ul>You can also enable a group of users with the following command:</ul>
+</ul>
+<blockquote>
+<pre><strong>%users ALL=(ALL)  NOPASSWD: /sbin/ip</strong></pre>
+</blockquote>
+<ul>
+<ul>
+<li>Add the following to your OpenVPN configuration:</li>
+</ul>
+</ul>
+<blockquote>
+<pre><strong>dev tunX/tapX<br>iproute /usr/local/sbin/unpriv-ip</strong></pre>
+</blockquote>
+<ul>
+<ul>Please note that you must select constant X and specify tun or tap not both.
+<li>As root add persistant interface, and permit user and/or group to manage it, the following create tunX (replace with your own) and allow user1 and group users to access it.</li>
+</ul>
+</ul>
+<blockquote>
+<pre><strong>openvpn --mktun --dev tunX --type tun --user user1 --group users</strong></pre>
+</blockquote>
+<ul>
+<li>Run OpenVPN in the context of the unprivileged user.</li>
+</ul>
+<p>Further security constraints may be added by examining the parameters at the /usr/local/sbin/unpriv-ip script.</p>
+<h3>chroot (non-Windows only)</h3>
+<p>The <strong>chroot</strong> directive allows you to lock the OpenVPN daemon into a so-called <em>chroot jail</em>, where the daemon would not be able to access any part of the host system's filesystem except for the specific directory given as a parameter to the directive. For example,</p>
+<blockquote>
+<pre><strong>chroot jail</strong></pre>
+</blockquote>
+<p>would cause the OpenVPN daemon to cd into the <strong>jail</strong> subdirectory on initialization, and would then reorient its root filesystem to this directory so that it would be impossible thereafter for the daemon to access any files outside of <strong>jail</strong> and its subdirectory tree. This is important from a security perspective, because even if an attacker were able to compromise the server with a code insertion exploit, the exploit would be locked out of most of the server's filesystem.</p>
+<p>Caveats: because <strong>chroot</strong> reorients the filesystem (from the perspective of the daemon only), it is necessary to place any files which OpenVPN might need after initialization in the <strong>jail</strong> directory, such as:</p>
+<ul>
+<li>the <strong>crl-verify</strong> file, or</li>
+<li>the <strong>client-config-dir</strong> directory.</li>
+</ul>
+<h3>Larger RSA keys</h3>
+<p>The RSA key size is controlled by the <strong>KEY_SIZE</strong> variable in the <strong>easy-rsa/vars</strong> file, which must be set before any keys are generated. Currently set to 1024 by default, this value can reasonably be increased to 2048 with no negative impact on VPN tunnel performance, except for a slightly slower SSL/TLS renegotiation handshake which occurs once per client per hour, and a much slower one-time Diffie Hellman parameters generation process using the <strong>easy-rsa/build-dh</strong> script.</p>
+<h3>Larger symmetric keys</h3>
+<p>By default OpenVPN uses <strong>Blowfish</strong>, a 128 bit symmetrical cipher.</p>
+<p>OpenVPN automatically supports any cipher which is supported by the OpenSSL library, and as such can support ciphers which use large key sizes. For example, the 256-bit version of AES (Advanced Encryption Standard) can be used by adding the following to both server and client configuration files:</p>
+<blockquote>
+<pre><strong>cipher AES-256-CBC</strong></pre>
+</blockquote>
+<h3>Keep the root key (<strong>ca.key</strong>) on a standalone machine without a network connection</h3>
+<p>One of the security benefits of using an X509 PKI (as OpenVPN does) is that the root CA key (<strong>ca.key</strong>) need not be present on the OpenVPN server machine. In a high security environment, you might want to specially designate a machine for key signing purposes, keep the machine well-protected physically, and disconnect it from all networks. Floppy disks can be used to move key files back and forth, as necessary. Such measures make it extremely difficult for an attacker to steal the root key, short of physical theft of the key signing machine.</p>
+<hr><a name="revoke"></a>
+<h2>Revoking Certificates</h2>
+<p><em>Revoking a certificate</em> means to invalidate a previously signed certificate so that it can no longer be used for authentication purposes.</p>
+<p>Typical reasons for wanting to revoke a certificate include:</p>
+<ul>
+<li>The private key associated with the certificate is compromised or stolen.</li>
+<li>The user of an encrypted private key forgets the password on the key.</li>
+<li>You want to terminate a VPN user's access.</li>
+</ul>
+<h3>Example</h3>
+<p>As an example, we will revoke the <strong>client2</strong> certificate, which we generated above in the "key generation" section of the HOWTO.</p>
+<p>First open up a shell or command prompt window and cd to the <strong>easy-rsa</strong> directory as you did in the "key generation" section above. On Linux/BSD/Unix:</p>
+<blockquote>
+<pre><strong>. ./vars<br>./revoke-full client2<br></strong></pre>
+</blockquote>
+<p>On Windows:</p>
+<blockquote>
+<pre><strong>vars<br>revoke-full client2<br></strong></pre>
+</blockquote>
+<p>You should see output similar to this:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre>Using configuration from /root/openvpn/20/openvpn/tmp/easy-rsa/openssl.cnf<br>DEBUG[load_index]: unique_subject = "yes"<br>Revoking Certificate 04.<br>Data Base Updated<br>Using configuration from /root/openvpn/20/openvpn/tmp/easy-rsa/openssl.cnf<br>DEBUG[load_index]: unique_subject = "yes"<br>client2.crt: /C=KG/ST=NA/O=OpenVPN-TEST/CN=client2/emailAddress=me@myhost.mydomain<br>error 23 at 0 depth lookup:certificate revoked</pre>
+</blockquote>
+<div align="left">
+<table border="0">
+<tbody>
+<tr>
+<td width="600">
+<p>Note the "error 23" in the last line. That is what you want to see, as it indicates that a certificate verification of the revoked certificate failed.</p>
+<p>The <strong>revoke-full</strong> script will generate a CRL (certificate revocation list) file called <strong>crl.pem</strong> in the <strong>keys</strong> subdirectory. The file should be copied to a directory where the OpenVPN server can access it, then CRL verification should be enabled in the server configuration:</p>
+<blockquote>
+<pre><strong>crl-verify crl.pem</strong></pre>
+</blockquote>
+<p>Now all connecting clients will have their client certificates verified against the CRL, and any positive match will result in the connection being dropped.</p>
+<h3>CRL Notes</h3>
+<ul>
+<li>When the <strong>crl-verify</strong> option is used in OpenVPN, the CRL file will be re-read any time a new client connects or an existing client renegotiates the SSL/TLS connection (by default once per hour). This means that you can update the CRL file while the OpenVPN server daemon is running, and have the new CRL take effect immediately for newly connecting clients. If the client whose certificate you are revoking is already connected, you can restart the server via a signal (SIGUSR1 or SIGHUP) and flush all clients, or you can telnet to the <a href="https://openvpn.net/management.html">management interface</a>and explicitly kill the specific client instance object on the server without disturbing other clients.
+<p>&nbsp;</p>
+</li>
+<li>While the <strong>crl-verify</strong> directive can be used on both the OpenVPN server and clients, it is generally unnecessary to distribute a CRL file to clients unless a server certificate has been revoked. Clients don't need to know about other client certificates which have been revoked because <a href="https://openvpn.net/howto.html#mitm">clients shouldn't be accepting direct connections from other clients</a>in the first place.
+<p>&nbsp;</p>
+</li>
+<li>The CRL file is not secret, and should be made world-readable so that the OpenVPN daemon can read it after root privileges have been dropped.
+<p>&nbsp;</p>
+</li>
+<li>If you are using the <strong>chroot</strong>directive, make sure to put a copy of the CRL file in the chroot directory, since unlike most other files which OpenVPN reads, the CRL file will be read after the chroot call is executed, not before.
+<p>&nbsp;</p>
+</li>
+<li>A common reason why certificates need to be revoked is that the user encrypts their private key with a password, then forgets the password. By revoking the original certificate, it is possible to generate a new certificate/key pair with the user's original common name.
+<p>&nbsp;</p>
+</li>
+</ul>
+<hr><a name="secnotes"></a><a name="mitm"></a>
+<h2>Important Note on possible "Man-in-the-Middle" attack if clients do not verify the certificate of the server they are connecting to.</h2>
+<p>To avoid a possible Man-in-the-Middle attack where an authorized client tries to connect to another client by impersonating the server, make sure to enforce some kind of server certificate verification by clients. There are currently five different ways of accomplishing this, listed in the order of preference:</p>
+<ul>
+<li><em>[OpenVPN 2.1 and above]</em>Build your server certificates with specific key usage and extended key usage. The RFC3280 determine that the following attributes should be provided for TLS connections:
+<p>&nbsp;</p>
+<table border="1" cellpadding="8" cellspacing="0">
+<tbody>
+<tr><th>Mode</th><th>Key usage</th><th>Extended key usage</th></tr>
+<tr>
+<td rowspan="3">Client</td>
+<td>digitalSignature</td>
+<td rowspan="3">TLS Web Client Authentication</td>
+</tr>
+<tr>
+<td>keyAgreement</td>
+</tr>
+<tr>
+<td>digitalSignature, keyAgreement</td>
+</tr>
+<tr>
+<td rowspan="2">Server</td>
+<td>digitalSignature, keyEncipherment</td>
+<td rowspan="2">TLS Web Server Authentication</td>
+</tr>
+<tr>
+<td>digitalSignature, keyAgreement</td>
+</tr>
+</tbody>
+</table>
+<p>You can build your server certificates with the <strong>build-key-server</strong> script (see the <a href="https://openvpn.net/easyrsa.html">easy-rsa</a> documentation for more info). This will designate the certificate as a server-only certificate by setting the right attributes. Now add the following line to your client configuration:</p>
+<blockquote>
+<pre><strong>remote-cert-tls server</strong></pre>
+</blockquote>
+</li>
+<li><em>[OpenVPN 2.0 and below]</em> Build your server certificates with the <strong>build-key-server</strong> script (see the <a href="https://openvpn.net/easyrsa.html">easy-rsa</a> documentation for more info). This will designate the certificate as a server-only certificate by setting <strong>nsCertType</strong>=server. Now add the following line to your client configuration:
+<p>&nbsp;</p>
+<blockquote>
+<pre><strong>ns-cert-type server</strong></pre>
+</blockquote>
+<p>This will block clients from connecting to any server which lacks the <strong>nsCertType</strong>=server designation in its certificate, even if the certificate has been signed by the <strong>ca</strong> file in the OpenVPN configuration file.</p>
+</li>
+<li>Use the <strong>tls-remote</strong>directive on the client to accept/reject the server connection based on the common name of the server certificate.
+<p>&nbsp;</p>
+</li>
+<li>Use a <strong>tls-verify</strong>script or plugin to accept/reject the server connection based on a custom test of the server certificate's embedded X509 subject details.
+<p>&nbsp;</p>
+</li>
+<li>Sign server certificates with one CA and client certificates with a different CA. The client configuration <strong>ca</strong> directive should reference the server-signing CA file, while the server configuration <strong>ca</strong>directive should reference the client-signing CA file.
+<p>&nbsp;</p>
+</li>
+</ul>
+<hr></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a name="examples"></a></p>
+<h2>Sample OpenVPN 2.0 configuration files</h2>
+<p><a name="server"></a></p>
+<hr>
+<div align="left">
+<table border="4" cellpadding="16" cellspacing="16">
+<tbody>
+<tr>
+<td width="100%">
+<h3>sample-config-files/server.conf</h3>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre><strong>#################################################<br># Sample OpenVPN 2.0 config file for            #<br># multi-client server.                          #<br>#                                               #<br># This file is for the server side              #<br># of a many-clients  one-server                 #<br># OpenVPN configuration.                        #<br>#                                               #<br># OpenVPN also supports                         #<br># single-machine  single-machine                #<br># configurations (See the Examples page         #<br># on the web site for more info).               #<br>#                                               #<br># This config should work on Windows            #<br># or Linux/BSD systems.  Remember on            #<br># Windows to quote pathnames and use            #<br># double backslashes, e.g.:                     #<br># "C:\\Program Files\\OpenVPN\\config\\foo.key" #<br>#                                               #<br># Comments are preceded with '#' or ';'         #<br>#################################################<br><br># Which local IP address should OpenVPN<br># listen on? (optional)<br>;local a.b.c.d<br><br># Which TCP/UDP port should OpenVPN listen on?<br># If you want to run multiple OpenVPN instances<br># on the same machine, use a different port<br># number for each one.  You will need to<br># open up this port on your firewall.<br>port 1194<br><br># TCP or UDP server?<br>;proto tcp<br>proto udp<br><br># "dev tun" will create a routed IP tunnel,<br># "dev tap" will create an ethernet tunnel.<br># Use "dev tap0" if you are ethernet bridging<br># and have precreated a tap0 virtual interface<br># and bridged it with your ethernet interface.<br># If you want to control access policies<br># over the VPN, you must create firewall<br># rules for the the TUN/TAP interface.<br># On non-Windows systems, you can give<br># an explicit unit number, such as tun0.<br># On Windows, use "dev-node" for this.<br># On most systems, the VPN will not function<br># unless you partially or fully disable<br># the firewall for the TUN/TAP interface.<br>;dev tap<br>dev tun<br><br># Windows needs the TAP-Windows adapter name<br># from the Network Connections panel if you<br># have more than one.  On XP SP2 or higher,<br># you may need to selectively disable the<br># Windows firewall for the TAP adapter.<br># Non-Windows systems usually don't need this.<br>;dev-node MyTap<br><br># SSL/TLS root certificate (ca), certificate<br># (cert), and private key (key).  Each client<br># and the server must have their own cert and<br># key file.  The server and all clients will<br># use the same ca file.<br>#<br># See the "easy-rsa" directory for a series<br># of scripts for generating RSA certificates<br># and private keys.  Remember to use<br># a unique Common Name for the server<br># and each of the client certificates.<br>#<br># Any X509 key management system can be used.<br># OpenVPN can also use a PKCS #12 formatted key file<br># (see "pkcs12" directive in man page).<br>ca ca.crt<br>cert server.crt<br>key server.key  # This file should be kept secret<br><br># Diffie hellman parameters.<br># Generate your own with:<br>#   openssl dhparam -out dh1024.pem 1024<br># Substitute 2048 for 1024 if you are using<br># 2048 bit keys. <br>dh dh1024.pem<br><br># Configure server mode and supply a VPN subnet<br># for OpenVPN to draw client addresses from.<br># The server will take 10.8.0.1 for itself,<br># the rest will be made available to clients.<br># Each client will be able to reach the server<br># on 10.8.0.1. Comment this line out if you are<br># ethernet bridging. See the man page for more info.<br>server 10.8.0.0 255.255.255.0<br><br># Maintain a record of client  virtual IP address<br># associations in this file.  If OpenVPN goes down or<br># is restarted, reconnecting clients can be assigned<br># the same virtual IP address from the pool that was<br># previously assigned.<br>ifconfig-pool-persist ipp.txt<br><br># Configure server mode for ethernet bridging.<br># You must first use your OS's bridging capability<br># to bridge the TAP interface with the ethernet<br># NIC interface.  Then you must manually set the<br># IP/netmask on the bridge interface, here we<br># assume 10.8.0.4/255.255.255.0.  Finally we<br># must set aside an IP range in this subnet<br># (start=10.8.0.50 end=10.8.0.100) to allocate<br># to connecting clients.  Leave this line commented<br># out unless you are ethernet bridging.<br>;server-bridge 10.8.0.4 255.255.255.0 10.8.0.50 10.8.0.100<br><br># Push routes to the client to allow it<br># to reach other private subnets behind<br># the server.  Remember that these<br># private subnets will also need<br># to know to route the OpenVPN client<br># address pool (10.8.0.0/255.255.255.0)<br># back to the OpenVPN server.<br>;push "route 192.168.10.0 255.255.255.0"<br>;push "route 192.168.20.0 255.255.255.0"<br><br># To assign specific IP addresses to specific<br># clients or if a connecting client has a private<br># subnet behind it that should also have VPN access,<br># use the subdirectory "ccd" for client-specific<br># configuration files (see man page for more info).<br><br># EXAMPLE: Suppose the client<br># having the certificate common name "Thelonious"<br># also has a small subnet behind his connecting<br># machine, such as 192.168.40.128/255.255.255.248.<br># First, uncomment out these lines:<br>;client-config-dir ccd<br>;route 192.168.40.128 255.255.255.248<br># Then create a file ccd/Thelonious with this line:<br>#   iroute 192.168.40.128 255.255.255.248<br># This will allow Thelonious' private subnet to<br># access the VPN.  This example will only work<br># if you are routing, not bridging, i.e. you are<br># using "dev tun" and "server" directives.<br><br># EXAMPLE: Suppose you want to give<br># Thelonious a fixed VPN IP address of 10.9.0.1.<br># First uncomment out these lines:<br>;client-config-dir ccd<br>;route 10.9.0.0 255.255.255.252<br># Then add this line to ccd/Thelonious:<br>#   ifconfig-push 10.9.0.1 10.9.0.2<br><br># Suppose that you want to enable different<br># firewall access policies for different groups<br># of clients.  There are two methods:<br># (1) Run multiple OpenVPN daemons, one for each<br>#     group, and firewall the TUN/TAP interface<br>#     for each group/daemon appropriately.<br># (2) (Advanced) Create a script to dynamically<br>#     modify the firewall in response to access<br>#     from different clients.  See man<br>#     page for more info on learn-address script.<br>;learn-address ./script<br><br># If enabled, this directive will configure<br># all clients to redirect their default<br># network gateway through the VPN, causing<br># all IP traffic such as web browsing and<br># and DNS lookups to go through the VPN<br># (The OpenVPN server machine may need to NAT<br># the TUN/TAP interface to the internet in<br># order for this to work properly).<br># CAVEAT: May break client's network config if<br># client's local DHCP server packets get routed<br># through the tunnel.  Solution: make sure<br># client's local DHCP server is reachable via<br># a more specific route than the default route<br># of 0.0.0.0/0.0.0.0.<br>;push "redirect-gateway"<br><br># Certain Windows-specific network settings<br># can be pushed to clients, such as DNS<br># or WINS server addresses.  CAVEAT:<br># <a href="https://openvpn.net/faq.html#dhcpcaveats">http://openvpn.net/faq.html#dhcpcaveats</a><br>;push "dhcp-option DNS 10.8.0.1"<br>;push "dhcp-option WINS 10.8.0.1"<br><br># Uncomment this directive to allow different<br># clients to be able to "see" each other.<br># By default, clients will only see the server.<br># To force clients to only see the server, you<br># will also need to appropriately firewall the<br># server's TUN/TAP interface.<br>;client-to-client<br><br># Uncomment this directive if multiple clients<br># might connect with the same certificate/key<br># files or common names.  This is recommended<br># only for testing purposes.  For production use,<br># each client should have its own certificate/key<br># pair.<br>#<br># IF YOU HAVE NOT GENERATED INDIVIDUAL<br># CERTIFICATE/KEY PAIRS FOR EACH CLIENT,<br># EACH HAVING ITS OWN UNIQUE "COMMON NAME",<br># UNCOMMENT THIS LINE OUT.<br>;duplicate-cn<br><br># The keepalive directive causes ping-like<br># messages to be sent back and forth over<br># the link so that each side knows when<br># the other side has gone down.<br># Ping every 10 seconds, assume that remote<br># peer is down if no ping received during<br># a 120 second time period.<br>keepalive 10 120<br><br># For extra security beyond that provided<br># by SSL/TLS, create an "HMAC firewall"<br># to help block DoS attacks and UDP port flooding.<br>#<br># Generate with:<br>#   openvpn --genkey --secret ta.key<br>#<br># The server and each client must have<br># a copy of this key.<br># The second parameter should be '0'<br># on the server and '1' on the clients.<br>;tls-auth ta.key 0 # This file is secret<br><br># Select a cryptographic cipher.<br># This config item must be copied to<br># the client config file as well.<br>;cipher BF-CBC        # Blowfish (default)<br>;cipher AES-128-CBC   # AES<br>;cipher DES-EDE3-CBC  # Triple-DES<br><br># Enable compression on the VPN link.<br># If you enable it here, you must also<br># enable it in the client config file.<br>comp-lzo<br><br># The maximum number of concurrently connected<br># clients we want to allow.<br>;max-clients 100<br><br># It's a good idea to reduce the OpenVPN<br># daemon's privileges after initialization.<br>#<br># You can uncomment this out on<br># non-Windows systems.<br>;user nobody<br>;group nobody<br><br># The persist options will try to avoid<br># accessing certain resources on restart<br># that may no longer be accessible because<br># of the privilege downgrade.<br>persist-key<br>persist-tun<br><br># Output a short status file showing<br># current connections, truncated<br># and rewritten every minute.<br>status openvpn-status.log<br><br># By default, log messages will go to the syslog (or<br># on Windows, if running as a service, they will go to<br># the "\Program Files\OpenVPN\log" directory).<br># Use log or log-append to override this default.<br># "log" will truncate the log file on OpenVPN startup,<br># while "log-append" will append to it.  Use one<br># or the other (but not both).<br>;log         openvpn.log<br>;log-append  openvpn.log<br><br># Set the appropriate level of log<br># file verbosity.<br>#<br># 0 is silent, except for fatal errors<br># 4 is reasonable for general usage<br># 5 and 6 can help to debug connection problems<br># 9 is extremely verbose<br>verb 3<br><br># Silence repeating messages.  At most 20<br># sequential messages of the same message<br># category will be output to the log.<br>;mute 20<br></strong></pre>
+</blockquote>
+<p><a name="client"></a></p>
+<hr>
+<div align="left">
+<table border="4" cellpadding="16" cellspacing="16">
+<tbody>
+<tr>
+<td width="100%">
+<h3>sample-config-files/client.conf</h3>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre><strong>##############################################<br># Sample client-side OpenVPN 2.0 config file #<br># for connecting to multi-client server.     #<br>#                                            #<br># This configuration can be used by multiple #<br># clients, however each client should have   #<br># its own cert and key files.                #<br>#                                            #<br># On Windows, you might want to rename this  #<br># file so it has a .ovpn extension           #<br>##############################################<br><br># Specify that we are a client and that we<br># will be pulling certain config file directives<br># from the server.<br>client<br><br># Use the same setting as you are using on<br># the server.<br># On most systems, the VPN will not function<br># unless you partially or fully disable<br># the firewall for the TUN/TAP interface.<br>;dev tap<br>dev tun<br><br># Windows needs the </strong>TAP-Windows<strong> adapter name<br># from the Network Connections panel<br># if you have more than one.  On XP SP2,<br># you may need to disable the firewall<br># for the TAP adapter.<br>;dev-node MyTap<br><br># Are we connecting to a TCP or<br># UDP server?  Use the same setting as<br># on the server.<br>;proto tcp<br>proto udp<br><br># The hostname/IP and port of the server.<br># You can have multiple remote entries<br># to load balance between the servers.<br>remote my-server-1 1194<br>;remote my-server-2 1194<br><br># Choose a random host from the remote<br># list for load-balancing.  Otherwise<br># try hosts in the order specified.<br>;remote-random<br><br># Keep trying indefinitely to resolve the<br># host name of the OpenVPN server.  Very useful<br># on machines which are not permanently connected<br># to the internet such as laptops.<br>resolv-retry infinite<br><br># Most clients don't need to bind to<br># a specific local port number.<br>nobind<br><br># Downgrade privileges after initialization (non-Windows only)<br>;user nobody<br>;group nobody<br><br># Try to preserve some state across restarts.<br>persist-key<br>persist-tun<br><br># If you are connecting through an<br># HTTP proxy to reach the actual OpenVPN<br># server, put the proxy server/IP and<br># port number here.  See the man page<br># if your proxy server requires<br># authentication.<br>;http-proxy-retry # retry on connection failures<br>;http-proxy [proxy server] [proxy port #]<br><br># Wireless networks often produce a lot<br># of duplicate packets.  Set this flag<br># to silence duplicate packet warnings.<br>;mute-replay-warnings<br><br># SSL/TLS parms.<br># See the server config file for more<br># description.  It's best to use<br># a separate .crt/.key file pair<br># for each client.  A single ca<br># file can be used for all clients.<br>ca ca.crt<br>cert client.crt<br>key client.key<br><br># Verify server certificate by checking<br># that the certicate has the nsCertType<br># field set to "server".  This is an<br># important precaution to protect against<br># a potential attack discussed here:<br>#  <a href="https://openvpn.net/howto.html#mitm">http://openvpn.net/howto.html#mitm</a><br>#<br># To use this feature, you will need to generate<br># your server certificates with the nsCertType<br># field set to "server".  The build-key-server<br># script in the easy-rsa folder will do this.<br>;ns-cert-type server<br><br># If a tls-auth key is used on the server<br># then every client must also have the key.<br>;tls-auth ta.key 1<br><br># Select a cryptographic cipher.<br># If the cipher option is used on the server<br># then you must also specify it here.<br>;cipher x<br><br># Enable compression on the VPN link.<br># Don't enable this unless it is also<br># enabled in the server config file.<br>comp-lzo<br><br># Set log file verbosity.<br>verb 3<br><br># Silence repeating messages<br>;mute 20</strong></pre>
+<blockquote><hr>
+<pre><strong>Try our new <a href="https://www.privatetunnel.com/" title="VPN Service">VPN Service</a> https://www.privatetunnel.com<br></strong></pre>
+</blockquote>
+</blockquote>
+<hr>
+<p>Copyright © 2002-2013 by OpenVPN Technologies, Inc. &lt;
+ <script type="text/javascript">/* Code removed by ScrapBook */</script><a href="mailto:info@openvpn.net">info@openvpn.net</a><script type="text/javascript">/* Code removed by ScrapBook */</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+ <script type="text/javascript">/* Code removed by ScrapBook */</script></span>&gt;. OpenVPN is a trademark of OpenVPN Technologies, Inc.</p>
+	
+</div>
+
+		        	
+		</div>
+	
+	</div>
+</div>
+<div class="clear"></div>
+<div id="OP-Footer">
+    <div id="OP-Footer-Right">
+      <div id="OP-Footer-link">
+        		<div class="moduletable-supernav">
+					
+<ul class="menu-supernav">
+<li class="item-913"><a href="https://openvpn.net/index.php/privacy-policy.html">Privacy Policy</a></li><li class="item-914"><a href="https://openvpn.net/index.php/terms-of-use.html">Terms of Use</a></li><li class="item-611"><a href="https://openvpn.net/index.php/about-menu/about-us.html">About</a></li><li class="item-749"><a href="https://openvpn.net/index.php/about-menu/jobs.html">Jobs</a></li><li class="item-612"><a href="https://openvpn.net/index.php/the-news/press-releases.html">News</a></li><li class="item-606"><a href="https://openvpn.net/index.php/contact-us-sp-989947891.html">Contact</a></li><li class="item-613"><a href="https://openvpn.net/index.php/partners-sp-1143994505.html">Partners/Clients</a></li><li class="item-610"><a href="https://openvpn.net/index.php/support-center-sp-1315631429.html">Support</a></li></ul>
+		</div>
+	
+      </div>
+    </div>
+    <br><br>
+    <div id="OP-Footer-left" style="float: none;">
+      <div id="OP-FooterLeft-link" style="float: none;">
+        <ul>
+          <li>© 2002-2017 OpenVPN Technologies, Inc. &nbsp; 
+	  <br>OpenVPN is a registered trademark of OpenVPN Technologies, Inc</li>
+        </ul>
+      </div>
+    </div>
+    <!--OP footer end-->
+  </div>
+
+
+<!--<div id="footer">
+<jdoc:include type="modules" name="privacy" style="xhtml" >&nbsp;<jdoc:include type="modules" name="terms" style="xhtml" > 
+	<div class="copyright">Copyright © 2002-2017 OpenVPN Technologies, Inc. All Rights Reserved.</div>
+	<div style="float:right;color:blue;font-size:11px;color:#CC6600;font-weight:normal;padding-left:10px;padding-right:10px">
+	    		<div class="moduletable">
+					
+
+<div class="custom"  >
+	<a href="/index.php/open-source/documentation/howto.html?id=479">Privacy Policy</a></div>
+		</div>
+	
+	</div>
+	<div style="float:right;color:blue;font-size:11px;color:#CC6600;font-weight:normal;padding-left:10px;padding-right:10px">
+	    		<div class="moduletable">
+					
+
+<div class="custom"  >
+	<a href="/index.php/open-source/documentation/howto.html?id=481">Terms of Use</a></div>
+		</div>
+	
+	</div>
+	<div style="float:right;color:blue;font-size:11px;color:#CC6600;font-weight:normal;padding-left:10px;padding-right:10px">
+	    
+	</div>
+	<div style="float:right;color:blue;font-size:11px;color:#CC6600;font-weight:normal;padding-left:10px;padding-right:10px">
+	    
+	</div>
+
+</div>
+-->
+
+
+
+<noscript><strong>JavaScript is currently disabled.</strong>Please enable it for a better experience of <a href="http://2glux.com/projects/jumi">Jumi</a>.</noscript>
+
+<div style="position: absolute; top: 117px; left: 603px; opacity: 0;" id="roksearch_results"></div></body>
+</html>

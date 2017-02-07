@@ -1,0 +1,43 @@
+/* Code tidied up by ScrapBook */
+@font-face {
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Cabin"), local("Cabin-Regular"), url("XD3SRQ5RIOkebMXiWCcecw.woff2") format("woff2");
+  unicode-range: U+102-103, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Cabin"), local("Cabin-Regular"), url("k7PW6rJMpqdxnc4QEePsDA.woff2") format("woff2");
+  unicode-range: U+100-24F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Cabin"), local("Cabin-Regular"), url("yQOMOX5hR0-6LTD879t-PQ.woff2") format("woff2");
+  unicode-range: U+0-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Cabin Bold"), local("Cabin-Bold"), url("UXGhLjKiqzg6toFP8iMMURTbgVql8nDJpwnrE27mub0.woff2") format("woff2");
+  unicode-range: U+102-103, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Cabin Bold"), local("Cabin-Bold"), url("x3m-U6JeQcwjGsnYLXQv4xTbgVql8nDJpwnrE27mub0.woff2") format("woff2");
+  unicode-range: U+100-24F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Cabin";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Cabin Bold"), local("Cabin-Bold"), url("82B-3YlzWJm8zbCrVEmc_vesZW2xOQ-xsNqO47m55DA.woff2") format("woff2");
+  unicode-range: U+0-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}

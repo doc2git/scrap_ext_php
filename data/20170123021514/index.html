@@ -1,0 +1,815 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class=" widthauto">
+<head><script src="about:blank" async="" type="text/javascript"></script><script src="about:blank" charset="utf-8" type="text/javascript"></script><script src="about:blank" charset="utf-8" type="text/javascript"></script><script charset="utf-8" src="about:blank"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>使用openVPN建立 VPN tunnel ..[安裝與設定過程] - 服务器应用-ChinaUnix.net</title>
+<link href="http://bbs.chinaunix.net/thread-261239-1-1.html" rel="canonical"><meta name="description" content=" 使用openVPN建立 VPN tunnel ..[安裝與設定過程] ">
+<meta name="author" content="Discuz! Team and Comsenz UI Team">
+<meta name="copyright" content="2001-2011 Comsenz Inc.">
+<meta name="MSSmartTagsPreventParsing" content="True">
+<meta http-equiv="MSThemeCompatible" content="Yes">
+<base href=""><link rel="stylesheet" type="text/css" href="style_3_common.css"><link rel="stylesheet" type="text/css" href="style_3_forum_viewthread.css"><script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<script src="about:blank" type="text/javascript"></script>
+<!-- 2014 -->
+<script type="text/javascript" src="about:blank"></script><script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<meta name="application-name" content="ChinaUnix.net">
+<meta name="msapplication-tooltip" content="ChinaUnix.net">
+<meta name="msapplication-task" content="name=论坛;action-uri=http://bbs.chinaunix.net/forum.php;icon-uri=http://bbs.chinaunix.net/http://cu.img168.net/static/image/common//bbs.ico">
+<link rel="archives" title="ChinaUnix.net" href="http://bbs.chinaunix.net/archiver/">
+<link rel="stylesheet" id="css_widthauto" type="text/css" href="style_3_widthauto.css">
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<script src="about:blank" type="text/javascript" charset="gbk"></script>
+<link type="text/css" rel="stylesheet" href="bdsstyle.css"><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><script src="about:blank"></script></head>
+<body id="nv_forum" class="pg_viewthread"><iframe src="index_8.html" style="display: none;" frameborder="0"></iframe><div style="display: block;" id="bdshare_s"><iframe src="index_9.html" id="bdsIfr" style="position: absolute; display: none; z-index: 9999;" frameborder="0"></iframe><div style="display: none;" id="bdshare_l"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://bbs.chinaunix.net/#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_renren rrw">人人网</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_douban db">豆瓣网</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_thx thx">和讯微博</a></li><li><a href="http://bbs.chinaunix.net/#" class="bds_more">更多...</a></li></ul><p><a href="http://bbs.chinaunix.net/#" class="goWebsite">百度分享</a></p></div></div></div><link type="text/css" rel="stylesheet" href="jiathis_share.css"><iframe src="index_11.html" style="position: fixed; display: none; opacity: 0;" frameborder="0"></iframe><div style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;" class="jiathis_style"></div><div style="position: absolute; z-index: 1000000000; display: none; overflow: auto;" class="jiathis_style"></div><iframe src="index_12.html" style="display: none;" frameborder="0"></iframe>
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<!-- 自定义 -->		
+<!--头-->
+<!--广告位置名称：首页通栏 -->
+<div id="ADV_13039"><script>/* Code removed by ScrapBook */</script></div>
+<!--2011.12.1修改 大版宽屏显示 但是莫名其妙设置中的用户组也宽屏了，打印了下gid为28.暂时不清楚为什么 -->
+<div class="wp head_top">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="left">
+<tbody><tr>
+<td>
+<a href="http://bbs.chinaunix.net/member.php?mod=logging&amp;action=login&amp;logsubmit=yes"><img src="login.gif"></a>
+&nbsp;&nbsp;<a href="http://u.it168.com/findPassword?returnUrl=http://bbs.chinaunix.net/home.php?mod=spacecp">忘记密码</a>
+&nbsp;&nbsp;<a href="http://bbs.chinaunix.net/member.php?mod=register">免费注册</a>
+</td>
+<td align="right">
+<a href="http://bbs.chinaunix.net/listthread.php">查看新帖</a> |
+<a href="http://www.chinaunix.net/jh/"><font color="red">论坛精华区</font></a>
+</td>
+</tr>
+<tr><td colspan="3" style="background-color: rgb(0, 0, 0);" height="1"></td></tr>
+</tbody></table>
+</div>
+<div id="hd">
+<div class="wp">
+<!--LOGO和banner  -->
+<table style="clear: both; height: 90px;" width="100%">
+<tbody><tr>
+<td style="padding: 0px;">
+<h1>
+<!--2011.12.27修改只有首页去www其他去bbs-->
+<a href="http://bbs.chinaunix.net/" title="ChinaUnix.net"><img src="logo.gif" alt="ChinaUnix.net" border="0"></a>
+</h1>
+</td>
+<td style="padding: 0px;" align="center">
+<!--不同页面广告位 -->
+<div id="ADV_18508" style=""><a href="http://bbs.chinaunix.net/thread-4258288-1-1.html" target="_blank"><img src="20170110041551524.jpg" height="80" width="960" border="0"></a><div style="width: 30px; z-index: 999; position: absolute; margin-top: -19px;"><i style="width: 25px; display: block; line-height: 16px; color: white; border: 1px solid rgb(255, 255, 255); height: 16px; font-size: 12px; text-shadow: 0px 1px 1px rgb(102, 102, 102);">广告</i></div></div>
+	
+</td>
+<!--2014.07.30添加广告位ADV_20649-->
+<td style="padding: 0px;" align="center">
+<div id="ADV_20649" style=""><a href="http://bbs.chinaunix.net/thread-4256601-1-1.html" target="_blank"><img src="20161124020926875.jpg" height="90" width="220" border="0"></a><div style="width: 30px; z-index: 999; position: absolute; margin-top: -19px;"><i style="width: 25px; display: block; line-height: 16px; color: white; border: 1px solid rgb(255, 255, 255); height: 16px; font-size: 12px; text-shadow: 0px 1px 1px rgb(102, 102, 102);">广告</i></div></div>
+</td>
+</tr>
+</tbody></table>
+<!--<div id="nv">
+<a href="javascript:;" id="qmenu" onmouseover="showMenu({'ctrlid':'qmenu','pos':'34!','ctrlclass':'a','duration':2});">快捷导航</a>
+<ul> --><!-- <li id="mn_Ne30e" ><a href="plugin.php?id=auction" hidefocus="true" title="Auction"  >竞拍<span>Auction</span></a></li> --><!-- <li id="mn_N2ddf" ><a href="plugin.php?id=itpub_medal:medal_shop" hidefocus="true"  >商店</a></li> --><!-- <li id="mn_forum" ><a href="forum.php" hidefocus="true" title="BBS"  >论坛<span>BBS</span></a></li> --><!-- <li id="mn_N12a7" ><a href="misc.php?mod=ranklist" hidefocus="true" title="Ranklist"  >排行榜<span>Ranklist</span></a></li> --><!--</ul>
+</div> -->
+<div class="p_pop h_pop" id="mn_userapp_menu" style="display: none;"></div><div id="mu" class="cl">
+</div><!--搜索框去掉20111024 -->
+</div>
+</div>
+<!--2011.11.30如果是大版则宽屏显示 -->
+<div id="wp" class="wp">
+
+<table style="background: transparent url(&quot;bg_menu_top.gif&quot;) repeat scroll 0% 0%;" width="100%" border="0" cellpadding="0" cellspacing="0" align="center"> 
+<tbody>
+<tr><td colspan="2" height="2"></td></tr>
+<tr>
+<td valign="center" width="*" align="left">&nbsp;
+<font color="#666666"><strong>平台</strong></font> 
+<a target="_blank" class="title2" href="http://bbs.chinaunix.net/"><font color="#5B7DB3">论坛</font></a>   
+<a target="_blank" class="title2" href="http://blog.chinaunix.net/"><font color="#5B7DB3">博客</font></a>
+<a target="_blank" class="title2" href="http://u.it168.com/vip/"><font color="#FF0000">认证专区</font></a>
+<a target="_blank" class="title2" href="http://www.chinaunix.net/talk"><font color="#FF0000">大话IT</font></a>
+<a target="_blank" class="title2" href="http://edu.chinaunix.net/"><font color="#FF0000">视频</font></a>
+<a target="_blank" class="title2" href="http://bbs.chinaunix.net/plugin.php?id=itpub_medal:medal_shop"><font color="#FF0000">徽章
+</font></a>
+<a target="_blank" class="title2" href="http://wenku.it168.com/"><font color="#5B7DB3">文库</font></a>
+<a target="_blank" class="title2" href="http://www.it168.com/itclub/"><font color="#5B7DB3">沙龙</font></a>   		
+<a target="_blank" class="title2" href="http://selftest.chinaunix.net/"><font color="#5B7DB3">自测</font></a>
+<a target="_blank" class="title2" href="http://download.chinaunix.net/"><font color="#5B7DB3">下载</font></a>
+<font color="#666666"><strong>频道</strong></font>：
+<a target="_blank" class="title2" href="http://www.chinaunix.net/ops/"><font color="#5B7DB3">自动化运维</font></a>   
+<a target="_blank" class="title2" href="http://www.chinaunix.net/virtual/"><font color="#5B7DB3">虚拟化</font></a>   
+ 
+<a target="_blank" class="title2" href="http://www.chinaunix.net/stor/"><font color="#5B7DB3">储存备份</font></a>  
+<a target="_blank" class="title2" href="http://www.chinaunix.net/cpp/"><font color="#5B7DB3">C/C++</font></a>  
+<a target="_blank" class="title2" href="http://www.chinaunix.net/php/"><font color="#5B7DB3">PHP</font></a>   
+<a target="_blank" class="title2" href="http://www.chinaunix.net/mysql/"><font color="#5B7DB3">MySQL</font></a>   
+<a target="_blank" class="title2" href="http://www.chinaunix.net/embedded/"><font color="#5B7DB3">嵌入式</font></a> 
+<a target="_blank" class="title2" href="http://www.chinaunix.net/linux/"><font color="#5B7DB3">Linux系统</font></a>  
+</td>
+<td>
+                            <form id="scbar_form" method="get" autocomplete="off" action="http://search.bbs.chinaunix.net/cse/search" target="_blank">
+<!--<form id="scbar_form" method="post" autocomplete="off" onSubmit="searchFocus($('scbar_txt'))" action="search.php?searchsubmit=yes" target="_blank">
+<form target="_blank" method="get" action="http://search.chinaunix.net/bbs.php"> 
+<input type="text" name=q  size="15" maxlength="20" style="width:60px">
+<input type="hidden" name="title" value="fulltext">
+<input type="hidden" name="st" value="title">
+<input type="hidden" name="bbs" value="1">
+<input type="hidden" name="forums" value="all">-->
+<input name="q" id="scbar_txt" autocomplete="off" style="width: 80px;" type="text">
+<!--					<input type="hidden" name="mod" id="scbar_mod" value="forum" />
+<input type="hidden" name="formhash" value="57fa94e4" />
+<input type="hidden" name="srchtype" value="title" />
+<input type="hidden" name="srhfid" value="232" id="dzsearchforumid" />
+<input type="hidden" name="srhlocality" value="forum::viewthread" />
+<input type="hidden" name="source" value="discuz" />
+<input type="hidden" name="fId" value=""  id="cloudsearchforumId" />
+<input type="hidden" name="q" id="cloudsearchquery" value="" />-->
+                                        <input name="click" value="1" type="hidden">
+                                        <input name="s" value="17746599429486556584" type="hidden">
+                                        <input name="nsid" value="" type="hidden">
+<input value="搜索" type="button">
+</form>
+</td>
+</tr>
+<tr><td colspan="2" height="2"></td></tr> 
+</tbody>
+</table>
+<script>/* Code removed by ScrapBook */</script>
+<!--原广告位置 -->
+<!--<div style="margin-top:10px"></div> -->
+<!--广告位置移动这,去掉自带的 换为广告系统标签 -->
+<table height="20" width="960px" border="0" cellpadding="0" cellspacing="0"> 
+<tbody>
+<tr>
+<td align="center"><div id="ADV_17278"><div style="margin-right: 10px;">·<a href="http://selftest.itpub.net/Start_8c16280d-d2c6-4b4f-8b15-8ac21cdcfd9e.html" target="_blank"><font color="red">拿什么拯救你，我的工业4.0时代</font></a></div></div></td>
+<td align="center"><div id="ADV_18502"><div style="margin-right: 10px;">·<a href="http://www.symantec.com/zh/cn/ssl-certificates/" target="_blank"><font color="blue">在线保护选择赛门铁克SSL</font></a></div></div></td>
+<td align="center"><div id="ADV_18503"><div style="margin-right: 10px;">·<a href="http://bbs.chinaunix.net/thread-4257894-1-1.html" target="_blank"><font color="red">深挖Docker和虚拟机的那些事儿</font></a></div></div></td>
+<td align="center"><div id="ADV_18504"><div style="margin-right: 10px;">·<a href="http://bbs.chinaunix.net/thread-4256601-1-1.html" target="_blank"><font color="blue">寻找2016中国十大OpenStack&nbsp;SuperUser</font></a></div></div></td>
+</tr>
+</tbody>
+</table>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<script src="about:blank" type="text/javascript"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<style id="diy_style" type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+<!--[diy=diynavtop]--><div id="diynavtop" class="area"></div><!--[/diy]-->
+<div id="pt" class="bm cl">
+<div class="z">
+<a href="http://www.chinaunix.net/" class="nvhm" title="首页"></a> <em>›</em> <a href="http://bbs.chinaunix.net/">论坛</a> <em>›</em> <a href="http://bbs.chinaunix.net/forum.php?gid=277">IT运维</a> <em>›</em> <a href="http://bbs.chinaunix.net/forum-232-1.html">服务器应用</a> <em>›</em> <a href="#">使用openVPN建立 VPN tunnel ..[安裝與設定過程]</a>
+</div>
+</div>
+
+
+
+<style id="diy_style" type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+<div class="wp">
+<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<div id="ct" class="wp cl">
+<div id="pgt" class="pgs mbm cl ">
+<div class="pgt"></div>
+<span class="y pgb" id="visitedforums"><a href="http://bbs.chinaunix.net/forum-232-1.html">最近访问板块</a></span>
+
+<!--增加板块跳转  -->
+<span style="float: right; padding: 0px 0px 4px; margin-top: 5px;">
+<select style="padding: 5px 0px 4px;">
+<option value="">版块跳转</option>
+<optgroup label="--Linux操作系统"><option value="216">新手园地</option><option value="269">&nbsp; &nbsp; &nbsp; 硬件问题</option><option value="217">Linux系统管理</option><option value="218">Linux网络问题</option><option value="223">Linux环境编程</option><option value="271">Linux桌面系统</option><option value="221">国产Linux</option></optgroup><optgroup label="--Unix操作系统"><option value="5">BSD</option><option value="127">&nbsp; &nbsp; &nbsp; BSD文档中心</option><option value="9">AIX</option><option value="193">&nbsp; &nbsp; &nbsp; 新手入门</option><option value="124">&nbsp; &nbsp; &nbsp; AIX文档中心</option><option value="189">&nbsp; &nbsp; &nbsp; 资源下载</option><option value="188">&nbsp; &nbsp; &nbsp; Power高级应用</option><option value="187">&nbsp; &nbsp; &nbsp; IBM存储</option><option value="10">AS400</option><option value="6">Solaris</option><option value="128">&nbsp; &nbsp; &nbsp; Solaris文档中心</option><option value="8">HP-UX</option><option value="129">&nbsp; &nbsp; &nbsp; HP文档中心</option><option value="7">SCO UNIX</option><option value="130">&nbsp; &nbsp; &nbsp; SCO文档中心</option><option value="118">互操作专区</option><option value="12">IRIX</option><option value="11">Tru64 UNIX</option><option value="41">Mac OS X</option></optgroup><optgroup label="--IT运维架构"><option value="141">门户网站运维</option><option value="233">集群和高可用</option><option value="232">服务器应用</option><option value="235">监控和防护</option><option value="283">虚拟化技术</option><option value="185">架构设计</option><option value="285">行业应用和管理</option></optgroup><optgroup label="--IT基础设施"><option value="45">服务器及硬件技术</option><option value="184">&nbsp; &nbsp; &nbsp; 服务器资源下载</option><option value="180">云计算</option><option value="181">&nbsp; &nbsp; &nbsp; 云计算文档中心</option><option value="182">&nbsp; &nbsp; &nbsp; 云计算业界</option><option value="183">&nbsp; &nbsp; &nbsp; 云计算资源下载</option><option value="34">存储备份</option><option value="125">&nbsp; &nbsp; &nbsp; 存储文档中心</option><option value="126">&nbsp; &nbsp; &nbsp; 存储业界</option><option value="145">&nbsp; &nbsp; &nbsp; 存储资源下载</option><option value="194">&nbsp; &nbsp; &nbsp; Symantec技术交流区</option><option value="29">安全技术</option><option value="30">网络技术</option><option value="131">&nbsp; &nbsp; &nbsp; 网络技术文档中心</option></optgroup><optgroup label="--程序设计"><option value="23">C/C++</option><option value="84">&nbsp; &nbsp; &nbsp; GUI编程</option><option value="142">&nbsp; &nbsp; &nbsp; Functional编程</option><option value="224">内核源码</option><option value="220">&nbsp; &nbsp; &nbsp; 内核问题</option><option value="222">移动开发</option><option value="265">&nbsp; &nbsp; &nbsp; 移动开发技术资料</option><option value="24">Shell</option><option value="25">Perl</option><option value="26">Java</option><option value="133">&nbsp; &nbsp; &nbsp; Java文档中心</option><option value="27">PHP</option><option value="135">&nbsp; &nbsp; &nbsp; php文档中心</option><option value="55">Python</option><option value="132">&nbsp; &nbsp; &nbsp; Python文档中心</option><option value="116">Ruby</option><option value="226">CPU与编译器</option><option value="225">嵌入式开发</option><option value="227">驱动开发</option><option value="80">Web开发</option><option value="100">VoIP开发技术</option></optgroup><optgroup label="--数据库技术"><option value="17">MySQL</option><option value="136">&nbsp; &nbsp; &nbsp; MySQL文档中心</option><option value="21">Sybase</option><option value="19">Oracle</option><option value="18">PostgreSQL</option><option value="22">DB2</option><option value="20">Informix</option><option value="140">数据仓库与数据挖掘</option><option value="292">NoSQL技术</option></optgroup><optgroup label="--综合交流区"><option value="46">IT业界新闻与评论</option><option value="32">IT职业生涯</option><option value="293">&nbsp; &nbsp; &nbsp; 猎头招聘</option><option value="82">IT图书与评论</option><option value="156">&nbsp; &nbsp; &nbsp; CU技术图书大系</option><option value="247">&nbsp; &nbsp; &nbsp; Linux书友会</option><option value="54">二手交易</option><option value="249">下载共享</option><option value="250">Linux文档专区</option><option value="53">IT培训与认证</option><option value="295">&nbsp; &nbsp; &nbsp; 培训交流</option><option value="191">&nbsp; &nbsp; &nbsp; 认证培训</option></optgroup><optgroup label="--休闲生活"><option value="31">清茶斋</option><option value="115">投资理财</option><option value="39">运动地带</option><option value="40">快乐数码摄影</option><option value="168">&nbsp; &nbsp; &nbsp; 摄影器材</option><option value="134">&nbsp; &nbsp; &nbsp; 摄影比赛专区</option><option value="121">IT爱车族</option><option value="96">旅游天下</option></optgroup><optgroup label="--站务及频道"><option value="2">站务交流</option><option value="3">版主会议室</option><option value="51">博客SNS站务交流区</option><option value="123">CU活动专区</option><option value="207">&nbsp; &nbsp; &nbsp; Power活动专区</option><option value="169">&nbsp; &nbsp; &nbsp; 拍卖交流区</option><option value="97">频道交流区</option></optgroup></select>
+</span>
+
+<a id="newspecial" style="margin-top: 8px;" title="发新帖"><img src="pn_post.png" alt="发新帖"></a>
+</div>
+
+
+
+<div id="postlist" class="pl bm">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="pls ptm pbm" style="background: rgb(152, 152, 186) none repeat scroll 0% 0%; border-bottom: 1px solid rgb(0, 0, 0);">
+<div class="hm">
+<span style="color: rgb(255, 255, 255);">查看:</span> 
+<span style="color: rgb(0, 0, 0);">3554</span>
+<span class="pipe">|</span>
+
+<span style="color: rgb(255, 255, 255);">回复:</span> 
+<span style="color: rgb(0, 0, 0);">0</span>
+</div>
+</td>
+<td class="plc ptm pbn" style="background-color: rgb(152, 152, 186); border-bottom: 1px solid rgb(0, 0, 0);">
+<div class="y">
+<a href="http://bbs.chinaunix.net/forum.php?mod=viewthread&amp;action=printable&amp;tid=261239" title="打印" target="_blank"><img src="print.png" alt="打印" class="vm"></a>
+<a href="http://bbs.chinaunix.net/forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=261239" title="上一主题"><img src="thread-prev.png" alt="上一主题" class="vm"></a>
+<a href="http://bbs.chinaunix.net/forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=261239" title="下一主题"><img src="thread-next.png" alt="下一主题" class="vm"></a>
+</div>
+
+
+<h1 class="ts">
+<a href="http://bbs.chinaunix.net/forum.php?mod=forumdisplay&amp;fid=232&amp;filter=typeid&amp;typeid=336">[vpn]</a>
+<a href="#" id="thread_subject">使用openVPN建立 VPN tunnel ..[安裝與設定過程]</a>
+<!--2011.12.01更改class-->
+<span class="xw0 xs1">
+<!--<span class="xw0 xs1 xg1">-->
+<a href="#" title="您的朋友访问此链接后，您将获得相应的积分奖励">[复制链接]</a>
+</span>					
+                    <!-- Baidu Button BEGIN -->
+                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" style="float: right;">
+                        <a href="http://bbs.chinaunix.net/#" title="分享到QQ空间" class="bds_qzone"></a><a href="http://bbs.chinaunix.net/#" title="分享到新浪微博" class="bds_tsina"></a><a href="http://bbs.chinaunix.net/#" title="分享到腾讯微博" class="bds_tqq"></a><a href="http://bbs.chinaunix.net/#" title="分享到人人网" class="bds_renren"></a>
+<a href="http://bbs.chinaunix.net/#" title="分享到豆瓣网" class="bds_douban"></a><a href="http://bbs.chinaunix.net/#" title="分享到我的淘宝" class="bds_taobao"></a><a href="http://bbs.chinaunix.net/#" title="分享到Facebook" class="bds_fbook"></a><a title="累计分享0次" href="http://bbs.chinaunix.net/#" class="shareCount">0</a>
+<span class="bds_more"></span><a title="累计分享0次" href="http://bbs.chinaunix.net/#" class="shareCount">0</a>
+                    </div>
+                	<!-- Baidu Button END -->					
+</h1>
+</td>
+</tr>
+</tbody></table>
+
+
+<!--1楼标题下面的两条线-->	
+<!-- 
+<table cellspacing="0" cellpadding="0" class="ad">
+<tr>
+<td class="pls" style="border-width:1px 0 1px 0; border-style:solid; border-color:#000; background:#fff"></td>
+<td class="plc" style="border-width:1px 0 1px 0; border-style:solid; border-color:#000; background:#fff"></td>
+</tr>
+</table>
+ --><div id="post_1750807" style="background-color: rgb(229, 237, 242);"><table id="pid1750807" summary="pid1750807" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="pls" rowspan="2" style="background-color: rgb(240, 243, 250);">
+<a name="newpost"></a> <a name="lastpost"></a><div class="pi" style="border-bottom: medium none;">
+<div class="authi"><a href="http://bbs.chinaunix.net/space-uid-7608873.html" target="_blank" class="xw1">apile</a>
+
+</div>
+
+</div>
+<!--2011.12.01自定义头衔移到用户名下面头像上面  -->
+<div class="p_pop blk bui" id="userinfo1750807" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1750807_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="http://bbs.chinaunix.net/space-uid-7608873.html" target="_blank" class="xi2">apile</a></strong>
+<em>当前离线</em>
+</div>
+<dl class="cl"></dl>
+<div class="imicn">
+<a href="http://bbs.chinaunix.net/home.php?mod=space&amp;uid=7608873&amp;do=profile" target="_blank" title="查看详细资料"><img src="userinfo.gif" alt="查看详细资料"></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="http://bbs.chinaunix.net/space-uid-7608873.html" target="_blank"><img src="73_avatar_middle.jpg"></a></div>
+                        
+                        
+                                        
+                             <p><em><a href="http://bbs.chinaunix.net/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=14" target="_blank">富足长乐</a></em></p>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+
+</div>
+<p id="g_up1750807"></p>
+<div id="g_up1750807_menu" class="tip tip_4" style="display: none;">
+<div class="tip_horn"></div>
+<div class="tip_c">富足长乐, 积分 6207, 距离下一级还需 1793 积分</div>
+</div>
+<ul class="xl xl2 o cl">
+<!--修改文字部分20111026-->
+<!--
+<li class="callon"><a href="space-uid-7608873.html" target="_blank" title="串个门" class="xi2">串个门</a></li>
+<li class="buddy"><a href="home.php?mod=spacecp&amp;ac=friend&amp;op=add&amp;uid=7608873&amp;handlekey=addfriendhk_7608873" id="a_friend_li_1750807" onclick="showWindow(this.id, this.href, 'get', 1, {'ctrlid':this.id,'pos':'00'});" title="加好友" class="xi2">加好友</a></li>
+<li class="poke2"><a href="home.php?mod=spacecp&amp;ac=poke&amp;op=send&amp;uid=7608873" id="a_poke_li_1750807" onclick="showWindow(this.id, this.href, 'get', 0);" title="打招呼" class="xi2">打招呼</a></li>
+<li class="pm2"><a href="home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_7608873&amp;touid=7608873&amp;pmid=0&amp;daterange=2&amp;pid=1750807&amp;tid=261239" onclick="showWindow('sendpm', this.href);" title="发消息" class="xi2">发消息</a></li>
+ -->
+<!--2013.05.15 修改串门链接 -->
+                    <li class="callon"><a href="http://ask.chinaunix.net/account/login/" target="_blank" class="xi2" style="font-weight: bold; color: rgb(255, 0, 0);">问答</a></li>
+
+<li class="buddy"><a href="http://bbs.chinaunix.net/home.php?mod=spacecp&amp;ac=friend&amp;op=add&amp;uid=7608873&amp;handlekey=addfriendhk_7608873" id="a_friend_li_1750807" title="加好友" class="xi2">好友</a></li>
+<!--<li class="poke2"><a href="toblog.php?uid=7608873" class="xi2" target="_blank">博客</a></li>-->
+<li class="poke2"><a href="http://blog.chinaunix.net/dir.php?uid=7608873" class="xi2" target="_blank">博客</a></li> 
+<li class="pm2"><a href="http://bbs.chinaunix.net/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_7608873&amp;touid=7608873&amp;pmid=0&amp;daterange=2&amp;pid=1750807&amp;tid=261239" title="发消息" class="xi2">消息</a></li>
+</ul>
+<dl class="pil cl"><dt>论坛徽章:</dt><dd>1</dd></dl><div style="padding: 3px; margin-left: 5px; margin-right: 5px;"><img id="1174" src="medal1.gif" style="margin: 2px;" alt="荣誉会员
+日期:2011-11-23 16:44:17" title="荣誉会员
+日期:2011-11-23 16:44:17" width="24px"></div><!--2011.12.05新增禁止本版发言2011.12.17修改增加是否是本版版主且对管理员全部开放 -->
+</td>
+<td class="plc" style="background-color: rgb(240, 243, 250);">
+<div class="pi">
+<!--管理操作口移到这-->
+		
+<div id="fj" class="y">
+<label class="z">电梯直达</label>
+<input class="px p_fre z" size="2" title="跳转到指定楼层" type="text">
+<a id="fj_btn" class="z" title="跳转到指定楼层"><img src="fj_btn.png" alt="跳转到指定楼层" class="vm"></a>
+</div>
+<strong>
+<a href="#" title="您的朋友访问此链接后，您将获得相应的积分奖励" id="postnum1750807"><em>1</em>楼</a>
+<!--以下新加开始 -->
+
+<!--收藏2011.12.01修改-->
+<a href="http://bbs.chinaunix.net/home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=261239" id="k_favorite">[收藏(<span id="favoritenumber">0</span>)]</a>
+<!--评分-->
+<!--邀请-->
+
+                <!--编辑-->
+
+<!--报告-->
+<a>[报告]</a>
+
+<!--评分2011.12.29-->
+
+<!--评分2011.12.29-->
+					
+ 
+
+
+<!--置顶logo-->
+				
+
+<!--新加的结束-->	
+
+</strong>
+
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1750807" src="online_member.gif">
+<em id="authorposton1750807">发表于 2004-02-17 10:31</em>
+<span class="pipe">|</span><a href="http://bbs.chinaunix.net/forum.php?mod=viewthread&amp;tid=261239&amp;page=1&amp;authorid=7608873" rel="nofollow">只看该作者</a>
+<span class="pipe">|</span><a href="http://bbs.chinaunix.net/forum.php?mod=viewthread&amp;tid=261239&amp;extra=page=1&amp;ordertype=1">倒序浏览</a>
+<div style="float: right;"><!-- JiaThis Button BEGIN -->
+<div id="ckepop">
+	<a href="http://www.jiathis.com/share/" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank">分享到：</a>
+	<a title="分享到QQ空间" class="jiathis_button_qzone"><span class="jiathis_txt jtico jtico_qzone"></span></a>
+	<a title="分享到微博" class="jiathis_button_tsina"><span class="jiathis_txt jtico jtico_tsina"></span></a>
+	<a title="分享到开心网" class="jiathis_button_kaixin001"><span class="jiathis_txt jtico jtico_kaixin001"></span></a>
+	<a title="分享到人人网" class="jiathis_button_renren"><span class="jiathis_txt jtico jtico_renren"></span></a>
+</div>
+<script type="text/javascript" src="about:blank" charset="utf-8"></script><script type="text/javascript" src="about:blank" charset="utf-8"></script>
+<!-- JiaThis Button END --></div></div>
+</div>
+</div><div class="pct"><style type="text/css">
+/* Code tidied up by ScrapBook */
+.pcb { margin-right: 0px; }
+</style><div class="pcb">
+<div id="JIATHIS_CODE_HTML4"> 
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1750807">
+最近剛好在linux上面安裝VPN...寫了篇文件...<br>
+各位看看吧...基本上照著howto就可以做出來..<br>
+下面用的是比較簡單的設定方式...實際上可以用很複雜的方式<br>
+去設定..有興趣的可以看看網址中的相關文件說明..<br>
+<br>
+----------------------------------------------------------------------------<br>
+<br>
+Open VPN.<br>
+网址：http://openvpn.sourceforge.net/<br>
+安装：<br>
+1.&nbsp; &nbsp; &nbsp; &nbsp; 安装需求：<br>
+(1)&nbsp; &nbsp; &nbsp; &nbsp; Openssl ，非必要但是建议一定要安装（可以用rpm安装）<br>
+(2)&nbsp; &nbsp; &nbsp; &nbsp; TUN/TAP的Driver，在核心2.4.7以前需要另外安装TUN/TAP的套件，但是2.4.7版本以后已经自动加入核心支持中，可以不用安装。<br>
+(3)&nbsp; &nbsp; &nbsp; &nbsp; LZO，实时压缩封包使用，非必要。可以不安装。http://www.oberhumer.com/opensource/lzo/<br>
+(4)&nbsp; &nbsp; &nbsp; &nbsp; Pthread 函示库，用来加快双方交换key的速率。<br>
+<br>
+2.&nbsp; &nbsp; &nbsp; &nbsp; 从上述网址抓取原始档下来安装。<br>
+(1)configure –disable-lzo (因为不需要压缩封包，且没装LZO所以要disable)<br>
+(2)make<br>
+(3)make install<br>
+3.&nbsp; &nbsp; &nbsp; &nbsp; 系统设定（设定相关驱动与建立device node）<br>
+Linux 2.4 or higher (with integrated TUN/TAP driver):<br>
+<br>
+&nbsp;&nbsp;(1)&nbsp;&nbsp;make device node:&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;mknod /dev/net/tun c 10 200<br>
+&nbsp;&nbsp;(2a) add to /etc/modules.conf: alias char-major-10-200 tun<br>
+&nbsp;&nbsp;(2b) load driver:&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;modprobe tun<br>
+&nbsp;&nbsp;(3)&nbsp;&nbsp;enable routing:&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;echo 1 &gt;; /proc/sys/net/ipv4/ip_forward<br>
+<br>
+&nbsp;&nbsp;Note that either of steps (2a) or (2b) is sufficient.&nbsp;&nbsp;While (2a)<br>
+&nbsp;&nbsp;only needs to be done once per install, (2b) needs to be done once<br>
+&nbsp;&nbsp;per reboot.&nbsp;&nbsp;If you install from RPM (see above) and use the<br>
+&nbsp;&nbsp;openvpn.init script, these steps are taken care of for you.<br>
+<br>
+* Linux 2.2 or Solaris: 要另外安装TUN/TAP驱动。<br>
+<br>
+&nbsp;&nbsp;You should obtain<br>
+&nbsp;&nbsp;version 1.1 of the TUN/TAP driver from<br>
+&nbsp;&nbsp;http://vtun.sourceforge.net/tun/<br>
+&nbsp;&nbsp;and follow the installation instructions.<br>
+<br>
+4.&nbsp; &nbsp; &nbsp; &nbsp; 规划实际系统<br>
+(1)系统概观：<br>
+linux187: eth0 : 10.144.43.187<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; eth1: 192.168.1.1<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; tun : 192.168.2.2<br>
+linux142: eth0: 10.144.43.142<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; lo:1&nbsp;&nbsp;: 192.168.3.1<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; tun: 192.168.2.1<br>
+ <br>
+<br>
+图一、实验系统架构图<br>
+(2)说明<br>
+在实验系统中，以linux187为Server、linux142为Client端，这儿所指的Client / Server，是针对OpenSSL再交换Key做认证时的身份，一旦Tunnel建立起来，所有的网络都可以通讯。<br>
+&nbsp; &nbsp;Linux187两张网卡，eth0为界接OA的NIC，其IP address为10.144.43.187，而eth1为界接设备网络的NIC其IP Address为192.168.1.1。eth1所界接的网络为192.168.1.0/24，所有设备的default gateway为192.168.1.1。<br>
+&nbsp; &nbsp;Linux142只需要一张网卡eth0。其OA的IP address为10.144.43.142，另外需要在Linux142上建立一个loopback device lo:1，设定其IP为192.168.3.1/32。<br>
+&nbsp; &nbsp;在这个系统中，Openvpn将建立一个Tunnel，Linux187端的tunnel ip为192.168.2.2，而linux142端的tunnel ip为192.168.2.1。<br>
+<br>
+(3)实际设定<br>
+i.首先在Server与Client端建立/etc/openvpn目录。<br>
+ii.在Client与Server端先输入下列指令<br>
+(i)&nbsp; &nbsp; &nbsp; &nbsp; modprobe tun<br>
+(ii)&nbsp; &nbsp; &nbsp; &nbsp; echo 1 &gt;;/proc/sys/net/ipv4/ip_forward<br>
+iii.因为不启动防火墙，所以NAT、Firwall那一段不提<br>
+iv.因为RSA key的交换比较复杂..为了安装速率，本文采取static key的交换方式<br>
+v. 在Server端(linux187)产生金钥: oepnvpn –genkey –secret static.key，将这个static.key 放到/etc/openvpn/，同时chmod成600，然后scp到linux142的/etc/openvpn目录。<br>
+vi.在linux187的/etc/openvpn目录下，建立几个档案<br>
+static-office.conf (给oepnvpn看的)<br>
+#使用tun device，ip over ip<br>
+dev tun<br>
+#设定server端ip与Client端ip，建立tunnel时使用<br>
+ifconfig 192.168.2.2 192.168.2.1<br>
+#设定Routing 到client端的网络，下面会附上office.up内容<br>
+up ./office.up<br>
+#使用static.key这个file当成金钥<br>
+secret static.key<br>
+#使用udp 12345 port当成openvpn预设使用的port<br>
+port 12345<br>
+#启动tunnel完成后，将openvpn的执行者改为nobody，security issue<br>
+user nobody<br>
+group nobody<br>
+#每15秒ping一次这个tunnel确定tunnel没断<br>
+ping 15<br>
+#debug信息输出，设定为level 3<br>
+verb 3<br>
+<br>
+office.up<br>
+#!/bin/bash<br>
+#-加入Client端网络的routing，因为实验系统采用loopback ip，<br>
+# 所以 netmask为255.255.255.255<br>
+route add -net 192.168.3.1 netmask 255.255.255.255 gw $5<br>
+<br>
+在client端linux142上的/etc/openvpn目录<br>
+static-home.conf<br>
+#使用tunnel dev<br>
+dev tun<br>
+#设定远程server ip为10.144.43.187<br>
+remote 10.144.43.187<br>
+#--设定client端ip与server ip，刚好跟linux 187上的ip顺序相反<br>
+ifconfig 192.168.2.1 192.168.2.2<br>
+#--设定连上server端的routing table<br>
+up ./home.up<br>
+#--使用static.key这个file当成金钥<br>
+secret static.key<br>
+#--使用udp/12345当成预设的port<br>
+port 12345<br>
+#--当tunnel建立完毕，openvpn执行者改成nobody<br>
+user nobody<br>
+<br>
+group nobody<br>
+#--每15秒ping一次对方，已确定tunnel是正常的<br>
+ping 15<br>
+#--debug信息，设定为level3<br>
+verb 3<br>
+<br>
+home.up<br>
+#!/bin/bash<br>
+#--加入server端负责的网络 ip address<br>
+route add -net 192.168.1.0 netmask 255.255.255.0 gw $5<br>
+<br>
+(4)启动openvpn 服务测试<br>
+Server端: openvpn --cd /etc/openvpn --config static-office.conf<br>
+Client端: openvpn –cd /etc/openvpn –config static-home.conf<br>
+然后在client端(linux142)去ping 192.168.2.2、192.168.3.1、192.168.3.X检查是否正常。在server端(linux187)去ping 192.168.2.1、192.168.3.1，检查是否正常。<br>
+<br>
+然后killall –TERM openvpn或ctrl+c将openvpn停止<br>
+<br>
+(5)写进/etc/rc.local<br>
+openvpn-startup.sh(linux142上的)<br>
+#!/bin/bash<br>
+PATH=$PATH:/usr/local/sbin:/usr/bin:/bin:/usr/bin/:/sbin:/usr/local/bin<br>
+openvpn=/usr/local/sbin/openvpn<br>
+export PATH<br>
+ifconfig lo:1 192.168.3.1 netmask 255.255.255.255 broadcast 192.168.3.1<br>
+mobprobe tun &gt;;/dev/null 2&gt;;&amp;1<br>
+echo 1 &gt;;/proc/sys/net/ipv4/ip_forward<br>
+openvpn --cd /etc/openvpn --daemon --config static-home.conf<br>
+<br>
+openvpn-shutdown.sh(linux142上的)<br>
+#!/bin/bash<br>
+killall -TERM openvpn<br>
+<br>
+在linux187上的openvpn-shutdown.sh相同，但是openvpn-startup.sh内容不同<br>
+#!/bin/bash<br>
+PATH=$PATH:/usr/local/sbin:/usr/bin:/bin:/usr/bin/:/sbin:/usr/local/bin<br>
+openvpn=/usr/local/sbin/openvpn<br>
+export PATH<br>
+ifconfig eth1 192.168.1.1 netmask 255.255.255.0 broadcast 192.168.1.255 up<br>
+mobprobe tun &gt;;/dev/null 2&gt;;&amp;1<br>
+echo 1 &gt;;/proc/sys/net/ipv4/ip_forward<br>
+openvpn --cd /etc/openvpn --daemon --config static-office.conf<br>
+<br>
+最后在/etc/rc.local最后面一行加上，Client(linux142)与client(linux187)都要做。<br>
+#--start openvpn<br>
+/etc/openvpn/openvpn-startup.sh 1&gt;;/dev/null 2&gt;;&amp;1<br>
+<br>
+<br>
+5.后记：<br>
+Openvpn实际上功能相当强大，而本文仅就最简单、且较不安全的static key的方式作介绍，但是实际上如果一般企业要用的话，建议采用document中所建议的RSA方式，且在Server端一定要启动NAT/Firewall相关设定，才能有效的防止网络上的入侵。</td></tr></tbody></table>
+
+
+</div>
+<div id="comment_1750807" class="cm">
+</div>
+
+<div id="post_rate_div_1750807"></div>
+</div><script type="text/javascript">/* Code removed by ScrapBook */</script></div>
+</div>
+
+</td></tr>
+<tr><td class="plc plm" style="background-color: rgb(240, 243, 250);">
+
+<!--这原先是一楼的评分分享收藏的 现在删掉移到上面去 -->
+
+
+        <!--//CHINAUNIX 此处去掉DZ自带相关帖子代码-->
+        
+        <!--//CHINAUNIX 一楼增加看了又看,相关帖子,本版精华内容 start-->
+                                <div class="mtw mbw w90">
+            <div class="tab011">
+                <ul id="tab011">
+                	                                                            
+                                                            
+                    <li><a class="here">文库|博客</a></li>
+          
+                </ul>
+             </div>
+                           
+            <div style="display: block;" id="tab011_Content0" class="tab011Cont">
+               <div class="tab011_l1">
+                   <ul>     
+                   
+                  <li><a href="http://wenku.it168.com/d_001701787.shtml" target="_blank">维基百科为什么进不去？.doc</a></li><li><a href="http://wenku.it168.com/d_001701784.shtml" target="_blank">维基百科无法访问怎么解决.doc</a></li><li><a href="http://wenku.it168.com/d_001701789.shtml" target="_blank">维基百科怎么上？Wikipedia进不去怎么办？.doc</a></li><li><a href="http://wenku.it168.com/d_001704162.shtml" target="_blank">分析飞康数据备份与存储.docx</a></li><li><a href="http://wenku.it168.com/d_001701786.shtml" target="_blank">维基百科上不去怎么办_解决维基被屏蔽的方法.doc</a></li> 
+        
+      
+          
+                   </ul>
+                   <div class="clear"></div>
+               </div> 
+            </div>
+            
+   	    </div>
+   	    <script type="text/javascript">/* Code removed by ScrapBook */</script> 
+                
+        <!--//CHINAUNIX 一楼增加看了又看,相关帖子,本版精华内容 end-->
+
+        
+        <!--//CUASK 增加CU问答文字链 start by caojingfei at 2012.03.21-->
+                <div class="a_pb"><a href="http://ask.chinaunix.net/question/785970" target="_blank" title="linux dhcp  peizhi roc"><b>linux dhcp  peizhi roc</b></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://ask.chinaunix.net/question/785964" target="_blank" title="关于Unix文件的软链接"><b>关于Unix文件的软链接</b></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://ask.chinaunix.net/question/785935" target="_blank" title="求教这个命令什么意思，我是新手，刚刚学习solaris"><b>求教这个命令什么意思，我是新手，刚刚学习 ...</b></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://ask.chinaunix.net/question/785919" target="_blank" title="sed -e &quot;/grep/d&quot; 是什么意思？谢谢"><b>sed -e "/grep/d" 是什么意思？谢谢 ...</b></a>&nbsp;&nbsp;|&nbsp;&nbsp;</div>                <!--//ITPUB 增加CU文字链 end by caojingfei at 2012.03.21-->
+</td>
+</tr>
+<tr>
+<td class="pls" style=""></td>
+<td class="plc">
+<div>
+<!--管理操作口移到上面-->
+
+<!--这块原先是每层楼下的回复编辑现在删掉，移到上面去-->
+</div>
+
+</td>
+</tr>
+
+<!--2011.12.01修改 帖子最后一个回帖出现的粗的黑线，有程序部分取得最大pid做对比，参照forum_vithread.php第596行  -->
+<tr class="ad">
+<td class="pls" style="border-width: 1px 0px; border-style: solid; border-color: rgb(0, 0, 0); background: rgb(255, 255, 255) none repeat scroll 0% 0%;"></td>
+<td class="plc" style="border-width: 1px 0px; border-style: solid; border-color: rgb(0, 0, 0); background: rgb(255, 255, 255) none repeat scroll 0% 0%;">
+</td>
+</tr>
+</tbody></table>
+</div>
+<div id="postlistreply" class="pl"><div id="post_new" class="viewthread_table" style="display: none;"></div></div>
+</div>
+
+<!--
+
+<style>
+.box0828{ width:960px; margin:0 auto;}
+.box0828_l{ float:left; width:475px;}
+.box0828_r{ float:right; width:475px;}
+</style>
+		<div class="box0828">
+<div class="box0828_l">
+<img border="0" alt="" src="/static/image/common/weixint.jpg">
+
+</div>
+<div class="box0828_r">
+<script type="text/javascript">
+
+    var cpro_id = "u1684206";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+
+</div>
+</div><br/> -->
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+<input name="formhash" value="57fa94e4" type="hidden">
+<input name="optgroup" type="hidden">
+<input name="operation" type="hidden">
+<input name="listextra" value="page=1" type="hidden">
+<input name="page" value="1" type="hidden">
+</form>
+
+<!--2011.12.01去掉mbm-->
+<div class="pgs mtm cl">
+<!--<div class="pgs mtm mbm cl">-->
+<span class="pgb y" id="visitedforumstmp"><a href="http://bbs.chinaunix.net/forum-232-1.html">返回列表</a></span>
+<a id="newspecialtmp" title="发新帖"><img src="pn_post.png" alt="发新帖"></a>
+</div>
+
+<!--底部的导航-->
+<div id="pt" class="bm cl">
+<div class="z">
+<a href="http://www.chinaunix.net/" class="nvhm" title="首页">ChinaUnix.net</a> <em>›</em> <a href="http://bbs.chinaunix.net/">论坛</a> <em>›</em> <a href="http://bbs.chinaunix.net/forum.php?gid=277">IT运维</a> <em>›</em> <a href="http://bbs.chinaunix.net/forum-232-1.html">服务器应用</a> <em>›</em> <a href="#">使用openVPN建立 VPN tunnel ..[安裝與設定過程]</a>
+</div>
+</div>
+
+
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<div id="f_pst" class="pl bm bmw">
+<form method="post" autocomplete="off" id="fastpostform" action="http://bbs.chinaunix.net/forum.php?mod=post&amp;action=reply&amp;fid=232&amp;tid=261239&amp;extra=page%3D1&amp;replysubmit=yes&amp;infloat=yes&amp;handlekey=fastpost">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="pls">
+</td>
+<td class="plc">
+
+<span id="fastpostreturn"></span>
+
+
+<div class="cl">
+<div id="fastsmiliesdiv" class="y"><div id="fastsmiliesdiv_data"><div id="fastsmilies"></div></div></div><div class="hasfsl" id="fastposteditor">
+<div class="tedt mtn">
+<div class="bar">
+<span class="y">
+<a href="http://bbs.chinaunix.net/forum.php?mod=post&amp;action=reply&amp;fid=232&amp;tid=261239">高级模式</a>
+</span><!--   --><script src="about:blank" type="text/javascript"></script>
+<div class="fpd">
+<a title="文字加粗" class="fbld">B</a>
+<a title="设置文字颜色" class="fclr" id="fastpostforecolor">Color</a>
+<a id="fastpostimg" title="图片" class="fmg">Image</a>
+<a id="fastposturl" title="添加链接" class="flnk">Link</a>
+<a id="fastpostquote" title="引用" class="fqt">Quote</a>
+<a id="fastpostcode" title="代码" class="fcd">Code</a>
+<a class="fsml" id="fastpostsml">Smilies</a>
+</div>
+</div>
+<div class="area">
+<div class="pt hm">
+您需要登录后才可以回帖 <a href="http://bbs.chinaunix.net/member.php?mod=logging&amp;action=login" class="xi2">登录</a> | <a href="http://bbs.chinaunix.net/member.php?mod=register" class="xi2">注册</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="seccheck_fastpost">
+</div>
+
+
+<input name="formhash" value="57fa94e4" type="hidden">
+<input name="usesig" value="" type="hidden">
+<input name="subject" value="  " type="hidden">
+<p class="ptm pnpost">
+<a href="http://bbs.chinaunix.net/home.php?mod=spacecp&amp;ac=credit&amp;op=rule&amp;fid=232" class="y" target="_blank">本版积分规则</a>
+<button type="button" name="replysubmit" id="fastpostsubmit" class="pn pnc vm" value="replysubmit" tabindex="5"><strong>发表回复</strong></button>
+<label for="fastpostrefresh"><input id="fastpostrefresh" class="pc" type="checkbox">回帖后跳转到最后一页</label>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</p>
+</td>
+</tr>
+</tbody></table>
+</form>
+</div>
+
+
+<div id="visitedforums_menu" class="p_pop blk cl" style="display: none;">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td id="v_forums">
+<h3 class="mbn pbn bbda xg1">浏览过的版块</h3>
+<ul class="xl xl1">
+<li><a href="http://bbs.chinaunix.net/forum-217-1.html">Linux系统管理</a></li><li><a href="http://bbs.chinaunix.net/forum-24-1.html">Shell</a></li><li><a href="http://bbs.chinaunix.net/forum-4-1.html">Linux论坛</a></li></ul>
+</td>
+</tr>
+</tbody></table>
+</div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+<div class="wp mtn">
+<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+
+<!-- Baidu Button BEGIN -->
+<script src="about:blank" type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=442796"></script>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!-- Baidu Button END -->
+
+<!--//CHINAUNIX 记录用户看贴日志 start--><!--script type="text/javascript" src="/sh/viewlog/viewlog_js.php?tid=261239&amp;fid=232&amp;subject=%CA%B9%D3%C3openVPN%BD%A8%C1%A2+VPN+tunnel+..%5B%B0%B2%D1b%C5c%D4O%B6%A8%DF%5E%B3%CC%5D"></script-->
+<!--//CHINAUNIX 记录用户看贴日志 END-->
+
+<!--二维码-->
+<!--
+<style>
+*html{background:url(about:blank);background-attachment:fixed;}
+.fu0915{ height:363px;z-index:9999;width:130px; position:fixed; bottom:20px; left:35px; _position:absolute; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))); border:1px solid #c7c7c7; background:#fff;}
+.close0915{ height:20px; padding:6px 8px 0 0; overflow:hidden;}
+.close0915 span{ background:url(static/image/erweima/close0915.png) no-repeat; cursor:pointer; float:right; width:20px; height:20px;}
+.list0915{ width:130px; overflow:hidden; clear:both;}
+.list0915 li{ float:left; width:130px; height:154px; border-bottom:1px dashed #ccc;}
+.list0915 li.bornone0915{ border:0;}
+.list0915 li span{ display:block; text-align:center; font-size:12px; line-height:30px;}
+.list0915 li img{ display:block; margin:0 auto;}
+.box0915{ text-align:center; color:#03f;}
+.box0915 a{ color:#03f;}
+</style>
+--><!--<div class="fu0915" id="close0915">
+<div class="close0915"><span onclick="closebox()"> </span></div>
+<ul class="list0915">
+<li><span>ChinaUnix官方微信</span><img src="static/image/erweima/Chinaunix.jpg" width="113" height="113" alt="" /></li>
+<li class="bornone0915"><span>构架师技术大会</span><img src="static/image/erweima/sacc.jpg" width="113" height="113" alt="" /></li>
+</ul>
+<div class="box0915"><a href="http://bbs.chinaunix.net/thread-4188049-1-1.html">扫码送文库金币</a></div>
+</div>-->
+<script>/* Code removed by ScrapBook */</script>
+<!--二维码-->	</div>
+&nbsp;&nbsp;<span id="tcss"></span><script type="text/javascript" src="about:blank" charset="utf-8"></script><script type="text/javascript" reload="1">/* Code removed by ScrapBook */</script><div style="width: 960px; margin: 0px auto; text-align: center; line-height: 18px; padding: 0px 10px 10px;">
+<p>北京皓辰网域网络信息技术有限公司. 版权所有 京ICP证:060528号 北京市公安局海淀分局网监中心备案编号：1101082001<br>	
+广播电视节目制作经营许可证(京) 字第1234号  中国互联网协会会员&nbsp;&nbsp;联系我们：<img src="adminmail.gif" height="12" width="139" border="0">
+<br>感谢所有关心和支持过ChinaUnix的朋友们    转载本站内容请注明原作者名及出处</p>
+</div>
+
+<table align="center">
+<tbody><tr>
+<td align="center">
+<a href="http://bbs.chinaunix.net/member.php?mod=clearcookies">清除 Cookies</a> - <a target="_blank" href="http://www.chinaunix.net/">ChinaUnix</a>
+ 	- <a target="_blank" href="http://bbs.chinaunix.net/archiver/">Archiver</a> - <a target="_blank" href="http://bbs.chinaunix.net/">WAP</a> - <a href="http://bbs.chinaunix.net/#top">TOP</a>
+</td>
+</tr>
+</tbody></table>
+
+<!--广告标签 -->
+<!--  <script type='text/javascript' src='http://168.it168.com/js/599.js'></script>-->
+<!-- <script type='text/javascript' src='http://168.it168.com/js/863.js'></script>-->
+<script>/* Code removed by ScrapBook */</script><script type="text/javascript" src="about:blank"></script><iframe src="index_16.html" id="_cnzid" style="display: none;" height="0" width="0"></iframe>
+<!--新版测试广告标签 -->
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!-- <script type='text/javascript' src='http://168.it168.com/ajs/599.js'></script> -->
+<!-- <script type='text/javascript' src='http://168.it168.com/ajs/863.js'></script> -->
+
+    <!--//ITPUB 腾讯分析代码-->
+        &nbsp;&nbsp;<span id="tcss"></span><script type="text/javascript" src="about:blank" charset="utf-8"></script><script type="text/javascript" reload="1">/* Code removed by ScrapBook */</script>        
+    
+<div id="g_upmine_menu" class="tip tip_3" style="display: none;">
+<div class="tip_c">
+积分 0, 距离下一级还需  积分
+</div>
+<div class="tip_horn"></div>
+</div>
+<script src="about:blank" type="text/javascript"></script>
+<!--回顶部js2011.12.30-->
+<script language="javascript">/* Code removed by ScrapBook */</script><div id="full" style="right: 4px; position: absolute; top: 4091px; z-index: 100; width: 20px; height: 50px; cursor: pointer; display: block;"><a></a></div>
+
+
+<!-- 统计 START -->
+<script src="about:blank" type="text/javascript"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script><script src="about:blank" type="text/javascript"></script>
+<!-- 统计 END -->
+
+<!-- 临时加的广告统计 al -->
+<!--  临时加的广告统计 阿狸-->			<div id="discuz_tips" style="display: none;"></div>
+			<script type="text/javascript">/* Code removed by ScrapBook */</script>
+			<script src="about:blank" type="text/javascript" charset="UTF-8"></script>
+
+</body>
+</html>

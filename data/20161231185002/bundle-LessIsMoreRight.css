@@ -1,0 +1,44 @@
+/* Code tidied up by ScrapBook */
+* { margin: 0px; padding: 0px; }
+body { color: rgb(0, 0, 0); background: rgb(255, 255, 255) none repeat scroll 0% 0%; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 13px; line-height: 1.5; }
+img { border: 0px none; }
+li { list-style: outside none none; }
+input, textarea { border: 1px solid rgb(153, 153, 153); }
+h1, h2, h3, h4, h5, h6, th { font-weight: bold; color: rgb(0, 0, 0); }
+a { text-decoration: none; color: rgb(0, 0, 0); }
+a:hover { color: red; }
+#header { background: rgb(249, 249, 249) none repeat scroll 0% 0%; }
+#mainContent { margin-right: 330px; }
+#sideBar { position: absolute; width: 300px; border-left: 1px solid rgb(204, 204, 204); border-top-width: 0px; overflow: hidden; padding: 0px 8px 20px 30px; top: 120px; right: 0px; }
+.forFlow { margin: 0px 50px; }
+#footer { text-align: center; }
+#blogTitle { padding: 16px; }
+#blogTitle .title { font-size: 17pt; }
+#blogTitle .subtitle { font-size: 10.5pt; color: rgb(153, 153, 153); }
+#navigator { background: rgb(246, 246, 246) none repeat scroll 0% 0%; border-top: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204); border-width: 1px; height: 30px; line-height: 30px; color: rgb(153, 153, 153); padding-left: 15px; padding-right: 5px; }
+.blogStats { float: right; color: rgb(153, 153, 153); }
+#navList li { float: left; margin-right: 20px; font-size: 10.5pt; }
+#sideBar li, .divRecentCommentAticle { text-indent: -1.5em; margin-left: 1.5em; }
+#sideBar h3, #MyIng .ing_title { margin: 16px 0px 0px; font-size: 14px; text-align: left; }
+#calendar { margin-top: 16px; text-align: center; }
+#calendar table { width: 90%; margin: 0px auto; }
+#calendar .CalOtherMonthDay { color: rgb(153, 153, 153); }
+#sideBar .recent_comment_body { color: rgb(102, 102, 102); margin: 5px 0px 8px 18px; text-indent: 0px; }
+.postTitle, .entrylistPosttitle, .feedback_area_title { border-bottom: 1px solid rgb(221, 221, 221); font-size: 14px; font-weight: bold; margin: 20px 0px 10px; }
+.postBody { color: rgb(17, 17, 17); font-size: 13px; line-height: 1.8; }
+.postBody span {  }
+.postCon a, .postBody a, .feedbackCon a { text-decoration: underline; color: rgb(0, 102, 204); }
+.postCon a:hover, .postBody a:hover, .feedbackCon a:hover { border-color: rgb(153, 153, 153); }
+.postDesc, .entrylistItemPostDesc { border-bottom: 0px dotted rgb(153, 153, 153); color: rgb(102, 102, 102); text-align: right; padding-bottom: 5px; vertical-align: middle; }
+.postDesc a:link, .postDesc a:active, .postDesc a:visited { color: rgb(102, 102, 102); text-decoration: none; }
+.postDesc a:hover { text-decoration: underline; }
+.btn_my_zzk { border: 0px none; }
+#sideBarMain { padding-left: 0px; }
+#EntryTag { margin-top: 10px; }
+span.diggnum { color: rgb(1, 95, 182); }
+span.burynum { color: rgb(1, 95, 182); }
+#cnblogs_post_body li { list-style: inside none disc; }
+h1.postTitle a { line-height: 1.5; }
+@media only screen and (max-width: 767px) {
+  .postTitle { margin-top: 30px; }
+}

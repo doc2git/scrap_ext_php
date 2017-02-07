@@ -1,0 +1,111 @@
+/* Code tidied up by ScrapBook */
+body, h1, h2, h3, p, blockquote, dl, dt, dd, ul, ol, li, button, input, textarea { margin: 0px; padding: 0px; }
+body { font: 14px/21px Microsoft YaHei,Tahoma,Arial; background: rgb(236, 238, 240) url("bg.png") repeat scroll 0% 0%; display: block; cursor: default; color: rgb(68, 68, 68); }
+@font-face {
+  font-family: "iconfont";
+  src: url("tang.eot") format("embedded-opentype"), url("tang.woff") format("woff"), url("tang.ttf") format("truetype"), url("tang.svg") format("svg");
+}
+.iconfont { font-family: "iconfont"; font-size: 14px; font-style: normal; padding-right: 4px; }
+h1, h2, h3 { font-weight: 500; text-shadow: 0px 1px 0px rgb(238, 238, 238); }
+a { color: rgb(68, 68, 68); text-decoration: none; }
+a:hover { color: rgb(255, 102, 0); }
+img { border: 0px none; max-width: 100%; height: auto; width: auto; }
+ol, ul, li { list-style: outside none none; }
+input, textarea, button { outline: 0px none; }
+input[type^="text"], input[type^="password"], textarea { box-shadow: 2px 3px 5px rgb(238, 238, 238) inset; border: 1px solid rgb(187, 187, 187); background: rgb(243, 243, 243) none repeat scroll 0% 0%; }
+input:focus, textarea:focus { background: rgb(238, 238, 238) none repeat scroll 0% 0%; border-color: rgb(153, 153, 153); }
+input { vertical-align: middle; }
+#wrap { border-top: 3px solid rgb(153, 153, 153); border-bottom: 1px solid rgb(204, 204, 204); }
+#header { width: 980px; margin: 0px auto; border-bottom: 1px solid rgb(204, 204, 204); height: 100px; }
+#content { width: 980px; margin: 0px auto; padding-top: 20px; overflow: hidden; padding-bottom: 20px; border-top: 1px solid rgb(246, 246, 246); }
+#main { width: 70%; float: left; overflow: hidden; }
+#sidebar { width: 27%; float: right; overflow: hidden; }
+#footer { text-align: center; font-size: 12px; padding: 15px 0px; border-top: 1px solid rgb(255, 255, 255); }
+#header .logo { float: left; margin-top: 25px; line-height: 26px; font-size: 14px; position: absolute; }
+#header .logo a { color: rgb(0, 102, 204); text-shadow: 2px 2px 1px rgb(204, 204, 204); font-size: 28px; }
+.selectnav { display: none; cursor: pointer; margin: 12px 10px 0px 0px; font-size: 12px; width: 90px; }
+#navigation { float: right; }
+#navigation ul, #navigation li { list-style: outside none none; padding: 0px; margin: 0px; display: inline; }
+#navigation ul li { float: left; position: relative; }
+#navigation ul li a { display: inline-block; color: rgb(119, 119, 119); text-decoration: none; font-size: 12px; font-weight: bold; padding: 6px 10px; }
+#navigation ul li a:hover { background: rgb(153, 153, 153) none repeat scroll 0% 0%; color: rgb(255, 255, 255); transition: all 0.1s ease-in-out 0s; }
+#navigation ul ul { position: absolute; display: none; top: 51px; left: 0px; background: rgb(214, 214, 214) none repeat scroll 0% 0%; z-index: 999; }
+#navigation ul ul li a { color: rgb(51, 51, 51); }
+#navigation ul ul li a:hover { color: rgb(255, 255, 255); }
+#navigation ul ul li a { display: block; width: 90px; margin: 0px; padding: 4px 10px; font-family: Arial,sans-serif; font-weight: normal; font-size: 12px; border-bottom: 1px dashed rgb(204, 204, 204); background: transparent none repeat scroll 0px center; }
+#navigation ul ul ul { position: absolute; top: 0px; left: 100%; z-index: 999; }
+#navigation ul ul ul li a { border-bottom: 1px dashed rgb(204, 204, 204) ! important; border-top: 1px solid transparent; background: transparent none repeat scroll 0px center; }
+#navigation ul ul li:last-child a, #navigation ul ul li:last-child a:hover { border-bottom: 1px solid transparent; }
+#navigation ul ul ul li:last-child a { border-bottom: 1px solid transparent ! important; }
+#navigation ul li:hover > ul { opacity: 1; position: absolute; top: 99%; left: 0px; }
+#navigation ul ul li:hover > ul { position: absolute; top: 0px; left: 100%; opacity: 1; z-index: 497; }
+#navigation ul li:hover > a { background: rgb(153, 153, 153) none repeat scroll 0% 0%; }
+#navigation ul ul li:hover > a { color: rgb(255, 255, 255); }
+.info { color: rgb(153, 153, 153); font-size: 12px; margin: 0px 0px 10px; }
+.info a { color: rgb(153, 153, 153); }
+.info a:hover { color: rgb(255, 102, 0); }
+.meta { font-size: 12px; clear: both; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: rgb(153, 153, 153); border-top: 1px solid rgb(238, 238, 238); margin: 20px -30px 0px; padding: 10px 30px 0px; }
+.meat_span { margin-right: 15px; }
+#article { margin-bottom: 20px; padding: 20px 30px 10px; background-color: rgb(255, 255, 255); box-shadow: 0px 1px 2px 0px rgb(204, 204, 204); overflow: hidden; }
+#article h1 { font-size: 26px; line-height: 30px; padding-bottom: 10px; }
+.text { margin: 10px 0px; color: rgb(51, 51, 51); font-size: 14px; }
+.text p { text-indent: 20px; padding-bottom: 15px; line-height: 26px; }
+.text_add { margin: 20px 0px 0px; overflow: hidden; }
+.text_add .copy { float: left; }
+.text_add .share { float: right; }
+#search { margin: 0px 0px 10px; float: none; overflow: hidden; }
+#searchform { background: rgb(254, 152, 0) none repeat scroll 0% 0%; height: 40px; }
+#s { height: 28px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; margin: 7px; padding: 0px 10px; float: left; z-index: 1; width: 70%; border: 0px none; font-size: 14px; }
+#searchsubmit { background: transparent none repeat scroll 0px center; width: 40px; height: 40px; border: 0px none; margin: 0px; padding: 0px; }
+#searchsubmit i { font-size: 24px; color: rgb(251, 251, 251); text-shadow: 1px 1px 1px rgb(153, 153, 153); }
+#searchsubmit:hover i { color: rgb(255, 255, 255); }
+#searchsubmit:active i { text-shadow: 1px 2px 1px rgb(255, 153, 0); }
+.sidebar { background-color: rgb(255, 255, 255); box-shadow: 0px 1px 2px rgb(204, 204, 204); overflow: hidden; border-bottom: 2px solid rgb(204, 204, 204); }
+.widget { margin-bottom: 10px; color: rgb(102, 102, 102); padding: 10px 10px 0px; overflow: hidden; }
+.widget a { color: rgb(102, 102, 102); }
+.widget a:hover { color: rgb(255, 102, 0); }
+.widget h3 { margin: 0px -10px; padding: 5px 0px 10px 10px; color: rgb(51, 51, 51); border-bottom: 1px solid rgb(229, 229, 229); font-size: 18px; text-shadow: 0px 2px 0px rgb(238, 238, 238); }
+.widget ul { padding-top: 10px; }
+.widget li { line-height: 20px; padding: 0px 0px 5px 8px; margin-bottom: 5px; border-bottom: 1px dashed rgb(224, 224, 224); }
+.widget_text { font-size: 12px; border: 1px dashed rgb(204, 204, 204); border-radius: 3px; background: rgb(241, 241, 241) none repeat scroll 0% 0%; padding: 8px; margin: 10px; }
+.widget_text h3 { border: 0px none; margin: 0px; padding: 0px; }
+.textwidget { margin-top: 6px; }
+.tagcloud { line-height: 26px; padding-left: 6px; }
+.tagcloud a:hover { text-decoration: underline; }
+.post_link { font-size: 12px; overflow: hidden; color: rgb(153, 153, 153); margin-bottom: 15px; }
+.post_link a { font-size: 12px; color: rgb(153, 153, 153); }
+.post_link .prev { float: left; }
+.post_link .next { float: right; }
+#comments { margin-bottom: 20px; padding: 20px 30px 10px; background-color: rgb(255, 255, 255); box-shadow: 0px 1px 2px 0px rgb(204, 204, 204); overflow: hidden; }
+#footer a { color: rgb(0, 102, 204); }
+#footer a:hover { color: rgb(255, 102, 0); }
+.totop { width: 20px; height: 70px; overflow: hidden; word-break: break-all; font-size: 14px; text-indent: 2px; background: rgb(243, 243, 243) none repeat scroll 0% 0%; text-align: center; border: 1px solid rgb(0, 102, 204); line-height: 16px; color: rgb(0, 102, 204); position: fixed; bottom: 30px; left: 50%; margin-left: 500px; cursor: pointer; }
+@media screen and (max-width: 980px) {
+  #header, #content { width: 96%; }
+  #s { width: 60%; }
+  .text_add .share { display: none; }
+}
+@media screen and (max-width: 650px) {
+  html {  }
+  #navigation #nav, #navigation .my, #header p, .sidebar, .meat_max, .text_add .share, .comment_meta .time, .totop { display: none; }
+  .selectnav { display: block; }
+  #wrap { border-top: 0px none; }
+  #header { width: 100%; background-color: rgb(33, 129, 203); overflow: hidden; position: fixed; box-shadow: 0px 0px 5px rgb(153, 153, 153); z-index: 99; height: 44px; }
+  #header .logo { margin: 10px 0px 0px 10px; }
+  #header .logo a { color: rgb(255, 255, 255); text-shadow: 0px -1px 1px rgb(51, 51, 51); font-size: 20px; }
+  #content { width: 100%; }
+  #main { width: 94%; float: none; overflow: hidden; margin: 40px auto 0px; }
+  .info { margin: 0px; }
+  .text { font-size: 16px; }
+  .meta { margin: 5px -10px 0px; padding: 5px 10px; }
+  #sidebar { width: 94%; float: none; overflow: hidden; margin: 0px auto; }
+  #search { margin: 20px 0px 10px; }
+  #article { margin-bottom: 20px; padding: 10px 10px 5px; }
+  #article h1 { font-size: 20px; }
+  #article .meat_span { width: 44%; float: left; }
+  #article .info { width: 100%; overflow: hidden; border-bottom: 1px dashed rgb(204, 204, 204); padding-bottom: 3px; }
+  #article .meta { padding: 5px 0px 0px 10px; }
+  .post_link .prev { float: none; }
+  .post_link .next { float: none; margin-top: 10px; }
+  #comments { padding: 10px; }
+}

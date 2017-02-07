@@ -1,0 +1,11 @@
+/* Code tidied up by ScrapBook */
+.syntaxhighlighter { background-color: black ! important; }
+.syntaxhighlighter .line.alt1 { background-color: black ! important; }
+.syntaxhighlighter .line.alt2 { background-color: black ! important; }
+.syntaxhighlighter .gutter { color: rgb(211, 211, 211) ! important; }
+.syntaxhighlighter .gutter .line { border-right: 3px solid rgb(153, 0, 0) ! important; }
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a { color: rgb(211, 211, 211) ! important; }
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a { color: rgb(255, 125, 39) ! important; }
+.syntaxhighlighter .keyword { color: aqua ! important; }
+.syntaxhighlighter .preprocessor { color: rgb(174, 196, 222) ! important; }
+.syntaxhighlighter .functions { color: rgb(129, 206, 249) ! important; }

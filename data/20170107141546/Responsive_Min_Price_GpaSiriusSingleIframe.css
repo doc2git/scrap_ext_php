@@ -1,0 +1,45 @@
+/* Code tidied up by ScrapBook */
+html, body { height: 100%; overflow: hidden; width: 100%; }
+#adContent { background-color: rgb(255, 255, 255); height: 100%; left: 0px; overflow: hidden; position: absolute; top: 0px; width: 100%; }
+#bgImage { height: 100%; position: absolute; width: 100%; }
+#logoImage { background-position: center center; background-repeat: no-repeat; background-size: contain; }
+#logoImageBackupText { font-family: "Roboto",Arial,sans-serif; opacity: 0; }
+.product { background: white none repeat scroll 0% 0%; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); float: left; overflow: hidden; }
+.productImage { background-position: center center; background-repeat: no-repeat; background-size: contain; height: 100%; width: 100%; }
+@media (max-aspect-ratio: 4/10) {
+}
+@media (min-aspect-ratio: 41/100) and (max-aspect-ratio: 6/10) {
+}
+@media (min-aspect-ratio: 61/100) and (max-aspect-ratio: 21/10) {
+}
+@media (min-aspect-ratio: 211/100) and (max-aspect-ratio: 31/10) {
+}
+@media (min-aspect-ratio: 311/100) and (max-aspect-ratio: 33/10) {
+}
+@media (min-aspect-ratio: 331/100) and (max-aspect-ratio: 635/100) {
+}
+@media (min-aspect-ratio: 636/100) {
+}
+@media (min-width: 310px) and (min-height: 400px) {
+  html, body { font-size: 20px; }
+}
+@media (min-width: 600px) and (min-height: 240px) {
+  html, body { font-size: 15px; }
+}
+@media (min-width: 330px) and (min-height: 275px) {
+  html, body { font-size: 16px; }
+}
+@media (min-width: 400px) and (min-height: 300px) {
+  html, body { font-size: 18px; }
+}
+@media (min-width: 500px) and (min-height: 410px) {
+  html, body { font-size: 22px; }
+}
+@media (max-height: 80px) {
+}
+@keyframes round {
+5% { opacity: 0.8; }
+45% { opacity: 0.8; }
+55% { opacity: 0; }
+95% { opacity: 0; }
+}

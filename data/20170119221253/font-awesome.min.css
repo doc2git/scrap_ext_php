@@ -1,0 +1,62 @@
+/* Code tidied up by ScrapBook */
+@font-face {
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fontawesome-webfont.eot") format("embedded-opentype"), url("fontawesome-webfont.woff2") format("woff2"), url("fontawesome-webfont.woff") format("woff"), url("fontawesome-webfont.ttf") format("truetype"), url("fontawesome-webfont.svg") format("svg");
+}
+.fa { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; font-size-adjust: none; font-stretch: normal; font-feature-settings: normal; font-language-override: normal; font-kerning: auto; font-synthesis: weight style; font-variant: normal; font-size: inherit; text-rendering: auto; }
+@keyframes fa-spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(359deg); }
+}
+.fa-music::before { content: ""; }
+.fa-search::before { content: ""; }
+.fa-envelope-o::before { content: ""; }
+.fa-home::before { content: ""; }
+.fa-download::before { content: ""; }
+.fa-qrcode::before { content: ""; }
+.fa-photo::before, .fa-image::before, .fa-picture-o::before { content: ""; }
+.fa-edit::before, .fa-pencil-square-o::before { content: ""; }
+.fa-plus::before { content: ""; }
+.fa-eye::before { content: ""; }
+.fa-random::before { content: ""; }
+.fa-bar-chart-o::before, .fa-bar-chart::before { content: ""; }
+.fa-gears::before, .fa-cogs::before { content: ""; }
+.fa-github::before { content: ""; }
+.fa-feed::before, .fa-rss::before { content: ""; }
+.fa-wrench::before { content: ""; }
+.fa-chain::before, .fa-link::before { content: ""; }
+.fa-cloud::before { content: ""; }
+.fa-navicon::before, .fa-reorder::before, .fa-bars::before { content: ""; }
+.fa-pinterest-square::before { content: ""; }
+.fa-caret-left::before { content: ""; }
+.fa-caret-right::before { content: ""; }
+.fa-comment-o::before { content: ""; }
+.fa-cloud-download::before { content: ""; }
+.fa-plus-square::before { content: ""; }
+.fa-angle-left::before { content: ""; }
+.fa-angle-right::before { content: ""; }
+.fa-angle-up::before { content: ""; }
+.fa-angle-down::before { content: ""; }
+.fa-spinner::before { content: ""; }
+.fa-meh-o::before { content: ""; }
+.fa-code::before { content: ""; }
+.fa-code-fork::before { content: ""; }
+.fa-thumbs-up::before { content: ""; }
+.fa-xing::before { content: ""; }
+.fa-windows::before { content: ""; }
+.fa-linux::before { content: ""; }
+.fa-sun-o::before { content: ""; }
+.fa-weibo::before { content: ""; }
+.fa-renren::before { content: ""; }
+.fa-vimeo-square::before { content: ""; }
+.fa-soundcloud::before { content: ""; }
+.fa-database::before { content: ""; }
+.fa-qq::before { content: ""; }
+.fa-wechat::before, .fa-weixin::before { content: ""; }
+.fa-share-alt::before { content: ""; }
+.fa-wifi::before { content: ""; }
+.fa-heartbeat::before { content: ""; }
+.fa-battery-3::before, .fa-battery-three-quarters::before { content: ""; }
+.fa-vimeo::before { content: ""; }

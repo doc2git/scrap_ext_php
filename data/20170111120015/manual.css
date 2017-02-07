@@ -1,0 +1,47 @@
+/* Code tidied up by ScrapBook */
+html { font-size: 14px; }
+body { background-color: rgb(255, 255, 255); color: rgb(0, 51, 102); padding: 0px 1em 0px 0px; margin: 0px; font-family: Arial,Helvetica,sans-serif; font-weight: normal; }
+table, code { font-size: 1em; }
+a:link { color: rgb(0, 115, 199); background-color: inherit; }
+a:visited { color: rgb(90, 136, 181); background-color: inherit; }
+a:link:hover, a:link:active, a:visited:hover, a:visited:active { color: rgb(0, 115, 199); background-color: rgb(240, 240, 240); }
+h1 { padding: 0.2em; margin: 0px; border: 1px solid rgb(64, 88, 113); background-color: inherit; color: rgb(0, 51, 102); text-decoration: none; font-size: 22px; font-weight: bold; }
+h2 { padding: 0.2em 0px 0.2em 0.7em; margin: 0px 0px 0.5em; text-decoration: none; font-size: 18px; font-weight: bold; }
+.category h2 { background-color: rgb(229, 236, 243); color: rgb(64, 88, 113); font-size: 14px; }
+h2 a, h2 a:hover, h2 a:active { color: inherit; background-color: inherit; text-decoration: none; }
+ul, .section table, .directive-section table { margin-bottom: 1em; }
+div.up { width: 30px; height: 20px; padding: 0px; margin: -20px 0px 1px; text-align: center; vertical-align: top; }
+div.up img { vertical-align: top; width: 11px; height: 11px; border-style: none; }
+table { border: 1px solid rgb(170, 170, 170); border-collapse: collapse; padding: 2px; margin-top: 0.5em; margin-bottom: 0px; }
+td, th { empty-cells: show; padding: 0.1em 0.2em; vertical-align: top; text-align: left; line-height: 1.3em; }
+body#index-page div#page-content { width: 100%; }
+body#index-page[id] div#page-content { width: auto; }
+table#indextable { width: 100%; border-collapse: collapse; border: 0px none; }
+table#indextable td { width: 33.3%; border-left: 1px solid rgb(170, 170, 170); padding-top: 0px; padding-bottom: 0px; }
+table#indextable td.col1 { border-left: 0px none; padding-left: 0px; }
+table#indextable td.col3 { padding-right: 0px; }
+ul { list-style-type: disc; }
+li, dt, dd { line-height: 1.3em; }
+table#indextable td ul { list-style-type: none; margin: 0px 0px 1em 0.5em; padding: 0px; }
+table#indextable td ul li { margin-top: 0.3em; }
+div#page-header { margin-left: 30px; }
+div#page-header img { padding: 0px; display: block; margin: -70px 0px 1px 2em; width: 248px; height: 70px; }
+div#page-header p.apache { background-color: rgb(64, 88, 113); color: rgb(255, 255, 255); padding: 0px 0px 0px 248px; margin: 0px; text-align: center; vertical-align: middle; font-size: 16px; font-weight: bold; line-height: 29px; }
+div#page-header p.menu { text-align: right; font-size: 13px; margin: 30px 0px 0.5em; padding: 0px; }
+div#path { margin: 0.2em 0px 1.2em 30px; padding: 0px; font-size: 13px; }
+div#page-content { padding-top: 0px; margin-right: 13em; padding-right: 30px; }
+body.no-sidebar div#page-content, body#index-page div#page-content { margin-right: 0px; padding-right: 0px; }
+body#index-page div#page-content { margin-left: 30px; padding-bottom: 1em; }
+p { line-height: 1.3em; }
+.toplang { padding: 0px; margin: 0.2em 0.2em 1em 0px; }
+.bottomlang { padding: 0px; margin: 0px 0.2em 0.2em 0px; }
+.toplang p, .bottomlang p { font-size: 13px; text-align: right; background-color: inherit; color: rgb(204, 204, 204); margin: 0px; padding: 0px; }
+.toplang p span, .bottomlang p span { background-color: inherit; color: rgb(0, 51, 102); }
+.toplang p a:link, .toplang p a:visited, .bottomlang p a:link, .bottomlang p a:visited { text-decoration: none; font-weight: bold; }
+.toplang p a:hover, .toplang p a:active, .bottomlang p a:hover, .bottomlang p a:active { font-weight: bold; }
+div#footer { margin-left: 30px; font-size: 13px; border-top: 1px solid rgb(64, 88, 113); padding-top: 0.2em; }
+div#footer p.apache { float: left; text-align: left; padding: 0px 0px 1em; margin-top: 0px; }
+div#footer p.menu { float: right; text-align: right; margin-top: 0px; padding: 0px 0px 1em; }
+#index-page form { text-align: center; }
+#index-page form p { line-height: 1.1em; }
+#index-page form input { font-size: 1em; }

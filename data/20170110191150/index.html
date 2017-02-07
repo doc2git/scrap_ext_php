@@ -1,0 +1,783 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><script src="about:blank" charset="utf-8"></script><script src="about:blank" charset="utf-8" type="text/javascript"></script>
+<style type="text/css" id="znBdcsStyle">
+/* Code tidied up by ScrapBook */
+.bdcs-container .bdcs-main, .bdcs-container .bdcs-main * { box-sizing: content-box; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; white-space: nowrap; word-wrap: normal; border: 0px none; background: transparent none repeat scroll 0px 0px; width: auto; height: auto; max-width: none; max-height: none; border-radius: 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; }
+.bdcs-container .bdcs-clearfix::after { content: ""; display: block; clear: both; height: 0px; }
+.bdcs-container .bdcs-clearfix {  }
+.bdcs-container .bdcs-main { overflow: visible; }
+.bdcs-container .bdcs-search { display: block; overflow: visible; position: relative; border-style: solid; }
+.bdcs-container .bdcs-search-form-input { border-width: 1px; border-style: solid; display: inline-block; vertical-align: top; text-indent: 5px; background-color: rgb(255, 255, 255); float: left; }
+.bdcs-container .bdcs-search-form-input:focus { border-width: 1px; border-style: solid; outline: 0px none; }
+.bdcs-container .bdcs-search-form-submit { display: inline-block; cursor: pointer; border-width: 1px; border-style: solid; vertical-align: top; text-align: center; width: 50px; }
+.bdcs-container .bdcs-search { width: 495px; height: 56px; overflow: hidden; border-color: green; border-radius: 5px; border-width: 2px; box-shadow: none; background-color: green; }
+.bdcs-container .bdcs-search-form-input { border-color: green; margin-right: 0px; width: 442px; height: 54px; line-height: 54px; font-family: Arial,SimSun,sans-serif; color: rgb(0, 0, 0); font-size: 14px; border-radius: 1px; background-color: rgb(255, 255, 255); }
+.bdcs-container .bdcs-search-form-input:focus { border-color: green; }
+.bdcs-container .bdcs-search-form-submit { border-color: green; height: 54px; width: 50px; background-color: green; color: rgb(255, 255, 255); font-family: Arial,SimSun,sans-serif; font-size: 14px; border-radius: 0px; }
+.bdcs-container .bdcs-search-form-submit {  }
+.bdcs-container .bdcs-search-form-submit { height: 56px; }
+.bdcs-container .bdcs-search-form-submit { line-height: 54px; }
+.bdcs-container .bdcs-search-form-input { margin-right: -1px; }
+</style><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>编译libiconv-1.14错误解决 - Linux系统教程</title>
+<meta name="keywords" content="编译libiconv-1.14错误解决">
+<meta name="description" content="ubuntukylin 13.04上编译libiconv-1.14 lenky@robert-T430S:~/下载/libiconv-1.14$ ./configure ... lenky@robert-T430S:~/下载/libiconv-1.14$ make -j4 ... gcc -DHAVE_CONFIG_H -DEXEEXT=\\ -I. -I.. -I../lib -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPEN">
+<link href="dedecms.css" rel="stylesheet" media="screen" type="text/css">
+<script src="about:blank"></script><script src="about:blank" async="" type="text/javascript"></script><script language="javascript" type="text/javascript" src="about:blank"></script>
+<script language="javascript" type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript" src="about:blank"></script>
+<script src="about:blank"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><link href="share_style0_24.css" rel="stylesheet"><style>
+/* Code tidied up by ScrapBook */
+</style><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+#SOHUCS { clear: both; }
+#SOHUCS #SOHU_MAIN * { box-sizing: content-box; }
+#SOHUCS, #SOHUCS #SOHU_MAIN { margin: 0px auto; padding: 0px; border: 0px none; font-weight: 400; text-align: left; width: 100%; height: auto; overflow: visible; font-size: 12px; color: rgb(51, 51, 51); background-color: transparent; line-height: 1; }
+#SOHUCS #SOHU_MAIN a, #SOHUCS #SOHU_MAIN abbr, #SOHUCS #SOHU_MAIN acronym, #SOHUCS #SOHU_MAIN address, #SOHUCS #SOHU_MAIN applet, #SOHUCS #SOHU_MAIN article, #SOHUCS #SOHU_MAIN aside, #SOHUCS #SOHU_MAIN audio, #SOHUCS #SOHU_MAIN b, #SOHUCS #SOHU_MAIN big, #SOHUCS #SOHU_MAIN blockquote, #SOHUCS #SOHU_MAIN canvas, #SOHUCS #SOHU_MAIN caption, #SOHUCS #SOHU_MAIN center, #SOHUCS #SOHU_MAIN cite, #SOHUCS #SOHU_MAIN code, #SOHUCS #SOHU_MAIN dd, #SOHUCS #SOHU_MAIN del, #SOHUCS #SOHU_MAIN details, #SOHUCS #SOHU_MAIN dfn, #SOHUCS #SOHU_MAIN dialog, #SOHUCS #SOHU_MAIN div, #SOHUCS #SOHU_MAIN dl, #SOHUCS #SOHU_MAIN dt, #SOHUCS #SOHU_MAIN em, #SOHUCS #SOHU_MAIN embed, #SOHUCS #SOHU_MAIN fieldset, #SOHUCS #SOHU_MAIN figcaption, #SOHUCS #SOHU_MAIN figure, #SOHUCS #SOHU_MAIN font, #SOHUCS #SOHU_MAIN footer, #SOHUCS #SOHU_MAIN form, #SOHUCS #SOHU_MAIN h1, #SOHUCS #SOHU_MAIN h2, #SOHUCS #SOHU_MAIN h3, #SOHUCS #SOHU_MAIN h4, #SOHUCS #SOHU_MAIN h5, #SOHUCS #SOHU_MAIN h6, #SOHUCS #SOHU_MAIN header, #SOHUCS #SOHU_MAIN hgroup, #SOHUCS #SOHU_MAIN hr, #SOHUCS #SOHU_MAIN i, #SOHUCS #SOHU_MAIN iframe, #SOHUCS #SOHU_MAIN img, #SOHUCS #SOHU_MAIN ins, #SOHUCS #SOHU_MAIN kbd, #SOHUCS #SOHU_MAIN label, #SOHUCS #SOHU_MAIN legend, #SOHUCS #SOHU_MAIN li, #SOHUCS #SOHU_MAIN mark, #SOHUCS #SOHU_MAIN menu, #SOHUCS #SOHU_MAIN meter, #SOHUCS #SOHU_MAIN nav, #SOHUCS #SOHU_MAIN object, #SOHUCS #SOHU_MAIN ol, #SOHUCS #SOHU_MAIN output, #SOHUCS #SOHU_MAIN p, #SOHUCS #SOHU_MAIN pre, #SOHUCS #SOHU_MAIN progress, #SOHUCS #SOHU_MAIN q, #SOHUCS #SOHU_MAIN rp, #SOHUCS #SOHU_MAIN rt, #SOHUCS #SOHU_MAIN ruby, #SOHUCS #SOHU_MAIN s, #SOHUCS #SOHU_MAIN samp, #SOHUCS #SOHU_MAIN section, #SOHUCS #SOHU_MAIN small, #SOHUCS #SOHU_MAIN span, #SOHUCS #SOHU_MAIN strike, #SOHUCS #SOHU_MAIN strong, #SOHUCS #SOHU_MAIN sub, #SOHUCS #SOHU_MAIN summary, #SOHUCS #SOHU_MAIN sup, #SOHUCS #SOHU_MAIN table, #SOHUCS #SOHU_MAIN tbody, #SOHUCS #SOHU_MAIN td, #SOHUCS #SOHU_MAIN tfoot, #SOHUCS #SOHU_MAIN th, #SOHUCS #SOHU_MAIN thead, #SOHUCS #SOHU_MAIN time, #SOHUCS #SOHU_MAIN tr, #SOHUCS #SOHU_MAIN tt, #SOHUCS #SOHU_MAIN u, #SOHUCS #SOHU_MAIN ul, #SOHUCS #SOHU_MAIN var, #SOHUCS #SOHU_MAIN video, #SOHUCS #SOHU_MAIN xmp { border: 0px none; margin: 0px; padding: 0px; font-size: 100%; text-align: left; vertical-align: baseline; background-image: none; background-position: 0px 0px; width: auto; float: none; overflow: visible; text-indent: 0px; }
+#SOHUCS #SOHU_MAIN img { color: transparent; font-size: 0px; vertical-align: middle; }
+#SOHUCS #SOHU_MAIN li, #SOHUCS #SOHU_MAIN ol, #SOHUCS #SOHU_MAIN ul { list-style: outside none none; }
+#SOHUCS #SOHU_MAIN li { display: list-item; }
+#SOHUCS #SOHU_MAIN em, #SOHUCS #SOHU_MAIN i { font-style: normal; }
+#SOHUCS #SOHU_MAIN a, #SOHUCS #SOHU_MAIN b, #SOHUCS #SOHU_MAIN em, #SOHUCS #SOHU_MAIN i, #SOHUCS #SOHU_MAIN img, #SOHUCS #SOHU_MAIN input, #SOHUCS #SOHU_MAIN label, #SOHUCS #SOHU_MAIN s, #SOHUCS #SOHU_MAIN span, #SOHUCS #SOHU_MAIN strong, #SOHUCS #SOHU_MAIN sub, #SOHUCS #SOHU_MAIN sup, #SOHUCS #SOHU_MAIN textarea, #SOHUCS #SOHU_MAIN u { display: inline; }
+#SOHUCS #SOHU_MAIN input, #SOHUCS #SOHU_MAIN select, #SOHUCS #SOHU_MAIN select option, #SOHUCS #SOHU_MAIN textarea { margin: 0px; padding: 0px; border: 0px none; outline: 0px none; }
+#SOHUCS #SOHU_MAIN a:focus, #SOHUCS #SOHU_MAIN input:focus, #SOHUCS #SOHU_MAIN textarea:focus { outline: 0px none; }
+#SOHUCS #SOHU_MAIN button, #SOHUCS #SOHU_MAIN input, #SOHUCS #SOHU_MAIN select, #SOHUCS #SOHU_MAIN textarea { background-attachment: scroll; }
+#SOHUCS #SOHU_MAIN li { clear: none; }
+#SOHUCS #SOHU_MAIN a { color: rgb(68, 112, 142); text-decoration: none; }
+#SOHUCS #SOHU_MAIN a:hover { color: rgb(238, 84, 42); text-decoration: underline; }
+#SOHUCS #SOHU_MAIN .clear-g {  }
+#SOHUCS #SOHU_MAIN .clear-g::after { content: "."; display: block; visibility: hidden; height: 0px; clear: both; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><style type="text/css" id="seaJs-css">
+/* Code tidied up by ScrapBook */
+#SOHUCS #SOHU_MAIN .cy-hidden { display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w { position: relative; width: 100%; height: 60px; z-index: 10; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w .head-img-w { width: 42px; height: 42px; position: absolute; left: 9px; top: 22px; display: none; z-index: 11; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w .head-img-ie-mask { width: 42px; height: 46px; background: transparent url("photo-mask.png") repeat scroll 0% 0%; position: absolute; z-index: 2; top: 0px; left: 0px; display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w .head-img-w img { border-radius: 42px; display: block; width: 42px; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w .header-login { width: 40px; height: 40px; border-radius: 42px; border: 1px solid rgb(67, 152, 237); position: absolute; top: 22px; left: 9px; font-size: 14px; color: rgb(67, 152, 237); text-align: center; line-height: 42px ! important; font-family: "Microsoft YaHei"; cursor: pointer; background: transparent none repeat scroll 0px 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w { position: absolute; top: 52px; left: 55px; text-indent: 11px; z-index: 10; padding-right: 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w .wrap-name-w { font-size: 16px; color: rgb(67, 152, 237); font-family: "Microsoft YaHei"; position: relative; z-index: 2; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w { position: relative; z-index: 12; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .list-comment-empty-w .empty-prompt-w { margin-top: 20px; height: 30px; background: rgb(240, 240, 240) none repeat scroll 0% 0%; text-align: center; opacity: 0.5; }
+#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .list-comment-empty-w .empty-prompt-w .prompt-null-w { line-height: 30px; font-size: 12px; color: rgb(153, 153, 153); text-align: center; }
+#SOHUCS #SOHU_MAIN .cy-to-shequ-head { color: rgb(67, 152, 237); cursor: pointer; display: none; font-size: 14px; height: 36px; line-height: 36px; margin: 24px 10px 0px 20px; float: right; }
+#SOHUCS #SOHU_MAIN .cy-board-enter { color: rgb(67, 152, 237); cursor: pointer; display: block; font-size: 14px; height: 36px; line-height: 36px; margin-top: 24px; float: right; }
+#SOHUCS #SOHU_MAIN .cy-avatar-notice-node { background: rgb(231, 72, 81) none repeat scroll 0% 0%; border-radius: 4px; box-shadow: 0px 0px 3px 3px rgb(255, 255, 255); cursor: pointer; display: block; height: 8px; position: absolute; right: 0px; top: 0px; width: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w { display: block; position: relative; z-index: 2; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-l { width: 8px; height: 97px; position: absolute; background: transparent url("border-l.png") repeat scroll 0% 0%; top: 0px; left: 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-r { width: 8px; height: 97px; position: absolute; background: transparent url("border-r.png") repeat scroll 0% 0%; top: 0px; right: 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t { height: 8px; position: relative; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t .post-wrap-border-t-l { width: 46px; height: 8px; background: transparent url("border-t.png") repeat scroll 0% 0%; overflow: hidden; position: absolute; left: 0px; top: 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t .post-wrap-border-t-r { height: 7px; border-top: 1px solid rgb(67, 152, 237); margin-left: 46px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main { margin: 0px 8px; height: 96px; border-bottom: 1px solid rgb(67, 152, 237); background-image: url("cy-logo.png"); background-repeat: no-repeat; background-position: center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main .wrap-area-w { padding: 13px 10px 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main .wrap-area-w .textarea-fw { width: 100%; height: 70px; background: transparent none repeat scroll 0px 0px; overflow-x: hidden; overflow-y: auto; border: 0px none; font-size: 14px; color: rgb(191, 191, 191); resize: none; line-height: normal; text-align: left; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w { position: relative; z-index: 12; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w { margin: 15px 0px 0px 10px; position: relative; float: left; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li { width: 20px; height: 20px; float: left; margin-right: 21px; cursor: pointer; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w { background: transparent url("face.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w:hover { background: transparent url("face-active.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w .uploading-b { display: block; width: 20px; height: 20px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w .uploading-b { background: transparent url("image.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-e .effect-w .uploading-b, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w:hover .effect-w .uploading-b { background: transparent url("image-active.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw { top: 24px; left: -10px; display: none; width: 300px; height: 145px; position: absolute; z-index: 2; background: transparent url("face-bg.png") repeat scroll 0% 0%; overflow: hidden; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw { width: 288px; height: 107px; margin-top: 6px; margin-left: 1px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul { border-top: 1px dashed rgb(229, 229, 229); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:first-child { border-top: 0px none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul li { border-left: 1px dashed rgb(229, 229, 229); width: 35px; height: 35px; float: left; margin: 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul li:hover { background: rgb(242, 242, 242) none repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul li:first-child { border-left: 0px none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:first-child li:first-child { border-top-left-radius: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:first-child li:last-child { border-top-right-radius: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:last-child li:first-child { border-bottom-left-radius: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul:last-child li:last-child { border-bottom-right-radius: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw { width: 296px; height: 105px; margin-top: 8px; display: none; overflow-y: auto; margin-left: 3px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul { margin-left: 1px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul li { background-position: center center; background-repeat: no-repeat; background-size: 100% 100%; border-radius: 5px; height: 47px; margin-right: 0px; width: 47px; box-sizing: border-box; border-bottom: 1px dotted rgb(229, 229, 229); position: relative; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul .upload-face-btn { background-image: url("add.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw li.cancel-face-btn:hover, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw li.manage-face-btn:hover, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw li.upload-face-btn:hover { background-color: rgb(242, 242, 242); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul .manage-face-btn { background-image: url("manage-btn.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw ul .cancel-face-btn { background-image: url("cancel-manage-btn.png"); display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw { width: 298px; height: 30px; background: rgb(242, 242, 242) none repeat scroll 0% 0%; margin-left: 1px; border-bottom-left-radius: 9px; border-bottom-right-radius: 9px; border-top: 1px solid rgb(229, 229, 229); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li { height: 31px; width: 41px; float: left; margin-top: -1px; margin-right: 0px; background-position: center center; background-repeat: no-repeat; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li.active, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li:hover { background-color: rgb(255, 255, 255); border-left: 1px solid rgb(229, 229, 229); border-right: 1px solid rgb(229, 229, 229); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li.official-face-btn { background-image: url("face-ico-grey.png"); margin-left: 10px; box-sizing: border-box; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .action-face-tab-dw ul li.user-face-btn { background-image: url("heart.png"); box-sizing: border-box; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-box { width: 298px; height: 137px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; position: absolute; top: 6px; left: 1px; border-radius: 9px; display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-text { width: 100%; height: 40px; margin-top: 20px; text-align: center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-text span { line-height: 40px; font-size: 16px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-btn-row { width: 100%; height: 28px; position: relative; margin-top: 15px; text-align: center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-btn-cancel { border: 1px solid rgb(67, 152, 237); border-radius: 6px; color: rgb(67, 152, 237); cursor: pointer; display: inline-block; height: 28px; line-height: 28px; text-align: center; width: 96px; margin-right: 16px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .cy-confirm-btn-confirm { background-color: rgb(67, 152, 237); border: 1px solid rgb(67, 152, 237); border-radius: 6px; color: rgb(255, 255, 255); cursor: pointer; display: inline-block; height: 28px; line-height: 28px; text-align: center; width: 96px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw { top: 24px; position: absolute; left: -10px; display: none; width: 200px; padding-bottom: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .uploading-wrapper-dw-t { width: 200px; height: 14px; position: absolute; top: 0px; left: 0px; background: transparent url("pic-bg-t.png") repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .uploading-wrapper-dw-b { width: 200px; height: 8px; position: absolute; bottom: 0px; left: 0px; background: transparent url("pic-bg-b.png") repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-loading-dw { width: 198px; height: 198px; margin-top: 5px; padding: 1px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw { margin-top: 13px; border-left: 1px solid rgb(67, 152, 237); border-right: 1px solid rgb(67, 152, 237); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-close-dw { height: 18px; width: 100%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-close-dw a { float: right; width: 18px; height: 18px; overflow: hidden; background: transparent url("b17.png") no-repeat scroll 0% 0%; margin-right: 8px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-close-dw a:hover { background: transparent url("b18.png") no-repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-pic-dw { padding: 7px 0px 16px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw .wrapper-image-dw .image-pic-dw img { display: block; margin: 0px auto; min-height: 60px; max-height: 150px; min-width: 60px; max-width: 150px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw { padding: 53px 0px 50px; background-color: rgb(255, 255, 255); border-width: 0px 2px 2px; border-style: none solid solid; border-color: -moz-use-text-color rgb(204, 212, 217) rgb(204, 212, 217); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; width: 190px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-word-dw { height: 22px; text-align: center; color: rgb(153, 153, 153); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-word-dw .word-icon-dw { display: inline-block; width: 22px; height: 22px; margin: 0px 5px 0px 0px; vertical-align: -6px; background-image: url("loading.gif"); background-repeat: no-repeat; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-btn-dw { padding: 20px 0px 0px; height: 25px; text-align: center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-btn-dw a { display: inline-block; width: 65px; line-height: 16px; padding: 5px 0px 4px; text-align: center; font-size: 12px; background-color: rgb(105, 158, 195); color: rgb(255, 255, 255); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-efw .wrapper-loading-dw .loading-btn-dw a:hover { text-decoration: none; background-color: rgb(87, 136, 170); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w { float: right; height: 30px; margin-top: 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a { text-decoration: none ! important; display: block; float: right; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw { width: 102px; height: 30px; overflow: hidden; border: 0px none; padding: 0px; margin: 0px; cursor: pointer; background-image: url("post-btn.png"); background-repeat: no-repeat; background-color: transparent; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw:hover { background-image: url("post-btn-hover.png"); }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .cbox-prompt-w { float: right; height: 30px; line-height: 30px; margin-right: 20px; margin-top: 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .cbox-prompt-w .prompt-empty-w { color: rgb(67, 152, 237); font-size: 12px; display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main .wrap-area-w .textarea-fw { box-shadow: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-cont-dw ul li span { display: inline-block; width: 22px; height: 22px; margin: 8px 9px; overflow: hidden; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item { background: transparent url("face-map.png") no-repeat scroll center center; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_01 { background-position: -2px -2px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_02 { background-position: -2px -24px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_03 { background-position: -1px -49px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_04 { background-position: -2px -73px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_05 { background-position: -2px -97px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_06 { background-position: -2px -121px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_07 { background-position: -2px -145px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_08 { background-position: -2px -168px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_09 { background-position: -2px -192px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_10 { background-position: -2px -215px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_11 { background-position: -2px -238px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_12 { background-position: -2px -260px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_13 { background-position: -2px -284px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_14 { background-position: -2px -307px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_15 { background-position: -2px -331px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_16 { background-position: -2px -355px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_17 { background-position: -2px -378px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_18 { background-position: -2px -401px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_19 { background-position: -2px -425px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_20 { background-position: -2px -445px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_21 { background-position: -2px -465px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_22 { background-position: -2px -488px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_23 { background-position: -2px -511px; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_24 { background-position: -2px -535px; }
+@media not all, (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item { background: transparent url("face-map-2x.png") no-repeat scroll center center / 44px auto; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_01 { background-position: 0px -176px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_02 { background-position: -22px -66px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_03 { background-position: 0px -44px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_04 { background-position: -22px -154px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_05 { background-position: 0px -88px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_06 { background-position: -22px 0px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_07 { background-position: 0px -110px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_08 { background-position: 0px -66px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_09 { background-position: 0px 0px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_10 { background-position: 0px -22px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_11 { background-position: -22px -44px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_12 { background-position: 0px -132px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_13 { background-position: -22px -88px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_14 { background-position: -22px -22px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_15 { background-position: 0px -154px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_16 { background-position: -22px -132px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_17 { background-position: -22px -110px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_18 { background-position: 0px -220px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_19 { background-position: 0px -198px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_20 { background-position: -22px -198px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_21 { background-position: -22px -220px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_22 { background-position: -22px -244px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_23 { background-position: 0px -132px; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .face-item.face_24 { background-position: -22px -176px; }
+}
+@media not all, (min--moz-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx), (min-resolution: 144dpi) {
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w { background: transparent url("face-1.5x.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w:hover { background: transparent url("face-active-1.5x.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w .uploading-b { background: transparent url("image-1.5x.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-e .effect-w .uploading-b, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w:hover .effect-w .uploading-b { background: transparent url("image-active-1.5x.png") no-repeat scroll 0% 0% / 100% 100%; }
+}
+@media not all, (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w { background: transparent url("face-2x.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-face-w:hover { background: transparent url("face-active-2x.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w .effect-w .uploading-b { background: transparent url("image-2x.png") no-repeat scroll 0% 0% / 100% 100%; }
+  #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-e .effect-w .uploading-b, #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w ul li.function-uploading-w:hover .effect-w .uploading-b { background: transparent url("image-active-2x.png") no-repeat scroll 0% 0% / 100% 100%; }
+}
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw.nano { position: relative; overflow: hidden; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw.nano > .nano-content { position: absolute; overflow-y: scroll; overflow-x: hidden; top: 0px; right: 0px; bottom: 0px; left: 0px; height: 100%; }
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .face-wrapper-dw .wrapper-user-face-dw.nano > .nano-content:focus { outline: thin dotted; }
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw { padding: 18px 0px 0px; }
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li { float: left; line-height: 18px; padding: 0px 0px 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li .title-name-gw { font-size: 16px; font-family: "Microsoft YaHei"; color: rgb(67, 152, 237); }
+#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li .title-name-gw .title-name-gw-tag { float: left; width: 5px; height: 18px; margin-right: 13px; background: transparent url("title-tag.png") no-repeat scroll 0% 0%; }
+@media not all, (min--moz-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx), (min-resolution: 144dpi) {
+}
+@media not all, (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+}
+#SOHUCS #SOHU_MAIN .module-cmt-footer { padding: 17px 0px; position: relative; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .list-comment-close-w { display: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .list-comment-close-w .close-wrap-w { display: block; text-align: center; line-height: 18px; font-size: 14px; padding: 12px 0px 9px; margin: -1px 0px 0px; border-top: 1px solid rgb(222, 228, 233); background-color: rgb(245, 245, 245); color: rgb(51, 51, 51); }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-page-w { text-align: center; font-size: 0px; padding-bottom: 10px; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w { line-height: 16px; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w, #SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w, #SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w a { display: block ! important; text-align: right ! important; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w a { display: inline-block ! important; color: rgb(153, 153, 153); }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w a:hover { color: rgb(67, 152, 237); }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ { background-color: rgb(236, 244, 253); border: 1px solid rgb(160, 203, 246); border-radius: 5px; box-sizing: border-box; color: rgb(67, 152, 237); cursor: pointer; display: none; font-size: 14px; height: 44px; line-height: 44px; margin-top: 20px; text-align: center; width: 100%; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ:hover { background-color: rgb(151, 202, 252); box-shadow: 0px 0px 8px rgb(160, 203, 246); color: rgb(255, 255, 255); }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ i { background-image: url("right-arrow.png"); display: inline-block; height: 16px; margin-top: -1px; vertical-align: middle; width: 16px; margin-left: 5px; }
+#SOHUCS #SOHU_MAIN .module-cmt-footer .cy-to-shequ:hover i { background-image: url("right-arrow-hover.png"); }
+#SOHUCS #SOHU_MAIN .cy-to-shequ-float { background-image: url("shequ-icon.png"); bottom: 45px; cursor: pointer; display: none; height: 84px; position: fixed; right: 5px; width: 84px; z-index: 2147483647; }
+@media not all, (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+}
+@font-face {
+  font-family: "hanyixiaomai";
+  src: url(".dat");
+}
+@keyframes jump {
+0% { margin-top: 0px; }
+10% { margin-top: -10px; }
+30% { margin-top: -10px; transform: rotate(20deg); }
+40% { margin-top: -10px; transform: rotate(-20deg); }
+50% { margin-top: -10px; transform: rotate(20deg); }
+60% { margin-top: -10px; transform: rotate(-20deg); }
+70% { margin-top: -10px; transform: rotate(20deg); }
+90% { margin-top: -10px; transform: rotate(0deg); }
+100% { margin-top: 0px; }
+}
+@keyframes SHAKE {
+0% { transform: scale(0.99, 0.99); }
+25% { transform: scale(1, 1); }
+50% { transform: scale(0.995, 0.995); }
+75% { transform: scale(1, 1); }
+100% { transform: scale(0.998, 0.998); }
+}
+#SOHUCS #SOHU_MAIN .module-cmt-notice { position: fixed; right: 0px; bottom: 0px; padding: 38px 0px; font-family: "Microsoft YaHei"; z-index: 999999; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list { max-width: 300px; text-align: right; overflow: visible; position: relative; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item { position: relative; display: inline-block; max-width: 260px; min-width: 200px; height: 38px; line-height: 38px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0) ! important; margin: 5px 0px 5px 10px; padding-left: 36px; padding-right: 30px; border-width: 1px 0px 1px 1px; border-style: solid none solid solid; border-color: rgb(67, 152, 237) -moz-use-text-color rgb(67, 152, 237) rgb(67, 152, 237); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; text-decoration: none; cursor: pointer; font-size: 15px; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-logo { position: absolute; top: -1px; left: -20px; width: 40px; height: 40px; background: transparent url("notice-logo.png") no-repeat scroll 0% 0%; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-text { color: rgb(67, 152, 237) ! important; text-decoration: none; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-text i { color: rgb(67, 152, 237) ! important; padding: 0px 4px; font-weight: bolder; font-size: 17px; font-family: "Microsoft YaHei"; }
+#SOHUCS #SOHU_MAIN .module-cmt-notice .nt-close { display: inline-block; position: absolute; right: 11px; top: 11px; width: 16px; height: 16px; background: transparent url("notice-close.png") no-repeat scroll 0% 0%; }
+</style><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script><script src="about:blank" charset="UTF-8" type="text/javascript"></script></head>
+<body class="articleview"><div style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;" id="BAIDU_DUP_fp_wrapper"><iframe style="width: 0px; height: 0px; visibility: hidden; display: none;" src="index_9.html" id="BAIDU_DUP_fp_iframe"></iframe></div>
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">学Linux，上红联！</span>
+     <div class="toplinks"><a href="http://www.linuxdiyf.com/" target="_blank">红联Linux门户</a>|<a href="http://www.linuxdiyf.com/articlelist.php?id=2" target="_blank">Linux通用技术</a>|<a href="http://www.linuxdiyf.com/articlelist.php?id=47" target="_blank">Linux发行版技术</a>|<a href="http://www.linuxdiyf.com/articlelist.php?id=15" target="_blank">Linux企业应用</a>|<a href="http://www.linuxdiyf.com/articlelist.php?id=12" target="_blank">Linux实验室</a>|<a href="http://www.linuxdiyf.com/bbs/" target="_blank">红联Linux论坛</a></div>
+    </div> 
+</div>
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <a href="http://www.linuxdiyf.com/linux/"><img src="logo.gif" alt="Linux系统教程" height="54" width="216"></a>
+      </div>
+      <div class="banner"> <script type="text/javascript">/* Code removed by ScrapBook */</script><div id="bdcs"><div class="bdcs-container"><meta http-equiv="x-ua-compatible" content="IE=9">   <!-- 嵌入式 -->  <div class="bdcs-main bdcs-clearfix" id="default-searchbox">      <div class="bdcs-search bdcs-clearfix" id="bdcs-search-inline">          <form action="http://zhannei.baidu.com/cse/search" method="get" target="_blank" class="bdcs-search-form" autocomplete="off" id="bdcs-search-form">              <input name="s" value="575025306707584696" type="hidden">              <input name="entry" value="1" type="hidden">                                              <input name="ie" value="gbk" type="hidden">                                                          <input style="height: 56px; line-height: 56px;" name="q" class="bdcs-search-form-input" id="bdcs-search-form-input" placeholder="输入关键词搜索Linux系统教程" type="text">              <input class="bdcs-search-form-submit " id="bdcs-search-form-submit" value="搜索" type="submit">                       </form>      </div>                  </div>                           </div></div><script charset="utf-8" src="about:blank"></script> </div>
+      <div class="banner2"> <a href="http://www.linuxdiyf.com/bbs/forum-57-1.html" target="_blank"><img src="linuxtc.gif" border="0"></a> </div>
+       
+	</div><!-- //top -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    <div id="navMenu">
+    	<ul>
+      	<li><a href="http://www.linuxdiyf.com/linux/"><span>Linux系统教程</span></a></li>
+      	
+      	<li><a href="http://www.linuxdiyf.com/linux/rm/"><span>Linux入门</span></a></li>
+      	
+      	<li><a href="http://www.linuxdiyf.com/linux/gl/"><span>Linux管理</span></a></li>
+      	<li class="hover"><a href="http://www.linuxdiyf.com/linux/jq/"><span>Linux技巧</span></a></li>
+      	<li><a href="http://www.linuxdiyf.com/linux/shell/"><span>Linux命令</span></a></li>
+      	
+      	<li><a href="http://www.linuxdiyf.com/linux/ubuntu/"><span>Ubuntu系统</span></a></li>
+      	
+      	<li><a href="http://www.linuxdiyf.com/linux/ffq/"><span>Linux服务器</span></a></li>
+      	
+      	<li><a href="http://www.linuxdiyf.com/linux/sjk/"><span>Linux数据库</span></a></li>
+      	
+      	<li><a href="http://www.linuxdiyf.com/linux/kf/"><span>Linux开发</span></a></li>
+      	
+    	</ul>
+    </div>
+		</div>
+	</div>
+</div><!-- //header -->
+
+<!-- /header -->
+<div class="w960 center clear mt1">
+<script type="text/javascript">/* Code removed by ScrapBook */</script><div id="BAIDU_SSP__wrapper_1041302_0"></div><script charset="utf-8" src="about:blank"></script><a href="http://www.linuxprobe.com/" target="_blank"><img src="0f000KHjSt8i1yySU8I3S6.jpg" border="0"></a><br><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u795372_0"><iframe id="iframeu795372_0" src="index_10.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" frameborder="0" height="90" width="960" align="center,center"></iframe></div>
+<div class="pleft">
+ <div class="place"> <strong>您的位置:</strong> <a href="http://www.linuxdiyf.com/linux/">Linux系统教程</a> &gt; <a href="http://www.linuxdiyf.com/linux/jq/">Linux技巧</a> &gt;  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h1>编译libiconv-1.14错误解决</h1>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2015-04-15<small>来源:</small>ubuntukylin <small>作者:</small>lenky0401</div><!-- /info -->
+<script type="text/javascript">/* Code removed by ScrapBook */</script><div id="BAIDU_SSP__wrapper_1041839_0"></div><script charset="utf-8" src="about:blank"></script><p align="center"><script async="" src="about:blank"></script>
+<!-- linuxjiaocheng -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-8023555791144639" data-ad-slot="1521948007"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><iframe src="index_11.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="280" width="336"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script></p>
+			<div class="content">
+			<table width="100%">
+    <tbody><tr>
+     <td>
+      <p>
+	ubuntukylin 13.04上编译libiconv-1.14</p>
+<p>
+	lenky@robert-T430S:~/下载/libiconv-1.14$ ./configure<br>
+	...<br>
+	lenky@robert-T430S:~/下载/libiconv-1.14$ make -j4<br>
+	...<br>
+	gcc -DHAVE_CONFIG_H -DEXEEXT=\"\" -I. -I.. -I../lib&nbsp; -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1&nbsp;&nbsp; -g -O2 -c -o width.o `test -f 'uniwidth/width.c' || echo './'`uniwidth/width.c<br>
+	In file included from progname.c:26:0:<br>
+	./stdio.h:1010:1: 错误： ‘gets’未声明(不在函数内)<br>
+	gcc -DHAVE_CONFIG_H -DEXEEXT=\"\" -I. -I.. -I../lib&nbsp; -I../intl -DDEPENDS_ON_LIBICONV=1 -DDEPENDS_ON_LIBINTL=1&nbsp;&nbsp; -g -O2 -c xmalloc.c<br>
+	make[2]: *** [progname.o] 错误 1<br>
+	make[2]: *** 正在等待未完成的任务....<br>
+	make[2]:正在离开目录 `/home/lenky/下载/libiconv-1.14/srclib'<br>
+	make[1]: *** [all] 错误 2<br>
+	make[1]:正在离开目录 `/home/lenky/下载/libiconv-1.14/srclib'<br>
+	make: *** [all] 错误 2</p>
+<p>
+	<br>
+	解决方法：<br>
+	lenky@robert-T430S:~/下载/libiconv-1.14$ vi srclib/stdio.h</p>
+<p>
+	到1010行，注释掉该行即可：<br>
+	_GL_CXXALIASWARN (gets);<br>
+	/* It is very rare that the developer ever has full control of stdin,<br>
+	so any use of gets warrants an unconditional warning.&nbsp; Assume it is<br>
+	always declared, since it is required by C89.&nbsp; */<br>
+	//_GL_WARN_ON_USE (gets, "gets is a security hole - use fgets instead");<br>
+	#endif</p>
+<p>
+	重新make，OK。</p>
+
+      </td>
+    </tr>
+   </tbody></table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script><div id="BAIDU_SSP__wrapper_1041840_0"></div><script charset="utf-8" src="about:blank"></script><p align="center"><script async="" src="about:blank"></script>
+<!-- linuxosjiaocheng -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-8023555791144639" data-ad-slot="4196212803"><ins id="aswift_1_expand" style="display: inline-table; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><iframe src="index_12.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_1" name="aswift_1" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="280" width="336"></iframe></ins></ins></ins>
+<script>/* Code removed by ScrapBook */</script></p>
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg"><div class="diggbox digg_good">
+            <div class="digg_act">顶一下</div>
+            <div class="digg_num">(0)</div>
+            <div class="digg_percent">
+                <div class="digg_percent_bar"><span style="width: 0%;"></span></div>
+                <div class="digg_percent_num">0.00%</div>
+            </div>
+        </div>
+        <div class="diggbox digg_bad">
+            <div class="digg_act">踩一下</div>
+            <div class="digg_num">(0)</div>
+            <div class="digg_percent">
+                <div class="digg_percent_bar"><span style="width: 0%;"></span></div>
+                <div class="digg_percent_num">0.00%</div>
+            </div>
+        </div></div>
+  <script language="javascript" type="text/javascript">/* Code removed by ScrapBook */</script>
+  <!-- //顶踩部份的源码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href="http://www.linuxdiyf.com/linux/11148.html">解决：How to fix E: Internal Error, No file name for libc6</a> </li>
+     <li>下一篇：<a href="http://www.linuxdiyf.com/linux/11168.html">Fedora进不去X Window</a> </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+     <div data-bd-bind="1484046352231" class="bdsharebuttonbox bdshare-button-style0-24"><a class="bds_more" href="#" data-cmd="more"></a><a class="bds_qzone" title="分享到QQ空间" href="#" data-cmd="qzone"></a><a class="bds_tsina" title="分享到新浪微博" href="#" data-cmd="tsina"></a><a class="bds_tqq" title="分享到腾讯微博" href="#" data-cmd="tqq"></a><a class="bds_sqq" title="分享到QQ好友" href="#" data-cmd="sqq"></a><a class="bds_bdhome" title="分享到百度新首页" href="#" data-cmd="bdhome"></a><a class="bds_renren" title="分享到人人网" href="#" data-cmd="renren"></a><a class="bds_weixin" title="分享到微信" href="#" data-cmd="weixin"></a></div>
+<script>/* Code removed by ScrapBook */</script>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+<div id="baidutuijian">
+<div id="hm_t_52741"><div style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px none; background: transparent none repeat scroll 0% 0%; max-width: none; max-height: none; border-radius: 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; box-sizing: content-box; width: 682px; height: 206px;"><iframe src="index_13.html" style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px none; background: transparent none repeat scroll 0% 0%; max-width: none; max-height: none; border-radius: 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; box-sizing: content-box; width: 100%; height: 100%;" scrolling="no" frameborder="0"></iframe></div></div>
+</div>
+ <!-- //评论区 -->
+ <div id="SOHUCS"><div id="SOHU_MAIN"><div class="module-cmt-header">
+    <div class="cy-hidden">
+        <button id="jump-to-kz"></button>
+    </div>
+    <div class="clear-g section-title-w">
+        <div class="title-user-w">
+            <div node-type="user" class="clear-g user-wrap-w">
+                <span node-type="user-name" class="wrap-name-w"></span>
+            </div>
+        </div>
+    </div>
+    <div class="section-cbox-w">
+        <div class="cbox-block-w clear-g">
+            <div node-type="block-head-w" class="block-head-w">
+                <div node-type="avatar" class="head-img-w">
+                    <a>
+                        <img node-type="user-head" src="pic42_null.gif" alt="" height="42" width="42">
+                        <div node-type="head-img-ie-mask" class="head-img-ie-mask"></div>
+                    </a>
+                    <div node-type="notice-node" style="display: none;" class="cy-avatar-notice-node"></div>
+                                    </div>
+                <div node-type="header-login" class="header-login">登录</div>
+                <div class="cy-to-shequ-head">
+                    <span>我的社区</span>
+                </div>
+                <div node-type="cy-board-enter" class="cy-board-enter">
+                    <span>我的2016年度评论盘点</span>
+                </div>
+            </div>
+            <div node-type="login-select" class="block-post-w">
+                <!-- 放置cbox初始状态 -->
+                <div class="module-cmt-box">
+    <!-- 展开状态 -->
+    <div class="post-wrap-w">
+        <div class="post-wrap-border-l"></div>
+        <div class="post-wrap-border-r"></div>
+        <div node-type="post-wrap-main" class="post-wrap-main">
+            <div class="post-wrap-border-t">
+                <div node-type="post-wrap-border-t-l" class="post-wrap-border-t-l"></div>
+                <div node-type="post-wrap-border-t-r" class="post-wrap-border-t-r"></div>
+            </div>
+            <div class="wrap-area-w">
+                <div class="area-textarea-w">
+                    <textarea node-type="textarea" name="" class="textarea-fw textarea-bf">有事没事说两句...</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="clear-g wrap-action-w">
+           <div class="action-function-w">
+                <ul class="clear-g">
+                    <li node-type="function-face" class="function-face-w">
+                        <a class="effect-w">
+                            <i class="face-b"></i>
+                        </a>
+                    </li>
+                    <li node-type="function-uploading" class="function-uploading-w">
+                        <a class="effect-w" title="上传图片">
+                            <i class="uploading-b"></i>
+                        </a>
+                        <div class="uploading-file-w">
+                            <a name="" class="file-fw"></a>
+                        </div>
+                    <form style="display: none;"><input accept="image/jpg,image/jpeg,image/png" name="file" type="file"></form></li>
+                </ul>
+                <!-- 表情 -->
+                <div node-type="face-box" class="face-wrapper-dw">
+                    <div node-type="face-cont" class="wrapper-cont-dw">
+                        <ul class="clear-g">
+                            <li>
+                                <span title="流汗" data_path="base" data-ubb="/流汗" class="face-item face_01"></span>
+                            </li>
+                            <li>
+                                <span title="钱" data_path="base" data-ubb="/钱" class="face-item face_02"></span>
+                            </li>
+                            <li>
+                                <span title="发怒" data_path="base" data-ubb="/发怒" class="face-item face_03"></span>
+                            </li>
+                            <li>
+                                <span title="浮云" data_path="base" data-ubb="/浮云" class="face-item face_04"></span>
+                            </li>
+                            <li>
+                                <span title="给力" data_path="base" data-ubb="/给力" class="face-item face_05"></span>
+                            </li>
+                            <li>
+                                <span title="大哭" data_path="base" data-ubb="/大哭" class="face-item face_06"></span>
+                            </li>
+                            <li>
+                                <span title="憨笑" data_path="base" data-ubb="/憨笑" class="face-item face_07"></span>
+                            </li>
+                            <li>
+                                <span title="色" data_path="base" data-ubb="/色" class="face-item face_08"></span>
+                            </li>
+                        </ul>
+                        <ul class="clear-g">
+                            <li>
+                                <span title="奋斗" data_path="base" data-ubb="/奋斗" class="face-item face_09"></span>
+                            </li>
+                            <li>
+                                <span title="鼓掌" data_path="base" data-ubb="/鼓掌" class="face-item face_10"></span>
+                            </li>
+                            <li>
+                                <span title="鄙视" data_path="base" data-ubb="/鄙视" class="face-item face_11"></span>
+                            </li>
+                            <li>
+                                <span title="可爱" data_path="base" data-ubb="/可爱" class="face-item face_12"></span>
+                            </li>
+                            <li>
+                                <span title="闭嘴" data_path="base" data-ubb="/闭嘴" class="face-item face_13"></span>
+                            </li>
+                            <li>
+                                <span title="疑问" data_path="base" data-ubb="/疑问" class="face-item face_14"></span>
+                            </li>
+                            <li>
+                                <span title="抓狂" data_path="base" data-ubb="/抓狂" class="face-item face_15"></span>
+                            </li>
+                            <li>
+                                <span title="惊讶" data_path="base" data-ubb="/惊讶" class="face-item face_16"></span>
+                            </li>
+                        </ul>
+                        <ul class="clear-g">
+                            <li>
+                                <span title="可怜" data_path="base" data-ubb="/可怜" class="face-item face_17"></span>
+                            </li>
+                            <li>
+                                <span title="弱" data_path="base" data-ubb="/弱" class="face-item face_18"></span>
+                            </li>
+                            <li>
+                                <span title="强" data_path="base" data-ubb="/强" class="face-item face_19"></span>
+                            </li>
+                            <li>
+                                <span title="握手" data_path="base" data-ubb="/握手" class="face-item face_20"></span>
+                            </li>
+                            <li>
+                                <span title="拳头" data_path="base" data-ubb="/拳头" class="face-item face_21"></span>
+                            </li>
+                            <li>
+                                <span title="酒" data_path="base" data-ubb="/酒" class="face-item face_22"></span>
+                            </li>
+                            <li>
+                                <span title="玫瑰" data_path="base" data-ubb="/玫瑰" class="face-item face_23"></span>
+                            </li>
+                            <li>
+                                <span title="打酱油" data_path="base" data-ubb="/打酱油" class="face-item face_24"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div node-type="user-face-cont" class="wrapper-user-face-dw nano">
+                        <div class="nano-content">
+                            <ul class="clear-g">
+                                <li class="upload-face-btn"></li>
+                                <li class="manage-face-btn"></li>
+                                <li class="cancel-face-btn"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div node-type="face-tab" class="action-face-tab-dw">
+                        <ul class="clear-g">
+                            <li node-type="official-face" class="official-face-btn active"></li>
+                            <li style="display: none;" node-type="user-face" class="user-face-btn"></li>
+                        </ul>
+                    </div>
+                    <div node-type="confirm-box" class="cy-confirm-box">
+                        <div class="cy-confirm-text">
+                            <span>表情删除后不可恢复，是否删除</span>
+                        </div>
+                        <div class="cy-confirm-btn-row">
+                            <div class="cy-confirm-btn-cancel">取消</div>
+                            <div class="cy-confirm-btn-confirm">确定</div>
+                        </div>
+                    </div>
+                </div>
+                <!--  上传图片 --><!--  uploading-efw -->
+                <div node-type="uploading-wrapper" class="uploading-wrapper-dw uploading-efw ">
+                    <div class="uploading-wrapper-dw-t"></div>
+                    <div class="uploading-wrapper-dw-b"></div>
+                    <div node-type="image-uploading" class="wrapper-loading-dw">
+                        <div class="loading-word-dw"><span class="word-icon-dw"></span>图片正在上传，请稍后...</div>
+                        <div class="loading-btn-dw">
+                            <a>取消上传</a>
+                        </div>
+                    </div>
+                    <div node-type="image-uploaded" class="wrapper-image-dw">
+                        <div class="image-close-dw">
+                            <a></a>
+                        </div>
+                        <div class="image-pic-dw">
+                            <img node-type="image-pic" alt="" src="11150.html">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear-g action-issue-w">
+                <div class="issue-btn-w">
+                    <a>
+                        <button node-type="issue" class="btn-fw"></button>
+                    </a>
+                </div>
+            <!--
+            <div class="issue-icon-w" node-type="share-icons">
+                </div>
+            -->
+            </div>
+            <div class="cbox-prompt-w" node-type="error-tips">
+                <span node-type="prompt-empty" class="prompt-empty-w">评论内容为空！</span>
+            </div>
+        </div>
+    </div>
+</div>
+                <!-- 放置cbox发布状态 -->
+                <!-- 提示条 -->
+                <!-- 零评论提示条 -->
+                <div class="list-comment-empty-w">
+                    <div node-type="empty-prompt" class="empty-prompt-w">
+                        <span class="prompt-null-w">还没有评论，快来抢沙发吧！</span>
+                    </div>
+                </div>
+                <!-- 提示连接到快站社区 -->
+                <!-- <div class="list-comment-kuaizhan-w">
+                    <div node-type="kuaizhan-prompt" class="kuaizhan-prompt-w">
+                        <span class="prompt-text-w">点击查看更多精彩内容</span>
+                    </div>
+                </div> -->
+                <!--关闭评论-->
+                <div class="list-close-comment-w">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- 评论列表  S -->
+<div class="module-cmt-list section-list-w">
+            <!-- 最新评论 -->
+    <div class="list-block-gw list-newest-w">
+        <div node-type="cmt-list-title" class="block-title-gw" style="display: none;">
+            <ul class="clear-g">
+                <li>
+                    <div class="title-name-gw title-name-bg">
+                    <div class="title-name-gw-tag"></div>最新评论</div>
+                </li>
+            </ul>
+        </div>
+        <div node-type="cmt-list" id="cy-cmt-list">
+        </div>
+    </div>
+</div>
+<!-- 评论列表  E --><div class="module-cmt-footer">
+    <!-- 评论关闭 -->
+    <div class="list-comment-close-w">
+        <div class="close-wrap-w close-wrap-b">该评论已关闭!</div>
+    </div>
+    <!-- 翻页 -->
+    <div class="section-page-w">
+    </div>
+    <!-- 某站正在使用畅言 -->
+    <div class="section-service-w">
+        <div class="service-wrap-w">
+            <a href="http://changyan.kuaizhan.com/" target="_blank">
+            
+            Linux系统教程正在使用畅言
+                        </a>
+        </div>
+    </div>
+    <div class="cy-to-shequ">
+        <span class="cy-to-shequ-text">去社区看看吧</span><i class="cy-right-arrow"></i>
+    </div>
+    <div class="cy-to-shequ-float"></div>
+</div><div class="module-cmt-notice">
+    <ul class="nt-list">
+        
+        <li node-type="notice-message" data-alias="message" data-type="message" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你收到<i>0</i>条新通知</a>
+            <a class="nt-close"></a>
+        </li>
+        
+        <li node-type="notice-support" data-alias="support" data-type="support" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你有<i>0</i>条评论收到赞同</a>
+            <a class="nt-close"></a>
+        </li>
+        
+        <li node-type="notice-reply" data-alias="reply" data-type="reply" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你有<i>0</i>条新回复</a>
+            <a class="nt-close"></a>
+        </li>
+        
+        <li node-type="notice-task" data-alias="task" data-type="task" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你有<i>0</i>个任务已完成</a>
+            <a class="nt-close"></a>
+        </li>
+        
+        <li node-type="notice-history" data-alias="history" data-type="history" data-static="static" class="nt-item" style="display: none;">
+            <div class="nt-logo"></div>
+            <a node-type="notice-content" class="nt-text">你收获<i>0</i>个畅言足迹</a>
+            <a class="nt-close"></a>
+        </li>
+            </ul>
+</div></div></div>
+<script>/* Code removed by ScrapBook */</script>
+</div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright">
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class="light"><strong>推荐教程</strong></dt>
+    <dd class="light">
+     <ul class="d4">
+      <li><a href="http://www.linuxdiyf.com/linux/7885.html" target="_blank">利用system函数窃取Linux系统超</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/2693.html" target="_blank">Linux下更改ssh端口和禁止root远</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/2648.html" target="_blank">删除Linux的乱码文件</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/1653.html" target="_blank">轻松解决Linux系统下安装软件包</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/1171.html" target="_blank">Linux修改系统时间的简洁方法</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/912.html" target="_blank">Ubuntu技巧之在命令行进行数学计</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/910.html" target="_blank">10个你也许不知道的Ubuntu技巧</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/840.html" target="_blank">九个小技巧能加强Linux桌面安全</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/816.html" target="_blank">解决Linux系统磁盘空间满的＂软</a>
+      </li>
+<li><a href="http://www.linuxdiyf.com/linux/749.html" target="_blank">推荐：Linux学习推荐阅读目录</a>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class="light"><strong>热点推荐</strong></dt>
+    <dd class="light">
+     <ul class="c1 ico2">
+      <li><a href="http://www.linuxdiyf.com/linux/2270.html" target="_blank">CentOS英文环境下使用中文输入法</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/3463.html" target="_blank">自动批量解决本地安装rpm包的dep</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/4385.html" target="_blank">Linux去除fstab文件只读属性</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/9105.html" target="_blank">Fedora 14无法正常使用xampp之解</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/22.html" target="_blank">Linux修改分辨率小技巧</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/1590.html" target="_blank">Linux主机与路由器建立隧道的方</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/1725.html" target="_blank">Python版本低引发Python脚本运行</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/3560.html" target="_blank">KDE下打字时禁用触控板</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/3627.html" target="_blank">CentOS 5不支持SATA硬盘安装的解</a></li>
+<li><a href="http://www.linuxdiyf.com/linux/4034.html" target="_blank">Linux系统入门学习：在Linux如何</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <!-- /pright -->
+</div>
+<div class="footer w960 center mt1 clear">
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	我的Linux网站，我的Linux之家！学Linux，从这里开始！ | <a href="http://www.linuxdiyf.com/about/" target="_blank"><font color="#808080">关于我们</font></a> | <a href="http://www.linuxdiyf.com/about/contact.htm" target="_blank"><font color="#808080">联系我们</font></a>  <br><div class="copyright"><p class="powered">Linux系统教程 版权所有 Powered by <a href="http://www.dedecms.com/" title="织梦内容管理系统" target="_blank"><strong>DedeCMSV57_GBK</strong></a> <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.</p></div><p></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<!-- /footer -->
+<script type="text/javascript">/* Code removed by ScrapBook */</script><script src="about:blank" type="text/javascript"></script>
+
+</body>
+</html>

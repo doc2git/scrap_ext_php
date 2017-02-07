@@ -1,0 +1,27 @@
+/* Code tidied up by ScrapBook */
+@import url("sf_typeHelper.css");
+@import url("sf_typeHelper.extend.css");
+@import url("momentpicker.css");
+.article__widget--author img { float: left; margin-right: 10px; }
+.article__title--tag { margin-bottom: 0px; }
+.article__author { display: inline-block; }
+.widget-outline { position: relative; top: 0px; max-width: 250px; border: medium none; box-shadow: 0px 0px 0px rgb(255, 255, 255); }
+.widget-outline .panel-heading { cursor: auto; }
+.post-nav { display: none; padding: 10px 0px 10px 10px; border-top: 1px solid rgb(238, 238, 238); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.post-nav.side-outline { padding-left: 0px; width: 100%; top: 0px; }
+.post-nav.side-outline .nav-body::after { content: ""; display: block; position: absolute; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 3px; top: 0px; bottom: 0px; border-radius: 5px; left: 0px; }
+.post-nav.side-outline .highlight-title { position: absolute; display: block; left: 0px; right: 0px; background: rgb(243, 243, 243) none repeat scroll 0% 0%; z-index: 1; border-left: 3px solid rgb(0, 154, 97); transition: all 0.2s ease 0s; }
+.post-nav .panel-body { overflow: hidden; max-height: inherit; padding: 0px 0px 10px; transition: all 0.2s ease 0s; }
+.post-nav .articleIndex, .post-nav .panel-body { position: relative; z-index: 2; }
+.post-nav .nav-body { position: relative; padding: 0px 12px; }
+.post-nav .articleIndex li a { display: block; padding: 3px 0px; }
+.post-nav .articleIndex li.active a { color: rgb(0, 0, 0); }
+.post-nav.fixed { position: fixed; top: 0px; }
+.post-comment-title { padding-top: 20px; border-top: 2px solid rgb(204, 204, 204); margin-bottom: 15px; }
+.article-license { line-height: 1.8; }
+.widget-box--blog-info { border: 1px solid rgb(221, 221, 221); padding: 15px; box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05); border-radius: 3px; }
+.blog__sidebar-author { border-bottom: 1px solid rgb(238, 238, 238); padding-bottom: 15px; }
+.blog__sidebar-author .btn { margin-top: 8px; }
+.article__widget-author-name { text-overflow: ellipsis; width: 90px; display: inline-block; overflow: hidden; white-space: nowrap; line-height: 1; }
+.article__widget-author-text-muted { font-size: 13px; color: rgb(153, 153, 153); }
+.article__widget-author-desc { font-size: 14px; color: rgb(102, 102, 102); overflow: hidden; text-overflow: ellipsis; margin-bottom: 15px; }

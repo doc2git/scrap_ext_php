@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><script src="about:blank"></script><script src="about:blank" type="text/javascript"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>如何修改MySQL字符集 - xuzhengzhu - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-KJC.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="bundle-KJC-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/HondaHsu/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/HondaHsu/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/HondaHsu/wlwmanifest.xml">
+<script src="about:blank" type="text/javascript"></script>  
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script>
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+</style></head>
+<body>
+<a name="top"></a>
+
+<table class="Framework" width="100%" cellpadding="0" cellspacing="0">
+	<tbody><tr>
+		<td colspan="3">
+			
+<div id="top">
+<table cellpadding="10" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/HondaHsu/"><font size="6px" color="red">Oracle &amp;   BI &amp;  大数据分析</font></a></h1>
+			<font size="4px">把握现在,领导未来</font>
+		</td>
+	</tr>
+</tbody></table>
+</div>
+<div id="sub">
+	<div id="sub-right"><div id="blog_stats">
+<div class="BlogStats">posts - 602, comments - 24, trackbacks - 18, articles - 0</div></div></div>
+	
+&nbsp;
+<a id="blog_nav_sitehome" href="http://www.cnblogs.com/">博客园</a>&nbsp;:: 
+<a id="blog_nav_myhome" href="http://www.cnblogs.com/HondaHsu/">首页</a>&nbsp;::
+<a id="blog_nav_newpost" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp;::
+<a id="blog_nav_contact" accesskey="9" rel="nofollow" href="https://msg.cnblogs.com/send/xuzhengzhu">联系</a>&nbsp;::
+<a id="blog_nav_rss" href="http://www.cnblogs.com/HondaHsu/rss">订阅</a>
+<a id="blog_nav_rss_image" class="XMLLink" href="http://www.cnblogs.com/HondaHsu/rss"><img src="xml.gif" alt="订阅"></a>&nbsp;::
+<a id="blog_nav_admin" rel="nofollow" href="https://i.cnblogs.com/">管理</a>
+
+</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="LeftCell">
+			<div id="leftmenu">
+            	
+		            <div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="日历" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a>&lt;</a></td><td align="center">2017年1月</td><td class="CalNextPrev" align="right"><a>&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center"><a href="http://www.cnblogs.com/HondaHsu/archive/2017/01/11.html"><u>11</u></a></td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td class="CalTodayDay" align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+		            
+<div id="cell">
+<img src="icon-group.jpg" hspace="5" vspace="2" align="left"><h3>公告</h3>
+<div id="news">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/HondaHsu/">xuzhengzhu</a><br>园龄：<a href="http://home.cnblogs.com/u/HondaHsu/" title="入园时间：2007-04-05">9年9个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/HondaHsu/followers/">158</a><br>关注：<a href="http://home.cnblogs.com/u/HondaHsu/followees/">4</a><div id="p_b_follow"><a>+加关注</a></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+</div>
+
+	            
+	            <div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="cell">
+<img src="icon-group.jpg" hspace="5" vspace="2" align="left">
+<h3 class="catListTitle">搜索</h3>
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" class="input_my_zzk" type="text">&nbsp;<input value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" class="input_my_zzk" type="text">&nbsp;<input value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div></div><div id="sidebar_shortcut" class="sidebar-block">
+<div id="cell">
+<img src="icon-group.jpg" hspace="5" vspace="2" align="left">
+<h3>常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/HondaHsu/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/HondaHsu/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/HondaHsu/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/HondaHsu/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/HondaHsu/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div id="cell">
+<img src="icon-group.jpg" hspace="5" vspace="2" align="left">
+<h3>我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/HondaHsu/tag/informatica/">informatica</a>(44)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/Oracle%20RAC/">Oracle RAC</a>(22)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/MySQL%E5%9F%BA%E7%A1%80/">MySQL基础</a>(15)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/oracle%20%E8%AF%BE%E7%A8%8B/">oracle 课程</a>(12)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/Cognos/">Cognos</a>(10)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/">数据模型</a>(10)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>(10)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/python/">python</a>(7)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/RMAN/">RMAN</a>(6)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/SHELL/">SHELL</a>(6)</li><li><a href="http://www.cnblogs.com/HondaHsu/tag/">更多</a></li>
+</ul>
+</div>
+</div></div><div id="sidebar_categories">
+		<div id="cell">
+		<img src="icon-group.jpg" hspace="5" vspace="2" align="left"><h3>随笔分类</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/HondaHsu/category/98425.html">C#.Net开发(30)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/HondaHsu/category/307215.html">Cognos(27)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/HondaHsu/category/652108.html">Hadoop(5)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/HondaHsu/category/366966.html">Java(2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/HondaHsu/category/148231.html">Linux&amp;Shell(50)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/HondaHsu/category/662721.html">MYSQL 错误(3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/HondaHsu/category/898975.html">MYSQL 管理(2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/HondaHsu/category/563395.html">MySQL 开发基础(27)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/HondaHsu/category/611508.html">Oracle 备份管理(20)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/HondaHsu/category/391876.html">Oracle 常见ORA错误(21)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/HondaHsu/category/391877.html">Oracle 常见问题(68)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/HondaHsu/category/391882.html">Oracle 概念(27)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/HondaHsu/category/391888.html">Oracle 工具使用(15)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/HondaHsu/category/97953.html">Oracle 管理(12)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/HondaHsu/category/761899.html">Oracle 管理-DBA常用SQL(9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/HondaHsu/category/733740.html">Oracle 管理-安装配置(11)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/HondaHsu/category/621948.html">Oracle 管理-集群安装(30)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/HondaHsu/category/391874.html">Oracle 管理-命令(12)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/HondaHsu/category/899009.html">Oracle 管理-权限管理(6)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/HondaHsu/category/899011.html">Oracle 管理-日常监控(2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/HondaHsu/category/391934.html">Oracle 管理-优化(45)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/HondaHsu/category/98423.html">Oracle 开发-常用SQL(25)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/HondaHsu/category/391950.html">Oracle 开发-特殊SQL(11)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/HondaHsu/category/98424.html">Oracle 考试(11)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/HondaHsu/category/652152.html">Oracle 培训课程(11)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/HondaHsu/category/650656.html">Python(9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/HondaHsu/category/868869.html">SQL Server 管理(4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/HondaHsu/category/899302.html">SQL Server开发(2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/HondaHsu/category/899934.html">SQL Server优化 </a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/HondaHsu/category/735054.html">WEB服务器</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/HondaHsu/category/521297.html">windows&amp;批处理(8)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/HondaHsu/category/735053.html">负载均衡器(1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/HondaHsu/category/134142.html">数据仓库(47)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/HondaHsu/category/663199.html">数据分析(6)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/HondaHsu/category/667802.html">数据模型(11)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/HondaHsu/category/391930.html">数据同步与ETL(62)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/HondaHsu/category/746841.html">文档(2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/HondaHsu/category/687710.html">项目管理(4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/HondaHsu/category/645000.html">中间件(6)</a>
+				</li>
+			
+				</ul>
+			</div>
+	
+		<div id="cell">
+		<img src="icon-group.jpg" hspace="5" vspace="2" align="left"><h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/HondaHsu/archive/2017/01.html">2017年1月 (3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/HondaHsu/archive/2016/11.html">2016年11月 (8)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/HondaHsu/archive/2016/10.html">2016年10月 (9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/HondaHsu/archive/2016/08.html">2016年8月 (4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/HondaHsu/archive/2016/07.html">2016年7月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/HondaHsu/archive/2016/05.html">2016年5月 (4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/HondaHsu/archive/2016/04.html">2016年4月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/HondaHsu/archive/2016/03.html">2016年3月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/HondaHsu/archive/2016/02.html">2016年2月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/HondaHsu/archive/2016/01.html">2016年1月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/HondaHsu/archive/2015/12.html">2015年12月 (6)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/HondaHsu/archive/2015/11.html">2015年11月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/HondaHsu/archive/2015/10.html">2015年10月 (20)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/HondaHsu/archive/2015/09.html">2015年9月 (12)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/HondaHsu/archive/2015/08.html">2015年8月 (10)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/HondaHsu/archive/2015/06.html">2015年6月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/HondaHsu/archive/2015/05.html">2015年5月 (9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/HondaHsu/archive/2015/04.html">2015年4月 (42)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/HondaHsu/archive/2015/03.html">2015年3月 (28)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/HondaHsu/archive/2015/02.html">2015年2月 (17)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/HondaHsu/archive/2015/01.html">2015年1月 (20)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/HondaHsu/archive/2014/12.html">2014年12月 (3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/HondaHsu/archive/2014/10.html">2014年10月 (24)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/HondaHsu/archive/2014/09.html">2014年9月 (8)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/HondaHsu/archive/2014/08.html">2014年8月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/HondaHsu/archive/2014/07.html">2014年7月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/HondaHsu/archive/2014/05.html">2014年5月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/HondaHsu/archive/2014/04.html">2014年4月 (9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/HondaHsu/archive/2014/03.html">2014年3月 (16)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/HondaHsu/archive/2014/02.html">2014年2月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/HondaHsu/archive/2014/01.html">2014年1月 (17)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/HondaHsu/archive/2013/12.html">2013年12月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/HondaHsu/archive/2013/10.html">2013年10月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/HondaHsu/archive/2013/09.html">2013年9月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_34" href="http://www.cnblogs.com/HondaHsu/archive/2013/08.html">2013年8月 (3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_35" href="http://www.cnblogs.com/HondaHsu/archive/2013/07.html">2013年7月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_36" href="http://www.cnblogs.com/HondaHsu/archive/2013/06.html">2013年6月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_37" href="http://www.cnblogs.com/HondaHsu/archive/2013/05.html">2013年5月 (7)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_38" href="http://www.cnblogs.com/HondaHsu/archive/2013/03.html">2013年3月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_39" href="http://www.cnblogs.com/HondaHsu/archive/2013/01.html">2013年1月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_40" href="http://www.cnblogs.com/HondaHsu/archive/2012/12.html">2012年12月 (4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_41" href="http://www.cnblogs.com/HondaHsu/archive/2012/11.html">2012年11月 (5)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_42" href="http://www.cnblogs.com/HondaHsu/archive/2012/10.html">2012年10月 (9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_43" href="http://www.cnblogs.com/HondaHsu/archive/2012/09.html">2012年9月 (12)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_44" href="http://www.cnblogs.com/HondaHsu/archive/2012/08.html">2012年8月 (14)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_45" href="http://www.cnblogs.com/HondaHsu/archive/2012/07.html">2012年7月 (17)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_46" href="http://www.cnblogs.com/HondaHsu/archive/2012/06.html">2012年6月 (9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_47" href="http://www.cnblogs.com/HondaHsu/archive/2012/05.html">2012年5月 (4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_48" href="http://www.cnblogs.com/HondaHsu/archive/2012/04.html">2012年4月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_49" href="http://www.cnblogs.com/HondaHsu/archive/2012/03.html">2012年3月 (4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_50" href="http://www.cnblogs.com/HondaHsu/archive/2012/02.html">2012年2月 (3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_51" href="http://www.cnblogs.com/HondaHsu/archive/2011/10.html">2011年10月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_52" href="http://www.cnblogs.com/HondaHsu/archive/2011/09.html">2011年9月 (12)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_53" href="http://www.cnblogs.com/HondaHsu/archive/2011/08.html">2011年8月 (3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_54" href="http://www.cnblogs.com/HondaHsu/archive/2011/07.html">2011年7月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_55" href="http://www.cnblogs.com/HondaHsu/archive/2011/06.html">2011年6月 (9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_56" href="http://www.cnblogs.com/HondaHsu/archive/2011/02.html">2011年2月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_57" href="http://www.cnblogs.com/HondaHsu/archive/2010/12.html">2010年12月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_58" href="http://www.cnblogs.com/HondaHsu/archive/2010/11.html">2010年11月 (7)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_59" href="http://www.cnblogs.com/HondaHsu/archive/2010/03.html">2010年3月 (6)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_60" href="http://www.cnblogs.com/HondaHsu/archive/2009/08.html">2009年8月 (9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_61" href="http://www.cnblogs.com/HondaHsu/archive/2009/01.html">2009年1月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_62" href="http://www.cnblogs.com/HondaHsu/archive/2008/12.html">2008年12月 (23)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_63" href="http://www.cnblogs.com/HondaHsu/archive/2008/11.html">2008年11月 (4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_64" href="http://www.cnblogs.com/HondaHsu/archive/2008/10.html">2008年10月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_65" href="http://www.cnblogs.com/HondaHsu/archive/2008/09.html">2008年9月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_66" href="http://www.cnblogs.com/HondaHsu/archive/2008/08.html">2008年8月 (23)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_67" href="http://www.cnblogs.com/HondaHsu/archive/2008/07.html">2008年7月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_68" href="http://www.cnblogs.com/HondaHsu/archive/2008/05.html">2008年5月 (9)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_69" href="http://www.cnblogs.com/HondaHsu/archive/2008/04.html">2008年4月 (7)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_70" href="http://www.cnblogs.com/HondaHsu/archive/2008/01.html">2008年1月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_71" href="http://www.cnblogs.com/HondaHsu/archive/2007/12.html">2007年12月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_72" href="http://www.cnblogs.com/HondaHsu/archive/2007/07.html">2007年7月 (28)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_73" href="http://www.cnblogs.com/HondaHsu/archive/2007/06.html">2007年6月 (59)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_74" href="http://www.cnblogs.com/HondaHsu/archive/2007/04.html">2007年4月 (4)</a>
+				</li>
+			
+				</ul>
+			</div>
+	
+		<div id="cell">
+		<img src="icon-group.jpg" hspace="5" vspace="2" align="left"><h3>相册</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_2_Link_0" href="http://www.cnblogs.com/HondaHsu/gallery/98335.html" rel="nofollow">Baby(1)</a>
+				</li>
+			
+				</ul>
+			</div>
+	</div><div id="recent_comments_wrap">
+    <div id="cell">
+        <img src="icon-group.jpg" hspace="5" vspace="2" align="left">
+        <h3>最新评论</h3>
+        <div class="RecentComment">
+            <div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/HondaHsu/p/4267972.html#3598396">1. Re:weblogic的集群与配置</a></li>
+        <li class="recent_comment_body">学习了！！</li>
+        <li class="recent_comment_author">--规格严格-功夫到家</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/HondaHsu/p/4267972.html#3490073">2. Re:weblogic的集群与配置</a></li>
+        <li class="recent_comment_body">非常好  非常受帮助</li>
+        <li class="recent_comment_author">--hui12345</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/HondaHsu/p/4810737.html#3475157">3. Re:如何查询 Oracle 11g日志</a></li>
+        <li class="recent_comment_body">谢谢大神的笔记分享，晚辈受益匪浅。</li>
+        <li class="recent_comment_author">--张冲andy</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/HondaHsu/archive/2012/08/27/2658828.html#3464874">4. Re:如何查询Oracle性能监控</a></li>
+        <li class="recent_comment_body">赞！oracle没有像sql profile的工具吗</li>
+        <li class="recent_comment_author">--有点</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/HondaHsu/p/4267972.html#3351108">5. Re:weblogic的集群与配置</a></li>
+        <li class="recent_comment_body">mark</li>
+        <li class="recent_comment_author">--塞北夜莺</li>
+</ul>
+</div>
+        </div>
+    </div>
+</div>
+<div id="topview_posts_wrap">
+    <div id="cell">
+        <img src="icon-group.jpg" hspace="5" vspace="2" align="left">
+        <h3>阅读排行榜</h3>
+        <div class="RecentComment">
+            <div id="TopViewPostsBlock"><ul><li><a href="#">1. 如何修改MySQL字符集(50325)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/p/4267972.html">2. weblogic的集群与配置(36366)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/archive/2013/05/30/3107793.html">3. 如何设置虚拟机网络(24551)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/p/4346354.html">4. Hadoop Hive基础sql语法(20794)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/archive/2013/03/22/2974900.html">5. Oracle定时任务(13601)</a></li></ul></div>
+        </div>
+    </div>
+</div><div id="topfeedback_posts_wrap">
+    <div id="cell">
+        <img src="icon-group.jpg" hspace="5" vspace="2" align="left">
+        <h3>评论排行榜</h3>
+        <div class="RecentComment">
+            <div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/HondaHsu/p/4267972.html">1. weblogic的集群与配置(5)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/archive/2012/08/27/2658828.html">2. 如何查询Oracle性能监控(2)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/archive/2012/09/28/2707487.html">3. Oracle Purge和drop的区别(2)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/archive/2012/05/11/2496425.html">4. ETL简介(2)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/p/4810737.html">5. 如何查询 Oracle 11g日志(1)</a></li></ul></div>
+        </div>
+    </div>    
+</div>
+<div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div id="cell">
+<img src="icon-group.jpg" hspace="5" vspace="2" align="left"><h3>推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/HondaHsu/p/4346354.html">1. Hadoop Hive基础sql语法(5)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/p/4267972.html">2. weblogic的集群与配置(4)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/p/3641116.html">3. MySQL与Oracle 差异比较之一数据类型(3)</a></li><li><a href="#">4. 如何修改MySQL字符集(2)</a></li><li><a href="http://www.cnblogs.com/HondaHsu/p/3641258.html">5. MySQL与Oracle 差异比较之五存储过程&amp;Function(2)</a></li></ul></div>
+</div>
+</div></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+			</div>
+		</td>
+		<td class="MainCell">
+			<div id="main">
+				
+<div id="post_detail">
+	<div class="post">
+		<div class="posthead">
+			<h2>
+				<a id="cb_post_title_url" class="singleposttitle" href="#">如何修改MySQL字符集</a>
+			</h2>
+ 			Posted on <span id="post-date">2014-04-02 11:09</span> <a href="http://www.cnblogs.com/HondaHsu/">xuzhengzhu</a> 阅读(<span id="post_view_count">50325</span>) 评论(<span id="post_comment_count">1</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=3640180" rel="nofollow">编辑</a> <a href="#">收藏</a>
+			<script type="text/javascript">/* Code removed by ScrapBook */</script>
+			
+		</div>
+		<div class="postbody"><div id="cnblogs_post_body"><p><span style="font-family: 宋体;"><span style="line-height: 1.6em;">　　首先，MySQL的字符集问题主要是两个概念，一个是Character Sets，一个是Collations，前者是字符内容<br>及编码，后者是对前者进行比较操作的一些规则。这两个参数集<span style="color: rgb(0, 0, 255);"><strong>可以在数据库实例、单个数据库、表、列等四个级</strong></span><br><span style="color: rgb(0, 0, 255);"><strong>别</strong></span>指定。</span></span></p>
+<p><span style="font-family: 宋体;"><span style="line-height: 1.6em;"><span style="line-height: 1.6em;">　　对于使用者来说，一般推荐使用utf8编码来存储数据。而要解决乱码问题，不单单是MySQL数据的存储问题，还<br>和用户的程序文件的编码方式、用户程序和MySQL数据库的连接方式都有关系。</span><br style="word-wrap: break-word;"><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">首先，MySQL有默认的字符集，这个是安装的时候确定的，在编译MySQL的时候可以通过DEFAULT_CHARSET=<br>utf8和DEFAULT_COLLATION=utf8_general_ci这两个参数（MySQL5.5版本，5.1版本用--with-charset=<br>utf8 --with-collation=utf8_general_ci）来指定默认的字符集为utf8，这也是最一劳永逸的办法，这样指定后，<br>客户端连接到数据库的编码方式也默认是utf8了，应用程序不需要任何处理。</span><br style="word-wrap: break-word;"><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">　　但是遗憾的是，很多人编译安装MySQL的时候没有指定这两个参数，大多数人更是通过二进制程序的方式安装，那<br>么这时候MySQL的默认字符集是latin1。而这时候我们仍然可以指定MySQL的默认字符集，通过my.cnf文件增加<br>两个参数：<br></span>1.在[mysqld]下添加<br>　　default-character-set=utf8（mysql 5.5 版本添加character-set-server=utf8）<br>2.在[client]下添加<br><span style="line-height: 21px;">　　default-character-set=utf8</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">这样我们建数据库建表的时候就不用特别指定utf8的字符集了。配置文件里的这种写法解决了数据存储和比较的问题<br>，但是对客户端的连接是没有作用的，客户端这时候一般需要指定utf8方式连接才能避免乱码。也就是传说总的set<br>&nbsp;names命令。</span><span style="line-height: 1.6em;">事实上，set names utf8命令对应的是服务器端以下几个命令：</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">　　SET character_set_client = utf8;</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">　　SET character_set_results = utf8;</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">　　SET character_set_connection = utf8;</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">　　但这<span style="color: rgb(0, 0, 255);"><strong>三个参数是不能写在配置文件my.cnf里的。只能通过set命令来动态修改</strong></span>。我们需要的是在配置文件里写好一劳<br>永逸的办法。</span><span style="line-height: 1.6em;">那么这时候，是否有在服务端解决问题的办法呢，可行的思路是在init_connect里设置。这个命令在每<br>个普通用户连接上来的时候都会触发执行，可以在[mysqld]部分增加以下一行设置连接字符集：<br></span>在[mysqld]下添加：<br style="word-wrap: break-word;"><span style="line-height: 1.6em;">　　init_connect = 'SET NAMES utf8'</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">总结：</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">1、首选在编译安装MySQL的时候指定两个参数使用utf8编码。</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">2、次选在配置文件my.cnf或my.ini设定两个参数，同时设置init_connect参数。</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">3、第三在配置文件my.cnf或my.ini设定两个参数，同时客户端的连接指定set names命令。</span><br style="word-wrap: break-word;"><span style="line-height: 1.6em;">4、<strong><span style="color: rgb(0, 0, 255);">在配置文件my.cnf里的client和server处加入default-character-set参数方便管理。</span></strong></span></span></span></p>
+<p><span style="font-family: 宋体;">&nbsp;</span></p>
+<div class="cnblogs_code"><span style="font-family: 宋体;"><img id="code_img_closed_eab31e0a-5dd2-405a-b65f-9478aacd258d" class="code_img_closed" src="ContractedBlock.gif" alt=""><img id="code_img_opened_eab31e0a-5dd2-405a-b65f-9478aacd258d" class="code_img_opened" style="display: none;" src="ExpandedBlockStart.gif" alt=""></span>
+<div id="cnblogs_code_open_eab31e0a-5dd2-405a-b65f-9478aacd258d" class="cnblogs_code_hide">
+<pre><span style="font-family: 宋体;"><span style="color: rgb(0, 128, 128);"> 1</span> <span style="color: rgb(0, 128, 128);">--</span><span style="color: rgb(0, 128, 128);">-----客户端----</span>
+<span style="color: rgb(0, 128, 128);"> 2</span> <span style="color: rgb(255, 0, 0);">[</span><span style="color: rgb(255, 0, 0);">client</span><span style="color: rgb(255, 0, 0);">]</span>
+<span style="color: rgb(0, 128, 128);"> 3</span> no<span style="color: rgb(128, 128, 128);">-</span><span style="color: rgb(0, 0, 0);">beep
+</span><span style="color: rgb(0, 128, 128);"> 4</span> 
+<span style="color: rgb(0, 128, 128);"> 5</span> # <span style="color: rgb(0, 0, 255);">pipe</span>
+<span style="color: rgb(0, 128, 128);"> 6</span> # socket<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">mysql
+</span><span style="color: rgb(0, 128, 128);"> 7</span> port<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(128, 0, 0); font-weight: bold;">3306</span>
+<span style="color: rgb(0, 128, 128);"> 8</span> 
+<span style="color: rgb(0, 128, 128);"> 9</span> <span style="color: rgb(255, 0, 0);">[</span><span style="color: rgb(255, 0, 0);">mysql</span><span style="color: rgb(255, 0, 0);">]</span>
+<span style="color: rgb(0, 128, 128);">10</span> 
+<span style="color: rgb(0, 128, 128);">11</span> <span style="color: rgb(0, 0, 255);">default</span><span style="color: rgb(128, 128, 128);">-</span><span style="color: rgb(0, 0, 255);">character</span><span style="color: rgb(128, 128, 128);">-</span><span style="color: rgb(0, 0, 255);">set</span><span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">gb2312
+</span><span style="color: rgb(0, 128, 128);">12</span> 
+<span style="color: rgb(0, 128, 128);">13</span> <span style="color: rgb(0, 128, 128);">--</span><span style="color: rgb(0, 128, 128);">---服务器----</span>
+<span style="color: rgb(0, 128, 128);">14</span> 
+<span style="color: rgb(0, 128, 128);">15</span> # The <span style="color: rgb(0, 0, 255);">default</span> <span style="color: rgb(0, 0, 255);">character</span> <span style="color: rgb(0, 0, 255);">set</span> that will be used <span style="color: rgb(0, 0, 255);">when</span> a new <span style="color: rgb(0, 0, 255);">schema</span> <span style="color: rgb(128, 128, 128);">or</span> <span style="color: rgb(0, 0, 255);">table</span> <span style="color: rgb(0, 0, 255);">is</span>
+<span style="color: rgb(0, 128, 128);">16</span> # created <span style="color: rgb(128, 128, 128);">and</span> no <span style="color: rgb(0, 0, 255);">character</span> <span style="color: rgb(0, 0, 255);">set</span> <span style="color: rgb(0, 0, 255);">is</span><span style="color: rgb(0, 0, 0);"> defined
+</span><span style="color: rgb(0, 128, 128);">17</span> <span style="color: rgb(0, 0, 255);">character</span><span style="color: rgb(128, 128, 128);">-</span><span style="color: rgb(0, 0, 255);">set</span><span style="color: rgb(128, 128, 128);">-</span>server<span style="color: rgb(128, 128, 128);">=</span>gb2312</span></pre>
+</div>
+<span class="cnblogs_code_collapse" style="font-family: 宋体;">更改my.ini文件client、server的字符集</span></div>
+<p style="margin-left: 30px;"><span style="font-family: 宋体;">1.service mysqld stop,停用mysql。</span></p>
+<p style="margin-left: 30px;" align="left"><span style="font-family: 宋体;">2.cp /etc/my.cnf /etc/my.cnf.bak,修改前做备份，这是个好习惯。</span></p>
+<p style="margin-left: 30px;" align="left"><span style="font-family: 宋体;"><strong>修改my.cnf或my.ini(只有修改配置文件，并重启服务器，才能永久生效)<br></strong>vi /etc/my.cnf</span><br><span style="font-family: 宋体;">在[client]下添加，client为控制客户端的，没试过，没有的可以不需要加。</span><br><span style="font-family: 宋体;">default-character-set=utf8</span><br><span style="font-family: 宋体;">在[mysqld]下添加，mysqld为控制服务器端的，改过了，OK。</span><br><span style="font-family: 宋体;">default-character-set=utf8</span></p>
+<p style="margin-left: 30px;" align="left"><span style="font-family: 宋体;">3.service mysqld restart，重启。</span></p>
+<p style="margin-left: 30px;" align="left"><span style="font-family: 宋体;">4.show variables like '%char%';查看。</span></p>
+<p align="left"><span style="font-family: 宋体;">&nbsp;</span></p>
+<p style="margin-left: 30px;"><span style="font-family: 宋体;">以下为网络转载，比较全。</span></p>
+<p style="margin-left: 30px;"><span style="font-family: 宋体;">//////////////////////////////////////////</span></p>
+<p style="margin-left: 30px;"><span style="font-family: 宋体;">查看mysql字符集MySQL 乱码的根源是的 MySQL 字符 </span></p>
+<div id="app-share-container">
+<div id="app-share-content">
+<h3><span style="color: rgb(0, 0, 255); font-family: 宋体;">ubuntu 10.04 mySql 启动，停止，重启</span></h3>
+<div class="blog_content" style="margin-left: 30px;"><span style="font-family: 宋体;">启动：sudo /etc/init.d/mysql start </span><br><span style="font-family: 宋体;">停止：sudo /etc/init.d/mysql stop </span><br><span style="font-family: 宋体;">重启：sudo /etc/init.d/mysql restart</span></div>
+
+
+<br>
+<p><span style="color: rgb(56, 118, 29); font-family: 宋体; font-size: medium;"><span style="color: rgb(255, 1, 2);">　　注意：从windows下拷贝过来的文件在linux下不能直接加入数据库，因为字符集不一样，这样打开即使显示是中文也不能在数据库中显示，要把文件拷贝进linux的另一个文件中转换字符才可以。</span><br></span></p>
+<p><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;">　　MySQL 乱码的根源是的 MySQL 字符集设置不当的问题，本文汇总了有关查看 MySQL 字符集的命令。包括查看 MySQL 数据库服务器字符集、查看 MySQL 数据库字符集，以及数据表和字段的字符集、当前安装的 MySQL 所支持的字符集等。 </span></p>
+<p><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;">一、查看 MySQL 数据库服务器和数据库字符集。 </span></p>
+<pre class="cmdcode"><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;"><span style="font-size: medium;">　mysql&gt; show variables like '%char%';</span><br></span></pre>
+<p><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;">二、查看 MySQL 数据表（table） 的字符集。 </span></p>
+<pre class="cmdcode"><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;">　mysql&gt; show table status from sqlstudy_db like '%countries%';<br></span></pre>
+<p><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;">三、查看 MySQL 数据列（column）的字符集。 </span></p>
+<pre class="cmdcode"><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;">　mysql&gt; show full columns from countries;<br></span></pre>
+<p><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;">四、查看当前安装的 MySQL 所支持的字符集。 </span></p>
+<p><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;">　　mysql&gt; show charset;</span></p>
+<p><span style="color: rgb(0, 0, 0); font-family: 宋体; font-size: medium;">　　mysql&gt; show char set;<br></span></p>
+<p><span style="color: rgb(0, 0, 0); font-family: 宋体;"><span style="font-size: medium;">以上查看 MySQL 字符集命令，适用于 Windows &amp; Linux。&nbsp;<br></span>&nbsp;</span></p>
+
+<span style="font-family: 宋体;"><span style="color: rgb(0, 0, 0);">
+<span style="font-size: medium;">1.查找MySQL的cnf文件的位置</span><span style="font-size: medium;"><br></span><span style="font-size: medium;">　　find / -iname '*.cnf' -print</span><span style="font-size: medium;"><br><br>　　/usr/share/mysql/my-innodb-heavy-4G.cnf</span> </span><span style="color: rgb(56, 118, 29); font-size: medium;"><br><span style="color: rgb(0, 0, 0);">　　/usr/share/mysql/my-large.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/mysql/my-small.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/mysql/my-medium.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/mysql/my-huge.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/texmf/web2c/texmf.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/texmf/web2c/mktex.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/texmf/web2c/fmtutil.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/texmf/tex/xmltex/xmltexfmtutil.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/texmf/tex/jadetex/jadefmtutil.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/doc/MySQL-server-community-5.1.22/my-innodb-heavy-4G.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/doc/MySQL-server-community-5.1.22/my-large.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/doc/MySQL-server-community-5.1.22/my-small.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/doc/MySQL-server-community-5.1.22/my-medium.cnf</span><br><span style="color: rgb(0, 0, 0);">　　/usr/share/doc/MySQL-server-community-5.1.22/my-huge.cnf</span><br></span></span></div>
+<div><span style="font-family: 宋体;"><span style="color: rgb(56, 118, 29); font-size: medium;"><br>2. </span></span><span style="color: rgb(56, 118, 29); font-size: medium;"><span style="color: rgb(0, 0, 0);">拷贝 small.cnf、my-medium.cnf、my-huge.cnf、my-innodb-heavy-4G.cnf其中的一个到/etc下，命名为my.cnf</span></span><span style="color: rgb(0, 0, 0);"> <span style="font-size: medium;"><br>　　cp /usr/share/mysql/my-medium.cnf /etc/my.cnf<br><br></span><span style="font-size: medium;">3. 修改my.cnf 或my.ini(5.6版本)</span><span style="font-size: medium;"><br>vi /etc/my.cnf<br>在[client]下添加<br>　　default-character-set=utf8<br>在[mysqld]下添加<br>　　default-character-set=utf8<br><br>4.重新启动MySQL</span> <span style="font-size: medium;"><br>　　[root@bogon ~]# /etc/rc.d/init.d/mysql restart<br>　　Shutting down MySQL&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;[ 确定 ]<br>　　Starting MySQL.&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;[ 确定 ]<br>　　[root@bogon ~]# mysql -u root -p<br>　　Enter password:<br>　　Welcome to the MySQL monitor. Commands end with ; or \g.<br>　　Your MySQL connection id is 1<br>　　Server version: 5.1.22-rc-community-log MySQL Community Edition (GPL)<br>　　Type 'help;' or '\h' for help. Type '\c' to clear the buffer.<br><br></span><span style="font-size: medium;"><br><strong>其他的一些设置方法：</strong></span> <span style="font-size: medium;"><br><strong>如 通过配置文件修改:</strong></span> <span style="font-size: medium;"><br>修改/var/lib/mysql/mydb/db.opt<br>　　default-character-set=latin1<br>　　default-collation=latin1_swedish_ci<br>为<br>　　default-character-set=utf8<br>　　default-collation=utf8_general_ci<br></span><span style="font-size: medium;">重起MySQL:</span><span style="font-size: medium;"><br>　　[root@bogon ~]# /etc/rc.d/init.d/mysql restart<br><br><strong>通过MySQL命令行修改:</strong></span> <span style="font-size: medium;"><br></span></span>
+<div class="cnblogs_code"><span style="font-family: 宋体;"><img id="code_img_closed_58bb1514-6efb-47fd-bd0d-8431488690a7" class="code_img_closed" src="ContractedBlock.gif" alt=""><img id="code_img_opened_58bb1514-6efb-47fd-bd0d-8431488690a7" class="code_img_opened" style="display: none;" src="ExpandedBlockStart.gif" alt=""></span>
+<div id="cnblogs_code_open_58bb1514-6efb-47fd-bd0d-8431488690a7" class="cnblogs_code_hide">
+<pre><span style="font-family: 宋体;"><span style="color: rgb(0, 128, 128);">1</span> mysql<span style="color: rgb(128, 128, 128);">&gt;</span> <span style="color: rgb(0, 0, 255);">set</span> character_set_client<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">utf8;
+</span><span style="color: rgb(0, 128, 128);">2</span> mysql<span style="color: rgb(128, 128, 128);">&gt;</span> <span style="color: rgb(0, 0, 255);">set</span> character_set_connection<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">utf8;
+</span><span style="color: rgb(0, 128, 128);">3</span> mysql<span style="color: rgb(128, 128, 128);">&gt;</span> <span style="color: rgb(0, 0, 255);">set</span> character_set_database<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">utf8;
+</span><span style="color: rgb(0, 128, 128);">4</span> mysql<span style="color: rgb(128, 128, 128);">&gt;</span> <span style="color: rgb(0, 0, 255);">set</span> character_set_results<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">utf8;
+</span><span style="color: rgb(0, 128, 128);">5</span> mysql<span style="color: rgb(128, 128, 128);">&gt;</span> <span style="color: rgb(0, 0, 255);">set</span> character_set_server<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">utf8;
+</span><span style="color: rgb(0, 128, 128);">6</span> mysql<span style="color: rgb(128, 128, 128);">&gt;</span> <span style="color: rgb(0, 0, 255);">set</span> character_set_system<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">utf8;
+</span><span style="color: rgb(0, 128, 128);">7</span> mysql<span style="color: rgb(128, 128, 128);">&gt;</span> <span style="color: rgb(0, 0, 255);">set</span> collation_connection<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">utf8;
+</span><span style="color: rgb(0, 128, 128);">8</span> mysql<span style="color: rgb(128, 128, 128);">&gt;</span> <span style="color: rgb(0, 0, 255);">set</span> collation_database<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">utf8;
+</span><span style="color: rgb(0, 128, 128);">9</span> mysql<span style="color: rgb(128, 128, 128);">&gt;</span> <span style="color: rgb(0, 0, 255);">set</span> collation_server<span style="color: rgb(128, 128, 128);">=</span>utf8;</span></pre>
+</div>
+<span class="cnblogs_code_collapse" style="font-family: 宋体;">更改客户端、服务器、数据库字符集的命令</span></div>
+<p><span style="font-family: 宋体;">&nbsp;</span></p>
+</div>
+</div>
+<div class="cnblogs_code"><span style="font-family: 宋体;"><img id="code_img_closed_6da54e54-59cb-413c-83a4-624be31efc9c" class="code_img_closed" src="ContractedBlock.gif" alt=""><img id="code_img_opened_6da54e54-59cb-413c-83a4-624be31efc9c" class="code_img_opened" style="display: none;" src="ExpandedBlockStart.gif" alt=""></span>
+<div id="cnblogs_code_open_6da54e54-59cb-413c-83a4-624be31efc9c" class="cnblogs_code_hide">
+<pre><span style="font-family: 宋体;"><span style="color: rgb(0, 128, 128);">1</span> show variables <span style="color: rgb(128, 128, 128);">like</span> <span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);">collation_%</span><span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">;
+</span><span style="color: rgb(0, 128, 128);">2</span> show variables <span style="color: rgb(128, 128, 128);">like</span> <span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);">character_set_%</span><span style="color: rgb(255, 0, 0);">'</span>;</span></pre>
+</div>
+<span class="cnblogs_code_collapse" style="font-family: 宋体;">1.查看字符集</span></div>
+<p><span style="font-family: 宋体;">&nbsp;</span></p>
+<div class="cnblogs_code"><span style="font-family: 宋体;"><img id="code_img_closed_5f9bc3f8-08b3-4d4c-8668-211704e0425b" class="code_img_closed" src="ContractedBlock.gif" alt=""><img id="code_img_opened_5f9bc3f8-08b3-4d4c-8668-211704e0425b" class="code_img_opened" style="display: none;" src="ExpandedBlockStart.gif" alt=""></span>
+<div id="cnblogs_code_open_5f9bc3f8-08b3-4d4c-8668-211704e0425b" class="cnblogs_code_hide">
+<pre><span style="font-family: 宋体;"><span style="color: rgb(0, 128, 128);">1</span> <span style="color: rgb(0, 128, 128);">--</span><span style="color: rgb(0, 128, 128);">-1.修改数据库字符集</span>
+<span style="color: rgb(0, 128, 128);">2</span> <span style="color: rgb(0, 0, 255);">alter</span> <span style="color: rgb(0, 0, 255);">database</span> mini <span style="color: rgb(0, 0, 255);">default</span> <span style="color: rgb(0, 0, 255);">character</span> <span style="color: rgb(0, 0, 255);">set</span> <span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);"> gb2312; 
+</span><span style="color: rgb(0, 128, 128);">3</span> <span style="color: rgb(0, 128, 128);">--</span><span style="color: rgb(0, 128, 128);">--2.创建数据库设置字符集</span>
+<span style="color: rgb(0, 128, 128);">4</span> <span style="color: rgb(0, 0, 255);">create</span> <span style="color: rgb(0, 0, 255);">database</span> mydb <span style="color: rgb(0, 0, 255);">character</span> <span style="color: rgb(0, 0, 255);">set</span> gb2312;</span></pre>
+</div>
+<span class="cnblogs_code_collapse" style="font-family: 宋体;">设置数据库字符集</span></div>
+<p><span style="font-family: 宋体;">&nbsp;</span></p>
+<div class="cnblogs_code"><span style="font-family: 宋体;"><img id="code_img_closed_da8b6e6f-8004-4975-9905-2b3130cfe16c" class="code_img_closed" src="ContractedBlock.gif" alt=""><img id="code_img_opened_da8b6e6f-8004-4975-9905-2b3130cfe16c" class="code_img_opened" style="display: none;" src="ExpandedBlockStart.gif" alt=""></span>
+<div id="cnblogs_code_open_da8b6e6f-8004-4975-9905-2b3130cfe16c" class="cnblogs_code_hide">
+<pre><span style="font-family: 宋体;"><span style="color: rgb(0, 128, 128);">1</span> <span style="color: rgb(0, 0, 255);">alter</span> <span style="color: rgb(0, 0, 255);">table</span> pub_logs <span style="color: rgb(0, 0, 255);">default</span> <span style="color: rgb(0, 0, 255);">character</span> <span style="color: rgb(0, 0, 255);">set</span> <span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);"> gb2312; 
+</span><span style="color: rgb(0, 128, 128);">2</span> <span style="color: rgb(0, 0, 255);">alter</span> <span style="color: rgb(0, 0, 255);">table</span> pub_logs <span style="color: rgb(255, 0, 255);">convert</span> <span style="color: rgb(0, 0, 255);">to</span> <span style="color: rgb(0, 0, 255);">character</span> <span style="color: rgb(0, 0, 255);">set</span> gb2312;</span></pre>
+</div>
+<span class="cnblogs_code_collapse" style="font-family: 宋体;">3.修改单个表字符集</span></div>
+<p><span style="font-family: 宋体;">&nbsp;</span></p>
+<div class="cnblogs_code"><span style="font-family: 宋体;"><img id="code_img_closed_4c9a8a37-1920-42d9-8d73-2ac37aba1b15" class="code_img_closed" src="ContractedBlock.gif" alt=""><img id="code_img_opened_4c9a8a37-1920-42d9-8d73-2ac37aba1b15" class="code_img_opened" style="display: none;" src="ExpandedBlockStart.gif" alt=""></span>
+<div id="cnblogs_code_open_4c9a8a37-1920-42d9-8d73-2ac37aba1b15" class="cnblogs_code_hide">
+<pre><span style="font-family: 宋体;"><span style="color: rgb(0, 128, 128);">1</span> <span style="color: rgb(0, 0, 255);">SELECT</span> a.TABLE_TYPE,CONCAT(<span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);">alter TABLE </span><span style="color: rgb(255, 0, 0);">'</span>,A.TABLE_NAME,<span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);"> default character set = gb2312;</span><span style="color: rgb(255, 0, 0);">'</span>)  <span style="color: rgb(0, 0, 255);">FROM</span><span style="color: rgb(0, 0, 0);"> INFORMATION_SCHEMA.TABLES A
+</span><span style="color: rgb(0, 128, 128);">2</span> <span style="color: rgb(0, 0, 255);">WHERE</span> A.TABLE_SCHEMA<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);">MINI</span><span style="color: rgb(255, 0, 0);">'</span>
+<span style="color: rgb(0, 128, 128);">3</span> <span style="color: rgb(128, 128, 128);">AND</span> a.TABLE_TYPE<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);">BASE TABLE</span><span style="color: rgb(255, 0, 0);">'</span>
+<span style="color: rgb(0, 128, 128);">4</span> ;</span></pre>
+</div>
+<span class="cnblogs_code_collapse" style="font-family: 宋体;">4.生成批量更改表字符集</span></div>
+<p><span style="font-family: 宋体;">&nbsp;</span></p>
+<div class="cnblogs_code"><span style="font-family: 宋体;"><img id="code_img_closed_253952e1-cf45-4a8b-8062-3d06832a06fd" class="code_img_closed" src="ContractedBlock.gif" alt=""><img id="code_img_opened_253952e1-cf45-4a8b-8062-3d06832a06fd" class="code_img_opened" style="display: none;" src="ExpandedBlockStart.gif" alt=""></span>
+<div id="cnblogs_code_open_253952e1-cf45-4a8b-8062-3d06832a06fd" class="cnblogs_code_hide">
+<pre><span style="font-family: 宋体;"><span style="color: rgb(0, 128, 128);">1</span> <span style="color: rgb(0, 0, 255);">SELECT</span> CONCAT(CONCAT(CONCAT(<span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);">alter TABLE </span><span style="color: rgb(255, 0, 0);">'</span>,c.TABLE_NAME,<span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);"> modify</span><span style="color: rgb(255, 0, 0);">'</span>),CONCAT(<span style="color: rgb(255, 0, 0);">'</span> <span style="color: rgb(255, 0, 0);">'</span>,C.COLUMN_NAME,<span style="color: rgb(255, 0, 0);">'</span> <span style="color: rgb(255, 0, 0);">'</span>),C.COLUMN_TYPE),<span style="color: rgb(255, 0, 0);">'</span> <span style="color: rgb(255, 0, 0);">'</span>,<span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);"> character set gb2312 COLLATE gb2312_chinese_ci;</span><span style="color: rgb(255, 0, 0);">'</span>) <span style="color: rgb(0, 0, 255);">AS</span><span style="color: rgb(0, 0, 0);"> CLOU
+</span><span style="color: rgb(0, 128, 128);">2</span> <span style="color: rgb(0, 0, 255);">FROM</span> 
+<span style="color: rgb(0, 128, 128);">3</span> <span style="color: rgb(0, 0, 0);">INFORMATION_SCHEMA.COLUMNS C,INFORMATION_SCHEMA.TABLES A
+</span><span style="color: rgb(0, 128, 128);">4</span> <span style="color: rgb(0, 0, 255);">WHERE</span> c.TABLE_SCHEMA<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);">MINI</span><span style="color: rgb(255, 0, 0);">'</span>
+<span style="color: rgb(0, 128, 128);">5</span>   <span style="color: rgb(128, 128, 128);">AND</span> A.TABLE_NAME<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(0, 0, 0);">c.TABLE_NAME
+</span><span style="color: rgb(0, 128, 128);">6</span>   <span style="color: rgb(128, 128, 128);">AND</span> A.TABLE_TYPE<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);">BASE TABLE</span><span style="color: rgb(255, 0, 0);">'</span>
+<span style="color: rgb(0, 128, 128);">7</span>   <span style="color: rgb(128, 128, 128);">AND</span> c.DATA_TYPE<span style="color: rgb(128, 128, 128);">=</span><span style="color: rgb(255, 0, 0);">'</span><span style="color: rgb(255, 0, 0);">varchar</span><span style="color: rgb(255, 0, 0);">'</span>
+<span style="color: rgb(0, 128, 128);">8</span>   ;</span></pre>
+</div>
+<span class="cnblogs_code_collapse" style="font-family: 宋体;">5.生成批量更改列字符集</span></div>
+<p><span style="font-family: 宋体;">&nbsp;</span></p>
+<p><span style="font-family: 宋体;">&nbsp;</span></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/HondaHsu/category/563395.html" target="_blank">MySQL 开发基础</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/HondaHsu/tag/MySQL%E5%AD%97%E7%AC%A6%E9%9B%86/">MySQL字符集</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a id="green_channel_digg">好文要顶</a>
+            <a id="green_channel_follow">关注我</a>
+    <a id="green_channel_favorite">收藏该文</a>
+    <a id="green_channel_weibo" title="分享至新浪微博"><img src="icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" title="分享至微信"><img src="wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/HondaHsu/" target="_blank"><img src="20150215155135.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/HondaHsu/">xuzhengzhu</a><br>
+            <a href="http://home.cnblogs.com/u/HondaHsu/followees">关注 - 4</a><br>
+            <a href="http://home.cnblogs.com/u/HondaHsu/followers">粉丝 - 158</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a>+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">2</span>
+    </div>
+    <div class="buryit">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/HondaHsu/p/3621490.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/HondaHsu/p/3621490.html" title="发布于2014-03-24 18:01">MySQL基础之第18章 性能优化</a><br><a href="http://www.cnblogs.com/HondaHsu/p/3641116.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/HondaHsu/p/3641116.html" title="发布于2014-04-02 17:08">MySQL与Oracle 差异比较之一数据类型</a><br></div>
+</div>
+
+</div>
+	</div></div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<h3>Feedback</h3>
+	
+			<div class="post">
+				<div class="posthead">
+					<h2>
+						<a href="#3348604" class="layer">#1楼</a><a name="3348604" id="comment_anchor_3348604"></a><span id="comment-maxId" style="display: none;">3348604</span><span id="comment-maxDate" style="display: none;">2016/1/15 16:38:21</span>
+						&nbsp;&nbsp;<span class="comment_actions"></span>
+					</h2>
+					 <span class="comment_date">2016-01-15 16:38</span> by <a id="a_comment_author_3348604" href="http://home.cnblogs.com/u/882074/" target="_blank">carlos444_444</a> <a href="http://msg.cnblogs.com/send/carlos444_444" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+				</div>
+				<div class="postbody"><div id="comment_body_3348604" class="blog_comment_body">请问博主，能不能给您的第四个生成批量改表字符集的例子，用一个实际的例子来说明。我很需要这个命令，但是我看得不太明白。比如说，我的数据库是otrs，下面很多表，为table1,table2,table3。我如何写这个实际的命令呢？真心求教。</div><div class="comment_vote"><a class="comment_digg">支持(0)</a><a class="comment_bury">反对(0)</a></div></div>
+			</div>
+		<div id="comments_pager_bottom"></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" class="underline">登录</a> 或 <a rel="nofollow" class="underline">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://rongcloud.cn/reports/journal2" target="_blank">【推荐】融云发布 App 社交化白皮书 IM 提升活跃超 8 倍</a><br><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank">【推荐】自开发 零实施的BPM</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block">     <ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-4210569241504288" data-ad-slot="5457903683"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_8.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/561510/" target="_blank">要看穿AI的内心戏？人类要走的路还长着呢</a><br> ·  <a href="http://news.cnblogs.com/n/561513/" target="_blank">终被抛弃 任天堂宣布Wii U平台再无第一方游戏</a><br> ·  <a href="http://news.cnblogs.com/n/561512/" target="_blank">特斯拉推狂暴Plus模式 加速成绩反超FF91电动车0.001秒</a><br> ·  <a href="http://news.cnblogs.com/n/561508/" target="_blank">阮一峰：未来的娱乐业</a><br> ·  <a href="http://news.cnblogs.com/n/561507/" target="_blank">ofo联合创始人：共享单车行业混战今年会到终局</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank"><img src="24442-20170118152220281-363324784.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/554260/" target="_blank">「代码家」的学习过程和学习经验分享</a><br> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="FooterCell">
+			
+<p id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family: Verdana; font-size: 12px;">博客园</a>
+	<br>
+	Copyright © xuzhengzhu
+</p>
+
+		</td>
+	</tr>
+</tbody></table>
+
+
+
+<iframe src="index_9.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_4385554496432"></iframe></body>
+</html>

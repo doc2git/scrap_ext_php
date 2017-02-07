@@ -1,0 +1,47 @@
+/* Code tidied up by ScrapBook */
+@import url("layout.css");
+@import url("page.css");
+* { padding: 0px; margin: 0px; }
+html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+body { font: 12px Verdana,Arial,Tahoma; }
+img { border: medium none; }
+a { color: rgb(37, 110, 177); text-decoration: none; }
+a:hover { color: rgb(186, 38, 54); text-decoration: underline; }
+ul { list-style: outside none none; }
+input, select, button { font: 12px Verdana,Arial,Tahoma; vertical-align: middle; }
+.center { margin: 0px auto; }
+.w960 { width: 960px; }
+.mt1 { margin-top: 8px; }
+.pright .mt1 { margin-top: 0px; }
+.clear { overflow: hidden; }
+.header { width: 960px; margin: auto; overflow: hidden; }
+.header_top { height: 25px ! important; line-height: 25px; border-bottom: 1px solid rgb(219, 219, 219); color: rgb(103, 103, 103); overflow: hidden; background: transparent url("green_skin.png") repeat-x scroll 0px -188px; }
+.header_top .time { float: left; padding-left: 10px; }
+.header_top .toplinks { float: right; text-align: right; }
+.header_top .toplinks a { margin: 0px 5px; }
+.header a { color: rgb(119, 119, 119); }
+.header a:hover { color: rgb(255, 51, 51); text-decoration: none; }
+.header .top { clear: both; overflow: hidden; margin-top: 10px; }
+.header .title { float: left; padding-left: 10px; }
+.header .banner { width: 500px; height: 60px; float: left; margin-left: 20px; overflow: hidden; }
+.header .banner2 { width: 200px; height: 60px; float: left; margin-left: 10px; overflow: hidden; }
+.header .banner2 img { width: 200px; height: 60px; display: block; }
+.module, .module .mid { overflow: hidden; }
+.module .top span {  }
+.module .top, .module .top .t_l, .module .top .t_r, .module .bottom, .module .bottom .b_l, .module .bottom .b_r { background-image: url("green_skin.png"); }
+.blue .top { background-position: 0px -72px; background-repeat: repeat-x; }
+.w963 { width: 960px; }
+#navMenu { width: 915px; overflow: hidden; height: 28px; padding: 8px 0px 0px 15px; }
+#navMenu ul { float: left; height: 22px; }
+#navMenu ul li { font: 14px/1.5 "Microsoft YaHei","微软雅黑","Microsoft JhengHei","宋体"; float: left; height: 22px; margin-right: 10px; margin-left: -3px; padding-left: 10px; }
+#navMenu ul li a { color: rgb(255, 255, 255); height: 22px; text-decoration: none; display: inline-block; position: relative; }
+#navMenu ul li span { cursor: pointer; display: inline-block; height: 22px; line-height: 20px; margin: 0px 0px 0px 5px; padding: 0px 5px 0px 0px; text-align: center; vertical-align: middle; font-weight: bold; color: rgb(235, 245, 233); }
+#navMenu ul li.hover { padding-top: 0px; }
+#navMenu ul li.hover a { display: inline-block; position: relative; }
+#navMenu ul li.hover span { cursor: pointer; display: inline-block; height: 22px; line-height: 20px; margin: 0px 0px 0px 5px; padding: 0px 5px 0px 0px; text-align: center; vertical-align: middle; }
+#navMenu ul li a.hover, #navMenu ul li a:hover { text-decoration: none; color: rgb(222, 255, 1); display: inline-block; position: relative; }
+#navMenu ul li a.hover span, #navMenu ul li a:hover span { cursor: pointer; display: inline-block; height: 22px; color: rgb(222, 255, 1); line-height: 20px; margin: 0px 0px 0px 5px; padding: 0px 5px 0px 0px; text-align: center; vertical-align: middle; }
+.footer { margin: 8px auto auto; color: rgb(153, 153, 153); text-align: center; padding-bottom: 10px; border-top: 1px solid rgb(229, 239, 214); padding-top: 10px; }
+.footer .powered { font-size: 10px; line-height: 25px; }
+.footer .powered strong { color: rgb(102, 153, 0); }
+.footer .copyright { color: rgb(102, 102, 102); line-height: 23px; }

@@ -1,0 +1,24 @@
+/* Code tidied up by ScrapBook */
+html { font-family: "DejaVu Sans","Liberation Sans",serif; font-size: 11pt; text-align: left; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+body { margin: 1.5cm; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+a, a:visited, a.nonexistent, a.badinterwiki { color: black; text-decoration: none; }
+a:hover, a:active { text-decoration: underline; }
+.info a { color: gray; }
+#page pre { white-space: pre-wrap; font-size: 10pt; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: medium none; }
+#page tt { font-family: "DejaVu Sans Mono","Liberation Mono",monospace; white-space: pre; }
+#header, #sidebar, #footer, #timings, #credits, #interwiki, #pagelocation { display: none; }
+.lmimg { width: 1%; border-width: 1px medium 1px 1px; border-style: solid none solid solid; border-color: rgb(204, 204, 204) -moz-use-text-color rgb(204, 204, 204) rgb(204, 204, 204); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; color: rgb(0, 0, 0); padding: 1em 0px 1em 1em; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.lmtxt { width: 99%; border-width: 1px 1px 1px medium; border-style: solid solid solid none; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(204, 204, 204) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; color: rgb(0, 0, 0); padding: 1em 1em 1em 0.5em; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#page td > p { margin: 0.5em ! important; }
+td { border: 1pt solid rgb(204, 204, 204); }
+#page ul, #page ol { padding-left: 0.5em; margin-left: 3em; margin-bottom: 0.3em; }
+#page ol { list-style-image: none ! important; }
+#page ul li { padding-left: 0em; margin-bottom: 0.3em; }
+#page ol li { padding-left: 0em; margin-bottom: 0.3em; }
+#page ul ul, #page ul ol, #page ol ul, #page ol ol { margin-left: 1.5em; margin-top: 0.3em; }
+#page ul li p, #page ol li p { margin-bottom: 0.3em; line-height: 1.5em; margin-left: 0px ! important; }
+#page h1 { line-height: 1.9em; margin: 0px 0px 0.9em; }
+#page h2 { line-height: 1.8em; margin: 1.6em 0px 0.8em; }
+#page .table-of-contents-heading { line-height: 1.8em; margin: 0px 0px 10px; }
+#page h3 { line-height: 1.6em; margin-top: 0.5em; }
+.table-of-contents { border: medium none; background: transparent none repeat scroll 0% 0%; }

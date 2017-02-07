@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><script src="about:blank"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>centos 7 安装音乐播放器（亲测可用） - Innocence&amp;Bodhi - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-Valentine.css">
+<link type="text/css" rel="stylesheet" href="219231.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="bundle-Valentine-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/boyiliushui/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/boyiliushui/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/boyiliushui/wlwmanifest.xml">
+<script src="about:blank" type="text/javascript"></script>  
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script>
+<script type="text/x-mathjax-config;executed=true">/* Code removed by ScrapBook */</script><script src="about:blank" type="text/javascript"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+#MathJax_Message { position: fixed; left: 1px; bottom: 2px; background-color: rgb(230, 230, 230); border: 1px solid rgb(149, 149, 149); margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap; }
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style></head>
+<body><div style="display: none;" id="MathJax_Message"></div>
+<a name="top"></a>
+
+<!--done-->
+<table cellpadding="0" cellspacing="0" align="center" border="0" width="100%">
+<tbody><tr>
+	<td background="banner1.gif" width="184"></td>
+	<td background="banner.gif">
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/boyiliushui/">Innocence&amp;Bodhi</a><br>
+		<span style="font-size: 12px; color: rgb(67, 113, 166);"></span>
+	</div>
+</div>
+</td>
+	<td background="banner2.gif" width="295"></td>
+</tr>
+</tbody></table>
+<div id="mylinks">
+<!--done-->
+<a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a>&nbsp;&nbsp;&nbsp;<a id="blog_nav_myhome" class="mainmenu" href="http://www.cnblogs.com/boyiliushui/">首页</a>&nbsp;&nbsp;&nbsp;<a id="blog_nav_newpost" class="mainmenu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_NewArticleLink" class="mainmenu" href="http://www.cnblogs.com/EnterMyBlog.aspx?NewArticle=1">新文章</a>&nbsp;&nbsp;&nbsp;<a id="blog_nav_contact" accesskey="9" class="mainmenu" rel="nofollow" href="https://msg.cnblogs.com/send/Innocence%26amp%3BBodhi">联系</a>&nbsp;&nbsp;&nbsp;<a id="blog_nav_rss" class="mainmenu" href="http://www.cnblogs.com/boyiliushui/rss">订阅</a><a id="blog_nav_rss_image" href="http://www.cnblogs.com/boyiliushui/rss"><img src="xml.gif" alt="订阅"></a>&nbsp;&nbsp;&nbsp;<a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a>
+</div>
+<div id="mytopmenu">
+	
+		<div id="mystats">
+			<div id="blog_stats">
+<!--done-->
+<div class="blogStats">
+posts - 116,comments - 0,trackbacks - 0
+
+</div></div></div>
+	
+</div>
+<div id="leftcontent">
+	
+		<div id="leftcontentcontainer">
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a>&lt;</a></td><td align="center">2017年1月</td><td class="CalNextPrev" align="right"><a>&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/boyiliushui/archive/2017/01/01.html"><u>1</u></a></td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td class="CalTodayDay" align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">/* Code removed by ScrapBook */</script><br>
+			
+<!--done-->
+<div class="newsItem">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/boyiliushui/">Innocence&amp;Bodhi</a><br>园龄：<a href="http://home.cnblogs.com/u/boyiliushui/" title="入园时间：2015-03-21">1年9个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/boyiliushui/followers/">1</a><br>关注：<a href="http://home.cnblogs.com/u/boyiliushui/followees/">3</a><div id="p_b_follow"><a>+加关注</a></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+			<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" class="input_my_zzk" type="text">&nbsp;<input value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" class="input_my_zzk" type="text">&nbsp;<input value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/boyiliushui/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/boyiliushui/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/boyiliushui/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/boyiliushui/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/boyiliushui/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<!--done-->
+
+		<h1 class="catListTitle">随笔分类</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_0" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/779556.html">8051(3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_1" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/866565.html">ARM11(15)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_2" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/877744.html">C/C++语言的学习(2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_3" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/813984.html">linux kernel(9)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_4" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/838124.html">linux shell(6)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_5" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/780242.html">linux基本操作(7)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_6" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/779550.html">msp430(12)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_7" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/864916.html">Socket(7)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_8" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/906129.html">数据结构——故地重游(5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_9" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/779547.html">小程序(17)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_0_Link_10" class="listitem" href="http://www.cnblogs.com/boyiliushui/category/794466.html">杂集(3)</a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">随笔档案</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_0" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2017/01.html">2017年1月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_1" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/12.html">2016年12月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_2" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/11.html">2016年11月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_3" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/10.html">2016年10月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_4" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/09.html">2016年9月 (7)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_5" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/08.html">2016年8月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_6" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/07.html">2016年7月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_7" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/06.html">2016年6月 (6)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_8" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/05.html">2016年5月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_9" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/04.html">2016年4月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_10" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/03.html">2016年3月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_11" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/02.html">2016年2月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_12" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2016/01.html">2016年1月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_13" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2015/12.html">2015年12月 (8)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_14" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2015/11.html">2015年11月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_15" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2015/10.html">2015年10月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_16" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2015/09.html">2015年9月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_17" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2015/08.html">2015年8月 (9)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_18" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2015/07.html">2015年7月 (14)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_19" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2015/05.html">2015年5月 (12)</a></li>
+			
+				<li class="catListItem"> <a id="CatList_LinkList_1_Link_20" class="listitem" href="http://www.cnblogs.com/boyiliushui/archive/2015/04.html">2015年4月 (15)</a></li>
+			
+				</ul>
+			
+	
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div style="display: none;" id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"></div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="#">1. centos 7 安装音乐播放器（亲测可用）(595)</a></li><li><a href="http://www.cnblogs.com/boyiliushui/p/4463830.html">2. make 安装问题（make[1]: Leaving directory `/usr/src/libxml2-2.7.6/xstc'）(404)</a></li><li><a href="http://www.cnblogs.com/boyiliushui/p/4704087.html">3. AD转换精度的计算(268)</a></li><li><a href="http://www.cnblogs.com/boyiliushui/p/5742895.html">4. Centos6.5 minicom安装与配置(262)</a></li><li><a href="http://www.cnblogs.com/boyiliushui/p/5046377.html">5. 安装office2013时弹出microsoft setup bootstrapper已停止工作,接着就不能安装了(196)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div style="display: none;" id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div style="display: none;" id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"></div>
+</div></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script></div>
+	
+</div>
+<div id="centercontent">
+	
+<div id="post_detail">
+<!--done-->
+<div class="post">
+	<div class="postTitle">
+		<a id="cb_post_title_url" class="postTitle2" href="#">centos 7 安装音乐播放器（亲测可用）</a>
+	</div>
+	<div id="cnblogs_post_body"><p>方法来源网上，非原创。</p>
+<h2 id="blogTitle0">1. Install the nux repo</h2>
+<pre>&nbsp;$&gt; su -
+ $&gt; yum update # optional but recommanded
+ $&gt; rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+ $&gt; rpm -Uvh https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+ $&gt; rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm<br><br></pre>
+<h2 id="blogTitle1">2. Install the necessary packages</h2>
+<pre>$&gt; sudo yum install vlc</pre></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a id="green_channel_digg">好文要顶</a>
+            <a id="green_channel_follow">关注我</a>
+    <a id="green_channel_favorite">收藏该文</a>
+    <a id="green_channel_weibo" title="分享至新浪微博"><img src="icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" title="分享至微信"><img src="wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/boyiliushui/" target="_blank"><img src="sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/boyiliushui/">Innocence&amp;Bodhi</a><br>
+            <a href="http://home.cnblogs.com/u/boyiliushui/followees">关注 - 3</a><br>
+            <a href="http://home.cnblogs.com/u/boyiliushui/followers">粉丝 - 1</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a>+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/boyiliushui/p/4507309.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/boyiliushui/p/4507309.html" title="发布于2015-05-16 08:14">形如abcde/fghij = n 的表达式(C语言求解)</a><br><a href="http://www.cnblogs.com/boyiliushui/p/4624440.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/boyiliushui/p/4624440.html" title="发布于2015-07-06 20:30">MSP430F149学习之路——LED</a><br></div>
+</div>
+
+
+	<div class="postDesc">posted on <span id="post-date">2015-05-26 14:54</span> <a href="http://www.cnblogs.com/boyiliushui/">Innocence&amp;Bodhi</a> 阅读(<span id="post_view_count">595</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4530625" rel="nofollow">编辑</a> <a href="#">收藏</a></div>
+</div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" class="underline">登录</a> 或 <a rel="nofollow" class="underline">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://rongcloud.cn/reports/journal2" target="_blank">【推荐】融云发布 App 社交化白皮书 IM 提升活跃超 8 倍</a><br><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank">【推荐】自开发 零实施的BPM</a><br><a href="https://group.cnblogs.com/topic/76210.html" target="_blank">【福利】鸡年大吉，阿里云免费送新年福利</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block">     <ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-4210569241504288" data-ad-slot="5457903683"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_15.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/561387/" target="_blank">Snapchat的势头越来越好，替它们投放广告的公司给出了证据</a><br> ·  <a href="http://news.cnblogs.com/n/561386/" target="_blank">扎克伯格为Oculus侵权案出庭，公布了一些从未公开的收购细节</a><br> ·  <a href="http://news.cnblogs.com/n/561385/" target="_blank">余承东回应华为前员工被抓：创业和资本乱了人心</a><br> ·  <a href="http://news.cnblogs.com/n/561384/" target="_blank">富士康拟在深圳为苹果新建工厂 配套苹果中国研发中心</a><br> ·  <a href="http://news.cnblogs.com/n/561383/" target="_blank">特斯拉欲再投资3.5亿在超级电池工厂建立生产线 为Model 3生产电机</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank"><img src="24442-20170118152220281-363324784.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/554260/" target="_blank">「代码家」的学习过程和学习经验分享</a><br> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+
+</div>
+
+<!--done-->
+<div class="footer">
+	
+	Copyright ©2017 Innocence&amp;Bodhi Powered By<a href="http://www.cnblogs.com/">博客园</a> 模板提供：<a href="http://blog.hjenglish.com/">沪江博客</a>
+</div>
+<!--PageEndHtml Block Begin-->
+<script language="javascript" type="text/javascript">/* Code removed by ScrapBook */</script>
+levels of contents
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!--PageEndHtml Block End-->
+
+
+<div id="sideBar" class="sideBar"><div id="sideBarTab"><h2>目录导航</h2></div><div id="sideBarContents" style="display: none;"><dl><dd name="0">1. Install the nux repo</dd><dd name="1">2. Install the necessary packages</dd></dl></div></div></body>
+</html>

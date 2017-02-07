@@ -1,0 +1,61 @@
+/* Code tidied up by ScrapBook */
+body { color: rgb(68, 68, 68); background: rgb(238, 238, 238) url("body-bg.png") repeat-y scroll center center; }
+a { text-decoration: none; color: rgb(68, 68, 68); }
+a:hover { text-decoration: underline; color: rgb(30, 80, 162); }
+.blue, blue a, .box h5 a, .box h6 a, .box a.more, .crumbs a { color: rgb(0, 68, 153); }
+.body-top, .header, .header .logo { background: transparent url("body-top.png") repeat-x scroll left -115px; }
+.body-top { height: 26px; background-color: rgb(238, 238, 238); vertical-align: middle; }
+.body-top .login { float: right; }
+.body-top .content { margin: auto; width: 960px; }
+.header, .main, .footer { width: 960px; margin: 0px auto; overflow: auto; }
+.header { padding: 10px 7px; background-position: left -142px; }
+.header .logo { float: left; background-position: right -10px; background-repeat: no-repeat; padding: 0px 20px 0px 10px; height: 70px; text-align: center; }
+.header .logo a { display: table-cell; vertical-align: middle; text-align: center; height: 70px; float: left; }
+.header .search { float: left; width: 360px; padding-left: 20px; height: 70px; }
+.header .search .tab { padding: 3px 0px; }
+.header .search .bd { background: rgb(237, 237, 237) none repeat scroll 0% 0%; padding: 5px; float: left; }
+.header .banner { overflow: hidden; text-align: right; }
+.header .nav-bar { clear: both; height: 33px; }
+.header .nav-bar, .header .nav-bar map, .header .nav-site, .header .nav-site li.line, .header .subnav { background: transparent url("nav.png") no-repeat scroll 0% 0%; }
+.header .nav-bar map { background-position: right -130px; display: block; }
+.header .nav-site { height: 33px; background-position: left -65px; background-repeat: repeat-x; margin: 0px 5px; padding-left: 5px; }
+.header .nav-site li { float: left; height: 33px; line-height: 33px; padding: 0px 3px; }
+.header .nav-site li a { color: rgb(255, 255, 255); font-size: 13px; font-weight: 700; }
+.header .nav-site li.line { background-position: 2px -215px; padding: 0px; width: 10px; text-indent: -10000px; }
+.header .subnav { padding-left: 16px; border-left: 1px solid rgb(210, 223, 237); border-right: 1px solid rgb(210, 223, 237); background-position: left -33px; background-repeat: repeat-x; height: 32px; line-height: 32px; }
+.header .subnav a { color: rgb(0, 68, 153); }
+.header .subnav span { padding: 0px 3px; color: rgb(200, 216, 233); }
+.main {  }
+.main .col-left { width: 700px; margin-right: 10px; }
+.box { border: 1px solid rgb(195, 212, 231); overflow: auto; padding-bottom: 10px; }
+.box h5, .box h6 { background: transparent url("title.png") no-repeat scroll right top; color: rgb(30, 80, 162); height: 26px; margin-bottom: 10px; line-height: 26px; padding-left: 10px; border-bottom: 1px solid rgb(220, 231, 243); position: relative; }
+.box h5.title-2, .box h6.title-2 { background-position: right -100px; }
+.box .content { padding: 0px 10px; overflow: auto; }
+#announ { height: 22px; line-height: 22px; overflow: hidden; float: left; background: transparent url("icon.png") no-repeat scroll left -461px; padding-left: 20px; }
+.box { background-color: rgb(255, 255, 255); }
+.box .digg { background: transparent url("num_list.png") no-repeat scroll 10px 5px; padding-left: 30px; }
+.box .digg li { height: 24px; line-height: 24px; overflow: hidden; position: relative; }
+.rank li { background: transparent url("uline.gif") repeat-x scroll left top; clear: both; margin-top: -1px; overflow: hidden; }
+.rank li span { float: left; font-family: Arial,Helvetica,sans-serif; font-size: 18px; font-style: italic; height: 58px; color: rgb(30, 80, 162); line-height: 58px; overflow: hidden; padding-right: 10px; text-align: right; width: 60px; background: transparent url("rank.png") no-repeat scroll right 10px; }
+.rank li a.title { padding: 9px 0px 0px; display: block; margin-left: 76px; }
+.list { font-family: "宋体"; color: rgb(136, 136, 136); }
+.list li span { font-size: 12px; padding: 0px 6px; }
+.crumbs { background: transparent url("icon.png") no-repeat scroll left -38px; padding: 3px 0px 3px 18px; font-family: "宋体"; border-bottom: 1px solid rgb(195, 212, 231); margin-bottom: 10px; }
+.crumbs span { color: rgb(126, 126, 126); }
+#Article { overflow: hidden; }
+#Article, .photo-channel .relevance { border: 1px solid rgb(195, 212, 231); padding: 0px 20px; }
+#Article h1 { color: rgb(0, 0, 0); font: 800 26px/30px "宋体",arial; margin-bottom: 3px; text-align: center; padding: 16px 0px 8px; }
+#Article .content { font-size: 14px; }
+#Article .content p { font-size: 14px; line-height: 23px; text-align: justify; word-wrap: break-word; padding: 8px 0px; }
+#Article .related { border-top: 1px dashed rgb(204, 204, 204); margin-top: 15px; }
+#Article .related h5 { padding-bottom: 4px; }
+#Article .related { padding: 10px 0px 0px; }
+#Article .related a { color: rgb(11, 59, 140); }
+.Article-Tool { border: 1px solid rgb(195, 212, 231); position: relative; top: -1px; text-align: right; padding: 8px; vertical-align: middle; height: 15px; background-color: rgb(244, 248, 253); }
+#pages { padding: 14px 0px 10px; font-family: 宋体; }
+.footer p.info {  }
+.footer p.info { color: rgb(102, 102, 102); line-height: 24px; text-align: center; padding: 12px 0px; margin-top: 15px; border-top: 1px solid rgb(219, 231, 237); }
+.footer p.info a { color: rgb(102, 102, 102); }
+.coder-left-hit { width: 660px; height: 20px; line-height: 20px; text-align: center; border-bottom: 2px solid rgb(33, 130, 189); color: rgb(123, 125, 123); margin-bottom: 3px; }
+.coder-left-hit a { color: rgb(0, 134, 206); }
+.coder-left-hit a:hover { text-decoration: underline; color: rgb(148, 215, 33); }

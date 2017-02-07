@@ -1,0 +1,35 @@
+/* Code tidied up by ScrapBook */
+div.clc-jobs-multi { color: rgb(51, 51, 51); font-family: Arial,Helvetica,sans-serif; font-size: 12px; text-align: left; line-height: 130%; padding: 2px; margin: 12px 0px 1.5em; clear: both; background-repeat: no-repeat; background-position: 0px 0px; box-sizing: border-box; }
+div.clc-jobs-multi.blue, div.clc-jobs-multi.orange { background-image: none ! important; }
+div.clc-jobs-multi.orange { background-color: rgb(244, 128, 36); background-position: center 3px; }
+div.clc-jobs-multi.tagged { line-height: 140%; }
+div.clc-jobs-multi > a.top { width: 100%; display: block; color: rgb(255, 255, 255); text-align: center; font-size: 20px; line-height: 42px; text-decoration: none; }
+div.clc-jobs-multi > a.top:hover { text-decoration: none; }
+div.clc-jobs-multi > .middle { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+div.clc-jobs-multi > .middle > ul { margin: 0px; padding: 0px; list-style: outside none none; display: block; }
+div.clc-jobs-multi > .middle > ul > li { border-top: 1px solid rgb(239, 240, 241); position: relative; }
+div.clc-jobs-multi > .middle > ul .job-wrap:first-child, div.clc-jobs-multi > .middle > ul > li:first-child { border-top: medium none; }
+div.clc-jobs-multi > .middle > ul > li:hover .title { color: rgb(51, 170, 255); }
+div.clc-jobs-multi > .middle > ul > li:hover .clc-dismiss { opacity: 0.3; transition: opacity 0.15s ease-in-out 0s; }
+div.clc-jobs-multi > .middle > ul > li:hover .clc-dismiss:hover { opacity: 1; }
+div.clc-jobs-multi > .middle > ul .job-wrap { overflow: hidden; margin: 0px; padding: 6px 12px; position: relative; }
+div.clc-jobs-multi > .middle > ul .job-wrap a.job { display: block; cursor: pointer; text-decoration: none; }
+div.clc-jobs-multi > .middle > ul .job-wrap div { margin: 3px 0px; }
+div.clc-jobs-multi > .middle > ul .job-wrap .title { font-weight: 700; font-size: 13px; display: block; cursor: pointer; text-decoration: none; color: rgb(0, 119, 204); padding-right: 12px; }
+div.clc-jobs-multi > .middle > ul .job-wrap .company { font-weight: 700; color: rgb(132, 138, 145); margin-right: 7px; }
+div.clc-jobs-multi > .middle > ul .job-wrap .location { color: rgb(132, 138, 145); font-style: italic; display: inline-block; position: relative; padding-left: 16px; }
+div.clc-jobs-multi > .middle > ul .job-wrap .location::before { content: ""; display: inline-block; width: 12px; height: 12px; opacity: 0.5; position: absolute; left: 1px; top: 2px; background-image: url("data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIgMTIiPjxzdHlsZT4uc3Qwe2ZpbGw6IzUyNTc1Y30uc3Qxe2ZpbGw6IzY1YmI1Y308L3N0eWxlPjxwYXRoIGlkPSJYTUxJRF8xNTU3XyIgY2xhc3M9InN0MCIgZD0iTTYgNS43Yy40IDAgLjctLjEuOS0uNC4zLS4zLjQtLjYuNC0uOSAwLS40LS4xLS43LS40LS45LS4yLS4zLS41LS40LS45LS40cy0uNy4xLS45LjRjLS4zLjItLjQuNS0uNC45cy4xLjcuNC45Yy4yLjMuNS40LjkuNHptMC01YzEgMCAxLjkuNCAyLjYgMS4xLjcuNyAxLjEgMS42IDEuMSAyLjYgMCAuNS0uMSAxLjEtLjQgMS44cy0uNSAxLjMtLjkgMS45Yy0uNC41LS43IDEuMS0xLjEgMS42LS40LjUtLjcuOS0uOSAxLjJsLS40LjRjLS4xLS4xLS4yLS4zLS40LS41cy0uNS0uNi0uOS0xLjJjLS40LS41LS44LTEtMS4xLTEuNnMtLjctMS4xLS45LTEuOGMtLjMtLjctLjQtMS4zLS40LTEuOCAwLTEgLjQtMS45IDEuMS0yLjZTNSAuNyA2IC43eiIvPjwvc3ZnPg=="); background-repeat: no-repeat; }
+div.clc-jobs-multi > .middle > ul .job-wrap .opts { text-transform: uppercase; font-size: 11px; }
+div.clc-jobs-multi > .middle > ul .job-wrap .opts span { background-repeat: no-repeat; font-weight: 700; position: relative; padding-left: 16px; margin-right: 7px; display: inline-block; white-space: nowrap; }
+div.clc-jobs-multi > .middle > ul .job-wrap .opts span.opt::before { content: ""; position: absolute; display: inline-block; width: 14px; height: 14px; left: 0px; }
+div.clc-jobs-multi > .middle > ul .job-wrap .opts .remote { color: rgb(219, 176, 39); }
+div.clc-jobs-multi > .middle > ul .job-wrap .opts .remote::before { background-image: url("data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIgMTIiPjxzdHlsZT4uc3Qwe2ZpbGw6IzUyNTc1Y30uc3Qxe2ZpbGw6IzY1YmI1Y30uc3Qye2ZpbGw6I2Y3OGM3NX0uc3Qze2ZpbGw6I2RjYjAwMH08L3N0eWxlPjxwYXRoIGlkPSJYTUxJRF8xXyIgY2xhc3M9InN0MyIgZD0iTTYgOS44TDMuOSA3LjdjMS4zLS45IDMtLjkgNC4yIDBMNiA5Ljh6bTMtM2MtMS43LTEuNC00LjItMS40LTYgMEwyLjIgNmMyLjItMS44IDUuNS0xLjggNy43IDBsLS45Ljh6bTEuNy0xLjdDOCAyLjggNCAyLjggMS4zIDUuMWwtLjktLjhjMy4yLTIuOCA3LjktMi44IDExLjEgMGwtLjguOHoiLz48L3N2Zz4="); top: 1px; }
+div.clc-jobs-multi > .middle > ul .job-wrap .opts .salary { font-weight: 700; font-size: 11px; color: rgb(100, 160, 94); white-space: nowrap; padding-left: 0px; }
+div.clc-jobs-multi > .middle > ul .job-wrap span.post-tag { text-align: center; color: rgb(57, 115, 157); background-color: rgb(225, 236, 244); padding: 0.25em 0.5em; margin: 2px 2px 2px 0px; text-decoration: none; font-size: 12px; line-height: 1.4; white-space: nowrap; display: inline-block; border-radius: 0px; border: 1px solid rgb(225, 236, 244); float: none; }
+div.clc-jobs-multi > .middle > ul .clc-dismiss { position: absolute; right: 6px; top: 6px; cursor: pointer; opacity: 0; width: 16px; height: 16px; display: block; background-color: rgb(255, 255, 255); background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMy42IDEzLjYiPjxwYXRoIGZpbGw9IiM2QTcxNzciIGQ9Ik0xMS40IDIuM0M4LjktLjIgNC44LS4yIDIuMyAyLjNzLTIuNSA2LjYgMCA5LjEgNi42IDIuNSA5LjEgMCAyLjUtNi42IDAtOS4xek04LjYgOS41TDYuOCA3LjcgNSA5LjVsLS45LS45IDEuOC0xLjhMNC4xIDVsLjktLjkgMS44IDEuOCAxLjgtMS44LjkuOS0xLjggMS44IDEuOCAxLjgtLjkuOXoiLz48L3N2Zz4="); border-radius: 8px; }
+div.clc-jobs-multi > .middle > ul .clc-dismiss:hover .clc-tooltip { visibility: visible; }
+div.clc-jobs-multi .impression { display: none; }
+div.clc-jobs-multi .clc-tooltip { display: inline-block; position: absolute; background-color: rgb(82, 87, 92); color: rgb(255, 255, 255); border-radius: 2px; padding: 3px 5px; visibility: hidden; white-space: nowrap; cursor: default; }
+div.clc-jobs-multi .clc-tooltip::after { content: ""; border: 4px solid transparent; position: absolute; }
+div.clc-jobs-multi .clc-tooltip.above-left { right: 0px; transform: translateY(-100%); top: -5px; }
+div.clc-jobs-multi .clc-tooltip.above-left::after { right: 0px; transform: translateX(-4px); top: 100%; border-top-color: rgb(82, 87, 92); }

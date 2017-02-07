@@ -1,0 +1,226 @@
+/* Code tidied up by ScrapBook */
+html {  }
+html, body, div, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, samp, small, strike, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, textarea, input, select { border: 0px none; font-family: "Open Sans",Arial,sans-serif; font-weight: normal; font-size: 16px; line-height: 26px; font-style: inherit; margin: 0px; outline: 0px none; padding: 0px; vertical-align: baseline; color: rgb(68, 68, 68); }
+body { background: rgba(12, 10, 10, 0.9) none repeat scroll 0% 0%; }
+p { margin-bottom: 26px; }
+p strong, td strong, th strong, a strong, li strong, p a, td a, li a, td a, th a, a:visited, .container, .single, em { font-family: inherit; font-weight: inherit; font-size: inherit; line-height: inherit; font-style: inherit; margin: inherit; outline: inherit; vertical-align: inherit; color: inherit; }
+p strong, td strong, th strong, a strong, .post-content strong, li strong { font-weight: bold; }
+a, .post-content a, .content-block a { color: rgb(0, 102, 153); }
+.post-content h3, .post-content h3 a, section.guide h3 { font-family: "Raleway",Arial,sans-serif; font-size: 28px; font-weight: 500; line-height: 32px; margin-bottom: 26px; }
+.post-content ul, .post-content ol, section.guide ul, section.guide ol { margin: 0px 0px 26px 20px; padding-left: 20px; }
+.post-content ul, section.guide ul { list-style: outside none square; }
+.post-content ul.responsive-grid { padding: 0px; margin: 0px 0px 26px; }
+.post-content li { margin-bottom: 20px; }
+.post-content li > ul { margin-top: 26px; }
+h3.post-title, .yarpp-related h3.post-title { font-family: "Raleway",Arial,sans-serif; font-size: 18px; font-weight: 400; line-height: 22px; margin-bottom: 10px; }
+.yarpp-related h3.post-title a { font-size: inherit; line-height: inherit; font-weight: inherit; }
+h3.post-title a { color: rgb(0, 102, 153); text-decoration: none; }
+#div-frame { width: 100%; height: auto; position: relative; }
+#main-header { width: 100%; float: left; clear: both; display: block; position: fixed; top: 0px; left: 0px; z-index: 100; background: rgba(12, 10, 10, 0.9) none repeat scroll 0% 0%; }
+#main-menu a { font-family: "Open Sans",Arial,sans-serif; font-weight: 300; font-size: 16px; line-height: 17px; color: rgb(255, 255, 255); text-decoration: none; text-rendering: optimizelegibility; }
+#main-menu > ul.menu > li > div.submenu h5 { font-family: "Raleway",Arial,sans-serif; font-weight: 600; color: rgb(253, 206, 11); text-transform: uppercase; margin-bottom: 5px; font-size: 14px; }
+section.top-section { text-align: center; }
+section.content-block, div.single { display: block; position: relative; float: left; clear: both; width: 100%; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+section.top-section .subtitle-box { display: inline-block; position: relative; float: none; text-align: center; margin: 10px auto 20px; overflow: visible; color: rgb(254, 254, 254); background: rgba(0, 96, 176, 0.8) none repeat scroll 0% 0%; text-transform: uppercase; text-shadow: 1px 1px rgb(17, 17, 17); font-weight: 800; padding: 20px 20px 20px 65px; }
+section.top-section .subtitle-box .avatar { display: block; position: absolute; top: -14px; left: -52px; width: 87px; height: 87px; border: 5px solid rgb(254, 254, 254); border-radius: 50%; background-color: rgb(17, 17, 17); overflow: hidden; }
+section.content-block header { display: block; position: relative; margin-bottom: 20px; }
+section.content-block.parallax-window { background: inherit; }
+#footer-border { width: 100%; height: 80px; float: left; clear: both; display: block; position: relative; background: rgb(254, 198, 48) none repeat scroll 0% 0%; }
+#footer-border .container { height: 100%; }
+#main-footer { display: block; position: relative; width: 100%; float: left; clear: both; background: transparent radial-gradient(ellipse at center center , rgb(9, 44, 79) 0%, rgb(2, 11, 17) 100%) repeat scroll 0% 0%; }
+#main-footer h5 { display: block; position: relative; float: left; clear: both; width: 100%; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); font-family: "Raleway",Arial,sans-serif; font-weight: 300; text-transform: uppercase; box-sizing: border-box; padding: 5px 10px; margin-bottom: 5px; text-rendering: optimizelegibility; }
+#main-footer a { color: rgb(254, 254, 254); text-decoration: none; font-weight: 300; text-shadow: 1px 1px rgb(17, 17, 17); }
+#main-footer a:hover { text-decoration: underline; }
+#main-footer .responsive-grid > .box { margin-right: 0px; margin-left: 0px; padding-right: 0px; padding-left: 0px; }
+#main-footer .responsive-grid > .box > ul > li { display: block; position: relative; float: left; clear: both; width: 100%; padding: 5px 10px; box-sizing: border-box; }
+#disclosure { display: block; position: fixed; width: 100%; height: 25px; bottom: 0px; left: 0px; background-color: rgb(17, 17, 17); font-size: 14px; line-height: 25px; text-align: center; color: rgb(170, 170, 170); z-index: 1000; }
+section.content-block.sponsors.fixed h2 { color: rgb(254, 254, 254); }
+section.content-block.sponsors .responsive-grid { display: block; position: relative; margin: 0px auto; float: none; }
+ul.responsive-grid { display: block; position: relative; list-style: outside none none; }
+.box { display: inline-block; float: left; position: relative; vertical-align: top; box-sizing: border-box; }
+ul.menu { list-style: outside none none; margin: 0px; padding: 0px; }
+.align-center, .centered { text-align: center; }
+.medium-shadow, .MediumShadow { box-shadow: 2px 2px 8px 0px rgba(50, 50, 50, 0.75); }
+section.odd, div.odd, li.odd { background-color: rgb(255, 255, 255); }
+section.even, div.even, li.even { border-top: 1px solid rgb(230, 230, 230); border-bottom: 1px solid rgb(230, 230, 230); background-color: rgb(250, 250, 250); }
+.divSourceCode { border-left: 5px solid rgb(0, 96, 176); padding: 10px 0px 10px 10px; overflow: auto; font-size: 14px; line-height: 20px; background-color: rgb(238, 238, 238); margin-bottom: 40px; }
+.divSourceCode pre { padding: 0px; margin: 0px; }
+section.single-header { max-height: 445px; overflow: hidden; }
+section.single-header .blur-bg { display: block; position: absolute; width: 100%; min-height: 100%; top: -40px; bottom: 0px; background: transparent radial-gradient(ellipse at center center , rgba(9, 44, 79, 0.85) 0%, rgb(2, 11, 17) 84%) repeat scroll 0px 0px; z-index: 2; }
+section.single-header .fixed-bg { display: block; position: absolute; width: 100%; min-height: 100%; top: -40px; bottom: 0px; z-index: 3; background: transparent url("bg-webhostinghero-face-transparent-medium.png") no-repeat scroll left top; }
+section.single-header header { z-index: 4; }
+.post-content .author, .post-content .author p { font-size: 15px; line-height: 21px; }
+.post-content .author-avatar img { max-width: 90%; width: 100%; height: auto; }
+div.author-avatar, div.author-byline { margin-bottom: 20px; }
+.yarpp-related li.odd, .yarpp-related li.even { background-color: transparent; border: medium none; }
+.single-speed-test-form { display: block; position: relative; float: none; clear: both; width: 90%; margin: 0px auto 26px; color: rgb(255, 255, 255); box-sizing: border-box; padding: 20px; text-align: center; background: transparent radial-gradient(ellipse at center center , rgb(9, 44, 79) 0%, rgb(2, 11, 17) 100%) repeat scroll 0% 0%; overflow: auto; border: 10px solid rgb(254, 198, 48); }
+.single-speed-test-form h4 { font-family: "Raleway",Arial,sans-serif; font-size: 32px; font-weight: 400; line-height: 32px; color: rgb(255, 255, 255); }
+.single-speed-test-form p { color: rgb(255, 255, 255); font-weight: 300; }
+.single-speed-test-form form { display: block; position: relative; float: none; clear: both; width: 90%; margin: 0px auto 26px; }
+.single-speed-test-form form input[type="url"], .single-speed-test-form form input[type="text"] { font-size: 24px; line-height: 52px; height: 52px; padding: 0px 10px; box-sizing: border-box; float: left; border: 1px solid rgb(51, 51, 51); margin-bottom: 26px; }
+.single-speed-test-form form .btn { float: right; }
+.single-speed-test-form .logo { display: block; position: relative; float: left; clear: both; width: 100%; }
+.single-speed-test-form .logo img { max-width: 100%; width: 45%; height: auto; }
+.latest-posts div.thumbnail { display: block; position: relative; margin-bottom: 10px; width: 100%; min-width: 100%; max-width: 100%; overflow: hidden; padding: 0px; }
+.latest-posts .post-title a:hover { text-decoration: underline; }
+ul.responsive-grid > li { margin-bottom: 30px; }
+.btn, .wpcf7-submit { display: inline-block; cursor: pointer; font-family: "Raleway",Arial,sans-serif; text-decoration: none; border-radius: 2px; box-sizing: border-box; text-align: center; }
+.btn.small { font-size: 13px; line-height: 18px; font-weight: 500; }
+.btn:hover { cursor: pointer; }
+.btn.blue { box-shadow: 0px 1px 1px 0px rgb(164, 214, 255) inset; background: rgb(0, 128, 232) linear-gradient(to bottom, rgb(0, 128, 232) 5%, rgb(0, 97, 176) 100%) repeat scroll 0% 0%; color: rgb(254, 254, 254); text-shadow: 1px 1px rgb(17, 17, 17); }
+.btn.blue:hover { box-shadow: 0px 1px 1px 0px rgb(164, 214, 255) inset; background: rgb(0, 119, 217) linear-gradient(to bottom, rgb(0, 119, 217) 5%, rgb(0, 90, 164) 100%) repeat scroll 0% 0%; }
+.btn.green, .wpcf7-submit { box-shadow: 0px 1px 1px 0px rgb(154, 204, 133) inset; background: rgb(116, 173, 90) linear-gradient(to bottom, rgb(116, 173, 90) 5%, rgb(96, 152, 69) 100%) repeat scroll 0% 0%; border: 1px solid rgb(59, 110, 34); color: rgb(255, 255, 255); text-shadow: 1px 1px rgb(17, 17, 17); }
+.btn.green:hover, .wpcf7-submit:hover { background: rgb(104, 165, 75) linear-gradient(to bottom, rgb(104, 165, 75) 5%, rgb(116, 173, 90) 100%) repeat scroll 0% 0%; }
+.btn:active, .wpcf7-submit:active { position: relative; top: 1px; }
+@media all and (min-width: 600px) {
+  section.content-block header h2 { font-size: 24px; font-weight: 800; padding-bottom: 7px; color: rgb(51, 51, 51); }
+  section.top-section header h1 { font-family: "Raleway",Arial,sans-serif; color: rgb(255, 255, 255); font-weight: 300; font-size: 56px; line-height: 62px; margin-bottom: 20px; text-shadow: 1px 1px rgb(0, 0, 0); padding: 0px; text-align: center; text-rendering: optimizelegibility; }
+  #sidebar h4 { color: rgb(51, 51, 51); font-size: 18px; font-weight: 800; line-height: 20px; margin-bottom: 20px; }
+  #sidebar h5 { font-family: "Raleway",Arial,sans-serif; font-weight: 500; color: rgb(51, 51, 51); line-height: 20px; margin: 0px; }
+  #sidebar h5 a { text-decoration: none; }
+  #sidebar h5 a:hover { text-decoration: underline; }
+  #sidebar ul, #sidebar ul > li { display: block; position: relative; float: left; clear: both; width: 100%; margin-bottom: 0px; }
+  #sidebar ul > li { margin-bottom: 15px; }
+  #sidebar .wpp-date { display: block; position: relative; float: left; clear: both; width: 100%; font-size: 12px; line-height: 18px; text-transform: capitalize; }
+  #sidebar .banner-left, #sidebar .banner-right { display: block; position: relative; }
+  #sidebar .banner-left { width: 160px; float: left; clear: left; }
+  #sidebar .banner-right { width: 120px; float: right; clear: right; }
+  .mobile-only { display: none ! important; }
+  body { padding-top: 106px; }
+  #main-header { height: 80px; transition: height 0.2s linear 0s; }
+  #main-header.small { height: 40px; }
+  div.container { position: relative; display: block; width: 960px; height: auto; margin: 0px auto; padding: 0px; overflow: visible; }
+  #main-header div.container { min-height: 100%; height: 100%; }
+  #div-logo { position: relative; display: block; float: left; clear: left; width: 304px; height: 65%; top: 49%; transform: translateY(-49%); text-align: left; }
+  #div-logo img { max-height: 100%; max-width: 100%; width: auto; }
+  #main-menu { display: block; position: relative; float: right; clear: right; height: 100%; min-height: 100%; z-index: 2; }
+  #main-menu ul.menu { display: block; position: relative; float: right; clear: both; height: 100%; min-height: 100%; }
+  #main-menu > ul.menu > li { display: block; position: relative; float: left; min-height: 100%; height: 100%; padding: 0px; }
+  #main-menu > ul.menu > li > a { display: block; position: relative; float: left; clear: both; min-height: 100%; height: 100%; padding: 0px 20px; }
+  #main-menu > ul.menu > li > a > span { display: block; position: relative; top: 49%; transform: translateY(-49%); }
+  #main-menu > ul.menu > li:hover { background-color: rgb(34, 34, 34); }
+  #main-menu > ul.menu > li.active > a { font-weight: bold; }
+  #main-menu > ul.menu > li > div.submenu { position: absolute; background-color: rgb(34, 34, 34); padding: 20px 30px 30px; top: 80px; color: rgb(254, 254, 254); display: none; font-size: 15px; }
+  #main-header.small #main-menu > ul.menu > li > div.submenu { top: 40px; }
+  #main-menu > ul.menu > li > div.submenu.reviews { width: 690px; left: -360px; }
+  #main-menu > ul.menu > li > div.submenu.directory { left: 0px; }
+  #main-menu > ul.menu > li > div.submenu.coupons { width: 680px; left: -480px; }
+  #main-menu > ul.menu > li > div.submenu.tools { left: -140px; width: 182px; }
+  #main-menu > ul.menu > li:hover > div.submenu { display: block; }
+  #main-menu > ul.menu > li > div.submenu > ul { display: block; position: relative; float: left; clear: none; font-size: inherit; margin-right: 30px; padding-right: 30px; border-right: 2px solid rgb(204, 204, 204); }
+  #main-menu > ul.menu > li > div.submenu > ul.last { margin-right: 0px; padding-right: 0px; border: medium none; }
+  #main-menu > ul.menu > li > div.submenu > ul > li { white-space: nowrap; color: rgb(255, 255, 255); font-weight: 300; font-size: inherit; }
+  #main-menu > ul.menu > li > div.submenu > ul > li > a { font-size: inherit; }
+  #main-menu > ul.menu > li > div.submenu > ul > li > a:hover { text-decoration: underline; }
+  #secondary-menu { display: block; position: absolute; width: 100%; height: 26px; bottom: -26px; background-color: rgb(28, 23, 23); z-index: 1; }
+  #secondary-menu .social-networks { display: block; position: relative; float: left; clear: left; top: 49%; transform: translateY(-49%); height: 20px; }
+  #secondary-menu .social-networks ul.menu { display: block; position: relative; float: left; clear: both; }
+  #secondary-menu .social-networks li { display: block; position: relative; float: left; width: 20px; height: 20px; overflow: hidden; background: transparent url("social-buttons-medium-sprite.jpg") no-repeat scroll 0% 0% / auto 43px; margin-right: 5px; }
+  #secondary-menu .social-networks li a { display: block; position: relative; width: 100%; height: 100%; }
+  #secondary-menu .social-networks li.facebook { background-position: 0px -22px; }
+  #secondary-menu .social-networks li.google { background-position: -22px -22px; }
+  #secondary-menu .social-networks li.twitter { background-position: -44px -22px; }
+  #secondary-menu .social-networks li.slogan { width: auto; background: transparent none repeat scroll 0% 0%; font-size: 13px; line-height: 19px; margin: 0px; color: rgb(170, 170, 170); }
+  #main-search { display: block; position: relative; float: right; clear: right; width: 255px; height: 26px; overflow: hidden; padding: 0px; }
+  #main-search .btn.small { margin: 3px 0px 0px; padding: 3px 8px; background-color: rgb(51, 51, 51); float: right; font-size: 12px; line-height: 14px; color: rgb(221, 221, 221); }
+  #main-search .btn.small:hover { background-color: rgb(0, 96, 176); }
+  section.content-block, #main-footer, div.single { overflow: visible; padding: 40px 0px; box-sizing: border-box; }
+  section.content-block header { display: block; position: relative; float: left; clear: both; width: 100%; text-align: center; margin-bottom: 40px; }
+  section.content-block.top-section header { margin-bottom: 0px; }
+  section.content-block.sponsors { height: 480px; }
+  section.content-block.sponsors.fixed { background: transparent url("bg-webhostinghero-datacenter.jpg") no-repeat scroll 0% 0% / cover ; }
+  .post-content { display: block; position: relative; float: left; clear: left; width: 620px; box-sizing: border-box; overflow: hidden; }
+  .post-content img { height: auto; max-width: 550px; }
+  #sidebar { display: block; position: relative; width: 300px; float: right; clear: right; }
+  .sidebar-box { display: block; position: relative; width: 100%; float: left; clear: both; margin-bottom: 20px; }
+  .latest-posts div.thumbnail { min-height: 145px; }
+  .col-12 { width: 100%; }
+  .col-10 { width: 83.3%; }
+  .col-6 { width: 50%; }
+  .col-3 { width: 25%; }
+  .col-2 { width: 16.6%; }
+  .box { margin: 0px 0px 60px; padding: 0px 10px; }
+  .btn, .wpcf7-submit { text-decoration: none; padding: 12px; }
+  .btn.small { padding: 8px; }
+  .post-content .author-avatar img { margin-top: 5px; }
+  .post-content > div.box { padding: 0px; margin-bottom: 20px; }
+  .post-content .comments { margin-bottom: 40px; }
+  .post-content .latest-posts .thumbnail { padding-bottom: 5px; }
+  .post-content .latest-posts img { box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.75); }
+  .yarpp-related li.odd { clear: left; }
+  .yarpp-related li.even { clear: right; }
+  .post-content .select-btn { display: block; float: left; clear: both; width: 100%; text-align: right; }
+  .post-content .select-btn.bottom { margin-bottom: 20px; }
+}
+@media all and (min-width: 1009px) {
+}
+@media all and (min-width: 1500px) {
+}
+@media all and (min-width: 600px) and (max-width: 1008px) {
+  #div-logo { display: block; position: relative; width: 304px; height: 100%; float: none; clear: both; margin: 15px auto 0px; }
+  #main-menu { position: absolute; float: left; clear: left; left: 10px; width: 42px; height: 28px; top: 13px; transform: none; background-position: 10px 0px; }
+  #main-menu.inactive { background: transparent url("main-menu-mobile-icon-inactive.png") no-repeat scroll 0% 0%; }
+  #main-menu ul.menu { display: block; position: absolute; width: 180px; top: 78px; transition: left 0.25s linear 0s; }
+  #main-menu.inactive ul.menu { left: -190px; }
+  #main-menu ul.menu > li { display: block; width: 100%; height: 60px; min-height: 60px; line-height: 60px; float: left; clear: both; border-bottom: 1px solid rgb(102, 102, 102); background: rgb(51, 51, 51) url("list-arrow-bullet.png") no-repeat scroll 10px center; }
+  #main-menu ul.menu > li.active { background-color: rgb(102, 102, 102); }
+  #main-menu ul.menu > li > a { display: block; position: relative; float: left; clear: both; width: 100%; line-height: inherit; box-sizing: border-box; padding-left: 25px; border: medium none; }
+  #main-menu div.submenu { display: none; }
+  div.container { width: 100%; padding-left: 20px; padding-right: 20px; box-sizing: border-box; }
+  .post-content { display: block; position: relative; float: left; clear: both; width: 100%; }
+  .post-content img { width: 100%; height: auto; max-width: 95%; }
+  #sidebar { display: none; }
+  section.content-block.sponsors { height: auto; }
+  .latest-posts div.thumbnail { min-height: 0px; }
+  #main-menu > ul.menu > li:hover > div.submenu { display: none; }
+  section.top-section.mobile-wh-face, section.top-section.coupons-pages, section.top-section.reviews-pages, section.top-section.provider-pages { background: transparent url("bg-webhostinghero-flying.jpg") no-repeat scroll 0% 0% / cover  ! important; }
+  .tcol-12, .col-12 { width: 100%; }
+  .box { margin: 0px 0px 60px; padding: 0px 5px; }
+  .box img { max-width: 100%; height: auto; }
+}
+@media all and (max-width: 599px) {
+  section.content-block header h2 { font-size: 21px; font-weight: 600; padding-bottom: 7px; color: rgb(51, 51, 51); }
+  section.top-section h1 { font-family: "Raleway",Arial,sans-serif; color: rgb(255, 255, 255); font-weight: 400; font-size: 32px; line-height: 38px; margin-bottom: 0px; text-shadow: 1px 1px rgb(0, 0, 0); padding: 0px; text-align: center; }
+  body { padding-top: 56px; }
+  #main-header { height: 55px; background: rgb(25, 25, 25) none repeat scroll 0% 0%; border-bottom: 1px solid rgb(153, 153, 153); }
+  div.container { display: block; float: left; clear: both; width: 100%; margin: 0px auto; overflow: hidden; position: relative; box-sizing: border-box; padding: 0px 10px; }
+  #main-header div.container { height: 55px; overflow: visible; }
+  #div-logo { display: block; position: relative; width: 220px; height: 100%; float: none; clear: both; margin: 10px auto 0px; }
+  #div-logo img { width: 220px; height: 34px; vertical-align: middle; }
+  #main-menu { position: absolute; float: left; clear: left; left: 10px; width: 42px; height: 28px; top: 13px; transform: none; background-position: 10px 0px; }
+  #main-menu.inactive { background: transparent url("main-menu-mobile-icon-inactive.png") no-repeat scroll 0% 0%; }
+  #main-menu ul.menu { display: block; position: absolute; width: 180px; top: 43px; transition: left 0.25s linear 0s; }
+  #main-menu.inactive ul.menu { left: -190px; }
+  #main-menu ul.menu > li { display: block; width: 100%; height: 42px; line-height: 42px; float: left; clear: both; border-bottom: 1px solid rgb(102, 102, 102); background: rgb(51, 51, 51) url("list-arrow-bullet.png") no-repeat scroll 10px center; }
+  #main-menu ul.menu > li.active { background-color: rgb(102, 102, 102); }
+  #main-menu ul.menu > li > a { display: block; position: relative; float: left; clear: both; width: 100%; line-height: inherit; box-sizing: border-box; padding-left: 25px; border: medium none; }
+  #main-menu div.submenu { display: none; }
+  section.content-block, #main-footer, div.single { padding: 20px 0px; box-sizing: border-box; }
+  section.content-block header { display: block; position: relative; float: left; clear: both; width: 100%; margin-bottom: 20px; }
+  section.top-section .subtitle-box .avatar { display: none; }
+  section.top-section .subtitle-box.no-avatar, section.top-section .subtitle-box { margin-bottom: 0px; padding: 10px; font-weight: normal; font-size: 14px; line-height: 18px; }
+  section.content-block > .container img { max-width: 98%; height: auto; }
+  .post-content img { max-width: 95%; height: auto; }
+  .post-content .thumbnail img { max-width: 100%; width: 100%; height: auto; }
+  #sidebar { display: none; }
+  section.content-block.sponsors { background-color: rgb(17, 17, 17); }
+  .hide-mobile, .desktop-only { display: none ! important; }
+  .break-after::after { content: "\a "; white-space: pre; }
+  .mcol-12, .col-12 { width: 100%; }
+  .mcol-10 { width: 83.3%; }
+  .mcol-6 { width: 50%; }
+  .mcol-4 { width: 33.3%; }
+  .mcol-2 { width: 16.6%; }
+  .box { margin: 0px 0px 40px; padding: 0px 10px; }
+  .btn { padding: 8px 10px; }
+  .post-content > .box { padding: 0px; margin-bottom: 20px; }
+  .post-content .box { margin: 0px; padding: 0px; }
+  .post-content .box .box { margin: 0px 0px 20px; padding: 0px; }
+  .post-content .author-avatar { margin-bottom: 10px ! important; }
+  .post-content .author-avatar, .post-content .author-byline { display: block; position: relative; float: left; }
+  .post-content .author-avatar img { width: 60px; height: auto; }
+  .post-content .latest-posts li { margin-bottom: 40px ! important; }
+  .post-content .latest-posts h3.post-title { font-size: 21px; line-height: 27px; }
+  div.select-btn { margin-bottom: 26px; }
+  section.top-section.mobile-wh-face, section.top-section.coupons-pages, section.top-section.reviews-pages, section.top-section.provider-pages { background: transparent url("bg-webhostinghero-face-mobile.jpg") no-repeat scroll center -220px / auto 900px ! important; }
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+
+ <title>Faq - yum - Trac</title><link rel="start" href="http://yum.baseurl.org/wiki"><link rel="search" href="http://yum.baseurl.org/search"><link rel="help" href="http://yum.baseurl.org/wiki/TracGuide"><link rel="stylesheet" href="trac.css" type="text/css"><link rel="stylesheet" href="wiki.css" type="text/css"><link rel="icon" href="trac.ico" type="image/x-icon"><link rel="shortcut icon" href="trac.ico" type="image/x-icon"><link rel="alternate" href="http://yum.baseurl.org/wiki/Faq?format=txt" title="Plain Text" type="text/x-trac-wiki"><style type="text/css">
+/* Code tidied up by ScrapBook */
+</style>
+ <script type="text/javascript" src="about:blank"></script>
+</head>
+<body>
+
+
+<div id="banner">
+
+<div id="header"><a id="logo" href="http://yum.baseurl.org/"><img src="yum.png" alt=""></a><hr></div>
+
+<form id="search" action="http://yum.baseurl.org/search" method="get">
+ <div>
+  <label for="proj-search">Search:</label>
+  <input id="proj-search" name="q" size="10" value="" type="text">
+  <input value="Search" type="submit">
+  <input name="wiki" value="on" type="hidden">
+  <input name="changeset" value="on" type="hidden">
+  <input name="ticket" value="on" type="hidden">
+ </div>
+</form>
+
+
+
+<div id="metanav" class="nav"><ul><li class="first"><a href="http://yum.baseurl.org/login">Login</a></li><li><a href="http://yum.baseurl.org/settings">Settings</a></li><li><a href="http://yum.baseurl.org/wiki/TracGuide">Help/Guide</a></li><li><a href="http://yum.baseurl.org/about">About Trac</a></li><li class="last"><a href="http://yum.baseurl.org/register">Register</a></li></ul></div>
+</div>
+
+<div id="mainnav" class="nav"><ul><li class="active first"><a href="http://yum.baseurl.org/wiki">Wiki</a></li><li><a href="http://yum.baseurl.org/timeline">Timeline</a></li><li><a href="http://yum.baseurl.org/roadmap">Roadmap</a></li><li class="last"><a href="http://yum.baseurl.org/search">Search</a></li></ul></div>
+<div id="main">
+
+
+
+
+<div id="ctxtnav" class="nav">
+ <h2>Wiki Navigation</h2>
+ <ul>
+   <li><a href="http://yum.baseurl.org/wiki">Start Page</a></li>
+   <li><a href="http://yum.baseurl.org/wiki/TitleIndex">Index by Title</a></li>
+   <li><a href="http://yum.baseurl.org/wiki/RecentChanges">Index by Date</a></li>
+   <li class="last"><a href="http://yum.baseurl.org/wiki/Faq?action=diff&amp;version=12">Last Change</a></li>
+ </ul>
+ <hr>
+</div>
+
+<div id="content" class="wiki">
+
+ 
+  
+  
+   
+   <div class="wikipage">
+    <div id="searchable"><h1 id="Faq">Faq<a title="Link to this section" class="anchor" href="#Faq"> ¶</a></h1>
+<h5 id="Q.1:Whatisthis">Q. 1: What is this?<a title="Link to this section" class="anchor" href="#Q.1:Whatisthis"> ¶</a></h5>
+<p>
+<strong>A.</strong> A yum faq.
+</p>
+<hr>
+<h5 id="Q.2:WheredoIfindarepositorytoupdatemysystemwhichisrunningdistributionXYZ">Q. 2: Where do I find a repository to update my system which is running distribution &lt;XYZ&gt;?<a title="Link to this section" class="anchor" href="#Q.2:WheredoIfindarepositorytoupdatemysystemwhichisrunningdistributionXYZ"> ¶</a></h5>
+<p>
+<strong>A.</strong> We have no idea.  Your distribution should maintain their own list on this subject.  If they don't support yum but you want to use it anyway you are probably going to have to make your own repository.
+</p>
+<hr>
+<h5 id="Q.3:HowdoIupgrademymachinefromreleaseXtoreleaseY">Q. 3: How do I upgrade my machine from release X to release Y?<a title="Link to this section" class="anchor" href="#Q.3:HowdoIupgrademymachinefromreleaseXtoreleaseY"> ¶</a></h5>
+<p>
+<strong>A.</strong> We have little idea.  If you are using Fedora, check out <a class="ext-link" href="http://fedoraproject.org/wiki/YumUpgradeFaq"><span class="icon">this guide written by Fedora Developers and Contributors</span></a>.  If you are using something else, try looking at their docs or asking on their mailing lists.
+</p>
+<hr>
+<h5 id="Q.4:HowcanIgetyumtokeeppackagefooatacertainversioninafashionsimilartopinningprovidedbyapt">Q. 4: How can I get yum to keep package "foo" at a certain version in a fashion similar to pinning provided by apt?<a title="Link to this section" class="anchor" href="#Q.4:HowcanIgetyumtokeeppackagefooatacertainversioninafashionsimilartopinningprovidedbyapt"> ¶</a></h5>
+<p>
+<strong>A.</strong> There are several ways you can do this.  
+</p>
+<ul><li>One is to exclude it from your updates list. See man yum.conf for more details.
+</li></ul><ul><li>Another way to pin package "foo" to a certain version is to use the versionlock plugin.
+</li></ul><p>
+If you are using the latest Fedora (12) then the plugin can be installed using: 
+</p>
+<pre class="wiki">yum install yum-plugin-versionlock
+</pre><p>
+To add files that you want version locked, use the following yum command:
+</p>
+<pre class="wiki">yum versionlock &lt;package-name&gt;
+</pre><p>
+you can also use wildcards:
+</p>
+<pre class="wiki">yum versionlock &lt;package-name&gt;-*
+</pre><p>
+This command line will add lines to: 
+</p>
+<pre class="wiki">/etc/yum/pluginconf.d/versionlock.list
+</pre><p>
+The config file uses the following format:
+EPOCH:NAME-VERSION-RELEASE.ARCH which can be obtained using:
+</p>
+<pre class="wiki">rpm -q &lt;package name&gt; --queryformat "%{EPOCH}:%{NAME}-%{VERSION}-%{RELEASE}\n "
+</pre><p>
+If no EPOCH is specified in the package, then the number will be 0.
+</p>
+<p>
+Alternatively if you are using Redhat 5.4/Centos 5.4 or another OS
+that does not yet have the latest yum available you can use: 
+</p>
+<pre class="wiki">yum install yum-versionlock
+</pre><p>
+This older version of the plug-in does not extend command line flags that you can pass to yum and the lock list must be edited manually.
+</p>
+<p>
+For a manual install the source can be obtained from the current git
+repository for yum which is
+<a href="http://yum.baseurl.org/gitweb">http://yum.baseurl.org/gitweb</a>
+The files you need will be found in the <i>yum-utils/plugins/versionlock</i>
+part of the git tree.
+Copy versionlock.py   to <i>/usr/lib/yum-plugins/versionlock.py</i>
+Copy versionlock.conf to <i>/etc/yum/pluginconf.d/versionlock.conf</i>
+Create <i>/etc/yum/pluginconf.d/versionlock.list</i>
+All files should be <i>root.root</i> with <i>644</i> permissions.
+</p>
+<hr>
+<h5 id="Q.5:IgetanErrno-1Headerisnotcomplete.errorfromyum-whattheheckisgoingon">Q. 5: I get an "[Errno -1] Header is not complete." error from yum - what the heck is going on?<a title="Link to this section" class="anchor" href="#Q.5:IgetanErrno-1Headerisnotcomplete.errorfromyum-whattheheckisgoingon"> ¶</a></h5>
+<p>
+<strong>A.</strong> It's probably a proxy somewhere between you and the repository.  You may not think that a proxy is in the way even though it really is.
+</p>
+<p>
+You can try doing a "trace" with this command:
+</p>
+<pre class="wiki">echo -e "TRACE / HTTP/1.1\nHost:  yum-server.example.com\n\n"  | nc yum-server.example.com 80
+</pre><p>
+Which should give you some more information about the network between you and the repository.  Also, be sure to replace yum-server.example.com with whatever your yum repository server is.  
+</p>
+<p>
+Another diagnosis step is to get the box off of that network (not always entirely possible, but port forwarding, VPN, or dialup can simulate the experience) and see if you still have the problem.
+</p>
+<p>
+The solutions to this problem are:
+</p>
+<ol><li>Get your proxy software/firmware updated so that it properly implements HTTP 1.1
+</li><li>Use an FTP repository, where byte ranges are more commonly supported by the proxy
+</li><li>Create a local mirror with rsync and then point your yum.conf to that local mirror
+</li><li>Don't use yum
+</li></ol><hr>
+<h5 id="Q.6:ImupgradingandIgetError:MissingDependency:messageslikeError:MissingDependency:libgcj.so.5isneededbypackagejunitandthenyumquits.WhatshouldIdo">Q. 6: I'm upgrading and I get "Error: Missing Dependency:" messages like "Error: Missing Dependency: libgcj.so.5 is needed by package junit" and then yum quits.  What should I do?<a title="Link to this section" class="anchor" href="#Q.6:ImupgradingandIgetError:MissingDependency:messageslikeError:MissingDependency:libgcj.so.5isneededbypackagejunitandthenyumquits.WhatshouldIdo"> ¶</a></h5>
+<p>
+<strong>A.</strong> yum is trying to tell you that some packages that are being replaced or obsoleted are needed by an installed package, so yum can't do it's work.  To interpret the example, the installed junit package requires libgcj.so.5 and libgcj.so.5 is being updated or obsoleted so junit would no longer work if yum updated the libgcj.so.5 package.  
+</p>
+<p>
+One relatively easy way to fix this is to remove whatever package "needs" the packages that are about to be upgraded/obsoleted and then reinstall that package after you have upgraded everything else.  In the example, remove junit, upgrade, then reinstall junit.  
+</p>
+<p>
+Another solution is to find a repository that provides an upgraded of the package that "needs" the old packages and add it to your yum configuration.  Hopefully the new version of that package will have dependencies on the upgraded package, in our case libgcj.so.5, and yum will take care of everything.
+</p>
+<p>
+For more details, see <a class="ext-link" href="http://lists.baseurl.org/pipermail/yum/2005-July/018079.html"><span class="icon">this post by Garrick Staples</span></a>
+</p>
+<hr>
+<h5 id="Q.7:IinstalledanewversionofyumorupgradedmywholesystemandnowwhenIrunyumIgetanerrorsayingTheyumlibrariesdonotseemtobeavailableonyoursystemforthisversionofpythonandPleasemakesurethepackageyouusedtoinstallyumwasbuiltforyourinstallofpython.WhatswrongwiththeyumpackageIvegotormyPythoninstallationandhowdoIfixit">Q. 7: I installed a new version of yum (or upgraded my whole system) and now when I run yum, I get an error saying "The yum libraries do not seem to be available on your system for this version of python" and "Please make sure the package you used to install yum was built for your install of python." What's wrong with the yum package I've got, or my Python installation, and how do I fix it?<a title="Link to this section" class="anchor" href="#Q.7:IinstalledanewversionofyumorupgradedmywholesystemandnowwhenIrunyumIgetanerrorsayingTheyumlibrariesdonotseemtobeavailableonyoursystemforthisversionofpythonandPleasemakesurethepackageyouusedtoinstallyumwasbuiltforyourinstallofpython.WhatswrongwiththeyumpackageIvegotormyPythoninstallationandhowdoIfixit"> ¶</a></h5>
+<p>
+<strong>A.</strong> 
+</p>
+<p>
+In pre-2.3.? yum  This error message is often misleading. To see the real error, run <tt>python</tt> from the command line, and type <tt>import yum</tt>. The problem probably isn't with your version of python at all, but with a missing libxml2-python, python-sqlite, or python-elementtree package.
+</p>
+<p>
+Yum 2.4.x provides a different error with the module import errors, so this will become less confusing.  
+</p>
+<p>
+It also includes a directive to send the error to the mailing list.  Really, you should figure out what rpm provides the module that was missing and try to install that.  
+</p>
+<p>
+If you are getting a message that yum itself is the missing module then you probably installed it incorreclty (or installed the source rpm using make/make install).  If possible, find a prebuilt rpm that will work for your system like one from Fedora or CentOS.  Or, you can download the srpm and do a 
+</p>
+<p>
+rpmbuild --rebuild yum*.src.rpm
+</p>
+<hr>
+<h5 id="Q.8:YumisveryniceatupdatingmykernelbutIusethenvidiaopenafsothermoduleandyumdoesntseemtohandleitwell.Couldyoufixyumtohandlethisforme">Q. 8: Yum is very nice at updating my kernel, but I use the (nvidia | openafs | other module) and yum doesn't seem to handle it well.  Could you fix yum to handle this for me?<a title="Link to this section" class="anchor" href="#Q.8:YumisveryniceatupdatingmykernelbutIusethenvidiaopenafsothermoduleandyumdoesntseemtohandleitwell.Couldyoufixyumtohandlethisforme"> ¶</a></h5>
+<p>
+<strong>A.</strong> This is a known and non-trivial problem, but people are talking and working on it.  Please read ideas on <a class="ext-link" href="http://lists.baseurl.org/pipermail/yum-devel/2005-June/thread.html#1232"><span class="icon">this plugin</span></a> and messages from <a class="ext-link" href="http://www.google.com/search?q=yum+kernel+module+site:lists.baseurl.org&amp;num=20&amp;hl=en&amp;lr=&amp;start=20&amp;sa=N"><span class="icon">the Google search of the yum archives</span></a> to get more details.
+</p>
+<hr>
+<h5 id="Q.9:Howdoesyumhandleupdatesinstallsonx86_64machines">Q. 9: How does yum handle updates/installs on x86_64 machines?<a title="Link to this section" class="anchor" href="#Q.9:Howdoesyumhandleupdatesinstallsonx86_64machines"> ¶</a></h5>
+<p>
+<strong>A.</strong> There are times when it is beneficial to have both 32 and 64 bit versions of a package installed on a machine such as when another package only has a 32bit version and needs to access 32bit libraries of something that you would normally only install the 64bit package.  So, if you do "yum install foo" then you will get both foo.i386.rpm and foo.x86_64.rpm installed on your system.  This is the desired behavior in most cases even if it takes up more disk space.  If you do a "yum install foo.x86_64" then you will only get the x86_64 package.
+</p>
+<hr>
+<h5 id="Q.10:HowcanIsearchthemailinglistarchives">Q. 10: How can I search the mailing list archives?<a title="Link to this section" class="anchor" href="#Q.10:HowcanIsearchthemailinglistarchives"> ¶</a></h5>
+<p>
+<strong>A.</strong> One easy way is to use the google site: keyword pointed at the server for the mailing list <a class="ext-link" href="http://www.google.com/search?num=20&amp;hl=en&amp;lr=&amp;q=your_search_term+site%3Alists.baseurl.org&amp;btnG=Search"><span class="icon">thusly.</span></a>  Of course, you should replace "your_search_term" in that example to your search term.
+</p>
+<hr>
+<h5 id="Q.11:HowcanIcreateayumrepository">Q. 11: How can I create a yum repository?<a title="Link to this section" class="anchor" href="#Q.11:HowcanIcreateayumrepository"> ¶</a></h5>
+<p>
+<strong>A.</strong> First, are you sure you want to create a repository and not just mirror an existing one?  If all you want is a mirrored local copy of someone else's repository, just make sure that your rsync script (or whatever mirroring process you are using) includes the repodata directory from the mirror's source.
+</p>
+<p>
+If you really want to make your own yum repository, the command depends on the version of yum that you are going to use with this repository, but the method is basically the same.
+</p>
+<p>
+for 2.0.X or earlier:<br>
+yum-arch /path/to/where/you/want/the/repo/made
+</p>
+<p>
+for 2.2.x or later:<br>
+createrepo /path/to/where/you/want/the/repo/made
+</p>
+<p>
+You may also be served by reading <a class="ext-link" href="http://createrepo.baseurl.org/"><span class="icon">http://createrepo.baseurl.org/</span></a> and even searching the yum list archives as described in question 10
+</p>
+<hr>
+<h5 id="Q.12:HowcanIgethelp">Q. 12: How can I get help?<a title="Link to this section" class="anchor" href="#Q.12:HowcanIgethelp"> ¶</a></h5>
+<p>
+<strong>A.</strong> Well, you're on this page so that's a start.  And you've already passed most of the technical faqs and the advice on using Google to search the mailing list. If you've made it this far and haven't solved your problem you should know about the <a href="http://yum.baseurl.org/#GetHelp">support options.</a>  Basically, ask questions on the <a class="ext-link" href="http://lists.baseurl.org/mailman/listinfo/yum"><span class="icon">mailing list</span></a> and file bugs in <a href="http://yum.baseurl.org/report">trac</a>
+</p>
+<hr>
+<h5 id="Q.13:IfthemostrecentversionofapackageisavailableinmultiplerepositorieshowcanIinstructyumtoconsistentlypullitfromaspecificrepositoryStateddifferentlyhowcanIgiveprioritytoacertainmirrorormylocalrepositories">Q. 13: If the most recent version of a package is available in multiple repositories, how can I instruct yum to consistently pull it from a specific repository?  Stated differently, how can I give priority to a certain mirror or my local repositories?<a title="Link to this section" class="anchor" href="#Q.13:IfthemostrecentversionofapackageisavailableinmultiplerepositorieshowcanIinstructyumtoconsistentlypullitfromaspecificrepositoryStateddifferentlyhowcanIgiveprioritytoacertainmirrorormylocalrepositories"> ¶</a></h5>
+<p>
+<strong>A.</strong> yum will get the package from the repository listed first in the yum.conf file.  You can read more in <a class="ext-link" href="http://lists.baseurl.org/pipermail/yum/2005-May/017649.html"><span class="icon">this explanation.</span></a>
+</p>
+<hr>
+<h5 id="Q.14:HowcanItellyumtodownloadasourcepackagei.e.a.src.rpmfile">Q. 14: How can I tell yum to download a source package (i.e., a .src.rpm file)?<a title="Link to this section" class="anchor" href="#Q.14:HowcanItellyumtodownloadasourcepackagei.e.a.src.rpmfile"> ¶</a></h5>
+<p>
+<strong>A.</strong> The main yum program doesn't do this -- it's not within the scope of the program's design goals. But, since it's a very useful function, the <tt>yumdownloader</tt> program from the <tt>yum-utils</tt> package is available for doing this very thing. Simply run something like: {{{
+</p>
+<blockquote>
+<p>
+yumdownloader --source yum
+</p>
+</blockquote>
+<p>
+}}}
+and you'll get the yum src.rpm in your current directory.
+</p>
+<p>
+In order to keep yum's interface (and internal code) clean and straightforward, this will not be added to yum proper. And yumdownloader works well.
+</p>
+<hr>
+<h5 id="Q.15:ImbehindaMicrosoftproxyusingNTLMauthentication.WhatcanIdo">Q. 15: I'm behind a Microsoft proxy using NTLM authentication.  What can I do?<a title="Link to this section" class="anchor" href="#Q.15:ImbehindaMicrosoftproxyusingNTLMauthentication.WhatcanIdo"> ¶</a></h5>
+<p>
+<strong>A.</strong> Some people have had luck using <a class="ext-link" href="http://ntlmaps.sourceforge.net/"><span class="icon">the NTLM APS project</span></a>.
+</p>
+<hr>
+<h5 id="Q.16:Canyumdowngradepackages">Q. 16: Can yum downgrade packages?<a title="Link to this section" class="anchor" href="#Q.16:Canyumdowngradepackages"> ¶</a></h5>
+<p>
+<strong>A.</strong> Downgrades are tricky but in yum versions 3.2.27 and above it can do _some_ downgrades. They are not perfect and should be
+</p>
+<blockquote>
+<p>
+used with care.
+</p>
+</blockquote>
+<hr>
+<h4 id="Q.17:WhydoesyumalwaysseemtoupdatethemetadataonEVERYrun">Q. 17: Why does yum always seem to update the metadata on EVERY run?<a title="Link to this section" class="anchor" href="#Q.17:WhydoesyumalwaysseemtoupdatethemetadataonEVERYrun"> ¶</a></h4>
+<p>
+<strong>A.</strong> It doesn't. It updates to check the metadata any time the cache timeout has been hit. The default can be set in your /etc/yum.conf
+file and per repository config. see the yum man page and look for the metadata_expire value for how to set it to a different value.
+</p>
+<hr>
+<h4 id="Q.18:Howdoesyumdeterminewhichpkgtoinstallforadependencyifmorethanonepkgprovidesadependency">Q. 18: How does yum determine which pkg to install for a dependency if more than one pkg provides a dependency?<a title="Link to this section" class="anchor" href="#Q.18:Howdoesyumdeterminewhichpkgtoinstallforadependencyifmorethanonepkgprovidesadependency"> ¶</a></h4>
+<p>
+<strong>A.</strong> See the <a class="wiki" href="http://yum.baseurl.org/wiki/CompareProviders">CompareProviders</a> wiki page for more detailed information.
+</p>
+<hr>
+<h3 id="Q.19:Whatstheyumequivalentforrpm--nodeps--force">Q. 19: What's the yum equivalent for rpm --nodeps --force?<a title="Link to this section" class="anchor" href="#Q.19:Whatstheyumequivalentforrpm--nodeps--force"> ¶</a></h3>
+<p>
+<strong>A.</strong> See the <a class="wiki" href="http://yum.baseurl.org/wiki/NoDeps">NoDeps</a> wiki page for more detailed information.
+</p>
+<hr>
+</div>
+   </div>
+   
+  
+  <script type="text/javascript">/* Code removed by ScrapBook */</script>
+ 
+ 
+</div>
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div id="altlinks"><h3>Download in other formats:</h3><ul><li class="first last"><a href="http://yum.baseurl.org/wiki/Faq?format=txt">Plain Text</a></li></ul></div>
+
+</div>
+
+<div id="footer">
+ <hr>
+ <a id="tracpowered" href="http://trac.edgewall.org/"><img src="trac_logo_mini.png" alt="Trac Powered" height="30" width="107"></a>
+ <p class="left">
+  Powered by <a href="http://yum.baseurl.org/about"><strong>Trac 0.10.5</strong></a><br>
+  By <a href="http://www.edgewall.org/">Edgewall Software</a>.
+ </p>
+ <p class="right">
+  Hosting provided by <a href="http://www.osuosl.org/"><img src="osl.png" alt="OSUOSL"></a>
+ </p>
+</div>
+
+
+
+ 
+
+
+</body>
+</html>

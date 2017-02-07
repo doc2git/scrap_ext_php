@@ -1,0 +1,49 @@
+/* Code tidied up by ScrapBook */
+body { text-align: center; margin: 0px; font-family: Arial,Helvetica,sans-serif; font-size: 13px; color: rgb(0, 51, 102); background: rgb(218, 227, 243) url("bg-wholepage.png") repeat-x scroll center top; }
+#top { width: 100%; height: 123px; }
+#header { text-align: left; margin: 0px auto; width: 1005px; height: 123px; background: transparent url("ovpntech_logo-s.png") no-repeat scroll 0px 10px; }
+#h-els { height: 89px; overflow: hidden; }
+#h-nav { height: 34px; }
+.moduletable-supernav ul { float: right; margin-bottom: 19px; }
+.moduletable-supernav ul { border-left: 1px solid rgb(0, 51, 102); margin-top: 0px; padding: 0px; }
+.moduletable-supernav ul li { display: inline; margin: 0px; padding: 0px 10px; border-right: 1px solid rgb(0, 51, 102); }
+.moduletable-exnav { clear: both; width: 180px; min-height: 112px; float: left; background: rgb(210, 219, 228) none repeat scroll 0% 0%; }
+.moduletable-exnav ul { margin: 0px; padding: 0px; list-style: outside none none; clear: both; }
+.moduletable-exnav ul#mainlevel, .moduletable-exnav ul.menu { padding: 10px 10px 20px; }
+.moduletable-exnav ul li { padding-top: 10px; }
+.moduletable-exnav ul#mainlevel ul, .moduletable-exnav ul.menu ul { margin-top: 10px; border-top: 1px dotted rgb(0, 51, 102); }
+.moduletable-exnav ul li a.sublevel, .moduletable-exnav ul li ul li a { font-weight: normal; padding-left: 10px; }
+.moduletable-exnav ul li ul li.active a, .moduletable-exnav ul li a#active_menu, .moduletable-exnav ul li ul li.sublevel_active a { text-decoration: none; color: white; background: rgb(0, 51, 102) none repeat scroll 0% 0%; padding-right: 1px; padding-left: 10px; }
+.moduletable-exnav ul li ul li a:hover, .moduletable-exnav ul li a:hover, .moduletable-exnav ul li a#active_menu:hover, .moduletable-exnav ul li ul li.sublevel_active a:hover { text-decoration: none; color: rgb(255, 153, 68); background: white none repeat scroll 0% 0%; }
+#page { margin: 0px auto; text-align: left; min-height: 590px; height: auto ! important; background: rgb(252, 253, 253) url("bg-content.png") repeat-x scroll center bottom; padding: 0px 1px; }
+#page { width: 1005px; }
+html > body #page { width: 1005px; }
+hr { border: 0px none; color: rgb(0, 51, 102); background-color: rgb(0, 51, 102); height: 1px; margin: 0px; padding: 0px; }
+#middle { margin-left: 200px; width: 750px; padding: 10px 40px 0px 0px; min-height: 508px; }
+.moduletable-search { float: right; clear: right; }
+html > body #page { width: 1005px; }
+h1 { font-size: 18px; }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4 { font-size: 13px; }
+h5 { font-size: 12px; }
+a { font-weight: bold; color: rgb(0, 51, 102); text-decoration: none; }
+#middle a { font-weight: normal; color: rgb(204, 102, 0); text-decoration: underline; }
+a:hover { text-decoration: underline; }
+ul { list-style: outside none square; margin-left: 0px; padding-left: 1.5em; }
+tbody, tr td { padding-top: 4px; }
+img { border: medium none; }
+.clear { clear: both; margin-top: 10px; }
+#OP-Twitter { float: right; margin: 15px 0px 0px; width: 200px; padding: 0px; font-family: arial; font-size: 12px; color: rgb(10, 53, 101); line-height: 28px; }
+#OP-Twitter-Left { float: left; margin: 15px 0px 0px; padding: 0px; }
+#OP-Twitter-Right { float: left; margin: 15px 0px 0px 10px; padding: 0px; }
+#OP-Footer { width: 865px; height: 80px; margin: 0px auto; padding: 12px 0px 0px; border-top: 1px solid rgb(0, 0, 0); }
+#OP-Footer-left { float: left; margin: 0px; padding: 0px; font-family: arial; font-size: 12px; color: rgb(10, 53, 101); }
+#OP-Footer-Right { float: right; margin: 0px; padding: 0px; font-family: arial; font-size: 11px; color: rgb(10, 53, 101); }
+#OP-FooterLeft-link { float: left; margin: 0px; padding: 0px; }
+#OP-FooterLeft-link ul { list-style-type: none; margin: 0px; padding: 0px; }
+#OP-FooterLeft-link li { display: inline; text-decoration: none; }
+#OP-Footer-link { float: left; margin: 0px; padding: 0px; }
+#OP-Footer-link ul { list-style-type: none; margin: 0px; padding: 0px; border-left: medium none; }
+#OP-Footer-link li { display: inline-block; text-decoration: none; border-right: medium none; border-left: medium none; }
+#OP-Footer-link li a { font-family: arial; font-size: 11px; padding: 0px 5px; text-decoration: none; color: rgb(10, 53, 101); font-weight: bold; }

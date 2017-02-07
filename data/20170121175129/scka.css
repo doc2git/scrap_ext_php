@@ -1,0 +1,20 @@
+/* Code tidied up by ScrapBook */
+.crayon-theme-scka { border-width: 1px ! important; text-shadow: none ! important; background: rgb(253, 253, 253) none repeat scroll 0% 0% ! important; border-color: rgb(221, 221, 221) ! important; border-style: solid ! important; }
+.crayon-theme-scka .crayon-table .crayon-nums { background: rgb(253, 253, 253) none repeat scroll 0% 0% ! important; color: rgb(212, 212, 212) ! important; }
+.crayon-theme-scka .crayon-striped-line { background: rgb(250, 250, 250) none repeat scroll 0% 0% ! important; }
+.crayon-theme-scka .crayon-striped-num { background: rgb(250, 250, 250) none repeat scroll 0% 0% ! important; color: rgb(212, 212, 212) ! important; }
+.crayon-theme-scka .crayon-info { background: rgb(250, 249, 215) none repeat scroll 0% 0% ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-scka .crayon-toolbar { background: rgb(238, 238, 238) none repeat scroll 0% 0% ! important; border-bottom: 1px solid rgb(221, 221, 221) ! important; }
+.crayon-theme-scka .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-scka .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-scka .crayon-title { color: rgb(153, 153, 153) ! important; }
+.crayon-theme-scka .crayon-language { color: rgb(153, 153, 153) ! important; }
+.crayon-theme-scka .crayon-pre .crayon-st { color: rgb(204, 102, 0) ! important; font-weight: bold ! important; }
+.crayon-theme-scka .crayon-pre .crayon-r { color: rgb(204, 102, 0) ! important; }
+.crayon-theme-scka .crayon-pre .crayon-i { color: rgb(34, 34, 34) ! important; }
+.crayon-theme-scka .crayon-pre .crayon-e { color: rgb(204, 102, 0) ! important; }
+.crayon-theme-scka .crayon-pre .crayon-v { color: rgb(34, 34, 34) ! important; }
+.crayon-theme-scka .crayon-pre .crayon-cn { color: rgb(34, 34, 34) ! important; }
+.crayon-theme-scka .crayon-pre .crayon-o { color: rgb(34, 34, 34) ! important; }
+.crayon-theme-scka .crayon-pre .crayon-sy { color: rgb(51, 51, 51) ! important; }
+.crayon-theme-scka .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }

@@ -1,0 +1,120 @@
+/* Code tidied up by ScrapBook */
+@import url("css.css");
+@import url("css.css");
+@keyframes sumome-vex-fadein {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+@keyframes sumome-vex-fadein {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+@keyframes sumome-vex-fadeout {
+0% { opacity: 1; }
+100% { opacity: 0; }
+}
+@keyframes sumome-vex-fadeout {
+0% { opacity: 1; }
+100% { opacity: 0; }
+}
+@keyframes sumome-vex-rotation {
+0% {  }
+100% {  }
+}
+@keyframes sumome-vex-rotation {
+0% {  }
+100% {  }
+}
+@media only screen and (min-width: 641px) {
+}
+@media only screen and (min-width: 1025px) {
+}
+@keyframes sumome-vex-flyin {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+@keyframes sumome-vex-flyin {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+@keyframes sumome-vex-flyout {
+0% { opacity: 1; }
+100% { opacity: 0; }
+}
+@keyframes sumome-vex-flyout {
+0% { opacity: 1; }
+100% { opacity: 0; }
+}
+@keyframes sumome-vex-pulse {
+0% { box-shadow: 0px 0px 0px 300px transparent inset; }
+70% { box-shadow: 0px 0px 0px 300px rgba(255, 255, 255, 0.25) inset; }
+100% { box-shadow: 0px 0px 0px 300px transparent inset; }
+}
+@keyframes sumome-vex-pulse {
+0% { box-shadow: 0px 0px 0px 300px transparent inset; }
+70% { box-shadow: 0px 0px 0px 300px rgba(255, 255, 255, 0.25) inset; }
+100% { box-shadow: 0px 0px 0px 300px transparent inset; }
+}
+.sumome-share-client-wrapper div, .sumome-share-client-wrapper span, .sumome-share-client-wrapper applet, .sumome-share-client-wrapper object, .sumome-share-client-wrapper iframe, .sumome-share-client-wrapper h1, .sumome-share-client-wrapper h2, .sumome-share-client-wrapper h3, .sumome-share-client-wrapper h4, .sumome-share-client-wrapper h5, .sumome-share-client-wrapper h6, .sumome-share-client-wrapper p, .sumome-share-client-wrapper blockquote, .sumome-share-client-wrapper pre, .sumome-share-client-wrapper a, .sumome-share-client-wrapper abbr, .sumome-share-client-wrapper acronym, .sumome-share-client-wrapper address, .sumome-share-client-wrapper big, .sumome-share-client-wrapper cite, .sumome-share-client-wrapper code, .sumome-share-client-wrapper del, .sumome-share-client-wrapper dfn, .sumome-share-client-wrapper em, .sumome-share-client-wrapper img, .sumome-share-client-wrapper ins, .sumome-share-client-wrapper kbd, .sumome-share-client-wrapper q, .sumome-share-client-wrapper s, .sumome-share-client-wrapper samp, .sumome-share-client-wrapper small, .sumome-share-client-wrapper strike, .sumome-share-client-wrapper strong, .sumome-share-client-wrapper sub, .sumome-share-client-wrapper sup, .sumome-share-client-wrapper tt, .sumome-share-client-wrapper var, .sumome-share-client-wrapper b, .sumome-share-client-wrapper u, .sumome-share-client-wrapper i, .sumome-share-client-wrapper center, .sumome-share-client-wrapper dl, .sumome-share-client-wrapper dt, .sumome-share-client-wrapper dd, .sumome-share-client-wrapper ol, .sumome-share-client-wrapper ul, .sumome-share-client-wrapper li, .sumome-share-client-wrapper fieldset, .sumome-share-client-wrapper form, .sumome-share-client-wrapper label, .sumome-share-client-wrapper legend, .sumome-share-client-wrapper table, .sumome-share-client-wrapper caption, .sumome-share-client-wrapper tbody, .sumome-share-client-wrapper tfoot, .sumome-share-client-wrapper thead, .sumome-share-client-wrapper tr, .sumome-share-client-wrapper th, .sumome-share-client-wrapper td, .sumome-share-client-wrapper article, .sumome-share-client-wrapper aside, .sumome-share-client-wrapper canvas, .sumome-share-client-wrapper details, .sumome-share-client-wrapper embed, .sumome-share-client-wrapper figure, .sumome-share-client-wrapper figcaption, .sumome-share-client-wrapper footer, .sumome-share-client-wrapper header, .sumome-share-client-wrapper hgroup, .sumome-share-client-wrapper menu, .sumome-share-client-wrapper nav, .sumome-share-client-wrapper output, .sumome-share-client-wrapper ruby, .sumome-share-client-wrapper section, .sumome-share-client-wrapper summary, .sumome-share-client-wrapper time, .sumome-share-client-wrapper mark, .sumome-share-client-wrapper audio, .sumome-share-client-wrapper video { word-wrap: normal; box-sizing: border-box; margin: 0px; padding: 0px; border: 0px none; font-family: inherit; font-size-adjust: inherit; font-stretch: inherit; font-feature-settings: inherit; font-language-override: inherit; font-kerning: inherit; font-synthesis: inherit; font-variant: inherit; font-size: 100%; vertical-align: baseline; background: transparent none repeat scroll 0% 0%; line-height: initial; font-style: initial; font-weight: initial; word-break: initial; clear: none; opacity: 1; float: none; color: inherit; max-height: none; }
+.sumome-share-client-wrapper div { width: auto; float: none; }
+.sumome-share-client-wrapper img { width: auto; }
+.sumome-share-client-wrapper a img { border: medium none; }
+.sumome-share-client-wrapper address::before, .sumome-share-client-wrapper address::after, .sumome-share-client-wrapper article::before, .sumome-share-client-wrapper article::after, .sumome-share-client-wrapper aside::before, .sumome-share-client-wrapper aside::after, .sumome-share-client-wrapper audio::before, .sumome-share-client-wrapper audio::after, .sumome-share-client-wrapper blockquote::before, .sumome-share-client-wrapper blockquote::after, .sumome-share-client-wrapper canvas::before, .sumome-share-client-wrapper canvas::after, .sumome-share-client-wrapper dd::before, .sumome-share-client-wrapper dd::after, .sumome-share-client-wrapper div::before, .sumome-share-client-wrapper div::after, .sumome-share-client-wrapper dl::before, .sumome-share-client-wrapper dl::after, .sumome-share-client-wrapper fieldset::before, .sumome-share-client-wrapper fieldset::after, .sumome-share-client-wrapper figcaption::before, .sumome-share-client-wrapper figcaption::after, .sumome-share-client-wrapper figure::before, .sumome-share-client-wrapper figure::after, .sumome-share-client-wrapper footer::before, .sumome-share-client-wrapper footer::after, .sumome-share-client-wrapper form::before, .sumome-share-client-wrapper form::after, .sumome-share-client-wrapper header::before, .sumome-share-client-wrapper header::after, .sumome-share-client-wrapper hr::before, .sumome-share-client-wrapper hr::after, .sumome-share-client-wrapper main::before, .sumome-share-client-wrapper main::after, .sumome-share-client-wrapper output::before, .sumome-share-client-wrapper output::after, .sumome-share-client-wrapper pre::before, .sumome-share-client-wrapper pre::after, .sumome-share-client-wrapper section::before, .sumome-share-client-wrapper section::after, .sumome-share-client-wrapper table::before, .sumome-share-client-wrapper table::after, .sumome-share-client-wrapper tfoot::before, .sumome-share-client-wrapper tfoot::after, .sumome-share-client-wrapper video::before, .sumome-share-client-wrapper video::after { content: none; }
+.sumome-share-client-wrapper *, .sumome-share-client-wrapper *::before, .sumome-share-client-wrapper *::after { box-sizing: border-box; background: initial; }
+.sumome-share-client-wrapper { font-size: 14px; }
+.sumome-share-client-wrapper { background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(34, 34, 34); padding: 0px; margin: 0px; font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif; font-weight: normal; font-style: normal; line-height: 1; position: relative; cursor: default; }
+.sumome-share-client-wrapper a:hover { cursor: pointer; }
+.sumome-share-client-wrapper img, .sumome-share-client-wrapper object, .sumome-share-client-wrapper embed { max-width: 100%; height: auto; }
+.sumome-share-client-wrapper img {  }
+.sumome-share-client-wrapper img { display: inline-block; vertical-align: middle; }
+.sumome-share-client-wrapper div, .sumome-share-client-wrapper dl, .sumome-share-client-wrapper dt, .sumome-share-client-wrapper dd, .sumome-share-client-wrapper ul, .sumome-share-client-wrapper ol, .sumome-share-client-wrapper li, .sumome-share-client-wrapper h1, .sumome-share-client-wrapper h2, .sumome-share-client-wrapper h3, .sumome-share-client-wrapper h4, .sumome-share-client-wrapper h5, .sumome-share-client-wrapper h6, .sumome-share-client-wrapper pre, .sumome-share-client-wrapper form, .sumome-share-client-wrapper p, .sumome-share-client-wrapper blockquote, .sumome-share-client-wrapper th, .sumome-share-client-wrapper td { margin: 0px; padding: 0px; text-transform: initial; direction: ltr; text-align: inherit; letter-spacing: normal; }
+.sumome-share-client-wrapper a { color: rgb(0, 115, 183); text-decoration: none; line-height: inherit; }
+.sumome-share-client-wrapper a:hover, .sumome-share-client-wrapper a:focus { color: rgb(0, 99, 158); }
+.sumome-share-client-wrapper a img { border: medium none; }
+.sumome-share-client-wrapper strong, .sumome-share-client-wrapper b { font-weight: bold; line-height: inherit; }
+.sumome-share-client-wrapper div, .sumome-share-client-wrapper span, .sumome-share-client-wrapper applet, .sumome-share-client-wrapper object, .sumome-share-client-wrapper iframe, .sumome-share-client-wrapper h1, .sumome-share-client-wrapper h2, .sumome-share-client-wrapper h3, .sumome-share-client-wrapper h4, .sumome-share-client-wrapper h5, .sumome-share-client-wrapper h6, .sumome-share-client-wrapper p, .sumome-share-client-wrapper blockquote, .sumome-share-client-wrapper pre, .sumome-share-client-wrapper a, .sumome-share-client-wrapper abbr, .sumome-share-client-wrapper acronym, .sumome-share-client-wrapper address, .sumome-share-client-wrapper big, .sumome-share-client-wrapper cite, .sumome-share-client-wrapper code, .sumome-share-client-wrapper del, .sumome-share-client-wrapper dfn, .sumome-share-client-wrapper em, .sumome-share-client-wrapper img, .sumome-share-client-wrapper ins, .sumome-share-client-wrapper kbd, .sumome-share-client-wrapper q, .sumome-share-client-wrapper s, .sumome-share-client-wrapper samp, .sumome-share-client-wrapper small, .sumome-share-client-wrapper strike, .sumome-share-client-wrapper strong, .sumome-share-client-wrapper sub, .sumome-share-client-wrapper sup, .sumome-share-client-wrapper tt, .sumome-share-client-wrapper var, .sumome-share-client-wrapper b, .sumome-share-client-wrapper u, .sumome-share-client-wrapper i, .sumome-share-client-wrapper center, .sumome-share-client-wrapper dl, .sumome-share-client-wrapper dt, .sumome-share-client-wrapper dd, .sumome-share-client-wrapper ol, .sumome-share-client-wrapper ul, .sumome-share-client-wrapper li, .sumome-share-client-wrapper fieldset, .sumome-share-client-wrapper form, .sumome-share-client-wrapper label, .sumome-share-client-wrapper legend, .sumome-share-client-wrapper table, .sumome-share-client-wrapper caption, .sumome-share-client-wrapper tbody, .sumome-share-client-wrapper tfoot, .sumome-share-client-wrapper thead, .sumome-share-client-wrapper tr, .sumome-share-client-wrapper th, .sumome-share-client-wrapper td, .sumome-share-client-wrapper article, .sumome-share-client-wrapper aside, .sumome-share-client-wrapper canvas, .sumome-share-client-wrapper details, .sumome-share-client-wrapper embed, .sumome-share-client-wrapper figure, .sumome-share-client-wrapper figcaption, .sumome-share-client-wrapper footer, .sumome-share-client-wrapper header, .sumome-share-client-wrapper hgroup, .sumome-share-client-wrapper menu, .sumome-share-client-wrapper nav, .sumome-share-client-wrapper output, .sumome-share-client-wrapper ruby, .sumome-share-client-wrapper section, .sumome-share-client-wrapper summary, .sumome-share-client-wrapper time, .sumome-share-client-wrapper mark, .sumome-share-client-wrapper audio, .sumome-share-client-wrapper video { color: inherit; background: inherit; }
+.sumome-share-client-wrapper { display: block; background: transparent none repeat scroll 0% 0%; position: static; }
+.sumome-share-client-wrapper.sumome-share-client-wrapper-desktop-bottom-bar, .sumome-share-client-wrapper.sumome-share-client-wrapper-mobile-top-bar, .sumome-share-client-wrapper.sumome-share-client-wrapper-mobile-bottom-bar { position: fixed; width: 100%; margin: 0px; left: 0px; height: 50px; z-index: 10000000; overflow: hidden; }
+.sumome-share-client-wrapper.sumome-share-client-wrapper-desktop-bottom-bar, .sumome-share-client-wrapper.sumome-share-client-wrapper-mobile-bottom-bar { bottom: 0px; }
+.sumome-share-client-wrapper div.sumome-share-client { position: absolute; top: 10px; z-index: 100; width: 50px; height: auto; max-width: initial; background: transparent none repeat scroll 0% 0%; padding: 0px; color: black; margin: 0px; box-sizing: border-box; font-size: 0px; }
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-left-page, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-right-page, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-desktop-bottom-bar, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-mobile-top-bar, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-mobile-bottom-bar, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-right-sidebar-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-left-sidebar-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-top-left-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-top-center-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-top-right-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-header-left-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-header-center-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-header-right-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-bottom-left-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-bottom-center-article, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-bottom-right-article { position: static; width: auto; z-index: initial; display: inline-block; margin: 10px 0px; }
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-left-page .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-right-page .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-desktop-bottom-bar .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-mobile-top-bar .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-mobile-bottom-bar .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-right-sidebar-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-left-sidebar-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-top-left-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-top-center-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-top-right-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-header-left-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-header-center-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-header-right-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-bottom-left-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-bottom-center-article .sumome-share-client-share, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-bottom-right-article .sumome-share-client-share { display: inline-block; height: 50px; }
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-left-page, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-right-page, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-desktop-bottom-bar, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-mobile-top-bar, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-mobile-bottom-bar { margin: 0px; }
+.sumome-share-client-wrapper div.sumome-share-client .sumome-share-client-share { box-sizing: border-box; display: inline-block; width: 50px; height: 50px; padding: 10px; color: black; position: relative; text-decoration: none; text-align: center; line-height: 0; font-size: 0px; font-weight: bold; cursor: pointer; vertical-align: middle; }
+.sumome-share-client-wrapper div.sumome-share-client .sumome-share-client-share img { width: 30px; height: 30px; max-width: 100%; }
+.sumome-share-client-wrapper div.sumome-share-client .sumome-share-client-share.sumome-share-client-share-share { padding: 4px 0px 16px; float: left; }
+.sumome-share-client-wrapper div.sumome-share-client .sumome-share-client-share.sumome-share-client-share-share span { position: absolute; bottom: 4px; left: 0px; z-index: 1; display: block; width: 100%; font-weight: normal; font-size: 11px; text-align: center; line-height: 13px; color: inherit; }
+.sumome-share-client-wrapper div.sumome-share-client .sumome-share-client-share.sumome-share-client-share-share strong { font-weight: bold; font-size: 14px; }
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-counts .sumome-share-client-count { padding: 4px 10px 16px; }
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-counts .sumome-share-client-count span { position: absolute; bottom: 4px; left: 0px; z-index: 1; display: block; width: 100%; font-weight: normal; font-size: 11px; text-align: center; line-height: 13px; color: inherit; }
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-counts .sumome-share-client-count.sumome-share-client-share-share { padding: 4px 0px 16px; float: left; }
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-counts .sumome-share-client-count.sumome-share-client-share-share span { top: 0px; }
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-counts .sumome-share-client-count.sumome-share-client-share-share strong { font-weight: bold; font-size: 14px; }
+@media only screen and (min-width: 641px) {
+}
+@media only screen and (min-width: 1025px) {
+}
+a.sumome-share-client-share img, .sumome-share-client-share span { background-color: transparent; }
+.sumome-share-client-share:last-child { margin: 0px ! important; }
+@keyframes sumomeShareSlideInLeft {
+0% { transform: translate3d(-100%, 0px, 0px); visibility: visible; }
+100% { transform: translate3d(0px, 0px, 0px); }
+}
+@keyframes sumomeShareSlideInRight {
+0% { transform: translate3d(100%, 0px, 0px); visibility: visible; }
+100% { transform: translate3d(0px, 0px, 0px); }
+}
+@keyframes sumomeShareSlideInDown {
+0% { transform: translate3d(0px, -100%, 0px); visibility: visible; }
+100% { transform: translate3d(0px, 0px, 0px); }
+}
+@keyframes sumomeShareSlideInUp {
+0% { transform: translate3d(0px, 100%, 0px); visibility: visible; }
+100% { transform: translate3d(0px, 0px, 0px); }
+}
+@keyframes sumomeShareFadeIn {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-desktop-bottom-bar .sumome-share-client-animated, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-mobile-bottom-bar .sumome-share-client-animated { animation-duration: 1s; animation-fill-mode: both; animation-name: sumomeShareSlideInUp; }
+.sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-desktop-bottom-bar .sumome-share-client-animated img, .sumome-share-client-wrapper div.sumome-share-client.sumome-share-client-mobile-bottom-bar .sumome-share-client-animated img { transform: translate3d(0px, 0px, 0px); }

@@ -1,0 +1,26 @@
+/* Code tidied up by ScrapBook */
+* { margin: 0px; padding: 0px; }
+body { background-image: url("noise_b1.png"); background-position: center top; background-repeat: repeat; font: 14px/24px "Microsoft Yahei","冬青黑体简体中文 w3","宋体"; }
+.container { width: 1200px; margin: 0px auto; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.clearfix { clear: both; }
+ul li { list-style: outside none none; }
+#nav { width: 100%; height: 52px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; margin: 1px 0px; }
+#nav .container { padding: 0px 15px; }
+#nav ul li { float: left; height: 52px; line-height: 52px; }
+#nav ul li a { text-decoration: none; display: block; padding: 0px 15px; color: rgb(72, 66, 63); }
+#nav ul li a.active, #nav ul li a:hover { color: rgb(238, 52, 36); }
+#main { width: 100%; }
+#main .container { width: 1180px; margin: auto; }
+#footer { margin-top: 10px; font-size: 12px; background-color: rgb(54, 54, 54); text-align: center; color: rgb(218, 218, 218); padding: 10px 0px; }
+#footer .container { background: transparent none repeat scroll 0px center; }
+a { text-decoration: none; color: rgb(0, 0, 0); }
+.leftbox { width: 780px; float: left; }
+.rightbox { width: 394px; float: right; }
+.newscardtext { margin: 3px 0px; }
+.newscardtext i { font-size: 24px; margin-right: 5px; }
+.news-tag { height: 12px; line-height: 12px; }
+.news-tag .tags { font-size: 12px; color: rgb(227, 18, 11); margin-right: 5px; }
+.newscard-list { padding: 10px 0px; }
+#footer .container div.txt { line-height: 24px; }
+#footer .container div.txt a { color: rgb(218, 218, 218); text-decoration: none; }
+#footer .qrcode_kf { height: 80px; margin-top: 10px; margin-bottom: 10px; }

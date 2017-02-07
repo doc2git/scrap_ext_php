@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubuntu 16.04 启动错误 "a start job is running for hold until boot process finishes up" - wzc0066 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-marvin3-blue.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="bundle-marvin3-blue-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/wzc0066/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/wzc0066/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/wzc0066/wlwmanifest.xml">
+<script src="about:blank" type="text/javascript"></script>  
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="top">
+	
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/wzc0066/">wzc0066</a></h1>
+<p id="tagline">智能平台，机器人，3D打印解决方案</p>
+</div>
+<div id="leftmenu">
+	
+		
+<h3>导航</h3>
+<ul>
+			<li><a id="blog_nav_sitehome" href="http://www.cnblogs.com/">博客园</a></li>
+			<li><a id="blog_nav_myhome" href="http://www.cnblogs.com/wzc0066/">首页</a></li>
+			<li><a id="blog_nav_newpost" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+			<li><a id="blog_nav_contact" accesskey="9" rel="nofollow" href="https://msg.cnblogs.com/send/wzc0066">联系</a></li>
+			<li><a id="blog_nav_rss" href="http://www.cnblogs.com/wzc0066/rss">订阅</a><a id="blog_nav_rss_image" href="http://www.cnblogs.com/wzc0066/rss"><img src="xml.gif" alt="订阅"></a>
+			</li><li><a id="blog_nav_admin" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a>&lt;</a></td><td align="center">2016年12月</td><td class="CalNextPrev" align="right"><a>&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td class="CalWeekendDay" align="center">3</td></tr><tr><td class="CalWeekendDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td class="CalWeekendDay" align="center">10</td></tr><tr><td class="CalWeekendDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td class="CalWeekendDay" align="center">17</td></tr><tr><td class="CalWeekendDay" align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td class="CalWeekendDay" align="center">24</td></tr><tr><td class="CalTodayDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalWeekendDay" align="center">31</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+		
+<h3>公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/wzc0066/">wzc0066</a><br>园龄：<a href="http://home.cnblogs.com/u/wzc0066/" title="入园时间：2013-03-07">3年9个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/wzc0066/followers/">3</a><br>关注：<a href="http://home.cnblogs.com/u/wzc0066/followees/">0</a><div id="p_b_follow"><a>+加关注</a></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+		
+	
+</div>
+<div id="rightmenu">
+	
+		<div id="blog_stats">
+<h3>统计</h3>
+	<ul>
+		<li>随笔 - 110
+		</li><li>文章 - 0
+		</li><li>评论 - 27
+		</li><li>引用 - 0
+	</li>
+</ul></div>
+		<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" class="input_my_zzk" type="text">&nbsp;<input value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" class="input_my_zzk" type="text">&nbsp;<input value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/wzc0066/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/wzc0066/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/wzc0066/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/wzc0066/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/wzc0066/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/wzc0066/tag/Android%E5%BC%80%E5%8F%91/">Android开发</a>(58)</li><li><a href="http://www.cnblogs.com/wzc0066/tag/Linux%E5%BC%80%E5%8F%91/">Linux开发</a>(36)</li><li><a href="http://www.cnblogs.com/wzc0066/tag/Arduino%E7%9B%B8%E5%85%B3/">Arduino相关</a>(5)</li><li><a href="http://www.cnblogs.com/wzc0066/tag/%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">网络管理</a>(5)</li><li><a href="http://www.cnblogs.com/wzc0066/tag/RT-Thread/">RT-Thread</a>(4)</li>
+</ul>
+</div></div><div id="sidebar_categories">
+		<h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/wzc0066/archive/2016/09.html">2016年9月 (4)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/wzc0066/archive/2016/08.html">2016年8月 (1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/wzc0066/archive/2016/07.html">2016年7月 (1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/wzc0066/archive/2014/07.html">2014年7月 (3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/wzc0066/archive/2014/04.html">2014年4月 (1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/wzc0066/archive/2014/03.html">2014年3月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/wzc0066/archive/2013/12.html">2013年12月 (1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/wzc0066/archive/2013/10.html">2013年10月 (2)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/wzc0066/archive/2013/09.html">2013年9月 (3)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/wzc0066/archive/2013/06.html">2013年6月 (1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/wzc0066/archive/2013/05.html">2013年5月 (1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/wzc0066/archive/2013/04.html">2013年4月 (1)</a> </li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/wzc0066/archive/2013/03.html">2013年3月 (89)</a> </li>
+			
+				</ul>
+			
+	
+		<h3>相册</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/wzc0066/gallery/457622.html" rel="nofollow">文档引用</a> </li>
+			
+				</ul>
+			
+	</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="#3510506">1. Re:Ubuntu 16.04 启动错误 "a start job is running for hold until boot process finishes up"</a></li>
+        <li class="recent_comment_body">@林特斯9527注意：是/etc/X11/ 不是 /etc/default/...</li>
+        <li class="recent_comment_author">--wzc0066</li>
+        <li class="recent_comment_title"><a href="#3507126">2. Re:Ubuntu 16.04 启动错误 "a start job is running for hold until boot process finishes up"</a></li>
+        <li class="recent_comment_body">遇到了同样的问题。<br>但是只有这个文件夹，/etc/default/，目录下面没有 display-manager 相关的文件。</li>
+        <li class="recent_comment_author">--林特斯9527</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/08/2950214.html#3179765">3. Re:基于MPU6050三轴陀螺仪和三轴加速度传感器姿态识别实验</a></li>
+        <li class="recent_comment_body">Processing IDE 可以提供一下下载？官网一直下载不动</li>
+        <li class="recent_comment_author">--FMsunyh</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/07/2948233.html#2996776">4. Re:Android蓝牙测试—发送一文件到另一蓝牙设备</a></li>
+        <li class="recent_comment_body">@wzc0066好的，我试试...</li>
+        <li class="recent_comment_author">--小强9527</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/07/2948233.html#2996714">5. Re:Android蓝牙测试—发送一文件到另一蓝牙设备</a></li>
+        <li class="recent_comment_body">@小强9527引用@wzc0066我是想要发送文件，你能帮我修改下吗？这个问题我已经一年多没做Android开发了，再者现在系统也没安装开发环境。实在不行，你去这里请教吧：它是国内最具实力的Andro......</li>
+        <li class="recent_comment_author">--wzc0066</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3>阅读排行榜</h3>
+<div class="RecentComment">
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/07/2948233.html">1. Android蓝牙测试—发送一文件到另一蓝牙设备(1187)</a></li><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/08/2950214.html">2. 基于MPU6050三轴陀螺仪和三轴加速度传感器姿态识别实验(849)</a></li><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/08/2949270.html">3. 关于Arduino上读取GPS模块遇到的几个问题(616)</a></li><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/08/2949300.html">4. Linux下编译RT-Thread(530)</a></li><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/08/2949268.html">5. Arduino舵机控制测试(526)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3>评论排行榜</h3>
+<div class="RecentComment">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/07/2948233.html">1. Android蓝牙测试—发送一文件到另一蓝牙设备(20)</a></li><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/08/2949200.html">2. Android应用里面调用Google Earth应用(3)</a></li><li><a href="#">3. Ubuntu 16.04 启动错误 "a start job is running for hold until boot process finishes up"(2)</a></li><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/07/2948218.html">4. 基于Android的一个简单多媒体播放器(1)</a></li><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/08/2950214.html">5. 基于MPU6050三轴陀螺仪和三轴加速度传感器姿态识别实验(1)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/wzc0066/archive/2013/03/07/2948233.html">1. Android蓝牙测试—发送一文件到另一蓝牙设备(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>      
+	
+</div>
+<div id="main">
+	
+<div id="post_detail">
+	<div class="post">
+		<h2>
+			<a id="cb_post_title_url" href="#">Ubuntu 16.04 启动错误 "a start job is running for hold until boot process finishes up"</a>
+		</h2>
+		<div id="cnblogs_post_body"><p>老司机也差点翻船...<br><br>升级16.04的时候，将默认启动管理器（default display manager）选为gm3（gnome3）了（应该使用默认的lightgm）<br>如果改成gm3，好像是nvidia驱动就不兼容了，所以系统启动时一直卡在这个错误信息：<br>"a start job is running for hold until boot process finishes up"<br><br>这个时候是没有终端的，所以无法进行任何操作。<br><br>解决方法：<br>通过一个Ubuntu USB启动盘启动系统，选择试用（非安装），然后挂载电脑的系统盘（/etc所在磁盘），然后编辑文件：<br>sudo vi /etc/X11/default-display-manager （注意文件的相对位置，该文件是指电脑原始系统的文件，非启动盘的文件）<br>将默认启动管理器设置为lightdm即可。<br><br>然后重启系统就可以进入了。<br>如果图形界面遇到问题（或提示警告），可以通过&nbsp; Ctrl + Alt + F1 进入终端： sudo /etc/init.d/lightdm restart 肯定可以进去。<br><br>进入系统之后在终端再次执行： sudo dpkg-reconfigure lightgm 进行确认一下！</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a id="green_channel_digg">好文要顶</a>
+            <a id="green_channel_follow">关注我</a>
+    <a id="green_channel_favorite">收藏该文</a>
+    <a id="green_channel_weibo" title="分享至新浪微博"><img src="icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" title="分享至微信"><img src="wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/wzc0066/" target="_blank"><img src="20160717164609.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/wzc0066/">wzc0066</a><br>
+            <a href="http://home.cnblogs.com/u/wzc0066/followees">关注 - 0</a><br>
+            <a href="http://home.cnblogs.com/u/wzc0066/followers">粉丝 - 3</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a>+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/wzc0066/p/3863045.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/wzc0066/p/3863045.html" title="发布于2014-07-23 14:59">Ubuntu下命令行方式对PDF文件进行缩放、合并、拆分</a><br><a href="http://www.cnblogs.com/wzc0066/p/5800884.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/wzc0066/p/5800884.html" title="发布于2016-08-23 21:21">linux下解压被分割的zip文件</a><br></div>
+</div>
+
+
+		<p class="postfoot">
+			posted on <span id="post-date">2016-07-17 16:42</span> <a href="http://www.cnblogs.com/wzc0066/">wzc0066</a> 阅读(<span id="post_view_count">322</span>) 评论(<span id="post_comment_count">2</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5678882" rel="nofollow">编辑</a> <a href="#">收藏</a>
+		</p>
+	</div>
+	<script type="text/javascript">/* Code removed by ScrapBook */</script>
+	
+	</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a name="评论"></a>
+<div id="comments">
+<h3>评论</h3>
+	
+	
+			<h4>
+				<a href="#3507126" class="layer">#1楼</a><a name="3507126" id="comment_anchor_3507126"></a>
+					<span>
+						 <span class="comment_date">2016-09-09 17:51</span>
+					</span>
+				<a id="a_comment_author_3507126" href="http://www.cnblogs.com/LinTeX9527/" target="_blank">林特斯9527</a> <a href="http://msg.cnblogs.com/send/%E6%9E%97%E7%89%B9%E6%96%AF9527" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3507126" class="blog_comment_body">遇到了同样的问题。<br>但是只有这个文件夹，/etc/default/，目录下面没有 display-manager 相关的文件。</div><div class="comment_vote"><a class="comment_digg">支持(0)</a><a class="comment_bury">反对(0)</a></div><span id="comment_3507126_avatar" style="display: none;">http://pic.cnblogs.com/face/666431/20161221184225.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+			<h4>
+				<a href="#3510506" class="layer">#2楼</a><a name="3510506" id="comment_anchor_3510506"></a>[<span class="louzhu">楼主</span>]<span id="comment-maxId" style="display: none;">3510506</span><span id="comment-maxDate" style="display: none;">2016/9/14 14:22:30</span>
+					<span>
+						 <span class="comment_date">2016-09-14 14:22</span>
+					</span>
+				<a id="a_comment_author_3510506" href="http://www.cnblogs.com/wzc0066/" target="_blank">wzc0066</a> <a href="http://msg.cnblogs.com/send/wzc0066" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</h4>
+			<p>
+				</p><div id="comment_body_3510506" class="blog_comment_body"><a href="#3507126" title="查看所回复的评论">@</a>
+林特斯9527<br>注意：是/etc/X11/ 不是 /etc/default/</div><div class="comment_vote"><a class="comment_digg">支持(0)</a><a class="comment_bury">反对(0)</a></div><span id="comment_3510506_avatar" style="display: none;">http://pic.cnblogs.com/face/502044/20160717164609.png</span>
+				&nbsp;&nbsp;<span class="comment_actions"></span>
+			<p></p>
+		
+</div><div id="comments_pager_bottom"></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" class="underline">登录</a> 或 <a rel="nofollow" class="underline">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://arcapp.anruichina.com/arctrac/trac?tid=smb_azure_1212_CNBlog" target="_blank">【福利】微软Azure给博客园的你专属双重好礼</a><br><a href="http://rongcloud.cn/reports/journal2" target="_blank">【推荐】融云发布 App 社交化白皮书 IM 提升活跃超 8 倍</a><br><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg" target="_blank">【推荐】BPM免费下载</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/activereports_overview.htm?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=AR&amp;utm_campaign=community" target="_blank"><img src="24442-20161115165230123-1587531896.png" alt="" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/559716/" target="_blank">肯德基上线新点餐系统：推荐啥主要看脸</a><br> ·  <a href="http://news.cnblogs.com/n/559701/" target="_blank">预装软件需可卸载 靠隐私赚钱再也行不通了</a><br> ·  <a href="http://news.cnblogs.com/n/559715/" target="_blank">豌豆荚并入阿里移动5个月后 王俊煜等创始团队出局</a><br> ·  <a href="http://news.cnblogs.com/n/559714/" target="_blank">Windows 10 Build 15000完成编译并且在微软内部发布</a><br> ·  <a href="http://news.cnblogs.com/n/559712/" target="_blank">苹果与诺基亚专利大战爆发后，苹果全面停售Withings</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg" target="_blank"><img src="35695-20161213142353073-1602158633.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br> ·  <a href="http://kb.cnblogs.com/page/553682/" target="_blank">陈皓：什么是工程师文化？</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+
+</div>
+
+<p id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family: Verdana; font-size: 12px;">博客园</a>
+	<br>
+	Copyright © wzc0066
+</p>
+
+
+
+</body>
+</html>

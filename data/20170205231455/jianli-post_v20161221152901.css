@@ -1,0 +1,423 @@
+/* Code tidied up by ScrapBook */
+@charset "utf-8";
+body, dl, dd, ul, h1, h2, h3, h4, input, p { margin: 0px; padding: 0px; }
+img { border: 0px none; }
+table { border-spacing: 0px; border-collapse: collapse; }
+input { vertical-align: middle; outline: 0px none; }
+ul { list-style: outside none none; }
+h1, h2, h3, h4 { font-size: 100%; }
+a { text-decoration: none; color: rgb(17, 85, 204); outline: 0px none; }
+a:hover { text-decoration: none; color: rgb(238, 34, 0); }
+.tdul { text-decoration: underline; }
+.w33 { width: 33px; }
+.w43 { width: 43px; }
+.w76 { width: 76px; }
+.w92 { width: 92px; }
+.w115 { width: 115px; }
+.w121 { width: 121px; }
+.w131 { width: 131px; }
+.w165 { width: 165px; }
+.w185 { width: 185px; }
+.w222 { width: 222px; }
+.w236 { width: 236px; }
+.w302 { width: 302px; }
+.w710 { width: 710px; }
+.pl5 { padding-left: 5px; }
+.pl8 { padding-left: 8px; }
+.pr5 { padding-right: 5px; }
+.plr5 { padding: 0px 5px; }
+.plr8 { padding: 0px 8px; }
+.clear { clear: both; overflow: hidden; height: 0px; }
+.clearfix {  }
+.clearfix::after { display: block; visibility: hidden; clear: both; height: 0px; content: "."; }
+.red { color: rgb(224, 78, 58); }
+.f-green { color: rgb(12, 174, 12); }
+.f-orange { color: rgb(253, 117, 67); }
+.fb { font-weight: 700; }
+.fl { float: left; }
+.pr { position: relative; }
+.tc { text-align: center; }
+.db { display: block; }
+body { font-family: Arial,sans-serif,"宋体"; font-size: 12px; color: rgb(88, 88, 88); }
+i { font-size: 0px; display: block; border: 0px none; background: transparent url("jl_postIcon.png") no-repeat scroll 0px 0px; }
+i.keyIcon { position: absolute; width: 17px; height: 17px; cursor: text; background-position: -31px -32px; }
+i.necIcon { width: 17px; height: 17px; background-position: -1px -3px; }
+i.selIcon { width: 23px; height: 33px; cursor: pointer; background-position: -1px -24px; }
+i.radioIcon, i.radioIconSel { width: 14px; height: 14px; cursor: pointer; background-position: -102px -3px; }
+i.radioIconSel { background-position: -123px -3px; }
+i.closeType { width: 8px; height: 7px; cursor: pointer; background-position: -95px -36px; }
+i.closeBIcon { width: 10px; height: 10px; cursor: pointer; background-position: -116px -35px; }
+i.phoneIcon { width: 16px; height: 18px; background-position: -53px -32px; }
+i.topArrow { width: 16px; height: 10px; background-position: -77px -5px; }
+i.botArrow { width: 16px; height: 10px; background-position: -129px -38px; }
+i.prevIcon, i.nextIcon, i.prevHover, i.nextHover { width: 10px; height: 16px; cursor: pointer; background-position: -4px -62px; }
+i.nextIcon { display: none; background-position: -12px -62px; }
+i.prevHover { background-position: -25px -62px; }
+i.nextHover { background-position: -35px -62px; }
+i.check { width: 10px; height: 10px; cursor: pointer; border-width: 1px; border-style: solid; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-color: rgb(160, 166, 170) rgb(196, 200, 203) rgb(196, 200, 203) rgb(160, 166, 170); background-color: rgb(255, 255, 255); background-position: 11px 11px; }
+i.checked { background-position: -75px -35px; }
+i.rightGIcon { width: 11px; height: 24px; background-position: -60px -83px; }
+i.addIcon { width: 10px; height: 10px; background-position: -88px -65px; }
+i.addHoverIcon { width: 10px; height: 10px; background-position: -75px -65px; }
+.postBtn { background: transparent url("jl_postBtn.png") repeat-x scroll 0px 0px; }
+.perIcon { width: 99px; height: 99px; text-align: center; border: 0px none; background: transparent url("jl_perIcon.png") no-repeat scroll -16px -12px; }
+.perIcon85 { background-position: -130px -128px; }
+.logHeader { position: relative; z-index: 1; overflow: hidden; width: 1000px; height: 70px; margin: 0px auto 5px; border-width: medium medium 1px; border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color rgb(249, 125, 3); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+.logHeader .logoImg { position: absolute; top: 10px; left: 0px; }
+.logHeader .logoImg img { display: block; }
+.logHeader .loginName { position: absolute; top: 23px; left: 170px; height: 39px; padding-left: 15px; }
+.logHeader .loginName span { font: 22px/1.8 "幼圆","微软雅黑","黑体",sans-serif; color: rgb(51, 51, 51); }
+.logHeader .userInfo { position: relative; top: 40px; left: 0px; float: right; }
+.perIcon { position: fixed; z-index: 999; top: 110px; left: 225px; }
+.perTips { font-size: 12px; line-height: 24px; position: fixed; z-index: 999; top: 230px; left: 180px; width: 130px; padding: 7px 12px 7px 14px; color: rgb(255, 117, 14); border: 1px solid rgb(245, 228, 147); background-color: rgb(255, 254, 224); }
+.perTips .perBasicTips { font-weight: 700; }
+.perTips i.topArrow { position: absolute; top: -9px; left: 85px; }
+.hasSetBox { cursor: text; }
+.infoContent, .postSecPage .postContent { position: relative; width: 1000px; margin: 0px auto; padding-top: 35px; }
+.infoContent div.pr, .proSel, .citySel, .addCitySel, .addAreaSel, .addBuneSel { position: relative; float: left; height: 34px; margin-right: 5px; }
+.infoContent dl { font-size: 14px; clear: both; margin-bottom: 14px; color: rgb(64, 64, 64); }
+.infoContent dl .f-c7 { color: rgb(199, 199, 199); }
+.infoContent dl::after { display: block; visibility: hidden; clear: both; height: 0px; content: "."; }
+.infoContent dt, .infoContent dd { float: left; }
+.infoContent dt { line-height: 34px; width: 285px; text-align: right; }
+.infoContent dt.noNec { width: 261px; padding-right: 24px; }
+.infoContent dt b, .postContent h3 b { font-size: 18px; font-weight: 700; position: relative; top: 5px; left: 0px; padding: 0px 10px 0px 5px; color: rgb(255, 18, 18); }
+.infoContent dd { line-height: 34px; position: relative; width: 715px; }
+.photoChange dd { width: 0px; }
+.infoContent dl input { font-size: 14px; line-height: 32px; float: left; height: 32px; padding-left: 5px; color: rgb(51, 51, 51); border: 1px solid rgb(199, 199, 199); }
+.infoContent dl input.tc { padding: 0px; text-align: center; }
+.infoContent .timeSel input { padding-left: 4px; text-align: left; }
+.infoContent .inputConTips { float: left; padding-left: 10px; }
+.inputConTips .tipsIcon { position: relative; top: 8px; left: -5px; float: left; }
+.infoContent .necTips { position: relative; color: rgb(78, 135, 233); }
+.infoContent input.confirmPhone, .infoContent a.confirmPhone { font-size: 14px; line-height: 32px; float: left; height: 32px; margin-left: 10px; padding: 0px 18px; cursor: pointer; color: rgb(40, 40, 40); border: 1px solid rgb(184, 184, 184); background-position: 0px -44px; }
+.codeInfo { font-size: 12px; line-height: 26px; clear: both; padding-top: 8px; color: rgb(153, 153, 153); }
+.codeInfo .getMessBtn a { line-height: 30px; display: inline-block; height: 30px; margin-left: 8px; padding: 0px 15px; color: rgb(184, 184, 184); border: 1px solid rgb(200, 200, 200); background-color: rgb(245, 245, 245); }
+#hltWarn { line-height: 28px; left: -20px; display: block; }
+#txtPerformanceInfo { display: block; }
+#txtSchoAccoInfo, #txtSchoDescInfo { position: absolute; top: 137px; left: 200px; width: 400px; }
+.scholarList_1Info { position: absolute; top: 0px; left: 430px; }
+.othersInfo { font-size: 12px; line-height: 22px; position: absolute; top: 45px; right: 0px; display: none; width: 145px; padding: 17px; color: rgb(68, 68, 68); border: 1px solid rgb(245, 228, 147); background-color: rgb(255, 254, 224); }
+.othersInfo .topArrow, .exampl .othersInfo .topArrow { position: absolute; top: -9px; left: 120px; }
+.exampl .othersInfo { right: -232px; }
+.exampl .othersInfo .topArrow { left: 20px; }
+.selTypeDiv .matchRes { width: auto; padding: 3px 0px; }
+.selTypeDiv .matchRes .hotJobList { width: 241px; }
+.yearSel, .monthSel { position: relative; float: left; height: 34px; }
+.infoContent .setBox { position: absolute; z-index: 911; top: 34px; left: 0px; border: 1px solid rgb(200, 200, 200); background-color: rgb(255, 255, 255); }
+.infoContent .phoneType input:disabled { color: rgb(184, 184, 184); border: 1px solid rgb(200, 200, 200); background-color: rgb(245, 245, 245); }
+.infoContent .setBox a:hover { color: rgb(17, 85, 204); }
+.infoContent .yearSel .setBox { width: 235px; padding: 10px 25px; }
+.infoContent .monthSel .setBox { width: 140px; }
+.infoContent .timeSel ul { overflow: hidden; }
+.infoContent .timeSel li { line-height: 26px; float: left; padding: 0px 10px; text-align: center; white-space: nowrap; }
+.infoContent .monthSel .setBox { padding: 10px; }
+.infoContent .monthSel li { width: 20px; }
+.infoContent .timeSel .clearBtn { font-size: 12px; height: 25px; margin-bottom: 2px; text-align: center; }
+.infoContent .timeSel i { position: absolute; top: 50px; }
+.infoContent .timeSel .prevIcon, .infoContent .timeSel .prevHover { left: 10px; }
+.infoContent .timeSel .nextIcon, .infoContent .timeSel .nextHover { right: 10px; }
+.infoContent .timeInfo { float: left; padding-right: 10px; }
+.infoContent .linkage { float: left; margin-right: 5px; }
+.infoContent .jobType .keyIcon { top: 9px; left: 213px; }
+.infoContent .jobType .selTypeDiv { position: relative; clear: both; }
+.infoContent .jobType .selType { overflow: hidden; }
+.infoContent .jobType .selType li { font-size: 12px; line-height: 20px; position: relative; float: left; height: 20px; margin-right: 5px; padding: 0px 23px 0px 3px; white-space: nowrap; color: rgb(64, 64, 64); border: 1px solid rgb(255, 142, 85); background-color: rgb(255, 249, 246); }
+.infoContent .selType li .closeType { position: absolute; top: 7px; right: 5px; }
+.infoContent .selIcon { position: absolute; top: 0px; left: 114px; }
+.infoContent .salarySel li { line-height: 32px; width: 131px; padding-left: 5px; cursor: pointer; color: rgb(64, 64, 64); }
+.infoContent .nameSex .radioIcon, .infoContent .nameSex .radioIconSel { position: relative; top: 10px; left: 0px; float: left; }
+.infoContent .nameSex .selSex { line-height: 34px; float: left; padding-left: 15px; }
+.infoContent .selArea .selIcon { left: 102px; }
+.infoContent .selArea .setBox { width: 351px; padding: 10px; }
+.infoContent .selArea .setBox li { font-size: 12px; line-height: 26px; float: left; width: 60px; padding-right: 5px; white-space: nowrap; }
+.infoContent .mCity { margin-bottom: 3px; padding-bottom: 2px; border-bottom: 1px dashed rgb(198, 198, 198); }
+.infoContent .proCity { clear: both; }
+.infoContent .address .setBox { width: 375px; padding: 10px 10px 5px; }
+.infoContent .address li { font-size: 12px; line-height: 26px; float: left; cursor: pointer; white-space: nowrap; color: rgb(17, 85, 204); }
+.infoContent .addCitySel .tabNav { overflow: hidden; border-bottom: 1px solid rgb(221, 221, 221); }
+.infoContent .addCitySel .tabNav li { line-height: 20px; width: auto; padding: 0px 10px; }
+.infoContent .addCitySel .tabNav li.tnon { line-height: 18px; height: 19px; color: rgb(64, 64, 64); border-width: 1px 1px 0px; border-style: solid solid none; border-color: rgb(221, 221, 221) rgb(221, 221, 221) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background-color: rgb(237, 237, 237); }
+.infoContent .addCitySel .hotCity { overflow: hidden; padding-top: 5px; }
+.infoContent .addCitySel .hotCity li { width: 70px; padding-left: 5px; }
+.infoContent .address ul, .infoContent .mCity { overflow: hidden; }
+.infoContent .addAreaSel li, .infoContent .addBuneSel li { width: 70px; padding-left: 5px; }
+.infoContent .address .close { display: none; }
+.infoContent .setBox li { display: block; padding-left: 5px; list-style: outside none none; cursor: pointer; }
+.infoContent .experience li, .infoContent .education li { width: 131px; }
+.infoContent .salList li { width: 115px; }
+.infoContent .langName li, .infoContent .skillList li, .infoContent .shipName li, .infoContent .actType li { width: 92px; }
+.infoContent .scholarship { margin-bottom: 4px; }
+.infoContent .shipCon { position: relative; clear: both; margin-bottom: 10px; }
+.infoContent .drLic .drLicList, .infoContent .cerLic .cerLicList { font-size: 14px; overflow: hidden; padding: 10px; }
+.infoContent .drLic .drLicList li, .infoContent .cerLic .cerLicList li { float: left; width: 130px; padding-left: 5px; }
+.infoContent .address i { position: absolute; }
+.infoContent .address .keyIcon { top: 9px; left: 100px; }
+.infoContent .address .selIcon { top: 0px; left: 102px; }
+.infoContent .detailNO { font-size: 12px; line-height: 34px; }
+.infoContent .detailNO .phoneNO { font-size: 16px; float: left; color: rgb(0, 0, 0); }
+.infoContent .detailNO .phoneIcon { position: relative; top: 8px; left: 0px; float: left; margin: 0px 8px; }
+.infoContent .detailNO a.tdul { padding-left: 20px; }
+.infoContent .textDiv { position: relative; float: left; width: 487px; height: 112px; padding: 5px; border: 1px solid rgb(200, 200, 200); background-color: rgb(255, 255, 255); }
+#txtJobCateInfo { position: absolute; top: 0px; left: 243px; }
+#txtPerformanceInfo { top: 136px; left: 200px; width: 400px; }
+#txtOtherBrightInfo { top: 40px; }
+.infoContent .textCon { font-size: 14px; overflow: hidden; width: 477px; height: 88px; resize: none; border: 0px none; outline: 0px none; }
+.infoContent .inputTips { font-size: 12px; position: absolute; right: 0px; bottom: -3px; display: block; padding-right: 5px; color: silver; }
+.infoContent .inputTips .totalNum { padding: 0px 2px; }
+.infoContent .textTips { line-height: 22px; position: relative; float: left; width: 215px; }
+.infoContent .textTips i { position: absolute; top: 3px; left: 5px; }
+.infoContent .textTips .exampl { position: relative; clear: both; padding-top: 5px; }
+.infoContent .textTips .exampl a { padding: 0px 8px; }
+.infoContent .textTips .exampl .othersInfo { width: 255px; padding-top: 8px; color: rgb(84, 84, 84); }
+.infoContent .exampl .othersInfo .exTitle { font-weight: 700; display: block; }
+.infoContent .exampl .othersInfo .fn { font-weight: 400; }
+.infoContent .exampl .othersInfo .ti2e { text-indent: 2em; }
+.infoContent .pHeiht .pl8 { float: left; }
+.infoContent .drLic .drLicCon, .infoContent .cerLic .cerLicCon { position: relative; }
+.infoContent .drLic .drLicCon input, .infoContent .cerLic .cerLicCon input { float: none; }
+.infoContent .drLic i.keyIcon, .infoContent .cerLic i.keyIcon { top: 9px; left: 165px; }
+.infoContent .fimLang .fLCon, .infoContent .fimLang .fLSel, .infoContent .fimLang .fLSel div { float: left; }
+.infoContent .fimLang .fLCon .check { position: relative; top: 11px; left: 0px; float: left; }
+.infoContent .fimLang span { line-height: 35px; float: left; }
+.infoContent .fimLang .fLSel { padding-left: 12px; }
+.infoContent .fimLang .fLSel div { position: relative; margin-right: 5px; }
+.infoContent .fimLang .fLSel div.setBox { position: absolute; margin-right: 0px; }
+.infoContent .fimLang .fLSel div .selIcon { top: 0px; left: 104px; }
+.selTypeDiv a.current { color: rgb(247, 125, 64) ! important; }
+.selTypeDiv .setBox { font-size: 12px; position: absolute; top: 33px; left: 0px; width: 836px; border: 1px solid rgb(204, 204, 204); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#divJobCate { z-index: 900; }
+#divJobCate h3 a.close { position: absolute; top: 12px; right: 10px; width: 20px; height: 20px; background: transparent url("top_box_close.gif") no-repeat scroll 0px 0px; }
+#divJobCate h3 a.close:hover { background-position: -20px 0px; }
+.selTypeDiv .setBox a { color: rgb(88, 88, 88); }
+.selTypeDiv .setBox h3 { font-size: 12px; font-weight: 400; line-height: 43px; position: relative; height: 43px; margin-left: 0px; padding-left: 7px; color: rgb(88, 88, 88); border-bottom: 1px solid rgb(200, 200, 200); background: rgb(246, 246, 246) none repeat scroll 0% 0%; }
+#divJobCate h3 span { line-height: 43px; display: inline-block; float: left; height: 43px; padding-left: 10px; color: rgb(102, 102, 102); }
+#divJobCate h3 span.red { float: none; padding: 0px 1px; color: rgb(238, 34, 0); }
+.selTypeDiv .jobcatebox th { font-weight: 400; padding: 6px 10px; text-align: right; white-space: nowrap; border-right: 1px solid rgb(233, 233, 233); background: rgb(250, 250, 250) none repeat scroll 0% 0%; }
+.selTypeDiv .jobcgatebox tr, .selTypeDiv .jobcatebox td, .selTypeDiv .jobcatebox th { border-bottom: 1px solid rgb(233, 233, 233); }
+.selTypeDiv .jobcatebox th, .selTypeDiv .jobcatebox td { line-height: 24px; height: auto; vertical-align: top; }
+.selTypeDiv .jobcatebox th { font-weight: 700; color: rgb(88, 88, 88); }
+.selTypeDiv .jobcatebox td { padding: 5px 0px; }
+.selTypeDiv .jobcatebox .jobcatelist span { line-height: 24px; height: 24px; }
+.selTypeDiv .jobcatebox a:hover { color: rgb(247, 125, 64); }
+.selTypeDiv .jobcatelist li { line-height: 16px; display: inline; float: left; height: 24px; margin-left: 5px; white-space: nowrap; }
+.selTypeDiv .jobcatelist li p { overflow: hidden; width: 122px; padding: 2px; }
+.selTypeDiv .jobcatelist li span { float: left; padding: 0px 15px 0px 10px; cursor: pointer; text-align: left; color: rgb(34, 85, 221); background: transparent url("hl_icon.png") no-repeat scroll right -37px; }
+.selTypeDiv .jobcatelist .leftShow p {  }
+.selTypeDiv .jobcatelist .sel-color span, .selTypeDiv .jobcatelist .sel-color p a { color: rgb(247, 125, 64); }
+.selTypeDiv .subcate { position: absolute; z-index: 1; left: 0px; display: none; width: 470px; padding: 7px 0px 7px 30px; border: 2px solid rgb(250, 189, 134); background-color: rgb(255, 252, 248); }
+.selTypeDiv .subcate a { line-height: 28px; float: left; width: 130px; height: 28px; padding-left: 15px; white-space: nowrap; color: rgb(17, 85, 204); }
+.selTypeDiv .subcate i.check { position: absolute; top: 8px; left: 0px; float: left; }
+.postContent h3 { font-size: 14px; font-weight: 700; line-height: 36px; position: relative; height: 36px; margin-left: 185px; padding-left: 10px; color: rgb(64, 64, 64); border-top: 1px solid rgb(228, 228, 228); background-color: rgb(250, 250, 250); }
+.postContent h3 a.changeBtn, .postContent h3 a.hideBtn, .postContent h3 a.addBtn { font-size: 12px; font-weight: 400; line-height: 24px; position: absolute; top: 5px; right: 17px; display: inline-block; height: 24px; padding: 0px 15px; color: rgb(102, 102, 102); border: 1px solid rgb(239, 194, 162); background-color: rgb(255, 234, 217); }
+.postContent h3 a.changeBtn, .postContent h3.hover a.changeBtn, .postContent h3.hover a.hideBtn, .postContent h3.hover a.addBtn { display: block; }
+.postContent h3 a.hideBtn { right: 80px; border-color: rgb(216, 216, 216); background-color: rgb(241, 241, 241); }
+.postContent h3 .hideTips { font-size: 12px; font-weight: 400; line-height: 20px; position: absolute; top: -30px; right: 28px; display: none; height: 20px; padding: 0px 5px; color: rgb(184, 184, 184); border: 1px solid rgb(245, 228, 147); background-color: rgb(255, 254, 224); }
+.postContent h3 .hideTips i { position: absolute; top: 20px; left: 7px; }
+.postContent h3 b { padding-right: 5px; }
+.postContent h3 .tips { font-size: 12px; font-weight: 400; color: rgb(107, 158, 244); }
+.tipt, .tipbrt { font-weight: 400; font-size: 12px; color: rgb(255, 117, 14); margin-left: 10px; }
+.postContent .showDiv { margin-left: 185px; }
+.postContent .basicConShow dl { font-size: 14px; overflow: hidden; padding: 15px 0px 20px 25px; color: rgb(0, 0, 0); }
+.postContent .basicConShow dl span { line-height: 32px; display: inline-block; white-space: nowrap; }
+.postContent .basicConShow dl span.w710 { line-height: 20px; padding-top: 6px; white-space: normal; }
+.postContent .basicConShow dl .db { display: block; float: left; }
+.postContent .basicConShow dl .title { padding-right: 5px; color: rgb(156, 156, 156); }
+.postContent .basicConShow dl .divide { line-height: 28px; padding: 0px 8px; color: rgb(212, 212, 212); }
+.postContent .basicConShow dd, .postContent .basicConShow dt { clear: both; }
+.postContent .basicConShow dt span { font-size: 18px; font-weight: 700; }
+.postContent .basicConShow dt .sexAge { font-size: 14px; font-weight: 400; padding-left: 15px; }
+.postContent .basicConShow .phoneIcon { position: relative; top: 5px; left: 8px; display: inline-block; }
+.postContent .infoContent { padding-top: 20px; }
+.postContent .subBtnCon { overflow: hidden; padding-top: 15px; padding-bottom: 20px; }
+.postContent .saveResume, .postContent .saveBasicInfo, .postContent .saveBtn, .postContent .cancelBtn { font-size: 16px; font-weight: 700; line-height: 33px; display: inline-block; height: 33px; margin-left: 285px; padding: 0px 25px; color: rgb(255, 255, 255); border-bottom: 1px solid rgb(190, 82, 14); text-align: center; }
+.postContent .saveBasicInfo, .postContent .saveBtn { cursor: pointer; border-width: 0px 0px 2px; border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color rgb(46, 76, 127); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background-position: 0px -76px; }
+.postContent a.cancelBtn { padding: 0px; color: rgb(99, 100, 101); border: 0px none; background: transparent none repeat scroll 0px 0px; }
+.postContent .saveAddBtn, .postContent .cancelBtn { margin-left: 20px; }
+.postContent .showList, .postContent .schoolDetail { position: relative; padding: 6px 0px 3px 20px; border-bottom: 1px dashed rgb(238, 238, 238); }
+.postContent .schoolDetail { border-bottom: 0px none; }
+.postContent .showList .operBtn { position: absolute; top: 17px; right: 10px; display: none; }
+.postContent .showList a { padding-right: 8px; }
+.postContent .showList p { clear: both; overflow: hidden; padding-bottom: 10px; }
+.postContent .showList p.detailList { width: 710px; }
+.postContent .showList span { font-size: 14px; line-height: 20px; display: block; float: left; padding: 0px 5px; color: rgb(64, 64, 64); }
+.postContent .showList .detailCon span { line-height: 20px; float: left; width: 660px; color: rgb(153, 153, 153); }
+.postContent .showList span.divide { position: relative; top: -1px; left: 0px; color: rgb(234, 234, 234); }
+.postContent .showList .detailCon span.title { width: 72px; padding: 0px; text-align: left; color: rgb(64, 64, 64); margin-left: 8px; }
+.postContent .showList .detailCon span.tlTitle { width: auto; text-align: left; color: rgb(64, 64, 64); }
+.postContent .showList .detailCon span.simText { color: rgb(64, 64, 64); }
+.postContent .hasSel { position: relative; float: left; margin-right: 5px; }
+.postContent .salInfo, .postContent .timeInfo, .postContent .linkage { position: relative; float: left; }
+.postContent .salInfo .selIcon, .postContent .langName .selIcon, .postContent .worksChange .keyIcon, .postContent .skillsChange .keyIcon { position: absolute; top: 0px; left: 98px; }
+.postContent .langName .selIcon, .postContent .shipName .selIcon, .postContent .actType .selIcon, .postContent .skillsName .selIcon { left: 75px; }
+.postContent .langName .examination .selIcon { left: 205px; }
+.postContent .worksChange .keyIcon, .postContent .skillsChange .keyIcon { top: 10px; left: 165px; }
+.postContent .unknow { font-size: 14px; line-height: 14px; padding-left: 8px; color: rgb(187, 187, 187); }
+.postContent .advantCon { padding: 20px 10px 20px 25px; }
+.postContent .advantList { overflow: hidden; padding-bottom: 10px; }
+.postContent .advantList li { line-height: 24px; position: relative; float: left; height: 24px; margin-right: 25px; margin-bottom: 10px; padding: 0px 10px; white-space: nowrap; color: rgb(0, 115, 0); border-left: 2px solid rgb(103, 187, 103); background-color: rgb(220, 246, 220); }
+.postContent .advantList li i.rightGIcon { position: absolute; top: 0px; right: -11px; }
+.postContent .advantAdd { font-size: 14px; color: rgb(64, 64, 64); border: 0px none; }
+.postContent .advantExp, .postContent .myPhoto, .postContent .typeCon .typeSel { overflow: hidden; }
+.postContent .advantAdd .adTitle { line-height: 28px; float: left; width: 70px; }
+.postContent .advantAdd .adCon { position: relative; float: left; width: 670px; }
+.postContent .advantAdd input { font-size: 14px; line-height: 27px; position: relative; top: -1px; width: 41px; height: 27px; margin: 0px 5px; padding-left: 5px; color: rgb(51, 51, 51); border: 1px solid rgb(199, 199, 199); }
+.postContent .advantAdd input.f-c7 { color: rgb(199, 199, 199); }
+.advantSel { float: left; overflow: hidden; padding-bottom: 10px; }
+.advantSel li, .diyLiList li { line-height: 26px; position: relative; float: left; height: 26px; margin-right: 10px; padding: 0px 16px 0px 10px; cursor: pointer; white-space: nowrap; border: 1px solid rgb(200, 200, 200); background-position: 0px -109px; }
+.advantSel li i { position: absolute; top: 8px; right: 4px; }
+.diyLiList { float: left; overflow: hidden; padding-bottom: 10px; }
+.diyLiList li { line-height: 24px; height: 24px; padding: 0px 25px 0px 5px; color: rgb(40, 40, 40); border: 2px solid rgb(242, 135, 71); background-color: rgb(255, 245, 239); }
+.diyLiList li i.closeBIcon { position: absolute; top: 7px; right: 7px; }
+.advantDIY { float: left; padding-bottom: 10px; }
+.postContent .advantDIY input { font-size: 12px; top: 0px; width: 166px; margin-right: 0px; border-color: rgb(197, 198, 199) -moz-use-text-color rgb(232, 233, 235) rgb(197, 198, 199); border-right: 0px none; }
+.advantDIY a.addAdvantBtn { font-size: 12px; line-height: 27px; display: block; float: left; height: 27px; padding: 0px 13px; white-space: nowrap; color: rgb(88, 88, 88); border: 1px solid rgb(220, 222, 225); background-position: 0px -137px; }
+.postContent .advantAdd .btnDiv { clear: both; overflow: hidden; padding: 25px 0px 0px 70px; }
+.postContent .advantAdd .btnDiv a { font-size: 14px; font-weight: 700; line-height: 33px; display: inline-block; float: left; padding: 0px 17px; color: rgb(99, 100, 101); }
+.postContent .advantAdd .btnDiv .saveBtn { height: 33px; margin-left: 0px; padding: 0px 25px; font-size: 16px; color: rgb(255, 255, 255); }
+.postContent .typeCon { margin-left: 185px; padding: 20px 0px 20px 20px; }
+.postContent .typeCon li, .infoContent a.addCon { font-size: 14px; line-height: 32px; position: relative; float: left; height: 32px; margin-right: 15px; margin-bottom: 10px; padding: 0px 15px 0px 25px; cursor: pointer; white-space: nowrap; color: rgb(88, 88, 88); border: 1px solid rgb(220, 222, 225); background-position: 0px -135px; }
+.infoContent a.addCon { margin: 0px; }
+.infoContent a.addCon i { position: absolute; top: 11px; left: 8px; }
+.postContent .actConDiv { padding-top: 0px; }
+.postContent .typeCon li i.addHoverIcon { position: absolute; top: 11px; left: 10px; }
+.postContent .saveDiv { overflow: hidden; padding: 20px 0px 40px; }
+.postContent a.saveResume { font-size: 20px; line-height: 44px; height: 44px; width: 85px; margin-left: 445px; padding: 0px 35px; background-position: 0px 0px; }
+.postContent .saveResume:hover { color: rgb(255, 255, 255); }
+.postContent .schConDiv .btnDiv { padding-bottom: 0px; }
+.postContent .apDiv { overflow: hidden; width: 670px; padding: 20px; border: 1px solid rgb(233, 233, 233); background-color: rgb(252, 252, 252); }
+.postContent .apChange dt { width: 70px; height: 34px; padding-right: 10px; }
+.postContent .apChange dd { width: 590px; }
+.postContent .apChange .btnDiv { padding-bottom: 0px; }
+.postContent .apDiv .btnDiv { padding-bottom: 0px; }
+.postContent .apDiv .btnDiv a { margin-right: 8px; margin-left: 0px; }
+.postContent .apDiv .btnDiv a.saveBtn { margin-left: 80px; }
+.jPostTips { font-size: 14px; line-height: 18px; position: relative; margin-left: 254px; padding: 20px 0px 10px 50px; color: rgb(0, 0, 0); border-top: 1px dashed rgb(228, 228, 228); }
+.jPostTips i { position: absolute; top: 23px; left: 30px; }
+.noborder { border: medium none ! important; }
+.skillsName .setBox { overflow: hidden; width: 655px; }
+.skillsName .skilllevel { width: auto; }
+.skillsName .setBox dd { width: auto; }
+.skillsName dl { margin-bottom: 0px; }
+.skillsName .tabNav { height: 30px; padding: 5px 0px 0px 28px; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(250, 250, 250); }
+.skillsName .tabNav li { font-size: 12px; line-height: 30px; float: left; height: 30px; margin-right: 5px; padding: 0px 8px; cursor: pointer; white-space: nowrap; color: rgb(34, 85, 221); border-width: 1px 1px 0px; border-style: solid solid none; border-color: rgb(221, 221, 221) rgb(221, 221, 221) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background-color: rgb(255, 255, 255); }
+.skillsName .tabNav li.tnon { font-weight: 700; line-height: 30px; height: 30px; color: rgb(64, 64, 64); }
+.skillsName .tabcon { position: relative; z-index: 1; top: -1px; clear: both; border-top: 1px solid rgb(221, 221, 221); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.skillsName .tcwrap { display: none; overflow: hidden; padding: 0px 20px; }
+.skillsName .tcwrap ul { clear: both; overflow: hidden; }
+.skillsName .tcwrap dl { font-size: 12px; position: relative; overflow: hidden; margin: 0px 15px; padding: 8px 0px; border-bottom: 1px dashed rgb(200, 200, 200); background: transparent none repeat scroll 0px 0px; }
+.skillsName .tcwrap dt, .skillsName .tcwrap dd { float: left; }
+.skillsName .tcwrap dt { width: 100px; text-align: left; }
+.skillsName .tcwrap dd { width: 480px; }
+.skillsName .tcwrap li { float: left; width: 115px; }
+.skillsName .tcwrap .abilist { font-size: 12px; position: relative; clear: both; overflow: hidden; padding: 0px 0px 10px; border-top: 1px dashed rgb(200, 200, 200); }
+.skillsName .tcwrap .abilist li { position: relative; z-index: 2; width: 115px; height: 30px; margin: 0px 0px 0px 3px; padding: 1px 1px 0px; cursor: pointer; }
+.skillsName .tcwrap .abilist li a { display: inline; float: left; padding: 0px 10px; text-align: left; background: transparent url("resume_detail.gif") no-repeat scroll right -200px; }
+.skillsName dd .abilist li a:hover { background-color: transparent ! important; }
+.skillsName dd .abilist li.divJobCate3 { position: relative; z-index: 1; top: -1px; display: block; float: none; clear: both; overflow: hidden; width: auto; height: auto; margin: 0px; padding: 5px 0px; cursor: default; border-style: solid; border-color: rgb(200, 200, 200); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 1px 0px; background: rgb(250, 250, 250) none repeat scroll 0% 0%; }
+.tabdivcertname { height: 35px; }
+.certname { position: relative; z-index: 10; overflow: hidden; }
+.certname dt { font-size: 12px; line-height: 28px; width: 695px; margin: 0px; padding: 0px 10px; text-align: left; color: rgb(153, 153, 153); border-bottom: 1px dashed rgb(187, 187, 187); background-color: rgb(250, 250, 250); }
+.certname .tabnav { position: absolute; top: 0px; left: 0px; width: 1271px; height: 29px; padding: 5px 0px 0px 30px; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(250, 250, 250); }
+.certname .tabnav li { font-size: 12px; line-height: 28px; float: left; height: 28px; margin-right: 5px; padding: 0px 11px; color: rgb(17, 85, 204); border-width: 1px 1px 0px; border-style: solid solid none; border-color: rgb(221, 221, 221) rgb(221, 221, 221) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background-color: rgb(255, 255, 255); }
+.certname .tabnav li.tnon { font-weight: 700; height: 29px; color: rgb(64, 64, 64); }
+.boxpre, .boxnext { position: absolute; z-index: 101; top: 0px; left: 0px; width: 24px; height: 34px; background-color: rgb(250, 250, 250); }
+.boxnext { left: 691px; }
+.boxpre i, .boxnext i { position: absolute; top: 11px; left: 6px; width: 10px; height: 16px; }
+.boxnext i { display: block; }
+.delconfirm { position: absolute; z-index: 1000; top: 20px; left: 730px; display: none; width: 180px; background: rgb(241, 243, 242) none repeat scroll 0% 0%; }
+.delconfirm .dcbg { padding: 15px 10px; border: 1px solid rgb(204, 204, 204); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.delconfirm p { line-height: 28px; height: 28px; text-align: center; }
+.delconfirm .dcba { overflow: hidden; padding-top: 10px; padding-right: 5px; }
+.delconfirm .dcba label { margin-right: 5px; margin-left: 5px; }
+.btn-v7, .btn-v8 { display: inline; float: right; height: 28px; margin-top: 5px; margin-left: 15px; padding-right: 3px; background: transparent url("resume_detail.gif") no-repeat scroll 0% 0%; }
+.btn-v7 { background-position: right -160px; }
+.btn-v8 { background-position: right 0px; }
+.savbtn, .hidbtn { font-size: 12px; line-height: 26px; display: inline; float: left; width: 60px; height: 28px; padding: 0px 0px 5px 2px; cursor: pointer; color: rgb(102, 102, 102); border: medium none; background: transparent url("resume_detail.gif") no-repeat scroll 0% 0%; }
+.savbtn { color: rgb(255, 255, 255); background-position: 0px 0px; }
+.hidbtn { background-position: 0px -160px; }
+.upLoadInfo { font-size: 12px; line-height: 16px; display: block; float: left; white-space: nowrap; color: rgb(167, 167, 167); }
+.upnum { color: rgb(255, 25, 25); }
+.upLoadInfo span { float: left; white-space: nowrap; }
+.upLoadInfo .tipsAd { clear: both; padding-left: 7px; }
+.uploadTips { font-size: 12px; line-height: 20px; position: absolute; top: 38px; left: 0px; height: 20px; padding: 0px 5px; color: rgb(184, 184, 184); border: 1px solid rgb(245, 228, 147); background-color: rgb(255, 254, 224); }
+.uploadTips i { position: absolute; top: -9px; left: 5px; }
+#photoDivView { overflow: hidden; }
+#divCompName { width: 307px; }
+#divSchoolName, #divProfession { width: 241px; }
+#divCertNamein, #divCertAuthority { width: 241px; }
+#divAbiNamein { width: 190px; }
+#containerexperience { clear: both; }
+.basicInfo { position: relative; z-index: 900; }
+.basicInfo dl, .postFirPage dl, #tabModyCert dl, #tabModyExpe dl, #tabModyProj dl, .actChange dl { position: relative; }
+#tabModyCert dl { z-index: 800; }
+.jobType { z-index: 890; }
+.expSalary { z-index: 880; }
+.birTime { z-index: 870; }
+dl.resAdd { z-index: 860; }
+.address { z-index: 850; }
+.selfIntro { z-index: 841; }
+.selArea { z-index: 840; }
+.education { z-index: 830; }
+.experience { z-index: 820; }
+.drLic { z-index: 810; }
+.cerLic { z-index: 809; }
+.fimLang { z-index: 805; }
+.experInfo { position: relative; z-index: 800; }
+.eduInfo { position: relative; z-index: 700; }
+.langInfo { position: relative; z-index: 600; }
+.cerInfo { position: relative; z-index: 500; }
+.skillsInfo { position: relative; z-index: 450; }
+.proInfo { position: relative; z-index: 400; }
+.schoolInfo { position: relative; z-index: 300; }
+.photoInfo { position: relative; z-index: 350; }
+.advantInfo { position: relative; z-index: 100; clear: both; }
+.typeInfo {  }
+#containerscholarship .hideBtn { right: 17px; }
+#containerscholarship .hideTips { right: -35px; }
+#sec_ship { z-index: 890; }
+#sec_post { z-index: 880; }
+#sec_act { z-index: 870; }
+#scholarList_1 { z-index: 850; }
+#scholarList_2 { z-index: 840; }
+#scholarList_3 { z-index: 830; }
+.infoContent .jobType .selType li.recommendType { border: 1px solid rgb(126, 165, 232); background-color: rgb(224, 237, 255); }
+.postContent .basicConShow dl span.jobType { white-space: normal; }
+.infoContent .jobType .selType li { margin-bottom: 5px; }
+.jobTitle { z-index: 900; }
+.recommendTip { font-size: 12px; line-height: 20px; color: gray; }
+.postBtn { margin-bottom: 12px; }
+#tabShowMe { margin-top: 10px; }
+.picquantity { margin-left: 207px; color: rgb(147, 147, 147); margin-bottom: 10px; }
+.wxqqUpload_wrap { width: 344px; height: 174px; float: left; margin-right: 40px; margin-left: 207px; }
+.wxqqTitle { height: 32px; position: relative; z-index: 10; }
+.wxqqTitle .wxTitle, .wxqqTitle .qqTitle { position: absolute; top: 0px; width: 120px; height: 30px; line-height: 30px; background-color: rgb(245, 245, 245); font-size: 14px; color: rgb(154, 154, 154); margin-right: 6px; border-width: 1px; border-style: solid; border-color: rgb(236, 236, 236) rgb(236, 236, 236) rgb(245, 245, 245); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; text-align: center; }
+.wxqqTitle .wxTitle { left: 0px; }
+.wxqqTitle .qqTitle { left: 128px; }
+.wxqqTitle .tabOn { background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(255, 255, 255); color: rgb(237, 109, 6); cursor: default; height: 31px; z-index: 1; }
+.wxqqTitle i { background-image: url("icons_edit.png"); display: inline-block; vertical-align: middle; margin-right: 6px; }
+.wxqqTitle .wxlogo { background-position: -33px -380px; width: 18px; height: 18px; }
+.wxqqTitle .qqlogo { background-position: -8px -380px; width: 16px; height: 18px; }
+.wxqqUpload { width: 342px; height: 140px; border: 1px solid rgb(236, 236, 236); position: relative; }
+.wxqqUpload .wxUpload, .wxqqUpload .qqUpload { height: 94px; margin: 23px 0px; display: none; }
+.wxqqUpload .wx_img_wrap img, .wxqqUpload .qq_img_wrap img { margin: 0px 20px; }
+.wxqqUpload .tabOn { display: block; }
+.wxqqUpload .wxTxt, .wxqqUpload .qqTxt { position: absolute; top: 34px; left: 134px; font-size: 14px; line-height: 24px; color: rgb(147, 147, 147); white-space: nowrap; }
+.wxqqUpload .wxTxt i, .wxqqUpload .qqTxt i { padding: 0px 2px; font-size: 14px; background: transparent none repeat scroll 0px 0px; display: inline; font-style: normal; }
+.wxqqUpload .wxTxt .wx, .wxqqUpload .qqTxt .wx { color: rgb(63, 171, 69); }
+.wxqqUpload .wxTxt .fs, .wxqqUpload .qqTxt .fs { color: rgb(237, 109, 6); }
+.wxqqUpload .wxTxt .sjqq, .wxqqUpload .qqTxt .sjqq { color: rgb(24, 181, 234); }
+.photoChange { width: 190px; height: 120px; float: left; border: 1px solid rgb(236, 236, 236); margin-top: 32px; margin-bottom: 10px; margin-left: 30px; }
+#aspnetForm .w_local { width: 81px; height: 62px; position: absolute; top: 11px; left: 61px; color: rgb(255, 255, 255); opacity: 0; }
+#uploadImgcontainer_SWF { height: 100%; width: 100%; }
+.upload { display: block; background-image: url("icons_edit.png"); background-position: -104px 0px; width: 100px; height: 60px; margin-left: 53px; margin-top: 12px; }
+#uploadImgcontainer { width: 630px; margin-left: 207px; }
+.style1 { font-size: 14px; margin-left: 100px; margin-top: -3px; }
+.style2 { font-size: 14px; margin-top: 62px; margin-left: 24px; }
+.tip { color: rgb(0, 0, 255); padding-top: 5px; margin-bottom: 10px; position: relative; clear: both; padding-left: 30px; margin-left: 207px; }
+.tip i { width: 20px; height: 20px; position: absolute; left: 0px; top: 0px; }
+.postContent .btnDiv { padding-top: 15px; margin-bottom: 35px; height: 35px; clear: both; }
+.postContent .btnDiv a:hover, .postContent .subBtnCon a:hover { color: rgb(255, 255, 255); }
+.postContent .btnDiv a.cancelBtn:hover { color: rgb(238, 34, 0); }
+.postContent .photoShow {  }
+.fl { float: left; }
